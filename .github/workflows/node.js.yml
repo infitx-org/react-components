@@ -61,6 +61,6 @@ jobs:
       - run: yarn install
       - run: yarn storybook-build
       - uses: JamesIves/github-pages-deploy-action@4.1.1
-       with:
+        with:
           branch: master # The branch the action should deploy to.
           folder: docs # The folder the action should deploy.
