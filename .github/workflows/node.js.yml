@@ -49,3 +49,18 @@ jobs:
       - run: yarn lint
       - run: yarn test
       - run: yarn build
+  docs:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - run: yarn storybook-build
+      - uses: JamesIves/github-pages-deploy-action@4.1.1
+       with:
+          branch: master # The branch the action should deploy to.
+          folder: docs # The folder the action should deploy.
