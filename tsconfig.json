@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "declarationMap": true,
+    "lib": ["dom", "es2017", "es2018"],
+    "baseUrl": "src",
+    "noUnusedLocals": true,
+    "outDir": "lib",
+    "target": "es5",
+    "module": "esnext",
+    "strict": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "lib", "**/*.spec.ts", "**/*.stories.tsx"]
+}

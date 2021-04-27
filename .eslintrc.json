@@ -1,0 +1,42 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb-typescript",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "react/destructuring-assignment": "off",
+    "react/jsx-props-no-spreading": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "react/require-default-props": "off",
+        "react/prop-types": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-curly-newline": "off",
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
+}
