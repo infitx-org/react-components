@@ -4,6 +4,10 @@ import Button from "./Button";
 export const Primary: React.VFC<{}> = () => (
   <Button onClick={console.log}>Button</Button>
 );
+
+export const OtherButton: React.VFC<{}> = () => (
+  <Button onClick={console.log}>Second button</Button>
+);
 export const SVGContent: React.VFC<{}> = () => (
   <Button onClick={console.log}>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3">
