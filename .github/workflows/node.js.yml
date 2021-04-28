@@ -71,6 +71,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
+      - run: yarn install --frozen-lockfile
       - run: yarn storybook-build
       - uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
