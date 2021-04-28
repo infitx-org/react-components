@@ -10,7 +10,7 @@ export default {
   output: [
     {
       dir: "lib",
-      format: "esm",
+      format: "cjs",
       sourcemap: true,
     },
   ],
