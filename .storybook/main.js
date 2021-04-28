@@ -6,14 +6,14 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-docs',
     '@storybook/addon-postcss',
-    {
-       name: '@storybook/addon-postcss',
-       options: {
-         postcssLoaderOptions: {
-           implementation: require('postcss'),
-         },
-       },
-     },
+    // {
+    //    name: '@storybook/addon-postcss',
+    //    options: {
+    //      postcssLoaderOptions: {
+    //        implementation: require('postcss'),
+    //      },
+    //    },
+    //  },
   ],
   webpackFinal: async (config, { configType }) => {
   //   // This removes the default loader since and allow us to use
