@@ -9,8 +9,7 @@
     "lib"
   ],
   "dependencies": {
-    "lodash": "^4.17.21",
-    "sass-loader": "10"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
@@ -54,6 +53,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-typescript2": "^0.30.0",
+    "sass-loader": "10",
     "storybook": "6.2.9",
     "typescript": "^4.2.4"
   },
