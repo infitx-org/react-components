@@ -1,5 +1,7 @@
+@import '../scss/vars/colors.scss';
+
 button {
-  border: 2px solid #f0c;
+  border: 2px solid $color__main-primary;
   &.test {
     padding: 10px;
   }
