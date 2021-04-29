@@ -33,7 +33,7 @@ While this is not a necessary step while developing, it can be useful when you w
 
 ### Documentation
 
-The project uses Storybook to generate documentation. 
+The project uses Storybook to generate documentation.
 
 Use `yarn storybook` to run storybook on the codebase.
 
