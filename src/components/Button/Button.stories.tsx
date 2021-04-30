@@ -1,5 +1,6 @@
 /* eslint no-console: "off" */
 import Button from "./Button";
+import { Size } from "../types";
 
 export default {
   title: "Button",
@@ -171,17 +172,47 @@ export const AllDisabled = () => (
 export const AllSizes = () => (
   <div>
     <Row>
-      <Button onClick={log} label="Large size " size="l" />
-      <Button onClick={log} label="Medium size " size="m" />
-      <Button onClick={log} label="Small size " size="s" />
-      <Button onClick={log} label="Large size and icon" icon={icon} size="l" />
-      <Button onClick={log} label="Medium size and icon" icon={icon} size="m" />
-      <Button onClick={log} label="Small size and icon" icon={icon} size="s" />
+      <Button onClick={log} label="Large size " size={Size.Large} />
+      <Button onClick={log} label="Medium size " size={Size.Medium} />
+      <Button onClick={log} label="Small size " size={Size.Small} />
+      <Button
+        onClick={log}
+        label="Large size and icon"
+        icon={icon}
+        size={Size.Large}
+      />
+      <Button
+        onClick={log}
+        label="Medium size and icon"
+        icon={icon}
+        size={Size.Medium}
+      />
+      <Button
+        onClick={log}
+        label="Small size and icon"
+        icon={icon}
+        size={Size.Small}
+      />
     </Row>
     <Row>
-      <Button onClick={log} label="Large size pending " pending size="l" />
-      <Button onClick={log} label="Medium size pending " pending size="m" />
-      <Button onClick={log} label="Small size pending " pending size="s" />
+      <Button
+        onClick={log}
+        label="Large size pending "
+        pending
+        size={Size.Large}
+      />
+      <Button
+        onClick={log}
+        label="Medium size pending "
+        pending
+        size={Size.Medium}
+      />
+      <Button
+        onClick={log}
+        label="Small size pending "
+        pending
+        size={Size.Small}
+      />
     </Row>
   </div>
 );
@@ -200,7 +231,6 @@ export const WithIcon = () => (
       icon={
         <div style={{ width: "20px", height: "20px", background: "#f00" }} />
       }
-      pending
     />
   </Row>
 );

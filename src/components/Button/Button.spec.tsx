@@ -96,7 +96,15 @@ describe("rtl test", () => {
 
 // // Snapshot testing
 
-// it('renders the button correctly when multiple props are set', () => {
-//   const wrapper = shallow(<Button label="Snapshot button" kind="secondary" disabled pending />);
-//   expect(shallowToJson(wrapper)).toMatchSnapshot();
-// });
+it("renders the button correctly when multiple props are set", () => {
+  const { container } = render(
+    <Button
+      onClick={log}
+      label="Snapshot button"
+      kind="secondary"
+      disabled
+      pending
+    />
+  );
+  expect(container).toMatchSnapshot();
+});

@@ -33,7 +33,7 @@ export default function Button({
   noFill,
   disabled,
   pending,
-  kind = "primary",
+  kind = Kind.Primary,
   size = Size.Large,
   icon,
   iconPosition = "left",
