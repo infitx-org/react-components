@@ -1,16 +1,17 @@
-export type Kind =
-  | "primary"
-  | "secondary"
-  | "tertiary"
-  | "success"
-  | "danger"
-  | "warning"
-  | "dark"
-  | "light";
+export enum Kind {
+  Primary = "primary",
+  Secondary = "secondary",
+  Tertiary = "tertiary",
+  Success = "success",
+  Danger = "danger",
+  Warning = "warning",
+  Dark = "dark",
+  Light = "light",
+}
 
 export enum Size {
-  XSmall = "xs",
-  Small = "s",
-  Medium = "m",
-  Large = "l",
+  XSmall = "extra-small",
+  Small = "small",
+  Medium = "medium",
+  Large = "large",
 }

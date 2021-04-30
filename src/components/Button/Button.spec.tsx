@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import userEvent from "@testing-library/user-event";
 import Button from "./Button";
+import { Kind, Size } from "../types";
 
 /* eslint-disable no-console */
 const { log } = console;
@@ -64,68 +66,33 @@ describe("rtl test", () => {
   });
 
   it("renders all the kinds", () => {
-    ["primary", "secondary", "tertiary", "danger", "warning", "dark"].forEach(
-      (kind) => {
-        const { container } = render(<Button onClick={log} kind={kind} />);
-        expect(
-          container.querySelector(`button.input-button--${kind}`)
-        ).toBeTruthy();
-      }
-    );
+    Object.values(Kind).forEach((kind) => {
+      const { container } = render(<Button onClick={log} kind={kind} />);
+      expect(
+        container.querySelector(`button.input-button--${kind}`)
+      ).toBeTruthy();
+    });
   });
 
   it('renders with the "noFill" prop', () => {
     const { container } = render(<Button onClick={log} noFill />);
     expect(container.querySelector("button.input-button--noFill")).toBeTruthy();
   });
+
   it("renders the large, medium, small sizes", () => {
-    const sizes = {
-      large: "l",
-      medium: "m",
-      small: "s",
-      "extra-small": "xs",
-    };
-    Object.entries(sizes).forEach(([name, size]) => {
+    Object.values(Size).forEach((size) => {
       const { container } = render(<Button onClick={log} size={size} />);
-      expect(container.querySelector(`.input-button--${name}`)).toBeTruthy();
+      expect(container.querySelector(`.input-button--${size}`)).toBeTruthy();
     });
   });
+
+  it("triggers the onClick prop", () => {
+    const mockEvent = jest.fn();
+    const { container } = render(<Button onClick={mockEvent} />);
+    userEvent.click(container.querySelector("button"));
+    expect(mockEvent).toHaveBeenCalled();
+  });
 });
-
-// it('triggers the onClick prop', () => {
-//   const mockEvent = jest.fn();
-//   const wrapper = mount(<Button onClick={mockEvent} />);
-//   expect(mockEvent).not.toHaveBeenCalled();
-//   wrapper.simulate('click');
-//   expect(mockEvent).toHaveBeenCalled();
-// });
-
-// it('renders multiple props', () => {
-//   const wrapper = shallow(<Button label="Test" icon="x" kind="primary" disabled pending noFill />);
-//   expect(wrapper.find('span').text()).toBe('Test');
-//   expect(wrapper.find('button').prop('kind')).toBe('primary');
-//   expect(wrapper.find('button').prop('disabled')).toBe(true);
-//   expect(wrapper.find(Spinner)).toHaveLength(1);
-//   expect(wrapper.find(Icon)).toHaveLength(0);
-// });
-
-// // Mount render, include sub-components
-
-// it('renders the inner icon component', () => {
-//   const wrapper = mount(<Button icon="deploy" />);
-//   expect(wrapper.find('.el-icon')).toHaveLength(1);
-// });
-
-// it('renders the inner spinner component', () => {
-//   const wrapper = mount(<Button pending />);
-//   expect(wrapper.find('.el-spinner')).toHaveLength(1);
-// });
-
-// it('renders the spinner component and overrides the icon prop', () => {
-//   const wrapper = mount(<Button pending icon="deploy" />);
-//   expect(wrapper.find('.el-icon')).toHaveLength(0);
-//   expect(wrapper.find('.el-spinner')).toHaveLength(1);
-// });
 
 // // Snapshot testing
 

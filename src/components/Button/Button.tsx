@@ -12,8 +12,8 @@ export type ButtonProps = {
   label?: string;
   className?: string;
   id?: string;
-  kind?: Kind;
-  size?: Size;
+  kind?: `${Kind}`;
+  size?: `${Size}`;
   iconPosition?: "left" | "right";
   noFill?: boolean;
   disabled?: boolean;
@@ -45,10 +45,7 @@ export default function Button({
     "mb-input",
     "input-button",
     `input-button--${kind}`,
-    size === "xs" && "input-button--extra-small",
-    size === "s" && "input-button--small",
-    size === "m" && "input-button--medium",
-    size === "l" && "input-button--large",
+    `input-button--${size}`,
     disabled && "mb-input--disabled input-button--disabled",
     pending && "mb-input--pending input-button--pending",
     noFill && "input-button--noFill",
