@@ -11,9 +11,10 @@
     justify-content: center;
   }
   transform: translateZ(0);
+  overflow: hidden;
 }
 .el-spinner__component {
-  animation: rotateSpinner 4s linear infinite;
+  animation: rotateSpinner 3s linear infinite;
 }
 
 .el-spinner__svg-path {
