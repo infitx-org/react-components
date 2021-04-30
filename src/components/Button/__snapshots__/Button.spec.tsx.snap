@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the button correctly when multiple props are set 1`] = `
+<div>
+  <button
+    class="mb-input input-button input-button--secondary input-button--large mb-input--disabled input-button--disabled mb-input--pending input-button--pending"
+    disabled=""
+    type="button"
+  >
+    <div
+      class="input-button__content"
+    >
+      <div
+        class="input-button__icon input-button__icon--left"
+      >
+        <div
+          class="el-spinner "
+          style="width: 16px; height: 16px;"
+        >
+          <svg
+            class="el-spinner__component"
+            height="16px"
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              class="el-spinner__svg-path"
+              d="M 5.811071082715721 14.014032773029815 A 6.4 6.4 0 0 0 14.4 8"
+              stroke-width="1.6"
+              style="stroke: inherit;"
+            />
+          </svg>
+        </div>
+      </div>
+      Snapshot button
+    </div>
+  </button>
+</div>
+`;

@@ -5,15 +5,6 @@ module.exports = {
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-docs',
-    '@storybook/addon-postcss',
-    // {
-    //    name: '@storybook/addon-postcss',
-    //    options: {
-    //      postcssLoaderOptions: {
-    //        implementation: require('postcss'),
-    //      },
-    //    },
-    //  },
   ],
   webpackFinal: async (config, { configType }) => {
   //   // This removes the default loader since and allow us to use
@@ -25,24 +16,9 @@ module.exports = {
   //     return true;
   //   })
 
-  //   // resolve every directory under src directly
-  //   config.resolve = {
-  //     modules: [
-  //       path.resolve(__dirname, '..', 'src'),
-  //       'node_modules',
-  //     ],
-  //     extensions: ['.tsx', '.ts', '.js'],
-  //   };
-
-  //   config.module.rules.push({
-  //     test: /\.(ts|tsx)$/,
-  //     use: 'ts-loader',
-  //     exclude: /node_modules/,
-  //   });
-
     config.module.rules.push({
       test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'postcss-loader'],
+      use: ['style-loader', 'css-loader', 'sass-loader'],
       include: path.resolve(__dirname, '../src'),
     });
 

@@ -1,8 +1,11 @@
-import copy from 'rollup-plugin-copy'
+import { terser } from "rollup-plugin-terser";
+import copy from 'rollup-plugin-copy';
+import scss from 'rollup-plugin-scss';
 import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss';
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "rollup-plugin-typescript2";
 
@@ -23,6 +26,7 @@ export default {
     }
   ],
   plugins: [
+    terser(),
     peerDepsExternal(),
     babel({
       babelHelpers: "bundled",
@@ -30,11 +34,8 @@ export default {
     resolve(),
     commonjs(),
     typescript({ useTsconfigDeclarationDir: true }),
-    postcss({
-      config: true,
-      extract: true,
-      minimize: true,
-      namedExports: true
+    scss({
+      processor: css => postcss([autoprefixer()]),
     }),
     copy({
       targets: [
