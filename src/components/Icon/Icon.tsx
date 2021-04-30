@@ -17,13 +17,7 @@ function override(
   intrinsic?: string,
   defined?: string
 ): string {
-  if (intrinsic && defined === undefined) {
-    return intrinsic;
-  }
-  if (defined) {
-    return defined;
-  }
-  return fallback;
+  return defined || intrinsic || fallback;
 }
 
 function Icon({

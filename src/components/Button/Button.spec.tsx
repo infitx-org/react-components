@@ -58,6 +58,16 @@ describe("rtl test", () => {
     expect(container.querySelector("button.test")).toBeTruthy();
   });
 
+  it("renders the style prop", () => {
+    const { container } = render(
+      <Button style={{ fill: "red" }} onClick={log} />
+    );
+    expect(container.querySelector("button")).toHaveAttribute(
+      "style",
+      "fill: red;"
+    );
+  });
+
   it("renders the default kind as primary kind", () => {
     const { container } = render(<Button onClick={log} />);
     expect(

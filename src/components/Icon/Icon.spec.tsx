@@ -47,6 +47,24 @@ describe("tests the icon", () => {
     });
   });
 
+  it("renders the id prop", () => {
+    const { container } = render(<Icon id="test" icon={icon} />);
+    expect(container.querySelector("svg#test")).toBeTruthy();
+  });
+
+  it("renders the className prop", () => {
+    const { container } = render(<Icon className="test" icon={icon} />);
+    expect(container.querySelector("svg.test")).toBeTruthy();
+  });
+
+  it("renders the style prop", () => {
+    const { container } = render(<Icon style={{ fill: "red" }} icon={icon} />);
+    expect(container.querySelector("svg")).toHaveAttribute(
+      "style",
+      "fill: red;"
+    );
+  });
+
   it("renders the default fill prop", () => {
     const { container } = render(<Icon icon={icon} />);
     expect(container.querySelector("svg")).toHaveAttribute("fill", "#000");
