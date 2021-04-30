@@ -1,7 +1,6 @@
 @import "../scss/vars/colors.scss";
 
 .el-spinner {
-  animation: rotateSpinner 4s linear infinite;
 
   &.center {
     display: flex;
@@ -11,12 +10,15 @@
     align-items: center;
     justify-content: center;
   }
+  transform: translateZ(0);
+  overflow: hidden;
 }
 .el-spinner__component {
-  animation: rotateSpinner 0.8s cubic-bezier(0.53, 0.26, 0.54, 0.74) infinite;
+  animation: rotateSpinner 3s linear infinite;
 }
 
 .el-spinner__svg-path {
+  animation: rotateSpinner 0.8s cubic-bezier(0.53, 0.26, 0.54, 0.74) infinite;
   fill: none;
   stroke-dasharray: 100;
   stroke-dashoffset: 0;

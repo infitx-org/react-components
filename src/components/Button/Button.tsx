@@ -4,6 +4,7 @@ import "./Button.scss";
 
 import { Size, Kind } from "../types";
 import Spinner from "../Spinner";
+import Icon from "../Icon";
 import { getIconSizeByComponentSize } from "../shared";
 
 export type ButtonProps = {
@@ -24,7 +25,7 @@ export type ButtonProps = {
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 };
 
-export default function Button({
+function Button({
   children,
   id,
   className,
@@ -58,12 +59,7 @@ export default function Button({
     if (pending) {
       display = <Spinner color="inherit" size={numericSize} />;
     } else if (icon) {
-      display = React.cloneElement(icon, {
-        fill: "inherit",
-        ...icon.props,
-        height: numericSize,
-        width: numericSize,
-      });
+      display = <Icon icon={icon} size={size} fill="inherit" />;
     }
     iconContent = (
       <div className={`input-button__icon input-button__icon--${iconPosition}`}>
@@ -92,3 +88,5 @@ export default function Button({
 
   return button;
 }
+
+export default React.memo(Button);

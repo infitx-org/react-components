@@ -1,3 +1,4 @@
+import React from "react";
 import "./Spinner.scss";
 
 interface Point {
@@ -49,11 +50,7 @@ export type SpinnerProps = {
   color?: string;
 };
 
-export default function Spinner({
-  size = "s",
-  center,
-  color,
-}: SpinnerProps): JSX.Element {
+function Spinner({ size = "s", center, color }: SpinnerProps): JSX.Element {
   const realSize =
     typeof size === "string" ? { s: 20, m: 40, l: 60 }[size] : size;
   const strokeWidth = realSize / 10;
@@ -87,3 +84,5 @@ export default function Spinner({
     </div>
   );
 }
+
+export default React.memo(Spinner);

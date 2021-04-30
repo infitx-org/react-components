@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Icon correctly when multiple props are set 1`] = `
+<div>
+  <svg
+    fill="#f00"
+    height="20"
+    stroke="#000"
+    viewBox="-6 -3 55 55"
+    width="20"
+  >
+    <circle
+      cx="10"
+      cy="10"
+      r="20"
+    />
+  </svg>
+</div>
+`;
