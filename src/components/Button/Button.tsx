@@ -59,7 +59,7 @@ function Button({
     if (pending) {
       display = <Spinner color="inherit" size={numericSize} />;
     } else if (icon) {
-      display = <Icon icon={icon} size={size} inheritFill />;
+      display = <Icon icon={icon} size={size} fill="inherit" />;
     }
     iconContent = (
       <div className={`input-button__icon input-button__icon--${iconPosition}`}>

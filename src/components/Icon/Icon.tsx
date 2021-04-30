@@ -4,35 +4,46 @@ import { getIconSizeByComponentSize } from "../shared";
 
 export type IconProps = {
   icon: React.ReactElement<React.SVGProps<SVGSVGElement>>;
-  inheritFill?: boolean;
   fill?: string;
   stroke?: string;
   size?: `${Size}` | number;
+  id?: string;
+  style?: React.CSSProperties;
+  className?: string;
 };
+
+function override(
+  fallback: string,
+  intrinsic?: string,
+  defined?: string
+): string {
+  if (intrinsic && defined === undefined) {
+    return intrinsic;
+  }
+  if (defined) {
+    return defined;
+  }
+  return fallback;
+}
 
 function Icon({
   icon,
-  inheritFill = false,
   fill,
-  stroke = "transparent",
+  stroke,
   size = 20,
+  id,
+  style,
+  className,
 }: IconProps) {
-  let iconFill = "#000";
-
-  if (inheritFill) {
-    iconFill = "inherit";
-  } else if (icon.props.fill && fill === undefined) {
-    iconFill = icon.props.fill;
-  } else if (fill) {
-    iconFill = fill;
-  }
-
   return React.cloneElement(icon, {
     ...icon.props,
-    fill: iconFill,
-    stroke,
+    fill: override("#000", icon.props.fill, fill),
+    stroke: override("transparent", icon.props.stroke, stroke),
     width: typeof size === "string" ? getIconSizeByComponentSize(size) : size,
     height: typeof size === "string" ? getIconSizeByComponentSize(size) : size,
+    id,
+    style,
+    className,
   });
 }
 
