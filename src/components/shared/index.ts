@@ -7,6 +7,6 @@ const iconSizes = {
   [Size.Large]: 16,
 };
 
-export function getIconSizeByComponentSize(size: Size): number {
+export function getIconSizeByComponentSize(size: `${Size}`): number {
   return iconSizes[size];
 }
