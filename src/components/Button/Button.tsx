@@ -8,7 +8,7 @@ import { getIconSizeByComponentSize } from "../shared";
 
 export type ButtonProps = {
   children?: React.ReactNode;
-  icon?: JSX.Element;
+  icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   label?: string;
   className?: string;
   id?: string;
@@ -54,7 +54,7 @@ export default function Button({
     noFill && "input-button--noFill",
   ]);
 
-  const content = [label || children];
+  let iconContent = null;
   if (icon || pending) {
     const numericSize = getIconSizeByComponentSize(size);
     let display;
@@ -68,16 +68,11 @@ export default function Button({
         width: numericSize,
       });
     }
-    const iconContent = (
+    iconContent = (
       <div className={`input-button__icon input-button__icon--${iconPosition}`}>
         {display}
       </div>
     );
-    if (iconPosition === "left") {
-      content.unshift(iconContent);
-    } else {
-      content.push(iconContent);
-    }
   }
 
   const button = (
@@ -90,7 +85,11 @@ export default function Button({
       onClick={onClick}
       disabled={disabled}
     >
-      <div className="input-button__content">{content}</div>
+      <div className="input-button__content">
+        {iconPosition === "left" && iconContent}
+        {label || children}
+        {iconPosition === "right" && iconContent}
+      </div>
     </button>
   );
 
