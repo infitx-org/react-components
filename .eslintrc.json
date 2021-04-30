@@ -31,11 +31,13 @@
     {
       "files": ["**/*.ts", "**/*.tsx"],
       "rules": {
+        "react/react-in-jsx-scope": "off",
         "react/require-default-props": "off",
         "react/prop-types": "off",
         "react/jsx-one-expression-per-line": "off",
         "react/jsx-curly-newline": "off",
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "@typescript-eslint/no-unused-vars": "off"
       }
     }
   ]

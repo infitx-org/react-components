@@ -1,3 +1,4 @@
+import { terser } from "rollup-plugin-terser";
 import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss';
 import { babel } from "@rollup/plugin-babel";
@@ -25,6 +26,7 @@ export default {
     }
   ],
   plugins: [
+    terser(),
     peerDepsExternal(),
     babel({
       babelHelpers: "bundled",

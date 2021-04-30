@@ -2,29 +2,18 @@ import React, { MouseEvent, KeyboardEvent } from "react";
 import classnames from "classnames";
 import "./Button.scss";
 
-// import Icon, { iconSizes } from '../Icon';
-// import Spinner from '../Spinner';
-// import Tooltotip from '../Tooltip';
+import { Size, Kind } from "../types";
+import Spinner from "../Spinner";
+import { getIconSizeByComponentSize } from "../shared";
 
-type Kind =
-  | "primary"
-  | "secondary"
-  | "tertiary"
-  | "success"
-  | "danger"
-  | "warning"
-  | "dark"
-  | "light";
-type Size = "xs" | "s" | "m" | "l";
-
-type ButtonProps = {
+export type ButtonProps = {
   children?: React.ReactNode;
+  icon?: JSX.Element;
   label?: string;
   className?: string;
   id?: string;
   kind?: Kind;
   size?: Size;
-  icon?: string;
   iconPosition?: "left" | "right";
   noFill?: boolean;
   disabled?: boolean;
@@ -35,7 +24,7 @@ type ButtonProps = {
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 };
 
-function Button({
+export default function Button({
   children,
   id,
   className,
@@ -45,15 +34,12 @@ function Button({
   disabled,
   pending,
   kind = "primary",
-  size = "l",
-  // icon,
-  // iconPosition = 'left',
-  // tooltip,
+  size = Size.Large,
+  icon,
+  iconPosition = "left",
   onClick,
   onKeyDown,
 }: ButtonProps): JSX.Element {
-  const isDisabledOrPending = disabled === true || pending === true;
-  // const iconSize = iconSizes[size];
   const classNames = classnames([
     className,
     "mb-input",
@@ -63,30 +49,36 @@ function Button({
     size === "s" && "input-button--small",
     size === "m" && "input-button--medium",
     size === "l" && "input-button--large",
-    isDisabledOrPending && "mb-input--disabled input-button--disabled",
+    disabled && "mb-input--disabled input-button--disabled",
     pending && "mb-input--pending input-button--pending",
     noFill && "input-button--noFill",
   ]);
 
-  // let iconComponent = null;
-  // if (pending || icon) {
-  //   iconComponent = (
-  //     <div
-  //       className={`input-button__icon input-button__icon${
-  //         iconPosition === 'left' ? '--left' : '--right'
-  //       }`}
-  //     >
-  //       {pending ? (
-  //         <Spinner color="inherit" size={iconSize} />
-  //       ) : (
-  //         <Icon name={icon} stroke="none" size={iconSize} />
-  //       )}
-  //     </div>
-  //   );
-  // }
-
-  // const leftIcon = iconPosition === 'left' ? iconComponent : null;
-  // const rightIcon = iconPosition === 'right' ? iconComponent : null;
+  const content = [label || children];
+  if (icon || pending) {
+    const numericSize = getIconSizeByComponentSize(size);
+    let display;
+    if (pending) {
+      display = <Spinner color="inherit" size={numericSize} />;
+    } else if (icon) {
+      display = React.cloneElement(icon, {
+        fill: "inherit",
+        ...icon.props,
+        height: numericSize,
+        width: numericSize,
+      });
+    }
+    const iconContent = (
+      <div className={`input-button__icon input-button__icon--${iconPosition}`}>
+        {display}
+      </div>
+    );
+    if (iconPosition === "left") {
+      content.unshift(iconContent);
+    } else {
+      content.push(iconContent);
+    }
+  }
 
   const button = (
     <button
@@ -96,22 +88,11 @@ function Button({
       className={classNames}
       onKeyDown={onKeyDown}
       onClick={onClick}
-      disabled={isDisabledOrPending}
+      disabled={disabled}
     >
-      {/* {leftIcon} */}
-      {label || children}
-      {/* rightIcon */}
+      <div className="input-button__content">{content}</div>
     </button>
   );
 
-  // if (tooltip) {
-  //   return (
-  //     <Tooltip label={tooltip} position="top">
-  //       {button}
-  //     </Tooltip>
-  //   );
-  // }
   return button;
 }
-
-export default Button;
