@@ -25,7 +25,7 @@ function Radio({
     "input-radio__input",
   ]);
   return (
-    <>
+    <div className="input-radio__wrapper">
       <input
         id={id}
         type="radio"
@@ -39,7 +39,7 @@ function Radio({
       <label htmlFor={id}>
         <span>{label}</span>
       </label>
-    </>
+    </div>
   );
 }
 

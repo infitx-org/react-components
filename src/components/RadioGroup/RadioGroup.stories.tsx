@@ -25,51 +25,55 @@ const options = [
   ...[...Array(3)].map(optionMaker),
 ];
 
-const Template = (args: any = {}) => {
-  const [selected, setSelected] = useState(args.selected || "1");
-  console.log(options);
+export const Default = () => {
+  const [selected, setSelected] = useState("1");
   return (
     <RadioGroup
       name="test"
       label="test"
       options={options}
       onChange={(e) => setSelected(e.target.value)}
-      {...args}
       selected={selected}
     />
   );
 };
 
-export const DisabledSelected = Template.bind({});
-DisabledSelected.args = {
-  selected: "disabled",
+export const AllDisabled = () => {
+  const [selected, setSelected] = useState("1");
+  return (
+    <RadioGroup
+      name="test"
+      label="test"
+      options={options}
+      onChange={(e) => setSelected(e.target.value)}
+      selected={selected}
+      disabled
+    />
+  );
 };
 
-// export const DisabledOnly = Template.bind({});
-// DisabledOnly.args = {
-//   selected: "disabled",
-// };
+export const SelectedDisabled = () => {
+  const [selected, setSelected] = useState("disabled");
+  return (
+    <RadioGroup
+      name="test"
+      label="test"
+      options={options}
+      onChange={(e) => setSelected(e.target.value)}
+      selected={selected}
+    />
+  );
+};
 
-//
-// export const WithDisabled = () => {
-//   return (
-//     <div className="m5">
-//       <RadioGroup disabled options={options} placeholder="All disabled" />
-//     </div>
-//   );
-// };
-
-// export const WithEvents = () => (
-//   <div className="m5">
-//     <RadioGroup
-//       options={options}
-//       placeholder="Events (console)"
-//       onChange={newValue => console.log('onChange', newValue)}
-//       onClick={() => console.log('onClick')}
-//       onKeyPress={() => console.log('onKeyPress')}
-//       onEnter={() => console.log('onEnter')}
-//       onBlur={() => console.log('onBlur')}
-//       onFocus={() => console.log('onFocus')}
-//     />
-//   </div>
-// );
+export const VerticalAlignment = () => {
+  const [selected, setSelected] = useState("1");
+  return (
+    <RadioGroup
+      name="test"
+      label="test"
+      options={options}
+      onChange={(e) => setSelected(e.target.value)}
+      vertical
+    />
+  );
+};
