@@ -5,7 +5,7 @@ export type RadioProps = {
   id: string;
   name: string;
   checked: boolean;
-  label: string;
+  label?: string;
   value: string;
   disabled?: boolean;
   vertical?: boolean;
