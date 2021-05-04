@@ -53,6 +53,7 @@ function RadioGroup({
             label={option.label}
             value={option.value}
             disabled={option.disabled || disabled}
+            vertical={vertical}
           />
         ))}
       </div>

@@ -8,6 +8,7 @@ export type RadioProps = {
   label: string;
   value: string;
   disabled?: boolean;
+  vertical?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -19,13 +20,15 @@ function Radio({
   value,
   label,
   disabled = false,
+  vertical = false,
 }: RadioProps) {
-  const optionClassName = classnames([
-    "input-radio__option",
-    "input-radio__input",
+  const optionClassName = classnames(["input-radio__input"]);
+  const wrapperClassName = classnames([
+    "input-radio__wrapper",
+    vertical && "input-radio__wrapper--vertical",
   ]);
   return (
-    <div className="input-radio__wrapper">
+    <div className={wrapperClassName}>
       <input
         id={id}
         type="radio"
