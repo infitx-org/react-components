@@ -4,7 +4,6 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
 <div>
   <div
     class="mb-input input-radiogroup"
-    id="a1a6035f-90da-4138-8e81-e62e06eef842"
   >
     <span
       class="input-radiogroup__label"
@@ -19,13 +18,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
       >
         <input
           class="input-radio__input"
-          id="a1a6035f-90da-4138-8e81-e62e06eef842-0"
+          id="undefined-0"
           name="test-name"
           type="radio"
           value="0"
         />
         <label
-          for="a1a6035f-90da-4138-8e81-e62e06eef842-0"
+          for="undefined-0"
         >
           <span>
             0
@@ -37,13 +36,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
       >
         <input
           class="input-radio__input"
-          id="a1a6035f-90da-4138-8e81-e62e06eef842-1"
+          id="undefined-1"
           name="test-name"
           type="radio"
           value="1"
         />
         <label
-          for="a1a6035f-90da-4138-8e81-e62e06eef842-1"
+          for="undefined-1"
         >
           <span>
             1
@@ -55,13 +54,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
       >
         <input
           class="input-radio__input"
-          id="a1a6035f-90da-4138-8e81-e62e06eef842-2"
+          id="undefined-2"
           name="test-name"
           type="radio"
           value="2"
         />
         <label
-          for="a1a6035f-90da-4138-8e81-e62e06eef842-2"
+          for="undefined-2"
         >
           <span>
             2
@@ -73,13 +72,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
       >
         <input
           class="input-radio__input"
-          id="a1a6035f-90da-4138-8e81-e62e06eef842-3"
+          id="undefined-3"
           name="test-name"
           type="radio"
           value="3"
         />
         <label
-          for="a1a6035f-90da-4138-8e81-e62e06eef842-3"
+          for="undefined-3"
         >
           <span>
             3
@@ -91,13 +90,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
       >
         <input
           class="input-radio__input"
-          id="a1a6035f-90da-4138-8e81-e62e06eef842-4"
+          id="undefined-4"
           name="test-name"
           type="radio"
           value="4"
         />
         <label
-          for="a1a6035f-90da-4138-8e81-e62e06eef842-4"
+          for="undefined-4"
         >
           <span>
             4

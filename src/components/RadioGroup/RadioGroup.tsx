@@ -1,6 +1,5 @@
 import React, { ChangeEvent } from "react";
 import classnames from "classnames";
-import { uuid } from "uuidv4";
 import Radio, { RadioProps } from "./Radio";
 import "./RadioGroup.scss";
 
@@ -18,7 +17,7 @@ export interface RadioGroupProps {
 }
 
 function RadioGroup({
-  id = uuid(),
+  id,
   name,
   label,
   disabled,

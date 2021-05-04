@@ -1,13 +1,12 @@
 import classnames from "classnames";
 import React, { ChangeEvent } from "react";
-import { uuid } from "uuidv4";
 import "./Checkbox.scss";
 
 export interface CheckboxProps {
   style: React.CSSProperties;
   className: string;
   label: string;
-  name: string;
+  name?: string;
   id?: string;
   checked?: boolean;
   semi?: boolean;
@@ -21,7 +20,7 @@ function Checkbox({
   className,
   label,
   name,
-  id = uuid(),
+  id,
   checked = false,
   semi = false,
   round = false,
@@ -48,7 +47,7 @@ function Checkbox({
     <div className={wrapperClassName} style={style}>
       <input
         type="checkbox"
-        id={id}
+        id={id || name || label}
         name={name}
         className={checkboxClassName}
         onChange={(e) => {

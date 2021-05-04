@@ -7,13 +7,11 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
   >
     <input
       class="input-checkbox"
-      id="4ebcd759-135a-4769-8cec-dbdd3a99285f"
+      id="test-name"
       name="test-name"
       type="checkbox"
     />
-    <label
-      for="4ebcd759-135a-4769-8cec-dbdd3a99285f"
-    >
+    <label>
       <span>
         test-label
       </span>
