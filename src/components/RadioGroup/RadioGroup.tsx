@@ -41,8 +41,8 @@ function RadioGroup({
   ]);
   return (
     <div className={classNames} id={id}>
-      {label && <span>{label}</span>}
-      <div className="input-radiogroup__inputs" id={id}>
+      {label && <span className="input-radiogroup__label">{label}</span>}
+      <div className="input-radiogroup__inputs">
         {options.map((option: Option, index: number) => (
           <Radio
             key={index.toString()}
