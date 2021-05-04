@@ -41,7 +41,7 @@ function Checkbox({
     "input-checkbox",
     semi && "input-checkbox--semi-checked",
     round && "input-checkbox--round",
-    !label && "input-checkbox__label--no-margin",
+    !label && "input-checkbox--no-margin",
   ]);
   return (
     <div className={wrapperClassName} style={style}>

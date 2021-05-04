@@ -2,15 +2,15 @@
 @import "../scss/vars/shadow.scss";
 
 .input-checkbox__wrapper {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   padding: 3px;
 }
 
 .input-checkbox {
   appearance: none;
-  position: relative;
   box-sizing: initial;
+  position: relative;
   flex: 0 0 20px;
   display: inline-block;
   margin: 0px;
@@ -32,16 +32,9 @@
   }
 
   + label {
-    display: flex;
-    position: relative;
+    display: inline-block;
     cursor: pointer;
-    align-items: center;
     font-size: 14px;
-    height: 22px;
-
-    &.input-checkbox__label--no-margin {
-      margin-right: 0px;
-    }
   }
 
   &:disabled {
@@ -76,6 +69,10 @@
       transform: rotate(45deg);
     }
   }
+}
+
+.input-checkbox--no-margin {
+  margin-right: 0px;
 }
 
 .input-checkbox--round {
