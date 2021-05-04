@@ -7,6 +7,16 @@
   padding: 3px;
 }
 
+.input-checkbox__label {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+}
+.input-checkbox__label--disabled {
+  color: #999;
+  cursor: default;
+}
+
 .input-checkbox {
   appearance: none;
   box-sizing: initial;
@@ -27,23 +37,14 @@
   &:focus {
     box-shadow: $shadow-size rgba(0, 175, 255, 0.5);
   }
+
   &:hover {
     box-shadow: $shadow-size rgba(0, 0, 0, 0.13);
-  }
-
-  + label {
-    display: inline-block;
-    cursor: pointer;
-    font-size: 14px;
   }
 
   &:disabled {
     background: #eee;
     box-shadow: none;
-    + label {
-      color: #999;
-      cursor: default;
-    }
     &:checked {
       border-color: #60d2fd;
       background: #60d2fd;

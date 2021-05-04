@@ -24,10 +24,21 @@
 .input-radio__wrapper {
   display: inline-flex;
   margin-right: 10px;
+  align-items: center;
 }
 
 .input-radio__wrapper--vertical {
   margin-bottom: 6px;
+}
+
+.input-radio__label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.input-radio__label--disabled {
+  color: #999;
+  cursor: default;
 }
 
 .input-radio__input {

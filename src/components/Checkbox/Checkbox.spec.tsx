@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import Checkbox from "./Checkbox";
@@ -26,9 +26,9 @@ describe("tests the checbox", () => {
 
   it("renders the label prop", () => {
     const { container } = render(<Checkbox {...commonProps} />);
-    expect(
-      container.querySelector(".input-checkbox__wrapper label")
-    ).toHaveTextContent("test-label");
+    expect(container.querySelector(".input-checkbox__label")).toHaveTextContent(
+      "test-label"
+    );
   });
 
   it("renders the id prop", () => {
@@ -92,7 +92,7 @@ describe("tests the checbox", () => {
 });
 
 // Snapshot testing
-it("renders the Icon correctly when multiple props are set", () => {
+it("renders the Checkbox correctly when multiple props are set", () => {
   const { container } = render(<Checkbox {...commonProps} />);
   expect(container).toMatchSnapshot();
 });

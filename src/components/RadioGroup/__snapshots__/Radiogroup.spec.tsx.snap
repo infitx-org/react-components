@@ -13,7 +13,7 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
     <div
       class="input-radiogroup__inputs"
     >
-      <div
+      <label
         class="input-radio__wrapper"
       >
         <input
@@ -23,15 +23,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
           type="radio"
           value="0"
         />
-        <label
-          for="undefined-0"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            0
-          </span>
-        </label>
-      </div>
-      <div
+          0
+        </span>
+      </label>
+      <label
         class="input-radio__wrapper"
       >
         <input
@@ -41,15 +39,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
           type="radio"
           value="1"
         />
-        <label
-          for="undefined-1"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            1
-          </span>
-        </label>
-      </div>
-      <div
+          1
+        </span>
+      </label>
+      <label
         class="input-radio__wrapper"
       >
         <input
@@ -59,15 +55,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
           type="radio"
           value="2"
         />
-        <label
-          for="undefined-2"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            2
-          </span>
-        </label>
-      </div>
-      <div
+          2
+        </span>
+      </label>
+      <label
         class="input-radio__wrapper"
       >
         <input
@@ -77,15 +71,13 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
           type="radio"
           value="3"
         />
-        <label
-          for="undefined-3"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            3
-          </span>
-        </label>
-      </div>
-      <div
+          3
+        </span>
+      </label>
+      <label
         class="input-radio__wrapper"
       >
         <input
@@ -95,14 +87,12 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
           type="radio"
           value="4"
         />
-        <label
-          for="undefined-4"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            4
-          </span>
-        </label>
-      </div>
+          4
+        </span>
+      </label>
     </div>
   </div>
 </div>

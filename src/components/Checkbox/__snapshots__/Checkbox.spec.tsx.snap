@@ -1,21 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the Icon correctly when multiple props are set 1`] = `
+exports[`renders the Checkbox correctly when multiple props are set 1`] = `
 <div>
-  <div
+  <label
     class="mb-input input-checkbox__wrapper"
   >
     <input
       class="input-checkbox"
-      id="test-name"
       name="test-name"
       type="checkbox"
     />
-    <label>
-      <span>
-        test-label
-      </span>
-    </label>
-  </div>
+    <span
+      class="input-checkbox__label"
+    >
+      test-label
+    </span>
+  </label>
 </div>
 `;

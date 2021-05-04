@@ -5,9 +5,7 @@ export default {
   component: Checkbox,
 };
 
-const Template = (args) => (
-  <Checkbox name="test1" label="Default Checkbox" {...args} />
-);
+const Template = (args) => <Checkbox label="Default Checkbox" {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -48,4 +46,10 @@ OnChange.args = {
   label: "OnChange Checkbox",
   // eslint-disable-next-line no-console
   onChange: console.log,
+};
+
+export const HTMLName = Template.bind({});
+HTMLName.args = {
+  label: "HTMLName Checkbox",
+  name: "test-name",
 };

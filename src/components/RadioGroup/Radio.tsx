@@ -27,8 +27,12 @@ function Radio({
     "input-radio__wrapper",
     vertical && "input-radio__wrapper--vertical",
   ]);
+  const labelClassName = classnames([
+    "input-radio__label",
+    disabled && "input-radio__label--disabled",
+  ]);
   return (
-    <div className={wrapperClassName}>
+    <label className={wrapperClassName}>
       <input
         id={id}
         type="radio"
@@ -39,10 +43,8 @@ function Radio({
         value={value}
         disabled={disabled}
       />
-      <label htmlFor={id}>
-        <span>{label}</span>
-      </label>
-    </div>
+      <span className={labelClassName}>{label}</span>
+    </label>
   );
 }
 

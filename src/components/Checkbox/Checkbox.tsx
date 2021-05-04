@@ -43,11 +43,15 @@ function Checkbox({
     round && "input-checkbox--round",
     !label && "input-checkbox--no-margin",
   ]);
+  const labelClassName = classnames([
+    "input-checkbox__label",
+    disabled && "input-checkbox__label--disabled",
+  ]);
   return (
-    <div className={wrapperClassName} style={style}>
+    <label className={wrapperClassName} style={style}>
       <input
         type="checkbox"
-        id={id || name || label}
+        id={id}
         name={name}
         className={checkboxClassName}
         onChange={(e) => {
@@ -57,12 +61,8 @@ function Checkbox({
         checked={isChecked && semi !== true}
         disabled={disabled}
       />
-      {label && (
-        <label htmlFor={id}>
-          <span>{label}</span>
-        </label>
-      )}
-    </div>
+      {label && <span className={labelClassName}>{label}</span>}
+    </label>
   );
 }
 
