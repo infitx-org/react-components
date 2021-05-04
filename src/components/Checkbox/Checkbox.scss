@@ -1,0 +1,108 @@
+@import "../scss/vars/colors.scss";
+@import "../scss/vars/shadow.scss";
+
+.input-checkbox__wrapper {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+}
+
+.input-checkbox__label {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+}
+.input-checkbox__label--disabled {
+  color: #999;
+  cursor: default;
+}
+
+.input-checkbox {
+  appearance: none;
+  box-sizing: initial;
+  position: relative;
+  flex: 0 0 20px;
+  display: inline-block;
+  margin: 0px;
+  margin-right: 5px;
+  background: linear-gradient(#fafafa, #f4f4f4);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.13);
+  transition: all 0.2s ease-out;
+  flex-basis: 22px;
+  width: 22px;
+  border: none;
+  height: 20px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+
+  &:focus {
+    box-shadow: $shadow-size rgba(0, 175, 255, 0.5);
+  }
+
+  &:hover {
+    box-shadow: $shadow-size rgba(0, 0, 0, 0.13);
+  }
+
+  &:disabled {
+    background: #eee;
+    box-shadow: none;
+    &:checked {
+      border-color: #60d2fd;
+      background: #60d2fd;
+    }
+  }
+
+  &:checked {
+    border-color: #00a2df;
+    background: linear-gradient(#10b2ef, #00a2df);
+    &:after {
+      content: "";
+      box-sizing: content-box;
+      box-sizing: initial;
+      position: absolute;
+      left: 6px;
+      top: 10px;
+      background: #fff;
+      width: 2px;
+      height: 2px;
+      box-shadow: 2px 0 0 #fff, 4px 0 0 #fff, 4px -2px 0 #fff, 4px -4px 0 #fff,
+        4px -8px 0 #fff, 4px -6px 0 #fff;
+      animation: animateCheckboxSelectedContent 0.2s ease-out 1 forwards;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.input-checkbox--no-margin {
+  margin-right: 0px;
+}
+
+.input-checkbox--round {
+  border-radius: 50%;
+}
+
+.input-checkbox--semi-checked {
+  border-color: #ddd;
+  background: #ddd;
+  &:after {
+    content: "";
+    box-sizing: content-box;
+    box-sizing: initial;
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    background: #999;
+    width: 10px;
+    height: 2px;
+  }
+}
+
+@keyframes animateCheckboxSelectedContent {
+  0% {
+    margin-top: 2px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0px;
+    opacity: 1;
+  }
+}

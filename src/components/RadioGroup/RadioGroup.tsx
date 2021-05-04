@@ -3,11 +3,11 @@ import classnames from "classnames";
 import Radio, { RadioProps } from "./Radio";
 import "./RadioGroup.scss";
 
-type Option = Pick<RadioProps, "label" | "value" | "disabled">;
+type Option = Pick<RadioProps, "label" | "value" | "disabled" | "id">;
 
 export interface RadioGroupProps {
   id?: string;
-  name: string;
+  name?: string;
   label: string;
   selected?: string;
   disabled?: boolean;
@@ -46,7 +46,7 @@ function RadioGroup({
         {options.map((option: Option, index: number) => (
           <Radio
             key={index.toString()}
-            id={`${name}-${index}`}
+            id={id}
             onChange={compositeOnChange}
             name={name}
             checked={selectedOption === option.value}

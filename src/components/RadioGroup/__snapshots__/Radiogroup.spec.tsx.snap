@@ -13,96 +13,81 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
     <div
       class="input-radiogroup__inputs"
     >
-      <div
+      <label
         class="input-radio__wrapper"
       >
         <input
           class="input-radio__input"
-          id="test-name-0"
           name="test-name"
           type="radio"
           value="0"
         />
-        <label
-          for="test-name-0"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            0
-          </span>
-        </label>
-      </div>
-      <div
+          0
+        </span>
+      </label>
+      <label
         class="input-radio__wrapper"
       >
         <input
           class="input-radio__input"
-          id="test-name-1"
           name="test-name"
           type="radio"
           value="1"
         />
-        <label
-          for="test-name-1"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            1
-          </span>
-        </label>
-      </div>
-      <div
+          1
+        </span>
+      </label>
+      <label
         class="input-radio__wrapper"
       >
         <input
           class="input-radio__input"
-          id="test-name-2"
           name="test-name"
           type="radio"
           value="2"
         />
-        <label
-          for="test-name-2"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            2
-          </span>
-        </label>
-      </div>
-      <div
+          2
+        </span>
+      </label>
+      <label
         class="input-radio__wrapper"
       >
         <input
           class="input-radio__input"
-          id="test-name-3"
           name="test-name"
           type="radio"
           value="3"
         />
-        <label
-          for="test-name-3"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            3
-          </span>
-        </label>
-      </div>
-      <div
+          3
+        </span>
+      </label>
+      <label
         class="input-radio__wrapper"
       >
         <input
           class="input-radio__input"
-          id="test-name-4"
           name="test-name"
           type="radio"
           value="4"
         />
-        <label
-          for="test-name-4"
+        <span
+          class="input-radio__label"
         >
-          <span>
-            4
-          </span>
-        </label>
-      </div>
+          4
+        </span>
+      </label>
     </div>
   </div>
 </div>

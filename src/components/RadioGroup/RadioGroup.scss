@@ -24,10 +24,21 @@
 .input-radio__wrapper {
   display: inline-flex;
   margin-right: 10px;
+  align-items: center;
 }
 
 .input-radio__wrapper--vertical {
   margin-bottom: 6px;
+}
+
+.input-radio__label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.input-radio__label--disabled {
+  color: #999;
+  cursor: default;
 }
 
 .input-radio__input {
@@ -44,15 +55,6 @@
   border: 1px solid #cacbcc;
   border-radius: 50%;
   transition: all 0.2s ease-out;
-  
-  + label {
-    align-items: center;
-    max-width: 100%;
-    display: inline-block;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-  }
 
   &:hover {
     box-shadow: $shadow-size rgba(0, 0, 0, 0.13);
@@ -60,17 +62,11 @@
 
   &:not(:disabled) {
     cursor: pointer;
-    + label {
-      cursor: pointer;
-    }
   }
 
   &:disabled {
     background: #eee;
     box-shadow: none;
-    + label {
-      color: #999;
-    }
     &:checked {
       border-color: #60d2fd;
       background: #60d2fd;
