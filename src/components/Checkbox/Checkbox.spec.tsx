@@ -47,17 +47,33 @@ describe("tests the checbox", () => {
     );
   });
 
-  it("renders checked prop", () => {
+  it("renders the checked prop", () => {
     const { container } = render(<Checkbox {...commonProps} checked />);
     expect(
       container.querySelector('input[type="checkbox"][checked]')
     ).toBeInTheDocument();
   });
 
-  it("renders disabled prop", () => {
+  it("renders the disabled prop", () => {
     const { container } = render(<Checkbox {...commonProps} disabled />);
     expect(
       container.querySelector('input[type="checkbox"][disabled]')
+    ).toBeInTheDocument();
+  });
+
+  it("renders the semi prop", () => {
+    const { container } = render(<Checkbox {...commonProps} semi />);
+    expect(
+      container.querySelector(
+        'input[type="checkbox"].input-checkbox--semi-checked'
+      )
+    ).toBeInTheDocument();
+  });
+
+  it("renders the round prop", () => {
+    const { container } = render(<Checkbox {...commonProps} round />);
+    expect(
+      container.querySelector('input[type="checkbox"].input-checkbox--round')
     ).toBeInTheDocument();
   });
 
