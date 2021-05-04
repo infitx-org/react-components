@@ -29,7 +29,6 @@ export const Default = () => {
   const [selected, setSelected] = useState("1");
   return (
     <RadioGroup
-      name="test"
       label="Default Label"
       options={options}
       onChange={(e) => setSelected(e.target.value)}
@@ -42,7 +41,6 @@ export const AllDisabled = () => {
   const [selected, setSelected] = useState("1");
   return (
     <RadioGroup
-      name="test"
       label="All Disabled Label"
       options={options}
       onChange={(e) => setSelected(e.target.value)}
@@ -56,7 +54,6 @@ export const SelectedDisabled = () => {
   const [selected, setSelected] = useState("disabled");
   return (
     <RadioGroup
-      name="test"
       label="Selected Disabled Label"
       options={options}
       onChange={(e) => setSelected(e.target.value)}
@@ -69,7 +66,6 @@ export const VerticalAlignment = () => {
   const [selected, setSelected] = useState("1");
   return (
     <RadioGroup
-      name="test"
       label="Vertical Alignment Label"
       options={options}
       onChange={(e) => setSelected(e.target.value)}

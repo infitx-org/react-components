@@ -2,8 +2,8 @@ import React, { ChangeEvent } from "react";
 import classnames from "classnames";
 
 export type RadioProps = {
-  id: string;
-  name: string;
+  id?: string;
+  name?: string;
   checked: boolean;
   label?: string;
   value: string;
