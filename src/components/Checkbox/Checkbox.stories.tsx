@@ -17,40 +17,22 @@ export const Default = () => (
   <Column align="space-between">
     <div className="m5">
       <Checkbox
-        id="test"
         name="test"
         checked={false}
         onChange={(e) => console.log(e.target.checked)}
       />
     </div>
     <div className="m5">
-      <Checkbox id="test1" name="test1" label="Default Checkbox" checked />
+      <Checkbox name="test1" label="Default Checkbox" checked />
     </div>
     <div className="m5">
-      <Checkbox
-        id="test2"
-        name="test2"
-        label="Default Checkbox"
-        checked={false}
-      />
+      <Checkbox name="test2" label="Default Checkbox" checked={false} />
     </div>
     <div className="m5">
-      <Checkbox
-        id="test3"
-        name="test3"
-        label="Default Checkbox"
-        checked={false}
-        round
-      />
+      <Checkbox name="test3" label="Default Checkbox" checked={false} round />
     </div>
     <div className="m5">
-      <Checkbox
-        id="test4"
-        name="test4"
-        label="Default Checkbox"
-        checked={false}
-        semi
-      />
+      <Checkbox name="test4" label="Default Checkbox" checked={false} semi />
     </div>
   </Column>
 );

@@ -9,7 +9,8 @@
     "lib"
   ],
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "uuidv4": "^6.2.7"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",

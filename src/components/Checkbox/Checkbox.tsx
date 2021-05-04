@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import React, { ChangeEvent } from "react";
+import { uuid } from "uuidv4";
 import "./Checkbox.scss";
 
 export interface CheckboxProps {
@@ -20,7 +21,7 @@ function Checkbox({
   className,
   label,
   name,
-  id,
+  id = uuid(),
   checked = false,
   semi = false,
   round = false,

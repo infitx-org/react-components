@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from "react";
 import classnames from "classnames";
+import { uuid } from "uuidv4";
 import Radio, { RadioProps } from "./Radio";
 import "./RadioGroup.scss";
 
@@ -17,7 +18,7 @@ export interface RadioGroupProps {
 }
 
 function RadioGroup({
-  id,
+  id = uuid(),
   name,
   label,
   disabled,
@@ -46,7 +47,7 @@ function RadioGroup({
         {options.map((option: Option, index: number) => (
           <Radio
             key={index.toString()}
-            id={`${name}-${index}`}
+            id={`${id}-${index}`}
             onChange={compositeOnChange}
             name={name}
             checked={selectedOption === option.value}
