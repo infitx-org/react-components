@@ -17,7 +17,7 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
         class="input-radio__wrapper"
       >
         <input
-          class="input-radio__input"
+          class="input-radio__input input-radio__input--primary"
           name="test-name"
           type="radio"
           value="0"
@@ -32,7 +32,7 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
         class="input-radio__wrapper"
       >
         <input
-          class="input-radio__input"
+          class="input-radio__input input-radio__input--primary"
           name="test-name"
           type="radio"
           value="1"
@@ -47,7 +47,7 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
         class="input-radio__wrapper"
       >
         <input
-          class="input-radio__input"
+          class="input-radio__input input-radio__input--primary"
           name="test-name"
           type="radio"
           value="2"
@@ -62,7 +62,7 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
         class="input-radio__wrapper"
       >
         <input
-          class="input-radio__input"
+          class="input-radio__input input-radio__input--primary"
           name="test-name"
           type="radio"
           value="3"
@@ -77,7 +77,7 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
         class="input-radio__wrapper"
       >
         <input
-          class="input-radio__input"
+          class="input-radio__input input-radio__input--primary"
           name="test-name"
           type="radio"
           value="4"
