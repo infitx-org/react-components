@@ -1,0 +1,50 @@
+@use "sass:map";
+@import "./shadow.scss";
+@import "./colors.scss";
+
+$kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
+  "dark", "light";
+
+$theme-colors--active: (
+  "primary": $color__main-primary--active,
+  "secondary": $color__main-secondary--active,
+  "tertiary": $color__main-tertiary--active,
+  "success": $color__main-success--active,
+  "danger": $color__main-danger--active,
+  "warning": $color__main-warning--active,
+  "dark": $color__main-dark--active,
+  "light": $color__main-light--active,
+);
+
+$theme-colors: (
+  "primary": $color__main-primary,
+  "secondary": $color__main-secondary,
+  "tertiary": $color__main-tertiary,
+  "success": $color__main-success,
+  "danger": $color__main-danger,
+  "warning": $color__main-warning,
+  "dark": $color__main-dark,
+  "light": $color__main-light,
+);
+
+$theme-colors--darken: (
+  "primary": $color__main-primary--darken,
+  "secondary": $color__main-secondary--darken,
+  "tertiary": $color__main-tertiary--darken,
+  "success": $color__main-success--darken,
+  "danger": $color__main-danger--darken,
+  "warning": $color__main-warning--darken,
+  "dark": $color__main-dark--darken,
+  "light": $color__main-light--darken,
+);
+
+$theme-shadows: (
+  "primary": $shadow-color--primary,
+  "secondary": $shadow-color--secondary,
+  "tertiary": $shadow-color--tertiary,
+  "success": $shadow-color--success,
+  "danger": $shadow-color--danger,
+  "warning": $shadow-color--warning,
+  "dark": $shadow-color--dark,
+  "light": $shadow-color--light,
+);

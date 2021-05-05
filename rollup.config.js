@@ -40,7 +40,6 @@ export default {
     copy({
       targets: [
         { src: 'src/components/**/*.scss', dest: 'lib', rename: (name, extension, fullPath) => `${fullPath.split('/').slice(2).join('/')}` },
-        // { src: 'src/assets/scss', dest: 'lib' },
       ]
     })
   ]

@@ -5,14 +5,28 @@ $color__main-success: #17bc65 !default;
 $color__main-danger: #d1344e !default;
 $color__main-warning: #f49935 !default;
 $color__main-disabled: #d2d1d1 !default;
+$color__main-dark: #333 !default;
+$color__main-light: #eee !default;
 
 $color__main-primary--active: lighten($color__main-primary, 10%) !default;
-$color__main-secondary--active: #1676bc !default;
-$color__main-tertiary--active: #cccccc !default;
-$color__main-success--active: #15d670 !default;
-$color__main-danger--active: #e23955 !default;
-$color__main-warning--active: #ff9017 !default;
-$color__main-disabled--active: #f9f9f9 !default;
+$color__main-secondary--active: lighten($color__main-secondary, 10%) !default;
+$color__main-tertiary--active: lighten($color__main-tertiary, 10%) !default;
+$color__main-success--active: lighten($color__main-success, 10%) !default;
+$color__main-danger--active: lighten($color__main-danger, 10%) !default;
+$color__main-warning--active: lighten($color__main-warning, 10%) !default;
+$color__main-disabled--active: lighten($color__main-disabled, 10%) !default;
+$color__main-dark--active: lighten($color__main-dark, 10%) !default;
+$color__main-light--active: lighten($color__main-light, 10%) !default;
+
+$color__main-primary--darken: darken($color__main-primary, 10%) !default;
+$color__main-secondary--darken: darken($color__main-secondary, 10%) !default;
+$color__main-tertiary--darken: darken($color__main-tertiary, 10%) !default;
+$color__main-success--darken: darken($color__main-success, 10%) !default;
+$color__main-danger--darken: darken($color__main-danger, 10%) !default;
+$color__main-warning--darken: darken($color__main-warning, 10%) !default;
+$color__main-disabled--darken: darken($color__main-disabled, 10%) !default;
+$color__main-dark--darken: darken($color__main-dark, 10%) !default;
+$color__main-light--darken: darken($color__main-light, 10%) !default;
 
 $color__blue-1: #a7e8f9 !default;
 $color__blue-2: #77d5ee !default;

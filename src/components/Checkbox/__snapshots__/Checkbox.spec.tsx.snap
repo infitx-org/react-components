@@ -6,7 +6,7 @@ exports[`renders the Checkbox correctly when multiple props are set 1`] = `
     class="mb-input input-checkbox__wrapper"
   >
     <input
-      class="input-checkbox"
+      class="input-checkbox input-checkbox--primary"
       name="test-name"
       type="checkbox"
     />

@@ -2,10 +2,12 @@ import React, { ChangeEvent } from "react";
 import classnames from "classnames";
 import Radio, { RadioProps } from "./Radio";
 import "./RadioGroup.scss";
+import { Kind } from "../types";
 
-type Option = Pick<RadioProps, "label" | "value" | "disabled" | "id">;
+type Option = Pick<RadioProps, "label" | "value" | "disabled" | "id" | "kind">;
 
 export interface RadioGroupProps {
+  kind?: `${Kind}`;
   id?: string;
   name?: string;
   label: string;
@@ -17,6 +19,7 @@ export interface RadioGroupProps {
 }
 
 function RadioGroup({
+  kind,
   id,
   name,
   label,
@@ -45,6 +48,7 @@ function RadioGroup({
       <div className="input-radiogroup__inputs">
         {options.map((option: Option, index: number) => (
           <Radio
+            kind={option.kind || kind}
             key={index.toString()}
             id={id}
             onChange={compositeOnChange}
