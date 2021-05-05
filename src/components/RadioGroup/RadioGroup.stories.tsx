@@ -82,7 +82,6 @@ export const Variants = () => {
       options={options}
       selected={selected}
       onChange={(e) => setSelected(e.target.value)}
-      vertical
     />
   );
   return (
