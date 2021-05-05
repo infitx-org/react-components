@@ -11,6 +11,8 @@ const Template = (args) => <Checkbox label="Default Checkbox" {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: "Default Checkbox",
+  // eslint-disable-next-line no-console
+  onChange: console.log,
 };
 
 export const NoLabel = Template.bind({});
@@ -40,13 +42,6 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   label: "Disabled Checkbox",
   disabled: true,
-};
-
-export const OnChange = Template.bind({});
-OnChange.args = {
-  label: "OnChange Checkbox",
-  // eslint-disable-next-line no-console
-  onChange: console.log,
 };
 
 export const HTMLName = Template.bind({});
