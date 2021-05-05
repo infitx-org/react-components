@@ -73,3 +73,32 @@ export const VerticalAlignment = () => {
     />
   );
 };
+
+export const Variants = () => {
+  const [selected, setSelected] = useState("disabled");
+  const c = (
+    <RadioGroup
+      label="Vertical Alignment Label"
+      options={options}
+      selected={selected}
+      onChange={(e) => setSelected(e.target.value)}
+      vertical
+    />
+  );
+  return (
+    <>
+      {[
+        "primary",
+        "secondary",
+        "tertiary",
+        "success",
+        "danger",
+        "warning",
+        "dark",
+        "light",
+      ].map((kind) =>
+        React.cloneElement(c, { ...c.props, kind, label: kind, name: kind })
+      )}
+    </>
+  );
+};

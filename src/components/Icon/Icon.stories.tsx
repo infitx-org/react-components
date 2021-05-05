@@ -19,8 +19,6 @@ const icon = (
 
 const Template = (args) => <Icon icon={icon} {...args} />;
 
-export const Default = () => <Template />;
-
 export const FillColor = Template.bind({});
 FillColor.args = {
   fill: "#f00",

@@ -1,4 +1,7 @@
 @import "../scss/vars/shadow.scss";
+@import "../scss/vars/colors.scss";
+@import "../scss/vars/themes.scss";
+@use "sass:map";
 
 .input-radiogroup {
   padding: 3px;
@@ -49,9 +52,8 @@
   margin-right: 5px;
   display: inline-block;
   outline: none;
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.13);
   position: relative;
-  background: linear-gradient(#fafafa, #f4f4f4);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.13);
   border: 1px solid #cacbcc;
   border-radius: 50%;
   transition: all 0.2s ease-out;
@@ -74,8 +76,6 @@
   }
 
   &:checked {
-    border-color: #00a2df;
-    background: linear-gradient(0deg, #20c2ff, #00a2df);
     &:after {
       content: "";
       box-sizing: content-box;
@@ -83,7 +83,7 @@
       position: absolute;
       left: 5px;
       top: 5px;
-      border-radius: 4px;
+      border-radius: 50%;
       background: #fff;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
       width: 8px;
@@ -91,9 +91,28 @@
       animation: animateRadioContent 0.2s ease-out 1;
     }
   }
+}
 
-  &:focus {
-    box-shadow: $shadow-size rgba(0, 175, 255, 0.5);
+$kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
+  "dark", "light";
+
+@each $kind in $kinds {
+  .input-radio__input--#{$kind} {
+    &:checked {
+      border-color: map-get($theme-colors--darken, $kind);
+      background: linear-gradient(
+        0deg,
+        map-get($theme-colors, $kind),
+        map-get($theme-colors--darken, $kind)
+      );
+    }
+    &:checked:disabled {
+      border-color: map-get($theme-colors--active, $kind);
+      background: map-get($theme-colors--active, $kind);
+    }
+    &:focus {
+      box-shadow: $shadow-size map-get($theme-shadows, $kind);
+    }
   }
 }
 

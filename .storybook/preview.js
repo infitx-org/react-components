@@ -1,3 +1,3 @@
 import '@storybook/addon-console';
 
-import '../src/components/scss/index.scss';
+// import '../src/components/scss/index.scss';

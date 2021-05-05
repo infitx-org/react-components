@@ -1,7 +1,9 @@
 import React, { ChangeEvent } from "react";
 import classnames from "classnames";
+import { Kind } from "../types";
 
 export type RadioProps = {
+  kind?: `${Kind}`;
   id?: string;
   name?: string;
   checked: boolean;
@@ -13,6 +15,7 @@ export type RadioProps = {
 };
 
 function Radio({
+  kind = "primary",
   id,
   name,
   onChange,
@@ -22,7 +25,10 @@ function Radio({
   disabled = false,
   vertical = false,
 }: RadioProps) {
-  const optionClassName = classnames(["input-radio__input"]);
+  const inputClassName = classnames([
+    "input-radio__input",
+    `input-radio__input--${kind}`,
+  ]);
   const wrapperClassName = classnames([
     "input-radio__wrapper",
     vertical && "input-radio__wrapper--vertical",
@@ -37,7 +43,7 @@ function Radio({
         id={id}
         type="radio"
         name={name}
-        className={optionClassName}
+        className={inputClassName}
         onChange={onChange}
         checked={checked}
         value={value}
