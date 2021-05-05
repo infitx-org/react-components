@@ -10,7 +10,6 @@ const Template = (args) => <Checkbox label="Default Checkbox" {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  kind: "secondary",
   label: "Default Checkbox",
 };
 
