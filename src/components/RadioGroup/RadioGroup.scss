@@ -93,9 +93,6 @@
   }
 }
 
-$kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
-  "dark", "light";
-
 @each $kind in $kinds {
   .input-radio__input--#{$kind} {
     &:checked {

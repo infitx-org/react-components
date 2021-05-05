@@ -15,7 +15,7 @@ export type RadioProps = {
 };
 
 function Radio({
-  kind = "primary",
+  kind = Kind.Primary,
   id,
   name,
   onChange,

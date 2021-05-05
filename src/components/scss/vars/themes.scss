@@ -2,6 +2,9 @@
 @import "./shadow.scss";
 @import "./colors.scss";
 
+$kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
+  "dark", "light";
+
 $theme-colors--active: (
   "primary": $color__main-primary--active,
   "secondary": $color__main-secondary--active,
@@ -22,17 +25,6 @@ $theme-colors: (
   "warning": $color__main-warning,
   "dark": $color__main-dark,
   "light": $color__main-light,
-);
-
-$theme-colors--darken: (
-  "primary": $color__main-primary--darken,
-  "secondary": $color__main-secondary--darken,
-  "tertiary": $color__main-tertiary--darken,
-  "success": $color__main-success--darken,
-  "danger": $color__main-danger--darken,
-  "warning": $color__main-warning--darken,
-  "dark": $color__main-dark--darken,
-  "light": $color__main-light--darken,
 );
 
 $theme-colors--darken: (

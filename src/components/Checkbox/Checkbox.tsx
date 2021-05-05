@@ -1,8 +1,10 @@
 import classnames from "classnames";
 import React, { ChangeEvent } from "react";
+import { Kind } from "../types";
 import "./Checkbox.scss";
 
 export interface CheckboxProps {
+  kind: `${Kind}`;
   style: React.CSSProperties;
   className: string;
   label: string;
@@ -16,6 +18,7 @@ export interface CheckboxProps {
 }
 
 function Checkbox({
+  kind = "primary",
   style,
   className,
   label,
@@ -39,6 +42,7 @@ function Checkbox({
   ]);
   const checkboxClassName = classnames([
     "input-checkbox",
+    `input-checkbox--${kind}`,
     semi && "input-checkbox--semi-checked",
     round && "input-checkbox--round",
     !label && "input-checkbox--no-margin",

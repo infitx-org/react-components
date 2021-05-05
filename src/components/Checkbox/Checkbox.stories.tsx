@@ -1,3 +1,4 @@
+import React from "react";
 import Checkbox from "./Checkbox";
 
 export default {
@@ -9,6 +10,7 @@ const Template = (args) => <Checkbox label="Default Checkbox" {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  kind: "secondary",
   label: "Default Checkbox",
 };
 
@@ -52,4 +54,30 @@ export const HTMLName = Template.bind({});
 HTMLName.args = {
   label: "HTMLName Checkbox",
   name: "test-name",
+};
+
+export const Variants = () => {
+  const c = <Checkbox checked />;
+  return (
+    <>
+      {[
+        "primary",
+        "secondary",
+        "tertiary",
+        "success",
+        "danger",
+        "warning",
+        "dark",
+        "light",
+      ].map((kind) =>
+        React.cloneElement(c, {
+          ...c.props,
+          kind,
+          label: kind,
+          name: kind,
+          disabled: true,
+        })
+      )}
+    </>
+  );
 };
