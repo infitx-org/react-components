@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the tabs correctly when multiple props are set 1`] = `
+<div>
+  <div
+    class="element el-tabs"
+    id="test-tabs"
+    role="presentation"
+    tabindex="0"
+  >
+    <div
+      class="el-tabs__tabs"
+    >
+      <div
+        class="el el-tabs__tab el-tabs__tab--selected"
+        role="presentation"
+      >
+        Tab1
+      </div>
+      <div
+        class="el el-tabs__tab"
+        role="presentation"
+      >
+        Tab2
+      </div>
+      <div
+        class="el el-tabs__tab el-tabs__tab--disabled"
+        role="presentation"
+      >
+        Tab3
+      </div>
+    </div>
+    <div
+      class="el el-tabs__tab-panel"
+    >
+      TabPanel1
+    </div>
+  </div>
+</div>
+`;
