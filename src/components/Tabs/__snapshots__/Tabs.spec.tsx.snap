@@ -31,7 +31,7 @@ exports[`renders the tabs correctly when multiple props are set 1`] = `
       </div>
     </div>
     <div
-      class="el-tabs__tab-panel"
+      class="el el-tabs__tab-panel"
     >
       TabPanel1
     </div>
