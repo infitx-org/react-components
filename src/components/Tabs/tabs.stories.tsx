@@ -20,7 +20,7 @@ export const Default = () => (
 );
 
 export const DisabledTab = () => (
-  <Tabs onSelect={console.log}>
+  <Tabs selected={0}>
     <Tab>Tab 1</Tab>
     <Tab>Tab 2</Tab>
     <Tab disabled>Tab 3</Tab>

@@ -182,15 +182,17 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
   getSelectableIndex(index: number = 0, goNext: boolean = true): number {
     function arrayRotate<T>(src: T[], count: number, reverse: boolean): T[] {
       const arr = [...src];
-      for (let i = 0; i < count; i += 1) {
-        if (reverse) arr.unshift(arr.pop() as T);
-        else arr.push(arr.shift() as T);
+      if (reverse) {
+        arr.reverse();
+      }
+      for (let i = 0; i < (reverse ? arr.length - count - 1 : count); i += 1) {
+        arr.push(arr.shift() as T);
       }
       return arr;
     }
     const [tabs] = this.getComponents();
-    const r = arrayRotate(tabs, Math.abs(index), !goNext);
-    const inOrder = (goNext ? r : r.reverse()).find((t) => !t.props.disabled);
+    const r = arrayRotate(tabs, index, !goNext);
+    const inOrder = r.find((t) => !t.props.disabled);
     return inOrder ? tabs.indexOf(inOrder) : -1;
   }
 
