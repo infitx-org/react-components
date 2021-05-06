@@ -117,7 +117,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
     return (child as React.ReactElement).type === TabWithRef;
   }
 
-  private tabRefs = React.createRef<HTMLDivElement[]>([]);
+  private tabRefs = React.createRef<HTMLDivElement[]>();
 
   constructor(props: TabsProps) {
     super(props);
@@ -130,6 +130,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
     this.getComponents = this.getComponents.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.selectTab = this.selectTab.bind(this);
+    this.setRef = this.setRef.bind(this);
 
     this.onSelect = this.onSelect.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -193,6 +194,13 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
     return inOrder ? tabs.indexOf(inOrder) : -1;
   }
 
+  setRef(node: HTMLDivElement) {
+    (this.tabRefs as React.MutableRefObject<HTMLDivElement[]>).current = [
+      ...(this.tabRefs.current || []),
+      node,
+    ];
+  }
+
   selectTab(index: number, goNext: boolean): void {
     const toClick = this.getSelectableIndex(index, goNext);
     this.tabRefs.current?.[toClick].click();
@@ -217,9 +225,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
         selected: isSelected,
         focused: isFocused,
         onSelect,
-        ref: (node: HTMLDivElement) => {
-          this.tabRefs.current = [...(this.tabRefs.current || []), node];
-        },
+        ref: this.setRef,
       });
     });
 
