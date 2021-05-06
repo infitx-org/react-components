@@ -11,14 +11,13 @@
   min-height: 0;
 }
 
-.el-tabs__tab-items {
+.el-tabs__tabs {
   display: flex;
   flex-direction: row;
-  padding-bottom: 10px;
   flex: 0 0 auto;
 }
 
-.el-tabs__tab-item {
+.el-tabs__tab {
   flex: 0 1 auto;
   padding: 0px 10px;
   height: 32px;
@@ -28,32 +27,31 @@
   color: $color__dark-gray-3;
   border-bottom: 3px solid $color__gray-2;
   transition: all 0.1s ease-out;
+  cursor: pointer;
 
-  &.fill-width {
+  &.el-tabs__tab--flexible {
     flex-grow: 1;
   }
 
-  &:hover:not(.el-tabs__tab-item--disabled):not(.el-tabs__tab-item--selected) {
+  &:hover:not(.el-tabs__tab--disabled):not(.el-tabs__tab--selected) {
     border-bottom-color: $color__gray-4;
-    cursor: pointer;
   }
-  &.el-tabs__tab-item--selected {
+  &.el-tabs__tab--selected {
     border-bottom-color: $color__main-primary;
     color: $color__main-primary;
-    cursor: pointer;
   }
-  &.el-tabs__tab-item--focused {
+  &.el-tabs__tab--focused {
     border-bottom-color: $color__main-primary--active;
     color: $color__main-primary--active;
   }
-  &.el-tabs__tab-item--disabled {
+  &.el-tabs__tab--disabled {
     color: $color__main-disabled;
     cursor: default;
   }
 }
 
-.el-tabs__tab__panel {
-  &.el-tabs__tab__panel--flexible {
+.el-tabs__tab-panel {
+  &.el-tabs__tab-panel--flexible {
     display: flex;
     flex-grow: 1;
     flex-direction: column;

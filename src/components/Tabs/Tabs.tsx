@@ -17,6 +17,7 @@ interface TabProps {
   hidden?: boolean;
   flex?: boolean;
   style?: React.CSSProperties;
+  className?: string;
   onSelect?: (e: MouseEvent<HTMLDivElement>) => void;
 }
 
@@ -33,6 +34,7 @@ function Tab(
     hidden,
     flex,
     style,
+    className,
     onSelect,
   }: TabProps,
   ref: React.Ref<HTMLDivElement>
@@ -40,20 +42,21 @@ function Tab(
   if (hidden) {
     return null;
   }
-  const className = classnames([
+  const tabClassName = classnames([
     "el",
-    "el-tabs__tab-item",
-    focused && "el-tabs__tab-item--focused",
-    selected && "el-tabs__tab-item--selected",
-    disabled && "el-tabs__tab-item--disabled",
-    flex && "fill-width",
+    "el-tabs__tab",
+    focused && "el-tabs__tab--focused",
+    selected && "el-tabs__tab--selected",
+    disabled && "el-tabs__tab--disabled",
+    flex && "el-tabs__tab--flexible",
+    className,
   ]);
 
   return (
     <div
       ref={ref}
       onClick={onSelect}
-      className={className}
+      className={tabClassName}
       style={style}
       role="presentation"
     >
@@ -73,8 +76,8 @@ interface TabPanelProps {
 
 function TabPanel({ children, flex, style, className }: TabPanelProps) {
   const classNames = classnames([
-    "el-tabs__tab__panel",
-    flex && "el-tabs__tab__panel--flexible",
+    "el-tabs__tab-panel",
+    flex && "el-tabs__tab-panel--flexible",
     className,
   ]);
   return (
@@ -234,7 +237,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
         onFocus={this.onFocus}
         onBlur={this.onBlur}
       >
-        <div className="el-tabs__tab-items">{tabs}</div>
+        <div className="el-tabs__tabs">{tabs}</div>
         {panel}
       </div>
     );
