@@ -14,7 +14,6 @@ export interface TabProps {
   selected?: boolean;
   focused?: boolean;
   disabled?: boolean;
-  hidden?: boolean;
   flex?: boolean;
   style?: React.CSSProperties;
   className?: string;
@@ -31,7 +30,6 @@ function Tab(
     focused,
     children,
     disabled,
-    hidden,
     flex,
     style,
     className,
@@ -39,9 +37,6 @@ function Tab(
   }: TabProps,
   ref: React.Ref<HTMLDivElement>
 ) {
-  if (hidden) {
-    return null;
-  }
   const tabClassName = classnames([
     "el",
     "el-tabs__tab",
@@ -209,14 +204,14 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
   }
 
   render() {
-    const { selected } = this.state;
+    const { selected, hasFocus } = this.state;
     const { id, style, className, disabled } = this.props;
     const [rawTabs, rowPanels] = this.getComponents();
 
     const tabs = rawTabs.map((tab, index) => {
       const isDisabled = tab.props.disabled || disabled;
       const isSelected = selected === index;
-      const isFocused = isSelected && this.state.hasFocus;
+      const isFocused = isSelected && hasFocus;
       const onSelect =
         isDisabled || isSelected
           ? undefined
