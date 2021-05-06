@@ -215,9 +215,10 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
       const isDisabled = tab.props.disabled || disabled;
       const isSelected = selected === index;
       const isFocused = isSelected && this.state.hasFocus;
-      const onSelect = !isDisabled
-        ? (evt: MouseEvent) => this.onSelect(evt, index)
-        : undefined;
+      const onSelect =
+        isDisabled || isSelected
+          ? undefined
+          : (evt: MouseEvent) => this.onSelect(evt, index);
       return React.cloneElement(tab, {
         ...tab.props,
         key: index.toString(),

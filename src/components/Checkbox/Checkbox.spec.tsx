@@ -85,6 +85,7 @@ describe("tests the checbox", () => {
     userEvent.click(container.querySelector('input[type="checkbox"]'));
     expect(mockEvent).toHaveBeenCalledWith(
       expect.objectContaining({
+        type: "change",
         target: expect.objectContaining({ checked: true }),
       })
     );
