@@ -71,6 +71,7 @@ export interface TabPanelProps {
 
 function TabPanel({ children, flex, style, className }: TabPanelProps) {
   const classNames = classnames([
+    "el",
     "el-tabs__tab-panel",
     flex && "el-tabs__tab-panel--flexible",
     className,
