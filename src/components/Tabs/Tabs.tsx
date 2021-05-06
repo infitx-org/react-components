@@ -9,7 +9,7 @@ import "./Tabs.scss";
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
-interface TabProps {
+export interface TabProps {
   children: React.ReactNode;
   selected?: boolean;
   focused?: boolean;
@@ -67,7 +67,7 @@ function Tab(
 
 const TabWithRef = React.forwardRef<HTMLDivElement, TabProps>(Tab);
 
-interface TabPanelProps {
+export interface TabPanelProps {
   style?: React.CSSProperties;
   className?: string;
   flex?: boolean;
@@ -90,7 +90,7 @@ function TabPanel({ children, flex, style, className }: TabPanelProps) {
 type TabElement = React.ReactElement<TabWithRefProps>;
 type TabPanelElement = React.ReactElement<TabPanelProps>;
 
-interface TabsProps {
+export interface TabsProps {
   style?: React.CSSProperties;
   id?: string;
   className?: string;
