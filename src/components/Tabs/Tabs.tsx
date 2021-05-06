@@ -73,8 +73,8 @@ interface TabPanelProps {
 
 function TabPanel({ children, flex, style, className }: TabPanelProps) {
   const classNames = classnames([
-    "el-tabs__tab__content",
-    flex && "el-tabs__tab__content--flexible",
+    "el-tabs__tab__panel",
+    flex && "el-tabs__tab__panel--flexible",
     className,
   ]);
   return (

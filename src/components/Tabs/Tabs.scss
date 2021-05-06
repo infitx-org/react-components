@@ -13,26 +13,21 @@
 
 .el-tabs__tab-items {
   display: flex;
-  flex-grow: 1;
   flex-direction: row;
   padding-bottom: 10px;
   flex: 0 0 auto;
 }
 
 .el-tabs__tab-item {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
+  flex: 0 1 auto;
+  padding: 0px 10px;
   height: 32px;
   font-size: 14px;
   line-height: 32px;
   text-align: center;
-  justify-content: flex-start;
-  align-items: center;
   color: $color__dark-gray-3;
   border-bottom: 3px solid $color__gray-2;
   transition: all 0.1s ease-out;
-  padding: 0px 10px;
 
   &.fill-width {
     flex-grow: 1;
@@ -57,14 +52,11 @@
   }
 }
 
-.el-tabs__tab__content {
-  &.el-tabs__tab__content--flexible {
+.el-tabs__tab__panel {
+  &.el-tabs__tab__panel--flexible {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
     min-height: 0;
   }
-}
-
-.el-tabs__tab__panel {
 }
