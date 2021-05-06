@@ -3,6 +3,7 @@
 .el-tabs {
   outline: none;
 }
+
 .el-tabs--flexible {
   display: flex;
   flex-direction: column;
@@ -17,11 +18,11 @@
   padding-bottom: 10px;
   flex: 0 0 auto;
 }
+
 .el-tabs__tab-item {
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
-
   height: 32px;
   font-size: 14px;
   line-height: 32px;
@@ -64,8 +65,6 @@
     min-height: 0;
   }
 }
+
 .el-tabs__tab__panel {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
 }

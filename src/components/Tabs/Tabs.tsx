@@ -124,11 +124,11 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
       hasFocus: false,
     };
 
-    this.onSelect = this.onSelect.bind(this);
     this.getComponents = this.getComponents.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.selectTab = this.selectTab.bind(this);
 
+    this.onSelect = this.onSelect.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
   }
