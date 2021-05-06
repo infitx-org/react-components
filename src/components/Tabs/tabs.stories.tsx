@@ -1,7 +1,7 @@
 /* eslint no-console: "off" */
 import React from "react";
 
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./Tabs";
+import { Tab, TabPanel, Tabs } from "./Tabs";
 
 export default {
   title: "Tabs",
@@ -9,36 +9,30 @@ export default {
 };
 
 export const Default = () => (
-  <div>
-    <Tabs>
-      <Tab>Tab 1</Tab>
-      <Tab>Tab 2</Tab>
-      <Tab>Tab 3</Tab>
-      <TabPanel> Tab Content 1 </TabPanel>
-      <TabPanel> Tab Content 2 </TabPanel>
-      <TabPanel> Tab Content 3 </TabPanel>
-    </Tabs>
-  </div>
+  <Tabs>
+    <Tab>Tab 1</Tab>
+    <Tab>Tab 2</Tab>
+    <Tab>Tab 3</Tab>
+    <TabPanel> Tab Content 1 </TabPanel>
+    <TabPanel> Tab Content 2 </TabPanel>
+    <TabPanel> Tab Content 3 </TabPanel>
+  </Tabs>
 );
 
-// export const WithTabDisabled = () => (
-//   <div>
-//     <Tabs>
-//       <TabList>
-//         <Tab>Tab 1</Tab>
-//         <Tab>Tab 2</Tab>
-//         <Tab>Tab 3</Tab>
-//         <Tab disabled>Tab 4 disabled</Tab>
-//       </TabList>
-//       <TabPanels>
-//         <TabPanel> Tab Content 1 </TabPanel>
-//         <TabPanel> Tab Content 2 </TabPanel>
-//         <TabPanel> Tab Content 3 </TabPanel>
-//         <TabPanel> Tab Content 4 </TabPanel>
-//       </TabPanels>
-//     </Tabs>
-//   </div>
-// );
+export const DisabledTab = () => (
+  <Tabs onSelect={console.log}>
+    <Tab>Tab 1</Tab>
+    <Tab>Tab 2</Tab>
+    <Tab disabled>Tab 3</Tab>
+    <Tab>Tab 4</Tab>
+    <Tab>Tab 5</Tab>
+    <TabPanel> Tab Content 1 </TabPanel>
+    <TabPanel> Tab Content 2 </TabPanel>
+    <TabPanel> Tab Content 3 </TabPanel>
+    <TabPanel> Tab Content 4 </TabPanel>
+    <TabPanel> Tab Content 5 </TabPanel>
+  </Tabs>
+);
 
 // export const WithTabStyle = () => (
 //   <div>

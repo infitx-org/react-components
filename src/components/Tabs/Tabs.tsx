@@ -1,38 +1,42 @@
-import "./Tabs.scss";
-
 import classnames from "classnames";
-// import * as utils from 'common/generic';
-// import keyCodes from 'common/keyCodes';
 import React, {
   PureComponent,
   KeyboardEvent,
   MouseEvent,
   FocusEvent,
 } from "react";
+import "./Tabs.scss";
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
 interface TabProps {
   children: React.ReactNode;
-  selected: boolean;
-  focused: boolean;
-  onSelect: (e: MouseEvent<HTMLDivElement>) => void;
-  disabled: boolean;
-  hidden: boolean;
-  flex: boolean;
-  style: React.CSSProperties;
+  selected?: boolean;
+  focused?: boolean;
+  disabled?: boolean;
+  hidden?: boolean;
+  flex?: boolean;
+  style?: React.CSSProperties;
+  onSelect?: (e: MouseEvent<HTMLDivElement>) => void;
 }
 
-function Tab({
-  selected,
-  focused,
-  children,
-  disabled,
-  hidden,
-  flex,
-  style,
-  onSelect,
-}: TabProps) {
+type TabWithRefProps = TabProps & {
+  ref: React.Ref<HTMLDivElement>;
+};
+
+function Tab(
+  {
+    selected,
+    focused,
+    children,
+    disabled,
+    hidden,
+    flex,
+    style,
+    onSelect,
+  }: TabProps,
+  ref: React.Ref<HTMLDivElement>
+) {
   if (hidden) {
     return null;
   }
@@ -47,6 +51,7 @@ function Tab({
 
   return (
     <div
+      ref={ref}
       onClick={onSelect}
       className={className}
       style={style}
@@ -57,11 +62,13 @@ function Tab({
   );
 }
 
+const TabWithRef = React.forwardRef<HTMLDivElement, TabProps>(Tab);
+
 interface TabPanelProps {
-  style: React.CSSProperties;
-  className: string;
+  style?: React.CSSProperties;
+  className?: string;
+  flex?: boolean;
   children: React.ReactNode;
-  flex: boolean;
 }
 
 function TabPanel({ children, flex, style, className }: TabPanelProps) {
@@ -77,16 +84,18 @@ function TabPanel({ children, flex, style, className }: TabPanelProps) {
   );
 }
 
-type TabElement = React.ReactElement<TabProps>;
+type TabElement = React.ReactElement<TabWithRefProps>;
 type TabPanelElement = React.ReactElement<TabPanelProps>;
 
 interface TabsProps {
-  id: string;
+  style?: React.CSSProperties;
+  id?: string;
+  className?: string;
   selected?: number;
+  disabled?: boolean;
+  flex?: boolean;
   children: TabElement[] | TabPanelElement[];
-  disabled: boolean;
-  flex: boolean;
-  onSelect: (evt: MouseEvent, index: number) => void;
+  onSelect?: (evt: MouseEvent, index: number) => void;
   onFocus?: (evt: FocusEvent) => void;
   onBlur?: (evt: FocusEvent) => void;
 }
@@ -102,10 +111,10 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
   }
 
   static isTab(child: React.ReactNode): boolean {
-    return (child as React.ReactElement).type === Tab;
+    return (child as React.ReactElement).type === TabWithRef;
   }
 
-  private wrapper = React.createRef<HTMLDivElement>();
+  private tabRefs = React.createRef<HTMLDivElement[]>([]);
 
   constructor(props: TabsProps) {
     super(props);
@@ -127,11 +136,11 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
   handleKeyDown(e: KeyboardEvent): void {
     const { keyCode } = e.nativeEvent;
     if (keyCode === 37) {
-      this.selectTab(this.state.selected - 1);
+      this.selectTab(this.state.selected - 1, false);
       return;
     }
     if (keyCode === 39) {
-      this.selectTab(this.state.selected + 1);
+      this.selectTab(this.state.selected + 1, true);
     }
   }
 
@@ -160,47 +169,67 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
   }
 
   getComponents(): [TabElement[], TabPanelElement[]] {
-    const children = React.Children.toArray(this.props.children);
-    const tabs = children.filter(Tabs.isTab) as TabElement[];
-    const tabPanels = children.filter(Tabs.isTabPanel) as TabPanelElement[];
+    const components = React.Children.toArray(this.props.children);
+    const tabs = components.filter(Tabs.isTab) as TabElement[];
+    const tabPanels = components.filter(Tabs.isTabPanel) as TabPanelElement[];
     return [tabs, tabPanels];
   }
 
-  getSelectableIndex(index: number = 0): number {
+  getSelectableIndex(index: number = 0, goNext: boolean = true): number {
+    function arrayRotate<T>(src: T[], count: number, reverse: boolean): T[] {
+      const arr = [...src];
+      for (let i = 0; i < count; i += 1) {
+        if (reverse) arr.unshift(arr.pop() as T);
+        else arr.push(arr.shift() as T);
+      }
+      return arr;
+    }
     const [tabs] = this.getComponents();
-    return Math.max(0, Math.min(tabs.length - 1, index));
+    const r = arrayRotate(tabs, Math.abs(index), !goNext);
+    const inOrder = (goNext ? r : r.reverse()).find((t) => !t.props.disabled);
+    return inOrder ? tabs.indexOf(inOrder) : -1;
   }
 
-  selectTab(index: number): void {
-    this.setState({
-      selected: this.getSelectableIndex(index),
-    });
+  selectTab(index: number, goNext: boolean): void {
+    const toClick = this.getSelectableIndex(index, goNext);
+    this.tabRefs.current?.[toClick].click();
   }
 
   render() {
-    const [rawTabs, rowPanels] = this.getComponents();
     const { selected } = this.state;
+    const { id, style, className, disabled } = this.props;
+    const [rawTabs, rowPanels] = this.getComponents();
 
     const tabs = rawTabs.map((tab, index) => {
+      const isDisabled = tab.props.disabled || disabled;
+      const isSelected = selected === index;
+      const isFocused = isSelected && this.state.hasFocus;
+      const onSelect = !isDisabled
+        ? (evt: MouseEvent) => this.onSelect(evt, index)
+        : undefined;
       return React.cloneElement(tab, {
         ...tab.props,
         key: index.toString(),
-        selected: selected === index && !tab.props.disabled,
-        focused: selected === index && this.state.hasFocus,
-        onSelect: (evt: MouseEvent) => this.onSelect(evt, index),
+        disabled: isDisabled,
+        selected: isSelected,
+        focused: isFocused,
+        onSelect,
+        ref: (node: HTMLDivElement) => {
+          this.tabRefs.current = [...(this.tabRefs.current || []), node];
+        },
       });
     });
 
     const panel = rowPanels[selected] || null;
-
-    const tabsClassNames = classnames(["element", "el-tabs"]);
+    const tabsClassNames = classnames(["element", "el-tabs", className]);
 
     return (
       <div
+        id={id}
+        style={style}
         className={tabsClassNames}
         tabIndex={0}
         role="presentation"
-        ref={this.wrapper}
         onKeyDown={this.handleKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
@@ -212,4 +241,4 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
   }
 }
 
-export { Tab, Tabs, TabPanel };
+export { TabWithRef as Tab, Tabs, TabPanel };
