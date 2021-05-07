@@ -1,5 +1,6 @@
 import React from "react";
 import Field, { FieldPublicProps } from "./Field";
+import Spinner from "../Spinner";
 
 type InputRef = React.ForwardedRef<HTMLInputElement>;
 type FuncRef = (node: HTMLInputElement) => void;
@@ -20,13 +21,13 @@ const mergeRefs = (...refs: (InputRef | FuncRef)[]) => {
   };
 };
 
-export default function Wrapper<T>(Component: React.FunctionComponent<T>) {
-  // const ComponentWithForwardedRefs = React.forwardRef<HTMLInputElement, T>(
-  //   (props, ref) => <Component {...props} inputRef={ref} />
-  // );
+export type FormFieldFactoryProps<T> = T & FieldPublicProps;
 
-  return React.forwardRef<HTMLInputElement, WrapperProps<T>>(
-    function ForwardWrapperRefs(props: WrapperProps<T>, forwardedRef) {
+export default function FormFieldFactory<T>(
+  Component: React.FunctionComponent<T>
+) {
+  return React.forwardRef<HTMLInputElement, FormFieldFactoryProps<T>>(
+    function ForwardWrapperRefs(props: FormFieldFactoryProps<T>, forwardedRef) {
       const inputRef = React.useRef<HTMLInputElement>(null);
       const [focused, setFocused] = React.useState(false);
       const setFocus = () => setFocused(true);
@@ -41,10 +42,12 @@ export default function Wrapper<T>(Component: React.FunctionComponent<T>) {
         };
       }, [inputRef.current]);
 
+      const { kind, label, ...componentProps } = props;
+
       return (
-        <Field kind={props.kind} focused={focused} label={props.label}>
+        <Field kind={kind} focused={focused} label={label}>
           <Component
-            {...(props as T)}
+            {...((componentProps as unknown) as T)}
             inputRef={mergeRefs(inputRef, forwardedRef)}
           />
         </Field>
@@ -53,4 +56,10 @@ export default function Wrapper<T>(Component: React.FunctionComponent<T>) {
   );
 }
 
-export type WrapperProps<T> = T & FieldPublicProps;
+export type FormFieldStatusProps<T> = T & { pending: boolean };
+
+export function FormFieldStatus<T>(Component: React.FunctionComponent<T>) {
+  return function WithStatus({ pending, ...props }: FormFieldStatusProps<T>) {
+    return <Component {...props}>{pending && <Spinner size="s" />}</Component>;
+  };
+}
