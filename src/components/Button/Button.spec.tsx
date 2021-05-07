@@ -13,7 +13,7 @@ const icon = (
   </svg>
 );
 
-describe("rtl test", () => {
+describe("tests the buttton", () => {
   it("renders the label", () => {
     render(<Button label="Test-Button" onClick={log} />);
     expect(screen.getByText("Test-Button")).toBeDefined();
@@ -99,7 +99,7 @@ describe("rtl test", () => {
   it("triggers the onClick prop", () => {
     const mockEvent = jest.fn();
     const { container } = render(<Button onClick={mockEvent} />);
-    userEvent.click(container.querySelector("button"));
+    userEvent.click(container.querySelector("button") as HTMLButtonElement);
     expect(mockEvent).toHaveBeenCalled();
   });
 });
