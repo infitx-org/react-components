@@ -1,4 +1,4 @@
-{
+module.exports ={
   "env": {
     "browser": true
   },
@@ -9,7 +9,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.eslint.json",
+    "project": "tsconfig.json",
     "ecmaFeatures": {
       "jsx": true
     },
@@ -26,11 +26,6 @@
         "some": [ "nesting", "id" ]
       }
     }]
-  },
-  "settings": {
-    "react": {
-      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
-    }
   },
   "overrides": [
     {

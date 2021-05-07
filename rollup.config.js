@@ -33,7 +33,10 @@ export default {
     }),
     resolve(),
     commonjs(),
-    typescript({ useTsconfigDeclarationDir: true }),
+    typescript({
+      tsconfig: 'tsconfig.build.json',
+      useTsconfigDeclarationDir: true
+    }),
     scss({
       processor: css => postcss([autoprefixer()]),
     }),
