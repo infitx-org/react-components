@@ -53,7 +53,13 @@ const items = {
   WarningSign,
 };
 
-const WrappedIcon = ({ icon, name }) => (
+const WrappedIcon = ({
+  icon,
+  name,
+}: {
+  icon: React.ReactElement;
+  name: string;
+}) => (
   <div style={{ padding: "10px" }}>
     <Icon icon={icon} fill="#999" size={100} />
     <label>{name}</label>
