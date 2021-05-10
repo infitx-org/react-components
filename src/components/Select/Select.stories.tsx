@@ -1,13 +1,13 @@
 import React from "react";
-import TextField from "./TextField";
+import Select from "./Select";
 
 export default {
-  title: "TextField",
+  title: "Select",
 };
 
 /* eslint-disable no-console */
 
-export const TextFieldNoState = () => {
+export const SelectNoState = () => {
   const ref = React.useRef<HTMLInputElement>(null);
   React.useEffect(() => {
     if (ref.current) {
@@ -15,16 +15,12 @@ export const TextFieldNoState = () => {
     }
   }, [ref.current]);
 
-  return <TextField pending ref={ref} required onFocus={console.log} />;
+  return <Select pending ref={ref} required onFocus={console.log} />;
 };
 
-export const TextFieldValue = () => {
+export const SelectValue = () => {
   const [value, setValue] = React.useState("test");
   return (
-    <TextField
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      required
-    />
+    <Select value={value} onChange={(e) => setValue(e.target.value)} required />
   );
 };

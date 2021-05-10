@@ -15,3 +15,9 @@ export enum Size {
   Medium = "medium",
   Large = "large",
 }
+
+export enum InputSize {
+  Small = "small",
+  Medium = "medium",
+  Large = "large",
+}

@@ -1,0 +1,9 @@
+.select__indicator {
+  margin-top: 2px;
+  transform: rotateZ(90deg) rotateY(0deg);
+  transition: all 0.2s linear;
+}
+
+.select__indicator--open {
+  transform: rotateZ(90deg) rotateY(180deg);
+}
