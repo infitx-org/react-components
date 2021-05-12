@@ -7,6 +7,11 @@ export default {
 
 /* eslint-disable no-console */
 
+const options = new Array(10).fill(0).map((_, index: number) => ({
+  label: index + 1,
+  value: index + 1,
+}));
+
 export const SelectNoState = () => {
   const ref = React.useRef<HTMLInputElement>(null);
   React.useEffect(() => {
@@ -15,12 +20,29 @@ export const SelectNoState = () => {
     }
   }, [ref.current]);
 
-  return <Select pending ref={ref} required onFocus={console.log} />;
+  return (
+    <Select
+      options={options}
+      pending
+      ref={ref}
+      required
+      onFocus={console.log}
+    />
+  );
 };
 
 export const SelectValue = () => {
   const [value, setValue] = React.useState("test");
   return (
-    <Select value={value} onChange={(e) => setValue(e.target.value)} required />
+    <>
+      <input type="text" />
+      <Select
+        options={options}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        required
+      />
+      <input type="text" />
+    </>
   );
 };

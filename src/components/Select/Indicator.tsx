@@ -19,12 +19,14 @@ function Indicator({ open, size }: IndicatorProps) {
     open && "select__indicator--open",
   ]);
   return (
-    <Icon
-      className={className}
-      icon={<Arrow />}
-      size={indicatorSizes[size]}
-      fill="rgba(0,0,0,0.4)"
-    />
+    <div className="mb-input__inner-icon input-select__icon">
+      <Icon
+        className={className}
+        icon={<Arrow />}
+        size={indicatorSizes[size]}
+        fill="rgba(0,0,0,0.4)"
+      />
+    </div>
   );
 }
 
