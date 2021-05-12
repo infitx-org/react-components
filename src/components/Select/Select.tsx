@@ -2,6 +2,7 @@ import React from "react";
 import "./Select.scss";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
+import classnames from "classnames";
 import Field from "../Field";
 import Indicator from "./Indicator";
 import Options, { Option, OptionValue } from "./Options";
@@ -13,19 +14,21 @@ import { KeyCodes } from "../utils/keyCodes";
 
 export interface SelectProps
   extends React.SelectHTMLAttributes<HTMLInputElement> {
+  selected?: OptionValue;
   size?: `${InputSize}`;
+  required?: boolean;
   pending?: boolean;
   options: Option[];
-  selected?: OptionValue;
   onClear?: () => void;
 }
 
 export default React.forwardRef(function Select(
   {
-    pending,
     size = InputSize.Large,
-    options = [],
     selected,
+    required,
+    pending,
+    options = [],
     onClear,
     ...props
   }: SelectProps,
@@ -172,10 +175,15 @@ export default React.forwardRef(function Select(
   const selectedItem = find(filteredOptions, { value: selectedValue });
   const selectedLabel = selectedItem?.label;
 
+  const selectClassName = classnames([
+    "select__input",
+    filter !== undefined && "select__input--filtering",
+  ]);
+
   return (
     <Field
-      required
-      pending
+      required={required && selectedValue === undefined}
+      pending={pending}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
@@ -183,6 +191,7 @@ export default React.forwardRef(function Select(
     >
       <input
         {...props}
+        className={selectClassName}
         type="text"
         ref={mergeRefs(ref, inputRef)}
         onFocus={onFocus}
@@ -191,7 +200,7 @@ export default React.forwardRef(function Select(
         onKeyDown={handleArrows}
         value={filter !== undefined ? filter : selectedLabel || ""}
       />
-      {filter && <Filter size={size} />}
+      {filter !== undefined && <Filter size={size} />}
       {pending && <Loader size={size} />}
       <Indicator open={open} size={size} />
       {open && (

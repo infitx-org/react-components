@@ -9,6 +9,9 @@ import CloseSmall from "../../assets/icons/close-small.svg";
 // import ScrollBox from '../ScrollBox';
 // import Tooltip from '../Tooltip';
 
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable jsx-a11y/tabindex-no-positive */
+
 export type OptionValue = string | number | boolean;
 type OptionLabel = string | number;
 
@@ -51,7 +54,12 @@ function OptionItem({
     className,
   ]);
   return (
-    <div className={optionsClassNames} onClick={onClick} role="presentation">
+    <div
+      className={optionsClassNames}
+      onClick={onClick}
+      role="presentation"
+      tabIndex={1}
+    >
       {icon && (
         <Icon
           className="input-select__options-item__icon"
