@@ -41,6 +41,7 @@ export const SelectValue = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         required
+        onClear={console.log}
       />
       <input type="text" />
     </>

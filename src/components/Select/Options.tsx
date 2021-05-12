@@ -20,9 +20,10 @@ export type Option = {
 };
 
 interface OptionProps {
+  className?: string;
   size: `${InputSize}`;
   highlighted?: boolean;
-  selected?: boolean;
+  selected?: OptionValue;
   disabled?: boolean;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   label: OptionLabel;
@@ -30,6 +31,7 @@ interface OptionProps {
 }
 
 function OptionItem({
+  className,
   size,
   label,
   icon,
@@ -46,6 +48,7 @@ function OptionItem({
     selected && "input-select__options-item--selected",
     disabled && "input-select__options-item--disabled",
     highlighted && "input-select__options-item--highlighted",
+    className,
   ]);
   return (
     <div className={optionsClassNames} onClick={onClick} role="presentation">
@@ -117,7 +120,8 @@ function Options({
         onClick={onClear}
         size={size}
         label="Clear"
-        icon={<CloseSmall />}
+        icon={<CloseSmall fill="#c33" />}
+        className="input-select__options-item--clear"
       />
     );
   }
@@ -177,41 +181,5 @@ function Options({
     </div>
   );
 }
-
-// const ClearOption = ({ onClick, size }) => {
-//   const clearOptionClassName = classnames([
-//     "input-select__options-item",
-//     size === "s" && "input-select__options-item--small",
-//     size === "m" && "input-select__options-item--medium",
-//     size === "l" && "input-select__options-item--large",
-//     "input-select__options-item--clear",
-//   ]);
-//   const clearOptionIconClassName = classnames([
-//     "input-select__options-item__icon",
-//     "input-select__options-item__icon--clear",
-//   ]);
-//   const clearOptionLabelClassName = classnames([
-//     "input-select__options-item__label",
-//     "input-select__options-item__label--clear",
-//   ]);
-//   return (
-//     <div
-//       className={clearOptionClassName}
-//       onClick={onClick}
-//       tabIndex="1"
-//       role="presentation"
-//       label="Clear"
-//     >
-//       <Icon
-//         className={clearOptionIconClassName}
-//         name="close-small"
-//         size={iconSizes[size]}
-//       />
-//       <div className={clearOptionLabelClassName}>
-//         <Tooltip>Clear</Tooltip>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Options;

@@ -119,7 +119,7 @@ export default React.forwardRef(function Select(
 
   function highlightNextOption(next: boolean = true) {
     const filteredOptions = getOptions();
-    const referenceValue = highlighted || selected;
+    const referenceValue = highlighted || selectedValue;
     let currentIndex = findIndex(filteredOptions, { value: referenceValue });
 
     const getNextEnabledOption = () => {
@@ -198,7 +198,7 @@ export default React.forwardRef(function Select(
         <Options
           size={size}
           options={filteredOptions}
-          selected={selected}
+          selected={selectedValue}
           highlighted={highlighted}
           clearable={onClear !== undefined}
           onClear={onClearClick}
