@@ -1,12 +1,14 @@
 import React from "react";
 import classnames from "classnames";
-import find from "lodash/find";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 import { KeyCodes } from "../utils/keyCodes";
 import mergeRefs from "../utils/mergeRefs";
 import Field from "../Field";
 import Loader from "../Field/Loader";
 import { InputSize } from "../types";
 import "./DatePicker.scss";
+import "./DayPicker.scss";
 
 type DateValue = string;
 
@@ -16,7 +18,6 @@ export interface DatePickerProps
   size?: `${InputSize}`;
   required?: boolean;
   pending?: boolean;
-  onClear?: () => void;
 }
 
 export default React.forwardRef(function DatePicker(
@@ -25,13 +26,11 @@ export default React.forwardRef(function DatePicker(
     value,
     required,
     pending,
-    onClear,
     ...props
   }: DatePickerProps,
   ref: React.ForwardedRef<HTMLInputElement>
 ): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const optionsRef = React.useRef<HTMLDivElement>(null);
   const [selectedValue, setSelected] = React.useState<DateValue | undefined>(
     value
   );
@@ -50,9 +49,11 @@ export default React.forwardRef(function DatePicker(
     inputRef.current?.blur();
   }
 
-  function onSelect(newValue: DateValue) {
-    setSelected(newValue);
-    setOpen(false);
+  function onDayClick(
+    day: string,
+    { selected }: { selected: string | undefined }
+  ) {
+    setSelected(day === selected ? undefined : day);
     inputRef.current?.focus();
   }
 
@@ -67,11 +68,6 @@ export default React.forwardRef(function DatePicker(
     if (!open) {
       props.onBlur?.(e);
     }
-  }
-
-  function onClearClick() {
-    setSelected(undefined);
-    onClear?.();
   }
 
   function onFieldClick(e: React.MouseEvent<HTMLDivElement>): void {
@@ -132,14 +128,13 @@ export default React.forwardRef(function DatePicker(
       />
       {pending && <Loader size={size} />}
       {open && (
-        <Calendar
-          size={size}
-          selected={selectedValue}
-          clearable={onClear !== undefined}
-          onClear={onClearClick}
-          onSelect={(option: Option) => onSelect(option.value)}
-          optionsRef={optionsRef}
-        />
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="datepicker__calendar"
+          role="presentation"
+        >
+          <DayPicker selectedDays={selectedValue} onDayClick={onDayClick} />
+        </div>
       )}
     </Field>
   );
