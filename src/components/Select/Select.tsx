@@ -14,7 +14,7 @@ import { KeyCodes } from "../utils/keyCodes";
 
 export interface SelectProps
   extends React.SelectHTMLAttributes<HTMLInputElement> {
-  selected?: OptionValue;
+  value?: OptionValue;
   size?: `${InputSize}`;
   required?: boolean;
   pending?: boolean;
@@ -25,7 +25,7 @@ export interface SelectProps
 export default React.forwardRef(function Select(
   {
     size = InputSize.Large,
-    selected,
+    value,
     required,
     pending,
     options = [],
@@ -37,7 +37,7 @@ export default React.forwardRef(function Select(
   const inputRef = React.useRef<HTMLInputElement>(null);
   const optionsRef = React.useRef<HTMLDivElement>(null);
   const [selectedValue, setSelected] = React.useState<OptionValue | undefined>(
-    selected
+    value
   );
   const [highlighted, setHighlighted] = React.useState<
     OptionValue | undefined
@@ -60,8 +60,8 @@ export default React.forwardRef(function Select(
     inputRef.current?.blur();
   }
 
-  function onSelect(value: OptionValue) {
-    setSelected(value);
+  function onSelect(newValue: OptionValue) {
+    setSelected(newValue);
     setFilter(undefined);
     setOpen(false);
     inputRef.current?.focus();
@@ -98,6 +98,10 @@ export default React.forwardRef(function Select(
     }
   }
 
+  function hasFilter(filterValue: string | undefined): boolean {
+    return filterValue !== undefined && filterValue !== "";
+  }
+
   function getOptions() {
     if (filter === undefined || filter === "") {
       return options;
@@ -108,9 +112,9 @@ export default React.forwardRef(function Select(
     );
   }
 
-  function scrollToOption(value: OptionValue) {
+  function scrollToOption(optionValue: OptionValue) {
     const filteredOptions = getOptions();
-    const index = findIndex(filteredOptions, { value });
+    const index = findIndex(filteredOptions, { value: optionValue });
     const optionDivs = document.querySelectorAll(".input-select__options-item");
     const nextOption = optionDivs[index];
 
@@ -122,30 +126,36 @@ export default React.forwardRef(function Select(
 
   function highlightNextOption(next: boolean = true) {
     const filteredOptions = getOptions();
+    const filteredOptionsLength = filteredOptions.length;
     const referenceValue = highlighted || selectedValue;
     let currentIndex = findIndex(filteredOptions, { value: referenceValue });
 
-    const getNextEnabledOption = () => {
-      let nextIndex = (currentIndex + (next ? 1 : -1)) % filteredOptions.length;
+    function getNextEnabledOption(): OptionValue | undefined {
+      let nextIndex = (currentIndex + (next ? 1 : -1)) % filteredOptionsLength;
       if (nextIndex < 0) {
         nextIndex = filteredOptions.length - 1;
       }
       currentIndex = nextIndex;
       const nextOption = filteredOptions[nextIndex];
 
-      if (nextOption.disabled) {
-        return null;
+      if (nextOption?.disabled) {
+        return;
       }
-      return nextOption;
-    };
-
-    let nextHighlightedOption = null;
-    while (nextHighlightedOption === null) {
-      nextHighlightedOption = getNextEnabledOption();
+      // eslint-disable-next-line
+      return nextOption?.value;
     }
 
-    scrollToOption(nextHighlightedOption.value);
-    setHighlighted(nextHighlightedOption.value);
+    let highlightedValue;
+    let tries = filteredOptionsLength;
+    while (!highlightedValue && tries >= 0) {
+      highlightedValue = getNextEnabledOption();
+      tries -= 1;
+    }
+
+    if (highlightedValue) {
+      scrollToOption(highlightedValue);
+    }
+    setHighlighted(highlightedValue);
   }
 
   function handleArrows(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -158,6 +168,7 @@ export default React.forwardRef(function Select(
     if (keyCode === KeyCodes.Up || keyCode === KeyCodes.Down) {
       e.preventDefault();
       highlightNextOption(keyCode === KeyCodes.Down);
+      return;
     }
     if (keyCode === KeyCodes.Return) {
       e.preventDefault();
@@ -177,7 +188,7 @@ export default React.forwardRef(function Select(
 
   const selectClassName = classnames([
     "select__input",
-    filter !== undefined && "select__input--filtering",
+    hasFilter(filter) && "select__input--filtering",
   ]);
 
   return (
