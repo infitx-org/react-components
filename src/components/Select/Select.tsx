@@ -6,11 +6,11 @@ import classnames from "classnames";
 import Field from "../Field";
 import Indicator from "./Indicator";
 import Options, { Option, OptionValue } from "./Options";
-import mergeRefs from "../utils/mergeRefs";
 import Filter from "./Filter";
 import Loader from "../Field/Loader";
 import { InputSize } from "../types";
 import { KeyCodes } from "../utils/keyCodes";
+import mergeRefs from "../utils/mergeRefs";
 
 export interface SelectProps
   extends React.SelectHTMLAttributes<HTMLInputElement> {

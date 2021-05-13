@@ -1,16 +1,23 @@
 import React from "react";
-import SimpleField from "./SimpleField";
+import Field from "../Field";
 
 export default {
-  title: "SimpleField",
+  title: "Field",
 };
 
-export const DefaultSimpleField = () => {
+export const DefaultField = () => {
   return (
-    <SimpleField pending required>
-      <div style={{ height: "10px", width: "10px", background: "#f33" }} />
-      <span style={{ color: "#F33" }}>test</span>
-    </SimpleField>
+    <Field pending required>
+      <div
+        style={{
+          height: "14px",
+          width: "14px",
+          borderRadius: "50%",
+          background: "#f33",
+        }}
+      />
+      <span style={{ marginLeft: "10px", color: "#F33" }}>test</span>
+    </Field>
   );
 };
 
@@ -20,14 +27,14 @@ const DefaultSimpleMultiFieldComponent = ({ value, onChange }) => {
     return chunks!.join(" ");
   }
   return (
-    <SimpleField pending required>
+    <Field pending required>
       <input
         type="text"
         inputMode="numeric"
         value={formatValue(value)}
         onChange={onChange}
       />
-    </SimpleField>
+    </Field>
   );
 };
 
