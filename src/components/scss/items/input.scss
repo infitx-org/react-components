@@ -15,6 +15,7 @@
 /** COMPONENT */
 
 .mb-input {
+  box-sizing: border-box;
   font-family: $font__primary, $font__primary-fallback;
   letter-spacing: $font__primary-spacing;
   border-radius: $border-radius;

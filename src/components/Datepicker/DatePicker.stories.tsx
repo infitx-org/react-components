@@ -15,19 +15,22 @@ export const DatePickerNoState = () => {
     }
   }, [ref.current]);
 
-  return <DatePicker pending ref={ref} required onFocus={console.log} />;
+  return <DatePicker pending ref={ref} required onChange={console.log} />;
 };
 
 export const DatePickerValue = () => {
-  const [value, setValue] = React.useState("test");
+  const [value, setValue] = React.useState(new Date().toString());
   return (
     <>
       <input type="text" />
       <DatePicker
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onSelect={(date) => {
+          console.log(date);
+          setValue(date);
+        }}
+        format="dd yyyy"
         required
-        onClear={console.log}
       />
       <input type="text" />
     </>

@@ -9,6 +9,7 @@
     "lib"
   ],
   "dependencies": {
+    "date-fns": "^2.21.3",
     "lodash": "^4.17.21",
     "react-day-picker": "^7.4.10"
   },

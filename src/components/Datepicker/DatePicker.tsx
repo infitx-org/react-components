@@ -1,6 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import DayPicker from "react-day-picker";
+import { format as dateFormat } from "date-fns";
 import "react-day-picker/lib/style.css";
 import { KeyCodes } from "../utils/keyCodes";
 import mergeRefs from "../utils/mergeRefs";
@@ -10,32 +11,51 @@ import { InputSize } from "../types";
 import "./DatePicker.scss";
 import "./DayPicker.scss";
 
-type DateValue = string;
+type DateValue = Date | undefined;
 
 export interface DatePickerProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  value?: DateValue;
   size?: `${InputSize}`;
+  format?: string;
+  value?: string;
   required?: boolean;
   pending?: boolean;
+  onSelect?: (date: DateValue) => void;
 }
 
 export default React.forwardRef(function DatePicker(
   {
     size = InputSize.Large,
+    format = "MMM do yyyy, HH:mm:ss",
     value,
     required,
     pending,
+    onSelect,
     ...props
   }: DatePickerProps,
   ref: React.ForwardedRef<HTMLInputElement>
 ): JSX.Element {
+  function getDateFromString(date?: string): DateValue {
+    return date ? new Date(date) : undefined;
+  }
+
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [selectedValue, setSelected] = React.useState<DateValue | undefined>(
-    value
+  const [selectedDate, setDate] = React.useState<DateValue>(
+    getDateFromString(value)
   );
   const [open, setOpen] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
+
+  React.useEffect(() => {
+    setDate(getDateFromString(value));
+  }, [value]);
+
+  function getStringFromDate(date?: Date): string {
+    if (date) {
+      return dateFormat(date, format);
+    }
+    return "";
+  }
 
   function enter() {
     setFocused(true);
@@ -49,12 +69,11 @@ export default React.forwardRef(function DatePicker(
     inputRef.current?.blur();
   }
 
-  function onDayClick(
-    day: string,
-    { selected }: { selected: string | undefined }
-  ) {
-    setSelected(day === selected ? undefined : day);
+  function onDayClick(day: Date, { selected }: { selected?: boolean }) {
+    const newDate = selected ? undefined : day;
+    setDate(newDate);
     inputRef.current?.focus();
+    onSelect?.(newDate);
   }
 
   function onFocus(e: React.FocusEvent<HTMLInputElement>) {
@@ -83,16 +102,11 @@ export default React.forwardRef(function DatePicker(
     }
   }
 
-  function handleArrows(e: React.KeyboardEvent<HTMLInputElement>) {
+  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     const { keyCode } = e;
 
     if (keyCode === KeyCodes.Tab) {
       leave();
-      return;
-    }
-    if (keyCode === KeyCodes.Up || keyCode === KeyCodes.Down) {
-      e.preventDefault();
-      // highlightNextOption(keyCode === KeyCodes.Down);
       return;
     }
     if (keyCode === KeyCodes.Return) {
@@ -105,11 +119,12 @@ export default React.forwardRef(function DatePicker(
     }
   }
 
-  const selectClassName = classnames(["datepicker__input"]);
+  const inputClassName = classnames(["datepicker__input"]);
 
+  const visibleValue = getStringFromDate(selectedDate);
   return (
     <Field
-      required={required && selectedValue === undefined}
+      required={required && selectedDate === undefined}
       pending={pending}
       disabled={props.disabled}
       focused={focused}
@@ -118,13 +133,14 @@ export default React.forwardRef(function DatePicker(
     >
       <input
         {...props}
-        className={selectClassName}
+        className={inputClassName}
         type="text"
-        ref={mergeRefs(ref, inputRef)}
+        ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
+        onChange={(e) => e.preventDefault()}
         onFocus={onFocus}
         onBlur={onBlur}
-        onKeyDown={handleArrows}
-        value={selectedValue}
+        onKeyDown={onKeyDown}
+        value={visibleValue}
       />
       {pending && <Loader size={size} />}
       {open && (
@@ -133,7 +149,7 @@ export default React.forwardRef(function DatePicker(
           className="datepicker__calendar"
           role="presentation"
         >
-          <DayPicker selectedDays={selectedValue} onDayClick={onDayClick} />
+          <DayPicker selectedDays={selectedDate} onDayClick={onDayClick} />
         </div>
       )}
     </Field>

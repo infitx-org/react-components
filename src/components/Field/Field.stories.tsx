@@ -1,5 +1,5 @@
 import React from "react";
-import Field from "../Field";
+import Field from ".";
 
 export default {
   title: "Field",
@@ -21,7 +21,7 @@ export const DefaultField = () => {
   );
 };
 
-const DefaultSimpleMultiFieldComponent = ({ value, onChange }) => {
+const CreditCardField = ({ value, onChange }) => {
   function formatValue(unformatted: string): string {
     const chunks = unformatted.replace(/ /g, "").match(/.{1,4}/g) || [];
     return chunks!.join(" ");
@@ -33,17 +33,15 @@ const DefaultSimpleMultiFieldComponent = ({ value, onChange }) => {
         inputMode="numeric"
         value={formatValue(value)}
         onChange={onChange}
+        style={{ appearance: "none", border: "none", outline: "none" }}
       />
     </Field>
   );
 };
 
 export const DefaultSimpleMultiField = () => {
-  const [value, setValue] = React.useState("123123123123123123");
+  const [value, setValue] = React.useState("1234123412341234");
   return (
-    <DefaultSimpleMultiFieldComponent
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
+    <CreditCardField value={value} onChange={(e) => setValue(e.target.value)} />
   );
 };
