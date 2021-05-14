@@ -4,6 +4,7 @@ import scss from 'rollup-plugin-scss';
 import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from '@rollup/plugin-commonjs';
+import svgr from '@svgr/rollup';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -33,6 +34,7 @@ export default {
     }),
     resolve(),
     commonjs(),
+    svgr(),
     typescript({
       tsconfig: 'tsconfig.build.json',
       useTsconfigDeclarationDir: true

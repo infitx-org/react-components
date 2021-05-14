@@ -1,0 +1,105 @@
+@import "../scss/vars/colors.scss";
+@import "../scss/vars/border.scss";
+@import "../scss/vars/background.scss";
+@import "../scss/vars/shadow.scss";
+@import "../scss/vars/general.scss";
+@import "../scss/vars/fonts.scss";
+
+.field {
+  box-sizing: border-box;
+  font-family: $font__primary, $font__primary-fallback;
+  letter-spacing: $font__primary-spacing;
+  border-radius: $border-radius;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 200px;
+}
+.field--open {
+  box-shadow: $shadow-size;
+  padding: 0px $component-open-size;
+}
+.field--disabled {
+  opacity: $component-opacity--disabled;
+  pointer-events: none;
+  cursor: auto;
+}
+
+.field--small {
+  height: 31px;
+  padding-left: 10px;
+  padding-right: 6px;
+  font-size: 12px;
+}
+.field--medium {
+  height: 38px;
+  padding-left: 13px;
+  padding-right: 8px;
+  font-size: 13px;
+}
+.field--large {
+  height: 45px;
+  padding-left: 16px;
+  padding-right: 10px;
+  font-size: 14px;
+}
+
+.field__shadow {
+  color: transparent;
+}
+.field--open {
+  &.field__shadow {
+    color: $shadow-color--default;
+  }
+  &.field__shadow--pending {
+    color: $shadow-color--pending;
+  }
+  &.field__shadow--required {
+    color: $shadow-color--required;
+  }
+  &.field__shadow--invalid {
+    color: $shadow-color--invalid;
+  }
+}
+
+.field__background {
+  background: $background--default;
+}
+.field__background--open {
+  background: $background--open;
+}
+.field__background--pending {
+  background: $background--pending;
+}
+.field__background--required {
+  background: $background--required;
+}
+.field__background--invalid {
+  background: $background--invalid;
+}
+
+.field__borders {
+  border-left: 2px solid;
+  border-right: 2px solid;
+  border-bottom-color: $border-color--default;
+  border-right-width: 1px;
+  border-left-width: 1px;
+  border-top-width: 1px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-top-style: solid;
+  border-right-color: #e5e5e5;
+  border-left-color: #e5e5e5;
+  border-top-color: #e5e5e5;
+}
+.field__borders--open {
+}
+.field__borders--pending {
+  border-bottom-color: $border-color--pending;
+}
+.field__borders--required {
+  border-bottom-color: $border-color--required;
+}
+.field__borders--invalid {
+  border-bottom-color: $border-color--invalid;
+}

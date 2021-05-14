@@ -9,7 +9,9 @@
     "lib"
   ],
   "dependencies": {
-    "lodash": "^4.17.21"
+    "date-fns": "^2.21.3",
+    "lodash": "^4.17.21",
+    "react-day-picker": "^7.4.10"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
@@ -23,6 +25,7 @@
     "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-docs": "^6.2.9",
     "@storybook/react": "6.2.9",
+    "@svgr/rollup": "^5.5.0",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",

@@ -1,0 +1,32 @@
+@import "../scss/vars/colors.scss";
+@import "../scss/vars/transitions.scss";
+
+.select__input {
+  flex: 2 1 auto;
+  vertical-align: middle;
+  position: relative;
+  height: 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0px;
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color__dark-gray-3;
+}
+
+.select__input--filtering {
+  color: $color__blue-4;
+}
+
+.select__indicator {
+  margin-top: 2px;
+  transform: rotateZ(90deg) rotateY(0deg);
+  transition: all 0.2s linear;
+}
+
+.select__indicator--open {
+  transform: rotateZ(90deg) rotateY(180deg);
+}
