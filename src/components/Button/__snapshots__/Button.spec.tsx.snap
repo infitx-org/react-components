@@ -3,7 +3,7 @@
 exports[`renders the button correctly when multiple props are set 1`] = `
 <div>
   <button
-    class="mb-input input-button input-button--secondary input-button--large mb-input--disabled input-button--disabled mb-input--pending input-button--pending"
+    class="input-button input-button--secondary input-button--large input-button--disabled"
     disabled=""
     type="button"
   >
