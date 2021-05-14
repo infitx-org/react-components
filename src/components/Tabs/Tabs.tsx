@@ -39,11 +39,11 @@ function Tab(
 ) {
   const tabClassName = classnames([
     "el",
-    "el-tabs__tab",
-    focused && "el-tabs__tab--focused",
-    selected && "el-tabs__tab--selected",
-    disabled && "el-tabs__tab--disabled",
-    flex && "el-tabs__tab--flexible",
+    "rc-tabs__tab",
+    focused && "rc-tabs__tab--focused",
+    selected && "rc-tabs__tab--selected",
+    disabled && "rc-tabs__tab--disabled",
+    flex && "rc-tabs__tab--flexible",
     className,
   ]);
 
@@ -72,8 +72,8 @@ export interface TabPanelProps {
 function TabPanel({ children, flex, style, className }: TabPanelProps) {
   const classNames = classnames([
     "el",
-    "el-tabs__tab-panel",
-    flex && "el-tabs__tab-panel--flexible",
+    "rc-tabs__tab-panel",
+    flex && "rc-tabs__tab-panel--flexible",
     className,
   ]);
   return (
@@ -229,7 +229,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
     });
 
     const panel = rowPanels[selected] || null;
-    const tabsClassNames = classnames(["element", "el-tabs", className]);
+    const tabsClassNames = classnames(["element", "rc-tabs", className]);
 
     return (
       <div
@@ -242,7 +242,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
         onFocus={this.onFocus}
         onBlur={this.onBlur}
       >
-        <div className="el-tabs__tabs">{tabs}</div>
+        <div className="rc-tabs__tabs">{tabs}</div>
         {panel}
       </div>
     );

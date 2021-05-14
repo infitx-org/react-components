@@ -1,25 +1,25 @@
 @import "../scss/vars/colors.scss";
 @import "../scss/items/input.scss";
 
-.el-tabs {
+.rc-tabs {
   outline: none;
   @extend .rc-component;
 }
 
-.el-tabs--flexible {
+.rc-tabs--flexible {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
 }
 
-.el-tabs__tabs {
+.rc-tabs__tabs {
   display: flex;
   flex-direction: row;
   flex: 0 0 auto;
 }
 
-.el-tabs__tab {
+.rc-tabs__tab {
   flex: 0 1 auto;
   padding: 0px 10px;
   height: 32px;
@@ -31,29 +31,29 @@
   transition: all 0.1s ease-out;
   cursor: pointer;
 
-  &.el-tabs__tab--flexible {
+  &.rc-tabs__tab--flexible {
     flex-grow: 1;
   }
 
-  &:hover:not(.el-tabs__tab--disabled):not(.el-tabs__tab--selected) {
+  &:hover:not(.rc-tabs__tab--disabled):not(.rc-tabs__tab--selected) {
     border-bottom-color: $color__gray-4;
   }
-  &.el-tabs__tab--selected {
+  &.rc-tabs__tab--selected {
     border-bottom-color: $color__main-primary;
     color: $color__main-primary;
   }
-  &.el-tabs__tab--focused {
+  &.rc-tabs__tab--focused {
     border-bottom-color: $color__main-primary--active;
     color: $color__main-primary--active;
   }
-  &.el-tabs__tab--disabled {
+  &.rc-tabs__tab--disabled {
     color: $color__main-disabled;
     cursor: default;
   }
 }
 
-.el-tabs__tab-panel {
-  &.el-tabs__tab-panel--flexible {
+.rc-tabs__tab-panel {
+  &.rc-tabs__tab-panel--flexible {
     display: flex;
     flex-grow: 1;
     flex-direction: column;

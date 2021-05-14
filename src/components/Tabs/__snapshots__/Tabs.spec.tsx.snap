@@ -3,35 +3,35 @@
 exports[`renders the tabs correctly when multiple props are set 1`] = `
 <div>
   <div
-    class="element el-tabs"
+    class="element rc-tabs"
     id="test-tabs"
     role="presentation"
     tabindex="0"
   >
     <div
-      class="el-tabs__tabs"
+      class="rc-tabs__tabs"
     >
       <div
-        class="el el-tabs__tab el-tabs__tab--selected"
+        class="el rc-tabs__tab rc-tabs__tab--selected"
         role="presentation"
       >
         Tab1
       </div>
       <div
-        class="el el-tabs__tab"
+        class="el rc-tabs__tab"
         role="presentation"
       >
         Tab2
       </div>
       <div
-        class="el el-tabs__tab el-tabs__tab--disabled"
+        class="el rc-tabs__tab rc-tabs__tab--disabled"
         role="presentation"
       >
         Tab3
       </div>
     </div>
     <div
-      class="el el-tabs__tab-panel"
+      class="el rc-tabs__tab-panel"
     >
       TabPanel1
     </div>
