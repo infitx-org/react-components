@@ -38,14 +38,13 @@ function RadioGroup({
     onChange?.(e);
   };
   const classNames = classnames([
-    "mb-input",
-    "input-radiogroup",
-    vertical && "input-radiogroup--vertical",
+    "rc-radiogroup",
+    vertical && "rc-radiogroup--vertical",
   ]);
   return (
     <div className={classNames} id={id}>
-      {label && <span className="input-radiogroup__label">{label}</span>}
-      <div className="input-radiogroup__inputs">
+      {label && <span className="rc-radiogroup__label">{label}</span>}
+      <div className="rc-radiogroup__inputs">
         {options.map((option: Option, index: number) => (
           <Radio
             kind={option.kind || kind}

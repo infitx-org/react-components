@@ -26,16 +26,16 @@ function Radio({
   vertical = false,
 }: RadioProps) {
   const inputClassName = classnames([
-    "input-radio__input",
-    `input-radio__input--${kind}`,
+    "rc-radio__input",
+    `rc-radio__input--${kind}`,
   ]);
   const wrapperClassName = classnames([
-    "input-radio__wrapper",
-    vertical && "input-radio__wrapper--vertical",
+    "rc-radio__wrapper",
+    vertical && "rc-radio__wrapper--vertical",
   ]);
   const labelClassName = classnames([
-    "input-radio__label",
-    disabled && "input-radio__label--disabled",
+    "rc-radio__label",
+    disabled && "rc-radio__label--disabled",
   ]);
   return (
     <label className={wrapperClassName}>
