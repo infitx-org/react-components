@@ -3,23 +3,23 @@
 @import "../scss/vars/themes.scss";
 @use "sass:map";
 
-.input-checkbox__wrapper {
+.rc-checkbox__wrapper {
   display: inline-flex;
   align-items: center;
   padding: 3px;
 }
 
-.input-checkbox__label {
+.rc-checkbox__label {
   display: inline-block;
   cursor: pointer;
   font-size: 14px;
 }
-.input-checkbox__label--disabled {
+.rc-checkbox__label--disabled {
   color: #999;
   cursor: default;
 }
 
-.input-checkbox {
+.rc-checkbox {
   appearance: none;
   outline: none;
   box-sizing: initial;
@@ -69,15 +69,15 @@
   }
 }
 
-.input-checkbox--no-margin {
+.rc-checkbox--no-margin {
   margin-right: 0px;
 }
 
-.input-checkbox--round {
+.rc-checkbox--round {
   border-radius: 50%;
 }
 
-.input-checkbox--semi-checked {
+.rc-checkbox--semi-checked {
   border-color: #ddd;
   background: #ddd;
   &:after {
@@ -94,7 +94,7 @@
 }
 
 @each $kind in $kinds {
-  .input-checkbox--#{$kind} {
+  .rc-checkbox--#{$kind} {
     &:checked {
       border-color: map-get($theme-colors--darken, $kind);
       background: linear-gradient(

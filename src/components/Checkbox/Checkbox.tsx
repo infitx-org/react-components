@@ -37,19 +37,19 @@ function Checkbox({
 
   const wrapperClassName = classnames([
     "mb-input",
-    "input-checkbox__wrapper",
+    "rc-checkbox__wrapper",
     className,
   ]);
   const checkboxClassName = classnames([
-    "input-checkbox",
-    `input-checkbox--${kind}`,
-    semi && "input-checkbox--semi-checked",
-    round && "input-checkbox--round",
-    !label && "input-checkbox--no-margin",
+    "rc-checkbox",
+    `rc-checkbox--${kind}`,
+    semi && "rc-checkbox--semi-checked",
+    round && "rc-checkbox--round",
+    !label && "rc-checkbox--no-margin",
   ]);
   const labelClassName = classnames([
-    "input-checkbox__label",
-    disabled && "input-checkbox__label--disabled",
+    "rc-checkbox__label",
+    disabled && "rc-checkbox__label--disabled",
   ]);
   return (
     <label className={wrapperClassName} style={style}>
