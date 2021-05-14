@@ -1,22 +1,23 @@
 @import "../scss/vars/colors.scss";
 
-.el-spinner {
-  &.center {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    height: inherit;
-    align-items: center;
-    justify-content: center;
-  }
+.rc-spinner {
   transform: translateZ(0);
   overflow: hidden;
 }
-.el-spinner__component {
+.rc-spinner--center {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  height: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.rc-spinner__component {
   animation: rotateSpinner 3s linear infinite;
 }
 
-.el-spinner__svg-path {
+.rc-spinner__svg-path {
   animation: rotateSpinner 0.8s cubic-bezier(0.53, 0.26, 0.54, 0.74) infinite;
   fill: none;
   stroke-dasharray: 100;

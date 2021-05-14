@@ -19,20 +19,20 @@ const commonProps = {
 describe("tests the radio group", () => {
   it("renders the option group", () => {
     const { container } = render(<RadioGroup {...commonProps} />);
-    expect(container.querySelector(".input-radiogroup span")).toBeTruthy();
+    expect(container.querySelector(".rc-radiogroup span")).toBeTruthy();
     expect(container.querySelectorAll('input[type="radio"]')).toHaveLength(5);
   });
 
   it("renders the label prop", () => {
     const { container } = render(<RadioGroup {...commonProps} />);
-    expect(container.querySelector(".input-radiogroup span")).toHaveTextContent(
+    expect(container.querySelector(".rc-radiogroup span")).toHaveTextContent(
       "test-label"
     );
   });
 
   it("renders the id prop", () => {
     const { container } = render(<RadioGroup {...commonProps} id="test-id" />);
-    expect(container.querySelector(".input-radiogroup")).toHaveAttribute(
+    expect(container.querySelector(".rc-radiogroup")).toHaveAttribute(
       "id",
       "test-id"
     );

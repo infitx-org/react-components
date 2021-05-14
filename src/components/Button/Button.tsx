@@ -43,11 +43,11 @@ function Button({
 }: ButtonProps): JSX.Element {
   const classNames = classnames([
     className,
-    "input-button",
-    `input-button--${kind}`,
-    `input-button--${size}`,
-    disabled && "input-button--disabled",
-    noFill && "input-button--noFill",
+    "rc-button",
+    `rc-button--${kind}`,
+    `rc-button--${size}`,
+    disabled && "rc-button--disabled",
+    noFill && "rc-button--noFill",
   ]);
 
   let iconContent = null;
@@ -60,7 +60,7 @@ function Button({
       display = <Icon icon={icon} size={size} fill="inherit" />;
     }
     iconContent = (
-      <div className={`input-button__icon input-button__icon--${iconPosition}`}>
+      <div className={`rc-button__icon rc-button__icon--${iconPosition}`}>
         {display}
       </div>
     );
@@ -76,7 +76,7 @@ function Button({
       onClick={onClick}
       disabled={disabled}
     >
-      <div className="input-button__content">
+      <div className="rc-button__content">
         {iconPosition === "left" && iconContent}
         {label || children}
         {iconPosition === "right" && iconContent}

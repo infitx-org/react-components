@@ -3,87 +3,87 @@
 exports[`renders the Icon correctly when multiple props are set 1`] = `
 <div>
   <div
-    class="mb-input input-radiogroup"
+    class="rc-radiogroup"
   >
     <span
-      class="input-radiogroup__label"
+      class="rc-radiogroup__label"
     >
       test-label
     </span>
     <div
-      class="input-radiogroup__inputs"
+      class="rc-radiogroup__inputs"
     >
       <label
-        class="input-radio__wrapper"
+        class="rc-radio__wrapper"
       >
         <input
-          class="input-radio__input input-radio__input--primary"
+          class="rc-radio__input rc-radio__input--primary"
           name="test-name"
           type="radio"
           value="0"
         />
         <span
-          class="input-radio__label"
+          class="rc-radio__label"
         >
           0
         </span>
       </label>
       <label
-        class="input-radio__wrapper"
+        class="rc-radio__wrapper"
       >
         <input
-          class="input-radio__input input-radio__input--primary"
+          class="rc-radio__input rc-radio__input--primary"
           name="test-name"
           type="radio"
           value="1"
         />
         <span
-          class="input-radio__label"
+          class="rc-radio__label"
         >
           1
         </span>
       </label>
       <label
-        class="input-radio__wrapper"
+        class="rc-radio__wrapper"
       >
         <input
-          class="input-radio__input input-radio__input--primary"
+          class="rc-radio__input rc-radio__input--primary"
           name="test-name"
           type="radio"
           value="2"
         />
         <span
-          class="input-radio__label"
+          class="rc-radio__label"
         >
           2
         </span>
       </label>
       <label
-        class="input-radio__wrapper"
+        class="rc-radio__wrapper"
       >
         <input
-          class="input-radio__input input-radio__input--primary"
+          class="rc-radio__input rc-radio__input--primary"
           name="test-name"
           type="radio"
           value="3"
         />
         <span
-          class="input-radio__label"
+          class="rc-radio__label"
         >
           3
         </span>
       </label>
       <label
-        class="input-radio__wrapper"
+        class="rc-radio__wrapper"
       >
         <input
-          class="input-radio__input input-radio__input--primary"
+          class="rc-radio__input rc-radio__input--primary"
           name="test-name"
           type="radio"
           value="4"
         />
         <span
-          class="input-radio__label"
+          class="rc-radio__label"
         >
           4
         </span>

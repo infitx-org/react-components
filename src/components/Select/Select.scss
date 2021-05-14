@@ -1,7 +1,7 @@
 @import "../scss/vars/colors.scss";
 @import "../scss/vars/transitions.scss";
 
-.select__input {
+.rc-select {
   flex: 2 1 auto;
   vertical-align: middle;
   position: relative;
@@ -17,16 +17,6 @@
   color: $color__dark-gray-3;
 }
 
-.select__input--filtering {
+.rc-select--filtering {
   color: $color__blue-4;
-}
-
-.select__indicator {
-  margin-top: 2px;
-  transform: rotateZ(90deg) rotateY(0deg);
-  transition: all 0.2s linear;
-}
-
-.select__indicator--open {
-  transform: rotateZ(90deg) rotateY(180deg);
 }

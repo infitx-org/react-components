@@ -4,9 +4,9 @@ import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
 import Field, { Loader } from "../Field";
-import Indicator from "./Indicator";
-import Options, { Option, OptionValue } from "./Options";
-import Filter from "./Filter";
+import Indicator from "./components/Indicator";
+import Options, { Option, OptionValue } from "./components/Options";
+import Filter from "./components/Filter";
 import { InputSize } from "../types";
 import { KeyCodes } from "../utils/keyCodes";
 import mergeRefs from "../utils/mergeRefs";
@@ -113,7 +113,7 @@ export default React.forwardRef(function Select(
   function scrollToOption(optionValue: OptionValue) {
     const filteredOptions = getOptions();
     const index = findIndex(filteredOptions, { value: optionValue });
-    const optionDivs = document.querySelectorAll(".input-select__options-item");
+    const optionDivs = document.querySelectorAll(".rc-select__options-item");
     const nextOption = optionDivs[index];
 
     if (nextOption) {
@@ -185,8 +185,8 @@ export default React.forwardRef(function Select(
   const selectedLabel = selectedItem?.label;
 
   const selectClassName = classnames([
-    "select__input",
-    hasFilter(filter) && "select__input--filtering",
+    "rc-select",
+    hasFilter(filter) && "rc-select--filtering",
   ]);
 
   return (

@@ -17,7 +17,7 @@ const testTabs = (
 describe("tests the tabs", () => {
   it("renders the tabs", () => {
     const { container } = render(testTabs);
-    expect(container.querySelector(".el-tabs")).toBeTruthy();
+    expect(container.querySelector(".rc-tabs")).toBeTruthy();
   });
 
   it("renderd the prop id", () => {
@@ -27,12 +27,12 @@ describe("tests the tabs", () => {
 
   it("renders all the tab items", () => {
     const { container } = render(testTabs);
-    expect(container.querySelectorAll(".el-tabs__tab")).toHaveLength(3);
+    expect(container.querySelectorAll(".rc-tabs__tab")).toHaveLength(3);
   });
 
   it("renders only one tab panel", () => {
     const { container } = render(testTabs);
-    expect(container.querySelectorAll(".el-tabs__tab-panel")).toHaveLength(1);
+    expect(container.querySelectorAll(".rc-tabs__tab-panel")).toHaveLength(1);
   });
 
   it("renders the first tabpanel content", () => {
@@ -42,14 +42,14 @@ describe("tests the tabs", () => {
 
   it("renders the second tabpanel content when second tab is clicked", () => {
     const { container } = render(testTabs);
-    const [, secondTab] = container.querySelectorAll(".el-tabs__tab");
+    const [, secondTab] = container.querySelectorAll(".rc-tabs__tab");
     userEvent.click(secondTab);
     expect(screen.getByText("TabPanel2")).toBeInTheDocument();
   });
 
   it("does not renders the tabpanel of a disabled tab when clicked", () => {
     const { container } = render(testTabs);
-    const [, , thirdTab] = container.querySelectorAll(".el-tabs__tab");
+    const [, , thirdTab] = container.querySelectorAll(".rc-tabs__tab");
     userEvent.click(thirdTab);
     expect(screen.queryByText("TabPanel3")).not.toBeInTheDocument();
   });
@@ -63,7 +63,7 @@ describe("tests the tabs", () => {
       </Tabs>
     );
 
-    const [, secondTab] = container.querySelectorAll(".el-tabs__tab");
+    const [, secondTab] = container.querySelectorAll(".rc-tabs__tab");
     userEvent.click(secondTab);
     expect(mockEvent).toHaveBeenCalled();
     // extract the tab this way
@@ -81,7 +81,7 @@ describe("tests the tabs", () => {
       </Tabs>
     );
 
-    const [, secondTab] = container.querySelectorAll(".el-tabs__tab");
+    const [, secondTab] = container.querySelectorAll(".rc-tabs__tab");
     userEvent.click(secondTab);
     expect(mockEvent).not.toHaveBeenCalled();
   });
@@ -95,7 +95,7 @@ describe("tests the tabs", () => {
       </Tabs>
     );
 
-    const [firstTab] = container.querySelectorAll(".el-tabs__tab");
+    const [firstTab] = container.querySelectorAll(".rc-tabs__tab");
     userEvent.click(firstTab);
     expect(mockEvent).not.toHaveBeenCalled();
   });

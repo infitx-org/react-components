@@ -18,7 +18,7 @@ const commonProps = {
 describe("tests the checbox", () => {
   it("renders the checkbox group", () => {
     const { container } = render(<Checkbox {...commonProps} />);
-    expect(container.querySelector(".input-checkbox__wrapper")).toBeTruthy();
+    expect(container.querySelector(".rc-checkbox__wrapper")).toBeTruthy();
     expect(
       container.querySelector('input[type="checkbox"]')
     ).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe("tests the checbox", () => {
 
   it("renders the label prop", () => {
     const { container } = render(<Checkbox {...commonProps} />);
-    expect(container.querySelector(".input-checkbox__label")).toHaveTextContent(
+    expect(container.querySelector(".rc-checkbox__label")).toHaveTextContent(
       "test-label"
     );
   });
@@ -65,7 +65,7 @@ describe("tests the checbox", () => {
     const { container } = render(<Checkbox {...commonProps} semi />);
     expect(
       container.querySelector(
-        'input[type="checkbox"].input-checkbox--semi-checked'
+        'input[type="checkbox"].rc-checkbox--semi-checked'
       )
     ).toBeInTheDocument();
   });
@@ -73,7 +73,7 @@ describe("tests the checbox", () => {
   it("renders the round prop", () => {
     const { container } = render(<Checkbox {...commonProps} round />);
     expect(
-      container.querySelector('input[type="checkbox"].input-checkbox--round')
+      container.querySelector('input[type="checkbox"].rc-checkbox--round')
     ).toBeInTheDocument();
   });
 

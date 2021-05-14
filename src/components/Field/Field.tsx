@@ -36,24 +36,24 @@ export default function Field({
   useOnClickOutside(fieldRef, onClickOutside);
 
   const fieldClassname = classnames([
-    "field",
-    kind && `field--${kind}`,
-    "field__borders",
-    "field__background",
-    "field__shadow",
-    size === InputSize.Small && "field--small",
-    size === InputSize.Medium && "field--medium",
-    size === InputSize.Large && "field--large",
+    "rc-field",
+    kind && `rc-field--${kind}`,
+    "rc-field__borders",
+    "rc-field__background",
+    "rc-field__shadow",
+    size === InputSize.Small && "rc-field--small",
+    size === InputSize.Medium && "rc-field--medium",
+    size === InputSize.Large && "rc-field--large",
     focused &&
-      "field--open field__borders--open field__background--open field__shadow--open",
+      "rc-field--open rc-field__borders--open rc-field__background--open rc-field__shadow--open",
     disabled &&
-      "field--disabled field__borders--disabled field__background--disabled",
+      "rc-field--disabled rc-field__borders--disabled rc-field__background--disabled",
     pending &&
-      "field--pending field__borders--pending field__background--pending field__shadow--pending",
+      "rc-field--pending rc-field__borders--pending rc-field__background--pending rc-field__shadow--pending",
     invalid &&
-      "field--invalid field__borders--invalid field__background--invalid field__shadow--invalid",
+      "rc-field--invalid rc-field__borders--invalid rc-field__background--invalid rc-field__shadow--invalid",
     required &&
-      "field--required field__borders--required field__background--required field__shadow--required",
+      "rc-field--required rc-field__borders--required rc-field__background--required rc-field__shadow--required",
   ]);
 
   return (

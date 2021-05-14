@@ -3,15 +3,15 @@
 exports[`renders the Checkbox correctly when multiple props are set 1`] = `
 <div>
   <label
-    class="mb-input input-checkbox__wrapper"
+    class="mb-input rc-checkbox__wrapper"
   >
     <input
-      class="input-checkbox input-checkbox--primary"
+      class="rc-checkbox rc-checkbox--primary"
       name="test-name"
       type="checkbox"
     />
     <span
-      class="input-checkbox__label"
+      class="rc-checkbox__label"
     >
       test-label
     </span>

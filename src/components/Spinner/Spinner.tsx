@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 import "./Spinner.scss";
 
 interface Point {
@@ -63,19 +64,21 @@ function Spinner({ size = "s", center, color }: SpinnerProps): JSX.Element {
     height: center ? undefined : height,
   };
 
+  const spinnerClassName = classnames([
+    "rc-spinner",
+    center && "rc-spinner--center",
+  ]);
+
   return (
-    <div
-      className={`el-spinner ${center ? "center" : ""}`}
-      style={spinnerStyle}
-    >
+    <div className={spinnerClassName} style={spinnerStyle}>
       <svg
-        className="el-spinner__component"
+        className="rc-spinner__component"
         width={width}
         height={height}
         viewBox={`0 0 ${realSize} ${realSize}`}
       >
         <path
-          className="el-spinner__svg-path"
+          className="rc-spinner__svg-path"
           strokeWidth={strokeWidth}
           d={describeArc(position, position, radius, 90, 200)}
           style={{ stroke: color }}

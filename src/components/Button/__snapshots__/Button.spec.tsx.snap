@@ -3,28 +3,28 @@
 exports[`renders the button correctly when multiple props are set 1`] = `
 <div>
   <button
-    class="input-button input-button--secondary input-button--large input-button--disabled"
+    class="rc-button rc-button--secondary rc-button--large rc-button--disabled"
     disabled=""
     type="button"
   >
     <div
-      class="input-button__content"
+      class="rc-button__content"
     >
       <div
-        class="input-button__icon input-button__icon--left"
+        class="rc-button__icon rc-button__icon--left"
       >
         <div
-          class="el-spinner "
+          class="rc-spinner"
           style="width: 16px; height: 16px;"
         >
           <svg
-            class="el-spinner__component"
+            class="rc-spinner__component"
             height="16px"
             viewBox="0 0 16 16"
             width="16px"
           >
             <path
-              class="el-spinner__svg-path"
+              class="rc-spinner__svg-path"
               d="M 5.811071082715721 14.014032773029815 A 6.4 6.4 0 0 0 14.4 8"
               stroke-width="1.6"
               style="stroke: inherit;"

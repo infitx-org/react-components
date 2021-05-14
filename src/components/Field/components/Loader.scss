@@ -1,0 +1,5 @@
+@import "../Field.scss";
+
+.rc-loader {
+  @extend .rc-field__icon;
+}
