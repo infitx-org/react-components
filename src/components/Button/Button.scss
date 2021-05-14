@@ -5,7 +5,7 @@
 @import "../scss/base.scss";
 
 .rc-button {
-  @extend .rc-component;
+  @include rc-component;
   outline: none;
   cursor: pointer;
   box-sizing: border-box;

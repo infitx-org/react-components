@@ -2,9 +2,9 @@ import React, { MouseEvent, KeyboardEvent } from "react";
 import classnames from "classnames";
 import "./Button.scss";
 
-import { Size, Kind } from "../types";
-import Spinner from "../Spinner";
-import Icon from "../Icon";
+import { Size, Kind } from "types";
+import Spinner from "components/Spinner";
+import Icon from "components/Icon";
 import { getIconSizeByComponentSize } from "../shared";
 
 export type ButtonProps = {

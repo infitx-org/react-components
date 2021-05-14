@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from "react";
 import classnames from "classnames";
+import { Kind } from "types";
 import Radio, { RadioProps } from "./Radio";
 import "./RadioGroup.scss";
-import { Kind } from "../types";
 
 type Option = Pick<RadioProps, "label" | "value" | "disabled" | "id" | "kind">;
 

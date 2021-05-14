@@ -1,6 +1,6 @@
 @import "./vars/fonts.scss";
 
-.rc-component {
+@mixin rc-component {
   box-sizing: border-box;
   font-style: normal;
   font-weight: 400;

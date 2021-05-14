@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import React, { ChangeEvent } from "react";
-import { Kind } from "../types";
+import { Kind } from "types";
 import "./Checkbox.scss";
 
 export interface CheckboxProps {

@@ -1,6 +1,6 @@
 /* eslint no-console: "off" */
+import { Size } from "types";
 import Button from "./Button";
-import { Size } from "../types";
 
 export default {
   title: "Button",

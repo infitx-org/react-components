@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import { Kind, Size } from "types";
 import Icon from "./Icon";
-import { Kind, Size } from "../types";
 import { getIconSizeByComponentSize } from "../shared";
 
 const icon = (

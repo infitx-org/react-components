@@ -1,4 +1,4 @@
-import { Size } from "../types";
+import { Size } from "types";
 
 const iconSizes = {
   [Size.XSmall]: 10,

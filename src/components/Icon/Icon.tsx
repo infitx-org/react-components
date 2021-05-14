@@ -1,5 +1,5 @@
 import React from "react";
-import { Size } from "../types";
+import { Size } from "types";
 import { getIconSizeByComponentSize } from "../shared";
 
 export type IconProps = {

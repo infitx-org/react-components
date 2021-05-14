@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
+import { Kind, Size } from "types";
 import Button from "./Button";
-import { Kind, Size } from "../types";
 
 /* eslint-disable no-console */
 const { log } = console;

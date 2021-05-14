@@ -1,5 +1,5 @@
+import { InputSize } from "types";
 import Spinner from "../../Spinner";
-import { InputSize } from "../../types";
 import { getIconSizeByComponentSize } from "../../shared";
 import "./Loader.scss";
 

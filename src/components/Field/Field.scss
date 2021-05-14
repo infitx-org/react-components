@@ -6,7 +6,7 @@
 @import "../scss/base.scss";
 
 .rc-field {
-  @extend .rc-component;
+  @include rc-component;
   border-radius: $border-radius;
   position: relative;
   display: inline-flex;

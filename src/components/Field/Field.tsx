@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, InputSize } from "../types";
-import useOnClickOutside from "../hooks/useOnClickOutside";
+import { Kind, InputSize } from "types";
+import useOnClickOutside from "hooks/useOnClickOutside";
 import "./Field.scss";
 
 export interface FieldProps {

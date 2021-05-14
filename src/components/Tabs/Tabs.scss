@@ -3,7 +3,7 @@
 
 .rc-tabs {
   outline: none;
-  @extend .rc-component;
+  @include rc-component;
 }
 
 .rc-tabs--flexible {

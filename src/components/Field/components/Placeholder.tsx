@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { InputSize } from "../../types";
+import { InputSize } from "types";
 import "./Placeholder.scss";
 
 export interface PlaceholderProps {
