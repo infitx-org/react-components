@@ -5,7 +5,7 @@
 @import "../scss/vars/general.scss";
 @import "../scss/vars/fonts.scss";
 
-.field {
+.rc-field {
   box-sizing: border-box;
   font-family: $font__primary, $font__primary-fallback;
   letter-spacing: $font__primary-spacing;
@@ -15,70 +15,70 @@
   align-items: center;
   width: 200px;
 }
-.field--open {
+.rc-field--open {
   box-shadow: $shadow-size;
   padding: 0px $component-open-size;
 }
-.field--disabled {
+.rc-field--disabled {
   opacity: $component-opacity--disabled;
   pointer-events: none;
   cursor: auto;
 }
 
-.field--small {
+.rc-field--small {
   height: 31px;
   padding-left: 10px;
   padding-right: 6px;
   font-size: 12px;
 }
-.field--medium {
+.rc-field--medium {
   height: 38px;
   padding-left: 13px;
   padding-right: 8px;
   font-size: 13px;
 }
-.field--large {
+.rc-field--large {
   height: 45px;
   padding-left: 16px;
   padding-right: 10px;
   font-size: 14px;
 }
 
-.field__shadow {
+.rc-field__shadow {
   color: transparent;
 }
-.field--open {
-  &.field__shadow {
+.rc-field--open {
+  &.rc-field__shadow {
     color: $shadow-color--default;
   }
-  &.field__shadow--pending {
+  &.rc-field__shadow--pending {
     color: $shadow-color--pending;
   }
-  &.field__shadow--required {
+  &.rc-field__shadow--required {
     color: $shadow-color--required;
   }
-  &.field__shadow--invalid {
+  &.rc-field__shadow--invalid {
     color: $shadow-color--invalid;
   }
 }
 
-.field__background {
+.rc-field__background {
   background: $background--default;
 }
-.field__background--open {
+.rc-field__background--open {
   background: $background--open;
 }
-.field__background--pending {
+.rc-field__background--pending {
   background: $background--pending;
 }
-.field__background--required {
+.rc-field__background--required {
   background: $background--required;
 }
-.field__background--invalid {
+.rc-field__background--invalid {
   background: $background--invalid;
 }
 
-.field__borders {
+.rc-field__borders {
   border-left: 2px solid;
   border-right: 2px solid;
   border-bottom-color: $border-color--default;
@@ -92,14 +92,14 @@
   border-left-color: #e5e5e5;
   border-top-color: #e5e5e5;
 }
-.field__borders--open {
+.rc-field__borders--open {
 }
-.field__borders--pending {
+.rc-field__borders--pending {
   border-bottom-color: $border-color--pending;
 }
-.field__borders--required {
+.rc-field__borders--required {
   border-bottom-color: $border-color--required;
 }
-.field__borders--invalid {
+.rc-field__borders--invalid {
   border-bottom-color: $border-color--invalid;
 }
