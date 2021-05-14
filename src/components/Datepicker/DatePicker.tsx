@@ -5,7 +5,7 @@ import { format as dateFormat } from "date-fns";
 import "react-day-picker/lib/style.css";
 import { KeyCodes } from "../utils/keyCodes";
 import mergeRefs from "../utils/mergeRefs";
-import Field, { Loader } from "../Field";
+import Field, { Loader, Placeholder } from "../Field";
 import { InputSize } from "../types";
 import "./DatePicker.scss";
 import "./DayPicker.scss";
@@ -16,6 +16,8 @@ export interface DatePickerProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   size?: `${InputSize}`;
   format?: string;
+  label?: string;
+  placeholder?: string;
   value?: string;
   required?: boolean;
   pending?: boolean;
@@ -26,6 +28,8 @@ export default React.forwardRef(function DatePicker(
   {
     size = InputSize.Large,
     format = "MMM do yyyy, HH:mm:ss",
+    label,
+    placeholder,
     value,
     required,
     pending,
@@ -75,14 +79,14 @@ export default React.forwardRef(function DatePicker(
   }
 
   function onFocus(e: React.FocusEvent<HTMLInputElement>) {
-    if (!open) {
+    if (!focused) {
       props.onFocus?.(e);
       enter();
     }
   }
 
   function onBlur(e: React.FocusEvent<HTMLInputElement>) {
-    if (!open) {
+    if (!focused) {
       props.onBlur?.(e);
     }
   }
@@ -122,6 +126,7 @@ export default React.forwardRef(function DatePicker(
   const visibleValue = getStringFromDate(selectedDate);
   return (
     <Field
+      label={label}
       required={required && selectedDate === undefined}
       pending={pending}
       disabled={props.disabled}
@@ -129,6 +134,13 @@ export default React.forwardRef(function DatePicker(
       onClick={onFieldClick}
       onClickOutside={leave}
     >
+      {placeholder && (
+        <Placeholder
+          label={placeholder}
+          active={!!selectedDate || focused}
+          size={size}
+        />
+      )}
       <input
         {...props}
         className={inputClassName}

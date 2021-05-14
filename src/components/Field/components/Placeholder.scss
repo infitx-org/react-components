@@ -1,0 +1,30 @@
+@import "../../scss/vars/general.scss";
+
+.placeholder {
+  transition: all 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  position: absolute;
+  top: 50%;
+  color: $placeholder-color;
+  transform: translateY(-50%);
+}
+.placeholder--small {
+  font-size: 12px;
+}
+.placeholder--medium {
+  font-size: 13px;
+}
+.placeholder--large {
+  font-size: 14px;
+}
+.placeholder--active-small {
+  top: 5px;
+  font-size: 7px;
+}
+.placeholder--active-medium {
+  top: 6px;
+  font-size: 9px;
+}
+.placeholder--active-large {
+  top: 8px;
+  font-size: 11px;
+}

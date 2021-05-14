@@ -1,12 +1,12 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, Size } from "../types";
+import { Kind, InputSize } from "../types";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 import "./Field.scss";
 
 export interface FieldProps {
   kind?: `${Kind}`;
-  size?: Size;
+  size?: InputSize;
   label?: string;
   required?: boolean;
   pending?: boolean;
@@ -20,7 +20,7 @@ export interface FieldProps {
 
 export default function Field({
   kind = Kind.Primary,
-  size = Size.Large,
+  size = InputSize.Large,
   label,
   disabled,
   required,
@@ -38,27 +38,27 @@ export default function Field({
   const fieldClassname = classnames([
     "field",
     kind && `field--${kind}`,
-    "mb-input",
-    "mb-input__borders",
-    "mb-input__background",
-    "mb-input__shadow",
-    size === Size.Small && "mb-input--small",
-    size === Size.Medium && "mb-input--medium",
-    size === Size.Large && "mb-input--large",
+    "field",
+    "field__borders",
+    "field__background",
+    "field__shadow",
+    size === InputSize.Small && "field--small",
+    size === InputSize.Medium && "field--medium",
+    size === InputSize.Large && "field--large",
     focused &&
-      "mb-input--open mb-input__borders--open mb-input__background--open mb-input__shadow--open",
+      "field--open field__borders--open field__background--open field__shadow--open",
     disabled &&
-      "mb-input--disabled mb-input__borders--disabled mb-input__background--disabled",
+      "field--disabled field__borders--disabled field__background--disabled",
     pending &&
-      "mb-input--pending mb-input__borders--pending mb-input__background--pending mb-input__shadow--pending",
+      "field--pending field__borders--pending field__background--pending field__shadow--pending",
     invalid &&
-      "mb-input--invalid mb-input__borders--invalid mb-input__background--invalid mb-input__shadow--invalid",
+      "field--invalid field__borders--invalid field__background--invalid field__shadow--invalid",
     required &&
-      "mb-input--required mb-input__borders--required mb-input__background--required mb-input__shadow--required",
+      "field--required field__borders--required field__background--required field__shadow--required",
   ]);
 
   return (
-    <>
+    <div>
       {label && <label>{label}</label>}
       <div
         className={fieldClassname}
@@ -68,6 +68,6 @@ export default function Field({
       >
         {children}
       </div>
-    </>
+    </div>
   );
 }

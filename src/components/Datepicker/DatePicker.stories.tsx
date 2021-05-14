@@ -8,7 +8,9 @@ export default {
 /* eslint-disable no-console */
 
 export const WithoutNoState = () => {
-  return <DatePicker pending required />;
+  return (
+    <DatePicker pending required onFocus={console.log} onBlur={console.log} />
+  );
 };
 
 export const WithStateValue = () => {
@@ -17,6 +19,7 @@ export const WithStateValue = () => {
   );
   return (
     <DatePicker
+      label="test"
       value={value}
       onSelect={(date) => {
         setValue(date?.toString());
