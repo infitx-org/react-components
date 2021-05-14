@@ -3,7 +3,7 @@
 exports[`renders the Icon correctly when multiple props are set 1`] = `
 <div>
   <div
-    class="mb-input rc-radiogroup"
+    class="rc-radiogroup"
   >
     <span
       class="rc-radiogroup__label"
