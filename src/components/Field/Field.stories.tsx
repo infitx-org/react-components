@@ -7,7 +7,7 @@ export default {
 
 export const DefaultField = () => {
   return (
-    <Field pending required>
+    <Field>
       <div
         style={{
           height: "14px",
@@ -21,10 +21,10 @@ export const DefaultField = () => {
   );
 };
 
-const CreditCardField = ({ value, onChange }) => {
+const CreditCardExampleField = ({ value, onChange }) => {
   function formatValue(unformatted: string): string {
     const chunks = unformatted.replace(/ /g, "").match(/.{1,4}/g) || [];
-    return chunks!.join(" ");
+    return chunks.join(" ");
   }
   return (
     <Field pending required>
@@ -42,6 +42,9 @@ const CreditCardField = ({ value, onChange }) => {
 export const DefaultSimpleMultiField = () => {
   const [value, setValue] = React.useState("1234123412341234");
   return (
-    <CreditCardField value={value} onChange={(e) => setValue(e.target.value)} />
+    <CreditCardExampleField
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
   );
 };

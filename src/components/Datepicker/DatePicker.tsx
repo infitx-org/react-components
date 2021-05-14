@@ -5,8 +5,7 @@ import { format as dateFormat } from "date-fns";
 import "react-day-picker/lib/style.css";
 import { KeyCodes } from "../utils/keyCodes";
 import mergeRefs from "../utils/mergeRefs";
-import Field from "../Field";
-import Loader from "../Field/Loader";
+import Field, { Loader } from "../Field";
 import { InputSize } from "../types";
 import "./DatePicker.scss";
 import "./DayPicker.scss";
@@ -66,7 +65,6 @@ export default React.forwardRef(function DatePicker(
   function leave() {
     setFocused(false);
     setOpen(false);
-    inputRef.current?.blur();
   }
 
   function onDayClick(day: Date, { selected }: { selected?: boolean }) {
@@ -141,6 +139,7 @@ export default React.forwardRef(function DatePicker(
         onBlur={onBlur}
         onKeyDown={onKeyDown}
         value={visibleValue}
+        readOnly
       />
       {pending && <Loader size={size} />}
       {open && (

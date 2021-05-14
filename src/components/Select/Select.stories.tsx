@@ -27,6 +27,7 @@ export const SelectNoState = () => {
       ref={ref}
       required
       onFocus={console.log}
+      onBlur={console.log}
     />
   );
 };

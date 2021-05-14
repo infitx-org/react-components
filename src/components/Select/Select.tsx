@@ -3,11 +3,10 @@ import "./Select.scss";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
-import Field from "../Field";
+import Field, { Loader } from "../Field";
 import Indicator from "./Indicator";
 import Options, { Option, OptionValue } from "./Options";
 import Filter from "./Filter";
-import Loader from "../Field/Loader";
 import { InputSize } from "../types";
 import { KeyCodes } from "../utils/keyCodes";
 import mergeRefs from "../utils/mergeRefs";
@@ -57,7 +56,6 @@ export default React.forwardRef(function Select(
     setFocused(false);
     setOpen(false);
     setFilter(undefined);
-    inputRef.current?.blur();
   }
 
   function onSelect(newValue: OptionValue) {
@@ -68,14 +66,14 @@ export default React.forwardRef(function Select(
   }
 
   function onFocus(e: React.FocusEvent<HTMLInputElement>) {
-    if (!open) {
-      props.onFocus?.(e);
+    if (!focused) {
       enter();
+      props.onFocus?.(e);
     }
   }
 
   function onBlur(e: React.FocusEvent<HTMLInputElement>) {
-    if (!open) {
+    if (!focused) {
       props.onBlur?.(e);
     }
   }

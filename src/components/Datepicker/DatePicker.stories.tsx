@@ -7,32 +7,24 @@ export default {
 
 /* eslint-disable no-console */
 
-export const DatePickerNoState = () => {
-  const ref = React.useRef<HTMLInputElement>(null);
-  React.useEffect(() => {
-    if (ref.current) {
-      setTimeout(() => ref.current?.focus(), 100);
-    }
-  }, [ref.current]);
-
-  return <DatePicker pending ref={ref} required onChange={console.log} />;
+export const WithoutNoState = () => {
+  return <DatePicker pending required />;
 };
 
-export const DatePickerValue = () => {
-  const [value, setValue] = React.useState(new Date().toString());
-  return (
-    <>
-      <input type="text" />
-      <DatePicker
-        value={value}
-        onSelect={(date) => {
-          console.log(date);
-          setValue(date);
-        }}
-        format="dd yyyy"
-        required
-      />
-      <input type="text" />
-    </>
+export const WithStateValue = () => {
+  const [value, setValue] = React.useState<string | undefined>(
+    new Date().toString()
   );
+  return (
+    <DatePicker
+      value={value}
+      onSelect={(date) => {
+        setValue(date?.toString());
+      }}
+    />
+  );
+};
+
+export const FormatDate = () => {
+  return <DatePicker value={new Date().toString()} format="dd yyyy" />;
 };
