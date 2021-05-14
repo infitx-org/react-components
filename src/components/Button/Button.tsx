@@ -43,12 +43,10 @@ function Button({
 }: ButtonProps): JSX.Element {
   const classNames = classnames([
     className,
-    "mb-input",
     "input-button",
     `input-button--${kind}`,
     `input-button--${size}`,
-    disabled && "mb-input--disabled input-button--disabled",
-    pending && "mb-input--pending input-button--pending",
+    disabled && "input-button--disabled",
     noFill && "input-button--noFill",
   ]);
 

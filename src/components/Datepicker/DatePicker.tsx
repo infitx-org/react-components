@@ -13,7 +13,10 @@ import "./DayPicker.scss";
 type DateValue = Date | undefined;
 
 export interface DatePickerProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "size" | "onSelect"
+  > {
   size?: `${InputSize}`;
   format?: string;
   label?: string;
@@ -160,6 +163,7 @@ export default React.forwardRef(function DatePicker(
           className="datepicker__calendar"
           role="presentation"
         >
+          {/* @ts-ignore */}
           <DayPicker selectedDays={selectedDate} onDayClick={onDayClick} />
         </div>
       )}

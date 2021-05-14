@@ -38,7 +38,6 @@ export default function Field({
   const fieldClassname = classnames([
     "field",
     kind && `field--${kind}`,
-    "field",
     "field__borders",
     "field__background",
     "field__shadow",

@@ -7,7 +7,7 @@ interface FilterProps {
   size: `${InputSize}`;
 }
 
-function Filter({ open, size }: FilterProps) {
+function Filter({ size }: FilterProps) {
   return (
     <div className="mb-input__inner-icon input-select__icon">
       <Icon size={getIconSizeByComponentSize(size)} icon={<Search />} />

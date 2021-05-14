@@ -1,18 +1,15 @@
-@import "../vars/colors.scss";
-@import "../vars/border.scss";
-@import "../vars/background.scss";
-@import "../vars/shadow.scss";
-@import "../vars/general.scss";
 @import "../vars/fonts.scss";
 
-.mb-input * {
+.rc-component {
   box-sizing: border-box;
   font-style: normal;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  font-family: $font__primary, $font__primary-fallback;
+  letter-spacing: $font__primary-spacing;
 }
 
-.mb-input__inner-icon {
+.rc__inner-icon {
   flex: 0 0 auto;
   fill: #999;
   margin-left: 5px;

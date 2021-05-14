@@ -1,7 +1,9 @@
 @import "../scss/vars/colors.scss";
+@import "../scss/items/input.scss";
 
 .el-tabs {
   outline: none;
+  @extend .rc-component;
 }
 
 .el-tabs--flexible {

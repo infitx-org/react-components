@@ -2,7 +2,7 @@ import classnames from "classnames";
 import { InputSize } from "../../types";
 import "./Placeholder.scss";
 
-interface PlaceholderProps {
+export interface PlaceholderProps {
   label: string;
   size: `${InputSize}`;
   active: boolean;

@@ -11,4 +11,6 @@ export {
   TabProps,
   TabsProps,
 } from "./Tabs";
+export { default as Select, SelectProps } from "./Select";
+export { default as DatePicker, DatePickerProps } from "./DatePicker";
 export * from "./types";

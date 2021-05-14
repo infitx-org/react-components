@@ -12,7 +12,7 @@ import { KeyCodes } from "../utils/keyCodes";
 import mergeRefs from "../utils/mergeRefs";
 
 export interface SelectProps
-  extends React.SelectHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.SelectHTMLAttributes<HTMLInputElement>, "size" | "value"> {
   value?: OptionValue;
   size?: `${InputSize}`;
   required?: boolean;

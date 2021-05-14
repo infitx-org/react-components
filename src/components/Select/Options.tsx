@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import classnames from "classnames";
 import "./Options.scss";
 import Icon from "../Icon";
@@ -18,7 +18,7 @@ type OptionLabel = string | number;
 export type Option = {
   value: OptionValue;
   label: OptionLabel;
-  icon?: string;
+  icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   disabled?: boolean;
 };
 
@@ -26,7 +26,7 @@ interface OptionProps {
   className?: string;
   size: `${InputSize}`;
   highlighted?: boolean;
-  selected?: OptionValue;
+  selected?: boolean;
   disabled?: boolean;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   label: OptionLabel;
@@ -78,7 +78,7 @@ interface OptionsProps {
   selected?: OptionValue;
   size: `${InputSize}`;
   clearable?: boolean;
-  maxHeight?: number;
+  // maxHeight?: number;
   reverse?: boolean;
   onSelect: (option: Option) => void;
   onClear: () => void;
@@ -91,7 +91,7 @@ function Options({
   selected,
   size,
   clearable,
-  maxHeight,
+  // maxHeight,
   reverse,
   onSelect,
   onClear,
