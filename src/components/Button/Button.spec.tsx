@@ -70,29 +70,25 @@ describe("tests the buttton", () => {
 
   it("renders the default kind as primary kind", () => {
     const { container } = render(<Button onClick={log} />);
-    expect(
-      container.querySelector("button.input-button--primary")
-    ).toBeTruthy();
+    expect(container.querySelector("button.rc-button--primary")).toBeTruthy();
   });
 
   it("renders all the kinds", () => {
     Object.values(Kind).forEach((kind) => {
       const { container } = render(<Button onClick={log} kind={kind} />);
-      expect(
-        container.querySelector(`button.input-button--${kind}`)
-      ).toBeTruthy();
+      expect(container.querySelector(`button.rc-button--${kind}`)).toBeTruthy();
     });
   });
 
   it('renders with the "noFill" prop', () => {
     const { container } = render(<Button onClick={log} noFill />);
-    expect(container.querySelector("button.input-button--noFill")).toBeTruthy();
+    expect(container.querySelector("button.rc-button--noFill")).toBeTruthy();
   });
 
   it("renders the large, medium, small sizes", () => {
     Object.values(Size).forEach((size) => {
       const { container } = render(<Button onClick={log} size={size} />);
-      expect(container.querySelector(`.input-button--${size}`)).toBeTruthy();
+      expect(container.querySelector(`.rc-button--${size}`)).toBeTruthy();
     });
   });
 

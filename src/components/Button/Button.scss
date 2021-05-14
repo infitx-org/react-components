@@ -5,7 +5,7 @@
 @import "../scss/vars/fonts.scss";
 @import "../scss/items/input.scss";
 
-.input-button {
+.rc-button {
   @extend .rc-component;
   outline: none;
   cursor: pointer;
@@ -29,7 +29,7 @@
 
   box-shadow: $shadow-size--closed transparent;
 
-  &:not(.input-button--noFill) {
+  &:not(.rc-button--noFill) {
     border-bottom-color: rgba(0, 0, 0, 0.2);
   }
   &:hover,
@@ -48,51 +48,51 @@
   }
 }
 
-.input-button__content {
+.rc-button__content {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.input-button__icon {
+.rc-button__icon {
   display: flex;
   fill: inherit;
   stroke: inherit;
 }
-.input-button__icon--left {
+.rc-button__icon--left {
   margin-right: 5px;
   margin-left: 0px;
 }
-.input-button__icon--right {
+.rc-button__icon--right {
   margin-right: 0px;
   margin-left: 5px;
 }
 
-.input-button--extra-small {
+.rc-button--extra-small {
   padding: 2px 4px;
   font-size: 10px;
   height: 21px;
 }
-.input-button--small {
+.rc-button--small {
   padding: 6px 10px;
   font-size: 11px;
   height: 27px;
 }
-.input-button--medium {
+.rc-button--medium {
   padding: 8px 13px;
   font-size: 12px;
   height: 33px;
 }
-.input-button--large {
+.rc-button--large {
   padding: 10px 16px;
   font-size: 14px;
   height: 39px;
 }
 
-.input-button--primary {
+.rc-button--primary {
   background-color: $color__main-primary;
   border-color: $color__main-primary;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     background-color: transparent;
     color: $color__main-primary;
     fill: $color__main-primary;
@@ -109,18 +109,18 @@
     background-color: $color__main-primary--active;
     border-color: $color__main-primary--active;
 
-    &.input-button--noFill {
+    &.rc-button--noFill {
       color: $color__white;
       fill: $color__white;
       stroke: $color__white;
     }
   }
 }
-.input-button--secondary {
+.rc-button--secondary {
   background-color: $color__main-secondary;
   border-color: $color__main-secondary;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     background: transparent;
     color: $color__main-secondary;
     fill: $color__main-secondary;
@@ -137,7 +137,7 @@
     background-color: $color__main-secondary--active;
     border-color: $color__main-secondary--active;
 
-    &.input-button--noFill {
+    &.rc-button--noFill {
       color: $color__white;
       fill: $color__white;
       stroke: $color__white;
@@ -145,14 +145,14 @@
   }
 }
 
-.input-button--success {
+.rc-button--success {
   background-color: $color__main-success;
   border-color: $color__main-success;
   color: $color__white;
   fill: $color__white;
   stroke: $color__white;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     background: transparent;
     color: $color__main-success;
     fill: $color__main-success;
@@ -169,21 +169,21 @@
     background-color: $color__main-success--active;
     border-color: $color__main-success--active;
 
-    &.input-button--noFill {
+    &.rc-button--noFill {
       color: $color__white;
       fill: $color__white;
       stroke: $color__white;
     }
   }
 }
-.input-button--danger {
+.rc-button--danger {
   background-color: $color__main-danger;
   border-color: $color__main-danger;
   color: $color__white;
   fill: $color__white;
   stroke: $color__white;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     background: transparent;
     color: $color__main-danger;
     fill: $color__main-danger;
@@ -200,7 +200,7 @@
     background-color: $color__main-danger--active;
     border-color: $color__main-danger--active;
 
-    &.input-button--noFill {
+    &.rc-button--noFill {
       color: $color__white;
       fill: $color__white;
       stroke: $color__white;
@@ -208,11 +208,11 @@
   }
 }
 
-.input-button--warning {
+.rc-button--warning {
   background-color: $color__main-warning;
   border-color: $color__main-warning;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     background-color: transparent;
     color: $color__main-warning;
     fill: $color__main-warning;
@@ -229,7 +229,7 @@
     background-color: $color__main-warning--active;
     border-color: $color__main-warning--active;
 
-    &.input-button--noFill {
+    &.rc-button--noFill {
       color: $color__white;
       fill: $color__white;
       stroke: $color__white;
@@ -237,14 +237,14 @@
   }
 }
 
-.input-button--dark {
+.rc-button--dark {
   background-color: $color__alpha-5;
   border-color: transparent;
   color: $color__white;
   fill: $color__white;
   stroke: $color__white;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     background-color: transparent;
     border-color: $color__alpha-5;
     color: $color__alpha-4;
@@ -262,7 +262,7 @@
     background-color: $color__alpha-4;
     border-color: transparent;
 
-    &.input-button--noFill {
+    &.rc-button--noFill {
       color: $color__white;
       fill: $color__white;
       stroke: $color__white;
@@ -270,14 +270,14 @@
   }
 }
 
-.input-button--light {
+.rc-button--light {
   background-color: $color__white;
   border-color: transparent;
   color: $color__gray-5;
   fill: $color__gray-5;
   stroke: $color__gray-5;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     background-color: transparent;
     border-color: $color__white;
     color: $color__white;
@@ -296,7 +296,7 @@
     border-color: transparent;
     color: $color__gray-4;
 
-    &.input-button--noFill {
+    &.rc-button--noFill {
       color: $color__gray-5;
       fill: $color__gray-5;
       stroke: $color__gray-5;
@@ -304,14 +304,14 @@
   }
 }
 
-.input-button--tertiary {
+.rc-button--tertiary {
   background-color: $color__main-tertiary;
   border-color: $color__main-tertiary;
   color: $color__dark-gray-2;
   fill: $color__dark-gray-2;
   stroke: $color__dark-gray-2;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     border-color: $color__gray-4;
     background: transparent;
     color: $color__gray-5;
@@ -334,7 +334,7 @@
   }
 }
 
-.input-button--disabled {
+.rc-button--disabled {
   opacity: $component-opacity--disabled;
   pointer-events: none;
   cursor: auto;
@@ -344,7 +344,7 @@
   fill: $color__gray-5;
   stroke: $color__gray-5;
 
-  &.input-button--noFill {
+  &.rc-button--noFill {
     border-color: $color__gray-2;
     background: transparent;
     color: $color__gray-5;
@@ -353,15 +353,15 @@
   }
 }
 
-.input-button--primary,
-.input-button--secondary,
-.input-button--tertiary,
-.input-button--danger,
-.input-button--warning,
-.input-button--dark,
-.input-button--light {
+.rc-button--primary,
+.rc-button--secondary,
+.rc-button--tertiary,
+.rc-button--danger,
+.rc-button--warning,
+.rc-button--dark,
+.rc-button--light {
   &:hover {
-    &.input-button--noFill {
+    &.rc-button--noFill {
       &:active {
         color: $color__alpha-3;
         fill: $color__alpha-3;

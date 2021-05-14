@@ -3,15 +3,15 @@
 exports[`renders the button correctly when multiple props are set 1`] = `
 <div>
   <button
-    class="input-button input-button--secondary input-button--large input-button--disabled"
+    class="rc-button rc-button--secondary rc-button--large rc-button--disabled"
     disabled=""
     type="button"
   >
     <div
-      class="input-button__content"
+      class="rc-button__content"
     >
       <div
-        class="input-button__icon input-button__icon--left"
+        class="rc-button__icon rc-button__icon--left"
       >
         <div
           class="el-spinner "
