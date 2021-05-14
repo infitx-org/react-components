@@ -1,7 +1,7 @@
 import classnames from "classnames";
-import Arrow from "../../assets/icons/arrow.svg";
-import Icon from "../Icon";
-import { InputSize } from "../types";
+import Arrow from "assets/icons/arrow.svg";
+import Icon from "components/Icon";
+import { InputSize } from "components/types";
 import "./Indicator.scss";
 
 const indicatorSizes = {

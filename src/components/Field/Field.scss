@@ -3,9 +3,7 @@
 @import "../scss/vars/background.scss";
 @import "../scss/vars/shadow.scss";
 @import "../scss/vars/general.scss";
-@import "../scss/vars/fonts.scss";
 @import "../scss/base.scss";
-
 
 .rc-field {
   @extend .rc-component;
@@ -103,7 +101,6 @@
 .rc-field__borders--invalid {
   border-bottom-color: $border-color--invalid;
 }
-
 
 .rc-field__icon {
   flex: 0 0 auto;

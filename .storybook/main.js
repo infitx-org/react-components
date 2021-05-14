@@ -7,6 +7,10 @@ module.exports = {
     '@storybook/addon-docs',
   ],
   webpackFinal: async (config, { configType }) => {
+
+    // Allow absolute paths
+    config.resolve.modules = [path.resolve(__dirname, '../src'), 'node_modules'];
+
     config.module.rules.push({
       test: /\.scss$/,
       use: ['style-loader', 'css-loader', 'sass-loader'],
