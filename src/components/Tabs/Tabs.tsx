@@ -38,7 +38,6 @@ function Tab(
   ref: React.Ref<HTMLDivElement>
 ) {
   const tabClassName = classnames([
-    "el",
     "rc-tabs__tab",
     focused && "rc-tabs__tab--focused",
     selected && "rc-tabs__tab--selected",
@@ -71,7 +70,6 @@ export interface TabPanelProps {
 
 function TabPanel({ children, flex, style, className }: TabPanelProps) {
   const classNames = classnames([
-    "el",
     "rc-tabs__tab-panel",
     flex && "rc-tabs__tab-panel--flexible",
     className,
