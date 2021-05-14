@@ -1,7 +1,7 @@
 @import "../scss/vars/colors.scss";
 @import "../scss/vars/transitions.scss";
 
-.datepicker__input {
+.rc-datepicker__input {
   flex: 2 1 auto;
   vertical-align: middle;
   position: relative;
@@ -17,7 +17,7 @@
   color: $color__dark-gray-3;
 }
 
-.datepicker__calendar {
+.rc-datepicker__calendar {
   position: absolute;
   z-index: 100000;
   top: 45px;
@@ -27,7 +27,7 @@
   background: #fff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 
-  &.input-datepicker__calendar-box--reverse {
+  &.input-rc-datepicker__calendar-box--reverse {
     top: auto;
     bottom: 45px;
   }

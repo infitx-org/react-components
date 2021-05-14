@@ -124,7 +124,7 @@ export default React.forwardRef(function DatePicker(
     }
   }
 
-  const inputClassName = classnames(["datepicker__input"]);
+  const inputClassName = classnames(["rc-datepicker__input"]);
 
   const visibleValue = getStringFromDate(selectedDate);
   return (
@@ -160,7 +160,7 @@ export default React.forwardRef(function DatePicker(
       {open && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="datepicker__calendar"
+          className="rc-datepicker__calendar"
           role="presentation"
         >
           {/* @ts-ignore */}
