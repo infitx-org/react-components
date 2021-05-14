@@ -1,0 +1,12 @@
+@import "../Field/Field.scss";
+
+.rc-select__indicator {
+  @extend .rc-field__icon;
+  margin-top: 2px;
+  transform: rotateZ(90deg) rotateY(0deg);
+  transition: all 0.2s linear;
+}
+
+.rc-select__indicator--open {
+  transform: rotateZ(90deg) rotateY(180deg);
+}

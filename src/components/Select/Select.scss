@@ -20,13 +20,3 @@
 .rc-select--filtering {
   color: $color__blue-4;
 }
-
-.rc-select__indicator {
-  margin-top: 2px;
-  transform: rotateZ(90deg) rotateY(0deg);
-  transition: all 0.2s linear;
-}
-
-.rc-select__indicator--open {
-  transform: rotateZ(90deg) rotateY(180deg);
-}

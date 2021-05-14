@@ -2,6 +2,7 @@ import classnames from "classnames";
 import Arrow from "../../assets/icons/arrow.svg";
 import Icon from "../Icon";
 import { InputSize } from "../types";
+import "./Indicator.scss";
 
 const indicatorSizes = {
   [InputSize.Small]: 9,
@@ -19,14 +20,12 @@ function Indicator({ open, size }: IndicatorProps) {
     open && "rc-select__indicator--open",
   ]);
   return (
-    <div className="mb-input__inner-icon input-select__icon">
-      <Icon
-        className={className}
-        icon={<Arrow />}
-        size={indicatorSizes[size]}
-        fill="rgba(0,0,0,0.4)"
-      />
-    </div>
+    <Icon
+      className={className}
+      icon={<Arrow />}
+      size={indicatorSizes[size]}
+      fill="rgba(0,0,0,0.4)"
+    />
   );
 }
 
