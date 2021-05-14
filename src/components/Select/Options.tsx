@@ -44,13 +44,13 @@ function OptionItem({
   onClick,
 }: OptionProps) {
   const optionsClassNames = classnames([
-    "input-select__options-item",
-    size === InputSize.Small && "input-select__options-item--small",
-    size === InputSize.Medium && "input-select__options-item--medium",
-    size === InputSize.Large && "input-select__options-item--large",
-    selected && "input-select__options-item--selected",
-    disabled && "input-select__options-item--disabled",
-    highlighted && "input-select__options-item--highlighted",
+    "rc-select__option-item",
+    size === InputSize.Small && "rc-select__option-item--small",
+    size === InputSize.Medium && "rc-select__option-item--medium",
+    size === InputSize.Large && "rc-select__option-item--large",
+    selected && "rc-select__option-item--selected",
+    disabled && "rc-select__option-item--disabled",
+    highlighted && "rc-select__option-item--highlighted",
     className,
   ]);
   return (
@@ -62,12 +62,12 @@ function OptionItem({
     >
       {icon && (
         <Icon
-          className="input-select__options-item__icon"
+          className="rc-select__option-item__icon"
           icon={icon}
           size={getIconSizeByComponentSize(size)}
         />
       )}
-      <div className="input-select__options-item__label">{label}</div>
+      <div className="rc-select__option-item__label">{label}</div>
     </div>
   );
 }
@@ -98,27 +98,27 @@ function Options({
   optionsRef,
 }: OptionsProps) {
   const className = classnames([
-    "input-select__options-wrapper",
-    reverse && "input-select__options-wrapper--reverse",
-    !reverse && "input-select__options-wrapper--regular",
+    "rc-select__options-wrapper",
+    reverse && "rc-select__options-wrapper--reverse",
+    !reverse && "rc-select__options-wrapper--regular",
     size === InputSize.Small &&
       reverse &&
-      "input-select__options-wrapper--reverse-small",
+      "rc-select__options-wrapper--reverse-small",
     size === InputSize.Small &&
       !reverse &&
-      "input-select__options-wrapper--regular-small",
+      "rc-select__options-wrapper--regular-small",
     size === InputSize.Medium &&
       reverse &&
-      "input-select__options-wrapper--reverse-medium",
+      "rc-select__options-wrapper--reverse-medium",
     size === InputSize.Medium &&
       !reverse &&
-      "input-select__options-wrapper--regular-medium",
+      "rc-select__options-wrapper--regular-medium",
     size === InputSize.Large &&
       reverse &&
-      "input-select__options-wrapper--reverse-large",
+      "rc-select__options-wrapper--reverse-large",
     size === InputSize.Large &&
       !reverse &&
-      "input-select__options-wrapper--regular-large",
+      "rc-select__options-wrapper--regular-large",
   ]);
 
   let clearOption = null;
@@ -129,7 +129,7 @@ function Options({
         size={size}
         label="Clear"
         icon={<CloseSmall fill="#c33" />}
-        className="input-select__options-item--clear"
+        className="rc-select__option-item--clear"
       />
     );
   }
@@ -154,19 +154,19 @@ function Options({
     ));
   } else {
     optionItems = (
-      <div className="input-select__options-item--no-options__box">
+      <div className="rc-select__option-item--no-options__box">
         <Icon
           icon={<InfoSmall fill="#999" />}
           size={getIconSizeByComponentSize(size)}
         />
-        <div className="input-select__options-item--no-options__message">
+        <div className="rc-select__option-item--no-options__message">
           No options available
         </div>
       </div>
     );
   }
   return (
-    <div className="input-select__options" ref={optionsRef}>
+    <div className="rc-select__options" ref={optionsRef}>
       <div
         className={className}
         style={{ maxHeight: "100px", overflow: "auto" }}

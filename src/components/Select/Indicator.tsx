@@ -15,8 +15,8 @@ interface IndicatorProps {
 
 function Indicator({ open, size }: IndicatorProps) {
   const className = classnames([
-    "select__indicator",
-    open && "select__indicator--open",
+    "rc-select__indicator",
+    open && "rc-select__indicator--open",
   ]);
   return (
     <div className="mb-input__inner-icon input-select__icon">
