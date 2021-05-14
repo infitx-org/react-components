@@ -35,12 +35,12 @@ describe("tests the buttton", () => {
 
   it("renders the spinner", () => {
     const { container } = render(<Button onClick={log} pending />);
-    expect(container.querySelector(".el-spinner")).toBeTruthy();
+    expect(container.querySelector(".rc-spinner")).toBeTruthy();
   });
 
   it("renders the spinner before the icon", () => {
     const { container } = render(<Button icon={icon} onClick={log} pending />);
-    expect(container.querySelector(".el-spinner")).toBeTruthy();
+    expect(container.querySelector(".rc-spinner")).toBeTruthy();
   });
 
   it("renders the icon", () => {
