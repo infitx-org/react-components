@@ -35,11 +35,7 @@ function Checkbox({
     setChecked(checked);
   }, [checked]);
 
-  const wrapperClassName = classnames([
-    "mb-input",
-    "rc-checkbox__wrapper",
-    className,
-  ]);
+  const wrapperClassName = classnames(["rc-checkbox__wrapper", className]);
   const checkboxClassName = classnames([
     "rc-checkbox",
     `rc-checkbox--${kind}`,

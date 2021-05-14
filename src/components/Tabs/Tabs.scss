@@ -2,8 +2,8 @@
 @import "../scss/base.scss";
 
 .rc-tabs {
-  outline: none;
   @include rc-component;
+  outline: none;
 }
 
 .rc-tabs--flexible {
