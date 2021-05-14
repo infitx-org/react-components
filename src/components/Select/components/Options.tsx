@@ -4,8 +4,8 @@ import "./Options.scss";
 import Icon from "components/Icon";
 import { InputSize } from "components/types";
 import { getIconSizeByComponentSize } from "components/shared";
-import InfoSmall from "assets/icons/info-small.svg";
-import CloseSmall from "assets/icons/close-small.svg";
+import InfoSmall from "../../../assets/icons/info-small.svg";
+import CloseSmall from "../../../assets/icons/close-small.svg";
 // import ScrollBox from '../ScrollBox';
 // import Tooltip from '../Tooltip';
 

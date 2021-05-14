@@ -29,12 +29,12 @@ export default {
   plugins: [
     terser(),
     peerDepsExternal(),
+    svgr(),
     babel({
       babelHelpers: "bundled",
     }),
     resolve(),
     commonjs(),
-    svgr(),
     typescript({
       tsconfig: 'tsconfig.build.json',
       useTsconfigDeclarationDir: true
@@ -46,6 +46,6 @@ export default {
       targets: [
         { src: 'src/components/**/*.scss', dest: 'lib', rename: (name, extension, fullPath) => `${fullPath.split('/').slice(2).join('/')}` },
       ]
-    })
-  ]
+    }),
+  ],
 };
