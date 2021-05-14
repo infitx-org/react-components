@@ -1,5 +1,5 @@
-@import "../../Field/Field.scss";
+@import "../../scss/base.scss";
 
 .rc-select__filter {
-  @extend .rc-field__icon;
+  @include rc-field-icon; 
 }

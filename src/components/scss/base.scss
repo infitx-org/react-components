@@ -8,3 +8,9 @@
   letter-spacing: $font__primary-spacing;
   -webkit-font-smoothing: antialiased;
 }
+
+@mixin rc-field-icon {
+  flex: 0 0 auto;
+  fill: #999;
+  margin-left: 5px;
+}

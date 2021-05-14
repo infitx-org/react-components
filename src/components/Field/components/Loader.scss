@@ -1,5 +1,5 @@
-@import "../Field.scss";
+@import "../../scss/base.scss";
 
 .rc-loader {
-  @extend .rc-field__icon;
+  @include rc-field-icon;
 }
