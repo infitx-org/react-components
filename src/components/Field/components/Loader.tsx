@@ -1,6 +1,6 @@
-import Spinner from "../../Spinner";
-import { InputSize } from "../../types";
-import { getIconSizeByComponentSize } from "../../shared";
+import { InputSize } from "types";
+import Spinner from "components/Spinner";
+import { getIconSizeByComponentSize } from "utils/size";
 import "./Loader.scss";
 
 export interface LoaderProps {

@@ -3,13 +3,13 @@ import "./Select.scss";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
+import { InputSize } from "types";
+import { KeyCodes } from "utils/keyCodes";
+import mergeRefs from "utils/mergeRefs";
 import Field, { Loader } from "../Field";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
 import Filter from "./components/Filter";
-import { InputSize } from "../types";
-import { KeyCodes } from "../utils/keyCodes";
-import mergeRefs from "../utils/mergeRefs";
 
 export interface SelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLInputElement>, "size" | "value"> {

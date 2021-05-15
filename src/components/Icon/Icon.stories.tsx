@@ -1,6 +1,6 @@
 import React from "react";
+import { Size } from "types";
 import Icon from "./Icon";
-import { Size } from "../types";
 
 export default {
   title: "Icon",

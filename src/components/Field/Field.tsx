@@ -1,10 +1,10 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, InputSize } from "../types";
-import useOnClickOutside from "../hooks/useOnClickOutside";
+import { Kind, InputSize } from "types";
+import useOnClickOutside from "hooks/useOnClickOutside";
 import "./Field.scss";
 
-export interface FieldProps {
+export type FieldProps = {
   kind?: `${Kind}`;
   size?: InputSize;
   label?: string;
@@ -16,9 +16,9 @@ export interface FieldProps {
   focused?: boolean;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   onClickOutside?: (e: MouseEvent) => void;
-}
+};
 
-export default function Field({
+function Field({
   kind = Kind.Primary,
   size = InputSize.Large,
   label,
@@ -70,3 +70,5 @@ export default function Field({
     </div>
   );
 }
+
+export default React.memo(Field);

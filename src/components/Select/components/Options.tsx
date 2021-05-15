@@ -1,11 +1,11 @@
 import React from "react";
 import classnames from "classnames";
-import "./Options.scss";
+import { InputSize } from "types";
+import { getIconSizeByComponentSize } from "utils/size";
 import Icon from "components/Icon";
-import { InputSize } from "components/types";
-import { getIconSizeByComponentSize } from "components/shared";
 import InfoSmall from "../../../assets/icons/info-small.svg";
 import CloseSmall from "../../../assets/icons/close-small.svg";
+import "./Options.scss";
 // import ScrollBox from '../ScrollBox';
 // import Tooltip from '../Tooltip';
 

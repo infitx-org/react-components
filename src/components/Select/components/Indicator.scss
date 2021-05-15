@@ -1,7 +1,7 @@
-@import "../../Field/Field.scss";
+@import "../../../scss/base.scss";
 
 .rc-select__indicator {
-  @extend .rc-field__icon;
+  @include rc-field-icon;
   margin-top: 2px;
   transform: rotateZ(90deg) rotateY(0deg);
   transition: all 0.2s linear;

@@ -1,12 +1,12 @@
-@import "../scss/vars/colors.scss";
-@import "../scss/vars/border.scss";
-@import "../scss/vars/background.scss";
-@import "../scss/vars/shadow.scss";
-@import "../scss/vars/general.scss";
-@import "../scss/base.scss";
+@import "../../scss/vars/colors.scss";
+@import "../../scss/vars/border.scss";
+@import "../../scss/vars/background.scss";
+@import "../../scss/vars/shadow.scss";
+@import "../../scss/vars/general.scss";
+@import "../../scss/base.scss";
 
 .rc-field {
-  @extend .rc-component;
+  @include rc-component;
   border-radius: $border-radius;
   position: relative;
   display: inline-flex;
@@ -100,10 +100,4 @@
 }
 .rc-field__borders--invalid {
   border-bottom-color: $border-color--invalid;
-}
-
-.rc-field__icon {
-  flex: 0 0 auto;
-  fill: #999;
-  margin-left: 5px;
 }

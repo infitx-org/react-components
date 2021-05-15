@@ -1,11 +1,11 @@
-@import "../scss/vars/colors.scss";
-@import "../scss/vars/shadow.scss";
-@import "../scss/vars/transitions.scss";
-@import "../scss/vars/general.scss";
-@import "../scss/base.scss";
+@import "../../scss/vars/colors.scss";
+@import "../../scss/vars/shadow.scss";
+@import "../../scss/vars/transitions.scss";
+@import "../../scss/vars/general.scss";
+@import "../../scss/base.scss";
 
 .rc-button {
-  @extend .rc-component;
+  @include rc-component;
   outline: none;
   cursor: pointer;
   box-sizing: border-box;

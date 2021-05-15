@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import React, { ChangeEvent } from "react";
-import { Kind } from "../types";
+import { Kind } from "types";
 import "./Checkbox.scss";
 
 export interface CheckboxProps {
@@ -35,11 +35,7 @@ function Checkbox({
     setChecked(checked);
   }, [checked]);
 
-  const wrapperClassName = classnames([
-    "mb-input",
-    "rc-checkbox__wrapper",
-    className,
-  ]);
+  const wrapperClassName = classnames(["rc-checkbox__wrapper", className]);
   const checkboxClassName = classnames([
     "rc-checkbox",
     `rc-checkbox--${kind}`,

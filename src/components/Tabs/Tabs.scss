@@ -1,9 +1,9 @@
-@import "../scss/vars/colors.scss";
-@import "../scss/base.scss";
+@import "../../scss/vars/colors.scss";
+@import "../../scss/base.scss";
 
 .rc-tabs {
+  @include rc-component;
   outline: none;
-  @extend .rc-component;
 }
 
 .rc-tabs--flexible {

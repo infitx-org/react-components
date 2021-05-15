@@ -13,7 +13,7 @@ import typescript from "rollup-plugin-typescript2";
 const packageJson = require("./package.json");
 
 export default {
-  input: "src/components/index.ts",
+  input: "src/index.ts",
   output: [
     {
       file: packageJson.main,
@@ -40,11 +40,12 @@ export default {
       useTsconfigDeclarationDir: true
     }),
     scss({
+      output: 'lib/index.css',
       processor: css => postcss([autoprefixer()]),
     }),
     copy({
       targets: [
-        { src: 'src/components/**/*.scss', dest: 'lib', rename: (name, extension, fullPath) => `${fullPath.split('/').slice(2).join('/')}` },
+        { src: 'src/**/*.scss', dest: 'lib', rename: (name, extension, fullPath) => `${fullPath.split('/').slice(1).join('/')}` },
       ]
     }),
   ],
