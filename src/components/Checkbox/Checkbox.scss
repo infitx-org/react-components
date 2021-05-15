@@ -1,7 +1,7 @@
-@import "../scss/vars/shadow.scss";
-@import "../scss/vars/colors.scss";
-@import "../scss/vars/themes.scss";
-@import "../scss/base.scss";
+@import "../../scss/vars/shadow.scss";
+@import "../../scss/vars/colors.scss";
+@import "../../scss/vars/themes.scss";
+@import "../../scss/base.scss";
 @use "sass:map";
 
 .rc-checkbox__wrapper {

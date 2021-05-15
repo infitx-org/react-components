@@ -40,6 +40,7 @@ export default {
       useTsconfigDeclarationDir: true
     }),
     scss({
+      output: 'lib/index.css',
       processor: css => postcss([autoprefixer()]),
     }),
     copy({

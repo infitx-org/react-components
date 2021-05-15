@@ -1,8 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { Kind, Size } from "types";
+import { Size } from "types";
+import { getIconSizeByComponentSize } from "utils/size";
 import Icon from "./Icon";
-import { getIconSizeByComponentSize } from "../shared";
 
 const icon = (
   <svg width="55" height="55" viewBox="-6 -3 55 55">

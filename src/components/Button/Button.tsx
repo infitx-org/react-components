@@ -5,7 +5,7 @@ import "./Button.scss";
 import { Size, Kind } from "types";
 import Spinner from "components/Spinner";
 import Icon from "components/Icon";
-import { getIconSizeByComponentSize } from "../shared";
+import { getIconSizeByComponentSize } from "utils/size";
 
 export type ButtonProps = {
   children?: React.ReactNode;
