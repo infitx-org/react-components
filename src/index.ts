@@ -2,7 +2,10 @@ export * from "types";
 
 export { default as Button, ButtonProps } from "./components/Button";
 export { default as Checkbox, CheckboxProps } from "./components/Checkbox";
-// export { default as DatePicker, DatePickerProps } from "./components/DatePicker";
+export {
+  default as DatePicker,
+  DatePickerProps,
+} from "./components/DatePicker";
 export {
   default as Field,
   FieldProps,
