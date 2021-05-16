@@ -3,7 +3,7 @@ import { ForwardedRef } from "react";
 type FuncRef<T> = (node: T) => void;
 
 export default function mergeRefs<T>(
-  ...refs: (ForwardedRef<T> | FuncRef<T>)[]
+  ...refs: (ForwardedRef<T> | FuncRef<T> | undefined)[]
 ) {
   const filteredRefs = refs.filter(Boolean);
   if (!filteredRefs.length) return null;

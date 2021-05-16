@@ -4,37 +4,16 @@
   position: absolute;
   left: -1px;
   width: calc(100% + 2px);
-  top: 47px;
-}
-.rc-select__options-wrapper {
-  position: absolute;
-  width: 100%;
   z-index: 1000;
   animation: fadeInOptions 0.15s ease-in-out;
+  max-height: 220px;
+  overflow-y: auto;
 }
 .rc-select__options-wrapper--regular {
   border-bottom: 2px solid $color__main-tertiary;
 }
 .rc-select__options-wrapper--reverse {
   border-top: 2px solid $color__main-tertiary;
-}
-.rc-select__options-wrapper--reverse-small {
-  bottom: 45px;
-}
-.rc-select__options-wrapper--regular-small {
-  top: -14px;
-}
-.rc-select__options-wrapper--reverse-medium {
-  bottom: 45px;
-}
-.rc-select__options-wrapper--regular-medium {
-  top: -7px;
-}
-.rc-select__options-wrapper--reverse-large {
-  bottom: 45px;
-}
-.rc-select__options-wrapper--regular-large {
-  top: 0px;
 }
 
 .rc-select__option-item {

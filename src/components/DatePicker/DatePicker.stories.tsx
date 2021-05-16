@@ -29,5 +29,10 @@ export const WithStateValue = () => {
 };
 
 export const FormatDate = () => {
-  return <DatePicker value={new Date().toString()} format="dd yyyy" />;
+  return (
+    <>
+      <div style={{ height: "1000px" }} />
+      <DatePicker value={new Date().toString()} format="dd yyyy" />
+    </>
+  );
 };

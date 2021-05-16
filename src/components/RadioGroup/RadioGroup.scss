@@ -1,9 +1,12 @@
 @import "../../scss/vars/shadow.scss";
 @import "../../scss/vars/colors.scss";
 @import "../../scss/vars/themes.scss";
+@import "../../scss/base.scss";
+
 @use "sass:map";
 
 .rc-radiogroup {
+  @include rc-component;
   padding: 3px;
   font-size: 14px;
   .rc-radiogroup__inputs {

@@ -1,7 +1,9 @@
 import React from "react";
 import classnames from "classnames";
 import { InputSize } from "types";
+import useOverlayPosition from "hooks/useOverlayPosition";
 import { getIconSizeByComponentSize } from "utils/size";
+import mergeRefs from "utils/mergeRefs";
 import Icon from "components/Icon";
 import InfoSmall from "../../../assets/icons/info-small.svg";
 import CloseSmall from "../../../assets/icons/close-small.svg";
@@ -78,8 +80,6 @@ interface OptionsProps {
   selected?: OptionValue;
   size: `${InputSize}`;
   clearable?: boolean;
-  // maxHeight?: number;
-  reverse?: boolean;
   onSelect: (option: Option) => void;
   onClear: () => void;
   optionsRef?: React.RefObject<HTMLDivElement>;
@@ -91,34 +91,20 @@ function Options({
   selected,
   size,
   clearable,
-  // maxHeight,
-  reverse,
   onSelect,
   onClear,
   optionsRef,
 }: OptionsProps) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { top, bottom, height, reverse } = useOverlayPosition<HTMLDivElement>(
+    ref.current
+  );
+
   const className = classnames([
+    "rc-select__options",
     "rc-select__options-wrapper",
     reverse && "rc-select__options-wrapper--reverse",
     !reverse && "rc-select__options-wrapper--regular",
-    size === InputSize.Small &&
-      reverse &&
-      "rc-select__options-wrapper--reverse-small",
-    size === InputSize.Small &&
-      !reverse &&
-      "rc-select__options-wrapper--regular-small",
-    size === InputSize.Medium &&
-      reverse &&
-      "rc-select__options-wrapper--reverse-medium",
-    size === InputSize.Medium &&
-      !reverse &&
-      "rc-select__options-wrapper--regular-medium",
-    size === InputSize.Large &&
-      reverse &&
-      "rc-select__options-wrapper--reverse-large",
-    size === InputSize.Large &&
-      !reverse &&
-      "rc-select__options-wrapper--regular-large",
   ]);
 
   let clearOption = null;
@@ -166,26 +152,25 @@ function Options({
     );
   }
   return (
-    <div className="rc-select__options" ref={optionsRef}>
-      <div
-        className={className}
-        style={{ maxHeight: "100px", overflow: "auto" }}
-      >
-        {/* <ScrollBox
-          style={{ maxHeight }}
-          handleStyle={{ borderRadius: "3px" }}
-          trackStyle={{
-            top: "2px",
-            bottom: "2px",
-            right: "4px",
-            width: "5px",
-          }}
-          showTrack={false}
-        > */}
-        {clearOption}
-        {optionItems}
-        {/* </ScrollBox> */}
-      </div>
+    <div
+      className={className}
+      ref={mergeRefs(ref, optionsRef)}
+      style={{ top, bottom, height }}
+    >
+      {/* <ScrollBox
+        style={{ maxHeight }}
+        handleStyle={{ borderRadius: "3px" }}
+        trackStyle={{
+          top: "2px",
+          bottom: "2px",
+          right: "4px",
+          width: "5px",
+        }}
+        showTrack={false}
+      > */}
+      {clearOption}
+      {optionItems}
+      {/* </ScrollBox> */}
     </div>
   );
 }
