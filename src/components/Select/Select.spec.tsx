@@ -52,31 +52,24 @@ describe("tests the select", () => {
     const { container } = render(<Select {...commonProps} className="test" />);
     expect(container.querySelector(".test")).toBeTruthy();
   });
+
+  it("renders as disabled", () => {
+    const { container } = render(<Select {...commonProps} disabled />);
+    const input = container.querySelector(
+      "input[type='text']"
+    ) as HTMLInputElement;
+    expect(input.disabled).toBeTruthy();
+  });
+
+  it("renders as pending", () => {
+    const { container } = render(<Select {...commonProps} pending />);
+    expect(container.querySelector(".rc-spinner")).toBeTruthy();
+  });
 });
 
 // it('renders the validation wrapper', () => {
 //   const wrapper = shallow(<Select placeholder="test-Select" />);
 //   expect(wrapper.find(ValidationWrapper)).toHaveLength(1);
-// });
-
-// it('applies the prop className', () => {
-//   const wrapper = shallow(<Select className="test" />);
-//   expect(wrapper.find('.test')).toHaveLength(1);
-// });
-
-// it('renders the prop id', () => {
-//   const wrapper = shallow(<Select id="testSelectId" />);
-//   expect(wrapper.find('#testSelectId')).toHaveLength(1);
-// });
-
-// it('renders the disabled state', () => {
-//   const wrapper = shallow(<Select disabled />);
-//   expect(wrapper.find('input[type="text"]').prop('disabled')).toBe(true);
-// });
-
-// it('renders the pending state', () => {
-//   const wrapper = shallow(<Select pending />);
-//   expect(wrapper.find(Loader)).toHaveLength(1);
 // });
 
 // it('renders the invalid state', () => {
