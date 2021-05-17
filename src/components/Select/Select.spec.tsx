@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
+import { InputSize } from "types";
 import Select from "./Select";
 
 const options = new Array(5)
@@ -65,6 +66,18 @@ describe("tests the select", () => {
     const { container } = render(<Select {...commonProps} pending />);
     expect(container.querySelector(".rc-spinner")).toBeTruthy();
   });
+
+  it("renders as required", () => {
+    const { container } = render(<Select {...commonProps} required />);
+    expect(container.querySelector(".rc-field--required")).toBeTruthy();
+  });
+
+  it("renders the small, medium, large sizes", () => {
+    Object.values(InputSize).forEach((size) => {
+      const { container } = render(<Select {...commonProps} size={size} />);
+      expect(container.querySelector(`.rc-field--${size}`)).toBeTruthy();
+    });
+  });
 });
 
 // it('renders the validation wrapper', () => {
@@ -75,46 +88,6 @@ describe("tests the select", () => {
 // it('renders the invalid state', () => {
 //   const wrapper = shallow(<Select invalid />);
 //   expect(wrapper.find(InvalidIcon)).toHaveLength(1);
-// });
-
-// it('renders the required state', () => {
-//   const wrapper = shallow(<Select required />);
-//   expect(wrapper.find('.mb-input--required')).toHaveLength(1);
-// });
-
-// it('renders the large, medium, small sizes', () => {
-//   const sizes = {
-//     large: 'l',
-//     medium: 'm',
-//     small: 's',
-//   };
-//   Object.entries(sizes).forEach(([name, size]) => {
-//     const wrapper = shallow(<Select size={size} />);
-//     const className = `mb-input--${name}`;
-//     expect(wrapper.find('.mb-input').hasClass(className)).toBeTruthy();
-//   });
-// });
-
-// it('renders the correct size for the clear option', () => {
-//   const sizes = {
-//     large: 'l',
-//     medium: 'm',
-//     small: 's',
-//   };
-//   Object.entries(sizes).forEach(([name, size]) => {
-//     const mockEvent = jest.fn();
-//     const wrapper = mount(
-//       <Select
-//         onClear={mockEvent}
-//         size={size}
-//         options={[{ label: 'l', value: 'x' }]}
-//         selected="x"
-//       />,
-//     );
-//     wrapper.find('input[type="text"]').simulate('click');
-//     const className = `input-select__options-item--${name}`;
-//     expect(wrapper.find('.input-select__options-item--clear').hasClass(className)).toBeTruthy();
-//   });
 // });
 
 // it('sorts the options by value ascending', () => {

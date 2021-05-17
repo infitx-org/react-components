@@ -195,6 +195,7 @@ export default React.forwardRef(function Select(
 
   return (
     <Field
+      size={size}
       className={className}
       required={required && selectedValue === undefined}
       pending={pending}

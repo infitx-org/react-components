@@ -6,7 +6,7 @@ import "./Field.scss";
 
 export type FieldProps = {
   kind?: `${Kind}`;
-  size?: InputSize;
+  size?: `${InputSize}`;
   label?: string;
   required?: boolean;
   pending?: boolean;
