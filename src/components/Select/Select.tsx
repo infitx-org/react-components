@@ -2,8 +2,7 @@ import React from "react";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
-import { InputSize } from "types";
-import { KeyCodes } from "utils/keyCodes";
+import { InputSize, KeyCode } from "types";
 import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder } from "../Field";
 import Indicator from "./components/Indicator";
@@ -163,16 +162,16 @@ export default React.forwardRef(function Select(
   function handleArrows(e: React.KeyboardEvent<HTMLInputElement>) {
     const { keyCode } = e;
 
-    if (keyCode === KeyCodes.Tab) {
+    if (keyCode === KeyCode.Tab) {
       leave();
       return;
     }
-    if (keyCode === KeyCodes.Up || keyCode === KeyCodes.Down) {
+    if (keyCode === KeyCode.Up || keyCode === KeyCode.Down) {
       e.preventDefault();
-      highlightNextOption(keyCode === KeyCodes.Down);
+      highlightNextOption(keyCode === KeyCode.Down);
       return;
     }
-    if (keyCode === KeyCodes.Return) {
+    if (keyCode === KeyCode.Return) {
       e.preventDefault();
       if (open) {
         if (highlighted) {

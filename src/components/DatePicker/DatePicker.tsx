@@ -1,8 +1,7 @@
 import React from "react";
 import classnames from "classnames";
-import { InputSize } from "types";
+import { InputSize, KeyCode } from "types";
 import { format as dateFormat } from "date-fns";
-import { KeyCodes } from "utils/keyCodes";
 import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder } from "components/Field";
 import Calendar from "./components/Calendar";
@@ -110,11 +109,11 @@ export default React.forwardRef(function DatePicker(
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     const { keyCode } = e;
 
-    if (keyCode === KeyCodes.Tab) {
+    if (keyCode === KeyCode.Tab) {
       leave();
       return;
     }
-    if (keyCode === KeyCodes.Return) {
+    if (keyCode === KeyCode.Return) {
       e.preventDefault();
       if (open) {
         setOpen(false);

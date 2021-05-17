@@ -1,4 +1,4 @@
-export enum KeyCodes {
+export enum KeyCode {
   "Cancel" = 3,
   "Help" = 6,
   "BackSpace" = 8,
