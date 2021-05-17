@@ -5,7 +5,7 @@ import classnames from "classnames";
 import { InputSize } from "types";
 import { KeyCodes } from "utils/keyCodes";
 import mergeRefs from "utils/mergeRefs";
-import Field, { Loader } from "../Field";
+import Field, { Loader, Placeholder } from "../Field";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
 import Filter from "./components/Filter";
@@ -13,8 +13,10 @@ import "./Select.scss";
 
 export interface SelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLInputElement>, "size" | "value"> {
-  value?: OptionValue;
   size?: `${InputSize}`;
+  value?: OptionValue;
+  className?: string;
+  placeholder?: string;
   required?: boolean;
   pending?: boolean;
   options: Option[];
@@ -25,6 +27,8 @@ export default React.forwardRef(function Select(
   {
     size = InputSize.Large,
     value,
+    className,
+    placeholder,
     required,
     pending,
     options = [],
@@ -191,6 +195,7 @@ export default React.forwardRef(function Select(
 
   return (
     <Field
+      className={className}
       required={required && selectedValue === undefined}
       pending={pending}
       disabled={props.disabled}
@@ -198,6 +203,13 @@ export default React.forwardRef(function Select(
       onClick={onFieldClick}
       onClickOutside={leave}
     >
+      {placeholder && (
+        <Placeholder
+          label={placeholder}
+          active={!!selectedLabel || focused}
+          size={size}
+        />
+      )}
       <input
         {...props}
         className={selectClassName}

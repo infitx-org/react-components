@@ -45,6 +45,7 @@ export const SelectValue = () => {
         }}
       >
         <Select
+          placeholder="try"
           options={options}
           value={value}
           onChange={(e) => setValue(e.target.value)}

@@ -9,8 +9,6 @@ export interface PlaceholderProps {
 }
 
 export default function Placeholder({ label, size, active }: PlaceholderProps) {
-  // The Placeholder that renders inside an input
-
   const placeholderClassName = classnames([
     "placeholder",
     size === InputSize.Small && "placeholder--small",
