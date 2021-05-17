@@ -10,9 +10,9 @@ interface PositionState {
 }
 
 interface OverlayPosition {
-  top?: number;
-  bottom?: number;
-  height?: number;
+  top?: string;
+  bottom?: string;
+  height?: string;
   reverse: boolean;
 }
 
@@ -35,8 +35,8 @@ export default function useOverLayPosition<T>(
     }
   });
   const { offset, space, reverse } = position;
-  const top = reverse && offset ? toPixel(offset) : undefined;
-  const bottom = !reverse && offset ? toPixel(offset) : undefined;
+  const top = !reverse && offset ? toPixel(offset) : undefined;
+  const bottom = reverse && offset ? toPixel(offset) : undefined;
   const height = space ? toPixel(space) : undefined;
   return {
     top,

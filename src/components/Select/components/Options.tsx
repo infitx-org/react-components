@@ -8,8 +8,6 @@ import Icon from "components/Icon";
 import InfoSmall from "../../../assets/icons/info-small.svg";
 import CloseSmall from "../../../assets/icons/close-small.svg";
 import "./Options.scss";
-// import ScrollBox from '../ScrollBox';
-// import Tooltip from '../Tooltip';
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/tabindex-no-positive */
@@ -46,13 +44,13 @@ function OptionItem({
   onClick,
 }: OptionProps) {
   const optionsClassNames = classnames([
-    "rc-select__option-item",
-    size === InputSize.Small && "rc-select__option-item--small",
-    size === InputSize.Medium && "rc-select__option-item--medium",
-    size === InputSize.Large && "rc-select__option-item--large",
-    selected && "rc-select__option-item--selected",
-    disabled && "rc-select__option-item--disabled",
-    highlighted && "rc-select__option-item--highlighted",
+    "rc-select__option",
+    size === InputSize.Small && "rc-select__option--small",
+    size === InputSize.Medium && "rc-select__option--medium",
+    size === InputSize.Large && "rc-select__option--large",
+    selected && "rc-select__option--selected",
+    disabled && "rc-select__option--disabled",
+    highlighted && "rc-select__option--highlighted",
     className,
   ]);
   return (
@@ -64,12 +62,12 @@ function OptionItem({
     >
       {icon && (
         <Icon
-          className="rc-select__option-item__icon"
+          className="rc-select__option__icon"
           icon={icon}
           size={getIconSizeByComponentSize(size)}
         />
       )}
-      <div className="rc-select__option-item__label">{label}</div>
+      <div className="rc-select__option__label">{label}</div>
     </div>
   );
 }
@@ -102,10 +100,10 @@ function Options({
 
   const className = classnames([
     "rc-select__options",
-    "rc-select__options-wrapper",
-    reverse && "rc-select__options-wrapper--reverse",
-    !reverse && "rc-select__options-wrapper--regular",
+    reverse && "rc-select__options--reverse",
   ]);
+
+  const maxHeight = Math.min(220, parseInt(height || "", 10) || 220);
 
   let clearOption = null;
   if (clearable && selected !== undefined) {
@@ -115,7 +113,7 @@ function Options({
         size={size}
         label="Clear"
         icon={<CloseSmall fill="#c33" />}
-        className="rc-select__option-item--clear"
+        className="rc-select__option--clear"
       />
     );
   }
@@ -140,12 +138,12 @@ function Options({
     ));
   } else {
     optionItems = (
-      <div className="rc-select__option-item--no-options__box">
+      <div className="rc-select__option--no-options__box">
         <Icon
           icon={<InfoSmall fill="#999" />}
           size={getIconSizeByComponentSize(size)}
         />
-        <div className="rc-select__option-item--no-options__message">
+        <div className="rc-select__option--no-options__message">
           No options available
         </div>
       </div>
@@ -155,22 +153,10 @@ function Options({
     <div
       className={className}
       ref={mergeRefs(ref, optionsRef)}
-      style={{ top, bottom, height }}
+      style={{ top, bottom, maxHeight }}
     >
-      {/* <ScrollBox
-        style={{ maxHeight }}
-        handleStyle={{ borderRadius: "3px" }}
-        trackStyle={{
-          top: "2px",
-          bottom: "2px",
-          right: "4px",
-          width: "5px",
-        }}
-        showTrack={false}
-      > */}
       {clearOption}
       {optionItems}
-      {/* </ScrollBox> */}
     </div>
   );
 }

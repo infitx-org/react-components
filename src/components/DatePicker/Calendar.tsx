@@ -15,7 +15,6 @@ export default function Calendar({ selectedDate, onDayClick }: CalendarProps) {
   const { top, bottom, height, reverse } = useOverlayPosition<HTMLDivElement>(
     ref.current
   );
-
   const className = classnames([
     "rc-datepicker__calendar",
     reverse && "rc-datepicker__calendar--reverse",
@@ -29,7 +28,6 @@ export default function Calendar({ selectedDate, onDayClick }: CalendarProps) {
       style={{ top, bottom, maxHeight: height }}
     >
       <div className="rc-datepicker__calendar__container">
-        {/* @ts-ignore */}
         <DayPicker selectedDays={selectedDate} onDayClick={onDayClick} />
       </div>
     </div>

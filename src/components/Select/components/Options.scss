@@ -6,17 +6,15 @@
   width: calc(100% + 2px);
   z-index: 1000;
   animation: fadeInOptions 0.15s ease-in-out;
-  max-height: 220px;
   overflow-y: auto;
-}
-.rc-select__options-wrapper--regular {
   border-bottom: 2px solid $color__main-tertiary;
 }
-.rc-select__options-wrapper--reverse {
+.rc-select__options--reverse {
   border-top: 2px solid $color__main-tertiary;
+  border-bottom: none;
 }
 
-.rc-select__option-item {
+.rc-select__option {
   outline: none;
   display: flex;
   align-items: center;
@@ -38,21 +36,21 @@
     color 0.05s ease-out;
 }
 
-.rc-select__option-item--small {
+.rc-select__option--small {
   padding-left: 6px;
   padding-right: 6px;
   line-height: 30px;
   font-size: 11px;
   flex-basis: 30px;
 }
-.rc-select__option-item--medium {
+.rc-select__option--medium {
   padding-left: 8px;
   padding-right: 8px;
   line-height: 35px;
   font-size: 12px;
   flex-basis: 35px;
 }
-.rc-select__option-item--large {
+.rc-select__option--large {
   padding-left: 10px;
   padding-right: 10px;
   line-height: 40px;
@@ -60,54 +58,54 @@
   flex-basis: 40px;
 }
 
-.rc-select__option-item:hover,
-.rc-select__option-item--highlighted {
+.rc-select__option:hover,
+.rc-select__option--highlighted {
   background: $color__main-tertiary--active;
   border-color: $color__main-tertiary--active;
   color: $color__dark-gray-3;
   fill: $color__dark-gray-3;
 }
-.rc-select__option-item--selected,
-.rc-select__option-item--selected:hover {
+.rc-select__option--selected,
+.rc-select__option--selected:hover {
   background: $color__main-secondary--active;
   border-color: $color__main-secondary--active;
   color: #fff;
   fill: #fff;
 }
-.rc-select__option-item--disabled,
-.rc-select__option-item--disabled:hover {
+.rc-select__option--disabled,
+.rc-select__option--disabled:hover {
   background: $color__white;
   color: $color__main-disabled;
   border-color: $color__main-disabled;
   cursor: auto;
 }
-.rc-select__option-item--clear {
+.rc-select__option--clear {
   color: #999;
   fill: #999;
   background: #fee;
 }
-.rc-select__option-item--clear:hover {
+.rc-select__option--clear:hover {
   color: $color__main-danger;
   fill: $color__main-danger;
   background: #fee;
 }
 
-.rc-select__option-item__icon {
+.rc-select__option__icon {
   margin-right: 5px;
 }
-.rc-select__option-item__icon--clear {
+.rc-select__option__icon--clear {
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.1);
 }
-.rc-select__option-item__label {
+.rc-select__option__label {
   min-width: 0;
 }
-.rc-select__option-item__label--clear {
+.rc-select__option__label--clear {
   margin-left: 10px;
 }
 
-.rc-select__option-item--no-options__box {
+.rc-select__option--no-options__box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,7 +117,7 @@
   border-left: 2px solid $color__main-tertiary;
   border-right: 2px solid $color__main-tertiary;
 }
-.rc-select__option-item--no-options__message {
+.rc-select__option--no-options__message {
   margin-left: 10px;
 }
 @keyframes fadeInOptions {

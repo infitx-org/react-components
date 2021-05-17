@@ -1,21 +1,22 @@
-function getParentOverflow(elem) {
-  if (!elem.parentNode) {
+function getParentOverflow<T extends HTMLElement>(element: T): HTMLElement {
+  const parent = <HTMLElement>element.parentNode;
+  if (!parent) {
     return document.body;
   }
-  const { overflowY } = window.getComputedStyle(elem.parentNode);
+  const { overflowY } = window.getComputedStyle(parent);
   if (overflowY === "hidden") {
-    return elem.parentNode;
+    return parent;
   }
   if (overflowY === "scroll") {
-    if (elem.getBoundingClientRect().height > elem.parentNode.offsetHeight) {
-      return elem.parentNode;
+    if (element.getBoundingClientRect().height > parent.offsetHeight) {
+      return parent;
     }
-    return elem;
+    return element;
   }
-  if (elem.parentNode === document.body) {
+  if (parent === document.body) {
     return document.body;
   }
-  return getParentOverflow(elem.parentNode);
+  return getParentOverflow(parent);
 }
 
 export default function getSpaceAvailability<T extends HTMLDivElement>(
@@ -25,19 +26,23 @@ export default function getSpaceAvailability<T extends HTMLDivElement>(
     return [0, 0, false];
   }
 
-  const parent = <HTMLDivElement>element.parentNode;
+  const parent = <HTMLElement>element.parentNode;
   const container = getParentOverflow(parent);
+
   const elementRect = element.getBoundingClientRect();
   const parentRect = parent.getBoundingClientRect();
   const containerRect = container.getBoundingClientRect();
 
   const spaceTop = parentRect.top - containerRect.top;
-  const spaceBottom = window.innerHeight - parentRect.top - parentRect.height;
+  const windowSpaceBottom =
+    window.innerHeight - parentRect.top - parentRect.height;
+  const containerSpaceBottom =
+    containerRect.height -
+    parentRect.height -
+    (parentRect.top - containerRect.top);
+  const spaceBottom = Math.min(containerSpaceBottom, windowSpaceBottom);
 
-  if (elementRect.height < spaceBottom) {
-    return [parentRect.height, spaceBottom, false];
-  }
-  if (spaceBottom > spaceTop) {
+  if (elementRect.height < spaceBottom || spaceBottom > spaceTop) {
     return [parentRect.height, spaceBottom, false];
   }
   return [parentRect.height, spaceTop, true];
