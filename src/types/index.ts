@@ -1,4 +1,4 @@
-export type { KeyCode } from "./KeyCodes";
+export type { KeyCode } from "./keyCodes";
 export enum Kind {
   Primary = "primary",
   Secondary = "secondary",
