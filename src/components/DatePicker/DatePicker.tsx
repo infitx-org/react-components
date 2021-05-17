@@ -4,8 +4,8 @@ import { InputSize } from "types";
 import { format as dateFormat } from "date-fns";
 import { KeyCodes } from "utils/keyCodes";
 import mergeRefs from "utils/mergeRefs";
-import Field, { Loader, Placeholder } from "../Field";
-import Calendar from "./Calendar";
+import Field, { Loader, Placeholder } from "components/Field";
+import Calendar from "./components/Calendar";
 import "./DatePicker.scss";
 
 type DateValue = Date | undefined;

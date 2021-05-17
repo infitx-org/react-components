@@ -4,6 +4,7 @@ import classnames from "classnames";
 import useOverlayPosition from "hooks/useOverlayPosition";
 import "react-day-picker/lib/style.css";
 import "./DayPicker.scss";
+import "./Calendar.scss";
 
 interface CalendarProps {
   selectedDate: Date | undefined;
