@@ -72,7 +72,7 @@ export default React.forwardRef(function DatePicker(
     setOpen(false);
   }
 
-  function onDayClick(day: Date, { selected }: { selected?: boolean }) {
+  function onDayClick(day: Date, selected?: boolean) {
     const newDate = selected ? undefined : day;
     setDate(newDate);
     inputRef.current?.focus();

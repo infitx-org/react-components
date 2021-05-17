@@ -7,7 +7,7 @@ import "./DayPicker.scss";
 
 interface CalendarProps {
   selectedDate: Date | undefined;
-  onDayClick: (day: Date) => void;
+  onDayClick: (day: Date, selected: boolean | undefined) => void;
 }
 
 export default function Calendar({ selectedDate, onDayClick }: CalendarProps) {
@@ -28,7 +28,10 @@ export default function Calendar({ selectedDate, onDayClick }: CalendarProps) {
       style={{ top, bottom, maxHeight: height }}
     >
       <div className="rc-datepicker__calendar__container">
-        <DayPicker selectedDays={selectedDate} onDayClick={onDayClick} />
+        <DayPicker
+          selectedDays={selectedDate}
+          onDayClick={(day: Date, { selected }) => onDayClick(day, selected)}
+        />
       </div>
     </div>
   );
