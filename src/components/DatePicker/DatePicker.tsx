@@ -1,14 +1,12 @@
 import React from "react";
 import classnames from "classnames";
-import DayPicker from "react-day-picker";
+import { InputSize } from "types";
 import { format as dateFormat } from "date-fns";
-import "react-day-picker/lib/style.css";
 import { KeyCodes } from "utils/keyCodes";
 import mergeRefs from "utils/mergeRefs";
-import { InputSize } from "types";
-import Field, { Loader, Placeholder } from "../Field";
+import Field, { Loader, Placeholder } from "components/Field";
+import Calendar from "./components/Calendar";
 import "./DatePicker.scss";
-import "./DayPicker.scss";
 
 type DateValue = Date | undefined;
 
@@ -74,7 +72,7 @@ export default React.forwardRef(function DatePicker(
     setOpen(false);
   }
 
-  function onDayClick(day: Date, { selected }: { selected?: boolean }) {
+  function onDayClick(day: Date, selected?: boolean) {
     const newDate = selected ? undefined : day;
     setDate(newDate);
     inputRef.current?.focus();
@@ -157,16 +155,7 @@ export default React.forwardRef(function DatePicker(
         readOnly
       />
       {pending && <Loader size={size} />}
-      {open && (
-        <div
-          onClick={(e) => e.stopPropagation()}
-          className="rc-datepicker__calendar"
-          role="presentation"
-        >
-          {/* @ts-ignore */}
-          <DayPicker selectedDays={selectedDate} onDayClick={onDayClick} />
-        </div>
-      )}
+      {open && <Calendar selectedDate={selectedDate} onDayClick={onDayClick} />}
     </Field>
   );
 });

@@ -35,15 +35,24 @@ export const SelectValue = () => {
   const [value, setValue] = React.useState("test");
   return (
     <>
-      <input type="text" />
-      <Select
-        options={options}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        required
-        onClear={console.log}
-      />
-      <input type="text" />
+      <div style={{ height: "200px" }} />
+      <div
+        style={{
+          height: "300px",
+          background: "#eee",
+          overflow: "hidden",
+          paddingTop: "150px",
+        }}
+      >
+        <Select
+          options={options}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          required
+          onClear={console.log}
+        />
+      </div>
+      <div style={{ height: "200px" }} />
     </>
   );
 };

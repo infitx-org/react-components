@@ -1,5 +1,4 @@
 import React from "react";
-import "./Select.scss";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
@@ -10,6 +9,7 @@ import Field, { Loader } from "../Field";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
 import Filter from "./components/Filter";
+import "./Select.scss";
 
 export interface SelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLInputElement>, "size" | "value"> {

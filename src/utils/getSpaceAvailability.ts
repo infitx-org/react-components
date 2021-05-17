@@ -1,0 +1,49 @@
+function getParentOverflow<T extends HTMLElement>(element: T): HTMLElement {
+  const parent = <HTMLElement>element.parentNode;
+  if (!parent) {
+    return document.body;
+  }
+  const { overflowY } = window.getComputedStyle(parent);
+  if (overflowY === "hidden") {
+    return parent;
+  }
+  if (overflowY === "scroll") {
+    if (element.getBoundingClientRect().height > parent.offsetHeight) {
+      return parent;
+    }
+    return element;
+  }
+  if (parent === document.body) {
+    return document.body;
+  }
+  return getParentOverflow(parent);
+}
+
+export default function getSpaceAvailability<T extends HTMLDivElement>(
+  element: T | null
+): [number, number, boolean] {
+  if (!element || !element.parentNode) {
+    return [0, 0, false];
+  }
+
+  const parent = <HTMLElement>element.parentNode;
+  const container = getParentOverflow(parent);
+
+  const elementRect = element.getBoundingClientRect();
+  const parentRect = parent.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+
+  const spaceTop = parentRect.top - containerRect.top;
+  const windowSpaceBottom =
+    window.innerHeight - parentRect.top - parentRect.height;
+  const containerSpaceBottom =
+    containerRect.height -
+    parentRect.height -
+    (parentRect.top - containerRect.top);
+  const spaceBottom = Math.min(containerSpaceBottom, windowSpaceBottom);
+
+  if (elementRect.height < spaceBottom || spaceBottom > spaceTop) {
+    return [parentRect.height, spaceBottom, false];
+  }
+  return [parentRect.height, spaceTop, true];
+}

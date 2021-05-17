@@ -1,6 +1,6 @@
-@import "../../scss/vars/fonts.scss";
-@import "../../scss/vars/colors.scss";
-@import "../../scss/vars/transitions.scss";
+@import "../../../scss/vars/fonts.scss";
+@import "../../../scss/vars/colors.scss";
+@import "../../../scss/vars/transitions.scss";
 
 /* DayPicker styles */
 .DayPicker {
@@ -88,16 +88,6 @@
 .DayPicker-Weekday {
 }
 
-.DayPicker-Day {
-  color: #333;
-  display: table-cell;
-  padding: 0.5rem;
-  border: 1px solid #eaecec;
-  text-align: center;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
 .DayPicker--interactionDisabled .DayPicker-Day {
   cursor: default;
 }
@@ -117,6 +107,12 @@
   font-size: 12px;
   border: none;
   outline: none;
+  color: #333;
+  display: table-cell;
+  padding: 0px;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
 }
 .DayPicker-Day--today {
   color: #00a2df;
