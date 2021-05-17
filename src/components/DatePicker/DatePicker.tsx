@@ -15,6 +15,7 @@ export interface DatePickerProps
     React.InputHTMLAttributes<HTMLInputElement>,
     "size" | "onSelect"
   > {
+  className?: string;
   size?: `${InputSize}`;
   format?: string;
   label?: string;
@@ -27,6 +28,7 @@ export interface DatePickerProps
 
 export default React.forwardRef(function DatePicker(
   {
+    className,
     size = InputSize.Large,
     format = "MMM do yyyy, HH:mm:ss",
     label,
@@ -127,6 +129,8 @@ export default React.forwardRef(function DatePicker(
   const visibleValue = getStringFromDate(selectedDate);
   return (
     <Field
+      className={className}
+      size={size}
       label={label}
       required={required && selectedDate === undefined}
       pending={pending}
