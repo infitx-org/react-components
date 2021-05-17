@@ -16,7 +16,7 @@ interface OverlayPosition {
   reverse: boolean;
 }
 
-export default function useOverLayPosition<T>(
+export default function useOverLayPosition<T extends HTMLDivElement>(
   element: T | null
 ): OverlayPosition {
   const [position, setPosition] = React.useState<PositionState>({
