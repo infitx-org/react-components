@@ -128,7 +128,88 @@ describe("tests the select props", () => {
     );
     expect(getInput(container).value).toBe("");
   });
+
+  it("triggers onClear when clicking the clear option", () => {
+    const mockFn = jest.fn();
+    const { container } = render(
+      <Select {...commonProps} onClear={mockFn} value={1} />
+    );
+    userEvent.click(getInput(container));
+    userEvent.click(
+      container.querySelector(".rc-select__option--clear") as Element
+    );
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  it("triggers onFocus when focusing", () => {
+    const mockFn = jest.fn();
+    const { container } = render(<Select {...commonProps} onFocus={mockFn} />);
+    fireEvent.focus(getInput(container));
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  it("triggers onFocus when clicking", () => {
+    const mockFn = jest.fn();
+    const { container } = render(<Select {...commonProps} onFocus={mockFn} />);
+    userEvent.click(getInput(container));
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  it("triggers onFocus when tabbing", () => {
+    const mockFn = jest.fn();
+    render(<Select {...commonProps} onFocus={mockFn} />);
+    userEvent.tab();
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  it("triggers onBlur when clicking out", () => {
+    const mockFn = jest.fn();
+    const { container } = render(<Select {...commonProps} onBlur={mockFn} />);
+    userEvent.click(getInput(container));
+    userEvent.click(document.body);
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  it("triggers onBlur when tabbing away", () => {
+    const mockFn = jest.fn();
+    const { container } = render(<Select {...commonProps} onBlur={mockFn} />);
+    userEvent.click(getInput(container));
+    userEvent.tab();
+    expect(mockFn).toHaveBeenCalled();
+  });
 });
+
+// it('triggers onFocus when focused', () => {
+//   const mockEvent = jest.fn();
+//   const wrapper = mount(<Select onFocus={mockEvent} />);
+//   expect(mockEvent).not.toHaveBeenCalled();
+//   wrapper.find('input[type="text"]').simulate('focus');
+//   expect(mockEvent).toHaveBeenCalled();
+// });
+
+// it('triggers onBlur when selecting a value', () => {
+//   const mockEvent = jest.fn();
+//   const wrapper = mount(<Select onBlur={mockEvent} options={options} />);
+//   expect(mockEvent).not.toHaveBeenCalled();
+//   wrapper.find('input[type="text"]').simulate('click');
+//   wrapper
+//     .find('.input-select__options-item')
+//     .at(50)
+//     .simulate('click');
+//   expect(mockEvent).toHaveBeenCalled();
+// });
+
+// it('triggers onChange when selecting value', () => {
+//   const mockEvent = jest.fn();
+//   const wrapper = mount(<Select onChange={mockEvent} options={options} />);
+//   expect(mockEvent).not.toHaveBeenCalled();
+//   wrapper.find('input[type="text"]').simulate('click');
+//   wrapper
+//     .find('.input-select__options-item')
+//     .at(50)
+//     .simulate('click');
+//   expect(mockEvent).toHaveBeenCalledWith('value-50');
+// });
 
 // it('renders the validation wrapper', () => {
 //   const wrapper = shallow(<Select placeholder="test-Select" />);
@@ -162,38 +243,6 @@ describe("tests the select props", () => {
 //   const wrapper = mount(<Select selected="value-1" options={unsortedOptions} sortBy="disabled" />);
 //   expect(wrapper.state().options[0].disabled).toBe(true);
 //   expect(wrapper.state().options[1].disabled).toBe(true);
-// });
-
-// it('triggers onFocus when focused', () => {
-//   const mockEvent = jest.fn();
-//   const wrapper = mount(<Select onFocus={mockEvent} />);
-//   expect(mockEvent).not.toHaveBeenCalled();
-//   wrapper.find('input[type="text"]').simulate('focus');
-//   expect(mockEvent).toHaveBeenCalled();
-// });
-
-// it('triggers onBlur when selecting a value', () => {
-//   const mockEvent = jest.fn();
-//   const wrapper = mount(<Select onBlur={mockEvent} options={options} />);
-//   expect(mockEvent).not.toHaveBeenCalled();
-//   wrapper.find('input[type="text"]').simulate('click');
-//   wrapper
-//     .find('.input-select__options-item')
-//     .at(50)
-//     .simulate('click');
-//   expect(mockEvent).toHaveBeenCalled();
-// });
-
-// it('triggers onChange when selecting value', () => {
-//   const mockEvent = jest.fn();
-//   const wrapper = mount(<Select onChange={mockEvent} options={options} />);
-//   expect(mockEvent).not.toHaveBeenCalled();
-//   wrapper.find('input[type="text"]').simulate('click');
-//   wrapper
-//     .find('.input-select__options-item')
-//     .at(50)
-//     .simulate('click');
-//   expect(mockEvent).toHaveBeenCalledWith('value-50');
 // });
 
 // it('automatically highlights the selected option', () => {

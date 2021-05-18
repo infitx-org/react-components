@@ -161,7 +161,7 @@ export default React.forwardRef(function Select(
     setHighlighted(highlightedValue);
   }
 
-  function handleArrows(e: React.KeyboardEvent<HTMLInputElement>) {
+  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     const { keyCode } = e;
 
     if (keyCode === KeyCode.Tab) {
@@ -221,7 +221,7 @@ export default React.forwardRef(function Select(
         onFocus={onFocus}
         onBlur={onBlur}
         onChange={(e) => setFilter(e.target.value)}
-        onKeyDown={handleArrows}
+        onKeyDown={onKeyDown}
         value={filter !== undefined ? filter : selectedLabel || ""}
       />
       {filter !== undefined && <Filter size={size} />}
