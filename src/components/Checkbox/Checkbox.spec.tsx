@@ -1,13 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import Checkbox from "./Checkbox";
-
-const { log } = console;
-
-const options = new Array(5)
-  .fill(0)
-  .map((_, index) => ({ label: index.toString(), value: index.toString() }));
 
 const commonProps = {
   name: "test-name",

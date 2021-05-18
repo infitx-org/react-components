@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { InputSize } from "types";
@@ -13,7 +13,16 @@ const commonProps = {
   onChange: jest.fn(),
 };
 
-describe("tests the select", () => {
+function getOptions(container: HTMLElement): NodeListOf<HTMLDivElement> {
+  return container.querySelectorAll(
+    ".rc-select__option"
+  ) as NodeListOf<HTMLDivElement>;
+}
+function getInput(container: HTMLElement): HTMLInputElement {
+  return container.querySelector("input[type='text']") as HTMLInputElement;
+}
+
+describe("tests the select props", () => {
   it("renders the select", () => {
     const { container } = render(<Select {...commonProps} />);
     expect(container.querySelector(".rc-select")).toBeTruthy();
@@ -28,17 +37,13 @@ describe("tests the select", () => {
   it("renders the label for the option value", () => {
     const [{ label, value }] = options;
     const { container } = render(<Select {...commonProps} value={value} />);
-    const input = container.querySelector(
-      "input[type='text']"
-    ) as HTMLInputElement;
+    const input = getInput(container);
     expect(input.value).toBe(label);
   });
 
   it("renders no label when option value does not exist", () => {
     const { container } = render(<Select {...commonProps} value="null" />);
-    const input = container.querySelector(
-      "input[type='text']"
-    ) as HTMLInputElement;
+    const input = getInput(container);
     expect(input.value).toBe("");
   });
 
@@ -56,9 +61,7 @@ describe("tests the select", () => {
 
   it("renders as disabled", () => {
     const { container } = render(<Select {...commonProps} disabled />);
-    const input = container.querySelector(
-      "input[type='text']"
-    ) as HTMLInputElement;
+    const input = getInput(container);
     expect(input.disabled).toBeTruthy();
   });
 
@@ -72,22 +75,64 @@ describe("tests the select", () => {
     expect(container.querySelector(".rc-field--required")).toBeTruthy();
   });
 
+  it("renders as invalid", () => {
+    const { container } = render(<Select {...commonProps} invalid />);
+    expect(container.querySelector(".rc-field--invalid")).toBeTruthy();
+    expect(container.querySelector(".rc-invalid-icon")).toBeTruthy();
+  });
+
   it("renders the small, medium, large sizes", () => {
     Object.values(InputSize).forEach((size) => {
       const { container } = render(<Select {...commonProps} size={size} />);
       expect(container.querySelector(`.rc-field--${size}`)).toBeTruthy();
     });
   });
+
+  it("renders the options when clicked", () => {
+    const { container } = render(<Select {...commonProps} invalid />);
+    userEvent.click(getInput(container));
+    expect(container.querySelector(".rc-select__options")).toBeInTheDocument();
+  });
+
+  it("renders the options when focused", () => {
+    const { container } = render(<Select {...commonProps} invalid />);
+    fireEvent.focus(getInput(container));
+    expect(container.querySelector(".rc-select__options")).toBeInTheDocument();
+  });
+
+  it("renders the clear option", () => {
+    const { container } = render(
+      <Select {...commonProps} onClear={jest.fn()} value={1} />
+    );
+    fireEvent.focus(getInput(container));
+    expect(
+      container.querySelector(".rc-select__option--clear")
+    ).toBeInTheDocument();
+  });
+
+  it("selects a value when clicking the option", () => {
+    const { container } = render(<Select {...commonProps} invalid />);
+    userEvent.click(getInput(container));
+    const [option] = getOptions(container);
+    userEvent.click(option);
+    expect(getInput(container).value).toBe(options[0].label);
+  });
+
+  it("clear the value when clicking the clear option", () => {
+    const { container } = render(
+      <Select {...commonProps} onClear={jest.fn()} value={1} />
+    );
+    userEvent.click(getInput(container));
+    userEvent.click(
+      container.querySelector(".rc-select__option--clear") as Element
+    );
+    expect(getInput(container).value).toBe("");
+  });
 });
 
 // it('renders the validation wrapper', () => {
 //   const wrapper = shallow(<Select placeholder="test-Select" />);
 //   expect(wrapper.find(ValidationWrapper)).toHaveLength(1);
-// });
-
-// it('renders the invalid state', () => {
-//   const wrapper = shallow(<Select invalid />);
-//   expect(wrapper.find(InvalidIcon)).toHaveLength(1);
 // });
 
 // it('sorts the options by value ascending', () => {
@@ -117,64 +162,6 @@ describe("tests the select", () => {
 //   const wrapper = mount(<Select selected="value-1" options={unsortedOptions} sortBy="disabled" />);
 //   expect(wrapper.state().options[0].disabled).toBe(true);
 //   expect(wrapper.state().options[1].disabled).toBe(true);
-// });
-
-// it('renders the options when focused', () => {
-//   const wrapper = mount(<Select options={options} />);
-//   wrapper.find('input[type="text"]').simulate('click');
-//   expect(wrapper.find(Options)).toHaveLength(1);
-//   expect(wrapper.find('.input-select__options-item')).toHaveLength(100);
-// });
-
-// it('selects a value when clicking an option', () => {
-//   const wrapper = mount(<Select options={options} />);
-//   wrapper.find('input[type="text"]').simulate('click');
-//   wrapper
-//     .find('.input-select__options-item')
-//     .at(50)
-//     .simulate('click');
-//   expect(wrapper.find('input[type="text"]').prop('value')).toBe('label-50');
-// });
-
-// it('renders the clear option', () => {
-//   const mockEvent = jest.fn();
-//   const wrapper = mount(<Select onClear={mockEvent} options={options} />);
-
-//   wrapper.find('input[type="text"]').simulate('click');
-//   const clearOptionBeforeSelection = wrapper.find('.input-select__options-item--clear');
-
-//   wrapper
-//     .find('.input-select__options-item')
-//     .at(50)
-//     .simulate('click');
-
-//   wrapper.find('input[type="text"]').simulate('click');
-//   const clearOptionAfterSelection = wrapper.find('.input-select__options-item--clear');
-
-//   expect(clearOptionBeforeSelection.exists()).toEqual(false);
-//   expect(clearOptionAfterSelection.exists()).toEqual(true);
-// });
-
-// it('clears the selected option when clear option is clicked', () => {
-//   const clearMockEvent = jest.fn();
-//   const wrapper = mount(<Select onClear={clearMockEvent} options={options} />);
-
-//   wrapper.find('input[type="text"]').simulate('click');
-//   wrapper
-//     .find('.input-select__options-item')
-//     .at(50)
-//     .simulate('click');
-
-//   const selectedValueBeforeClear = wrapper.find('input[type="text"]').prop('value');
-
-//   wrapper.find('input[type="text"]').simulate('click');
-//   wrapper.find('.input-select__options-item--clear').simulate('click');
-
-//   const selectedValueAfterClear = wrapper.find('input[type="text"]').prop('value');
-
-//   expect(selectedValueBeforeClear).toBe('label-50');
-//   expect(selectedValueAfterClear).toBe('');
-//   expect(clearMockEvent).toHaveBeenCalled();
 // });
 
 // it('triggers onFocus when focused', () => {

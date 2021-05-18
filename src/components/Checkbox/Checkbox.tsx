@@ -4,9 +4,9 @@ import { Kind } from "types";
 import "./Checkbox.scss";
 
 export interface CheckboxProps {
-  kind: `${Kind}`;
-  style: React.CSSProperties;
-  className: string;
+  kind?: `${Kind}`;
+  style?: React.CSSProperties;
+  className?: string;
   label: string;
   name?: string;
   id?: string;
