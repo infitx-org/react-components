@@ -19,6 +19,7 @@ export const WithStateValue = () => {
   );
   return (
     <DatePicker
+      invalid
       label="test"
       value={value}
       onSelect={(date) => {

@@ -4,7 +4,7 @@ import findIndex from "lodash/findIndex";
 import classnames from "classnames";
 import { InputSize, KeyCode } from "types";
 import mergeRefs from "utils/mergeRefs";
-import Field, { Loader, Placeholder } from "../Field";
+import Field, { Loader, Placeholder, InvalidIcon } from "../Field";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
 import Filter from "./components/Filter";
@@ -17,6 +17,7 @@ export interface SelectProps
   className?: string;
   placeholder?: string;
   required?: boolean;
+  invalid?: boolean;
   pending?: boolean;
   options: Option[];
   onClear?: () => void;
@@ -29,6 +30,7 @@ export default React.forwardRef(function Select(
     className,
     placeholder,
     required,
+    invalid,
     pending,
     options = [],
     onClear,
@@ -198,6 +200,7 @@ export default React.forwardRef(function Select(
       className={className}
       required={required && selectedValue === undefined}
       pending={pending}
+      invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
@@ -222,6 +225,7 @@ export default React.forwardRef(function Select(
         value={filter !== undefined ? filter : selectedLabel || ""}
       />
       {filter !== undefined && <Filter size={size} />}
+      {invalid && <InvalidIcon size={size} />}
       {pending && <Loader size={size} />}
       <Indicator open={open} size={size} />
       {open && (

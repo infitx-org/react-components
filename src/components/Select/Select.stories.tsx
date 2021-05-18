@@ -21,6 +21,7 @@ export const SelectNoState = () => {
 
   return (
     <Select
+      invalid
       options={options}
       pending
       ref={ref}

@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { InputSize, KeyCode } from "types";
 import { format as dateFormat } from "date-fns";
 import mergeRefs from "utils/mergeRefs";
-import Field, { Loader, Placeholder } from "components/Field";
+import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Calendar from "./components/Calendar";
 import "./DatePicker.scss";
 
@@ -21,6 +21,7 @@ export interface DatePickerProps
   placeholder?: string;
   value?: string;
   required?: boolean;
+  invalid?: boolean;
   pending?: boolean;
   onSelect?: (date: DateValue) => void;
 }
@@ -34,6 +35,7 @@ export default React.forwardRef(function DatePicker(
     placeholder,
     value,
     required,
+    invalid,
     pending,
     onSelect,
     ...props
@@ -133,6 +135,7 @@ export default React.forwardRef(function DatePicker(
       label={label}
       required={required && selectedDate === undefined}
       pending={pending}
+      invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
@@ -158,6 +161,7 @@ export default React.forwardRef(function DatePicker(
         readOnly
       />
       {pending && <Loader size={size} />}
+      {invalid && <InvalidIcon size={size} />}
       {open && <Calendar selectedDate={selectedDate} onDayClick={onDayClick} />}
     </Field>
   );
