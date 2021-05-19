@@ -90,13 +90,13 @@ describe("tests the select props", () => {
   });
 
   it("renders the options when clicked", () => {
-    const { container } = render(<Select {...commonProps} invalid />);
+    const { container } = render(<Select {...commonProps} />);
     userEvent.click(getInput(container));
     expect(container.querySelector(".rc-select__options")).toBeInTheDocument();
   });
 
   it("renders the options when focused", () => {
-    const { container } = render(<Select {...commonProps} invalid />);
+    const { container } = render(<Select {...commonProps} />);
     fireEvent.focus(getInput(container));
     expect(container.querySelector(".rc-select__options")).toBeInTheDocument();
   });
@@ -112,7 +112,7 @@ describe("tests the select props", () => {
   });
 
   it("selects a value when clicking the option", () => {
-    const { container } = render(<Select {...commonProps} invalid />);
+    const { container } = render(<Select {...commonProps} />);
     userEvent.click(getInput(container));
     const [option] = getOptions(container);
     userEvent.click(option);

@@ -30,6 +30,7 @@ export default function Calendar({ selectedDate, onDayClick }: CalendarProps) {
     >
       <div className="rc-datepicker__calendar__container">
         <DayPicker
+          month={selectedDate}
           selectedDays={selectedDate}
           onDayClick={(day: Date, { selected }) => onDayClick(day, selected)}
         />
