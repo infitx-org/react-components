@@ -76,7 +76,9 @@ describe("tests the checbox", () => {
     const { container } = render(
       <Checkbox {...commonProps} onChange={mockEvent} />
     );
-    userEvent.click(container.querySelector('input[type="checkbox"]'));
+    userEvent.click(
+      container.querySelector('input[type="checkbox"]') as Element
+    );
     expect(mockEvent).toHaveBeenCalledWith(
       expect.objectContaining({
         type: "change",
