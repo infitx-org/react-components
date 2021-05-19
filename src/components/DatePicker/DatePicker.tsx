@@ -5,6 +5,7 @@ import { format as dateFormat } from "date-fns";
 import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Calendar from "./components/Calendar";
+import CalendarIcon from "./components/CalendarIcon";
 import "./DatePicker.scss";
 
 type DateValue = Date | undefined;
@@ -162,6 +163,7 @@ export default React.forwardRef(function DatePicker(
       />
       {pending && <Loader size={size} />}
       {invalid && <InvalidIcon size={size} />}
+      <CalendarIcon size={size} />
       {open && <Calendar selectedDate={selectedDate} onDayClick={onDayClick} />}
     </Field>
   );
