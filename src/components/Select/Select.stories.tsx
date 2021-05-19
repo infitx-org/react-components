@@ -33,7 +33,9 @@ export const SelectNoState = () => {
 };
 
 export const SelectValue = () => {
-  const [value, setValue] = React.useState("test");
+  const [value, setValue] = React.useState<string | number | boolean>(
+    options[0].value
+  );
   return (
     <>
       <div style={{ height: "200px" }} />
@@ -49,7 +51,7 @@ export const SelectValue = () => {
           placeholder="try"
           options={options}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={setValue}
           required
           onClear={console.log}
         />

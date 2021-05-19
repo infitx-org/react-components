@@ -11,7 +11,10 @@ import Filter from "./components/Filter";
 import "./Select.scss";
 
 export interface SelectProps
-  extends Omit<React.SelectHTMLAttributes<HTMLInputElement>, "size" | "value"> {
+  extends Omit<
+    React.SelectHTMLAttributes<HTMLInputElement>,
+    "size" | "value" | "onChange"
+  > {
   size?: `${InputSize}`;
   value?: OptionValue;
   className?: string;
@@ -20,6 +23,7 @@ export interface SelectProps
   invalid?: boolean;
   pending?: boolean;
   options: Option[];
+  onChange?: (value: OptionValue) => void;
   onClear?: () => void;
 }
 
@@ -33,6 +37,7 @@ export default React.forwardRef(function Select(
     invalid,
     pending,
     options = [],
+    onChange,
     onClear,
     ...props
   }: SelectProps,
@@ -65,6 +70,7 @@ export default React.forwardRef(function Select(
 
   function onSelect(newValue: OptionValue) {
     setSelected(newValue);
+    onChange?.(newValue);
     setFilter(undefined);
     setOpen(false);
     inputRef.current?.focus();
