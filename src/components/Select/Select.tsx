@@ -55,6 +55,10 @@ export default React.forwardRef(function Select(
   const [focused, setFocused] = React.useState(false);
   const [filter, setFilter] = React.useState<string | undefined>(undefined);
 
+  React.useEffect(() => {
+    setSelected(value);
+  }, [value]);
+
   function enter() {
     setFocused(true);
     setOpen(true);
