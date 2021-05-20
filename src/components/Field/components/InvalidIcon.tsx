@@ -1,7 +1,7 @@
 import { InputSize } from "types";
 import Icon from "components/Icon";
 import { getIconSizeByComponentSize } from "utils/size";
-import WarningSign from "assets/icons/warning-sign.svg";
+import WarningSign from "../../../assets/icons/warning-sign.svg";
 import "./InvalidIcon.scss";
 
 export interface InvalidIconProps {

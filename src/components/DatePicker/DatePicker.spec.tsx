@@ -192,3 +192,11 @@ describe("tests the datepicker props", () => {
     expect(mockFn).toHaveBeenCalledWith(undefined);
   });
 });
+
+// Snapshot testing
+it("renders the DatePicker correctly when multiple props are set", () => {
+  const { container } = render(
+    <DatePicker {...commonProps} placeholder="test" />
+  );
+  expect(container).toMatchSnapshot();
+});

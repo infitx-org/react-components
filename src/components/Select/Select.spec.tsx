@@ -308,3 +308,9 @@ describe("tests the select props", () => {
 //   expect(wrapper.state().options[0].disabled).toBe(true);
 //   expect(wrapper.state().options[1].disabled).toBe(true);
 // });
+
+// Snapshot testing
+it("renders the Select correctly when multiple props are set", () => {
+  const { container } = render(<Select {...commonProps} placeholder="test" />);
+  expect(container).toMatchSnapshot();
+});
