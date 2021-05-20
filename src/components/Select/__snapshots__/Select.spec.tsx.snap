@@ -12,7 +12,7 @@ exports[`renders the Select correctly when multiple props are set 1`] = `
       test
     </label>
     <input
-      class="rc-select"
+      class="rc-select rc-select--large"
       type="text"
       value=""
     />
