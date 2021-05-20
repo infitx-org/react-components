@@ -201,6 +201,7 @@ export default React.forwardRef(function Select(
 
   const selectClassName = classnames([
     "rc-select",
+    `rc-select--${size}`,
     hasFilter(filter) && "rc-select--filtering",
   ]);
 

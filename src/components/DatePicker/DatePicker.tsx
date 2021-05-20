@@ -124,7 +124,10 @@ export default React.forwardRef(function DatePicker(
     }
   }
 
-  const inputClassName = classnames(["rc-datepicker"]);
+  const inputClassName = classnames([
+    "rc-datepicker",
+    `rc-datepicker--${size}`,
+  ]);
 
   const visibleValue = getStringFromDate(selectedDate);
   return (
