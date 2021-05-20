@@ -5,7 +5,7 @@ import { InputSize } from "types";
 import DatePicker from "./DatePicker";
 
 const commonProps = {
-  onSelect: jest.fn(),
+  onChange: jest.fn(),
 };
 
 function getCalendarDays(container: HTMLElement): NodeListOf<HTMLDivElement> {
@@ -113,7 +113,7 @@ describe("tests the datepicker props", () => {
     expect(getInput(container).value).toBe("01");
   });
 
-  it("unselects a date when clicking a day", () => {
+  it("unselects a date when clicking the same day", () => {
     const { container } = render(<DatePicker {...commonProps} format="dd" />);
     userEvent.click(getInput(container));
     const days = getCalendarDays(container);
@@ -122,78 +122,73 @@ describe("tests the datepicker props", () => {
     expect(getInput(container).value).toBe("");
   });
 
-  // it("clear the value when clicking the clear option", () => {
-  //   const { container } = render(<DatePicker {...commonProps} value={1} />);
+  it("triggers onFocus when focusing", () => {
+    const mockFn = jest.fn();
+    const { container } = render(
+      <DatePicker {...commonProps} onFocus={mockFn} />
+    );
+    fireEvent.focus(getInput(container));
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  it("triggers onFocus when clicking", () => {
+    const mockFn = jest.fn();
+    const { container } = render(
+      <DatePicker {...commonProps} onFocus={mockFn} />
+    );
+    userEvent.click(getInput(container));
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  it("triggers onFocus when tabbing", () => {
+    const mockFn = jest.fn();
+    render(<DatePicker {...commonProps} onFocus={mockFn} />);
+    userEvent.tab();
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  it("triggers onBlur when clicking out", () => {
+    const mockFn = jest.fn();
+    const { container } = render(
+      <DatePicker {...commonProps} onBlur={mockFn} />
+    );
+    userEvent.click(getInput(container));
+    userEvent.click(document.body);
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  // it("triggers onBlur when tabbing away", () => {
+  //   const mockFn = jest.fn();
+  //   const { container } = render(<DatePicker {...commonProps} onBlur={mockFn} />);
   //   userEvent.click(getInput(container));
-  //   userEvent.click(
-  //     container.querySelector(".rc-datepicker__option--clear") as Element
-  //   );
-  //   expect(getInput(container).value).toBe("");
-  // });
-
-  // it("triggers onSelect when clicking the clear option", () => {
-  //   const mockFn = jest.fn();
-  //   const { container } = render(
-  //     <DatePicker {...commonProps} onSelect={mockFn} value={1} />
-  //   );
-  //   userEvent.click(getInput(container));
-  //   userEvent.click(
-  //     container.querySelector(".rc-datepicker__option--clear") as Element
-  //   );
-  //   expect(mockFn).toHaveBeenCalled();
-  // });
-
-  // it("triggers onFocus when focusing", () => {
-  //   const mockFn = jest.fn();
-  //   const { container } = render(
-  //     <DatePicker {...commonProps} onFocus={mockFn} />
-  //   );
-  //   fireEvent.focus(getInput(container));
-  //   expect(mockFn).toHaveBeenCalled();
-  // });
-
-  // it("triggers onFocus when clicking", () => {
-  //   const mockFn = jest.fn();
-  //   const { container } = render(
-  //     <DatePicker {...commonProps} onFocus={mockFn} />
-  //   );
-  //   userEvent.click(getInput(container));
-  //   expect(mockFn).toHaveBeenCalled();
-  // });
-
-  // it("triggers onFocus when tabbing", () => {
-  //   const mockFn = jest.fn();
-  //   render(<DatePicker {...commonProps} onFocus={mockFn} />);
   //   userEvent.tab();
   //   expect(mockFn).toHaveBeenCalled();
   // });
 
-  // it("triggers onBlur when clicking out", () => {
-  //   const mockFn = jest.fn();
-  //   const { container } = render(
-  //     <DatePicker {...commonProps} onBlur={mockFn} />
-  //   );
-  //   userEvent.click(getInput(container));
-  //   userEvent.click(document.body);
-  //   expect(mockFn).toHaveBeenCalled();
-  // });
+  it("triggers onChange when selecting a date", () => {
+    const mockEvent = jest.fn();
+    const { container } = render(<DatePicker onChange={mockEvent} />);
+    userEvent.click(getInput(container));
+    const days = getCalendarDays(container);
+    userEvent.click(days[0]);
+    // const [call] = mockEvent.calls;
+    expect(mockEvent).toHaveBeenCalled();
+    const [[date]] = mockEvent.mock.calls;
+    expect(date).toBeInstanceOf(Date);
+  });
 
-  // // it("triggers onBlur when tabbing away", () => {
-  // //   const mockFn = jest.fn();
-  // //   const { container } = render(<DatePicker {...commonProps} onBlur={mockFn} />);
-  // //   userEvent.click(getInput(container));
-  // //   userEvent.tab();
-  // //   expect(mockFn).toHaveBeenCalled();
-  // // });
-
-  // it("triggers onChange when selecting a value", () => {
-  //   const mockEvent = jest.fn();
-  //   const { container } = render(
-  //     <DatePicker onChange={mockEvent} options={options} />
-  //   );
-  //   userEvent.click(getInput(container));
-  //   const [option] = getCalendar(container);
-  //   userEvent.click(option);
-  //   expect(mockEvent).toHaveBeenCalledWith("1");
-  // });
+  it("triggers onChange when clicking the same day", () => {
+    const mockFn = jest.fn();
+    const { container } = render(
+      <DatePicker
+        {...commonProps}
+        onChange={mockFn}
+        value={new Date("01/01/2021").toString()}
+      />
+    );
+    userEvent.click(getInput(container));
+    const days = getCalendarDays(container);
+    userEvent.click(days[0]);
+    expect(mockFn).toHaveBeenCalledWith(undefined);
+  });
 });

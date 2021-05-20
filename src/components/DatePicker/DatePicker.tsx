@@ -13,7 +13,7 @@ type DateValue = Date | undefined;
 export interface DatePickerProps
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
-    "size" | "onSelect"
+    "size" | "onChange"
   > {
   className?: string;
   size?: `${InputSize}`;
@@ -24,7 +24,7 @@ export interface DatePickerProps
   required?: boolean;
   invalid?: boolean;
   pending?: boolean;
-  onSelect?: (date: DateValue) => void;
+  onChange?: (date: DateValue) => void;
 }
 
 export default React.forwardRef(function DatePicker(
@@ -38,7 +38,7 @@ export default React.forwardRef(function DatePicker(
     required,
     invalid,
     pending,
-    onSelect,
+    onChange,
     ...props
   }: DatePickerProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -80,7 +80,7 @@ export default React.forwardRef(function DatePicker(
     const newDate = selected ? undefined : day;
     setDate(newDate);
     inputRef.current?.focus();
-    onSelect?.(newDate);
+    onChange?.(newDate);
   }
 
   function onFocus(e: React.FocusEvent<HTMLInputElement>) {

@@ -1,4 +1,3 @@
-import React from "react";
 import DatePicker from "./DatePicker";
 
 export default {
@@ -18,7 +17,7 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
-  onSelect: console.log,
+  onChange: console.log,
 };
 
 export const SelectedDate = Template.bind({});
@@ -38,7 +37,7 @@ Disabled.args = {
 
 export const Placeholder = Template.bind({});
 Placeholder.args = {
-  placeholder: "DatePicker a value",
+  placeholder: "Pick a date",
 };
 
 export const Pending = Template.bind({});
