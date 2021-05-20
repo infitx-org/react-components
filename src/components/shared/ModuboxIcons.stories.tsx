@@ -69,8 +69,8 @@ const WrappedIcon = ({
 export const Icons = () => {
   return (
     <div style={{ display: "flex", width: "100%" }}>
-      {Object.entries(items).map(([key, item]) => (
-        <WrappedIcon icon={item()} name={key} />
+      {Object.entries(items).map(([key, Item]) => (
+        <WrappedIcon icon={<Item />} name={key} />
       ))}
     </div>
   );

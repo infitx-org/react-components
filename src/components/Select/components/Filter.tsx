@@ -10,9 +10,11 @@ interface FilterProps {
 
 function Filter({ size }: FilterProps) {
   return (
-    <div className="rc-select__filter">
-      <Icon size={getIconSizeByComponentSize(size)} icon={<Search />} />
-    </div>
+    <Icon
+      size={getIconSizeByComponentSize(size)}
+      icon={<Search />}
+      className="rc-select__filter"
+    />
   );
 }
 

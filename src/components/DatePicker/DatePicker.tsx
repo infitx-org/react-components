@@ -1,11 +1,11 @@
 import React from "react";
 import classnames from "classnames";
-import { InputSize } from "types";
+import { InputSize, KeyCode } from "types";
 import { format as dateFormat } from "date-fns";
-import { KeyCodes } from "utils/keyCodes";
 import mergeRefs from "utils/mergeRefs";
-import Field, { Loader, Placeholder } from "components/Field";
+import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Calendar from "./components/Calendar";
+import CalendarIcon from "./components/CalendarIcon";
 import "./DatePicker.scss";
 
 type DateValue = Date | undefined;
@@ -13,28 +13,32 @@ type DateValue = Date | undefined;
 export interface DatePickerProps
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
-    "size" | "onSelect"
+    "size" | "onChange"
   > {
+  className?: string;
   size?: `${InputSize}`;
   format?: string;
   label?: string;
   placeholder?: string;
   value?: string;
   required?: boolean;
+  invalid?: boolean;
   pending?: boolean;
-  onSelect?: (date: DateValue) => void;
+  onChange?: (date: DateValue) => void;
 }
 
 export default React.forwardRef(function DatePicker(
   {
+    className,
     size = InputSize.Large,
     format = "MMM do yyyy, HH:mm:ss",
     label,
     placeholder,
     value,
     required,
+    invalid,
     pending,
-    onSelect,
+    onChange,
     ...props
   }: DatePickerProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -76,7 +80,7 @@ export default React.forwardRef(function DatePicker(
     const newDate = selected ? undefined : day;
     setDate(newDate);
     inputRef.current?.focus();
-    onSelect?.(newDate);
+    onChange?.(newDate);
   }
 
   function onFocus(e: React.FocusEvent<HTMLInputElement>) {
@@ -108,11 +112,11 @@ export default React.forwardRef(function DatePicker(
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     const { keyCode } = e;
 
-    if (keyCode === KeyCodes.Tab) {
+    if (keyCode === KeyCode.Tab) {
       leave();
       return;
     }
-    if (keyCode === KeyCodes.Return) {
+    if (keyCode === KeyCode.Return) {
       e.preventDefault();
       if (open) {
         setOpen(false);
@@ -122,14 +126,17 @@ export default React.forwardRef(function DatePicker(
     }
   }
 
-  const inputClassName = classnames(["rc-datepicker__input"]);
+  const inputClassName = classnames(["rc-datepicker"]);
 
   const visibleValue = getStringFromDate(selectedDate);
   return (
     <Field
+      className={className}
+      size={size}
       label={label}
       required={required && selectedDate === undefined}
       pending={pending}
+      invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
@@ -155,6 +162,8 @@ export default React.forwardRef(function DatePicker(
         readOnly
       />
       {pending && <Loader size={size} />}
+      {invalid && <InvalidIcon size={size} />}
+      <CalendarIcon size={size} />
       {open && <Calendar selectedDate={selectedDate} onDayClick={onDayClick} />}
     </Field>
   );

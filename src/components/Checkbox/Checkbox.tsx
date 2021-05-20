@@ -4,9 +4,9 @@ import { Kind } from "types";
 import "./Checkbox.scss";
 
 export interface CheckboxProps {
-  kind: `${Kind}`;
-  style: React.CSSProperties;
-  className: string;
+  kind?: `${Kind}`;
+  style?: React.CSSProperties;
+  className?: string;
   label: string;
   name?: string;
   id?: string;
@@ -14,7 +14,7 @@ export interface CheckboxProps {
   semi?: boolean;
   round?: boolean;
   disabled?: boolean;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Checkbox({
@@ -56,7 +56,7 @@ function Checkbox({
         className={checkboxClassName}
         onChange={(e) => {
           setChecked(!isChecked);
-          onChange(e);
+          onChange?.(e);
         }}
         checked={isChecked && semi !== true}
         disabled={disabled}

@@ -2,22 +2,28 @@ import React from "react";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
-import { InputSize } from "types";
-import { KeyCodes } from "utils/keyCodes";
+import { InputSize, KeyCode } from "types";
 import mergeRefs from "utils/mergeRefs";
-import Field, { Loader } from "../Field";
+import Field, { Loader, Placeholder, InvalidIcon } from "../Field";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
 import Filter from "./components/Filter";
 import "./Select.scss";
 
 export interface SelectProps
-  extends Omit<React.SelectHTMLAttributes<HTMLInputElement>, "size" | "value"> {
-  value?: OptionValue;
+  extends Omit<
+    React.SelectHTMLAttributes<HTMLInputElement>,
+    "size" | "value" | "onChange"
+  > {
   size?: `${InputSize}`;
+  value?: OptionValue;
+  className?: string;
+  placeholder?: string;
   required?: boolean;
+  invalid?: boolean;
   pending?: boolean;
   options: Option[];
+  onChange?: (value: OptionValue) => void;
   onClear?: () => void;
 }
 
@@ -25,9 +31,13 @@ export default React.forwardRef(function Select(
   {
     size = InputSize.Large,
     value,
+    className,
+    placeholder,
     required,
+    invalid,
     pending,
     options = [],
+    onChange,
     onClear,
     ...props
   }: SelectProps,
@@ -45,6 +55,10 @@ export default React.forwardRef(function Select(
   const [focused, setFocused] = React.useState(false);
   const [filter, setFilter] = React.useState<string | undefined>(undefined);
 
+  React.useEffect(() => {
+    setSelected(value);
+  }, [value]);
+
   function enter() {
     setFocused(true);
     setOpen(true);
@@ -60,6 +74,7 @@ export default React.forwardRef(function Select(
 
   function onSelect(newValue: OptionValue) {
     setSelected(newValue);
+    onChange?.(newValue);
     setFilter(undefined);
     setOpen(false);
     inputRef.current?.focus();
@@ -156,19 +171,19 @@ export default React.forwardRef(function Select(
     setHighlighted(highlightedValue);
   }
 
-  function handleArrows(e: React.KeyboardEvent<HTMLInputElement>) {
+  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     const { keyCode } = e;
 
-    if (keyCode === KeyCodes.Tab) {
+    if (keyCode === KeyCode.Tab) {
       leave();
       return;
     }
-    if (keyCode === KeyCodes.Up || keyCode === KeyCodes.Down) {
+    if (keyCode === KeyCode.Up || keyCode === KeyCode.Down) {
       e.preventDefault();
-      highlightNextOption(keyCode === KeyCodes.Down);
+      highlightNextOption(keyCode === KeyCode.Down);
       return;
     }
-    if (keyCode === KeyCodes.Return) {
+    if (keyCode === KeyCode.Return) {
       e.preventDefault();
       if (open) {
         if (highlighted) {
@@ -191,13 +206,23 @@ export default React.forwardRef(function Select(
 
   return (
     <Field
+      size={size}
+      className={className}
       required={required && selectedValue === undefined}
       pending={pending}
+      invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
     >
+      {placeholder && (
+        <Placeholder
+          label={placeholder}
+          active={!!selectedLabel || focused}
+          size={size}
+        />
+      )}
       <input
         {...props}
         className={selectClassName}
@@ -206,10 +231,11 @@ export default React.forwardRef(function Select(
         onFocus={onFocus}
         onBlur={onBlur}
         onChange={(e) => setFilter(e.target.value)}
-        onKeyDown={handleArrows}
+        onKeyDown={onKeyDown}
         value={filter !== undefined ? filter : selectedLabel || ""}
       />
       {filter !== undefined && <Filter size={size} />}
+      {invalid && <InvalidIcon size={size} />}
       {pending && <Loader size={size} />}
       <Indicator open={open} size={size} />
       {open && (

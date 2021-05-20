@@ -1,13 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import Checkbox from "./Checkbox";
-
-const { log } = console;
-
-const options = new Array(5)
-  .fill(0)
-  .map((_, index) => ({ label: index.toString(), value: index.toString() }));
 
 const commonProps = {
   name: "test-name",
@@ -82,7 +76,9 @@ describe("tests the checbox", () => {
     const { container } = render(
       <Checkbox {...commonProps} onChange={mockEvent} />
     );
-    userEvent.click(container.querySelector('input[type="checkbox"]'));
+    userEvent.click(
+      container.querySelector('input[type="checkbox"]') as Element
+    );
     expect(mockEvent).toHaveBeenCalledWith(
       expect.objectContaining({
         type: "change",

@@ -6,7 +6,7 @@ import "./Field.scss";
 
 export type FieldProps = {
   kind?: `${Kind}`;
-  size?: InputSize;
+  size?: `${InputSize}`;
   label?: string;
   required?: boolean;
   pending?: boolean;
@@ -14,6 +14,7 @@ export type FieldProps = {
   disabled?: boolean;
   children: React.ReactNode;
   focused?: boolean;
+  className?: string;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   onClickOutside?: (e: MouseEvent) => void;
 };
@@ -28,6 +29,7 @@ function Field({
   invalid,
   children,
   focused,
+  className,
   onClick,
   onClickOutside,
 }: FieldProps): JSX.Element {
@@ -54,6 +56,7 @@ function Field({
       "rc-field--invalid rc-field__borders--invalid rc-field__background--invalid rc-field__shadow--invalid",
     required &&
       "rc-field--required rc-field__borders--required rc-field__background--required rc-field__shadow--required",
+    className,
   ]);
 
   return (
