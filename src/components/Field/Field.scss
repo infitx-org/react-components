@@ -39,6 +39,16 @@
   box-shadow: $shadow-size;
   padding: 0px $component-open-size;
   background: $background--open;
+  color: $shadow-color--default;
+  &.rc-field--pending {
+    color: $shadow-color--pending;
+  }
+  &.rc-field--required {
+    color: $shadow-color--required;
+  }
+  &.rc-field--invalid {
+    color: $shadow-color--invalid;
+  }
 }
 .rc-field--disabled {
   opacity: $component-opacity--disabled;
@@ -77,17 +87,4 @@
   padding-left: 16px;
   padding-right: 10px;
   font-size: 14px;
-}
-
-.rc-field--focused {
-  color: $shadow-color--default;
-  &.rc-field--pending {
-    color: $shadow-color--pending;
-  }
-  &.rc-field--required {
-    color: $shadow-color--required;
-  }
-  &.rc-field--invalid {
-    color: $shadow-color--invalid;
-  }
 }

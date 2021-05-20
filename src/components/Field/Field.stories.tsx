@@ -41,6 +41,7 @@ Template.args = {
 export const Default = Template.bind({});
 Default.args = {
   ...Template.args,
+  kind: "primary",
   size: "large",
   className: undefined,
   required: false,
