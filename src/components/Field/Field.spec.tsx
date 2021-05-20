@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { InputSize, Kind } from "types";
@@ -59,7 +59,7 @@ describe("tests the Field props", () => {
     });
   });
 
-  it("renders the small, medium, large sizes", () => {
+  it("renders the kinds", () => {
     Object.values(Kind).forEach((kind) => {
       const { container } = render(<Field kind={kind}>test</Field>);
       expect(container.querySelector(`.rc-field--${kind}`)).toBeTruthy();
@@ -69,7 +69,7 @@ describe("tests the Field props", () => {
   it("triggers onClick when clicking", () => {
     const mockFn = jest.fn();
     const { container } = render(<Field onClick={mockFn}>test</Field>);
-    userEvent.click(container.querySelector(".rc-field"));
+    userEvent.click(container.querySelector(".rc-field") as Element);
     expect(mockFn).toHaveBeenCalled();
   });
 });

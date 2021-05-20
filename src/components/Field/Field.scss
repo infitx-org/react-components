@@ -2,8 +2,10 @@
 @import "../../scss/vars/border.scss";
 @import "../../scss/vars/background.scss";
 @import "../../scss/vars/shadow.scss";
+@import "../../scss/vars/themes.scss";
 @import "../../scss/vars/general.scss";
 @import "../../scss/base.scss";
+@use "sass:map";
 
 .rc-field {
   @include rc-component;
@@ -26,6 +28,13 @@
   border-left-color: #e5e5e5;
   border-top-color: #e5e5e5;
 }
+
+@each $kind in $kinds {
+  .rc-field--#{$kind} {
+    border-bottom-color: map-get($theme-colors, $kind);
+  }
+}
+
 
 .rc-field--focused {
   box-shadow: $shadow-size;
@@ -71,20 +80,15 @@
   font-size: 14px;
 }
 
-.rc-field__shadow {
-  color: transparent;
-}
 .rc-field--focused {
-  &.rc-field__shadow {
-    color: $shadow-color--default;
-  }
-  &.rc-field__shadow--pending {
+  color: $shadow-color--default;
+  &.rc-field--pending {
     color: $shadow-color--pending;
   }
-  &.rc-field__shadow--required {
+  &.rc-field--required {
     color: $shadow-color--required;
   }
-  &.rc-field__shadow--invalid {
+  &.rc-field--invalid {
     color: $shadow-color--invalid;
   }
 }

@@ -37,8 +37,8 @@ function Field({
 
   const fieldClassname = classnames([
     "rc-field",
-    kind && `rc-field--${kind}`,
-    size === InputSize.Small && "rc-field--small",
+    `rc-field--${kind}`,
+    `rc-field--${size}`,
     size === InputSize.Medium && "rc-field--medium",
     size === InputSize.Large && "rc-field--large",
     focused && "rc-field--focused",
