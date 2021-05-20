@@ -12,15 +12,44 @@
   display: inline-flex;
   align-items: center;
   width: 200px;
+  background: $background--default;
+  border-left: 2px solid;
+  border-right: 2px solid;
+  border-bottom-color: $border-color--default;
+  border-right-width: 1px;
+  border-left-width: 1px;
+  border-top-width: 1px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-top-style: solid;
+  border-right-color: #e5e5e5;
+  border-left-color: #e5e5e5;
+  border-top-color: #e5e5e5;
 }
-.rc-field--open {
+
+.rc-field--focused {
   box-shadow: $shadow-size;
   padding: 0px $component-open-size;
+  background: $background--open;
 }
 .rc-field--disabled {
   opacity: $component-opacity--disabled;
   pointer-events: none;
   cursor: auto;
+}
+
+.rc-field--required {
+  border-bottom-color: $border-color--required;
+  background: $background--required;
+}
+.rc-field--invalid {
+  border-bottom-color: $border-color--invalid;
+  background: $background--invalid;
+}
+
+.rc-field--pending {
+  border-bottom-color: $border-color--pending;
+  background: $background--pending;
 }
 
 .rc-field--small {
@@ -45,7 +74,7 @@
 .rc-field__shadow {
   color: transparent;
 }
-.rc-field--open {
+.rc-field--focused {
   &.rc-field__shadow {
     color: $shadow-color--default;
   }
@@ -58,46 +87,4 @@
   &.rc-field__shadow--invalid {
     color: $shadow-color--invalid;
   }
-}
-
-.rc-field__background {
-  background: $background--default;
-}
-.rc-field__background--open {
-  background: $background--open;
-}
-.rc-field__background--pending {
-  background: $background--pending;
-}
-.rc-field__background--required {
-  background: $background--required;
-}
-.rc-field__background--invalid {
-  background: $background--invalid;
-}
-
-.rc-field__borders {
-  border-left: 2px solid;
-  border-right: 2px solid;
-  border-bottom-color: $border-color--default;
-  border-right-width: 1px;
-  border-left-width: 1px;
-  border-top-width: 1px;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-top-style: solid;
-  border-right-color: #e5e5e5;
-  border-left-color: #e5e5e5;
-  border-top-color: #e5e5e5;
-}
-.rc-field__borders--open {
-}
-.rc-field__borders--pending {
-  border-bottom-color: $border-color--pending;
-}
-.rc-field__borders--required {
-  border-bottom-color: $border-color--required;
-}
-.rc-field__borders--invalid {
-  border-bottom-color: $border-color--invalid;
 }

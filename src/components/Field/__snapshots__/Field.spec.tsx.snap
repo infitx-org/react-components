@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Field correctly when multiple props are set 1`] = `
+<div>
+  <div
+    class="rc-field rc-field--primary rc-field--large rc-field--disabled rc-field--pending rc-field--invalid rc-field--required"
+    role="presentation"
+  >
+    test
+  </div>
+</div>
+`;

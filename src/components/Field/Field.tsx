@@ -7,7 +7,6 @@ import "./Field.scss";
 export type FieldProps = {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
-  label?: string;
   required?: boolean;
   pending?: boolean;
   invalid?: boolean;
@@ -22,7 +21,6 @@ export type FieldProps = {
 function Field({
   kind = Kind.Primary,
   size = InputSize.Large,
-  label,
   disabled,
   required,
   pending,
@@ -40,36 +38,25 @@ function Field({
   const fieldClassname = classnames([
     "rc-field",
     kind && `rc-field--${kind}`,
-    "rc-field__borders",
-    "rc-field__background",
-    "rc-field__shadow",
     size === InputSize.Small && "rc-field--small",
     size === InputSize.Medium && "rc-field--medium",
     size === InputSize.Large && "rc-field--large",
-    focused &&
-      "rc-field--open rc-field__borders--open rc-field__background--open rc-field__shadow--open",
-    disabled &&
-      "rc-field--disabled rc-field__borders--disabled rc-field__background--disabled",
-    pending &&
-      "rc-field--pending rc-field__borders--pending rc-field__background--pending rc-field__shadow--pending",
-    invalid &&
-      "rc-field--invalid rc-field__borders--invalid rc-field__background--invalid rc-field__shadow--invalid",
-    required &&
-      "rc-field--required rc-field__borders--required rc-field__background--required rc-field__shadow--required",
+    focused && "rc-field--focused",
+    disabled && "rc-field--disabled",
+    pending && "rc-field--pending",
+    invalid && "rc-field--invalid",
+    required && "rc-field--required",
     className,
   ]);
 
   return (
-    <div>
-      {label && <label>{label}</label>}
-      <div
-        className={fieldClassname}
-        onClick={onClick}
-        role="presentation"
-        ref={fieldRef}
-      >
-        {children}
-      </div>
+    <div
+      className={fieldClassname}
+      onClick={onClick}
+      role="presentation"
+      ref={fieldRef}
+    >
+      {children}
     </div>
   );
 }

@@ -18,7 +18,6 @@ export interface DatePickerProps
   className?: string;
   size?: `${InputSize}`;
   format?: string;
-  label?: string;
   placeholder?: string;
   value?: string;
   required?: boolean;
@@ -32,7 +31,6 @@ export default React.forwardRef(function DatePicker(
     className,
     size = InputSize.Large,
     format = "MMM do yyyy, HH:mm:ss",
-    label,
     placeholder,
     value,
     required,
@@ -133,7 +131,6 @@ export default React.forwardRef(function DatePicker(
     <Field
       className={className}
       size={size}
-      label={label}
       required={required && selectedDate === undefined}
       pending={pending}
       invalid={invalid}

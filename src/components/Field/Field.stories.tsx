@@ -48,3 +48,53 @@ export const DefaultSimpleMultiField = () => {
     />
   );
 };
+
+const Template = (args) => (
+  <Field {...args}>
+    <span>children render here</span>
+  </Field>
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  size: "large",
+  className: undefined,
+  required: false,
+  invalid: false,
+  pending: false,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+};
+
+export const Pending = Template.bind({});
+Pending.args = {
+  pending: true,
+};
+
+export const Required = Template.bind({});
+Required.args = {
+  required: true,
+};
+
+export const Invalid = Template.bind({});
+Invalid.args = {
+  invalid: true,
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  size: "small",
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  size: "medium",
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: "large",
+};
