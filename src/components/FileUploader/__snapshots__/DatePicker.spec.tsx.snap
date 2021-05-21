@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the DatePicker correctly when multiple props are set 1`] = `
+<div>
+  <div
+    class="rc-field rc-field--primary rc-field--large rc-field--large"
+    role="presentation"
+  >
+    <label
+      class="placeholder placeholder--large"
+    >
+      test
+    </label>
+    <input
+      class="rc-datepicker rc-datepicker--large"
+      readonly=""
+      type="text"
+      value=""
+    />
+    <svg
+      class="rc-datepicker__calendar-icon"
+      fill="#000"
+      height="16"
+      stroke="transparent"
+      width="16"
+    />
+  </div>
+</div>
+`;
