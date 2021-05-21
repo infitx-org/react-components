@@ -32,11 +32,6 @@ describe("tests the Field props", () => {
     expect(container.querySelector(".rc-field--disabled")).toBeTruthy();
   });
 
-  it("renders as pending", () => {
-    const { container } = render(<Field pending>test</Field>);
-    expect(container.querySelector(".rc-field--pending")).toBeTruthy();
-  });
-
   it("renders as required", () => {
     const { container } = render(<Field required>test</Field>);
     expect(container.querySelector(".rc-field--required")).toBeTruthy();
@@ -77,7 +72,7 @@ describe("tests the Field props", () => {
 // Snapshot testing
 it("renders the Field correctly when multiple props are set", () => {
   const { container } = render(
-    <Field required invalid pending disabled>
+    <Field required invalid disabled>
       test
     </Field>
   );

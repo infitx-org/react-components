@@ -8,7 +8,6 @@ export type FieldProps = {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   required?: boolean;
-  pending?: boolean;
   invalid?: boolean;
   disabled?: boolean;
   children: React.ReactNode;
@@ -23,7 +22,6 @@ function Field({
   size = InputSize.Large,
   disabled,
   required,
-  pending,
   invalid,
   children,
   focused,
@@ -43,7 +41,6 @@ function Field({
     size === InputSize.Large && "rc-field--large",
     focused && "rc-field--focused",
     disabled && "rc-field--disabled",
-    pending && "rc-field--pending",
     invalid && "rc-field--invalid",
     required && "rc-field--required",
     className,

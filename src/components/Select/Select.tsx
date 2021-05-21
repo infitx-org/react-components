@@ -210,7 +210,6 @@ export default React.forwardRef(function Select(
       size={size}
       className={className}
       required={required && selectedValue === undefined}
-      pending={pending}
       invalid={invalid}
       disabled={props.disabled}
       focused={focused}

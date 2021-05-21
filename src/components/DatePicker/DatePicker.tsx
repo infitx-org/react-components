@@ -135,7 +135,6 @@ export default React.forwardRef(function DatePicker(
       className={className}
       size={size}
       required={required && selectedDate === undefined}
-      pending={pending}
       invalid={invalid}
       disabled={props.disabled}
       focused={focused}

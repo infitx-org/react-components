@@ -46,7 +46,6 @@ Default.args = {
   className: undefined,
   required: false,
   invalid: false,
-  pending: false,
   disabled: false,
   focused: false,
 };
@@ -55,12 +54,6 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   ...Template.args,
   disabled: true,
-};
-
-export const Pending = Template.bind({});
-Pending.args = {
-  ...Template.args,
-  pending: true,
 };
 
 export const Required = Template.bind({});
