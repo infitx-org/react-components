@@ -1,33 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the DatePicker correctly when multiple props are set 1`] = `
-<div>
-  <div
-    class="rc-field rc-field--primary rc-field--large rc-field--large"
-    role="presentation"
-  >
-    <label
-      class="placeholder placeholder--large"
-    >
-      test
-    </label>
-    <input
-      class="rc-datepicker rc-datepicker--large"
-      readonly=""
-      type="text"
-      value=""
-    />
-    <svg
-      class="rc-datepicker__calendar-icon"
-      fill="#000"
-      height="16"
-      stroke="transparent"
-      width="16"
-    />
-  </div>
-</div>
-`;
-
 exports[`renders the FileUploader correctly when multiple props are set 1`] = `
 <div>
   <div
@@ -40,18 +12,23 @@ exports[`renders the FileUploader correctly when multiple props are set 1`] = `
       test
     </label>
     <input
-      class="rc-FileUploader rc-FileUploader--large"
-      readonly=""
-      type="text"
-      value=""
+      class="rc-fileuploader__input"
+      type="file"
     />
-    <svg
-      class="rc-datepicker__calendar-icon"
-      fill="#000"
-      height="16"
-      stroke="transparent"
-      width="16"
+    <div
+      class="rc-fileuploader rc-fileuploader--large"
     />
+    <button
+      class="rc-button rc-button--primary rc-button--extra-small rc-button--noFill"
+      tabindex="-1"
+      type="button"
+    >
+      <div
+        class="rc-button__content"
+      >
+        Choose File
+      </div>
+    </button>
   </div>
 </div>
 `;
