@@ -2,29 +2,27 @@
 
 exports[`renders the Select correctly when multiple props are set 1`] = `
 <div>
-  <div>
-    <div
-      class="rc-field rc-field--primary rc-field__borders rc-field__background rc-field__shadow rc-field--large"
-      role="presentation"
+  <div
+    class="rc-field rc-field--primary rc-field--large rc-field--large"
+    role="presentation"
+  >
+    <label
+      class="placeholder placeholder--large"
     >
-      <label
-        class="placeholder placeholder--large"
-      >
-        test
-      </label>
-      <input
-        class="rc-select"
-        type="text"
-        value=""
-      />
-      <svg
-        class="rc-select__indicator"
-        fill="rgba(0,0,0,0.4)"
-        height="11"
-        stroke="transparent"
-        width="11"
-      />
-    </div>
+      test
+    </label>
+    <input
+      class="rc-select rc-select--large"
+      type="text"
+      value=""
+    />
+    <svg
+      class="rc-select__indicator"
+      fill="rgba(0,0,0,0.4)"
+      height="11"
+      stroke="transparent"
+      width="11"
+    />
   </div>
 </div>
 `;

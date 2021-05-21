@@ -18,7 +18,6 @@ export interface DatePickerProps
   className?: string;
   size?: `${InputSize}`;
   format?: string;
-  label?: string;
   placeholder?: string;
   value?: string;
   required?: boolean;
@@ -32,7 +31,6 @@ export default React.forwardRef(function DatePicker(
     className,
     size = InputSize.Large,
     format = "MMM do yyyy, HH:mm:ss",
-    label,
     placeholder,
     value,
     required,
@@ -126,16 +124,17 @@ export default React.forwardRef(function DatePicker(
     }
   }
 
-  const inputClassName = classnames(["rc-datepicker"]);
+  const inputClassName = classnames([
+    "rc-datepicker",
+    `rc-datepicker--${size}`,
+  ]);
 
   const visibleValue = getStringFromDate(selectedDate);
   return (
     <Field
       className={className}
       size={size}
-      label={label}
       required={required && selectedDate === undefined}
-      pending={pending}
       invalid={invalid}
       disabled={props.disabled}
       focused={focused}

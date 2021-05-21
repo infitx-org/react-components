@@ -14,3 +14,15 @@
   fill: #999;
   margin-left: 5px;
 }
+
+@mixin rc-field-input {
+  &--small {
+    font-size: 12px;
+  }
+  &--medium {
+    font-size: 13px;
+  }
+  &--large {
+    font-size: 14px;
+  }
+}

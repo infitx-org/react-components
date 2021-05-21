@@ -2,8 +2,10 @@
 @import "../../scss/vars/border.scss";
 @import "../../scss/vars/background.scss";
 @import "../../scss/vars/shadow.scss";
+@import "../../scss/vars/themes.scss";
 @import "../../scss/vars/general.scss";
 @import "../../scss/base.scss";
+@use "sass:map";
 
 .rc-field {
   @include rc-component;
@@ -12,15 +14,61 @@
   display: inline-flex;
   align-items: center;
   width: 200px;
+  background: $background--default;
+  border-left: 2px solid;
+  border-right: 2px solid;
+  border-bottom-color: $border-color--default;
+  border-right-width: 1px;
+  border-left-width: 1px;
+  border-top-width: 1px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-top-style: solid;
+  border-right-color: #e5e5e5;
+  border-left-color: #e5e5e5;
+  border-top-color: #e5e5e5;
 }
-.rc-field--open {
+
+@each $kind in $kinds {
+  .rc-field--#{$kind} {
+    border-bottom-color: map-get($theme-colors, $kind);
+  }
+  &.rc-field--#{$kind} {
+    &.rc-field--focused {
+      color: map-get($theme-shadows, $kind);
+    }
+  }
+}
+
+.rc-field--focused {
   box-shadow: $shadow-size;
   padding: 0px $component-open-size;
+  background: $background--open;
+  color: $shadow-color--default;
+  &.rc-field--pending {
+    color: $shadow-color--pending;
+  }
+  &.rc-field--required {
+    color: $shadow-color--required;
+  }
+  &.rc-field--invalid {
+    color: $shadow-color--invalid;
+  }
 }
+
 .rc-field--disabled {
   opacity: $component-opacity--disabled;
   pointer-events: none;
   cursor: auto;
+}
+
+.rc-field--required {
+  border-bottom-color: $border-color--required;
+  background: $background--required;
+}
+.rc-field--invalid {
+  border-bottom-color: $border-color--invalid;
+  background: $background--invalid;
 }
 
 .rc-field--small {
@@ -40,64 +88,4 @@
   padding-left: 16px;
   padding-right: 10px;
   font-size: 14px;
-}
-
-.rc-field__shadow {
-  color: transparent;
-}
-.rc-field--open {
-  &.rc-field__shadow {
-    color: $shadow-color--default;
-  }
-  &.rc-field__shadow--pending {
-    color: $shadow-color--pending;
-  }
-  &.rc-field__shadow--required {
-    color: $shadow-color--required;
-  }
-  &.rc-field__shadow--invalid {
-    color: $shadow-color--invalid;
-  }
-}
-
-.rc-field__background {
-  background: $background--default;
-}
-.rc-field__background--open {
-  background: $background--open;
-}
-.rc-field__background--pending {
-  background: $background--pending;
-}
-.rc-field__background--required {
-  background: $background--required;
-}
-.rc-field__background--invalid {
-  background: $background--invalid;
-}
-
-.rc-field__borders {
-  border-left: 2px solid;
-  border-right: 2px solid;
-  border-bottom-color: $border-color--default;
-  border-right-width: 1px;
-  border-left-width: 1px;
-  border-top-width: 1px;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-top-style: solid;
-  border-right-color: #e5e5e5;
-  border-left-color: #e5e5e5;
-  border-top-color: #e5e5e5;
-}
-.rc-field__borders--open {
-}
-.rc-field__borders--pending {
-  border-bottom-color: $border-color--pending;
-}
-.rc-field__borders--required {
-  border-bottom-color: $border-color--required;
-}
-.rc-field__borders--invalid {
-  border-bottom-color: $border-color--invalid;
 }
