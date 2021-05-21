@@ -1,0 +1,46 @@
+@import "../../scss/vars/themes.scss";
+@use "sass:map";
+
+.color-scheme {
+  height: 140px;
+  width: 140px;
+  margin: 10px;
+  border-radius: 10px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px -16px #000;
+
+  .labels {
+    background: rgba(0, 0, 0, 0.4);
+    color: #eee;
+    font-size: 13px;
+    font-family: Verdana;
+    text-align: center;
+    padding: 10px 0px;
+  }
+}
+
+.color-scheme--tester {
+  width: 200px;
+  border-radius: 0px;
+}
+
+@each $kind in $kinds {
+  .color-scheme--regular-#{$kind} {
+    background: map-get($theme-colors, $kind);
+  }
+
+  .color-scheme--active-#{$kind} {
+    background: map-get($theme-colors--active, $kind);
+  }
+
+  .color-scheme--darken-#{$kind} {
+    background: map-get($theme-colors--darken, $kind);
+  }
+
+  .color-scheme--shadows-#{$kind} {
+    background: map-get($theme-shadows, $kind);
+  }
+}

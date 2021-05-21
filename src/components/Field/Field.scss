@@ -33,6 +33,11 @@
   .rc-field--#{$kind} {
     border-bottom-color: map-get($theme-colors, $kind);
   }
+  &.rc-field--#{$kind} {
+    &.rc-field--focused {
+      color: map-get($theme-shadows, $kind);
+    }
+  }
 }
 
 .rc-field--focused {
@@ -50,6 +55,7 @@
     color: $shadow-color--invalid;
   }
 }
+
 .rc-field--disabled {
   opacity: $component-opacity--disabled;
   pointer-events: none;
@@ -64,7 +70,6 @@
   border-bottom-color: $border-color--invalid;
   background: $background--invalid;
 }
-
 .rc-field--pending {
   border-bottom-color: $border-color--pending;
   background: $background--pending;
