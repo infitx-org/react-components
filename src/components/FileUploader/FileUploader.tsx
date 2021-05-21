@@ -81,7 +81,10 @@ export default React.forwardRef(function FileUploader(
   }
 
   async function onFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const [inputFile] = e.target.files;
+    const inputFile = e.target.files?.item(0);
+    if (!inputFile) {
+      return;
+    }
     let parse;
     if (parseAs === "text") {
       parse = readFileAsText;
