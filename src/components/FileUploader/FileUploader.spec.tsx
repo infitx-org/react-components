@@ -1,55 +1,48 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor, act } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { InputSize } from "types";
 import FileUploader from "./FileUploader";
 
+const testFile = new File(
+  [new Blob(["test"], { type: "text/plain" })],
+  "test.dat"
+);
 const commonProps = {
   onChange: jest.fn(),
 };
 
-function getCalendarDays(container: HTMLElement): NodeListOf<HTMLDivElement> {
-  return container.querySelectorAll(
-    ".DayPicker-Day:not(.DayPicker-Day--outside)"
-  ) as NodeListOf<HTMLDivElement>;
-}
-function getCalendar(container: HTMLElement): HTMLDivElement {
-  return container.querySelector(
-    ".rc-FileUploader__calendar"
-  ) as HTMLDivElement;
-}
 function getInput(container: HTMLElement): HTMLInputElement {
-  return container.querySelector("input[type='text']") as HTMLInputElement;
+  return container.querySelector("input[type='file']") as HTMLInputElement;
+}
+
+function getButton(container: HTMLElement): HTMLInputElement {
+  return container.querySelector("button") as HTMLInputElement;
+}
+
+function getFileName(container: HTMLElement): HTMLInputElement {
+  return container.querySelector(".rc-fileuploader") as HTMLInputElement;
 }
 
 describe("tests the FileUploader props", () => {
   it("renders the FileUploader", () => {
     const { container } = render(<FileUploader {...commonProps} />);
-    expect(container.querySelector(".rc-FileUploader")).toBeTruthy();
-    expect(container.querySelectorAll('input[type="text"]')).toHaveLength(1);
+    expect(container.querySelector(".rc-fileuploader")).toBeTruthy();
+    expect(container.querySelectorAll('input[type="file"]')).toHaveLength(1);
   });
 
-  it("does not render the closed calendar", () => {
-    const { container } = render(<FileUploader {...commonProps} />);
-    expect(container.querySelector(".rc-FileUploader__calendar")).toBeFalsy();
-  });
-
-  it("renders the date", () => {
+  it("renders the file", () => {
     const { container } = render(
-      <FileUploader
-        {...commonProps}
-        value={new Date("12/31/2021").toString()}
-        format="MM/dd/yyyy"
-      />
+      <FileUploader {...commonProps} file={testFile} />
     );
-    const input = getInput(container);
-    expect(input.value).toBe("12/31/2021");
+    const fileName = getFileName(container);
+    expect(fileName).toHaveTextContent(testFile.name);
   });
 
-  it("renders no date when value is not specified", () => {
+  it("renders no filename when file is not specified", () => {
     const { container } = render(<FileUploader {...commonProps} />);
-    const input = getInput(container);
-    expect(input.value).toBe("");
+    const fileName = getFileName(container);
+    expect(fileName).toHaveTextContent("");
   });
 
   it("renders the placeholder", () => {
@@ -97,35 +90,6 @@ describe("tests the FileUploader props", () => {
     });
   });
 
-  it("renders the calendar when clicked", () => {
-    const { container } = render(<FileUploader {...commonProps} />);
-    userEvent.click(getInput(container));
-    expect(getCalendar(container)).toBeInTheDocument();
-  });
-
-  it("renders the calendar when focused", () => {
-    const { container } = render(<FileUploader {...commonProps} />);
-    fireEvent.focus(getInput(container));
-    expect(getCalendar(container)).toBeInTheDocument();
-  });
-
-  it("selects a date when clicking a day", () => {
-    const { container } = render(<FileUploader {...commonProps} format="dd" />);
-    userEvent.click(getInput(container));
-    const days = getCalendarDays(container);
-    userEvent.click(days[0]);
-    expect(getInput(container).value).toBe("01");
-  });
-
-  it("unselects a date when clicking the same day", () => {
-    const { container } = render(<FileUploader {...commonProps} format="dd" />);
-    userEvent.click(getInput(container));
-    const days = getCalendarDays(container);
-    userEvent.click(days[0]);
-    userEvent.click(days[0]);
-    expect(getInput(container).value).toBe("");
-  });
-
   it("triggers onFocus when focusing", () => {
     const mockFn = jest.fn();
     const { container } = render(
@@ -169,30 +133,23 @@ describe("tests the FileUploader props", () => {
   //   expect(mockFn).toHaveBeenCalled();
   // });
 
-  it("triggers onChange when selecting a date", () => {
-    const mockEvent = jest.fn();
-    const { container } = render(<FileUploader onChange={mockEvent} />);
-    userEvent.click(getInput(container));
-    const days = getCalendarDays(container);
-    userEvent.click(days[0]);
-    // const [call] = mockEvent.calls;
-    expect(mockEvent).toHaveBeenCalled();
-    const [[date]] = mockEvent.mock.calls;
-    expect(date).toBeInstanceOf(Date);
+  it("trigger onChange and selects the file", async () => {
+    const mockFn = jest.fn();
+    const { container } = render(<FileUploader onChange={mockFn} />);
+    await waitFor(() => userEvent.upload(getInput(container), testFile));
+    const input = await waitFor(() => getInput(container));
+    expect(input.files?.[0]?.name).toBe(testFile.name);
+    expect(getFileName(container)).toHaveTextContent(testFile.name);
+    expect(mockFn).toHaveBeenCalledWith("test");
   });
 
-  it("triggers onChange when clicking the same day", () => {
+  it("trigger onChange when removing the selected file", async () => {
     const mockFn = jest.fn();
     const { container } = render(
-      <FileUploader
-        {...commonProps}
-        onChange={mockFn}
-        value={new Date("01/01/2021").toString()}
-      />
+      <FileUploader onChange={mockFn} file={testFile} />
     );
-    userEvent.click(getInput(container));
-    const days = getCalendarDays(container);
-    userEvent.click(days[0]);
+    fireEvent.click(getButton(container) as Element);
+    expect(getFileName(container)).toHaveTextContent("");
     expect(mockFn).toHaveBeenCalledWith(undefined);
   });
 });

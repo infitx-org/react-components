@@ -44,7 +44,7 @@ export default React.forwardRef(function FileUploader(
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [selectedFile, setFile] = React.useState<File | undefined>(file);
   const [selectedFileName, setFileName] = React.useState<string | undefined>(
-    fileName
+    fileName || file?.name
   );
   const [open, setOpen] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
@@ -52,6 +52,12 @@ export default React.forwardRef(function FileUploader(
   React.useEffect(() => {
     setFile(file);
   }, [file]);
+
+  React.useEffect(() => {
+    if (!selectedFile && selectedFileName) {
+      setFileName(fileName);
+    }
+  }, [fileName]);
 
   function enter() {
     setFocused(true);

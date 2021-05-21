@@ -14,6 +14,10 @@ export {
   Placeholder,
   PlaceholderProps,
 } from "./components/Field";
+export {
+  default as FileUploader,
+  FileUploaderProps,
+} from "./components/FileUploader";
 export { default as Icon, IconProps } from "./components/Icon";
 export {
   default as RadioGroup,
