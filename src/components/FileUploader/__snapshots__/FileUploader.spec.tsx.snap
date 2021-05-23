@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the FileUploader correctly when multiple props are set 1`] = `
+<div>
+  <div
+    class="rc-field rc-field--primary rc-field--large rc-field--large"
+    role="presentation"
+  >
+    <label
+      class="placeholder placeholder--large"
+    >
+      test
+    </label>
+    <input
+      class="rc-fileuploader__input"
+      type="file"
+    />
+    <div
+      class="rc-fileuploader rc-fileuploader--large"
+    />
+    <button
+      class="rc-button rc-button--primary rc-button--extra-small rc-button--noFill"
+      tabindex="-1"
+      type="button"
+    >
+      <div
+        class="rc-button__content"
+      >
+        Choose File
+      </div>
+    </button>
+  </div>
+</div>
+`;

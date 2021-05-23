@@ -7,7 +7,8 @@ import Spinner from "components/Spinner";
 import Icon from "components/Icon";
 import { getIconSizeByComponentSize } from "utils/size";
 
-export type ButtonProps = {
+export interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size"> {
   children?: React.ReactNode;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   label?: string;
@@ -23,7 +24,7 @@ export type ButtonProps = {
   style?: React.CSSProperties;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
-};
+}
 
 function Button({
   children,
@@ -40,6 +41,7 @@ function Button({
   iconPosition = "left",
   onClick,
   onKeyDown,
+  ...props
 }: ButtonProps): JSX.Element {
   const classNames = classnames([
     className,
@@ -72,9 +74,9 @@ function Button({
       id={id}
       style={style}
       className={classNames}
-      onKeyDown={onKeyDown}
       onClick={onClick}
       disabled={disabled}
+      {...props}
     >
       <div className="rc-button__content">
         {iconPosition === "left" && iconContent}
