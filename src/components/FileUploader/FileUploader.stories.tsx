@@ -12,6 +12,7 @@ const Template = (args) => <FileUploader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   size: "large",
+  file,
   className: undefined,
   placeholder: "Choose a file",
   required: false,
