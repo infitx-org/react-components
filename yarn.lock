@@ -1570,10 +1570,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@modusbox/ts-utils@0.0.2-5":
-  version "0.0.2-5"
-  resolved "https://registry.yarnpkg.com/@modusbox/ts-utils/-/ts-utils-0.0.2-5.tgz#7236e3c99ad0f4db4ac25a8cf479bed73637c2c4"
-  integrity sha512-pk7pLcb/F9yNDdIf+cuOwoxKl+Qk7esJNHZLfzFkW5+U9xVOyYlxXMqA1Rg7Q7LWIkFJ6YzEyxqdSpG8doob3Q==
+"@modusbox/ts-utils@0.0.2-6":
+  version "0.0.2-6"
+  resolved "https://registry.yarnpkg.com/@modusbox/ts-utils/-/ts-utils-0.0.2-6.tgz#1dc4695df37ad86a3673edbc02f1ebfe4dc60082"
+  integrity sha512-Fqg9oEMI1h6qbEBCoqR4qLYd1By4PvxfjWssWpDV1oSYsE/hdbswDy9resuWhL4kQWCAqhd2TslpFarLlLGLYw==
   dependencies:
     lodash "^4.17.21"
 
