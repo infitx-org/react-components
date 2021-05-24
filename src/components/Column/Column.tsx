@@ -6,16 +6,19 @@ import {
 import { JustifyWithMap, AlignWithMap } from "components/shared/Layout/types";
 
 type Combined = `${JustifyWithMap} ${AlignWithMap}`;
-export type Align = `${Combined}` | `${JustifyWithMap}`;
+export type Align = `${Combined}` | `${AlignWithMap}`;
 
-export interface RowProps extends LayoutProps {
+export interface ColumnProps extends LayoutProps {
   align?: Align;
 }
 
-export default function Row({ align = "flex-start", ...props }: RowProps) {
-  const [justifyContent, alignItems] = align.split(" ") as [
-    JustifyWithMap,
-    AlignWithMap
+export default function Column({
+  align = "flex-start",
+  ...props
+}: ColumnProps) {
+  const [alignItems, justifyContent] = align.split(" ") as [
+    AlignWithMap,
+    JustifyWithMap
   ];
   return (
     <Layout

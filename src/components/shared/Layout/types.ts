@@ -23,6 +23,5 @@ export type JustifyContent =
   | "space-around"
   | "space-evenly";
 
-export type JustifyWithMap = `${JustifyContent | JustifyMap}`;
-export type AlignWithMap = `${AlignItems | AlignMap}`;
-export type AllCombined = `${JustifyWithMap} ${AlignWithMap}`;
+export type AlignWithMap = `${AlignItems | keyof typeof AlignMap}`;
+export type JustifyWithMap = `${JustifyContent | keyof typeof JustifyMap}`;
