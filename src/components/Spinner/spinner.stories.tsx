@@ -1,5 +1,6 @@
 import React from "react";
 
+import Row from "components/Layout/Row";
 import Spinner from "./Spinner";
 
 export default {
@@ -7,24 +8,9 @@ export default {
   component: Spinner,
 };
 
-function Row({ children }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      {children}
-    </div>
-  );
-}
-
 export const Default = () => <Spinner />;
 export const Colors = () => (
-  <Row align="left">
+  <Row align="center space-between">
     <Spinner color="#c33" />
     <Spinner color="#3c3" />
     <Spinner color="#33c" />
@@ -34,7 +20,7 @@ export const Colors = () => (
 );
 
 export const PresetSizes = () => (
-  <Row align="left">
+  <Row align="center space-between">
     <Spinner size="s" />
     <Spinner size="m" />
     <Spinner size="l" />
@@ -42,7 +28,7 @@ export const PresetSizes = () => (
 );
 
 export const NumericSizes = () => (
-  <Row align="left">
+  <Row align="center space-between">
     <Spinner size={10} />
     <Spinner size={20} />
     <Spinner size={30} />
