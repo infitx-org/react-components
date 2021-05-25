@@ -7,14 +7,12 @@ export default {
   title: "Layout",
 };
 
-const Block = () => <div className="block--small" />;
-const BlockBig = () => <div className="block--big" />;
 const Blocks = () => (
   <>
-    <Block />
-    <BlockBig />
-    <Block />
-    <BlockBig />
+    <div className="block--small" />
+    <div className="block--big" />
+    <div className="block--small" />
+    <div className="block--big" />
   </>
 );
 const Title = ({ children }) => {
@@ -38,16 +36,23 @@ const ColumnTemplate = (args) => (
 const alignItems = ["top", "center", "bottom"];
 const justifyContent = ["left", "center", "right"];
 
-function alignments(Template, axis1, axis2) {
+function alignments(
+  Template: React.FunctionComponent,
+  axis1: string[],
+  axis2: string[]
+) {
   return axis1.reduce(
-    (p1, ax1) => [
+    (p1: React.ReactNode[], ax1: string) => [
       ...p1,
       axis2.reduce(
-        (p2, ax2) => [...p2, <Template align={`${ax1} ${ax2}`} />],
-        []
+        (p2: React.ReactNode[], ax2: string) => [
+          ...p2,
+          <Template align={`${ax1} ${ax2}`} />,
+        ],
+        [] as React.ReactNode[]
       ),
     ],
-    []
+    [] as React.ReactNode[]
   );
 }
 
