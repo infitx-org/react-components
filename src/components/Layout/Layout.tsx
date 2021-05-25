@@ -20,12 +20,12 @@ export default function Layout({
   alignItems,
   justifyContent,
   wrap = false,
-  grow = undefined,
-  shrink = undefined,
+  grow,
+  shrink,
   basis = "auto",
-  className = undefined,
+  className,
   style = {},
-  children = undefined,
+  children,
 }: LayoutProps & FlexboxProps) {
   const styles: React.CSSProperties = {
     display: "flex",
