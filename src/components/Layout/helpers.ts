@@ -7,19 +7,16 @@ import {
   JustifyContent,
 } from "./types";
 
-export const mapAlignToProperty = (property: AlignWithMap): AlignItems => {
-  console.log(property, AlignMap, property in AlignMap);
+export function mapAlignToProperty(property: AlignWithMap): AlignItems {
   if (property in AlignMap) {
     return AlignMap[property as keyof typeof AlignMap];
   }
   return property as AlignItems;
-};
+}
 
-export const mapJustifyToProperty = (
-  property: JustifyWithMap
-): JustifyContent => {
+export function mapJustifyToProperty(property: JustifyWithMap): JustifyContent {
   if (property in JustifyMap) {
     return JustifyMap[property as keyof typeof JustifyMap];
   }
   return property as JustifyContent;
-};
+}

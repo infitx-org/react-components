@@ -1,9 +1,6 @@
-import Layout, { LayoutProps } from "components/shared/Layout";
-import {
-  mapAlignToProperty,
-  mapJustifyToProperty,
-} from "components/shared/Layout/helpers";
-import { JustifyWithMap, AlignWithMap } from "components/shared/Layout/types";
+import Layout, { LayoutProps } from "../Layout";
+import { mapAlignToProperty, mapJustifyToProperty } from "../helpers";
+import { JustifyWithMap, AlignWithMap } from "../types";
 
 type Combined = `${JustifyWithMap} ${AlignWithMap}`;
 export type Align = `${Combined}` | `${JustifyWithMap}`;

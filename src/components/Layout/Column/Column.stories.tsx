@@ -1,5 +1,3 @@
-/* eslint no-console: "off" */
-import React from "react";
 import Column from "./Column";
 
 export default {
@@ -41,13 +39,13 @@ const Blocks = () => (
 
 export const AlignLeft = () => (
   <div style={{ alignItems: "center", justifyContent: "space-between" }}>
-    <Column align="left top" style={ColumnStyle}>
+    <Column align="top left" style={ColumnStyle}>
       <Blocks />
     </Column>
-    <Column align="left center" style={ColumnStyle}>
+    <Column align="center left" style={ColumnStyle}>
       <Blocks />
     </Column>
-    <Column align="left bottom" style={ColumnStyle}>
+    <Column align="bottom left" style={ColumnStyle}>
       <Blocks />
     </Column>
   </div>
@@ -55,13 +53,13 @@ export const AlignLeft = () => (
 
 export const AlignCenter = () => (
   <div style={{ alignItems: "center", justifyContent: "space-between" }}>
-    <Column align="center top" style={ColumnStyle}>
+    <Column align="top center" style={ColumnStyle}>
       <Blocks />
     </Column>
     <Column align="center center" style={ColumnStyle}>
       <Blocks />
     </Column>
-    <Column align="center bottom" style={ColumnStyle}>
+    <Column align="bottom center" style={ColumnStyle}>
       <Blocks />
     </Column>
   </div>
@@ -69,13 +67,13 @@ export const AlignCenter = () => (
 
 export const AlignRight = () => (
   <div style={{ alignItems: "center", justifyContent: "space-between" }}>
-    <Column align="right top" style={ColumnStyle}>
+    <Column align="top right" style={ColumnStyle}>
       <Blocks />
     </Column>
-    <Column align="right center" style={ColumnStyle}>
+    <Column align="center right" style={ColumnStyle}>
       <Blocks />
     </Column>
-    <Column align="right bottom" style={ColumnStyle}>
+    <Column align="bottom right" style={ColumnStyle}>
       <Blocks />
     </Column>
   </div>
