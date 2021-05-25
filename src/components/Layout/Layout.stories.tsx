@@ -57,7 +57,7 @@ function alignments(
 }
 
 export const RowLayout = () => (
-  <Column>{alignments(RowTemplate, justifyContent, alignItems)}</Column>
+  <Column>{alignments(RowTemplate, alignItems, justifyContent)}</Column>
 );
 export const ColumnLayout = () => (
   <Row>{alignments(ColumnTemplate, alignItems, justifyContent)}</Row>

@@ -1,5 +1,6 @@
 /* eslint no-console: "off" */
 import { Size } from "types";
+import Row from "components/Layout/Row";
 import Button from "./Button";
 
 export default {
@@ -8,20 +9,6 @@ export default {
 };
 
 const { log } = console;
-function Row({ children }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      {children}
-    </div>
-  );
-}
 
 const icon = (
   <svg
@@ -43,7 +30,7 @@ export const defaultButton = () => (
 );
 
 export const AllKinds = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} label="Primary" kind="primary" />
     <Button onClick={log} label="Secondary" kind="secondary" />
     <Button onClick={log} label="Tertiary" kind="tertiary" />
@@ -56,7 +43,7 @@ export const AllKinds = () => (
 );
 
 export const AllKindsWithNoFill = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} noFill label="Primary" kind="primary" />
     <Button onClick={log} noFill label="Secondary" kind="secondary" />
     <Button onClick={log} noFill label="Tertiary" kind="tertiary" />
@@ -69,7 +56,7 @@ export const AllKindsWithNoFill = () => (
 );
 
 export const AllKindsWithIcon = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} icon={icon} label="Primary" kind="primary" />
     <Button onClick={log} icon={icon} label="Secondary" kind="secondary" />
     <Button onClick={log} icon={icon} label="Tertiary" kind="tertiary" />
@@ -82,7 +69,7 @@ export const AllKindsWithIcon = () => (
 );
 
 export const AllKindsWithNoFillWithIcon = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} noFill icon={icon} label="Primary" kind="primary" />
     <Button
       onClick={log}
@@ -101,7 +88,7 @@ export const AllKindsWithNoFillWithIcon = () => (
 );
 
 export const AllPending = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} label="Primary" kind="primary" pending />
     <Button onClick={log} label="Secondary" kind="secondary" pending />
     <Button onClick={log} label="Tertiary" kind="tertiary" pending />
@@ -116,7 +103,7 @@ export const AllPending = () => (
 );
 
 export const AllPendingWithNoFill = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} noFill label="Primary" kind="primary" pending />
     <Button onClick={log} noFill label="Secondary" kind="secondary" pending />
     <Button onClick={log} noFill label="Tertiary" kind="tertiary" pending />
@@ -131,7 +118,7 @@ export const AllPendingWithNoFill = () => (
 );
 
 export const AllDisabled = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} label="Primary" kind="primary" disabled />
     <Button onClick={log} label="Secondary" kind="secondary" disabled />
     <Button onClick={log} label="Tertiary" kind="tertiary" disabled />
@@ -171,7 +158,7 @@ export const AllDisabled = () => (
 
 export const AllSizes = () => (
   <div>
-    <Row>
+    <Row align="center space-between">
       <Button onClick={log} label="Large size " size={Size.Large} />
       <Button onClick={log} label="Medium size " size={Size.Medium} />
       <Button onClick={log} label="Small size " size={Size.Small} />
@@ -194,7 +181,7 @@ export const AllSizes = () => (
         size={Size.Small}
       />
     </Row>
-    <Row>
+    <Row align="center space-between">
       <Button
         onClick={log}
         label="Large size pending "
@@ -218,13 +205,13 @@ export const AllSizes = () => (
 );
 
 export const WithTooltip = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} label="Test Button Tooltip" tooltip="Test!" />
   </Row>
 );
 
 export const WithIcon = () => (
-  <Row>
+  <Row align="center space-between">
     <Button
       onClick={log}
       label="Test Button Tooltip"
@@ -236,7 +223,7 @@ export const WithIcon = () => (
 );
 
 export const WithSVGIcon = () => (
-  <Row>
+  <Row align="center space-between">
     <Button onClick={log} label="Test Button Tooltip" icon={icon} />
   </Row>
 );

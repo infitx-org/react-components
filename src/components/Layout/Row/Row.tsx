@@ -10,7 +10,7 @@ export interface RowProps extends LayoutProps {
 }
 
 export default function Row({ align = "flex-start", ...props }: RowProps) {
-  const [justifyContent, alignItems] = align.split(" ") as [
+  const [justifyContent, alignItems] = align.split(" ").reverse() as [
     JustifyWithMap,
     AlignWithMap
   ];

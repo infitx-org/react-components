@@ -2,6 +2,7 @@ export * from "types";
 
 export { default as Button, ButtonProps } from "./components/Button";
 export { default as Checkbox, CheckboxProps } from "./components/Checkbox";
+export { default as Column, ColumnProps } from "./components/Layout/Column";
 export {
   default as DatePicker,
   DatePickerProps,
@@ -23,6 +24,7 @@ export {
   default as RadioGroup,
   RadioGroupProps,
 } from "./components/RadioGroup";
+export { default as Row, RowProps } from "./components/Layout/Row";
 export { default as Select, SelectProps } from "./components/Select";
 export { default as Spinner, SpinnerProps } from "./components/Spinner";
 export {
