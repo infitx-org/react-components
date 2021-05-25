@@ -1,37 +1,14 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { AlignItems } from "./types";
 import Column from "./Column";
 import Row from "./Row";
+import "./Layout.stories.css";
 
 export default {
   title: "Layout",
 };
 
-const wrapperStyle = {
-  backgroundColor: "#ddd",
-  borderRadius: "5px",
-  height: "100px",
-  margin: "5px",
-};
-
-const smallBlockStyle = {
-  background: "#333",
-  margin: "5px",
-  height: "20px",
-  width: "20px",
-  borderRadius: "10%",
-};
-
-const bigBlockStyle = {
-  background: "#666",
-  margin: "5px",
-  height: "40px",
-  width: "40px",
-  borderRadius: "10%",
-};
-
-const Block = () => <div style={smallBlockStyle} />;
-const BlockBig = () => <div style={bigBlockStyle} />;
-
+const Block = () => <div className="block--small" />;
+const BlockBig = () => <div className="block--big" />;
 const Blocks = () => (
   <>
     <Block />
@@ -40,14 +17,43 @@ const Blocks = () => (
     <BlockBig />
   </>
 );
+const Title = ({ children }) => {
+  return <div className="title">{children}</div>;
+};
 
-const Template = (args) => (
-  <Row {...args} style={wrapperStyle}>
+const RowTemplate = (args) => (
+  <Row {...args} className="row">
     <Blocks />
+    <Title>{args.align}</Title>
   </Row>
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  align: undefined,
-};
+const ColumnTemplate = (args) => (
+  <Column {...args} className="column">
+    <Blocks />
+    <Title>{args.align}</Title>
+  </Column>
+);
+
+const alignItems = ["top", "center", "bottom"];
+const justifyContent = ["left", "center", "right"];
+
+function alignments(Template, axis1, axis2) {
+  return axis1.reduce(
+    (p1, ax1) => [
+      ...p1,
+      axis2.reduce(
+        (p2, ax2) => [...p2, <Template align={`${ax1} ${ax2}`} />],
+        []
+      ),
+    ],
+    []
+  );
+}
+
+export const RowLayout = () => (
+  <Column>{alignments(RowTemplate, justifyContent, alignItems)}</Column>
+);
+export const ColumnLayout = () => (
+  <Row>{alignments(ColumnTemplate, alignItems, justifyContent)}</Row>
+);

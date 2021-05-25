@@ -19,6 +19,7 @@ export default function Column({
   ];
   return (
     <Layout
+      flexDirection="column"
       alignItems={mapAlignToProperty(alignItems)}
       justifyContent={mapJustifyToProperty(justifyContent)}
       {...props}

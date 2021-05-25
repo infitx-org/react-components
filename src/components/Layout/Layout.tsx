@@ -14,11 +14,13 @@ export interface LayoutProps {
 export interface FlexboxProps {
   alignItems?: AlignItems;
   justifyContent?: JustifyContent;
+  flexDirection: "row" | "column";
 }
 
 export default function Layout({
   alignItems,
   justifyContent,
+  flexDirection,
   wrap = false,
   grow,
   shrink,
@@ -29,7 +31,7 @@ export default function Layout({
 }: LayoutProps & FlexboxProps) {
   const styles: React.CSSProperties = {
     display: "flex",
-    flexDirection: "row",
+    flexDirection,
     flexWrap: wrap ? "wrap" : undefined,
     flexGrow: grow,
     flexShrink: shrink,

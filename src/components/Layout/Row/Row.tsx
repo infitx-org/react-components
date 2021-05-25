@@ -16,6 +16,7 @@ export default function Row({ align = "flex-start", ...props }: RowProps) {
   ];
   return (
     <Layout
+      flexDirection="row"
       alignItems={mapAlignToProperty(alignItems)}
       justifyContent={mapJustifyToProperty(justifyContent)}
       {...props}
