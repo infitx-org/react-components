@@ -2,7 +2,7 @@ import Layout, { LayoutProps } from "../Layout";
 import { mapAlignToProperty, mapJustifyToProperty } from "../helpers";
 import { JustifyWithMap, AlignWithMap } from "../types";
 
-type Combined = `${JustifyWithMap} ${AlignWithMap}`;
+type Combined = `${AlignWithMap} ${JustifyWithMap}`;
 export type Align = `${Combined}` | `${JustifyWithMap}`;
 
 export interface RowProps extends LayoutProps {

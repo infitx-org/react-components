@@ -8,7 +8,7 @@ export interface LayoutProps {
   basis?: string;
   className?: string;
   style?: React.CSSProperties;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export interface FlexboxProps {
