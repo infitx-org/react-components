@@ -24,7 +24,7 @@
   padding-right: 10px;
   line-height: 40px;
   font-size: 13px;
-  background: $color__white;
+  background: #fff;
   border-left: 2px solid $color__tertiary;
   border-right: 2px solid $color__tertiary;
   cursor: pointer;
@@ -72,7 +72,7 @@
 }
 .rc-select__option--disabled,
 .rc-select__option--disabled:hover {
-  background: $color__white;
+  background: #fff;
   color: $color__disabled;
   border-color: $color__disabled;
   cursor: auto;
@@ -109,7 +109,7 @@
   align-items: center;
   justify-content: center;
   height: 40px;
-  background: $color__white;
+  background: #fff;
   color: $color__gray-5;
   fill: $color__gray-5;
   line-height: 40px;
