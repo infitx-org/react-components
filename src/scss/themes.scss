@@ -1,6 +1,6 @@
 @use "sass:map";
-@import "./shadow.scss";
-@import "./colors.scss";
+@import "./base/shadow.scss";
+@import "./base/colors.scss";
 
 $kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
   "dark", "light";
@@ -14,6 +14,8 @@ $theme-colors: (
   "warning": $color__warning,
   "dark": $color__dark,
   "light": $color__light,
+  "invalid": $color__invalid,
+  "required": $color__required,
 );
 
 $theme-colors--light: (
@@ -25,6 +27,8 @@ $theme-colors--light: (
   "warning": $color__warning--light,
   "dark": $color__dark--light,
   "light": $color__light--light,
+  "invalid": $color__invalid--light,
+  "required": $color__required--light,
 );
 
 $theme-colors--dark: (
@@ -36,6 +40,8 @@ $theme-colors--dark: (
   "warning": $color__warning--dark,
   "dark": $color__dark--dark,
   "light": $color__light--dark,
+  "invalid": $color__invalid--dark,
+  "required": $color__required--dark,
 );
 
 $theme-shadows: (
@@ -47,4 +53,6 @@ $theme-shadows: (
   "warning": $shadow-color--warning,
   "dark": $shadow-color--dark,
   "light": $shadow-color--light,
+  "invalid": $shadow-color--invalid,
+  "required": $shadow-color--required,
 );

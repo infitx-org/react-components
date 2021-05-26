@@ -7,6 +7,8 @@ $color__warning: #f49935 !default;
 $color__disabled: #d2d1d1 !default;
 $color__dark: #333 !default;
 $color__light: #eee !default;
+$color__invalid: $color__danger !default;
+$color__required: $color__warning !default;
 
 $color__primary--light: lighten($color__primary, 10%) !default;
 $color__secondary--light: lighten($color__secondary, 10%) !default;
@@ -17,6 +19,8 @@ $color__warning--light: lighten($color__warning, 10%) !default;
 $color__disabled--light: lighten($color__disabled, 10%) !default;
 $color__dark--light: lighten($color__dark, 10%) !default;
 $color__light--light: lighten($color__light, 10%) !default;
+$color__invalid--light: $color__danger--light !default;
+$color__required--light: $color__warning--light !default;
 
 $color__primary--dark: darken($color__primary, 10%) !default;
 $color__secondary--dark: darken($color__secondary, 10%) !default;
@@ -27,6 +31,8 @@ $color__warning--dark: darken($color__warning, 10%) !default;
 $color__disabled--dark: darken($color__disabled, 10%) !default;
 $color__dark--dark: darken($color__dark, 10%) !default;
 $color__light--dark: darken($color__light, 10%) !default;
+$color__invalid--dark: $color__danger--dark !default;
+$color__required--dark: $color__warning--dark !default;
 
 $color__blue-1: #a7e8f9 !default;
 $color__blue-2: #77d5ee !default;

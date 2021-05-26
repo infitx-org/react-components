@@ -1,7 +1,7 @@
-@import "../../scss/vars/colors.scss";
-@import "../../scss/vars/input.scss";
-@import "../../scss/vars/shadow.scss";
-@import "../../scss/vars/themes.scss";
+@import "../../scss/base/colors.scss";
+@import "../../scss/base/input.scss";
+@import "../../scss/base/shadow.scss";
+@import "../../scss/themes.scss";
 @import "../../scss/mixins.scss";
 @use "sass:map";
 
@@ -12,19 +12,38 @@
   display: inline-flex;
   align-items: center;
   width: 200px;
+  transition: $input-transition;
   background: $input-background--default;
   border-left: 2px solid;
   border-right: 2px solid;
   border-bottom-color: $input-border-color--default;
-  border-right-width: 1px;
-  border-left-width: 1px;
-  border-top-width: 1px;
-  border-bottom-width: 2px;
+  border-left-width: $input-border-left-width;
+  border-right-width: $input-border-right-width;
+  border-top-width: $input-border-top-width;
+  border-bottom-width: $input-border-bottom-width;
   border-bottom-style: solid;
   border-top-style: solid;
   border-right-color: #e5e5e5;
   border-left-color: #e5e5e5;
   border-top-color: #e5e5e5;
+  &::before {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    content: '';
+    box-shadow: $shadow-size;
+    color: transparent;
+    opacity: 0;
+    transition: $input-transition;
+  }
+}
+
+.rc-field--focused {
+  &::before {
+    opacity: 1;
+  }
 }
 
 @each $kind in $kinds {
@@ -33,22 +52,23 @@
   }
   &.rc-field--#{$kind} {
     &.rc-field--focused {
-      color: map-get($theme-shadows, $kind);
+      &::before {
+        color: map-get($theme-shadows, $kind);
+      }
     }
   }
 }
 
-.rc-field--focused {
-  box-shadow: $shadow-size;
-  color: $shadow-color--default;
-  &.rc-field--pending {
-    color: $shadow-color--pending;
+@each $state in "invalid", "required" {
+  .rc-field--#{$state} {
+    border-bottom-color: map-get($theme-colors, $state);
   }
-  &.rc-field--required {
-    color: $shadow-color--required;
-  }
-  &.rc-field--invalid {
-    color: $shadow-color--invalid;
+  &.rc-field--#{$state} {
+    &.rc-field--focused {
+      &::before {
+        color: map-get($theme-shadows, $state);
+      }
+    }
   }
 }
 
@@ -56,15 +76,6 @@
   opacity: $input-opacity--disabled;
   pointer-events: none;
   cursor: auto;
-}
-
-.rc-field--required {
-  border-bottom-color: $input-border-color--required;
-  background: $input-background--required;
-}
-.rc-field--invalid {
-  border-bottom-color: $input-border-color--invalid;
-  background: $input-background--invalid;
 }
 
 .rc-field--small {

@@ -1,0 +1,27 @@
+@import "./colors.scss";
+@import "./transitions.scss";
+
+// Borders
+$input-border-radius: 0px !default;
+
+$input-border-left-width: 1px !default;
+$input-border-right-width: 1px !default;
+$input-border-top-width: 1px !default;
+$input-border-bottom-width: 2px !default;
+
+$input-border-color--default: $color__primary !default;
+$input-border-color--invalid: $color__danger !default;
+$input-border-color--required: $color__warning !default;
+
+$input-background--default: $color__gray-1 !default;
+
+// Other
+$input-opacity--disabled: 0.5 !default;
+$input__placeholder-color: #999 !default;
+
+$input-transition: box-shadow 0.5s $transition__main-easing,
+  color 0.5s $transition__main-easing, opacity 0.5s $transition__main-easing,
+  border 0.2s ease-out !default;
+
+$button-transition: box-shadow 0.5s $transition__main-easing,
+  color 0.2s $transition__main-easing, background 0.1s ease-out !default;
