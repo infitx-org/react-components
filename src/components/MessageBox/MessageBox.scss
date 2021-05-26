@@ -4,25 +4,25 @@
 @import "../../scss/vars/themes.scss";
 @import "../../scss/base.scss";
 
-.rc-pill {
+.rc-message-box {
   @include rc-component;
-  border-radius: 20px;
   border: 2px solid;
   min-height: 24px;
   padding: 3px 7px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   cursor: initial;
   border-color: transparent;
+  overflow: hidden;
 }
 
-.rc-pill--default {
+.rc-message-box--default {
   fill: #333;
   color: #333;
   background-color: #eee;
 
-  &.rc-pill--inverted {
+  &.rc-message-box--inverted {
     fill: #eee;
     color: #eee;
     background-color: #333;
@@ -33,12 +33,12 @@
   $base-color: map-get($theme-colors, $kind);
   $light-color: lighten(map-get($theme-shadows, $kind), 10%);
 
-  .rc-pill--#{$kind} {
+  .rc-message-box--#{$kind} {
     fill: $base-color;
     color: $base-color;
     background-color: $light-color;
 
-    &.rc-pill--inverted {
+    &.rc-message-box--inverted {
       fill: $light-color;
       color: $light-color;
       background-color: $base-color;
@@ -46,23 +46,25 @@
   }
 }
 
-.rc-pill--active {
+.rc-message-box--centered {
+  align-items: center;
+  justify-content: center;
+}
+
+.rc-message-box--active {
   border-color: currentColor;
 }
 
-.rc-pill__icon-box {
+.rc-message-box__icon-box {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0px 2px;
 }
 
-.rc-pill__label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
-  margin: 0px 2px;
-  cursor: initial;
+.rc-message-box__messages {
+  flex: 1 1 auto;
+}
+.rc-message-box__messages--centered {
+  flex: 0 0 auto;
 }
