@@ -58,19 +58,19 @@
 }
 
 @each $color in "blue", "dark-blue", "green", "gray", "dark-gray", "alpha" {
-  .color-scheme--regular-#{$color}-1 {
+  .color-scheme-#{$color}-1 {
     background: map-get($theme-color-scheme-1, $color);
   }
-  .color-scheme--regular-#{$color}-2 {
+  .color-scheme-#{$color}-2 {
     background: map-get($theme-color-scheme-2, $color);
   }
-  .color-scheme--regular-#{$color}-3 {
+  .color-scheme-#{$color}-3 {
     background: map-get($theme-color-scheme-3, $color);
   }
-  .color-scheme--regular-#{$color}-4 {
+  .color-scheme-#{$color}-4 {
     background: map-get($theme-color-scheme-4, $color);
   }
-  .color-scheme--regular-#{$color}-5 {
+  .color-scheme-#{$color}-5 {
     background: map-get($theme-color-scheme-5, $color);
   }
 }

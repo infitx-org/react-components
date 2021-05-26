@@ -7,8 +7,10 @@ export default {
   title: "Color Schemes",
 };
 
-function ThemeBlock({ kind = "", modifier = "regular", variable = "" }) {
-  const className = `color-scheme color-scheme--${modifier}-${kind}`;
+function ThemeBlock({ kind = "", modifier = "", variable = "" }) {
+  const className = `color-scheme color-scheme${
+    modifier ? `--${modifier}` : ""
+  }-${kind}`;
 
   return (
     <div className={className}>
@@ -54,6 +56,7 @@ export const ThemeColors = () => (
           />
           <ThemeBlock
             kind={kind}
+            modifier="regular"
             variable={`map-get($theme-colors, "${kind}");`}
           />
           <ThemeBlock
