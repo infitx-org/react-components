@@ -65,6 +65,12 @@ const VariantsTemplate = (args) => (
   </Row>
 );
 export const Variants = VariantsTemplate.bind({});
+Variants.args = {};
+
+export const VariantsInverted = VariantsTemplate.bind({});
+VariantsInverted.args = {
+  inverted: true,
+};
 
 export const VariantsWithIcon = VariantsTemplate.bind({});
 VariantsWithIcon.args = {

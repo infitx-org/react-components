@@ -21,14 +21,28 @@
   fill: #333;
   color: #333;
   background-color: #eee;
+
+  &.rc-pill--inverted {
+    fill: #eee;
+    color: #eee;
+    background-color: #333;
+  }
 }
 
 @each $kind in $kinds {
+  $base-color: map-get($theme-colors, $kind);
+  $light-color: lighten(map-get($theme-shadows, $kind), 10%);
+
   .rc-pill--#{$kind} {
-    fill: map-get($theme-colors, $kind);
-    color: map-get($theme-colors, $kind);
-    // border-color: map-get($theme-colors, $kind);
-    background-color: lighten(map-get($theme-shadows, $kind), 10%);
+    fill: $base-color;
+    color: $base-color;
+    background-color: $light-color;
+
+    &.rc-pill--inverted {
+      fill: $light-color;
+      color: $light-color;
+      background-color: $base-color;
+    }
   }
 }
 

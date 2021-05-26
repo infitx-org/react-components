@@ -11,6 +11,7 @@ interface PillProps {
   fill?: string;
   label?: string;
   active?: boolean;
+  inverted?: boolean;
 }
 
 function Pill({
@@ -21,11 +22,13 @@ function Pill({
   fill = "inherit",
   label,
   active,
+  inverted,
 }: PillProps) {
   const pillClassName = classnames([
     "rc-pill",
     `rc-pill--${kind}`,
     active && `rc-pill--active`,
+    inverted && `rc-pill--inverted`,
     className,
   ]);
 

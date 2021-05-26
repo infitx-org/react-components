@@ -28,6 +28,13 @@ describe("test the Pill component", () => {
     expect(container.querySelector(".rc-pill")).toHaveClass("rc-pill--active");
   });
 
+  it("renders the inverted state", () => {
+    const { container } = render(<Pill inverted />);
+    expect(container.querySelector(".rc-pill")).toHaveClass(
+      "rc-pill--inverted"
+    );
+  });
+
   it("renders the icon", () => {
     const { container } = render(<Pill icon={icon} />);
     expect(container.querySelector(".rc-pill__icon")).toBeTruthy();
