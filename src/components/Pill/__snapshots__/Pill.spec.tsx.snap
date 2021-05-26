@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test the Pill component renders the button correctly when multiple props are set 1`] = `
+exports[`test the Pill component renders the component correctly when multiple props are set 1`] = `
 <div>
   <div
     class="rc-pill rc-pill--secondary rc-pill--active"

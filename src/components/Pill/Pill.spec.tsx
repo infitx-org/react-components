@@ -72,7 +72,7 @@ describe("test the Pill component", () => {
     });
   });
 
-  it("renders the button correctly when multiple props are set", () => {
+  it("renders the component correctly when multiple props are set", () => {
     const { container } = render(
       <Pill icon={icon} kind="secondary" active fill="#fff" />
     );

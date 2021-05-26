@@ -12,7 +12,7 @@ function getMessageComponent(
   index: number
 ): React.ReactElement {
   return (
-    <div key={index} className="el-message-box__message">
+    <div key={index} className="rc-message-box__message">
       {message}
     </div>
   );

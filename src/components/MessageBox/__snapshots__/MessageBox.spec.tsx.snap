@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test the MessageBox component renders the button correctly when multiple props are set 1`] = `
+exports[`test the MessageBox component renders the component correctly when multiple props are set 1`] = `
 <div>
   <div
     class="rc-message-box rc-message-box--secondary rc-message-box--active"
@@ -30,7 +30,7 @@ exports[`test the MessageBox component renders the button correctly when multipl
       style="font-size: 13px;"
     >
       <div
-        class="el-message-box__message"
+        class="rc-message-box__message"
       >
         message
       </div>
