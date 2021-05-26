@@ -1,0 +1,71 @@
+@use "sass:map";
+@import "../../scss/vars/colors.scss";
+@import "../../scss/vars/shadow.scss";
+@import "../../scss/vars/themes.scss";
+@import "../../scss/base.scss";
+
+.rc-pill {
+  @include rc-component;
+  border-radius: 20px;
+  border: 2px solid;
+  min-height: 24px;
+  padding: 3px 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: initial;
+  border-color: transparent;
+}
+
+.rc-pill--default {
+  fill: #333;
+  color: #333;
+  background-color: #eee;
+
+  &.rc-pill--inverted {
+    fill: #eee;
+    color: #eee;
+    background-color: #333;
+  }
+}
+
+@each $kind in $kinds {
+  $base-color: map-get($theme-colors, $kind);
+  $light-color: lighten(map-get($theme-shadows, $kind), 10%);
+
+  .rc-pill--#{$kind} {
+    fill: $base-color;
+    color: $base-color;
+    background-color: $light-color;
+
+    &.rc-pill--inverted {
+      fill: $light-color;
+      color: $light-color;
+      background-color: $base-color;
+    }
+  }
+}
+
+.rc-pill--inactive {
+}
+
+.rc-pill--active {
+  border-color: currentColor;
+}
+
+.rc-pill__icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 2px;
+}
+
+.rc-pill__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0px 2px;
+  cursor: initial;
+}

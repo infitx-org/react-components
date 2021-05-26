@@ -20,6 +20,7 @@ export {
   FileUploaderProps,
 } from "./components/FileUploader";
 export { default as Icon, IconProps } from "./components/Icon";
+export { default as Pill, PillProps } from "./components/Pill";
 export {
   default as RadioGroup,
   RadioGroupProps,
