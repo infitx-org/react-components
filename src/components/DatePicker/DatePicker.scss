@@ -1,6 +1,6 @@
 @import "../../scss/vars/colors.scss";
 @import "../../scss/vars/transitions.scss";
-@import "../../scss/base.scss";
+@import "../../scss/mixins.scss";
 
 .rc-datepicker {
   @include rc-field-input;

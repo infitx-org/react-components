@@ -1,8 +1,8 @@
 @import "../../scss/vars/colors.scss";
 @import "../../scss/vars/shadow.scss";
 @import "../../scss/vars/transitions.scss";
-@import "../../scss/vars/general.scss";
-@import "../../scss/base.scss";
+@import "../../scss/vars/input.scss";
+@import "../../scss/mixins.scss";
 
 .rc-button {
   @include rc-component;
@@ -105,8 +105,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__primary--active;
-    border-color: $color__primary--active;
+    background-color: $color__primary--light;
+    border-color: $color__primary--light;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -133,8 +133,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__secondary--active;
-    border-color: $color__secondary--active;
+    background-color: $color__secondary--light;
+    border-color: $color__secondary--light;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -165,8 +165,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__success--active;
-    border-color: $color__success--active;
+    background-color: $color__success--light;
+    border-color: $color__success--light;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -196,8 +196,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__danger--active;
-    border-color: $color__danger--active;
+    background-color: $color__danger--light;
+    border-color: $color__danger--light;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -225,8 +225,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__warning--active;
-    border-color: $color__warning--active;
+    background-color: $color__warning--light;
+    border-color: $color__warning--light;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -328,13 +328,13 @@
     color: $color__dark-gray-2;
     fill: $color__dark-gray-2;
     stroke: $color__dark-gray-2;
-    background-color: $color__tertiary--active;
-    border-color: $color__tertiary--active;
+    background-color: $color__tertiary--light;
+    border-color: $color__tertiary--light;
   }
 }
 
 .rc-button--disabled {
-  opacity: $component-opacity--disabled;
+  opacity: $input-opacity--disabled;
   pointer-events: none;
   cursor: auto;
   background-color: $color__gray-2;

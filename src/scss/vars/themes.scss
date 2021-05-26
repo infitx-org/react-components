@@ -5,17 +5,6 @@
 $kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
   "dark", "light";
 
-$theme-colors--active: (
-  "primary": $color__primary--active,
-  "secondary": $color__secondary--active,
-  "tertiary": $color__tertiary--active,
-  "success": $color__success--active,
-  "danger": $color__danger--active,
-  "warning": $color__warning--active,
-  "dark": $color__dark--active,
-  "light": $color__light--active,
-);
-
 $theme-colors: (
   "primary": $color__primary,
   "secondary": $color__secondary,
@@ -27,15 +16,26 @@ $theme-colors: (
   "light": $color__light,
 );
 
-$theme-colors--darken: (
-  "primary": $color__primary--darken,
-  "secondary": $color__secondary--darken,
-  "tertiary": $color__tertiary--darken,
-  "success": $color__success--darken,
-  "danger": $color__danger--darken,
-  "warning": $color__warning--darken,
-  "dark": $color__dark--darken,
-  "light": $color__light--darken,
+$theme-colors--light: (
+  "primary": $color__primary--light,
+  "secondary": $color__secondary--light,
+  "tertiary": $color__tertiary--light,
+  "success": $color__success--light,
+  "danger": $color__danger--light,
+  "warning": $color__warning--light,
+  "dark": $color__dark--light,
+  "light": $color__light--light,
+);
+
+$theme-colors--dark: (
+  "primary": $color__primary--dark,
+  "secondary": $color__secondary--dark,
+  "tertiary": $color__tertiary--dark,
+  "success": $color__success--dark,
+  "danger": $color__danger--dark,
+  "warning": $color__warning--dark,
+  "dark": $color__dark--dark,
+  "light": $color__light--dark,
 );
 
 $theme-shadows: (

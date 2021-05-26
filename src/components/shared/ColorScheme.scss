@@ -33,11 +33,11 @@
   }
 
   .color-scheme--active-#{$kind} {
-    background: map-get($theme-colors--active, $kind);
+    background: map-get($theme-colors--light, $kind);
   }
 
   .color-scheme--darken-#{$kind} {
-    background: map-get($theme-colors--darken, $kind);
+    background: map-get($theme-colors--dark, $kind);
   }
 
   .color-scheme--shadows-#{$kind} {

@@ -58,15 +58,15 @@
 
 .rc-select__option:hover,
 .rc-select__option--highlighted {
-  background: $color__tertiary--active;
-  border-color: $color__tertiary--active;
+  background: $color__tertiary--light;
+  border-color: $color__tertiary--light;
   color: $color__dark-gray-3;
   fill: $color__dark-gray-3;
 }
 .rc-select__option--selected,
 .rc-select__option--selected:hover {
-  background: $color__secondary--active;
-  border-color: $color__secondary--active;
+  background: $color__secondary--light;
+  border-color: $color__secondary--light;
   color: #fff;
   fill: #fff;
 }

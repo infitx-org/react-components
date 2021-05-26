@@ -1,23 +1,21 @@
 @import "../../scss/vars/colors.scss";
-@import "../../scss/vars/border.scss";
-@import "../../scss/vars/background.scss";
+@import "../../scss/vars/input.scss";
 @import "../../scss/vars/shadow.scss";
 @import "../../scss/vars/themes.scss";
-@import "../../scss/vars/general.scss";
-@import "../../scss/base.scss";
+@import "../../scss/mixins.scss";
 @use "sass:map";
 
 .rc-field {
   @include rc-component;
-  border-radius: $border-radius;
+  border-radius: $input-border-radius;
   position: relative;
   display: inline-flex;
   align-items: center;
   width: 200px;
-  background: $background--default;
+  background: $input-background--default;
   border-left: 2px solid;
   border-right: 2px solid;
-  border-bottom-color: $border-color--default;
+  border-bottom-color: $input-border-color--default;
   border-right-width: 1px;
   border-left-width: 1px;
   border-top-width: 1px;
@@ -42,8 +40,6 @@
 
 .rc-field--focused {
   box-shadow: $shadow-size;
-  padding: 0px $component-open-size;
-  background: $background--open;
   color: $shadow-color--default;
   &.rc-field--pending {
     color: $shadow-color--pending;
@@ -57,18 +53,18 @@
 }
 
 .rc-field--disabled {
-  opacity: $component-opacity--disabled;
+  opacity: $input-opacity--disabled;
   pointer-events: none;
   cursor: auto;
 }
 
 .rc-field--required {
-  border-bottom-color: $border-color--required;
-  background: $background--required;
+  border-bottom-color: $input-border-color--required;
+  background: $input-background--required;
 }
 .rc-field--invalid {
-  border-bottom-color: $border-color--invalid;
-  background: $background--invalid;
+  border-bottom-color: $input-border-color--invalid;
+  background: $input-background--invalid;
 }
 
 .rc-field--small {
