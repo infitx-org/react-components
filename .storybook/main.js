@@ -5,6 +5,7 @@ module.exports = {
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-docs',
+    '@storybook/addon-controls',
   ],
   webpackFinal: async (config, { configType }) => {
 
