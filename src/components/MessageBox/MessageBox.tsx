@@ -58,15 +58,15 @@ export default function MessageBox({
     return null;
   }
 
-  const higherSize = Math.max.apply(Math, [icon ? size : 0, fontSize, 20]);
+  const spacing = Math.max.apply(Math, [icon ? size : 0, fontSize, 20]) / 2;
 
   const messageBoxStyle = {
     ...style,
-    padding: `${higherSize / 2}px`,
-    borderWidth: `${higherSize / 10}px`,
+    padding: `${spacing}px`,
+    borderWidth: `${spacing / 5}px`,
   };
 
-  const iconStyle = { marginRight: `${higherSize / 2}px` };
+  const iconStyle = { marginRight: `${spacing}px` };
 
   const messagesStyle = {
     fontSize: `${fontSize}px`,

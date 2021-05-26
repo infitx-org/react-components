@@ -31,6 +31,12 @@ Default.args = {
   active: undefined,
 };
 
+export const MultipleMessages = Template.bind({});
+MultipleMessages.args = {
+  ...Default.args,
+  message: ["First", "Second", "Third"],
+};
+
 export const Active = Template.bind({});
 Active.args = {
   ...Default.args,
