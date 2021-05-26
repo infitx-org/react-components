@@ -46,7 +46,7 @@ WithIcon.args = {
 };
 
 export const WithIconFill = Template.bind({});
-WithIcon.args = {
+WithIconFill.args = {
   icon,
   fill: "#f00",
 };
