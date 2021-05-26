@@ -7,10 +7,10 @@
   z-index: 1000;
   animation: fadeInOptions 0.15s ease-in-out;
   overflow-y: auto;
-  border-bottom: 2px solid $color__main-tertiary;
+  border-bottom: 2px solid $color__tertiary;
 }
 .rc-select__options--reverse {
-  border-top: 2px solid $color__main-tertiary;
+  border-top: 2px solid $color__tertiary;
   border-bottom: none;
 }
 
@@ -25,8 +25,8 @@
   line-height: 40px;
   font-size: 13px;
   background: $color__white;
-  border-left: 2px solid $color__main-tertiary;
-  border-right: 2px solid $color__main-tertiary;
+  border-left: 2px solid $color__tertiary;
+  border-right: 2px solid $color__tertiary;
   cursor: pointer;
   color: $color__dark-gray-1;
   fill: $color__dark-gray-1;
@@ -58,23 +58,23 @@
 
 .rc-select__option:hover,
 .rc-select__option--highlighted {
-  background: $color__main-tertiary--active;
-  border-color: $color__main-tertiary--active;
+  background: $color__tertiary--active;
+  border-color: $color__tertiary--active;
   color: $color__dark-gray-3;
   fill: $color__dark-gray-3;
 }
 .rc-select__option--selected,
 .rc-select__option--selected:hover {
-  background: $color__main-secondary--active;
-  border-color: $color__main-secondary--active;
+  background: $color__secondary--active;
+  border-color: $color__secondary--active;
   color: #fff;
   fill: #fff;
 }
 .rc-select__option--disabled,
 .rc-select__option--disabled:hover {
   background: $color__white;
-  color: $color__main-disabled;
-  border-color: $color__main-disabled;
+  color: $color__disabled;
+  border-color: $color__disabled;
   cursor: auto;
 }
 .rc-select__option--clear {
@@ -83,8 +83,8 @@
   background: #fee;
 }
 .rc-select__option--clear:hover {
-  color: $color__main-danger;
-  fill: $color__main-danger;
+  color: $color__danger;
+  fill: $color__danger;
   background: #fee;
 }
 
@@ -113,8 +113,8 @@
   color: $color__gray-5;
   fill: $color__gray-5;
   line-height: 40px;
-  border-left: 2px solid $color__main-tertiary;
-  border-right: 2px solid $color__main-tertiary;
+  border-left: 2px solid $color__tertiary;
+  border-right: 2px solid $color__tertiary;
 }
 
 .rc-select__option--no-options__message {

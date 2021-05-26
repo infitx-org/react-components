@@ -39,15 +39,15 @@
     border-bottom-color: $color__gray-4;
   }
   &.rc-tabs__tab--selected {
-    border-bottom-color: $color__main-primary;
-    color: $color__main-primary;
+    border-bottom-color: $color__primary;
+    color: $color__primary;
   }
   &.rc-tabs__tab--focused {
-    border-bottom-color: $color__main-primary--active;
-    color: $color__main-primary--active;
+    border-bottom-color: $color__primary--active;
+    color: $color__primary--active;
   }
   &.rc-tabs__tab--disabled {
-    color: $color__main-disabled;
+    color: $color__disabled;
     cursor: default;
   }
 }

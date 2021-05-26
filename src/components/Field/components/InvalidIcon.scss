@@ -3,5 +3,5 @@
 
 .rc-invalid-icon {
   @include rc-field-icon;
-  fill: $color__main-danger;
+  fill: $color__danger;
 }

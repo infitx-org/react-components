@@ -88,14 +88,14 @@
 }
 
 .rc-button--primary {
-  background-color: $color__main-primary;
-  border-color: $color__main-primary;
+  background-color: $color__primary;
+  border-color: $color__primary;
 
   &.rc-button--noFill {
     background-color: transparent;
-    color: $color__main-primary;
-    fill: $color__main-primary;
-    stroke: $color__main-primary;
+    color: $color__primary;
+    fill: $color__primary;
+    stroke: $color__primary;
   }
 
   &:active,
@@ -105,8 +105,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__main-primary--active;
-    border-color: $color__main-primary--active;
+    background-color: $color__primary--active;
+    border-color: $color__primary--active;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -116,14 +116,14 @@
   }
 }
 .rc-button--secondary {
-  background-color: $color__main-secondary;
-  border-color: $color__main-secondary;
+  background-color: $color__secondary;
+  border-color: $color__secondary;
 
   &.rc-button--noFill {
     background: transparent;
-    color: $color__main-secondary;
-    fill: $color__main-secondary;
-    stroke: $color__main-secondary;
+    color: $color__secondary;
+    fill: $color__secondary;
+    stroke: $color__secondary;
   }
 
   &:active,
@@ -133,8 +133,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__main-secondary--active;
-    border-color: $color__main-secondary--active;
+    background-color: $color__secondary--active;
+    border-color: $color__secondary--active;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -145,17 +145,17 @@
 }
 
 .rc-button--success {
-  background-color: $color__main-success;
-  border-color: $color__main-success;
+  background-color: $color__success;
+  border-color: $color__success;
   color: $color__white;
   fill: $color__white;
   stroke: $color__white;
 
   &.rc-button--noFill {
     background: transparent;
-    color: $color__main-success;
-    fill: $color__main-success;
-    stroke: $color__main-success;
+    color: $color__success;
+    fill: $color__success;
+    stroke: $color__success;
   }
 
   &:active,
@@ -165,8 +165,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__main-success--active;
-    border-color: $color__main-success--active;
+    background-color: $color__success--active;
+    border-color: $color__success--active;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -176,17 +176,17 @@
   }
 }
 .rc-button--danger {
-  background-color: $color__main-danger;
-  border-color: $color__main-danger;
+  background-color: $color__danger;
+  border-color: $color__danger;
   color: $color__white;
   fill: $color__white;
   stroke: $color__white;
 
   &.rc-button--noFill {
     background: transparent;
-    color: $color__main-danger;
-    fill: $color__main-danger;
-    stroke: $color__main-danger;
+    color: $color__danger;
+    fill: $color__danger;
+    stroke: $color__danger;
   }
 
   &:active,
@@ -196,8 +196,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__main-danger--active;
-    border-color: $color__main-danger--active;
+    background-color: $color__danger--active;
+    border-color: $color__danger--active;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -208,14 +208,14 @@
 }
 
 .rc-button--warning {
-  background-color: $color__main-warning;
-  border-color: $color__main-warning;
+  background-color: $color__warning;
+  border-color: $color__warning;
 
   &.rc-button--noFill {
     background-color: transparent;
-    color: $color__main-warning;
-    fill: $color__main-warning;
-    stroke: $color__main-warning;
+    color: $color__warning;
+    fill: $color__warning;
+    stroke: $color__warning;
   }
 
   &:active,
@@ -225,8 +225,8 @@
 
   &:hover,
   &:focus {
-    background-color: $color__main-warning--active;
-    border-color: $color__main-warning--active;
+    background-color: $color__warning--active;
+    border-color: $color__warning--active;
 
     &.rc-button--noFill {
       color: $color__white;
@@ -304,8 +304,8 @@
 }
 
 .rc-button--tertiary {
-  background-color: $color__main-tertiary;
-  border-color: $color__main-tertiary;
+  background-color: $color__tertiary;
+  border-color: $color__tertiary;
   color: $color__dark-gray-2;
   fill: $color__dark-gray-2;
   stroke: $color__dark-gray-2;
@@ -328,8 +328,8 @@
     color: $color__dark-gray-2;
     fill: $color__dark-gray-2;
     stroke: $color__dark-gray-2;
-    background-color: $color__main-tertiary--active;
-    border-color: $color__main-tertiary--active;
+    background-color: $color__tertiary--active;
+    border-color: $color__tertiary--active;
   }
 }
 
