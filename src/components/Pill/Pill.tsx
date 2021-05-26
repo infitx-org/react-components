@@ -3,7 +3,7 @@ import { Kind } from "types";
 import Icon from "components/Icon";
 import "./Pill.scss";
 
-interface PillProps {
+export interface PillProps {
   id?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -15,7 +15,7 @@ interface PillProps {
   inverted?: boolean;
 }
 
-function Pill({
+export default function Pill({
   id,
   className,
   style,
@@ -45,5 +45,3 @@ function Pill({
     </div>
   );
 }
-
-export default Pill;
