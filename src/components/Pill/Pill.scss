@@ -14,12 +14,12 @@
   align-items: center;
   justify-content: center;
   cursor: initial;
+  border-color: transparent;
 }
 
 .rc-pill--default {
   fill: #333;
   color: #333;
-  border-color: #333;
   background-color: #eee;
 }
 
@@ -27,17 +27,16 @@
   .rc-pill--#{$kind} {
     fill: map-get($theme-colors, $kind);
     color: map-get($theme-colors, $kind);
-    border-color: map-get($theme-colors, $kind);
+    // border-color: map-get($theme-colors, $kind);
     background-color: lighten(map-get($theme-shadows, $kind), 10%);
   }
 }
 
 .rc-pill--inactive {
-  border-color: transparent;
 }
 
 .rc-pill--active {
-  border-color: inherit;
+  border-color: currentColor;
 }
 
 .rc-pill__icon-box {

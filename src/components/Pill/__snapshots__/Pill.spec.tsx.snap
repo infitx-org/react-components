@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test the Pill component renders the button correctly when multiple props are set 1`] = `
+<div>
+  <div
+    class="rc-pill rc-pill--secondary rc-pill--active"
+  >
+    <div
+      class="rc-pill__icon-box"
+    >
+      <svg
+        class="rc-pill__icon"
+        fill="#fff"
+        height="16"
+        stroke="transparent"
+        viewBox="0 0 20 20"
+        width="16"
+      >
+        <circle
+          cx="10"
+          cy="10"
+          r="5"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
