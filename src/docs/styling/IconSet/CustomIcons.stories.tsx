@@ -63,8 +63,8 @@ const WrappedIcon = ({
   icon: React.ReactElement;
   name: string;
 }) => (
-  <Box label={name} className="custom-icon">
-    <Icon icon={icon} fill="inherit" size={100} />
+  <Box label={name} size="medium" className="custom-icon">
+    <Icon icon={icon} fill="inherit" size={40} />
   </Box>
 );
 
