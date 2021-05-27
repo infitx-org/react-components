@@ -12,10 +12,6 @@ import typescript from "rollup-plugin-typescript2";
 
 const packageJson = require("./package.json");
 
-function renameScss(name, extension, fullPath) {
-  return `${fullPath.split('/').slice(1).join('/')}`;
-}
-
 export default {
   input: "src/index.ts",
   output: [
@@ -49,9 +45,7 @@ export default {
     }),
     copy({
       targets: [
-        { src: 'src/index.scss', dest: 'lib', rename: renameScss },
-        { src: 'src/scss/*.scss', dest: 'lib', rename: renameScss },
-        { src: 'src/components/*.scss', dest: 'lib', renameScss },
+        { src: 'src/**/*.scss', dest: 'lib', rename: (name, extension, fullPath) => `${fullPath.split('/').slice(1).join('/')}` },
       ]
     }),
   ],
