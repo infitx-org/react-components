@@ -49,25 +49,25 @@ export const ThemeColors = kinds.reduce((prev, kind) => {
           size="medium"
           label={`${kind} / active`}
           className={`color-scheme color-scheme--active-${kind}`}
-          variable={`theme-colors--light / ${kind}`}
+          variable={`theme-colors--light.${kind}`}
         />
         <Box
           size="medium"
           label={`${kind} / regular`}
           className={`color-scheme color-scheme--regular-${kind}`}
-          variable={`theme-colors / ${kind}`}
+          variable={`theme-colors.${kind}`}
         />
         <Box
           size="medium"
           label={`${kind} / darken`}
           className={`color-scheme color-scheme--darken-${kind}`}
-          variable={`theme-colors--dark / ${kind}`}
+          variable={`theme-colors--dark.${kind}`}
         />
         <Box
           size="medium"
           label={`${kind} / shadows`}
           className={`color-scheme color-scheme--shadows-${kind}`}
-          variable={`theme-shadows / ${kind}`}
+          variable={`theme-shadows.${kind}`}
         />
       </Row>
     ),
@@ -86,7 +86,7 @@ export const ThemeColorSchemes = colors.reduce((prev, color) => {
               key={`${color} / ${type}`}
               label={`${color} / ${type}`}
               className={`color-scheme color-scheme-${color}--${type}`}
-              variable={`theme-color-${color} / ${type}`}
+              variable={`theme-color-${color}.${type}`}
             />
           );
         })}

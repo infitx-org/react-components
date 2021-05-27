@@ -13,11 +13,12 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Verdana;
 
   .variable {
     background: rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
     color: #fff;
     padding: 4px;
     display: inline-flex;
@@ -39,8 +40,8 @@
   box-shadow: 0px 0px 10px -5px #333;
 }
 .box--medium {
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   box-shadow: 0px 0px 20px -8px #333;
 }
 .box--large {
