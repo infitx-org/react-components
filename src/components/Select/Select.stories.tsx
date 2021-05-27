@@ -2,7 +2,7 @@ import React from "react";
 import Select from "./Select";
 
 export default {
-  title: "Select",
+  title: "Library/Components/Select",
 };
 
 /* eslint-disable no-console */

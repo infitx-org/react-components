@@ -1,7 +1,7 @@
 import DatePicker from "./DatePicker";
 
 export default {
-  title: "DatePicker",
+  title: "Library/Components/DatePicker",
 };
 
 /* eslint-disable no-console */

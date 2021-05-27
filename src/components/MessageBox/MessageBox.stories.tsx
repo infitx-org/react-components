@@ -14,7 +14,7 @@ const icon = (
 );
 
 export default {
-  title: "MessageBox",
+  title: "Library/Components/MessageBox",
   component: MessageBox,
 };
 

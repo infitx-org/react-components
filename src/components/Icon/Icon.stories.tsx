@@ -3,7 +3,7 @@ import { Size } from "types";
 import Icon from "./Icon";
 
 export default {
-  title: "Icon",
+  title: "Library/Components/Icon",
   component: Icon,
 };
 

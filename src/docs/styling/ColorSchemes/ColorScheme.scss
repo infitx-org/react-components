@@ -1,0 +1,48 @@
+@import "../../../scss/themes.scss";
+@import "../../../scss/base/colors.scss";
+@use "sass:map";
+
+@each $kind in $kinds {
+  .color-scheme--regular-#{$kind} {
+    background: map-get($theme-colors, $kind);
+  }
+
+  .color-scheme--active-#{$kind} {
+    background: map-get($theme-colors--light, $kind);
+  }
+
+  .color-scheme--darken-#{$kind} {
+    background: map-get($theme-colors--dark, $kind);
+  }
+
+  .color-scheme--shadows-#{$kind} {
+    background: map-get($theme-shadows, $kind);
+  }
+}
+
+@each $type in "lighter", "light", "regular", "dark", "darker" {
+  .color-scheme-blue--#{$type} {
+    background: map-get($theme-color-blue, $type);
+  }
+  .color-scheme-dark-blue--#{$type} {
+    background: map-get($theme-color-dark-blue, $type);
+  }
+  .color-scheme-green--#{$type} {
+    background: map-get($theme-color-green, $type);
+  }
+  .color-scheme-orange--#{$type} {
+    background: map-get($theme-color-orange, $type);
+  }
+  .color-scheme-red--#{$type} {
+    background: map-get($theme-color-red, $type);
+  }
+  .color-scheme-gray--#{$type} {
+    background: map-get($theme-color-gray, $type);
+  }
+  .color-scheme-dark-gray--#{$type} {
+    background: map-get($theme-color-dark-gray, $type);
+  }
+  .color-scheme-alpha--#{$type} {
+    background: map-get($theme-color-alpha, $type);
+  }
+}

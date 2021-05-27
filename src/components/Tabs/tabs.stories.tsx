@@ -4,7 +4,7 @@ import React from "react";
 import { Tab, TabPanel, Tabs } from "./Tabs";
 
 export default {
-  title: "Tabs",
+  title: "Library/Components/Tabs",
   component: Tabs,
 };
 
