@@ -1,5 +1,10 @@
+// Variables
+import "./scss/vars.scss";
+
+// Types
 export * from "types";
 
+// Components
 export { default as Button, ButtonProps } from "./components/Button";
 export { default as Checkbox, CheckboxProps } from "./components/Checkbox";
 export { default as Column, ColumnProps } from "./components/Layout/Column";

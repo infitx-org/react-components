@@ -1,0 +1,92 @@
+@import "./base/colors.scss";
+:root {
+  --color__blue: #{$color__blue};
+  --color__dark-blue: #{$color__dark-blue};
+  --color__green: #{$color__green};
+  --color__red: #{$color__red};
+  --color__orange: #{$color__orange};
+  --color__gray: #{$color__gray};
+  --color__dark-gray: #{$color__dark-gray};
+  --color__light-gray: #{$color__light-gray};
+
+  // Main Colors
+  --color__primary: #{$color__primary};
+  --color__secondary: #{$color__secondary};
+  --color__tertiary: #{$color__tertiary};
+  --color__success: #{$color__success};
+  --color__danger: #{$color__danger};
+  --color__warning: #{$color__warning};
+  --color__disabled: #{$color__disabled};
+  --color__dark: #{$color__dark};
+  --color__light: #{$color__light};
+  --color__invalid: #{$color__invalid};
+  --color__required: #{$color__required};
+
+  // Light Version
+  --color__primary--light: #{$color__primary--light};
+  --color__secondary--light: #{$color__secondary--light};
+  --color__tertiary--light: #{$color__tertiary--light};
+  --color__success--light: #{$color__success--light};
+  --color__danger--light: #{$color__danger--light};
+  --color__warning--light: #{$color__warning--light};
+  --color__disabled--light: #{$color__disabled--light};
+  --color__dark--light: #{$color__dark--light};
+  --color__light--light: #{$color__light--light};
+  --color__invalid--light: #{$color__invalid--light};
+  --color__required--light: #{$color__required--light};
+
+  // Dark Version
+  --color__primary--dark: #{$color__primary--dark};
+  --color__secondary--dark: #{$color__secondary--dark};
+  --color__tertiary--dark: #{$color__tertiary--dark};
+  --color__success--dark: #{$color__success--dark};
+  --color__danger--dark: #{$color__danger--dark};
+  --color__warning--dark: #{$color__warning--dark};
+  --color__disabled--dark: #{$color__disabled--dark};
+  --color__dark--dark: #{$color__dark--dark};
+  --color__light--dark: #{$color__light--dark};
+  --color__invalid--dark: #{$color__invalid--dark};
+  --color__required--dark: #{$color__required--dark};
+
+  // Color Schemes
+  --color__blue--lighter: #{$color__blue--lighter};
+  --color__blue--light: #{$color__blue--light};
+  --color__blue--dark: #{$color__blue--dark};
+  --color__blue--darker: #{$color__blue--darker};
+
+  --color__dark-blue--lighter: #{$color__dark-blue--lighter};
+  --color__dark-blue--light: #{$color__dark-blue--light};
+  --color__dark-blue--dark: #{$color__dark-blue--dark};
+  --color__dark-blue--darker: #{$color__dark-blue--darker};
+
+  --color__green--lighter: #{$color__green--lighter};
+  --color__green--light: #{$color__green--light};
+  --color__green--dark: #{$color__green--dark};
+  --color__green--darker: #{$color__green--darker};
+
+  --color__orange--lighter: #{$color__orange--lighter};
+  --color__orange--light: #{$color__orange--light};
+  --color__orange--dark: #{$color__orange--dark};
+  --color__orange--darker: #{$color__orange--darker};
+
+  --color__red--lighter: #{$color__red--lighter};
+  --color__red--light: #{$color__red--light};
+  --color__red--dark: #{$color__red--dark};
+  --color__red--darker: #{$color__red--darker};
+
+  --color__gray--lighter: #{$color__gray--lighter};
+  --color__gray--light: #{$color__gray--light};
+  --color__gray--dark: #{$color__gray--dark};
+  --color__gray--darker: #{$color__gray--darker};
+
+  --color__dark-gray--lighter: #{$color__dark-gray--lighter};
+  --color__dark-gray--light: #{$color__dark-gray--light};
+  --color__dark-gray--dark: #{$color__dark-gray--dark};
+  --color__dark-gray--darker: #{$color__dark-gray--darker};
+
+  --color__alpha--lighter: #{$color__alpha--lighter};
+  --color__alpha--light: #{$color__alpha--light};
+  --color__alpha: #{$color__alpha};
+  --color__alpha--dark: #{$color__alpha--dark};
+  --color__alpha--darker: #{$color__alpha--darker};
+}

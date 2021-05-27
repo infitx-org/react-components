@@ -2,7 +2,7 @@ import React from "react";
 import Field from ".";
 
 export default {
-  title: "Field",
+  title: "Library/Components/Field",
 };
 
 // const CreditCardExampleField = ({ value, onChange }) => {
