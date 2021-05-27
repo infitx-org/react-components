@@ -1,0 +1,102 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import Row from 'components/Layout/Row';
+import Box from './components/Box';
+import "./components/Themes/Themes.scss";
+import "../../scss/vars.scss";
+import { Kinds, Colors, ThemeColors, ThemeColorSchemes } from "./components/Themes";
+
+<Meta title="Styles/Themes"/>
+
+# Color Themes
+
+Here you can find the color themes used in the components.
+Adopting the react-components themes is easy!
+
+- [Kinds](#kinds)
+- [Colors](#colors)
+
+## Kinds
+
+Kinds are used to display the variants.
+
+Available kinds are `primary` `secondary` `tertiary` `success` `danger` `warning` `dark` `light`.
+
+<Kinds />
+
+### Using the kind themes
+
+The kind themes are based of the _kinds_ used in a number of components.
+
+#### Primary
+
+<ThemeColors.primary />
+
+#### Secondary
+
+<ThemeColors.secondary />
+
+#### Tertiary
+
+<ThemeColors.tertiary />
+
+#### Success
+
+<ThemeColors.success />
+
+#### Danger
+
+<ThemeColors.danger />
+
+#### Warning
+
+<ThemeColors.warning />
+
+#### Dark
+
+<ThemeColors.dark />
+
+#### Light
+
+<ThemeColors.light />
+
+## Colors
+
+Sets of 5 colors for each of the main rainbow colors.
+ 
+Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray` `alpha`.
+
+<Colors />
+
+### Using the color themes
+
+#### Blue
+
+<ThemeColorSchemes.blue />
+
+#### Dark Blue
+
+<ThemeColorSchemes.darkblue />
+
+#### Green
+
+<ThemeColorSchemes.green />
+
+#### Red
+
+<ThemeColorSchemes.red />
+
+#### Orange
+
+<ThemeColorSchemes.orange />
+
+#### Gray
+
+<ThemeColorSchemes.gray />
+
+#### Dark Gray
+
+<ThemeColorSchemes.darkgray />
+
+#### Alpha
+
+<ThemeColorSchemes.alpha />

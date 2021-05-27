@@ -56,7 +56,7 @@ const items = {
   WarningSign,
 };
 
-const WrappedIcon = ({
+const IconBoxed = ({
   icon,
   name,
 }: {
@@ -68,16 +68,12 @@ const WrappedIcon = ({
   </Box>
 );
 
-export const Icons = () => {
+export default () => {
   return (
-    <Row wrap>
+    <>
       {Object.entries(items).map(([key, Item]) => (
-        <WrappedIcon icon={<Item />} name={key} />
+        <IconBoxed icon={<Item />} name={key} />
       ))}
-    </Row>
+    </>
   );
-};
-
-export default {
-  title: "Styles/Icons",
 };

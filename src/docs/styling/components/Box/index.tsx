@@ -1,7 +1,7 @@
 import "./Box.scss";
 
 export default function Box({
-  style,
+  style = {},
   size = "large",
   label = "",
   className = "",
