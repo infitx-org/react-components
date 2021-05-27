@@ -26,8 +26,8 @@
   font-size: 14px;
   line-height: 32px;
   text-align: center;
-  color: $color__dark-gray-3;
-  border-bottom: 3px solid $color__gray-2;
+  color: $color__dark-gray;
+  border-bottom: 3px solid $color__gray--light;
   transition: all 0.1s ease-out;
   cursor: pointer;
 
@@ -36,7 +36,7 @@
   }
 
   &:hover:not(.rc-tabs__tab--disabled):not(.rc-tabs__tab--selected) {
-    border-bottom-color: $color__gray-4;
+    border-bottom-color: $color__gray--dark;
   }
   &.rc-tabs__tab--selected {
     border-bottom-color: $color__primary;

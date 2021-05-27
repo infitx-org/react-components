@@ -4,15 +4,15 @@
 
 .color-scheme {
   position: relative;
-  height: 160px;
-  width: 160px;
+  height: 200px;
+  width: 200px;
   margin: 10px;
   border-radius: 10px;
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  box-shadow: 0px 0px 20px -16px #000;
+  box-shadow: 0px 0px 30px -16px #000;
   font-size: 12px;
   font-family: Verdana;
 
@@ -57,20 +57,29 @@
   }
 }
 
-@each $color in "blue", "dark-blue", "green", "gray", "dark-gray", "alpha" {
-  .color-scheme-#{$color}-1 {
-    background: map-get($theme-color-scheme-1, $color);
+@each $type in "lighter", "lighter", "regular", "dark", "darker" {
+  .color-scheme--#{$type}-blue {
+    background: map-get($theme-color-blue, $type);
   }
-  .color-scheme-#{$color}-2 {
-    background: map-get($theme-color-scheme-2, $color);
+  .color-scheme--#{$type}-dark-blue {
+    background: map-get($theme-color-dark-blue, $type);
   }
-  .color-scheme-#{$color}-3 {
-    background: map-get($theme-color-scheme-3, $color);
+  .color-scheme--#{$type}-green {
+    background: map-get($theme-color-green, $type);
   }
-  .color-scheme-#{$color}-4 {
-    background: map-get($theme-color-scheme-4, $color);
+  .color-scheme--#{$type}-orange {
+    background: map-get($theme-color-orange, $type);
   }
-  .color-scheme-#{$color}-5 {
-    background: map-get($theme-color-scheme-5, $color);
+  .color-scheme--#{$type}-red {
+    background: map-get($theme-color-red, $type);
+  }
+  .color-scheme--#{$type}-gray {
+    background: map-get($theme-color-gray, $type);
+  }
+  .color-scheme--#{$type}-dark-gray {
+    background: map-get($theme-color-dark-gray, $type);
+  }
+  .color-scheme--#{$type}-alpha {
+    background: map-get($theme-color-alpha, $type);
   }
 }

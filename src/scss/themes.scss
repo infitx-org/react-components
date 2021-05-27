@@ -57,47 +57,68 @@ $theme-shadows: (
   "required": $shadow-color--required,
 );
 
-$theme-color-scheme-1: (
-  "blue": lighten($color__blue-3, 10%),
-  "dark-blue": lighten($color__dark-blue-3, 10%),
-  "green": lighten($color__green-3, 10%),
-  "gray": lighten($color__gray-3, 10%),
-  "dark-gray": lighten($color__dark-gray-3, 10%),
-  "alpha": lighten($color__alpha-3, 10%),
+// Color schemes
+
+$theme-color-blue: (
+  "lighter": $color__blue--lighter,
+  "light": $color__blue--light,
+  "regular": $color__blue,
+  "dark": $color__blue--dark,
+  "darker": $color__blue--darker,
 );
 
-$theme-color-scheme-2: (
-  "blue": lighten($color__blue-3, 5%),
-  "dark-blue": lighten($color__dark-blue-3, 5%),
-  "green": lighten($color__green-3, 5%),
-  "gray": lighten($color__gray-3, 5%),
-  "dark-gray": lighten($color__dark-gray-3, 5%),
-  "alpha": lighten($color__alpha-3, 5%),
+$theme-color-dark-blue: (
+  "lighter": $color__dark-blue--lighter,
+  "light": $color__dark-blue--light,
+  "regular": $color__dark-blue,
+  "dark": $color__dark-blue--dark,
+  "darker": $color__dark-blue--darker,
 );
 
-$theme-color-scheme-3: (
-  "blue": $color__blue-3,
-  "dark-blue": $color__dark-blue-3,
-  "green": $color__green-3,
-  "gray": $color__gray-3,
-  "dark-gray": $color__dark-gray-3,
-  "alpha": $color__alpha-3,
+$theme-color-green: (
+  "lighter": $color__green--lighter,
+  "light": $color__green--light,
+  "regular": $color__green,
+  "dark": $color__green--dark,
+  "darker": $color__green--darker,
 );
 
-$theme-color-scheme-4: (
-  "blue": darken($color__blue-3, 5%),
-  "dark-blue": darken($color__dark-blue-3, 5%),
-  "green": darken($color__green-3, 5%),
-  "gray": darken($color__gray-3, 5%),
-  "dark-gray": darken($color__dark-gray-3, 5%),
-  "alpha": darken($color__alpha-3, 5%),
+$theme-color-orange: (
+  "lighter": $color__orange--lighter,
+  "light": $color__orange--light,
+  "regular": $color__orange,
+  "dark": $color__orange--dark,
+  "darker": $color__orange--darker,
 );
 
-$theme-color-scheme-5: (
-  "blue": darken($color__blue-3, 10%),
-  "dark-blue": darken($color__dark-blue-3, 10%),
-  "green": darken($color__green-3, 10%),
-  "gray": darken($color__gray-3, 10%),
-  "dark-gray": darken($color__dark-gray-3, 10%),
-  "alpha": darken($color__alpha-3, 10%),
+$theme-color-red: (
+  "lighter": $color__red--lighter,
+  "light": $color__red--light,
+  "regular": $color__red,
+  "dark": $color__red--dark,
+  "darker": $color__red--darker,
+);
+
+$theme-color-gray: (
+  "lighter": $color__gray--lighter,
+  "light": $color__gray--light,
+  "regular": $color__gray,
+  "dark": $color__gray--dark,
+  "darker": $color__gray--darker,
+);
+
+$theme-color-dark-gray: (
+  "lighter": $color__dark-gray--lighter,
+  "light": $color__dark-gray--light,
+  "regular": $color__dark-gray,
+  "dark": $color__dark-gray--dark,
+  "darker": $color__dark-gray--darker,
+);
+
+$theme-color-alpha: (
+  "lighter": $color__alpha--lighter,
+  "light": $color__alpha--light,
+  "regular": $color__alpha,
+  "dark": $color__alpha--dark,
+  "darker": $color__alpha--darker,
 );

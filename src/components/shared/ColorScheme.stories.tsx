@@ -78,33 +78,27 @@ export const ThemeColors = () => (
 
 export const ThemeColorSchemes = () => (
   <>
-    {["blue", "dark-blue", "green", "gray", "dark-gray", "alpha"].map(
-      (color) => {
-        return (
-          <Row align="space-between">
+    {[
+      "blue",
+      "dark-blue",
+      "green",
+      "red",
+      "orange",
+      "gray",
+      "dark-gray",
+      "alpha",
+    ].map((color) => (
+      <Row align="space-between">
+        {["lighter", "lighter", "regular", "dark", "darker"].map((n) => {
+          return (
             <ThemeBlock
-              kind={`${color}-1`}
-              variable={`map-get($theme-color-scheme-1, "${color}");`}
+              modifier={n}
+              kind={color}
+              variable={`map-get($theme-color-${color}, "${n}");`}
             />
-            <ThemeBlock
-              kind={`${color}-2`}
-              variable={`map-get($theme-color-scheme-2, "${color}");`}
-            />
-            <ThemeBlock
-              kind={`${color}-3`}
-              variable={`map-get($theme-color-scheme-3, "${color}");`}
-            />
-            <ThemeBlock
-              kind={`${color}-4`}
-              variable={`map-get($theme-color-scheme-4, "${color}");`}
-            />
-            <ThemeBlock
-              kind={`${color}-5`}
-              variable={`map-get($theme-color-scheme-5, "${color}");`}
-            />
-          </Row>
-        );
-      }
-    )}
+          );
+        })}
+      </Row>
+    ))}
   </>
 );

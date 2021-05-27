@@ -40,9 +40,9 @@
   }
 
   &:active {
-    color: $color__alpha-3;
-    fill: $color__alpha-3;
-    stroke: $color__alpha-3;
+    color: $color__alpha;
+    fill: $color__alpha;
+    stroke: $color__alpha;
   }
 }
 
@@ -236,7 +236,7 @@
 }
 
 .rc-button--dark {
-  background-color: $color__alpha-5;
+  background-color: $color__alpha--darker;
   border-color: transparent;
   color: #fff;
   fill: #fff;
@@ -244,10 +244,10 @@
 
   &.rc-button--noFill {
     background-color: transparent;
-    border-color: $color__alpha-5;
-    color: $color__alpha-4;
-    fill: $color__alpha-4;
-    stroke: $color__alpha-4;
+    border-color: $color__alpha--darker;
+    color: $color__alpha--dark;
+    fill: $color__alpha--dark;
+    stroke: $color__alpha--dark;
   }
 
   &:active,
@@ -257,7 +257,7 @@
 
   &:hover,
   &:focus {
-    background-color: $color__alpha-4;
+    background-color: $color__alpha--dark;
     border-color: transparent;
 
     &.rc-button--noFill {
@@ -271,9 +271,9 @@
 .rc-button--light {
   background-color: #fff;
   border-color: transparent;
-  color: $color__gray-5;
-  fill: $color__gray-5;
-  stroke: $color__gray-5;
+  color: $color__gray--darker;
+  fill: $color__gray--darker;
+  stroke: $color__gray--darker;
 
   &.rc-button--noFill {
     background-color: transparent;
@@ -292,12 +292,12 @@
   &:focus {
     background-color: #fff;
     border-color: transparent;
-    color: $color__gray-4;
+    color: $color__gray--dark;
 
     &.rc-button--noFill {
-      color: $color__gray-5;
-      fill: $color__gray-5;
-      stroke: $color__gray-5;
+      color: $color__gray--darker;
+      fill: $color__gray--darker;
+      stroke: $color__gray--darker;
     }
   }
 }
@@ -305,16 +305,16 @@
 .rc-button--tertiary {
   background-color: $color__tertiary;
   border-color: $color__tertiary;
-  color: $color__dark-gray-2;
-  fill: $color__dark-gray-2;
-  stroke: $color__dark-gray-2;
+  color: $color__dark-gray--dark;
+  fill: $color__dark-gray--dark;
+  stroke: $color__dark-gray--dark;
 
   &.rc-button--noFill {
-    border-color: $color__gray-4;
+    border-color: $color__gray--dark;
     background: transparent;
-    color: $color__gray-5;
-    fill: $color__gray-5;
-    stroke: $color__gray-5;
+    color: $color__gray--darker;
+    fill: $color__gray--darker;
+    stroke: $color__gray--darker;
   }
 
   &:active,
@@ -324,9 +324,9 @@
 
   &:hover,
   &:focus {
-    color: $color__dark-gray-2;
-    fill: $color__dark-gray-2;
-    stroke: $color__dark-gray-2;
+    color: $color__dark-gray--dark;
+    fill: $color__dark-gray--dark;
+    stroke: $color__dark-gray--dark;
     background-color: $color__tertiary--light;
     border-color: $color__tertiary--light;
   }
@@ -336,18 +336,18 @@
   opacity: $input-opacity--disabled;
   pointer-events: none;
   cursor: auto;
-  background-color: $color__gray-2;
-  border-color: $color__gray-2;
-  color: $color__dark-gray-1;
-  fill: $color__gray-5;
-  stroke: $color__gray-5;
+  background-color: $color__gray--light;
+  border-color: $color__gray--light;
+  color: $color__dark-gray--lighter;
+  fill: $color__gray--darker;
+  stroke: $color__gray--darker;
 
   &.rc-button--noFill {
-    border-color: $color__gray-2;
+    border-color: $color__gray--light;
     background: transparent;
-    color: $color__gray-5;
-    fill: $color__gray-5;
-    stroke: $color__gray-5;
+    color: $color__gray--darker;
+    fill: $color__gray--darker;
+    stroke: $color__gray--darker;
   }
 }
 
@@ -361,15 +361,15 @@
   &:hover {
     &.rc-button--noFill {
       &:active {
-        color: $color__alpha-3;
-        fill: $color__alpha-3;
-        stroke: $color__alpha-3;
+        color: $color__alpha;
+        fill: $color__alpha;
+        stroke: $color__alpha;
       }
     }
   }
   &:active {
-    color: $color__alpha-3;
-    fill: $color__alpha-3;
-    stroke: $color__alpha-3;
+    color: $color__alpha;
+    fill: $color__alpha;
+    stroke: $color__alpha;
   }
 }

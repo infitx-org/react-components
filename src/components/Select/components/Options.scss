@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   flex: 0 0 40px;
-  color: $color__dark-gray-3;
+  color: $color__dark-gray;
   padding-left: 10px;
   padding-right: 10px;
   line-height: 40px;
@@ -28,8 +28,8 @@
   border-left: 2px solid $color__tertiary;
   border-right: 2px solid $color__tertiary;
   cursor: pointer;
-  color: $color__dark-gray-1;
-  fill: $color__dark-gray-1;
+  color: $color__dark-gray--lighter;
+  fill: $color__dark-gray--lighter;
   transition: border 0.05s ease-out, background 0.05s ease-out,
     color 0.05s ease-out;
 }
@@ -60,8 +60,8 @@
 .rc-select__option--highlighted {
   background: $color__tertiary--light;
   border-color: $color__tertiary--light;
-  color: $color__dark-gray-3;
-  fill: $color__dark-gray-3;
+  color: $color__dark-gray;
+  fill: $color__dark-gray;
 }
 .rc-select__option--selected,
 .rc-select__option--selected:hover {
@@ -110,8 +110,8 @@
   justify-content: center;
   height: 40px;
   background: #fff;
-  color: $color__gray-5;
-  fill: $color__gray-5;
+  color: $color__gray--darker;
+  fill: $color__gray--darker;
   line-height: 40px;
   border-left: 2px solid $color__tertiary;
   border-right: 2px solid $color__tertiary;
