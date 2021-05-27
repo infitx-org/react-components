@@ -1,7 +1,7 @@
-@import "../../scss/vars/shadow.scss";
-@import "../../scss/vars/colors.scss";
-@import "../../scss/vars/themes.scss";
-@import "../../scss/base.scss";
+@import "../../scss/base/shadows.scss";
+@import "../../scss/base/colors.scss";
+@import "../../scss/themes.scss";
+@import "../../scss/mixins.scss";
 
 @use "sass:map";
 
@@ -99,16 +99,16 @@
 @each $kind in $kinds {
   .rc-radio__input--#{$kind} {
     &:checked {
-      border-color: map-get($theme-colors--darken, $kind);
+      border-color: map-get($theme-colors--dark, $kind);
       background: linear-gradient(
         0deg,
         map-get($theme-colors, $kind),
-        map-get($theme-colors--darken, $kind)
+        map-get($theme-colors--dark, $kind)
       );
     }
     &:checked:disabled {
-      border-color: map-get($theme-colors--active, $kind);
-      background: map-get($theme-colors--active, $kind);
+      border-color: map-get($theme-colors--light, $kind);
+      background: map-get($theme-colors--light, $kind);
     }
     &:focus {
       box-shadow: $shadow-size map-get($theme-shadows, $kind);

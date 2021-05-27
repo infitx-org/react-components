@@ -1,6 +1,6 @@
-@import "../../../scss/vars/fonts.scss";
-@import "../../../scss/vars/colors.scss";
-@import "../../../scss/vars/transitions.scss";
+@import "../../../scss/base/fonts.scss";
+@import "../../../scss/base/colors.scss";
+@import "../../../scss/base/transitions.scss";
 
 /* DayPicker styles */
 .DayPicker {
@@ -10,8 +10,8 @@
   position: relative !important;
   padding: 10px 0px 5px 0px;
   user-select: none;
-  font-family: $font__primary, $font__primary-fallback;
-  letter-spacing: $font__primary-spacing;
+  font-family: $font-family, $font-family-fallback;
+  letter-spacing: $letter-spacing;
 }
 
 .DayPicker-Month {

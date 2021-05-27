@@ -1,0 +1,89 @@
+$color__blue: #4fc7e7 !default;
+$color__dark-blue: #226291 !default;
+$color__green: #19de6f !default;
+$color__red: #d1344e !default;
+$color__orange: #f49935 !default;
+$color__gray: #bbbbbb !default;
+$color__dark-gray: #333 !default;
+$color__light-gray: #eee !default;
+
+// Main Colors
+$color__primary: $color__blue !default;
+$color__secondary: $color__dark-blue !default;
+$color__tertiary: $color__gray !default;
+$color__success: $color__green !default;
+$color__danger: $color__red !default;
+$color__warning: $color__orange !default;
+$color__disabled: #d2d1d1 !default;
+$color__dark: $color__dark-gray !default;
+$color__light: $color__light-gray !default;
+$color__invalid: $color__danger !default;
+$color__required: $color__warning !default;
+
+// Light Version
+$color__primary--light: lighten($color__primary, 10%) !default;
+$color__secondary--light: lighten($color__secondary, 10%) !default;
+$color__tertiary--light: lighten($color__tertiary, 10%) !default;
+$color__success--light: lighten($color__success, 10%) !default;
+$color__danger--light: lighten($color__danger, 10%) !default;
+$color__warning--light: lighten($color__warning, 10%) !default;
+$color__disabled--light: lighten($color__disabled, 10%) !default;
+$color__dark--light: lighten($color__dark, 10%) !default;
+$color__light--light: lighten($color__light, 10%) !default;
+$color__invalid--light: $color__danger--light !default;
+$color__required--light: $color__warning--light !default;
+
+// Dark Version
+$color__primary--dark: darken($color__primary, 10%) !default;
+$color__secondary--dark: darken($color__secondary, 10%) !default;
+$color__tertiary--dark: darken($color__tertiary, 10%) !default;
+$color__success--dark: darken($color__success, 10%) !default;
+$color__danger--dark: darken($color__danger, 10%) !default;
+$color__warning--dark: darken($color__warning, 10%) !default;
+$color__disabled--dark: darken($color__disabled, 10%) !default;
+$color__dark--dark: darken($color__dark, 10%) !default;
+$color__light--dark: darken($color__light, 10%) !default;
+$color__invalid--dark: $color__danger--dark !default;
+$color__required--dark: $color__warning--dark !default;
+
+// Color Schemes
+$color__blue--lighter: lighten($color__blue, 10%) !default;
+$color__blue--light: lighten($color__blue, 5%) !default;
+$color__blue--dark: darken($color__blue, 5%) !default;
+$color__blue--darker: darken($color__blue, 10%) !default;
+
+$color__dark-blue--lighter: lighten($color__dark-blue, 10%) !default;
+$color__dark-blue--light: lighten($color__dark-blue, 5%) !default;
+$color__dark-blue--dark: darken($color__dark-blue, 5%) !default;
+$color__dark-blue--darker: darken($color__dark-blue, 10%) !default;
+
+$color__green--lighter: lighten($color__green, 10%) !default;
+$color__green--light: lighten($color__green, 5%) !default;
+$color__green--dark: darken($color__green, 5%) !default;
+$color__green--darker: darken($color__green, 10%) !default;
+
+$color__orange--lighter: lighten($color__orange, 10%) !default;
+$color__orange--light: lighten($color__orange, 5%) !default;
+$color__orange--dark: darken($color__orange, 5%) !default;
+$color__orange--darker: darken($color__orange, 10%) !default;
+
+$color__red--lighter: lighten($color__red, 10%) !default;
+$color__red--light: lighten($color__red, 5%) !default;
+$color__red--dark: darken($color__red, 5%) !default;
+$color__red--darker: darken($color__red, 10%) !default;
+
+$color__gray--lighter: lighten($color__gray, 10%) !default;
+$color__gray--light: lighten($color__gray, 5%) !default;
+$color__gray--dark: darken($color__gray, 5%) !default;
+$color__gray--darker: darken($color__gray, 10%) !default;
+
+$color__dark-gray--lighter: lighten($color__dark-gray, 10%) !default;
+$color__dark-gray--light: lighten($color__dark-gray, 5%) !default;
+$color__dark-gray--dark: darken($color__dark-gray, 5%) !default;
+$color__dark-gray--darker: darken($color__dark-gray, 10%) !default;
+
+$color__alpha--lighter: rgba(0, 0, 0, 0.1) !default;
+$color__alpha--light: rgba(0, 0, 0, 0.2) !default;
+$color__alpha: rgba(0, 0, 0, 0.3) !default;
+$color__alpha--dark: rgba(0, 0, 0, 0.4) !default;
+$color__alpha--darker: rgba(0, 0, 0, 0.5) !default;

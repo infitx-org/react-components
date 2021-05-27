@@ -1,11 +1,11 @@
-@import "./vars/fonts.scss";
+@import "./base/fonts.scss";
 
 @mixin rc-component {
   box-sizing: border-box;
   font-style: normal;
   font-weight: 400;
-  font-family: $font__primary, $font__primary-fallback;
-  letter-spacing: $font__primary-spacing;
+  font-family: $font-family, $font-family-fallback;
+  letter-spacing: $letter-spacing;
   -webkit-font-smoothing: antialiased;
 }
 

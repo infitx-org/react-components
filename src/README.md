@@ -27,7 +27,7 @@ You need to create your own SCSS file and import the `index.scss` from there:
 
 ```scss
 // here you can override the exported variables building the themes
-$color__main-primary: #f00;
+$color__primary: #f00;
 
 // import the scss
 @import 'node_modules/@modusbox/react-components/lib/index.scss';

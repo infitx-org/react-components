@@ -1,0 +1,15 @@
+@import "./colors.scss";
+
+$shadow-size: 0px 0px 0px 3px !default;
+$shadow-size--closed: 0px 0px 0px 0px !default;
+
+$shadow-color--primary: lighten($color__primary, 20%) !default;
+$shadow-color--secondary: lighten($color__secondary, 30%) !default;
+$shadow-color--tertiary: lighten($color__tertiary, 15%) !default;
+$shadow-color--success: lighten($color__success, 30%) !default;
+$shadow-color--danger: lighten($color__danger, 30%) !default;
+$shadow-color--warning: lighten($color__warning, 25%) !default;
+$shadow-color--dark: lighten($color__dark, 30%) !default;
+$shadow-color--light: lighten($color__light, 30%) !default;
+$shadow-color--invalid: lighten($color__danger, 30%) !default;
+$shadow-color--required: lighten($color__warning, 25%) !default;

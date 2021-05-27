@@ -1,16 +1,20 @@
 import React from "react";
 import { Kind } from "types";
+import Row from "components/Layout/Row";
 import "./ColorScheme.scss";
 
 export default {
   title: "Color Schemes",
 };
 
-function Block({ kind = "", modifier = "regular" }) {
-  const className = `color-scheme color-scheme--${modifier}-${kind}`;
+function ThemeBlock({ kind = "", modifier = "", variable = "" }) {
+  const className = `color-scheme color-scheme${
+    modifier ? `--${modifier}` : ""
+  }-${kind}`;
 
   return (
     <div className={className}>
+      <div className="variable">{variable}</div>
       <div className="labels">
         {kind} - {modifier}
       </div>
@@ -40,18 +44,61 @@ function Tester({ kind = "" }) {
   );
 }
 
-export const Default = () => (
+export const ThemeColors = () => (
   <>
     {Object.values(Kind).map((kind) => {
       return (
-        <div>
-          <Block kind={kind} />
-          <Block kind={kind} modifier="active" />
-          <Block kind={kind} modifier="darken" />
-          <Block kind={kind} modifier="shadows" />
+        <Row align="space-between">
+          <ThemeBlock
+            kind={kind}
+            modifier="active"
+            variable={`map-get($theme-colors--light, "${kind}");`}
+          />
+          <ThemeBlock
+            kind={kind}
+            modifier="regular"
+            variable={`map-get($theme-colors, "${kind}");`}
+          />
+          <ThemeBlock
+            kind={kind}
+            modifier="darken"
+            variable={`map-get($theme-colors--dark, "${kind}");`}
+          />
+          <ThemeBlock
+            kind={kind}
+            modifier="shadows"
+            variable={`map-get($theme-shadows, "${kind}");`}
+          />
           <Tester kind={kind} />
-        </div>
+        </Row>
       );
     })}
+  </>
+);
+
+export const ThemeColorSchemes = () => (
+  <>
+    {[
+      "blue",
+      "dark-blue",
+      "green",
+      "red",
+      "orange",
+      "gray",
+      "dark-gray",
+      "alpha",
+    ].map((color) => (
+      <Row align="space-between">
+        {["lighter", "lighter", "regular", "dark", "darker"].map((n) => {
+          return (
+            <ThemeBlock
+              modifier={n}
+              kind={color}
+              variable={`map-get($theme-color-${color}, "${n}");`}
+            />
+          );
+        })}
+      </Row>
+    ))}
   </>
 );

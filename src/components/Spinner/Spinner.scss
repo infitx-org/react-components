@@ -1,4 +1,4 @@
-@import "../../scss/vars/colors.scss";
+@import "../../scss/base/colors.scss";
 
 .rc-spinner {
   transform: translateZ(0);
@@ -24,7 +24,7 @@
   stroke-dashoffset: 0;
   transform-origin: center;
   stroke-linecap: round;
-  stroke: $color__main-primary;
+  stroke: $color__primary;
 }
 
 @keyframes rotateSpinner {

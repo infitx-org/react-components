@@ -1,5 +1,5 @@
-@import "../../scss/vars/colors.scss";
-@import "../../scss/base.scss";
+@import "../../scss/base/colors.scss";
+@import "../../scss/mixins.scss";
 
 .rc-tabs {
   @include rc-component;
@@ -26,8 +26,8 @@
   font-size: 14px;
   line-height: 32px;
   text-align: center;
-  color: $color__dark-gray-3;
-  border-bottom: 3px solid $color__gray-2;
+  color: $color__dark-gray;
+  border-bottom: 3px solid $color__gray--light;
   transition: all 0.1s ease-out;
   cursor: pointer;
 
@@ -36,18 +36,18 @@
   }
 
   &:hover:not(.rc-tabs__tab--disabled):not(.rc-tabs__tab--selected) {
-    border-bottom-color: $color__gray-4;
+    border-bottom-color: $color__gray--dark;
   }
   &.rc-tabs__tab--selected {
-    border-bottom-color: $color__main-primary;
-    color: $color__main-primary;
+    border-bottom-color: $color__primary;
+    color: $color__primary;
   }
   &.rc-tabs__tab--focused {
-    border-bottom-color: $color__main-primary--active;
-    color: $color__main-primary--active;
+    border-bottom-color: $color__primary--light;
+    color: $color__primary--light;
   }
   &.rc-tabs__tab--disabled {
-    color: $color__main-disabled;
+    color: $color__disabled;
     cursor: default;
   }
 }

@@ -1,0 +1,124 @@
+@use "sass:map";
+@import "./base/shadows.scss";
+@import "./base/colors.scss";
+
+$kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
+  "dark", "light";
+
+$theme-colors: (
+  "primary": $color__primary,
+  "secondary": $color__secondary,
+  "tertiary": $color__tertiary,
+  "success": $color__success,
+  "danger": $color__danger,
+  "warning": $color__warning,
+  "dark": $color__dark,
+  "light": $color__light,
+  "invalid": $color__invalid,
+  "required": $color__required,
+);
+
+$theme-colors--light: (
+  "primary": $color__primary--light,
+  "secondary": $color__secondary--light,
+  "tertiary": $color__tertiary--light,
+  "success": $color__success--light,
+  "danger": $color__danger--light,
+  "warning": $color__warning--light,
+  "dark": $color__dark--light,
+  "light": $color__light--light,
+  "invalid": $color__invalid--light,
+  "required": $color__required--light,
+);
+
+$theme-colors--dark: (
+  "primary": $color__primary--dark,
+  "secondary": $color__secondary--dark,
+  "tertiary": $color__tertiary--dark,
+  "success": $color__success--dark,
+  "danger": $color__danger--dark,
+  "warning": $color__warning--dark,
+  "dark": $color__dark--dark,
+  "light": $color__light--dark,
+  "invalid": $color__invalid--dark,
+  "required": $color__required--dark,
+);
+
+$theme-shadows: (
+  "primary": $shadow-color--primary,
+  "secondary": $shadow-color--secondary,
+  "tertiary": $shadow-color--tertiary,
+  "success": $shadow-color--success,
+  "danger": $shadow-color--danger,
+  "warning": $shadow-color--warning,
+  "dark": $shadow-color--dark,
+  "light": $shadow-color--light,
+  "invalid": $shadow-color--invalid,
+  "required": $shadow-color--required,
+);
+
+// Color schemes
+
+$theme-color-blue: (
+  "lighter": $color__blue--lighter,
+  "light": $color__blue--light,
+  "regular": $color__blue,
+  "dark": $color__blue--dark,
+  "darker": $color__blue--darker,
+);
+
+$theme-color-dark-blue: (
+  "lighter": $color__dark-blue--lighter,
+  "light": $color__dark-blue--light,
+  "regular": $color__dark-blue,
+  "dark": $color__dark-blue--dark,
+  "darker": $color__dark-blue--darker,
+);
+
+$theme-color-green: (
+  "lighter": $color__green--lighter,
+  "light": $color__green--light,
+  "regular": $color__green,
+  "dark": $color__green--dark,
+  "darker": $color__green--darker,
+);
+
+$theme-color-orange: (
+  "lighter": $color__orange--lighter,
+  "light": $color__orange--light,
+  "regular": $color__orange,
+  "dark": $color__orange--dark,
+  "darker": $color__orange--darker,
+);
+
+$theme-color-red: (
+  "lighter": $color__red--lighter,
+  "light": $color__red--light,
+  "regular": $color__red,
+  "dark": $color__red--dark,
+  "darker": $color__red--darker,
+);
+
+$theme-color-gray: (
+  "lighter": $color__gray--lighter,
+  "light": $color__gray--light,
+  "regular": $color__gray,
+  "dark": $color__gray--dark,
+  "darker": $color__gray--darker,
+);
+
+$theme-color-dark-gray: (
+  "lighter": $color__dark-gray--lighter,
+  "light": $color__dark-gray--light,
+  "regular": $color__dark-gray,
+  "dark": $color__dark-gray--dark,
+  "darker": $color__dark-gray--darker,
+);
+
+$theme-color-alpha: (
+  "lighter": $color__alpha--lighter,
+  "light": $color__alpha--light,
+  "regular": $color__alpha,
+  "dark": $color__alpha--dark,
+  "darker": $color__alpha--darker,
+);

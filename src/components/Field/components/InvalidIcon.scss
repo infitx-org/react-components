@@ -1,7 +1,7 @@
-@import "../../../scss/base.scss";
-@import "../../../scss/vars/colors.scss";
+@import "../../../scss/mixins.scss";
+@import "../../../scss/base/colors.scss";
 
 .rc-invalid-icon {
   @include rc-field-icon;
-  fill: $color__main-danger;
+  fill: $color__danger;
 }

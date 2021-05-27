@@ -1,10 +1,10 @@
-@import "../../../scss/vars/general.scss";
+@import "../../../scss/base/inputs.scss";
 
 .placeholder {
   transition: all 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
   position: absolute;
   top: 50%;
-  color: $placeholder-color;
+  color: $input__placeholder-color;
   transform: translateY(-50%);
 }
 .placeholder--small {
