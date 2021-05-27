@@ -1,6 +1,8 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import Settings from 'assets/icons/settings.svg';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
+import Icon from 'components/Icon';
 import Row from 'components/Layout/Row';
 import Box from "./components/Box";
 import "./ColorSchemes/ColorScheme.scss";
@@ -16,6 +18,12 @@ Here you can find the rules, color schemes and the icons used to build the compo
 ### Custom Icons
 
 This is a set of custom SVG icons used for specific use cases.
+
+<Row align="space-around">
+  <Box size="small">
+    <Icon size={30} icon={<Settings />} />
+  </Box>
+</Row>
 
 ### Color Schemes
 

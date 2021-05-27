@@ -1,7 +1,7 @@
 import FileUploader from "./FileUploader";
 
 export default {
-  title: "Library/Components/FileUploader",
+  title: "Components/FileUploader",
 };
 
 /* eslint-disable no-console */

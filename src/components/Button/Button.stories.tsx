@@ -4,7 +4,7 @@ import Row from "components/Layout/Row";
 import Button from "./Button";
 
 export default {
-  title: "Library/Components/Button",
+  title: "Components/Button",
   component: Button,
 };
 

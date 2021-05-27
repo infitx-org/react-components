@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import Row from 'components/Layout/Row';
+import Checkbox from 'components/Checkbox';
+import Button from 'components/Button';
+
+<Meta title="Documentation/How To Use"/>
+
+## Usage
+
+First import the components you need in your modules from `@modusbox/react-components` module:
+
+```tsx
+import { Row, Button, Checkbox } from '@modusbox/react-components';
+```
+
+then you can just se them as regular React components:
+
+```tsx
+function App () {
+  return (
+    <Row align="space-between">
+      <Button label="Click Me!"/>
+      <Checkbox label="Check Me!"/>
+    </Row>
+  )
+}
+```
+
+Which will produce the following:
+
+<Canvas>
+  <Row align="left">
+    <Button label="Click Me!" />
+    <Checkbox label="Check Me!" />
+  </Row>
+</Canvas>

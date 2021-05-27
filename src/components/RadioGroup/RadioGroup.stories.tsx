@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import RadioGroup from "./RadioGroup";
 
 export default {
-  title: "Library/Components/RadioGroup",
+  title: "Components/RadioGroup",
   component: RadioGroup,
 };
 
