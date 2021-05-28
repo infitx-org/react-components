@@ -17,8 +17,6 @@ $theme-kinds: (
   "warning": $color__warning,
   "dark": $color__dark,
   "light": $color__light,
-  "invalid": $color__invalid,
-  "required": $color__required,
 );
 
 $theme-kinds--opposite: (
@@ -30,8 +28,6 @@ $theme-kinds--opposite: (
   "warning": $color__warning--opposite,
   "dark": $color__dark--opposite,
   "light": $color__light--opposite,
-  "invalid": $color__invalid--opposite,
-  "required": $color__required--opposite,
 );
 
 $theme-kinds--light: (
@@ -43,8 +39,6 @@ $theme-kinds--light: (
   "warning": $color__warning--light,
   "dark": $color__dark--light,
   "light": $color__light--light,
-  "invalid": $color__invalid--light,
-  "required": $color__required--light,
 );
 
 $theme-kinds--dark: (
@@ -56,8 +50,6 @@ $theme-kinds--dark: (
   "warning": $color__warning--dark,
   "dark": $color__dark--dark,
   "light": $color__light--dark,
-  "invalid": $color__invalid--dark,
-  "required": $color__required--dark,
 );
 
 $theme-kinds-shadows: (
@@ -69,8 +61,6 @@ $theme-kinds-shadows: (
   "warning": $shadow-color--warning,
   "dark": $shadow-color--dark,
   "light": $shadow-color--light,
-  "invalid": $shadow-color--invalid,
-  "required": $shadow-color--required,
 );
 
 // State Themes
