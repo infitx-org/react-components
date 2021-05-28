@@ -7,7 +7,8 @@ $states: "invalid", "required";
 $kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
   "dark", "light";
 
-$theme-colors: (
+// Kind Themes
+$theme-kinds: (
   "primary": $color__primary,
   "secondary": $color__secondary,
   "tertiary": $color__tertiary,
@@ -20,7 +21,7 @@ $theme-colors: (
   "required": $color__required,
 );
 
-$theme-colors--opposite: (
+$theme-kinds--opposite: (
   "primary": $color__primary--opposite,
   "secondary": $color__secondary--opposite,
   "tertiary": $color__tertiary--opposite,
@@ -33,7 +34,7 @@ $theme-colors--opposite: (
   "required": $color__required--opposite,
 );
 
-$theme-colors--light: (
+$theme-kinds--light: (
   "primary": $color__primary--light,
   "secondary": $color__secondary--light,
   "tertiary": $color__tertiary--light,
@@ -46,7 +47,7 @@ $theme-colors--light: (
   "required": $color__required--light,
 );
 
-$theme-colors--dark: (
+$theme-kinds--dark: (
   "primary": $color__primary--dark,
   "secondary": $color__secondary--dark,
   "tertiary": $color__tertiary--dark,
@@ -59,7 +60,7 @@ $theme-colors--dark: (
   "required": $color__required--dark,
 );
 
-$theme-shadows: (
+$theme-kinds-shadows: (
   "primary": $shadow-color--primary,
   "secondary": $shadow-color--secondary,
   "tertiary": $shadow-color--tertiary,
@@ -68,6 +69,33 @@ $theme-shadows: (
   "warning": $shadow-color--warning,
   "dark": $shadow-color--dark,
   "light": $shadow-color--light,
+  "invalid": $shadow-color--invalid,
+  "required": $shadow-color--required,
+);
+
+// State Themes
+
+$theme-states: (
+  "invalid": $color__invalid,
+  "required": $color__required,
+);
+
+$theme-states--opposite: (
+  "invalid": $color__invalid--opposite,
+  "required": $color__required--opposite,
+);
+
+$theme-states--light: (
+  "invalid": $color__invalid--light,
+  "required": $color__required--light,
+);
+
+$theme-states--dark: (
+  "invalid": $color__invalid--dark,
+  "required": $color__required--dark,
+);
+
+$theme-states-shadows: (
   "invalid": $shadow-color--invalid,
   "required": $shadow-color--required,
 );

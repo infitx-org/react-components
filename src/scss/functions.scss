@@ -4,7 +4,7 @@
 }
 
 @function opposite($kind) {
-  $color: map-get($theme-colors--opposite, $kind);
+  $color: map-get($theme-kinds--opposite, $kind);
   @if $kind == "primary" {
     $color: #f00;
   }

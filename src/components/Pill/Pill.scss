@@ -30,8 +30,8 @@
 }
 
 @each $kind in $kinds {
-  $base-color: map-get($theme-colors--dark, $kind);
-  $light-color: lighten(map-get($theme-shadows, $kind), 10%);
+  $base-color: map-get($theme-kinds--dark, $kind);
+  $light-color: lighten(map-get($theme-kinds-shadows, $kind), 10%);
 
   .rc-pill--#{$kind} {
     fill: $base-color;
@@ -40,7 +40,7 @@
 
     &.rc-pill--inverted {
       fill: $light-color;
-      color: map-get($theme-colors--opposite, $kind);
+      color: map-get($theme-kinds--opposite, $kind);
       background-color: $base-color;
     }
   }

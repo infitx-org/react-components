@@ -87,21 +87,21 @@
 }
 
 //   .rc-field--#{$kind} {
-//     border-bottom-color: map-get($theme-colors, $kind);
+//     border-bottom-color: map-get($theme-kinds, $kind);
 
 @each $kind in $kinds {
   .rc-button--#{$kind} {
-    background-color: map-get($theme-colors, $kind);
-    border-color: map-get($theme-colors, $kind);
-    color: map-get($theme-colors--opposite, $kind);
-    fill: map-get($theme-colors--opposite, $kind);
-    stroke: map-get($theme-colors--opposite, $kind);
+    background-color: map-get($theme-kinds, $kind);
+    border-color: map-get($theme-kinds, $kind);
+    color: map-get($theme-kinds--opposite, $kind);
+    fill: map-get($theme-kinds--opposite, $kind);
+    stroke: map-get($theme-kinds--opposite, $kind);
 
     &.rc-button--noFill {
       background-color: transparent;
-      color: map-get($theme-colors, $kind);
-      fill: map-get($theme-colors, $kind);
-      stroke: map-get($theme-colors, $kind);
+      color: map-get($theme-kinds, $kind);
+      fill: map-get($theme-kinds, $kind);
+      stroke: map-get($theme-kinds, $kind);
     }
 
     &:active {
@@ -112,18 +112,18 @@
 
     &:active,
     &:focus {
-      box-shadow: $shadow-size map-get($theme-shadows, $kind);
+      box-shadow: $shadow-size map-get($theme-kinds-shadows, $kind);
     }
 
     &:hover,
     &:focus {
-      background-color: map-get($theme-colors, $kind);
-      border-color: map-get($theme-colors, $kind);
+      background-color: map-get($theme-kinds, $kind);
+      border-color: map-get($theme-kinds, $kind);
 
       &.rc-button--noFill {
-        color: map-get($theme-colors--opposite, $kind);
-        fill: map-get($theme-colors--opposite, $kind);
-        stroke: map-get($theme-colors--opposite, $kind);
+        color: map-get($theme-kinds--opposite, $kind);
+        fill: map-get($theme-kinds--opposite, $kind);
+        stroke: map-get($theme-kinds--opposite, $kind);
       }
     }
 

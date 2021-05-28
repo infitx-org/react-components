@@ -4,19 +4,37 @@
 
 @each $kind in $kinds {
   .color-scheme--regular-#{$kind} {
-    background: map-get($theme-colors, $kind);
+    background: map-get($theme-kinds, $kind);
   }
 
   .color-scheme--active-#{$kind} {
-    background: map-get($theme-colors--light, $kind);
+    background: map-get($theme-kinds--light, $kind);
   }
 
   .color-scheme--darken-#{$kind} {
-    background: map-get($theme-colors--dark, $kind);
+    background: map-get($theme-kinds--dark, $kind);
   }
 
   .color-scheme--shadows-#{$kind} {
-    background: map-get($theme-shadows, $kind);
+    background: map-get($theme-kinds-shadows, $kind);
+  }
+}
+
+@each $state in $states {
+  .color-scheme--regular-#{$state} {
+    background: map-get($theme-states, $state);
+  }
+
+  .color-scheme--active-#{$state} {
+    background: map-get($theme-states--light, $state);
+  }
+
+  .color-scheme--darken-#{$state} {
+    background: map-get($theme-states--dark, $state);
+  }
+
+  .color-scheme--shadows-#{$state} {
+    background: map-get($theme-states-shadows, $state);
   }
 }
 

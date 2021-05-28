@@ -47,12 +47,12 @@
 
 @each $kind in $kinds {
   .rc-field--#{$kind} {
-    border-bottom-color: map-get($theme-colors, $kind);
+    border-bottom-color: map-get($theme-kinds, $kind);
   }
   &.rc-field--#{$kind} {
     &.rc-field--focused {
       &::before {
-        color: map-get($theme-shadows, $kind);
+        color: map-get($theme-kinds-shadows, $kind);
       }
     }
   }
@@ -60,12 +60,12 @@
 
 @each $state in "invalid", "required" {
   .rc-field--#{$state} {
-    border-bottom-color: map-get($theme-colors, $state);
+    border-bottom-color: map-get($theme-states, $state);
   }
   &.rc-field--#{$state} {
     &.rc-field--focused {
       &::before {
-        color: map-get($theme-shadows, $state);
+        color: map-get($theme-states-shadows, $state);
       }
     }
   }

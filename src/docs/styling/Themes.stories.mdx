@@ -3,7 +3,7 @@ import Row from 'components/Layout/Row';
 import Box from './components/Box';
 import "./components/Themes/Themes.scss";
 import "../../scss/vars.scss";
-import { Kinds, Colors, ThemeColors, ThemeColorSchemes } from "./components/Themes";
+import { Kinds, States, Colors, StateTheme, KindTheme, ColorTheme } from "./components/Themes";
 
 <Meta title="Styles/Themes"/>
 
@@ -13,6 +13,7 @@ Here you can find the color themes used in the components.
 Adopting the react-components themes is easy!
 
 - [Kinds](#kinds)
+- [States](#states)
 - [Colors](#colors)
 
 ## Kinds
@@ -35,7 +36,7 @@ The kind themes are based of the _kinds_ used in a number of components.
 
 <br />
 
-<ThemeColors.primary />
+<KindTheme.primary />
 
 <br />
 
@@ -43,7 +44,7 @@ The kind themes are based of the _kinds_ used in a number of components.
 
 <br />
 
-<ThemeColors.secondary />
+<KindTheme.secondary />
 
 <br />
 
@@ -51,7 +52,7 @@ The kind themes are based of the _kinds_ used in a number of components.
 
 <br />
 
-<ThemeColors.tertiary />
+<KindTheme.tertiary />
 
 <br />
 
@@ -59,7 +60,7 @@ The kind themes are based of the _kinds_ used in a number of components.
 
 <br />
 
-<ThemeColors.success />
+<KindTheme.success />
 
 <br />
 
@@ -67,7 +68,7 @@ The kind themes are based of the _kinds_ used in a number of components.
 
 <br />
 
-<ThemeColors.danger />
+<KindTheme.danger />
 
 <br />
 
@@ -75,7 +76,7 @@ The kind themes are based of the _kinds_ used in a number of components.
 
 <br />
 
-<ThemeColors.warning />
+<KindTheme.warning />
 
 <br />
 
@@ -83,7 +84,7 @@ The kind themes are based of the _kinds_ used in a number of components.
 
 <br />
 
-<ThemeColors.dark />
+<KindTheme.dark />
 
 <br />
 
@@ -91,9 +92,41 @@ The kind themes are based of the _kinds_ used in a number of components.
 
 <br />
 
-<ThemeColors.light />
+<KindTheme.light />
 
 <br />
+<br />
+<br />
+
+## States
+
+States are used to display the variants.
+
+Available kinds are `invalid` `required`.
+
+<States />
+
+<br />
+<br />
+<br />
+
+### Using the state themes
+
+The state themes are based of the _states_ used in a number of components.
+
+#### Invalid
+
+<br />
+
+<StateTheme.invalid />
+
+<br />
+
+#### Required
+
+<br />
+
+<StateTheme.required />
 
 <br />
 <br />
@@ -117,7 +150,7 @@ Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray
 
 <br />
 
-<ThemeColorSchemes.blue />
+<ColorTheme.blue />
 
 <br />
 
@@ -125,7 +158,7 @@ Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray
 
 <br />
 
-<ThemeColorSchemes.darkblue />
+<ColorTheme.darkblue />
 
 <br />
 
@@ -133,7 +166,7 @@ Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray
 
 <br />
 
-<ThemeColorSchemes.green />
+<ColorTheme.green />
 
 <br />
 
@@ -141,7 +174,7 @@ Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray
 
 <br />
 
-<ThemeColorSchemes.red />
+<ColorTheme.red />
 
 <br />
 
@@ -149,7 +182,7 @@ Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray
 
 <br />
 
-<ThemeColorSchemes.orange />
+<ColorTheme.orange />
 
 <br />
 
@@ -157,7 +190,7 @@ Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray
 
 <br />
 
-<ThemeColorSchemes.gray />
+<ColorTheme.gray />
 
 <br />
 
@@ -165,7 +198,7 @@ Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray
 
 <br />
 
-<ThemeColorSchemes.darkgray />
+<ColorTheme.darkgray />
 
 <br />
 
@@ -173,6 +206,6 @@ Available colors are `blue` `dark-blue` `green` `red` `orange` `gray` `dark-gray
 
 <br />
 
-<ThemeColorSchemes.alpha />
+<ColorTheme.alpha />
 
 <br />

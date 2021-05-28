@@ -17,6 +17,7 @@ const colors = [
 ];
 
 const kinds = Object.values(Kind);
+const states = ["invalid", "required"];
 
 export const Kinds = () => (
   <Row align="space-between">
@@ -27,6 +28,20 @@ export const Kinds = () => (
           className={`color-scheme color-scheme--regular-${kind}`}
         />
         <Label size="small">{kind}</Label>
+      </Column>
+    ))}
+  </Row>
+);
+
+export const States = () => (
+  <Row align="space-between">
+    {states.map((state) => (
+      <Column align="center">
+        <Box
+          size="small"
+          className={`color-scheme color-scheme--regular-${state}`}
+        />
+        <Label size="small">{state}</Label>
       </Column>
     ))}
   </Row>
@@ -46,7 +61,7 @@ export const Colors = () => (
   </Row>
 );
 
-export const ThemeColors = kinds.reduce((prev, kind) => {
+export const KindTheme = kinds.reduce((prev, kind) => {
   return {
     ...prev,
     [kind]: () => (
@@ -70,7 +85,31 @@ export const ThemeColors = kinds.reduce((prev, kind) => {
   };
 }, {});
 
-export const ThemeColorSchemes = colors.reduce((prev, color) => {
+export const StateTheme = states.reduce((prev, state) => {
+  return {
+    ...prev,
+    [state]: () => (
+      <Row align="space-between" key={state}>
+        {["active", "regular", "darken", "shadows"].map((type) => (
+          <Column align="center">
+            <Box
+              size="medium"
+              className={`color-scheme color-scheme--${type}-${state}`}
+            />
+            <Label size="small">
+              {state} / {type}
+            </Label>
+            <Label size="small" variable>
+              theme-colors--{type}.{state}
+            </Label>
+          </Column>
+        ))}
+      </Row>
+    ),
+  };
+}, {});
+
+export const ColorTheme = colors.reduce((prev, color) => {
   return {
     ...prev,
     [color.replace("-", "")]: () => (
