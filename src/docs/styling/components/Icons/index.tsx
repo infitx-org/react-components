@@ -1,7 +1,9 @@
 import React from "react";
 import Icon from "components/Icon";
 import Row from "components/Layout/Row";
+import Column from "components/Layout/Column";
 import Box from "docs/styling/components/Box";
+import Label from "docs/styling/components/Label";
 import "./CustomIcon.scss";
 
 import Arrow from "assets/icons/arrow.svg";
@@ -56,28 +58,27 @@ const items = {
   WarningSign,
 };
 
-const WrappedIcon = ({
+const IconBoxed = ({
   icon,
   name,
 }: {
   icon: React.ReactElement;
   name: string;
 }) => (
-  <Box label={name} size="medium" className="custom-icon">
-    <Icon icon={icon} fill="inherit" size={40} />
-  </Box>
+  <Column align="center">
+    <Box size="small" className="custom-icon">
+      <Icon icon={icon} fill="inherit" size={40} />
+    </Box>
+    <Label size="small">{name.toLowerCase()}.svg</Label>
+  </Column>
 );
 
-export const Icons = () => {
+export default () => {
   return (
-    <Row wrap>
+    <>
       {Object.entries(items).map(([key, Item]) => (
-        <WrappedIcon icon={<Item />} name={key} />
+        <IconBoxed icon={<Item />} name={key} />
       ))}
-    </Row>
+    </>
   );
-};
-
-export default {
-  title: "Styles/Icons",
 };

@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import Box from "../styling/components/Box";
+import "../../scss/vars.scss";
+
+<Meta title="Documentation/How To Style"/>
+
+
+## Styling
+
+You can choose wheter to use plain CSS or the more advanced and customizable SCSS.
+
+- [Using SCSS](#using-scss)
+- [Using CSS](#using-css)
+
+<br />
+
+### Using SCSS
+
+The easiest and most powerful way is to use SCSS.
+
+You can import variables and themes and use them with minimal effort, without worrying about anything else.
+
+Simply import the entrypoint `@modusbox/react-components/lib/index.scss` and you are ready to go.
+
+```css
+@import "@modusbox/react-components/lib/index.scss";
+
+.box {
+  background: $color__primary;
+}
+```
+<Box size="small" style={{background: `var(--color__primary)`}} />
+
+**Note**: You shouldn't be including the `index.scss` module more than once, as that could lead to duplicated classnames in your bundle.css.
+
+If your target is to adopt a fully modular system, only import the scss modules you need with the variables for the scope.
+
+<br />
+
+### Using CSS
+
+Import the CSS bundle
+
+```tsx
+// component file .js, .jsx, .ts, .tsx
+import "@modusbox/react-components/lib/index.css";
+```
+
+Use the variable in your stylesheet
+
+```css
+// component style .css / .scss
+.box {
+  background: var(--color__primary);
+}
+```
+<Box size="small" style={{background: `var(--color__primary)`}} />
+
+
+The biggest difference between the 2 options is that if using SCSS you will be able to apply a custom theme by overriding the variables.
+

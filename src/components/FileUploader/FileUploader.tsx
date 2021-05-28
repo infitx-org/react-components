@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { InputSize, KeyCode } from "types";
+import { Kind, InputSize, KeyCode } from "types";
 import readFileAsText from "@modusbox/ts-utils/lib/file/readFileAsText";
 import readFileAsBase64 from "@modusbox/ts-utils/lib/file/readFileAsBase64";
 import mergeRefs from "utils/mergeRefs";
@@ -13,8 +13,9 @@ export interface FileUploaderProps
     React.InputHTMLAttributes<HTMLInputElement>,
     "size" | "onChange"
   > {
-  className?: string;
+  kind?: `${Kind}`;
   size?: `${InputSize}`;
+  className?: string;
   parseAs?: "text" | "base64";
   placeholder?: string;
   file?: File;
@@ -27,8 +28,9 @@ export interface FileUploaderProps
 
 export default React.forwardRef(function FileUploader(
   {
-    className,
+    kind = Kind.Primary,
     size = InputSize.Large,
+    className,
     parseAs = "text",
     placeholder,
     file,
@@ -161,6 +163,7 @@ export default React.forwardRef(function FileUploader(
   return (
     <Field
       className={className}
+      kind={kind}
       size={size}
       required={required && selectedFile === undefined}
       invalid={invalid}

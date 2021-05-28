@@ -18,7 +18,7 @@ const icon = (
 );
 
 export default {
-  title: "Library/Components/Pill",
+  title: "Components/Pill",
   component: Pill,
 };
 

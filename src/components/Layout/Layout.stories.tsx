@@ -4,7 +4,7 @@ import Row from "./Row";
 import "./Layout.stories.css";
 
 export default {
-  title: "Library/Components/Layout",
+  title: "Components/Layout",
 };
 
 const Blocks = () => (

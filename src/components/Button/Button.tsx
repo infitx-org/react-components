@@ -20,7 +20,6 @@ export interface ButtonProps
   noFill?: boolean;
   disabled?: boolean;
   pending?: boolean;
-  tooltip?: string;
   style?: React.CSSProperties;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;

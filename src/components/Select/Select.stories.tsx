@@ -1,8 +1,8 @@
-import React from "react";
 import Select from "./Select";
 
 export default {
-  title: "Library/Components/Select",
+  title: "Components/Select",
+  component: Select,
 };
 
 /* eslint-disable no-console */
@@ -15,6 +15,7 @@ const Template = (args) => <Select {...args} options={options} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  kind: "primary",
   size: "large",
   value: undefined,
   className: undefined,
@@ -22,7 +23,7 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
-  options,
+  options: undefined,
   onChange: console.log,
   onClear: console.log,
 };

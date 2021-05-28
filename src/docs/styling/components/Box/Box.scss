@@ -1,0 +1,38 @@
+@import "../../../../scss/themes.scss";
+@import "../../../../scss/base/colors.scss";
+@use "sass:map";
+
+.box {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform: scale(1, 1);
+}
+.box--overlay {
+  z-index: 1000;
+  transform: scale(3, 3);
+}
+
+.box--small {
+  width: 100px;
+  height: 100px;
+  box-shadow: 0px 0px 10px -5px #333;
+}
+.box--medium {
+  width: 170px;
+  height: 170px;
+  box-shadow: 0px 0px 20px -8px #333;
+}
+.box--large {
+  width: 200px;
+  height: 200px;
+  box-shadow: 0px 0px 30px -16px #333;
+}

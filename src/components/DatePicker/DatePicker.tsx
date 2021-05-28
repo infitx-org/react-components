@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { InputSize, KeyCode } from "types";
+import { Kind, InputSize, KeyCode } from "types";
 import { format as dateFormat } from "date-fns";
 import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
@@ -15,8 +15,9 @@ export interface DatePickerProps
     React.InputHTMLAttributes<HTMLInputElement>,
     "size" | "onChange"
   > {
-  className?: string;
+  kind?: `${Kind}`;
   size?: `${InputSize}`;
+  className?: string;
   format?: string;
   placeholder?: string;
   value?: string;
@@ -28,8 +29,9 @@ export interface DatePickerProps
 
 export default React.forwardRef(function DatePicker(
   {
-    className,
+    kind = Kind.Primary,
     size = InputSize.Large,
+    className,
     format = "MMM do yyyy, HH:mm:ss",
     placeholder,
     value,
@@ -132,6 +134,7 @@ export default React.forwardRef(function DatePicker(
   const visibleValue = getStringFromDate(selectedDate);
   return (
     <Field
+      kind={kind}
       className={className}
       size={size}
       required={required && selectedDate === undefined}

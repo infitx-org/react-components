@@ -4,7 +4,7 @@ import Row from "components/Layout/Row";
 import Spinner from "./Spinner";
 
 export default {
-  title: "Library/Components/Spinner",
+  title: "Components/Spinner",
   component: Spinner,
 };
 

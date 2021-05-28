@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
-import { InputSize } from "types";
+import { Kind, InputSize } from "types";
 import Select from "./Select";
 
 const options = new Array(5).fill(0).map((_, index) => ({
@@ -86,6 +86,13 @@ describe("tests the select props", () => {
     Object.values(InputSize).forEach((size) => {
       const { container } = render(<Select {...commonProps} size={size} />);
       expect(container.querySelector(`.rc-field--${size}`)).toBeTruthy();
+    });
+  });
+
+  it("renders all the kinds", () => {
+    Object.values(Kind).forEach((kind) => {
+      const { container } = render(<Select {...commonProps} kind={kind} />);
+      expect(container.querySelector(`.rc-field--${kind}`)).toBeTruthy();
     });
   });
 

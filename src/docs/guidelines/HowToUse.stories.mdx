@@ -1,0 +1,49 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import Row from 'components/Layout/Row';
+import Checkbox from 'components/Checkbox';
+import Select from 'components/Select';
+import Button  from 'components/Button';
+import FormTheme from 'docs/styling/components/FormTheme';
+
+<Meta title="Documentation/How To Use"/>
+
+## Usage
+
+First import the components you need in your modules from `@modusbox/react-components` module:
+
+```tsx
+import { Row, Button, Checkbox } from '@modusbox/react-components';
+```
+
+then you can just se them as regular React components:
+
+```tsx
+function App () {
+  return (
+    <Row align="left">
+      <Button label="Click Me!"/>
+    </Row>
+  )
+}
+```
+
+Which will produce the following: 
+
+<Row align="left">
+  <Button label="Click Me!" />
+</Row>
+
+<br />
+<br />
+
+### Look And Feel
+
+You can use the components to build interactive web applications that share the same look and feel.
+
+Consider the following form
+
+<FormTheme />
+
+
+
+

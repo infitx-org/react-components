@@ -1,7 +1,7 @@
 import FileUploader from "./FileUploader";
 
 export default {
-  title: "Library/Components/FileUploader",
+  title: "Components/FileUploader",
 };
 
 /* eslint-disable no-console */
@@ -11,6 +11,7 @@ const Template = (args) => <FileUploader {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  kind: "primary",
   size: "large",
   file,
   className: undefined,

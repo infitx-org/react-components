@@ -1,7 +1,7 @@
 import { render, fireEvent, waitFor, act } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
-import { InputSize } from "types";
+import { Kind, InputSize } from "types";
 import FileUploader from "./FileUploader";
 
 const testFile = new File(
@@ -87,6 +87,15 @@ describe("tests the FileUploader props", () => {
         <FileUploader {...commonProps} size={size} />
       );
       expect(container.querySelector(`.rc-field--${size}`)).toBeTruthy();
+    });
+  });
+
+  it("renders all the kinds", () => {
+    Object.values(Kind).forEach((kind) => {
+      const { container } = render(
+        <FileUploader {...commonProps} kind={kind} />
+      );
+      expect(container.querySelector(`.rc-field--${kind}`)).toBeTruthy();
     });
   });
 

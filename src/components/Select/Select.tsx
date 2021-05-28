@@ -1,8 +1,8 @@
-import React from "react";
+import React, { forwardRef, ForwardedRef } from "react";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
-import { InputSize, KeyCode } from "types";
+import { Kind, InputSize, KeyCode } from "types";
 import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder, InvalidIcon } from "../Field";
 import Indicator from "./components/Indicator";
@@ -15,6 +15,7 @@ export interface SelectProps
     React.SelectHTMLAttributes<HTMLInputElement>,
     "size" | "value" | "onChange"
   > {
+  kind?: `${Kind}`;
   size?: `${InputSize}`;
   value?: OptionValue;
   className?: string;
@@ -27,8 +28,9 @@ export interface SelectProps
   onClear?: () => void;
 }
 
-export default React.forwardRef(function Select(
+export default forwardRef(function Select(
   {
+    kind = Kind.Primary,
     size = InputSize.Large,
     value,
     className,
@@ -41,7 +43,7 @@ export default React.forwardRef(function Select(
     onClear,
     ...props
   }: SelectProps,
-  ref: React.ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>
 ): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const optionsRef = React.useRef<HTMLDivElement>(null);
@@ -207,6 +209,7 @@ export default React.forwardRef(function Select(
 
   return (
     <Field
+      kind={kind}
       size={size}
       className={className}
       required={required && selectedValue === undefined}

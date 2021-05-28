@@ -1,5 +1,5 @@
-@import "../../../scss/themes.scss";
-@import "../../../scss/base/colors.scss";
+@import "../../../../scss/themes.scss";
+@import "../../../../scss/base/colors.scss";
 @use "sass:map";
 
 @each $kind in $kinds {
