@@ -26,8 +26,12 @@
 
   &::before {
     position: absolute;
-    height: calc(100% + #{$input-border-top-width} + #{$input-border-bottom-width});
-    width: calc(100% + #{$input-border-left-width} + #{$input-border-right-width});
+    height: calc(
+      100% + #{$input-border-top-width} + #{$input-border-bottom-width}
+    );
+    width: calc(
+      100% + #{$input-border-left-width} + #{$input-border-right-width}
+    );
     left: -$input-border-left-width;
     top: -$input-border-top-width;
     content: "";
