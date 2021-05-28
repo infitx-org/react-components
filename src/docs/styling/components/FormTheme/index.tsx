@@ -14,7 +14,6 @@ export default function FormTheme() {
     "success",
     "danger",
     "warning",
-    "disabled",
     "dark",
     "light",
   ].map((v) => ({
