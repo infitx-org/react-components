@@ -1,7 +1,9 @@
 import React from "react";
 import Icon from "components/Icon";
 import Row from "components/Layout/Row";
+import Column from "components/Layout/Column";
 import Box from "docs/styling/components/Box";
+import Label from "docs/styling/components/Label";
 import "./CustomIcon.scss";
 
 import Arrow from "assets/icons/arrow.svg";
@@ -63,9 +65,12 @@ const IconBoxed = ({
   icon: React.ReactElement;
   name: string;
 }) => (
-  <Box label={name} size="medium" className="custom-icon">
-    <Icon icon={icon} fill="inherit" size={40} />
-  </Box>
+  <Column align="center">
+    <Box size="small" className="custom-icon">
+      <Icon icon={icon} fill="inherit" size={40} />
+    </Box>
+    <Label size="small">{name.toLowerCase()}.svg</Label>
+  </Column>
 );
 
 export default () => {

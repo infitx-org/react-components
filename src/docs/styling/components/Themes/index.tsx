@@ -1,6 +1,8 @@
 import { Kind } from "types";
 import Row from "components/Layout/Row";
+import Column from "components/Layout/Column";
 import Box from "docs/styling/components/Box";
+import Label from "docs/styling/components/Label";
 import "./Themes.scss";
 
 const colors = [
@@ -19,11 +21,13 @@ const kinds = Object.values(Kind);
 export const Kinds = () => (
   <Row align="space-between">
     {kinds.map((kind) => (
-      <Box
-        size="small"
-        label={kind}
-        className={`color-scheme color-scheme--regular-${kind}`}
-      />
+      <Column align="center">
+        <Box
+          size="small"
+          className={`color-scheme color-scheme--regular-${kind}`}
+        />
+        <Label size="small">{kind}</Label>
+      </Column>
     ))}
   </Row>
 );
@@ -31,11 +35,13 @@ export const Kinds = () => (
 export const Colors = () => (
   <Row align="space-between">
     {colors.map((color) => (
-      <Box
-        size="small"
-        label={color}
-        className={`color-scheme color-scheme-${color}--regular`}
-      />
+      <Column align="center">
+        <Box
+          size="small"
+          className={`color-scheme color-scheme-${color}--regular`}
+        />
+        <Label size="small">{color}</Label>
+      </Column>
     ))}
   </Row>
 );
@@ -45,30 +51,20 @@ export const ThemeColors = kinds.reduce((prev, kind) => {
     ...prev,
     [kind]: () => (
       <Row align="space-between" key={kind}>
-        <Box
-          size="medium"
-          label={`${kind} / active`}
-          className={`color-scheme color-scheme--active-${kind}`}
-          variable={`theme-colors--light.${kind}`}
-        />
-        <Box
-          size="medium"
-          label={`${kind} / regular`}
-          className={`color-scheme color-scheme--regular-${kind}`}
-          variable={`theme-colors.${kind}`}
-        />
-        <Box
-          size="medium"
-          label={`${kind} / darken`}
-          className={`color-scheme color-scheme--darken-${kind}`}
-          variable={`theme-colors--dark.${kind}`}
-        />
-        <Box
-          size="medium"
-          label={`${kind} / shadows`}
-          className={`color-scheme color-scheme--shadows-${kind}`}
-          variable={`theme-shadows.${kind}`}
-        />
+        {["active", "regular", "darken", "shadows"].map((type) => (
+          <Column align="center">
+            <Box
+              size="medium"
+              className={`color-scheme color-scheme--${type}-${kind}`}
+            />
+            <Label size="small">
+              {kind} / {type}
+            </Label>
+            <Label size="small" variable>
+              theme-colors--{type}.{kind}
+            </Label>
+          </Column>
+        ))}
       </Row>
     ),
   };
@@ -81,13 +77,19 @@ export const ThemeColorSchemes = colors.reduce((prev, color) => {
       <Row align="space-between">
         {["lighter", "light", "regular", "dark", "darker"].map((type) => {
           return (
-            <Box
-              size="medium"
-              key={`${color} / ${type}`}
-              label={`${color} / ${type}`}
-              className={`color-scheme color-scheme-${color}--${type}`}
-              variable={`theme-color-${color}.${type}`}
-            />
+            <Column align="center">
+              <Box
+                size="medium"
+                key={`${color} / ${type}`}
+                className={`color-scheme color-scheme-${color}--${type}`}
+              />
+              <Label size="small">
+                {color} / {type}
+              </Label>
+              <Label size="small" variable>
+                theme-color--{color}.{type}
+              </Label>
+            </Column>
           );
         })}
       </Row>
