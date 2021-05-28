@@ -2,6 +2,8 @@
 @import "./base/shadows.scss";
 @import "./base/colors.scss";
 
+$states: "invalid", "required";
+
 $kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
   "dark", "light";
 
