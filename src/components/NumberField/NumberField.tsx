@@ -75,7 +75,7 @@ export default React.forwardRef(function NumberField(
     }
   }
 
-  function onFieldClick(e: React.MouseEvent<HTMLDivElement>): void {
+  function onFieldClick(): void {
     if (!open) {
       enter();
     }
