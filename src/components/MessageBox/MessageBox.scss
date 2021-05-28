@@ -3,17 +3,19 @@
 @import "../../scss/base/shadows.scss";
 @import "../../scss/themes.scss";
 @import "../../scss/mixins.scss";
+@import "../../scss/base/inputs.scss";
 
 .rc-message-box {
   @include rc-component;
   border: 2px solid;
+  border-color: transparent;
+  border-radius: $input-border-radius;
   min-height: 24px;
   padding: 3px 7px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: initial;
-  border-color: transparent;
   overflow: hidden;
 }
 
@@ -30,7 +32,7 @@
 }
 
 @each $kind in $kinds {
-  $base-color: map-get($theme-colors, $kind);
+  $base-color: map-get($theme-colors--dark, $kind);
   $light-color: lighten(map-get($theme-shadows, $kind), 10%);
 
   .rc-message-box--#{$kind} {
@@ -40,7 +42,7 @@
 
     &.rc-message-box--inverted {
       fill: $light-color;
-      color: $light-color;
+      color: map-get($theme-colors--opposite, $kind);
       background-color: $base-color;
     }
   }

@@ -1,7 +1,9 @@
 @import "../../scss/base/colors.scss";
 @import "../../scss/base/shadows.scss";
 @import "../../scss/base/inputs.scss";
+@import "../../scss/themes.scss";
 @import "../../scss/mixins.scss";
+@use "sass:map";
 
 .rc-button {
   @include rc-component;
@@ -15,14 +17,12 @@
   user-select: none;
   text-decoration: none;
   transition: $button-transition;
+  border-radius: $input-border-radius;
   font-style: normal;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   border: 1px solid;
   align-items: center;
-  color: #fff;
-  fill: #fff;
-  stroke: #fff;
   border-bottom-width: 2px;
 
   box-shadow: $shadow-size--closed transparent;
@@ -86,249 +86,54 @@
   height: 39px;
 }
 
-.rc-button--primary {
-  background-color: $color__primary;
-  border-color: $color__primary;
+//   .rc-field--#{$kind} {
+//     border-bottom-color: map-get($theme-colors, $kind);
 
-  &.rc-button--noFill {
-    background-color: transparent;
-    color: $color__primary;
-    fill: $color__primary;
-    stroke: $color__primary;
-  }
-
-  &:active,
-  &:focus {
-    box-shadow: $shadow-size $shadow-color--primary;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: $color__primary--light;
-    border-color: $color__primary--light;
+@each $kind in $kinds {
+  .rc-button--#{$kind} {
+    background-color: map-get($theme-colors, $kind);
+    border-color: map-get($theme-colors, $kind);
+    color: map-get($theme-colors--opposite, $kind);
+    fill: map-get($theme-colors--opposite, $kind);
+    stroke: map-get($theme-colors--opposite, $kind);
 
     &.rc-button--noFill {
-      color: #fff;
-      fill: #fff;
-      stroke: #fff;
+      background-color: transparent;
+      color: map-get($theme-colors, $kind);
+      fill: map-get($theme-colors, $kind);
+      stroke: map-get($theme-colors, $kind);
     }
-  }
-}
-.rc-button--secondary {
-  background-color: $color__secondary;
-  border-color: $color__secondary;
 
-  &.rc-button--noFill {
-    background: transparent;
-    color: $color__secondary;
-    fill: $color__secondary;
-    stroke: $color__secondary;
-  }
-
-  &:active,
-  &:focus {
-    box-shadow: $shadow-size $shadow-color--secondary;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: $color__secondary--light;
-    border-color: $color__secondary--light;
-
-    &.rc-button--noFill {
-      color: #fff;
-      fill: #fff;
-      stroke: #fff;
+    &:active {
+      color: $color__alpha;
+      fill: $color__alpha;
+      stroke: $color__alpha;
     }
-  }
-}
 
-.rc-button--success {
-  background-color: $color__success;
-  border-color: $color__success;
-  color: #fff;
-  fill: #fff;
-  stroke: #fff;
-
-  &.rc-button--noFill {
-    background: transparent;
-    color: $color__success;
-    fill: $color__success;
-    stroke: $color__success;
-  }
-
-  &:active,
-  &:focus {
-    box-shadow: $shadow-size $shadow-color--success;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: $color__success--light;
-    border-color: $color__success--light;
-
-    &.rc-button--noFill {
-      color: #fff;
-      fill: #fff;
-      stroke: #fff;
+    &:active,
+    &:focus {
+      box-shadow: $shadow-size map-get($theme-shadows, $kind);
     }
-  }
-}
-.rc-button--danger {
-  background-color: $color__danger;
-  border-color: $color__danger;
-  color: #fff;
-  fill: #fff;
-  stroke: #fff;
 
-  &.rc-button--noFill {
-    background: transparent;
-    color: $color__danger;
-    fill: $color__danger;
-    stroke: $color__danger;
-  }
+    &:hover,
+    &:focus {
+      background-color: map-get($theme-colors, $kind);
+      border-color: map-get($theme-colors, $kind);
 
-  &:active,
-  &:focus {
-    box-shadow: $shadow-size $shadow-color--danger;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: $color__danger--light;
-    border-color: $color__danger--light;
-
-    &.rc-button--noFill {
-      color: #fff;
-      fill: #fff;
-      stroke: #fff;
+      &.rc-button--noFill {
+        color: map-get($theme-colors--opposite, $kind);
+        fill: map-get($theme-colors--opposite, $kind);
+        stroke: map-get($theme-colors--opposite, $kind);
+      }
     }
-  }
-}
 
-.rc-button--warning {
-  background-color: $color__warning;
-  border-color: $color__warning;
-
-  &.rc-button--noFill {
-    background-color: transparent;
-    color: $color__warning;
-    fill: $color__warning;
-    stroke: $color__warning;
-  }
-
-  &:active,
-  &:focus {
-    box-shadow: $shadow-size $shadow-color--warning;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: $color__warning--light;
-    border-color: $color__warning--light;
-
-    &.rc-button--noFill {
-      color: #fff;
-      fill: #fff;
-      stroke: #fff;
+    &:hover:active {
+      &.rc-button--noFill {
+        color: $color__alpha;
+        fill: $color__alpha;
+        stroke: $color__alpha;
+      }
     }
-  }
-}
-
-.rc-button--dark {
-  background-color: $color__alpha--darker;
-  border-color: transparent;
-  color: #fff;
-  fill: #fff;
-  stroke: #fff;
-
-  &.rc-button--noFill {
-    background-color: transparent;
-    border-color: $color__alpha--darker;
-    color: $color__alpha--dark;
-    fill: $color__alpha--dark;
-    stroke: $color__alpha--dark;
-  }
-
-  &:active,
-  &:focus {
-    box-shadow: $shadow-size $shadow-color--dark;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: $color__alpha--dark;
-    border-color: transparent;
-
-    &.rc-button--noFill {
-      color: #fff;
-      fill: #fff;
-      stroke: #fff;
-    }
-  }
-}
-
-.rc-button--light {
-  background-color: #fff;
-  border-color: transparent;
-  color: $color__gray--darker;
-  fill: $color__gray--darker;
-  stroke: $color__gray--darker;
-
-  &.rc-button--noFill {
-    background-color: transparent;
-    border-color: #fff;
-    color: #fff;
-    fill: #fff;
-    stroke: #fff;
-  }
-
-  &:active,
-  &:focus {
-    box-shadow: $shadow-size $shadow-color--light;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: #fff;
-    border-color: transparent;
-    color: $color__gray--dark;
-
-    &.rc-button--noFill {
-      color: $color__gray--darker;
-      fill: $color__gray--darker;
-      stroke: $color__gray--darker;
-    }
-  }
-}
-
-.rc-button--tertiary {
-  background-color: $color__tertiary;
-  border-color: $color__tertiary;
-  color: $color__dark-gray--dark;
-  fill: $color__dark-gray--dark;
-  stroke: $color__dark-gray--dark;
-
-  &.rc-button--noFill {
-    border-color: $color__gray--dark;
-    background: transparent;
-    color: $color__gray--darker;
-    fill: $color__gray--darker;
-    stroke: $color__gray--darker;
-  }
-
-  &:active,
-  &:focus {
-    box-shadow: $shadow-size $shadow-color--tertiary;
-  }
-
-  &:hover,
-  &:focus {
-    color: $color__dark-gray--dark;
-    fill: $color__dark-gray--dark;
-    stroke: $color__dark-gray--dark;
-    background-color: $color__tertiary--light;
-    border-color: $color__tertiary--light;
   }
 }
 
@@ -348,28 +153,5 @@
     color: $color__gray--darker;
     fill: $color__gray--darker;
     stroke: $color__gray--darker;
-  }
-}
-
-.rc-button--primary,
-.rc-button--secondary,
-.rc-button--tertiary,
-.rc-button--danger,
-.rc-button--warning,
-.rc-button--dark,
-.rc-button--light {
-  &:hover {
-    &.rc-button--noFill {
-      &:active {
-        color: $color__alpha;
-        fill: $color__alpha;
-        stroke: $color__alpha;
-      }
-    }
-  }
-  &:active {
-    color: $color__alpha;
-    fill: $color__alpha;
-    stroke: $color__alpha;
   }
 }

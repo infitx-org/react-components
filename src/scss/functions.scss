@@ -1,0 +1,12 @@
+@function invert($color, $amount: 100%) {
+  $inverse: change-color($color, $hue: hue($color) + 180);
+  @return mix($inverse, $color, $amount);
+}
+
+@function opposite($kind) {
+  $color: map-get($theme-colors--opposite, $kind);
+  @if $kind == "primary" {
+    $color: #f00;
+  }
+  @return $color;
+}

@@ -20,6 +20,18 @@ $color__light: $color__light-gray !default;
 $color__invalid: $color__danger !default;
 $color__required: $color__warning !default;
 
+$color__primary--opposite: #fff !default;
+$color__secondary--opposite: #fff !default;
+$color__tertiary--opposite: #333 !default;
+$color__success--opposite: #fff !default;
+$color__danger--opposite: #fff !default;
+$color__warning--opposite: #fff !default;
+$color__disabled--opposite: #666 !default;
+$color__dark--opposite: #fff !default;
+$color__light--opposite: #333 !default;
+$color__invalid--opposite: #fff !default;
+$color__required--opposite: #fff !default;
+
 // Light Version
 $color__primary--light: lighten($color__primary, 10%) !default;
 $color__secondary--light: lighten($color__secondary, 10%) !default;

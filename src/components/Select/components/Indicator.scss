@@ -2,7 +2,7 @@
 
 .rc-select__indicator {
   @include rc-field-icon;
-  margin-top: 2px;
+  margin-top: 1px;
   transform: rotateZ(90deg) rotateY(0deg);
   transition: all 0.2s linear;
 }

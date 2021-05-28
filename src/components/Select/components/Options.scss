@@ -1,4 +1,5 @@
 @import "../../../scss/base/colors.scss";
+@import "../../../scss/base/inputs.scss";
 
 .rc-select__options {
   position: absolute;
@@ -8,6 +9,7 @@
   animation: fadeInOptions 0.15s ease-in-out;
   overflow-y: auto;
   border-bottom: 2px solid $color__tertiary;
+  border-radius: $input-border-radius;
 }
 .rc-select__options--reverse {
   border-top: 2px solid $color__tertiary;

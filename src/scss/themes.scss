@@ -18,6 +18,19 @@ $theme-colors: (
   "required": $color__required,
 );
 
+$theme-colors--opposite: (
+  "primary": $color__primary--opposite,
+  "secondary": $color__secondary--opposite,
+  "tertiary": $color__tertiary--opposite,
+  "success": $color__success--opposite,
+  "danger": $color__danger--opposite,
+  "warning": $color__warning--opposite,
+  "dark": $color__dark--opposite,
+  "light": $color__light--opposite,
+  "invalid": $color__invalid--opposite,
+  "required": $color__required--opposite,
+);
+
 $theme-colors--light: (
   "primary": $color__primary--light,
   "secondary": $color__secondary--light,

@@ -1,5 +1,6 @@
 @import "../../scss/base/shadows.scss";
 @import "../../scss/base/colors.scss";
+@import "../../scss/base/inputs.scss";
 @import "../../scss/themes.scss";
 @import "../../scss/mixins.scss";
 @use "sass:map";
@@ -35,8 +36,9 @@
   transition: all 0.2s ease-out;
   flex-basis: 22px;
   width: 22px;
-  border: none;
   height: 20px;
+  border: none;
+  border-radius: $input-border-radius;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
   &:hover {
