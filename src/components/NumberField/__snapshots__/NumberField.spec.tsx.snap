@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the NumberField correctly when multiple props are set 1`] = `
+<div>
+  <div
+    class="rc-field rc-field--primary rc-field--large rc-field--large"
+    role="presentation"
+  >
+    <label
+      class="placeholder placeholder--large placeholder--active-large"
+    >
+      test
+    </label>
+    <input
+      class="rc-numberfield rc-numberfield--large"
+      type="number"
+      value=""
+    />
+  </div>
+</div>
+`;

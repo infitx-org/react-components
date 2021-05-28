@@ -29,6 +29,10 @@ export {
   default as MessageBox,
   MessageBoxProps,
 } from "./components/MessageBox";
+export {
+  default as NumberField,
+  NumberFieldProps,
+} from "./components/NumberField";
 export { default as Pill, PillProps } from "./components/Pill";
 export {
   default as RadioGroup,
@@ -45,3 +49,4 @@ export {
   TabProps,
   TabsProps,
 } from "./components/Tabs";
+export { default as TextField, TextFieldProps } from "./components/TextField";
