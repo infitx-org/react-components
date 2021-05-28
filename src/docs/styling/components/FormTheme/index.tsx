@@ -35,7 +35,7 @@ export default function FormTheme() {
       <Row style={{ margin: "5px" }}>
         <Button
           kind={kind}
-          onClick={() => setKind()}
+          onClick={() => setKind(undefined)}
           disabled={!kind}
           label={`unset ${kind}`}
         />
@@ -46,7 +46,7 @@ export default function FormTheme() {
           checked={!!kind}
           label="has selected kind"
           disabled={!kind}
-          onChange={() => setKind()}
+          onChange={() => setKind(undefined)}
         />
       </Row>
       <Row style={{ margin: "5px" }}>
