@@ -1,6 +1,13 @@
 @import "./colors.scss";
 @import "./transitions.scss";
 
+
+$input-size--extra-small: 24px;
+$input-size--small: 31px;
+$input-size--medium: 38px;
+$input-size--large: 45px;
+
+
 // Borders
 $input-border-radius: 0px !default;
 

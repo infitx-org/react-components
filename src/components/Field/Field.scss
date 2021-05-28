@@ -3,6 +3,7 @@
 @import "../../scss/base/shadows.scss";
 @import "../../scss/themes.scss";
 @import "../../scss/mixins.scss";
+@import "../../scss/functions.scss";
 @use "sass:map";
 
 .rc-field {
@@ -82,20 +83,20 @@
 }
 
 .rc-field--small {
-  height: 31px;
+  height: $input-size--small;
   padding-left: 10px;
   padding-right: 6px;
-  font-size: 12px;
+  font-size: inputFontSize($input-size--small);
 }
 .rc-field--medium {
-  height: 38px;
+  height: $input-size--medium;
   padding-left: 13px;
   padding-right: 8px;
-  font-size: 13px;
+  font-size: inputFontSize($input-size--medium);
 }
 .rc-field--large {
-  height: 45px;
+  height: $input-size--large;
   padding-left: 16px;
   padding-right: 10px;
-  font-size: 14px;
+  font-size: inputFontSize($input-size--large);
 }

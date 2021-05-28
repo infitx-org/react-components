@@ -10,3 +10,17 @@
   }
   @return $color;
 }
+
+
+// $input-size--small: 31px; 12
+// $input-size--medium: 38px; 13 
+// $input-size--large: 45px; 14 
+// 11 - (x - 24) / 7
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function inputFontSize($size) {
+  @return 11 + ((strip-units($size) - 24 ) / 7) + px;
+}

@@ -3,6 +3,7 @@
 @import "../../scss/base/inputs.scss";
 @import "../../scss/themes.scss";
 @import "../../scss/mixins.scss";
+@import "../../scss/functions.scss";
 @use "sass:map";
 
 .rc-button {
@@ -66,28 +67,25 @@
 }
 
 .rc-button--extra-small {
-  padding: 2px 4px;
-  font-size: 10px;
-  height: 21px;
+  padding: 4px 7px;
+  font-size: inputFontSize($input-size--extra-small);
+  height: $input-size--extra-small;
 }
 .rc-button--small {
   padding: 6px 10px;
-  font-size: 11px;
-  height: 27px;
+  font-size: inputFontSize($input-size--small);
+  height: $input-size--small;
 }
 .rc-button--medium {
   padding: 8px 13px;
-  font-size: 12px;
-  height: 33px;
+  font-size: inputFontSize($input-size--medium);
+  height: $input-size--medium;
 }
 .rc-button--large {
   padding: 10px 16px;
-  font-size: 14px;
-  height: 39px;
+  font-size: inputFontSize($input-size--large);
+  height: $input-size--large;
 }
-
-//   .rc-field--#{$kind} {
-//     border-bottom-color: map-get($theme-kinds, $kind);
 
 @each $kind in $kinds {
   .rc-button--#{$kind} {
@@ -99,7 +97,7 @@
 
     &.rc-button--noFill {
       background-color: transparent;
-      color: map-get($theme-kinds, $kind);
+      color: map-get($theme-kinds--dark, $kind);
       fill: map-get($theme-kinds, $kind);
       stroke: map-get($theme-kinds, $kind);
     }
@@ -128,6 +126,7 @@
     }
 
     &:hover:active {
+      background: map-get($theme-kinds--dark, $kind);
       &.rc-button--noFill {
         color: $color__alpha;
         fill: $color__alpha;
