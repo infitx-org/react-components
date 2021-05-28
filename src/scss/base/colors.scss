@@ -7,7 +7,7 @@ $color__gray: #bbbbbb !default;
 $color__dark-gray: #333 !default;
 $color__light-gray: #eee !default;
 
-// Main Colors
+// Kind Colors
 $color__primary: $color__blue !default;
 $color__secondary: $color__dark-blue !default;
 $color__tertiary: $color__gray !default;
@@ -17,10 +17,27 @@ $color__warning: $color__orange !default;
 $color__disabled: #d2d1d1 !default;
 $color__dark: $color__dark-gray !default;
 $color__light: $color__light-gray !default;
+
+// State Colors
 $color__invalid: $color__danger !default;
 $color__required: $color__warning !default;
 
-// Light Version
+// Kind Opposite Colors
+$color__primary--opposite: #fff !default;
+$color__secondary--opposite: #fff !default;
+$color__tertiary--opposite: #333 !default;
+$color__success--opposite: #fff !default;
+$color__danger--opposite: #fff !default;
+$color__warning--opposite: #fff !default;
+$color__disabled--opposite: #666 !default;
+$color__dark--opposite: #fff !default;
+$color__light--opposite: #333 !default;
+
+// State Opposite  Colors
+$color__invalid--opposite: #fff !default;
+$color__required--opposite: #fff !default;
+
+// Kind Light Colors
 $color__primary--light: lighten($color__primary, 10%) !default;
 $color__secondary--light: lighten($color__secondary, 10%) !default;
 $color__tertiary--light: lighten($color__tertiary, 10%) !default;
@@ -30,10 +47,12 @@ $color__warning--light: lighten($color__warning, 10%) !default;
 $color__disabled--light: lighten($color__disabled, 10%) !default;
 $color__dark--light: lighten($color__dark, 10%) !default;
 $color__light--light: lighten($color__light, 10%) !default;
+
+// State Light Colors
 $color__invalid--light: $color__danger--light !default;
 $color__required--light: $color__warning--light !default;
 
-// Dark Version
+// Kind Dark Colors
 $color__primary--dark: darken($color__primary, 10%) !default;
 $color__secondary--dark: darken($color__secondary, 10%) !default;
 $color__tertiary--dark: darken($color__tertiary, 10%) !default;
@@ -43,6 +62,8 @@ $color__warning--dark: darken($color__warning, 10%) !default;
 $color__disabled--dark: darken($color__disabled, 10%) !default;
 $color__dark--dark: darken($color__dark, 10%) !default;
 $color__light--dark: darken($color__light, 10%) !default;
+
+// State Dark Colors
 $color__invalid--dark: $color__danger--dark !default;
 $color__required--dark: $color__warning--dark !default;
 

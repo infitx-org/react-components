@@ -2,10 +2,13 @@
 @import "./base/shadows.scss";
 @import "./base/colors.scss";
 
+$states: "invalid", "required";
+
 $kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
   "dark", "light";
 
-$theme-colors: (
+// Kind Themes
+$theme-kinds: (
   "primary": $color__primary,
   "secondary": $color__secondary,
   "tertiary": $color__tertiary,
@@ -14,11 +17,20 @@ $theme-colors: (
   "warning": $color__warning,
   "dark": $color__dark,
   "light": $color__light,
-  "invalid": $color__invalid,
-  "required": $color__required,
 );
 
-$theme-colors--light: (
+$theme-kinds--opposite: (
+  "primary": $color__primary--opposite,
+  "secondary": $color__secondary--opposite,
+  "tertiary": $color__tertiary--opposite,
+  "success": $color__success--opposite,
+  "danger": $color__danger--opposite,
+  "warning": $color__warning--opposite,
+  "dark": $color__dark--opposite,
+  "light": $color__light--opposite,
+);
+
+$theme-kinds--light: (
   "primary": $color__primary--light,
   "secondary": $color__secondary--light,
   "tertiary": $color__tertiary--light,
@@ -27,11 +39,9 @@ $theme-colors--light: (
   "warning": $color__warning--light,
   "dark": $color__dark--light,
   "light": $color__light--light,
-  "invalid": $color__invalid--light,
-  "required": $color__required--light,
 );
 
-$theme-colors--dark: (
+$theme-kinds--dark: (
   "primary": $color__primary--dark,
   "secondary": $color__secondary--dark,
   "tertiary": $color__tertiary--dark,
@@ -40,11 +50,9 @@ $theme-colors--dark: (
   "warning": $color__warning--dark,
   "dark": $color__dark--dark,
   "light": $color__light--dark,
-  "invalid": $color__invalid--dark,
-  "required": $color__required--dark,
 );
 
-$theme-shadows: (
+$theme-kinds-shadows: (
   "primary": $shadow-color--primary,
   "secondary": $shadow-color--secondary,
   "tertiary": $shadow-color--tertiary,
@@ -53,6 +61,31 @@ $theme-shadows: (
   "warning": $shadow-color--warning,
   "dark": $shadow-color--dark,
   "light": $shadow-color--light,
+);
+
+// State Themes
+
+$theme-states: (
+  "invalid": $color__invalid,
+  "required": $color__required,
+);
+
+$theme-states--opposite: (
+  "invalid": $color__invalid--opposite,
+  "required": $color__required--opposite,
+);
+
+$theme-states--light: (
+  "invalid": $color__invalid--light,
+  "required": $color__required--light,
+);
+
+$theme-states--dark: (
+  "invalid": $color__invalid--dark,
+  "required": $color__required--dark,
+);
+
+$theme-states-shadows: (
   "invalid": $shadow-color--invalid,
   "required": $shadow-color--required,
 );

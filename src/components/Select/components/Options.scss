@@ -1,4 +1,5 @@
 @import "../../../scss/base/colors.scss";
+@import "../../../scss/base/inputs.scss";
 
 .rc-select__options {
   position: absolute;
@@ -8,6 +9,7 @@
   animation: fadeInOptions 0.15s ease-in-out;
   overflow-y: auto;
   border-bottom: 2px solid $color__tertiary;
+  border-radius: $input-border-radius;
 }
 .rc-select__options--reverse {
   border-top: 2px solid $color__tertiary;
@@ -19,14 +21,13 @@
   display: flex;
   align-items: center;
   flex: 0 0 40px;
-  color: $color__dark-gray;
   padding-left: 10px;
   padding-right: 10px;
   line-height: 40px;
   font-size: 13px;
   background: #fff;
-  border-left: 2px solid $color__tertiary;
-  border-right: 2px solid $color__tertiary;
+  border-left: 2px solid $color__gray;
+  border-right: 2px solid $color__gray;
   cursor: pointer;
   color: $color__dark-gray--lighter;
   fill: $color__dark-gray--lighter;
@@ -63,10 +64,11 @@
   color: $color__dark-gray;
   fill: $color__dark-gray;
 }
+
 .rc-select__option--selected,
 .rc-select__option--selected:hover {
-  background: $color__secondary--light;
-  border-color: $color__secondary--light;
+  background: $color__primary--dark;
+  border-color: $color__primary--dark;
   color: #fff;
   fill: #fff;
 }

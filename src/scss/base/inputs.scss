@@ -9,11 +9,12 @@ $input-border-right-width: 1px !default;
 $input-border-top-width: 1px !default;
 $input-border-bottom-width: 2px !default;
 
-$input-border-color--default: $color__primary !default;
-$input-border-color--invalid: $color__danger !default;
-$input-border-color--required: $color__warning !default;
+$input-border-left-color: #e5e5e5 !default;
+$input-border-right-color: #e5e5e5 !default;
+$input-border-top-color: #e5e5e5 !default;
+$input-border-bottom-color: $color__primary !default;
 
-$input-background--default: #fcfcfc !default;
+$input-background: #fcfcfc !default;
 
 // Other
 $input-opacity--disabled: 0.5 !default;

@@ -1,5 +1,6 @@
 @import "../../scss/base/shadows.scss";
 @import "../../scss/base/colors.scss";
+@import "../../scss/base/inputs.scss";
 @import "../../scss/themes.scss";
 @import "../../scss/mixins.scss";
 @use "sass:map";
@@ -35,8 +36,9 @@
   transition: all 0.2s ease-out;
   flex-basis: 22px;
   width: 22px;
-  border: none;
   height: 20px;
+  border: none;
+  border-radius: $input-border-radius;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
   &:hover {
@@ -98,19 +100,19 @@
 @each $kind in $kinds {
   .rc-checkbox--#{$kind} {
     &:checked {
-      border-color: map-get($theme-colors--dark, $kind);
+      border-color: map-get($theme-kinds--dark, $kind);
       background: linear-gradient(
         0deg,
-        map-get($theme-colors--dark, $kind),
-        map-get($theme-colors, $kind)
+        map-get($theme-kinds--dark, $kind),
+        map-get($theme-kinds, $kind)
       );
     }
     &:checked:disabled {
-      border-color: map-get($theme-colors--light, $kind);
-      background: map-get($theme-colors--light, $kind);
+      border-color: map-get($theme-kinds--light, $kind);
+      background: map-get($theme-kinds--light, $kind);
     }
     &:focus {
-      box-shadow: $shadow-size map-get($theme-shadows, $kind);
+      box-shadow: $shadow-size map-get($theme-kinds-shadows, $kind);
     }
   }
 }
