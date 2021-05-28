@@ -4,13 +4,23 @@ import "../../scss/vars.scss";
 
 <Meta title="Documentation/How To Style"/>
 
+
+## Styling
+
+You can choose wheter to use plain CSS or the more advanced and customizable SCSS.
+
+- [Using SCSS](#using-scss)
+- [Using CSS](#using-css)
+
+<br />
+
 ### Using SCSS
 
 The easiest and most powerful way is to use SCSS.
 
 You can import variables and themes and use them with minimal effort, without worrying about anything else.
 
-Simply import the entrypoint `index.scss` and you are ready to go.
+Simply import the entrypoint `@modusbox/react-components/lib/index.scss` and you are ready to go.
 
 ```css
 @import "@modusbox/react-components/lib/index.scss";
@@ -24,6 +34,8 @@ Simply import the entrypoint `index.scss` and you are ready to go.
 **Note**: You shouldn't be including the `index.scss` module more than once, as that could lead to duplicated classnames in your bundle.css.
 
 If your target is to adopt a fully modular system, only import the scss modules you need with the variables for the scope.
+
+<br />
 
 ### Using CSS
 
