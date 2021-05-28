@@ -16,6 +16,7 @@ Default.args = {
   value: undefined,
   className: undefined,
   placeholder: "Choose a date",
+  disabled: false,
   required: false,
   invalid: false,
   pending: false,

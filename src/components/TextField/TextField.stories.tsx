@@ -13,6 +13,7 @@ Default.args = {
   kind: "primary",
   size: "large",
   value: "test",
+  disabled: false,
   className: undefined,
   placeholder: "Type something",
   required: false,

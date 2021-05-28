@@ -16,6 +16,7 @@ Default.args = {
   file,
   className: undefined,
   placeholder: "Choose a file",
+  disabled: false,
   required: false,
   invalid: false,
   pending: false,
