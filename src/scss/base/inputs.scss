@@ -2,11 +2,11 @@
 @import "./transitions.scss";
 
 // Borders
-$input-border-radius: 5px !default;
+$input-border-radius: 0px !default;
 
 $input-border-left-width: 1px !default;
 $input-border-right-width: 1px !default;
-$input-border-top-width: 1px !default;
+$input-border-top-width: 5px !default;
 $input-border-bottom-width: 2px !default;
 
 $input-border-color--default: $color__primary !default;
