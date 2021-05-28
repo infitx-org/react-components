@@ -5,13 +5,15 @@ import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import "./TextField.scss";
 
-export interface TextFieldProps
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "size" | "onChange"
-  > {
+type BaseInput = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "size" | "onChange"
+>;
+
+export interface TextFieldProps extends BaseInput {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
+  type?: "text" | "password";
   className?: string;
   placeholder?: string;
   value?: string;
@@ -25,6 +27,7 @@ export default React.forwardRef(function TextField(
   {
     kind = Kind.Primary,
     size = InputSize.Large,
+    type = "text",
     className,
     placeholder,
     value = "",
@@ -75,15 +78,10 @@ export default React.forwardRef(function TextField(
   }
 
   function onFieldClick(e: React.MouseEvent<HTMLDivElement>): void {
-    if (e.target !== inputRef.current) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (open) {
-        leave();
-      } else {
-        enter();
-      }
+    if (!open) {
+      enter();
     }
+    inputRef.current?.focus();
   }
 
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -122,7 +120,7 @@ export default React.forwardRef(function TextField(
         {...props}
         value={currentValue}
         className={textFieldClassName}
-        type="text"
+        type={type}
         ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
         onChange={onValueChange}
         onFocus={onFocus}

@@ -21,6 +21,11 @@ Default.args = {
   onChange: console.log,
 };
 
+export const TypePassword = Template.bind({});
+TypePassword.args = {
+  type: "password",
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
