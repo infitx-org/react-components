@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
-import { InputSize } from "types";
+import { Kind, InputSize } from "types";
 import DatePicker from "./DatePicker";
 
 const commonProps = {
@@ -90,6 +90,13 @@ describe("tests the datepicker props", () => {
     Object.values(InputSize).forEach((size) => {
       const { container } = render(<DatePicker {...commonProps} size={size} />);
       expect(container.querySelector(`.rc-field--${size}`)).toBeTruthy();
+    });
+  });
+
+  it("renders all the kinds", () => {
+    Object.values(Kind).forEach((kind) => {
+      const { container } = render(<DatePicker {...commonProps} kind={kind} />);
+      expect(container.querySelector(`.rc-field--${kind}`)).toBeTruthy();
     });
   });
 

@@ -11,6 +11,7 @@ const Template = (args) => <FileUploader {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  kind: "primary",
   size: "large",
   file,
   className: undefined,

@@ -2,6 +2,7 @@ import DatePicker from "./DatePicker";
 
 export default {
   title: "Components/DatePicker",
+  component: DatePicker,
 };
 
 /* eslint-disable no-console */
@@ -10,6 +11,7 @@ const Template = (args) => <DatePicker {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  kind: "primary",
   size: "large",
   value: undefined,
   className: undefined,
