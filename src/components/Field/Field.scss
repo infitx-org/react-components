@@ -13,19 +13,17 @@
   align-items: center;
   width: 200px;
   transition: $input-transition;
-  background: $input-background--default;
-  border-left: 2px solid;
-  border-right: 2px solid;
-  border-bottom-color: $input-border-color--default;
+  background: $input-background;
+  border-bottom-color: $input-border-bottom-color;
+  border-right-color: $input-border-right-color;
+  border-left-color: $input-border-left-color;
+  border-top-color: $input-border-top-color;
   border-left-width: $input-border-left-width;
   border-right-width: $input-border-right-width;
   border-top-width: $input-border-top-width;
   border-bottom-width: $input-border-bottom-width;
-  border-bottom-style: solid;
-  border-top-style: solid;
-  border-right-color: #e5e5e5;
-  border-left-color: #e5e5e5;
-  border-top-color: #e5e5e5;
+  border-style: solid;
+
   &::before {
     position: absolute;
     height: calc(100% + #{$input-border-top-width} + #{$input-border-bottom-width});
