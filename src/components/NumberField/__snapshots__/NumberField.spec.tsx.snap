@@ -7,7 +7,7 @@ exports[`renders the NumberField correctly when multiple props are set 1`] = `
     role="presentation"
   >
     <label
-      class="placeholder placeholder--large placeholder--active-large"
+      class="placeholder placeholder--large"
     >
       test
     </label>
