@@ -77,7 +77,7 @@ export default React.forwardRef(function TextField(
     }
   }
 
-  function onFieldClick(e: React.MouseEvent<HTMLDivElement>): void {
+  function onFieldClick(): void {
     if (!open) {
       enter();
     }
