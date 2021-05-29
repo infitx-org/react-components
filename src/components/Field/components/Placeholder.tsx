@@ -11,12 +11,10 @@ export interface PlaceholderProps {
 export default function Placeholder({ label, size, active }: PlaceholderProps) {
   const placeholderClassName = classnames([
     "placeholder",
+    active && "placeholder--active",
     size === InputSize.Small && "placeholder--small",
     size === InputSize.Medium && "placeholder--medium",
     size === InputSize.Large && "placeholder--large",
-    size === InputSize.Small && active && "placeholder--active-small",
-    size === InputSize.Medium && active && "placeholder--active-medium",
-    size === InputSize.Large && active && "placeholder--active-large",
   ]);
 
   return <label className={placeholderClassName}>{label}</label>;
