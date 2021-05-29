@@ -1,35 +1,31 @@
-import FileUploader from "./FileUploader";
+import NumberField from "./NumberField";
 
 export default {
-  title: "Components/FileUploader",
+  title: "Components/NumberField",
 };
 
 /* eslint-disable no-console */
 
-const file = new File([new Blob(["test"], { type: "text/plain" })], "test");
-const Template = (args) => <FileUploader {...args} />;
+const Template = (args) => <NumberField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   kind: "primary",
   size: "large",
-  file,
-  className: undefined,
-  placeholder: "Choose a file",
+  step: undefined,
+  value: 3.2,
   disabled: false,
+  className: undefined,
+  placeholder: "Type something",
   required: false,
   invalid: false,
   pending: false,
   onChange: console.log,
 };
 
-export const SelectedFile = Template.bind({});
-SelectedFile.args = {
-  file,
-};
-export const SelectedFileName = Template.bind({});
-SelectedFileName.args = {
-  fileName: "myfile.dat",
+export const Step = Template.bind({});
+Step.args = {
+  step: "0.01",
 };
 
 export const Disabled = Template.bind({});
@@ -39,7 +35,7 @@ Disabled.args = {
 
 export const Placeholder = Template.bind({});
 Placeholder.args = {
-  placeholder: "Pick a file",
+  placeholder: "Placeholder...",
 };
 
 export const Pending = Template.bind({});

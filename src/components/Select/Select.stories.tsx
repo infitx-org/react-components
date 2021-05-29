@@ -20,6 +20,7 @@ Default.args = {
   value: undefined,
   className: undefined,
   placeholder: "Choose a value",
+  disabled: false,
   required: false,
   invalid: false,
   pending: false,

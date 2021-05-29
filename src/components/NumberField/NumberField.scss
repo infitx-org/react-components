@@ -1,0 +1,20 @@
+@import "../../scss/base/colors.scss";
+@import "../../scss/base/transitions.scss";
+@import "../../scss/mixins.scss";
+
+.rc-numberfield {
+  @include rc-field-input;
+  flex: 2 1 auto;
+  vertical-align: middle;
+  position: relative;
+  height: 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0px;
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color__dark-gray;
+}

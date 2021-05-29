@@ -10,3 +10,11 @@
   }
   @return $color;
 }
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function inputFontSize($size) {
+  @return 11 + ((strip-units($size) - 24) / 7) + px;
+}
