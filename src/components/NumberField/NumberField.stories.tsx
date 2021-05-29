@@ -12,6 +12,7 @@ export const Default = Template.bind({});
 Default.args = {
   kind: "primary",
   size: "large",
+  step: undefined,
   value: 3.2,
   disabled: false,
   className: undefined,
@@ -22,9 +23,9 @@ Default.args = {
   onChange: console.log,
 };
 
-export const TypePassword = Template.bind({});
-TypePassword.args = {
-  type: "password",
+export const Step = Template.bind({});
+Step.args = {
+  step: "0.01",
 };
 
 export const Disabled = Template.bind({});

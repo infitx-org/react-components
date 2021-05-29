@@ -16,6 +16,7 @@ export interface NumberFieldProps extends BaseInput {
   className?: string;
   placeholder?: string;
   value?: number;
+  step?: string;
   required?: boolean;
   invalid?: boolean;
   pending?: boolean;
@@ -29,6 +30,7 @@ export default React.forwardRef(function NumberField(
     className,
     placeholder,
     value = undefined,
+    step,
     required,
     invalid,
     pending,
@@ -37,13 +39,18 @@ export default React.forwardRef(function NumberField(
   }: NumberFieldProps,
   ref: React.ForwardedRef<HTMLInputElement>
 ): JSX.Element {
+  function validNumber(num?: number | string): number | "" {
+    return Number(num) || "";
+  }
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [currentValue, setValue] = React.useState<number | "">(value || "");
+  const [currentValue, setValue] = React.useState<number | "">(
+    validNumber(value)
+  );
   const [open, setOpen] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
 
   React.useEffect(() => {
-    setValue(value || "");
+    setValue(validNumber(value));
   }, [value]);
 
   function enter() {
@@ -58,7 +65,7 @@ export default React.forwardRef(function NumberField(
   }
 
   async function onValueChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setValue(Number(e.target.value) || "");
+    setValue(validNumber(e.target.value));
     onChange?.(Number(e.target.value) || undefined);
   }
 
@@ -85,6 +92,10 @@ export default React.forwardRef(function NumberField(
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     const { keyCode } = e;
 
+    if (keyCode === KeyCode.Period) {
+      e.preventDefault();
+      return;
+    }
     if (keyCode === KeyCode.Tab) {
       leave();
     }
@@ -110,12 +121,13 @@ export default React.forwardRef(function NumberField(
       {placeholder && (
         <Placeholder
           label={placeholder}
-          active={currentValue !== undefined || focused}
+          active={currentValue !== "" || focused}
           size={size}
         />
       )}
       <input
         {...props}
+        step={step}
         value={currentValue}
         className={textFieldClassName}
         type="number"
