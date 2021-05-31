@@ -17,7 +17,7 @@ const icon = (
     height="40"
     viewBox="0 0 40 40"
   >
-    <circle cx="20" cy="20" r="10" />
+    <circle cx="20" cy="20" r="20" />
   </svg>
 );
 

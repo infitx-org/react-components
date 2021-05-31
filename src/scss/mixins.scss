@@ -1,4 +1,6 @@
 @import "./base/fonts.scss";
+@import "./base/inputs.scss";
+@import "./functions.scss";
 
 @mixin rc-component {
   box-sizing: border-box;
@@ -17,12 +19,12 @@
 
 @mixin rc-field-input {
   &--small {
-    font-size: 12px;
+    font-size: inputFontSize($input-size--small);
   }
   &--medium {
-    font-size: 13px;
+    font-size: inputFontSize($input-size--medium);
   }
   &--large {
-    font-size: 14px;
+    font-size: inputFontSize($input-size--large);
   }
 }
