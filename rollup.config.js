@@ -50,7 +50,7 @@ export default {
     }),
     copy({
       targets: [
-        // { src: 'src/**/*.scss', dest: 'lib', rename: (name, extension, fullPath) => `${fullPath.split('/').slice(1).join('/')}` },
+        { src: 'src/**/*.scss', dest: 'lib', rename: (name, extension, fullPath) => `${fullPath.split('/').slice(1).join('/')}` },
       ],
     }),
   ],
