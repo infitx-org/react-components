@@ -1,0 +1,11 @@
+@use "../base/fonts.scss" as *;
+
+@mixin rc-component {
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: 400;
+  font-family: $font-family, $font-family-fallback;
+  letter-spacing: $letter-spacing;
+  -webkit-font-smoothing: antialiased;
+}
+

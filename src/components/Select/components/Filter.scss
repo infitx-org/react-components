@@ -1,4 +1,4 @@
-@use "../../../scss/mixins.scss" as *;
+@use "../../../scss/components/fields.scss" as *;
 
 .rc-select__filter {
   @include rc-field-icon;

@@ -1,5 +1,6 @@
-@use "./colors.scss" as *;
-@use "./transitions.scss" as *;
+@use "../base/colors.scss" as *;
+@use "../base/transitions.scss" as *;
+@use "../functions.scss" as *;
 
 $input-size--extra-small: 24px;
 $input-size--small: 31px;

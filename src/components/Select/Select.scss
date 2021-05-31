@@ -1,6 +1,6 @@
 @use "../../scss/base/colors.scss" as *;
 @use "../../scss/base/transitions.scss" as *;
-@use "../../scss/mixins.scss" as *;
+@use "../../scss/components/fields.scss" as *;
 
 .rc-select {
   @include rc-field-input;
