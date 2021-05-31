@@ -1,6 +1,5 @@
 import { terser } from "rollup-plugin-terser";
 import copy from "rollup-plugin-copy";
-// import scss from "rollup-plugin-scss";
 import sass from "rollup-plugin-sass";
 import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";

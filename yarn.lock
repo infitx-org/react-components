@@ -11304,13 +11304,6 @@ rollup-plugin-sass@^1.2.2:
     rollup-pluginutils ">= 1.3.1"
     sass "1.7.2"
 
-rollup-plugin-scss@^3.0.0-rc1:
-  version "3.0.0-rc1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-scss/-/rollup-plugin-scss-3.0.0-rc1.tgz#13caa44c5cbd366b76987c6be52f0f5c1f58ca87"
-  integrity sha512-hRDWaSCnQk5oo7au7UtYccML5ts4YopOtG6jhOzTxqY9dYg4FGUUl4gZSm18xNzikVzb073oum5C836/b9fwpg==
-  dependencies:
-    rollup-pluginutils "^2.3.3"
-
 rollup-plugin-terser@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-terser/-/rollup-plugin-terser-7.0.2.tgz#e8fbba4869981b2dc35ae7e8a502d5c6c04d324d"
@@ -11332,7 +11325,7 @@ rollup-plugin-typescript2@^0.30.0:
     resolve "1.20.0"
     tslib "2.1.0"
 
-"rollup-pluginutils@>= 1.3.1", rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.8.2:
+"rollup-pluginutils@>= 1.3.1", rollup-pluginutils@^2.8.2:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz#72f2af0748b592364dbd3389e600e5a9444a351e"
   integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==
