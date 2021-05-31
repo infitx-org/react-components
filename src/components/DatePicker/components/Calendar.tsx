@@ -2,7 +2,6 @@ import React from "react";
 import DayPicker from "react-day-picker";
 import classnames from "classnames";
 import useOverlayPosition from "hooks/useOverlayPosition";
-import "react-day-picker/lib/style.css";
 import "./DayPicker.scss";
 import "./Calendar.scss";
 

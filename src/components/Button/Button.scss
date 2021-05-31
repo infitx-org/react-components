@@ -7,8 +7,6 @@
 @use "../../scss/mixins" as *;
 @use "../../scss/functions.scss" as *;
 
-@debug mixins;
-
 .rc-button {
   @include rc-component;
   outline: none;
