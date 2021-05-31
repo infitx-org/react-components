@@ -1,4 +1,4 @@
-@import "./base/colors.scss";
+@use "./base/colors.scss" as *;
 :root {
   --color__blue: #{$color__blue};
   --color__dark-blue: #{$color__dark-blue};

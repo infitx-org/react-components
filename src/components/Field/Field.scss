@@ -1,10 +1,10 @@
-@import "../../scss/base/colors.scss";
-@import "../../scss/base/inputs.scss";
-@import "../../scss/base/shadows.scss";
-@import "../../scss/themes.scss";
-@import "../../scss/mixins.scss";
-@import "../../scss/functions.scss";
 @use "sass:map";
+@use "../../scss/base/colors.scss" as *;
+@use "../../scss/base/inputs.scss" as *;
+@use "../../scss/base/shadows.scss" as *;
+@use "../../scss/themes.scss" as *;
+@use "../../scss/mixins.scss" as *;
+@use "../../scss/functions.scss" as *;
 
 .rc-field {
   @include rc-component;
@@ -52,12 +52,12 @@
 
 @each $kind in $kinds {
   .rc-field--#{$kind} {
-    border-bottom-color: map-get($theme-kinds, $kind);
+    border-bottom-color: map.get($theme-kinds, $kind);
   }
-  &.rc-field--#{$kind} {
+  .rc-field--#{$kind} {
     &.rc-field--focused {
       &::before {
-        color: map-get($theme-kinds-shadows, $kind);
+        color: map.get($theme-kinds-shadows, $kind);
       }
     }
   }
@@ -65,12 +65,12 @@
 
 @each $state in "invalid", "required" {
   .rc-field--#{$state} {
-    border-bottom-color: map-get($theme-states, $state);
+    border-bottom-color: map.get($theme-states, $state);
   }
-  &.rc-field--#{$state} {
+  .rc-field--#{$state} {
     &.rc-field--focused {
       &::before {
-        color: map-get($theme-states-shadows, $state);
+        color: map.get($theme-states-shadows, $state);
       }
     }
   }

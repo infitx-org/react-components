@@ -1,12 +1,12 @@
 import { terser } from "rollup-plugin-terser";
-import copy from 'rollup-plugin-copy';
-import scss from 'rollup-plugin-scss';
+import copy from "rollup-plugin-copy";
+import sass from "rollup-plugin-sass";
 import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
-import commonjs from '@rollup/plugin-commonjs';
-import svgr from '@svgr/rollup';
-import postcss from 'postcss';
-import autoprefixer from 'autoprefixer';
+import commonjs from "@rollup/plugin-commonjs";
+import svgr from "@svgr/rollup";
+import postcss from "postcss";
+import autoprefixer from "autoprefixer";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "rollup-plugin-typescript2";
 
@@ -18,13 +18,13 @@ export default {
     {
       file: packageJson.main,
       format: "cjs",
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: packageJson.module,
       format: "esm",
-      sourcemap: true
-    }
+      sourcemap: true,
+    },
   ],
   plugins: [
     terser(),
@@ -36,17 +36,21 @@ export default {
     resolve(),
     commonjs(),
     typescript({
-      tsconfig: 'tsconfig.build.json',
-      useTsconfigDeclarationDir: true
+      tsconfig: "tsconfig.build.json",
+      useTsconfigDeclarationDir: true,
     }),
-    scss({
-      output: 'lib/index.css',
-      processor: css => postcss([autoprefixer()]),
+    sass({
+      runtime: require("sass"),
+      output: "lib/index.css",
+      processor: (css) =>
+        postcss([autoprefixer()])
+          .process(css, { from: undefined })
+          .then((result) => result.css),
     }),
     copy({
       targets: [
         { src: 'src/**/*.scss', dest: 'lib', rename: (name, extension, fullPath) => `${fullPath.split('/').slice(1).join('/')}` },
-      ]
+      ],
     }),
   ],
 };

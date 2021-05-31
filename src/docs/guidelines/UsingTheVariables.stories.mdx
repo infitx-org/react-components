@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Documentation/Using The Variables"/>
+
+
+## Using the variables
+
+The react-components allow you to customise the appearance by overriding the SCSS variables; let's see how this work.
+
+First, import the scss module and pass variables to it:
+
+```css
+/* override.scss */
+
+@use "@modusbox/react-components/lib/scss/base/colors" with($color__primary: #f00);
+
+```
+
+Define your component regularly:
+
+```tsx
+/* App.tsx */
+
+<Button size="medium" kind="primary" label="Overriding theme"/>
+
+```

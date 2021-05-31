@@ -1,4 +1,4 @@
-@import "../../scss/base/colors.scss";
+@use "../../scss/base/colors.scss" as *;
 
 .rc-spinner {
   transform: translateZ(0);

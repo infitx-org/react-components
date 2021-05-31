@@ -1,4 +1,4 @@
-@import "./Select.scss";
-@import "./components/Filter.scss";
-@import "./components/Indicator.scss";
-@import "./components/Options.scss";
+@use "./Select.scss" as *;
+@use "./components/Filter.scss" as *;
+@use "./components/Indicator.scss" as *;
+@use "./components/Options.scss" as *;

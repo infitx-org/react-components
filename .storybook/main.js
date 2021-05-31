@@ -14,7 +14,15 @@ module.exports = {
 
     config.module.rules.push({
       test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
+      use: ['style-loader', 'css-loader',
+        {
+          loader: "sass-loader",
+          options: {
+            // Prefer `dart-sass`
+            implementation: require("sass"),
+          },
+        },
+      ],
       include: path.resolve(__dirname, '../src'),
     });
 

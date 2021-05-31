@@ -1,66 +1,66 @@
-@import "../../../../scss/themes.scss";
-@import "../../../../scss/base/colors.scss";
 @use "sass:map";
+@use "../../../../scss/themes.scss" as *;
+@use "../../../../scss/base/colors.scss" as *;
 
 @each $kind in $kinds {
   .color-scheme--regular-#{$kind} {
-    background: map-get($theme-kinds, $kind);
+    background: map.get($theme-kinds, $kind);
   }
 
   .color-scheme--active-#{$kind} {
-    background: map-get($theme-kinds--light, $kind);
+    background: map.get($theme-kinds--light, $kind);
   }
 
   .color-scheme--darken-#{$kind} {
-    background: map-get($theme-kinds--dark, $kind);
+    background: map.get($theme-kinds--dark, $kind);
   }
 
   .color-scheme--shadows-#{$kind} {
-    background: map-get($theme-kinds-shadows, $kind);
+    background: map.get($theme-kinds-shadows, $kind);
   }
 }
 
 @each $state in $states {
   .color-scheme--regular-#{$state} {
-    background: map-get($theme-states, $state);
+    background: map.get($theme-states, $state);
   }
 
   .color-scheme--active-#{$state} {
-    background: map-get($theme-states--light, $state);
+    background: map.get($theme-states--light, $state);
   }
 
   .color-scheme--darken-#{$state} {
-    background: map-get($theme-states--dark, $state);
+    background: map.get($theme-states--dark, $state);
   }
 
   .color-scheme--shadows-#{$state} {
-    background: map-get($theme-states-shadows, $state);
+    background: map.get($theme-states-shadows, $state);
   }
 }
 
 @each $type in "lighter", "light", "regular", "dark", "darker" {
   .color-scheme-blue--#{$type} {
-    background: map-get($theme-color-blue, $type);
+    background: map.get($theme-color-blue, $type);
   }
   .color-scheme-dark-blue--#{$type} {
-    background: map-get($theme-color-dark-blue, $type);
+    background: map.get($theme-color-dark-blue, $type);
   }
   .color-scheme-green--#{$type} {
-    background: map-get($theme-color-green, $type);
+    background: map.get($theme-color-green, $type);
   }
   .color-scheme-orange--#{$type} {
-    background: map-get($theme-color-orange, $type);
+    background: map.get($theme-color-orange, $type);
   }
   .color-scheme-red--#{$type} {
-    background: map-get($theme-color-red, $type);
+    background: map.get($theme-color-red, $type);
   }
   .color-scheme-gray--#{$type} {
-    background: map-get($theme-color-gray, $type);
+    background: map.get($theme-color-gray, $type);
   }
   .color-scheme-dark-gray--#{$type} {
-    background: map-get($theme-color-dark-gray, $type);
+    background: map.get($theme-color-dark-gray, $type);
   }
   .color-scheme-alpha--#{$type} {
-    background: map-get($theme-color-alpha, $type);
+    background: map.get($theme-color-alpha, $type);
   }
 }
