@@ -1,6 +1,6 @@
 import { terser } from "rollup-plugin-terser";
 import copy from "rollup-plugin-copy";
-import scss from "rollup-plugin-scss";
+// import scss from "rollup-plugin-scss";
 import sass from "rollup-plugin-sass";
 import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
@@ -43,7 +43,10 @@ export default {
     sass({
       runtime: require("sass"),
       output: "lib/index.css",
-      processor: (css) => postcss([autoprefixer()]),
+      processor: (css) =>
+        postcss([autoprefixer()])
+          .process(css, { from: undefined })
+          .then((result) => result.css),
     }),
     copy({
       targets: [
