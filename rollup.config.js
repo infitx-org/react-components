@@ -5,6 +5,7 @@ import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from '@rollup/plugin-commonjs';
 import svgr from '@svgr/rollup';
+import sass from "sass";
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -40,6 +41,7 @@ export default {
       useTsconfigDeclarationDir: true
     }),
     scss({
+      sass: sass,
       output: 'lib/index.css',
       processor: css => postcss([autoprefixer()]),
     }),

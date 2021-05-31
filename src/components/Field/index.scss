@@ -1,4 +1,4 @@
-@import "./Field.scss";
-@import "./components/Loader.scss";
-@import "./components/Placeholder.scss";
-@import "./components/InvalidIcon.scss";
+@use "./Field.scss" as *;
+@use "./components/Loader.scss" as *;
+@use "./components/Placeholder.scss" as *;
+@use "./components/InvalidIcon.scss" as *;

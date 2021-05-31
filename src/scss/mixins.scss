@@ -1,6 +1,6 @@
-@import "./base/fonts.scss";
-@import "./base/inputs.scss";
-@import "./functions.scss";
+@use "./base/fonts.scss" as *;
+@use "./base/inputs.scss" as *;
+@use "./functions.scss" as *;
 
 @mixin rc-component {
   box-sizing: border-box;

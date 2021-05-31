@@ -1,6 +1,6 @@
-@import "../../../../scss/themes.scss";
-@import "../../../../scss/base/colors.scss";
 @use "sass:map";
+@use "../../../../scss/themes.scss" as *;
+@use "../../../../scss/base/colors.scss" as *;
 
 .box {
   position: relative;

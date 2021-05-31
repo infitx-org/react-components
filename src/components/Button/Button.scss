@@ -1,10 +1,13 @@
-@import "../../scss/base/colors.scss";
-@import "../../scss/base/shadows.scss";
-@import "../../scss/base/inputs.scss";
-@import "../../scss/themes.scss";
-@import "../../scss/mixins.scss";
-@import "../../scss/functions.scss";
 @use "sass:map";
+@use "../../scss/base/colors.scss" as *;
+@use "../../scss/base/shadows.scss" as *;
+@use "../../scss/base/inputs.scss" as *;
+@use "../../scss/base/transitions.scss" as *;
+@use "../../scss/themes.scss" as *;
+@use "../../scss/mixins" as *;
+@use "../../scss/functions.scss" as *;
+
+@debug mixins;
 
 .rc-button {
   @include rc-component;
@@ -17,7 +20,8 @@
   white-space: nowrap;
   user-select: none;
   text-decoration: none;
-  transition: $button-transition;
+  transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1), color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), background 0.1s ease-out;
+
   border-radius: $input-border-radius;
   font-style: normal;
   font-weight: 400;
@@ -89,17 +93,17 @@
 
 @each $kind in $kinds {
   .rc-button--#{$kind} {
-    background-color: map-get($theme-kinds, $kind);
-    border-color: map-get($theme-kinds, $kind);
-    color: map-get($theme-kinds--opposite, $kind);
-    fill: map-get($theme-kinds--opposite, $kind);
-    stroke: map-get($theme-kinds--opposite, $kind);
+    background-color: map.get($theme-kinds, $kind);
+    border-color: map.get($theme-kinds, $kind);
+    color: map.get($theme-kinds--opposite, $kind);
+    fill: map.get($theme-kinds--opposite, $kind);
+    stroke: map.get($theme-kinds--opposite, $kind);
 
     &.rc-button--noFill {
       background-color: transparent;
-      color: map-get($theme-kinds--dark, $kind);
-      fill: map-get($theme-kinds, $kind);
-      stroke: map-get($theme-kinds, $kind);
+      color: map.get($theme-kinds--dark, $kind);
+      fill: map.get($theme-kinds, $kind);
+      stroke: map.get($theme-kinds, $kind);
     }
 
     &:active {
@@ -110,23 +114,23 @@
 
     &:active,
     &:focus {
-      box-shadow: $shadow-size map-get($theme-kinds-shadows, $kind);
+      box-shadow: $shadow-size map.get($theme-kinds-shadows, $kind);
     }
 
     &:hover,
     &:focus {
-      background-color: map-get($theme-kinds, $kind);
-      border-color: map-get($theme-kinds, $kind);
+      background-color: map.get($theme-kinds, $kind);
+      border-color: map.get($theme-kinds, $kind);
 
       &.rc-button--noFill {
-        color: map-get($theme-kinds--opposite, $kind);
-        fill: map-get($theme-kinds--opposite, $kind);
-        stroke: map-get($theme-kinds--opposite, $kind);
+        color: map.get($theme-kinds--opposite, $kind);
+        fill: map.get($theme-kinds--opposite, $kind);
+        stroke: map.get($theme-kinds--opposite, $kind);
       }
     }
 
     &:hover:active {
-      background: map-get($theme-kinds--dark, $kind);
+      background: map.get($theme-kinds--dark, $kind);
       &.rc-button--noFill {
         color: $color__alpha;
         fill: $color__alpha;

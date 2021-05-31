@@ -1,20 +1,24 @@
+@use "sass:math";
+
 @function invert($color, $amount: 100%) {
   $inverse: change-color($color, $hue: hue($color) + 180);
   @return mix($inverse, $color, $amount);
 }
 
 @function opposite($kind) {
-  $color: map-get($theme-kinds--opposite, $kind);
+  $color: map.get($theme-kinds--opposite, $kind);
   @if $kind == "primary" {
     $color: #f00;
   }
   @return $color;
 }
 
+
+
 @function strip-units($number) {
-  @return $number / ($number * 0 + 1);
+  @return math.div($number, $number * 0 + 1);
 }
 
 @function inputFontSize($size) {
-  @return 11 + ((strip-units($size) - 24) / 7) + px;
+  @return 11 + (math.div(strip-units($size) - 24, 7)) + px;
 }

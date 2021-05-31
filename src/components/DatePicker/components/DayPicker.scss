@@ -1,6 +1,6 @@
-@import "../../../scss/base/fonts.scss";
-@import "../../../scss/base/colors.scss";
-@import "../../../scss/base/transitions.scss";
+@use "../../../scss/base/fonts.scss" as *;
+@use "../../../scss/base/colors.scss" as *;
+@use "../../../scss/base/transitions.scss" as *;
 
 /* DayPicker styles */
 .DayPicker {

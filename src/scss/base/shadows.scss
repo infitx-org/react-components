@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@use "./colors.scss" as *;
 
 $shadow-size: 0px 0px 0px 3px !default;
 $shadow-size--closed: 0px 0px 0px 0px !default;

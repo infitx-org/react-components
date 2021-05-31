@@ -1,5 +1,5 @@
-@import "../../../scss/base/colors.scss";
-@import "../../../scss/base/inputs.scss";
+@use "../../../scss/base/colors.scss" as *;
+@use "../../../scss/base/inputs.scss" as *;
 
 .rc-select__options {
   position: absolute;

@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import "./override.scss";
+import Button from "components/Button";
+
+<Meta title="Documentation/Using The Variables"/>
+
+
+## Using the variables
+
+The react-components allow you to customise the appearance by overriding the SCSS variables
+
+Let's see how this work.
+
+```scss
+// override.scss
+
+$color__primary: #f00;
+
+```
+
+```tsx
+// App.tsx
+
+<Button size="extra-small" kind="primary" />
+
+```
+
+<Button size="small" kind="primary"  />
+

@@ -1,6 +1,6 @@
-@import "../../scss/base/colors.scss";
-@import "../../scss/base/transitions.scss";
-@import "../../scss/mixins.scss";
+@use "../../scss/base/colors.scss" as *;
+@use "../../scss/base/transitions.scss" as *;
+@use "../../scss/mixins.scss" as *;
 
 .rc-numberfield {
   @include rc-field-input;

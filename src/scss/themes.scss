@@ -1,6 +1,6 @@
 @use "sass:map";
-@import "./base/shadows.scss";
-@import "./base/colors.scss";
+@use "./base/shadows.scss" as *;
+@use "./base/colors.scss" as *;
 
 $states: "invalid", "required";
 
