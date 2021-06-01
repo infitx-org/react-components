@@ -75,6 +75,7 @@
     "test": "jest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
     "lint-staged": "lint-staged",
+    "lint-style": "stylelint --syntax=scss 'src/**/*.scss'",
     "prepare": "husky install",
     "prettier": "prettier --write 'src/**/*.{ts,tsx,js,scss,css,json}'",
     "storybook": "start-storybook -p 3100",
