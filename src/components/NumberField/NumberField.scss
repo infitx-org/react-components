@@ -3,7 +3,7 @@
 @use "../../scss/components/field.scss";
 
 .rc-numberfield {
-  @include field.rc-field-input;
+  @include field.input;
 
   flex: 2 1 auto;
   vertical-align: middle;

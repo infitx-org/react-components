@@ -9,7 +9,7 @@
 }
 
 .rc-fileuploader {
-  @include field.rc-field-input;
+  @include field.input;
 
   flex: 2 1 auto;
   position: relative;
