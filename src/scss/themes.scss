@@ -7,8 +7,10 @@ $states: "invalid", "required";
 $kinds: "primary", "secondary", "tertiary", "success", "danger", "warning",
   "dark", "light";
 
+$weights: "lighter", "light", "regular", "dark", "darker";
+
 // Kind Themes
-$theme-kinds: (
+$colors: (
   "primary": colors.$primary,
   "secondary": colors.$secondary,
   "tertiary": colors.$tertiary,
@@ -17,9 +19,11 @@ $theme-kinds: (
   "warning": colors.$warning,
   "dark": colors.$dark,
   "light": colors.$light,
+  "invalid": colors.$invalid,
+  "required": colors.$required,
 );
 
-$theme-kinds--opposite: (
+$colors--opposite: (
   "primary": colors.$primary--opposite,
   "secondary": colors.$secondary--opposite,
   "tertiary": colors.$tertiary--opposite,
@@ -28,9 +32,11 @@ $theme-kinds--opposite: (
   "warning": colors.$warning--opposite,
   "dark": colors.$dark--opposite,
   "light": colors.$light--opposite,
+  "invalid": colors.$invalid--opposite,
+  "required": colors.$required--opposite,
 );
 
-$theme-kinds--light: (
+$colors--light: (
   "primary": colors.$primary--light,
   "secondary": colors.$secondary--light,
   "tertiary": colors.$tertiary--light,
@@ -39,9 +45,11 @@ $theme-kinds--light: (
   "warning": colors.$warning--light,
   "dark": colors.$dark--light,
   "light": colors.$light--light,
+  "invalid": colors.$invalid--light,
+  "required": colors.$required--light,
 );
 
-$theme-kinds--dark: (
+$colors--dark: (
   "primary": colors.$primary--dark,
   "secondary": colors.$secondary--dark,
   "tertiary": colors.$tertiary--dark,
@@ -50,9 +58,11 @@ $theme-kinds--dark: (
   "warning": colors.$warning--dark,
   "dark": colors.$dark--dark,
   "light": colors.$light--dark,
+  "invalid": colors.$invalid--dark,
+  "required": colors.$required--dark,
 );
 
-$theme-kinds-shadows: (
+$shadows: (
   "primary": shadows.$color--primary,
   "secondary": shadows.$color--secondary,
   "tertiary": shadows.$color--tertiary,
@@ -61,38 +71,12 @@ $theme-kinds-shadows: (
   "warning": shadows.$color--warning,
   "dark": shadows.$color--dark,
   "light": shadows.$color--light,
-);
-
-// State Themes
-
-$theme-states: (
-  "invalid": colors.$invalid,
-  "required": colors.$required,
-);
-
-$theme-states--opposite: (
-  "invalid": colors.$invalid--opposite,
-  "required": colors.$required--opposite,
-);
-
-$theme-states--light: (
-  "invalid": colors.$invalid--light,
-  "required": colors.$required--light,
-);
-
-$theme-states--dark: (
-  "invalid": colors.$invalid--dark,
-  "required": colors.$required--dark,
-);
-
-$theme-states-shadows: (
   "invalid": shadows.$color--invalid,
   "required": shadows.$color--required,
 );
 
 // Color schemes
-
-$theme-color-blue: (
+$blue: (
   "lighter": colors.$blue--lighter,
   "light": colors.$blue--light,
   "regular": colors.$blue,
@@ -100,7 +84,7 @@ $theme-color-blue: (
   "darker": colors.$blue--darker,
 );
 
-$theme-color-dark-blue: (
+$dark-blue: (
   "lighter": colors.$dark-blue--lighter,
   "light": colors.$dark-blue--light,
   "regular": colors.$dark-blue,
@@ -108,7 +92,7 @@ $theme-color-dark-blue: (
   "darker": colors.$dark-blue--darker,
 );
 
-$theme-color-green: (
+$green: (
   "lighter": colors.$green--lighter,
   "light": colors.$green--light,
   "regular": colors.$green,
@@ -116,7 +100,7 @@ $theme-color-green: (
   "darker": colors.$green--darker,
 );
 
-$theme-color-orange: (
+$orange: (
   "lighter": colors.$orange--lighter,
   "light": colors.$orange--light,
   "regular": colors.$orange,
@@ -124,7 +108,7 @@ $theme-color-orange: (
   "darker": colors.$orange--darker,
 );
 
-$theme-color-red: (
+$red: (
   "lighter": colors.$red--lighter,
   "light": colors.$red--light,
   "regular": colors.$red,
@@ -132,7 +116,7 @@ $theme-color-red: (
   "darker": colors.$red--darker,
 );
 
-$theme-color-gray: (
+$gray: (
   "lighter": colors.$gray--lighter,
   "light": colors.$gray--light,
   "regular": colors.$gray,
@@ -140,7 +124,7 @@ $theme-color-gray: (
   "darker": colors.$gray--darker,
 );
 
-$theme-color-dark-gray: (
+$dark-gray: (
   "lighter": colors.$dark-gray--lighter,
   "light": colors.$dark-gray--light,
   "regular": colors.$dark-gray,
@@ -148,7 +132,7 @@ $theme-color-dark-gray: (
   "darker": colors.$dark-gray--darker,
 );
 
-$theme-color-alpha: (
+$alpha: (
   "lighter": colors.$alpha--lighter,
   "light": colors.$alpha--light,
   "regular": colors.$alpha,

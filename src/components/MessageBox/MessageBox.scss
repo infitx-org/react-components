@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "../../scss/base/colors.scss";
 @use "../../scss/base/shadows.scss" as *;
-@use "../../scss/themes.scss" as *;
+@use "../../scss/themes.scss";
 @use "../../scss/components/any.scss" as *;
 @use "../../scss/components/input.scss";
 
@@ -32,9 +32,9 @@
   }
 }
 
-@each $kind in $kinds {
-  $base-color: map.get($theme-kinds--dark, $kind);
-  $light-color: lighten(map.get($theme-kinds-shadows, $kind), 10%);
+@each $kind in themes.$kinds {
+  $base-color: map.get(themes.$colors--dark, $kind);
+  $light-color: lighten(map.get(themes.$shadows, $kind), 10%);
 
   .rc-message-box--#{$kind} {
     fill: $base-color;
@@ -43,7 +43,7 @@
 
     &.rc-message-box--inverted {
       fill: $light-color;
-      color: map.get($theme-kinds--opposite, $kind);
+      color: map.get(themes.$colors--opposite, $kind);
       background-color: $base-color;
     }
   }
