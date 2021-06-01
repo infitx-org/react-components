@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../../scss/base/colors.scss" as *;
+@use "../../scss/base/colors.scss";
 @use "../../scss/base/shadows.scss" as *;
 @use "../../scss/base/transitions.scss" as *;
 @use "../../scss/components/inputs.scss" as *;
@@ -30,9 +30,9 @@
   box-shadow: $shadow-size--closed transparent;
 
   &:active {
-    color: $color__alpha;
-    fill: $color__alpha;
-    stroke: $color__alpha;
+    color: colors.$alpha;
+    fill: colors.$alpha;
+    stroke: colors.$alpha;
   }
 
   &:hover,
@@ -112,9 +112,9 @@
     }
 
     &:active {
-      color: $color__alpha;
-      fill: $color__alpha;
-      stroke: $color__alpha;
+      color: colors.$alpha;
+      fill: colors.$alpha;
+      stroke: colors.$alpha;
     }
 
     &:active,
@@ -138,9 +138,9 @@
       background: map.get($theme-kinds--dark, $kind);
 
       &.rc-button--noFill {
-        color: $color__alpha;
-        fill: $color__alpha;
-        stroke: $color__alpha;
+        color: colors.$alpha;
+        fill: colors.$alpha;
+        stroke: colors.$alpha;
       }
     }
   }

@@ -1,8 +1,8 @@
 @use "../../../scss/components/fields.scss" as *;
-@use "../../../scss/base/colors.scss" as *;
+@use "../../../scss/base/colors.scss";
 
 .rc-invalid-icon {
   @include rc-field-icon;
 
-  fill: $color__danger;
+  fill: colors.$danger;
 }

@@ -1,5 +1,5 @@
 @use "../../../scss/base/fonts.scss" as *;
-@use "../../../scss/base/colors.scss" as *;
+@use "../../../scss/base/colors.scss";
 @use "../../../scss/base/transitions.scss" as *;
 
 // Override
@@ -110,7 +110,7 @@
 }
 
 .DayPicker-Day--today {
-  color: $color__secondary;
+  color: colors.$secondary;
   font-weight: bold;
 }
 
@@ -137,12 +137,12 @@
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-  color: $color__primary--opposite;
+  color: colors.$primary--opposite;
   font-weight: bold;
-  background-color: $color__primary;
+  background-color: colors.$primary;
 
   &:hover {
-    background-color: $color__primary;
+    background-color: colors.$primary;
   }
 }
 

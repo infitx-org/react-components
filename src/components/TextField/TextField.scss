@@ -1,4 +1,4 @@
-@use "../../scss/base/colors.scss" as *;
+@use "../../scss/base/colors.scss";
 @use "../../scss/base/transitions.scss" as *;
 @use "../../scss/components/fields.scss" as *;
 
@@ -17,5 +17,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: $color__dark-gray;
+  color: colors.$dark-gray;
 }

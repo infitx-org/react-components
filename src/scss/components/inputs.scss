@@ -1,4 +1,4 @@
-@use "../base/colors.scss" as *;
+@use "../base/colors.scss";
 @use "../base/transitions.scss" as *;
 @use "../functions.scss" as *;
 
@@ -18,7 +18,7 @@ $input-border-bottom-width: 2px !default;
 $input-border-left-color: #e5e5e5 !default;
 $input-border-right-color: #e5e5e5 !default;
 $input-border-top-color: #e5e5e5 !default;
-$input-border-bottom-color: $color__primary !default;
+$input-border-bottom-color: colors.$primary !default;
 
 $input-background: #fcfcfc !default;
 
