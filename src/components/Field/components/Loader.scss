@@ -1,5 +1,5 @@
-@use "../../../scss/components/fields.scss" as *;
+@use "../../../scss/components/field.scss";
 
 .rc-loader {
-  @include rc-field-icon;
+  @include field.icon;
 }

@@ -2,7 +2,7 @@
 @use "../functions.scss" as *;
 @use "./input.scss";
 
-@mixin rc-field-icon {
+@mixin icon {
   flex: 0 0 auto;
   fill: #999;
   margin-left: 5px;

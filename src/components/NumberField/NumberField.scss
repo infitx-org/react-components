@@ -1,9 +1,9 @@
 @use "../../scss/base/colors.scss";
 @use "../../scss/base/transitions.scss" as *;
-@use "../../scss/components/fields.scss" as *;
+@use "../../scss/components/field.scss";
 
 .rc-numberfield {
-  @include rc-field-input;
+  @include field.rc-field-input;
 
   flex: 2 1 auto;
   vertical-align: middle;

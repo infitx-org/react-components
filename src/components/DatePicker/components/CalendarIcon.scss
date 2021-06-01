@@ -1,7 +1,7 @@
-@use "../../../scss/components/fields.scss" as *;
+@use "../../../scss/components/field.scss";
 
 .rc-datepicker__calendar-icon {
-  @include rc-field-icon;
+  @include field.icon;
 
   fill: #999;
 }

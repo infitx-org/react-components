@@ -1,6 +1,6 @@
 @use "../../scss/base/colors.scss";
 @use "../../scss/base/transitions.scss" as *;
-@use "../../scss/components/fields.scss" as *;
+@use "../../scss/components/field.scss";
 
 .rc-fileuploader__input {
   opacity: 0;
@@ -9,7 +9,7 @@
 }
 
 .rc-fileuploader {
-  @include rc-field-input;
+  @include field.rc-field-input;
 
   flex: 2 1 auto;
   position: relative;
