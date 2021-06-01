@@ -4,4 +4,9 @@ module.exports = {
     "./node_modules/.bin/prettier --write",
     "yarn lint",
   ],
+  'src/**/*.css': ['./node_modules/.bin/stylelint --fix', './node_modules/.bin/prettier --write'],
+  'src/**/*.scss': [
+    './node_modules/.bin/stylelint --syntax=scss --fix',
+    './node_modules/.bin/prettier --write',
+  ],
 };
