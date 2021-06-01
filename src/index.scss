@@ -1,10 +1,11 @@
 @forward "./scss/base/colors.scss";
 @forward "./scss/base/fonts.scss";
-@forward "./scss/base/inputs.scss";
 @forward "./scss/base/shadows.scss";
 @forward "./scss/base/transitions.scss";
+@forward "./scss/components/inputs.scss";
+@forward "./scss/components/fields.scss";
+@forward "./scss/components/any.scss";
 @forward "./scss/functions.scss";
-@forward "./scss/mixins.scss";
 @forward "./scss/themes.scss";
 @forward "./scss/vars.scss";
 
@@ -14,8 +15,10 @@
 @forward "./components/Field/index.scss";
 @forward "./components/FileUploader/index.scss";
 @forward "./components/MessageBox/MessageBox.scss";
+@forward "./components/NumberField/NumberField.scss";
 @forward "./components/Pill/Pill.scss";
 @forward "./components/RadioGroup/RadioGroup.scss";
 @forward "./components/Select/index.scss";
 @forward "./components/Spinner/Spinner.scss";
 @forward "./components/Tabs/Tabs.scss";
+@forward "./components/TextField/TextField.scss";
