@@ -30,7 +30,7 @@
 
   box-shadow: $shadow-size--closed transparent;
 
-  &:not(.rc-button--noFill) {
+  &:not(.rc-button--noFill):not(:disabled) {
     border-bottom-color: rgba(0, 0, 0, 0.2);
   }
   &:hover,
@@ -142,17 +142,4 @@
   opacity: $input-opacity--disabled;
   pointer-events: none;
   cursor: auto;
-  background-color: $color__gray--light;
-  border-color: $color__gray--light;
-  color: $color__dark-gray--lighter;
-  fill: $color__gray--darker;
-  stroke: $color__gray--darker;
-
-  &.rc-button--noFill {
-    border-color: $color__gray--light;
-    background: transparent;
-    color: $color__gray--darker;
-    fill: $color__gray--darker;
-    stroke: $color__gray--darker;
-  }
 }
