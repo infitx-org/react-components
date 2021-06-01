@@ -1,7 +1,7 @@
 @use "./colors.scss" as *;
 
-$shadow-size: 0px 0px 0px 3px !default;
-$shadow-size--closed: 0px 0px 0px 0px !default;
+$shadow-size: 0 0 0 3px !default;
+$shadow-size--closed: 0 0 0 0 !default;
 
 $shadow-color--primary: lighten($color__primary, 20%) !default;
 $shadow-color--secondary: lighten($color__secondary, 30%) !default;

@@ -6,12 +6,10 @@
   max-height: 300px;
   padding: 3px;
 }
-.rc-datepicker__calendar--reverse {
-}
 
 .rc-datepicker__calendar__container {
   background: #fff;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   overflow: hidden;
 }

@@ -9,17 +9,17 @@
 
 .rc-button {
   @include rc-component;
+
   outline: none;
   cursor: pointer;
   box-sizing: border-box;
-  border: 0;
   display: inline-block;
   flex: 0 0 auto;
   white-space: nowrap;
   user-select: none;
   text-decoration: none;
-  transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1), color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), background 0.1s ease-out;
-
+  transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), background 0.1s ease-out;
   border-radius: $input-border-radius;
   font-style: normal;
   font-weight: 400;
@@ -27,25 +27,26 @@
   border: 1px solid;
   align-items: center;
   border-bottom-width: 2px;
-
   box-shadow: $shadow-size--closed transparent;
-
-  &:not(.rc-button--noFill):not(:disabled) {
-    border-bottom-color: rgba(0, 0, 0, 0.2);
-  }
-  &:hover,
-  &:focus {
-    border-bottom-width: 2px;
-    border-bottom-color: rgba(0, 0, 0, 0.2);
-    &:active {
-      border-bottom-color: transparent;
-    }
-  }
 
   &:active {
     color: $color__alpha;
     fill: $color__alpha;
     stroke: $color__alpha;
+  }
+
+  &:hover,
+  &:focus {
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+
+    &:active {
+      border-bottom-color: transparent;
+    }
+  }
+
+  &:not(.rc-button--noFill):not(:disabled) {
+    border-bottom-color: rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -54,38 +55,44 @@
   flex-direction: row;
   align-items: center;
 }
+
 .rc-button__icon {
   display: flex;
   fill: inherit;
   stroke: inherit;
 }
+
 .rc-button__icon--left {
   margin-right: 5px;
-  margin-left: 0px;
+  margin-left: 0;
 }
+
 .rc-button__icon--right {
-  margin-right: 0px;
+  margin-right: 0;
   margin-left: 5px;
 }
 
 .rc-button--extra-small {
   padding: 4px 7px;
-  font-size: inputFontSize($input-size--extra-small);
+  font-size: inputfontsize($input-size--extra-small);
   height: $input-size--extra-small;
 }
+
 .rc-button--small {
   padding: 6px 10px;
-  font-size: inputFontSize($input-size--small);
+  font-size: inputfontsize($input-size--small);
   height: $input-size--small;
 }
+
 .rc-button--medium {
   padding: 8px 13px;
-  font-size: inputFontSize($input-size--medium);
+  font-size: inputfontsize($input-size--medium);
   height: $input-size--medium;
 }
+
 .rc-button--large {
   padding: 10px 16px;
-  font-size: inputFontSize($input-size--large);
+  font-size: inputfontsize($input-size--large);
   height: $input-size--large;
 }
 
@@ -129,6 +136,7 @@
 
     &:hover:active {
       background: map.get($theme-kinds--dark, $kind);
+
       &.rc-button--noFill {
         color: $color__alpha;
         fill: $color__alpha;

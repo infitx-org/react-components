@@ -1,4 +1,5 @@
 @use "./base/colors.scss" as *;
+
 :root {
   --color__blue: #{$color__blue};
   --color__dark-blue: #{$color__dark-blue};
@@ -53,37 +54,30 @@
   --color__blue--light: #{$color__blue--light};
   --color__blue--dark: #{$color__blue--dark};
   --color__blue--darker: #{$color__blue--darker};
-
   --color__dark-blue--lighter: #{$color__dark-blue--lighter};
   --color__dark-blue--light: #{$color__dark-blue--light};
   --color__dark-blue--dark: #{$color__dark-blue--dark};
   --color__dark-blue--darker: #{$color__dark-blue--darker};
-
   --color__green--lighter: #{$color__green--lighter};
   --color__green--light: #{$color__green--light};
   --color__green--dark: #{$color__green--dark};
   --color__green--darker: #{$color__green--darker};
-
   --color__orange--lighter: #{$color__orange--lighter};
   --color__orange--light: #{$color__orange--light};
   --color__orange--dark: #{$color__orange--dark};
   --color__orange--darker: #{$color__orange--darker};
-
   --color__red--lighter: #{$color__red--lighter};
   --color__red--light: #{$color__red--light};
   --color__red--dark: #{$color__red--dark};
   --color__red--darker: #{$color__red--darker};
-
   --color__gray--lighter: #{$color__gray--lighter};
   --color__gray--light: #{$color__gray--light};
   --color__gray--dark: #{$color__gray--dark};
   --color__gray--darker: #{$color__gray--darker};
-
   --color__dark-gray--lighter: #{$color__dark-gray--lighter};
   --color__dark-gray--light: #{$color__dark-gray--light};
   --color__dark-gray--dark: #{$color__dark-gray--dark};
   --color__dark-gray--darker: #{$color__dark-gray--darker};
-
   --color__alpha--lighter: #{$color__alpha--lighter};
   --color__alpha--light: #{$color__alpha--light};
   --color__alpha: #{$color__alpha};
