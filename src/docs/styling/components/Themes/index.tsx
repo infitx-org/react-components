@@ -76,7 +76,7 @@ export const KindTheme = kinds.reduce((prev, kind) => {
               {kind} / {type}
             </Label>
             <Label size="small" variable>
-              theme-colors--{type}.{kind}
+              themes.$colors{type === "regular" ? "" : `--${type}`}.{kind}
             </Label>
           </Column>
         ))}
@@ -100,7 +100,7 @@ export const StateTheme = states.reduce((prev, state) => {
               {state} / {type}
             </Label>
             <Label size="small" variable>
-              theme-colors--{type}.{state}
+              themes.$colors{type === "regular" ? "" : `--${type}`}.{state}
             </Label>
           </Column>
         ))}
@@ -126,7 +126,8 @@ export const ColorTheme = colors.reduce((prev, color) => {
                 {color} / {type}
               </Label>
               <Label size="small" variable>
-                theme-color--{color}.{type}
+                themes.${color}
+                {type === "regular" ? "" : `--${type}`}.{type}
               </Label>
             </Column>
           );
