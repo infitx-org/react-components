@@ -1,12 +1,12 @@
 @use "sass:map";
-@use "../../scss/base/shadows.scss" as *;
+@use "../../scss/base/shadows.scss";
 @use "../../scss/base/colors.scss";
 @use "../../scss/components/input.scss";
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss" as *;
+@use "../../scss/components/any.scss";
 
 .rc-checkbox__wrapper {
-  @include rc-component;
+  @include any.rc-component;
 
   display: inline-flex;
   align-items: center;
@@ -44,7 +44,7 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
   &:hover {
-    box-shadow: $size rgba(0, 0, 0, 0.13);
+    box-shadow: shadows.$size rgba(0, 0, 0, 0.13);
   }
 
   &:not(:disabled) {
@@ -125,7 +125,7 @@
     }
 
     &:focus {
-      box-shadow: $size map.get(themes.$shadows, $kind);
+      box-shadow: shadows.$size map.get(themes.$shadows, $kind);
     }
   }
 }

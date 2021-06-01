@@ -1,12 +1,11 @@
 @use "sass:map";
 @use "../../scss/base/colors.scss";
-@use "../../scss/base/shadows.scss" as *;
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss" as *;
+@use "../../scss/components/any.scss";
 @use "../../scss/components/input.scss";
 
 .rc-message-box {
-  @include rc-component;
+  @include any.rc-component;
 
   border: 2px solid;
   border-color: transparent;

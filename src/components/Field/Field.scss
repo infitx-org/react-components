@@ -1,13 +1,13 @@
 @use "sass:map";
 @use "../../scss/base/colors.scss";
 @use "../../scss/components/input.scss";
-@use "../../scss/base/shadows.scss" as *;
+@use "../../scss/base/shadows.scss";
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss" as *;
-@use "../../scss/functions.scss" as *;
+@use "../../scss/components/any.scss";
+@use "../../scss/functions.scss";
 
 .rc-field {
-  @include rc-component;
+  @include any.rc-component;
 
   border-radius: input.$border-radius;
   position: relative;
@@ -33,7 +33,7 @@
     left: input.$border-left-width;
     top: input.$border-top-width;
     content: "";
-    box-shadow: $size;
+    box-shadow: shadows.$size;
     color: transparent;
     opacity: 0;
     transition: input.$transition;
@@ -81,19 +81,19 @@
   height: input.$size--small;
   padding-left: 10px;
   padding-right: 6px;
-  font-size: inputfontsize(input.$size--small);
+  font-size: functions.inputfontsize(input.$size--small);
 }
 
 .rc-field--medium {
   height: input.$size--medium;
   padding-left: 13px;
   padding-right: 8px;
-  font-size: inputfontsize(input.$size--medium);
+  font-size: functions.inputfontsize(input.$size--medium);
 }
 
 .rc-field--large {
   height: input.$size--large;
   padding-left: 16px;
   padding-right: 10px;
-  font-size: inputfontsize(input.$size--large);
+  font-size: functions.inputfontsize(input.$size--large);
 }

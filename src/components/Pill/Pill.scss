@@ -1,11 +1,10 @@
 @use "sass:map";
 @use "../../scss/base/colors.scss";
-@use "../../scss/base/shadows.scss" as *;
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss" as *;
+@use "../../scss/components/any.scss";
 
 .rc-pill {
-  @include rc-component;
+  @include any.rc-component;
 
   border-radius: 20px;
   border: 2px solid;

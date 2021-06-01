@@ -1,5 +1,4 @@
-@use "../base/fonts.scss" as *;
-@use "../functions.scss" as *;
+@use "../functions.scss";
 @use "./input.scss";
 
 @mixin icon {
@@ -10,14 +9,14 @@
 
 @mixin input {
   &--small {
-    font-size: inputfontsize(input.$size--small);
+    font-size: functions.inputfontsize(input.$size--small);
   }
 
   &--medium {
-    font-size: inputfontsize(input.$size--medium);
+    font-size: functions.inputfontsize(input.$size--medium);
   }
 
   &--large {
-    font-size: inputfontsize(input.$size--large);
+    font-size: functions.inputfontsize(input.$size--large);
   }
 }

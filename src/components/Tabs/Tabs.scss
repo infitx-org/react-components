@@ -1,8 +1,8 @@
 @use "../../scss/base/colors.scss";
-@use "../../scss/components/any.scss" as *;
+@use "../../scss/components/any.scss";
 
 .rc-tabs {
-  @include rc-component;
+  @include any.rc-component;
 
   outline: none;
 }

@@ -1,11 +1,11 @@
 @use "sass:map";
-@use "../../scss/base/shadows.scss" as *;
+@use "../../scss/base/shadows.scss";
 @use "../../scss/base/colors.scss";
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss" as *;
+@use "../../scss/components/any.scss";
 
 .rc-radiogroup {
-  @include rc-component;
+  @include any.rc-component;
 
   padding: 3px;
   font-size: 14px;
@@ -63,7 +63,7 @@
   transition: all 0.2s ease-out;
 
   &:hover {
-    box-shadow: $size rgba(0, 0, 0, 0.13);
+    box-shadow: shadows.$size rgba(0, 0, 0, 0.13);
   }
 
   &:not(:disabled) {
@@ -119,7 +119,7 @@
     }
 
     &:focus {
-      box-shadow: $size map.get(themes.$shadows, $kind);
+      box-shadow: shadows.$size map.get(themes.$shadows, $kind);
     }
   }
 }

@@ -1,14 +1,12 @@
 @use "sass:map";
 @use "../../scss/base/colors.scss";
-@use "../../scss/base/shadows.scss" as *;
-@use "../../scss/base/transitions.scss" as *;
+@use "../../scss/base/shadows.scss";
 @use "../../scss/components/input.scss";
-@use "../../scss/components/any.scss" as *;
+@use "../../scss/components/any.scss";
 @use "../../scss/themes.scss";
-@use "../../scss/functions.scss" as *;
 
 .rc-button {
-  @include rc-component;
+  @include any.rc-component;
 
   outline: none;
   cursor: pointer;
@@ -27,7 +25,7 @@
   border: 1px solid;
   align-items: center;
   border-bottom-width: 2px;
-  box-shadow: $size--closed transparent;
+  box-shadow: shadows.$size--closed transparent;
 
   &:active {
     color: colors.$alpha;
@@ -119,7 +117,7 @@
 
     &:active,
     &:focus {
-      box-shadow: $size map.get(themes.$shadows, $kind);
+      box-shadow: shadows.$size map.get(themes.$shadows, $kind);
     }
 
     &:hover,
