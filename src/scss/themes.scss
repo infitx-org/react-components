@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "./base/shadows.scss" as *;
+@use "./base/shadows.scss";
 @use "./base/colors.scss";
 
 $states: "invalid", "required";
@@ -53,14 +53,14 @@ $theme-kinds--dark: (
 );
 
 $theme-kinds-shadows: (
-  "primary": $shadow-color--primary,
-  "secondary": $shadow-color--secondary,
-  "tertiary": $shadow-color--tertiary,
-  "success": $shadow-color--success,
-  "danger": $shadow-color--danger,
-  "warning": $shadow-color--warning,
-  "dark": $shadow-color--dark,
-  "light": $shadow-color--light,
+  "primary": shadows.$color--primary,
+  "secondary": shadows.$color--secondary,
+  "tertiary": shadows.$color--tertiary,
+  "success": shadows.$color--success,
+  "danger": shadows.$color--danger,
+  "warning": shadows.$color--warning,
+  "dark": shadows.$color--dark,
+  "light": shadows.$color--light,
 );
 
 // State Themes
@@ -86,8 +86,8 @@ $theme-states--dark: (
 );
 
 $theme-states-shadows: (
-  "invalid": $shadow-color--invalid,
-  "required": $shadow-color--required,
+  "invalid": shadows.$color--invalid,
+  "required": shadows.$color--required,
 );
 
 // Color schemes

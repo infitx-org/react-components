@@ -44,7 +44,7 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
   &:hover {
-    box-shadow: $shadow-size rgba(0, 0, 0, 0.13);
+    box-shadow: $size rgba(0, 0, 0, 0.13);
   }
 
   &:not(:disabled) {
@@ -117,7 +117,7 @@
     }
 
     &:focus {
-      box-shadow: $shadow-size map.get($theme-kinds-shadows, $kind);
+      box-shadow: $size map.get($theme-kinds-shadows, $kind);
     }
   }
 }

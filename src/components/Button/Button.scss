@@ -27,7 +27,7 @@
   border: 1px solid;
   align-items: center;
   border-bottom-width: 2px;
-  box-shadow: $shadow-size--closed transparent;
+  box-shadow: $size--closed transparent;
 
   &:active {
     color: colors.$alpha;
@@ -119,7 +119,7 @@
 
     &:active,
     &:focus {
-      box-shadow: $shadow-size map.get($theme-kinds-shadows, $kind);
+      box-shadow: $size map.get($theme-kinds-shadows, $kind);
     }
 
     &:hover,
