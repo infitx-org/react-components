@@ -3,6 +3,7 @@
 
 .rc-tabs {
   @include rc-component;
+
   outline: none;
 }
 
@@ -21,7 +22,7 @@
 
 .rc-tabs__tab {
   flex: 0 1 auto;
-  padding: 0px 10px;
+  padding: 0 10px;
   height: 32px;
   font-size: 14px;
   line-height: 32px;
@@ -38,14 +39,17 @@
   &:hover:not(.rc-tabs__tab--disabled):not(.rc-tabs__tab--selected) {
     border-bottom-color: $color__gray--dark;
   }
+
   &.rc-tabs__tab--selected {
     border-bottom-color: $color__primary;
     color: $color__primary;
   }
+
   &.rc-tabs__tab--focused {
     border-bottom-color: $color__primary--light;
     color: $color__primary--light;
   }
+
   &.rc-tabs__tab--disabled {
     color: $color__disabled;
     cursor: default;

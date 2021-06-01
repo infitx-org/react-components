@@ -8,6 +8,7 @@
 
 .rc-field {
   @include rc-component;
+
   border-radius: $input-border-radius;
   position: relative;
   display: inline-flex;
@@ -53,8 +54,7 @@
 @each $kind in $kinds {
   .rc-field--#{$kind} {
     border-bottom-color: map.get($theme-kinds, $kind);
-  }
-  .rc-field--#{$kind} {
+
     &.rc-field--focused {
       &::before {
         color: map.get($theme-kinds-shadows, $kind);
@@ -66,8 +66,7 @@
 @each $state in "invalid", "required" {
   .rc-field--#{$state} {
     border-bottom-color: map.get($theme-states, $state);
-  }
-  .rc-field--#{$state} {
+
     &.rc-field--focused {
       &::before {
         color: map.get($theme-states-shadows, $state);
@@ -86,17 +85,19 @@
   height: $input-size--small;
   padding-left: 10px;
   padding-right: 6px;
-  font-size: inputFontSize($input-size--small);
+  font-size: inputfontsize($input-size--small);
 }
+
 .rc-field--medium {
   height: $input-size--medium;
   padding-left: 13px;
   padding-right: 8px;
-  font-size: inputFontSize($input-size--medium);
+  font-size: inputfontsize($input-size--medium);
 }
+
 .rc-field--large {
   height: $input-size--large;
   padding-left: 16px;
   padding-right: 10px;
-  font-size: inputFontSize($input-size--large);
+  font-size: inputfontsize($input-size--large);
 }

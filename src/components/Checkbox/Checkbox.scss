@@ -7,6 +7,7 @@
 
 .rc-checkbox__wrapper {
   @include rc-component;
+
   display: inline-flex;
   align-items: center;
   padding: 3px;
@@ -17,6 +18,7 @@
   cursor: pointer;
   font-size: 14px;
 }
+
 .rc-checkbox__label--disabled {
   color: #999;
   cursor: default;
@@ -29,10 +31,10 @@
   position: relative;
   flex: 0 0 20px;
   display: inline-block;
-  margin: 0px;
+  margin: 0;
   margin-right: 5px;
   background: linear-gradient(#fafafa, #f4f4f4);
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.13);
   transition: all 0.2s ease-out;
   flex-basis: 22px;
   width: 22px;
@@ -55,7 +57,7 @@
   }
 
   &:checked {
-    &:after {
+    &::after {
       content: "";
       box-sizing: content-box;
       box-sizing: initial;
@@ -74,7 +76,7 @@
 }
 
 .rc-checkbox--no-margin {
-  margin-right: 0px;
+  margin-right: 0;
 }
 
 .rc-checkbox--round {
@@ -84,7 +86,8 @@
 .rc-checkbox--semi-checked {
   border-color: #ddd;
   background: #ddd;
-  &:after {
+
+  &::after {
     content: "";
     box-sizing: content-box;
     box-sizing: initial;
@@ -107,10 +110,12 @@
         map.get($theme-kinds, $kind)
       );
     }
+
     &:checked:disabled {
       border-color: map.get($theme-kinds--light, $kind);
       background: map.get($theme-kinds--light, $kind);
     }
+
     &:focus {
       box-shadow: $shadow-size map.get($theme-kinds-shadows, $kind);
     }
@@ -122,8 +127,9 @@
     margin-top: 2px;
     opacity: 0;
   }
+
   100% {
-    margin-top: 0px;
+    margin-top: 0;
     opacity: 1;
   }
 }

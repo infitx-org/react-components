@@ -8,29 +8,34 @@
   transform: translateY(-50%);
   opacity: 1;
 }
+
 .placeholder--small {
   font-size: 12px;
 }
+
 .placeholder--medium {
   font-size: 13px;
 }
+
 .placeholder--large {
   font-size: 14px;
 }
 
 .placeholder--active {
   opacity: 0;
+
   &.placeholder--small {
     top: 5px;
     font-size: 7px;
   }
+
   &.placeholder--medium {
     top: 6px;
     font-size: 9px;
   }
+
   &.placeholder--large {
     top: 8px;
     font-size: 11px;
   }
 }
-

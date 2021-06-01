@@ -7,6 +7,7 @@
 
 .rc-message-box {
   @include rc-component;
+
   border: 2px solid;
   border-color: transparent;
   border-radius: $input-border-radius;
@@ -61,12 +62,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0px 2px;
+  margin: 0 2px;
 }
 
 .rc-message-box__messages {
   flex: 1 1 auto;
 }
+
 .rc-message-box__messages--centered {
   flex: 0 0 auto;
 }

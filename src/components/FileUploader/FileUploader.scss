@@ -10,6 +10,7 @@
 
 .rc-fileuploader {
   @include rc-field-input;
+
   flex: 2 1 auto;
   position: relative;
   height: 20px;
