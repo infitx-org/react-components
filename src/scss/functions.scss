@@ -4,6 +4,6 @@
   @return math.div($number, $number * 0 + 1);
 }
 
-@function inputFontSize($size) {
+@function inputfontsize($size) {
   @return 11 + (math.div(strip-units($size) - 24, 7)) + px;
 }

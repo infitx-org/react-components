@@ -109,6 +109,14 @@
         map.get(themes.$colors--dark, $kind),
         map.get(themes.$colors, $kind)
       );
+
+      $color: map.get(themes.$colors--opposite, $kind);
+
+      &::after {
+        background: $color;
+        box-shadow: 2px 0 0 $color, 4px 0 0 $color, 4px -2px 0 $color,
+          4px -4px 0 $color, 4px -8px 0 $color, 4px -6px 0 $color;
+      }
     }
 
     &:checked:disabled {

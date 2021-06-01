@@ -28,12 +28,8 @@
 
   &::before {
     position: absolute;
-    height: calc(
-      100% + #{input.$border-top-width} + #{input.$border-bottom-width}
-    );
-    width: calc(
-      100% + #{input.$border-left-width} + #{input.$border-right-width}
-    );
+    height: 100%;
+    width: 100%;
     left: input.$border-left-width;
     top: input.$border-top-width;
     content: "";

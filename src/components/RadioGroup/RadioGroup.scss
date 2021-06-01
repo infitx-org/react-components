@@ -107,6 +107,10 @@
         map.get(themes.$colors, $kind),
         map.get(themes.$colors--dark, $kind)
       );
+
+      &::after {
+        background: map.get(themes.$colors--opposite, $kind);
+      }
     }
 
     &:checked:disabled {
