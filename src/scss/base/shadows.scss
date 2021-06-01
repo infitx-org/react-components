@@ -1,15 +1,15 @@
-@use "./colors.scss" as *;
+@use "./colors.scss";
 
-$shadow-size: 0 0 0 3px !default;
-$shadow-size--closed: 0 0 0 0 !default;
+$size: 0 0 0 3px !default;
+$size--closed: 0 0 0 0 !default;
 
-$shadow-color--primary: lighten($color__primary, 20%) !default;
-$shadow-color--secondary: lighten($color__secondary, 30%) !default;
-$shadow-color--tertiary: lighten($color__tertiary, 15%) !default;
-$shadow-color--success: lighten($color__success, 30%) !default;
-$shadow-color--danger: lighten($color__danger, 30%) !default;
-$shadow-color--warning: lighten($color__warning, 25%) !default;
-$shadow-color--dark: lighten($color__dark, 30%) !default;
-$shadow-color--light: lighten($color__light, 30%) !default;
-$shadow-color--invalid: lighten($color__danger, 30%) !default;
-$shadow-color--required: lighten($color__warning, 25%) !default;
+$color--primary: lighten(colors.$primary, 20%) !default;
+$color--secondary: lighten(colors.$secondary, 30%) !default;
+$color--tertiary: lighten(colors.$tertiary, 15%) !default;
+$color--success: lighten(colors.$success, 30%) !default;
+$color--danger: lighten(colors.$danger, 30%) !default;
+$color--warning: lighten(colors.$warning, 25%) !default;
+$color--dark: lighten(colors.$dark, 30%) !default;
+$color--light: lighten(colors.$light, 30%) !default;
+$color--invalid: lighten(colors.$danger, 30%) !default;
+$color--required: lighten(colors.$warning, 25%) !default;

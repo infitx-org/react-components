@@ -1,11 +1,11 @@
 @use "sass:map";
-@use "../../scss/base/shadows.scss" as *;
-@use "../../scss/base/colors.scss" as *;
-@use "../../scss/themes.scss" as *;
-@use "../../scss/components/any.scss" as *;
+@use "../../scss/base/shadows.scss";
+@use "../../scss/base/colors.scss";
+@use "../../scss/themes.scss";
+@use "../../scss/components/any.scss";
 
 .rc-radiogroup {
-  @include rc-component;
+  @include any.rc-component;
 
   padding: 3px;
   font-size: 14px;
@@ -63,7 +63,7 @@
   transition: all 0.2s ease-out;
 
   &:hover {
-    box-shadow: $shadow-size rgba(0, 0, 0, 0.13);
+    box-shadow: shadows.$size rgba(0, 0, 0, 0.13);
   }
 
   &:not(:disabled) {
@@ -98,24 +98,28 @@
   }
 }
 
-@each $kind in $kinds {
+@each $kind in themes.$kinds {
   .rc-radio__input--#{$kind} {
     &:checked {
-      border-color: map.get($theme-kinds--dark, $kind);
+      border-color: map.get(themes.$colors--dark, $kind);
       background: linear-gradient(
         0deg,
-        map.get($theme-kinds, $kind),
-        map.get($theme-kinds--dark, $kind)
+        map.get(themes.$colors, $kind),
+        map.get(themes.$colors--dark, $kind)
       );
+
+      &::after {
+        background: map.get(themes.$colors--opposite, $kind);
+      }
     }
 
     &:checked:disabled {
-      border-color: map.get($theme-kinds--light, $kind);
-      background: map.get($theme-kinds--light, $kind);
+      border-color: map.get(themes.$colors--light, $kind);
+      background: map.get(themes.$colors--light, $kind);
     }
 
     &:focus {
-      box-shadow: $shadow-size map.get($theme-kinds-shadows, $kind);
+      box-shadow: shadows.$size map.get(themes.$shadows, $kind);
     }
   }
 }

@@ -1,14 +1,12 @@
 @use "sass:map";
-@use "../../scss/base/colors.scss" as *;
-@use "../../scss/base/shadows.scss" as *;
-@use "../../scss/base/transitions.scss" as *;
-@use "../../scss/components/inputs.scss" as *;
-@use "../../scss/components/any.scss" as *;
-@use "../../scss/themes.scss" as *;
-@use "../../scss/functions.scss" as *;
+@use "../../scss/base/colors.scss";
+@use "../../scss/base/shadows.scss";
+@use "../../scss/components/input.scss";
+@use "../../scss/components/any.scss";
+@use "../../scss/themes.scss";
 
 .rc-button {
-  @include rc-component;
+  @include any.rc-component;
 
   outline: none;
   cursor: pointer;
@@ -20,19 +18,19 @@
   text-decoration: none;
   transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
     color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), background 0.1s ease-out;
-  border-radius: $input-border-radius;
+  border-radius: input.$border-radius;
   font-style: normal;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   border: 1px solid;
   align-items: center;
   border-bottom-width: 2px;
-  box-shadow: $shadow-size--closed transparent;
+  box-shadow: shadows.$size--closed transparent;
 
   &:active {
-    color: $color__alpha;
-    fill: $color__alpha;
-    stroke: $color__alpha;
+    color: colors.$alpha;
+    fill: colors.$alpha;
+    stroke: colors.$alpha;
   }
 
   &:hover,
@@ -74,80 +72,80 @@
 
 .rc-button--extra-small {
   padding: 4px 7px;
-  font-size: inputfontsize($input-size--extra-small);
-  height: $input-size--extra-small;
+  font-size: inputfontsize(input.$size--extra-small);
+  height: input.$size--extra-small;
 }
 
 .rc-button--small {
   padding: 6px 10px;
-  font-size: inputfontsize($input-size--small);
-  height: $input-size--small;
+  font-size: inputfontsize(input.$size--small);
+  height: input.$size--small;
 }
 
 .rc-button--medium {
   padding: 8px 13px;
-  font-size: inputfontsize($input-size--medium);
-  height: $input-size--medium;
+  font-size: inputfontsize(input.$size--medium);
+  height: input.$size--medium;
 }
 
 .rc-button--large {
   padding: 10px 16px;
-  font-size: inputfontsize($input-size--large);
-  height: $input-size--large;
+  font-size: inputfontsize(input.$size--large);
+  height: input.$size--large;
 }
 
-@each $kind in $kinds {
+@each $kind in themes.$kinds {
   .rc-button--#{$kind} {
-    background-color: map.get($theme-kinds, $kind);
-    border-color: map.get($theme-kinds, $kind);
-    color: map.get($theme-kinds--opposite, $kind);
-    fill: map.get($theme-kinds--opposite, $kind);
-    stroke: map.get($theme-kinds--opposite, $kind);
+    background-color: map.get(themes.$colors, $kind);
+    border-color: map.get(themes.$colors, $kind);
+    color: map.get(themes.$colors--opposite, $kind);
+    fill: map.get(themes.$colors--opposite, $kind);
+    stroke: map.get(themes.$colors--opposite, $kind);
 
     &.rc-button--noFill {
       background-color: transparent;
-      color: map.get($theme-kinds--dark, $kind);
-      fill: map.get($theme-kinds, $kind);
-      stroke: map.get($theme-kinds, $kind);
+      color: map.get(themes.$colors--dark, $kind);
+      fill: map.get(themes.$colors, $kind);
+      stroke: map.get(themes.$colors, $kind);
     }
 
     &:active {
-      color: $color__alpha;
-      fill: $color__alpha;
-      stroke: $color__alpha;
+      color: colors.$alpha;
+      fill: colors.$alpha;
+      stroke: colors.$alpha;
     }
 
     &:active,
     &:focus {
-      box-shadow: $shadow-size map.get($theme-kinds-shadows, $kind);
+      box-shadow: shadows.$size map.get(themes.$shadows, $kind);
     }
 
     &:hover,
     &:focus {
-      background-color: map.get($theme-kinds, $kind);
-      border-color: map.get($theme-kinds, $kind);
+      background-color: map.get(themes.$colors, $kind);
+      border-color: map.get(themes.$colors, $kind);
 
       &.rc-button--noFill {
-        color: map.get($theme-kinds--opposite, $kind);
-        fill: map.get($theme-kinds--opposite, $kind);
-        stroke: map.get($theme-kinds--opposite, $kind);
+        color: map.get(themes.$colors--opposite, $kind);
+        fill: map.get(themes.$colors--opposite, $kind);
+        stroke: map.get(themes.$colors--opposite, $kind);
       }
     }
 
     &:hover:active {
-      background: map.get($theme-kinds--dark, $kind);
+      background: map.get(themes.$colors--dark, $kind);
 
       &.rc-button--noFill {
-        color: $color__alpha;
-        fill: $color__alpha;
-        stroke: $color__alpha;
+        color: colors.$alpha;
+        fill: colors.$alpha;
+        stroke: colors.$alpha;
       }
     }
   }
 }
 
 .rc-button--disabled {
-  opacity: $input-opacity--disabled;
+  opacity: input.$opacity--disabled;
   pointer-events: none;
   cursor: auto;
 }

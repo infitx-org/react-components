@@ -1,9 +1,8 @@
-@use "../../scss/base/colors.scss" as *;
-@use "../../scss/base/transitions.scss" as *;
-@use "../../scss/components/fields.scss" as *;
+@use "../../scss/base/colors.scss";
+@use "../../scss/components/field.scss";
 
 .rc-datepicker {
-  @include rc-field-input;
+  @include field.input;
 
   flex: 2 1 auto;
   vertical-align: middle;
@@ -17,5 +16,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: $color__dark-gray;
+  color: colors.$dark-gray;
 }

@@ -1,6 +1,5 @@
-@use "../../../scss/base/fonts.scss" as *;
-@use "../../../scss/base/colors.scss" as *;
-@use "../../../scss/base/transitions.scss" as *;
+@use "../../../scss/base/fonts.scss";
+@use "../../../scss/base/colors.scss";
 
 // Override
 .DayPicker {
@@ -9,8 +8,8 @@
   justify-content: center;
   padding: 10px 0 5px 0;
   user-select: none;
-  font-family: $font-family, $font-family-fallback;
-  letter-spacing: $letter-spacing;
+  font-family: fonts.$family, fonts.$family-fallback;
+  letter-spacing: fonts.$letter-spacing;
   border: none;
   position: absolute;
   z-index: 100000;
@@ -110,7 +109,7 @@
 }
 
 .DayPicker-Day--today {
-  color: $color__secondary;
+  color: colors.$secondary;
   font-weight: bold;
 }
 
@@ -137,12 +136,12 @@
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-  color: $color__primary--opposite;
+  color: colors.$primary--opposite;
   font-weight: bold;
-  background-color: $color__primary;
+  background-color: colors.$primary;
 
   &:hover {
-    background-color: $color__primary;
+    background-color: colors.$primary;
   }
 }
 

@@ -1,0 +1,22 @@
+@use "../functions.scss";
+@use "./input.scss";
+
+@mixin icon {
+  flex: 0 0 auto;
+  fill: #999;
+  margin-left: 5px;
+}
+
+@mixin input {
+  &--small {
+    font-size: functions.inputfontsize(input.$size--small);
+  }
+
+  &--medium {
+    font-size: functions.inputfontsize(input.$size--medium);
+  }
+
+  &--large {
+    font-size: functions.inputfontsize(input.$size--large);
+  }
+}

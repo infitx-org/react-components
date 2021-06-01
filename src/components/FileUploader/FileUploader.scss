@@ -1,6 +1,5 @@
-@use "../../scss/base/colors.scss" as *;
-@use "../../scss/base/transitions.scss" as *;
-@use "../../scss/components/fields.scss" as *;
+@use "../../scss/base/colors.scss";
+@use "../../scss/components/field.scss";
 
 .rc-fileuploader__input {
   opacity: 0;
@@ -9,7 +8,7 @@
 }
 
 .rc-fileuploader {
-  @include rc-field-input;
+  @include field.input;
 
   flex: 2 1 auto;
   position: relative;
@@ -20,5 +19,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: $color__dark-gray;
+  color: colors.$dark-gray;
 }

@@ -1,47 +1,43 @@
 @use "sass:map";
-@use "../../scss/base/colors.scss" as *;
-@use "../../scss/components/inputs.scss" as *;
-@use "../../scss/base/shadows.scss" as *;
-@use "../../scss/themes.scss" as *;
-@use "../../scss/components/any.scss" as *;
-@use "../../scss/functions.scss" as *;
+@use "../../scss/base/colors.scss";
+@use "../../scss/components/input.scss";
+@use "../../scss/base/shadows.scss";
+@use "../../scss/themes.scss";
+@use "../../scss/components/any.scss";
+@use "../../scss/functions.scss";
 
 .rc-field {
-  @include rc-component;
+  @include any.rc-component;
 
-  border-radius: $input-border-radius;
+  border-radius: input.$border-radius;
   position: relative;
   display: inline-flex;
   align-items: center;
   width: 200px;
-  transition: $input-transition;
-  background: $input-background;
-  border-bottom-color: $input-border-bottom-color;
-  border-right-color: $input-border-right-color;
-  border-left-color: $input-border-left-color;
-  border-top-color: $input-border-top-color;
-  border-left-width: $input-border-left-width;
-  border-right-width: $input-border-right-width;
-  border-top-width: $input-border-top-width;
-  border-bottom-width: $input-border-bottom-width;
+  transition: input.$transition;
+  background: input.$background;
+  border-bottom-color: input.$border-bottom-color;
+  border-right-color: input.$border-right-color;
+  border-left-color: input.$border-left-color;
+  border-top-color: input.$border-top-color;
+  border-left-width: input.$border-left-width;
+  border-right-width: input.$border-right-width;
+  border-top-width: input.$border-top-width;
+  border-bottom-width: input.$border-bottom-width;
   border-style: solid;
 
   &::before {
     position: absolute;
-    height: calc(
-      100% + #{$input-border-top-width} + #{$input-border-bottom-width}
-    );
-    width: calc(
-      100% + #{$input-border-left-width} + #{$input-border-right-width}
-    );
-    left: -$input-border-left-width;
-    top: -$input-border-top-width;
+    height: 100%;
+    width: 100%;
+    left: input.$border-left-width;
+    top: input.$border-top-width;
     content: "";
-    box-shadow: $shadow-size;
+    box-shadow: shadows.$size;
     color: transparent;
     opacity: 0;
-    transition: $input-transition;
-    border-radius: $input-border-radius;
+    transition: input.$transition;
+    border-radius: input.$border-radius;
   }
 }
 
@@ -51,13 +47,13 @@
   }
 }
 
-@each $kind in $kinds {
+@each $kind in themes.$kinds {
   .rc-field--#{$kind} {
-    border-bottom-color: map.get($theme-kinds, $kind);
+    border-bottom-color: map.get(themes.$colors, $kind);
 
     &.rc-field--focused {
       &::before {
-        color: map.get($theme-kinds-shadows, $kind);
+        color: map.get(themes.$shadows, $kind);
       }
     }
   }
@@ -65,39 +61,39 @@
 
 @each $state in "invalid", "required" {
   .rc-field--#{$state} {
-    border-bottom-color: map.get($theme-states, $state);
+    border-bottom-color: map.get(themes.$colors, $state);
 
     &.rc-field--focused {
       &::before {
-        color: map.get($theme-states-shadows, $state);
+        color: map.get(themes.$shadows, $state);
       }
     }
   }
 }
 
 .rc-field--disabled {
-  opacity: $input-opacity--disabled;
+  opacity: input.$opacity--disabled;
   pointer-events: none;
   cursor: auto;
 }
 
 .rc-field--small {
-  height: $input-size--small;
+  height: input.$size--small;
   padding-left: 10px;
   padding-right: 6px;
-  font-size: inputfontsize($input-size--small);
+  font-size: functions.inputfontsize(input.$size--small);
 }
 
 .rc-field--medium {
-  height: $input-size--medium;
+  height: input.$size--medium;
   padding-left: 13px;
   padding-right: 8px;
-  font-size: inputfontsize($input-size--medium);
+  font-size: functions.inputfontsize(input.$size--medium);
 }
 
 .rc-field--large {
-  height: $input-size--large;
+  height: input.$size--large;
   padding-left: 16px;
   padding-right: 10px;
-  font-size: inputfontsize($input-size--large);
+  font-size: functions.inputfontsize(input.$size--large);
 }

@@ -1,5 +1,5 @@
-@use "../../../scss/base/colors.scss" as *;
-@use "../../../scss/components/inputs.scss" as *;
+@use "../../../scss/base/colors.scss";
+@use "../../../scss/components/input.scss";
 
 .rc-select__options {
   position: absolute;
@@ -8,12 +8,12 @@
   z-index: 1000;
   animation: fadeInOptions 0.15s ease-in-out;
   overflow-y: auto;
-  border-bottom: 2px solid $color__tertiary;
-  border-radius: $input-border-radius;
+  border-bottom: 2px solid colors.$tertiary;
+  border-radius: input.$border-radius;
 }
 
 .rc-select__options--reverse {
-  border-top: 2px solid $color__tertiary;
+  border-top: 2px solid colors.$tertiary;
   border-bottom: none;
 }
 
@@ -27,11 +27,11 @@
   line-height: 40px;
   font-size: 13px;
   background: #fff;
-  border-left: 2px solid $color__gray;
-  border-right: 2px solid $color__gray;
+  border-left: 2px solid colors.$gray;
+  border-right: 2px solid colors.$gray;
   cursor: pointer;
-  color: $color__dark-gray--lighter;
-  fill: $color__dark-gray--lighter;
+  color: colors.$dark-gray--lighter;
+  fill: colors.$dark-gray--lighter;
   transition: border 0.05s ease-out, background 0.05s ease-out,
     color 0.05s ease-out;
 }
@@ -62,16 +62,16 @@
 
 .rc-select__option:hover,
 .rc-select__option--highlighted {
-  background: $color__tertiary--light;
-  border-color: $color__tertiary--light;
-  color: $color__dark-gray;
-  fill: $color__dark-gray;
+  background: colors.$tertiary--light;
+  border-color: colors.$tertiary--light;
+  color: colors.$dark-gray;
+  fill: colors.$dark-gray;
 }
 
 .rc-select__option--selected,
 .rc-select__option--selected:hover {
-  background: $color__primary--dark;
-  border-color: $color__primary--dark;
+  background: colors.$primary--dark;
+  border-color: colors.$primary--dark;
   color: #fff;
   fill: #fff;
 }
@@ -79,8 +79,8 @@
 .rc-select__option--disabled,
 .rc-select__option--disabled:hover {
   background: #fff;
-  color: $color__disabled;
-  border-color: $color__disabled;
+  color: colors.$disabled;
+  border-color: colors.$disabled;
   cursor: auto;
 }
 
@@ -91,8 +91,8 @@
 }
 
 .rc-select__option--clear:hover {
-  color: $color__danger;
-  fill: $color__danger;
+  color: colors.$danger;
+  fill: colors.$danger;
   background: #fee;
 }
 
@@ -120,11 +120,11 @@
   justify-content: center;
   height: 40px;
   background: #fff;
-  color: $color__gray--darker;
-  fill: $color__gray--darker;
+  color: colors.$gray--darker;
+  fill: colors.$gray--darker;
   line-height: 40px;
-  border-left: 2px solid $color__tertiary;
-  border-right: 2px solid $color__tertiary;
+  border-left: 2px solid colors.$tertiary;
+  border-right: 2px solid colors.$tertiary;
 }
 
 .rc-select__option--no-options__message {

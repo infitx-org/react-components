@@ -1,12 +1,12 @@
 @use "sass:map";
-@use "../../scss/base/shadows.scss" as *;
-@use "../../scss/base/colors.scss" as *;
-@use "../../scss/components/inputs.scss" as *;
-@use "../../scss/themes.scss" as *;
-@use "../../scss/components/any.scss" as *;
+@use "../../scss/base/shadows.scss";
+@use "../../scss/base/colors.scss";
+@use "../../scss/components/input.scss";
+@use "../../scss/themes.scss";
+@use "../../scss/components/any.scss";
 
 .rc-checkbox__wrapper {
-  @include rc-component;
+  @include any.rc-component;
 
   display: inline-flex;
   align-items: center;
@@ -40,11 +40,11 @@
   width: 22px;
   height: 20px;
   border: none;
-  border-radius: $input-border-radius;
+  border-radius: input.$border-radius;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
   &:hover {
-    box-shadow: $shadow-size rgba(0, 0, 0, 0.13);
+    box-shadow: shadows.$size rgba(0, 0, 0, 0.13);
   }
 
   &:not(:disabled) {
@@ -100,24 +100,32 @@
   }
 }
 
-@each $kind in $kinds {
+@each $kind in themes.$kinds {
   .rc-checkbox--#{$kind} {
     &:checked {
-      border-color: map.get($theme-kinds--dark, $kind);
+      border-color: map.get(themes.$colors--dark, $kind);
       background: linear-gradient(
         0deg,
-        map.get($theme-kinds--dark, $kind),
-        map.get($theme-kinds, $kind)
+        map.get(themes.$colors--dark, $kind),
+        map.get(themes.$colors, $kind)
       );
+
+      $color: map.get(themes.$colors--opposite, $kind);
+
+      &::after {
+        background: $color;
+        box-shadow: 2px 0 0 $color, 4px 0 0 $color, 4px -2px 0 $color,
+          4px -4px 0 $color, 4px -8px 0 $color, 4px -6px 0 $color;
+      }
     }
 
     &:checked:disabled {
-      border-color: map.get($theme-kinds--light, $kind);
-      background: map.get($theme-kinds--light, $kind);
+      border-color: map.get(themes.$colors--light, $kind);
+      background: map.get(themes.$colors--light, $kind);
     }
 
     &:focus {
-      box-shadow: $shadow-size map.get($theme-kinds-shadows, $kind);
+      box-shadow: shadows.$size map.get(themes.$shadows, $kind);
     }
   }
 }
