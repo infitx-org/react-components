@@ -1,6 +1,6 @@
 @use "../base/fonts.scss" as *;
 @use "../functions.scss" as *;
-@use "./inputs.scss" as *;
+@use "./input.scss";
 
 @mixin rc-field-icon {
   flex: 0 0 auto;
@@ -10,14 +10,14 @@
 
 @mixin rc-field-input {
   &--small {
-    font-size: inputfontsize($input-size--small);
+    font-size: inputfontsize(input.$size--small);
   }
 
   &--medium {
-    font-size: inputfontsize($input-size--medium);
+    font-size: inputfontsize(input.$size--medium);
   }
 
   &--large {
-    font-size: inputfontsize($input-size--large);
+    font-size: inputfontsize(input.$size--large);
   }
 }

@@ -2,7 +2,7 @@
 @use "../../scss/base/colors.scss";
 @use "../../scss/base/shadows.scss" as *;
 @use "../../scss/base/transitions.scss" as *;
-@use "../../scss/components/inputs.scss" as *;
+@use "../../scss/components/input.scss";
 @use "../../scss/components/any.scss" as *;
 @use "../../scss/themes.scss" as *;
 @use "../../scss/functions.scss" as *;
@@ -20,7 +20,7 @@
   text-decoration: none;
   transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
     color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), background 0.1s ease-out;
-  border-radius: $input-border-radius;
+  border-radius: input.$border-radius;
   font-style: normal;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -74,26 +74,26 @@
 
 .rc-button--extra-small {
   padding: 4px 7px;
-  font-size: inputfontsize($input-size--extra-small);
-  height: $input-size--extra-small;
+  font-size: inputfontsize(input.$size--extra-small);
+  height: input.$size--extra-small;
 }
 
 .rc-button--small {
   padding: 6px 10px;
-  font-size: inputfontsize($input-size--small);
-  height: $input-size--small;
+  font-size: inputfontsize(input.$size--small);
+  height: input.$size--small;
 }
 
 .rc-button--medium {
   padding: 8px 13px;
-  font-size: inputfontsize($input-size--medium);
-  height: $input-size--medium;
+  font-size: inputfontsize(input.$size--medium);
+  height: input.$size--medium;
 }
 
 .rc-button--large {
   padding: 10px 16px;
-  font-size: inputfontsize($input-size--large);
-  height: $input-size--large;
+  font-size: inputfontsize(input.$size--large);
+  height: input.$size--large;
 }
 
 @each $kind in $kinds {
@@ -147,7 +147,7 @@
 }
 
 .rc-button--disabled {
-  opacity: $input-opacity--disabled;
+  opacity: input.$opacity--disabled;
   pointer-events: none;
   cursor: auto;
 }

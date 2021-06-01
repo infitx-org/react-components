@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "../../scss/base/shadows.scss" as *;
 @use "../../scss/base/colors.scss";
-@use "../../scss/components/inputs.scss" as *;
+@use "../../scss/components/input.scss";
 @use "../../scss/themes.scss" as *;
 @use "../../scss/components/any.scss" as *;
 
@@ -40,7 +40,7 @@
   width: 22px;
   height: 20px;
   border: none;
-  border-radius: $input-border-radius;
+  border-radius: input.$border-radius;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
   &:hover {
