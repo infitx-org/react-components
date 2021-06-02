@@ -14,7 +14,7 @@ exports[`renders the button correctly when multiple props are set 1`] = `
         class="rc-button__icon rc-button__icon--left"
       >
         <div
-          class="rc-spinner"
+          class="rc-spinner rc-spinner--primary"
           style="width: 16px; height: 16px;"
         >
           <svg

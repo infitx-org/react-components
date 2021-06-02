@@ -1,4 +1,6 @@
+@use "sass:map";
 @use "../../scss/base/colors.scss";
+@use "../../scss/themes.scss";
 
 .rc-spinner {
   transform: translateZ(0);
@@ -18,6 +20,14 @@
   animation: rotateSpinner 3s linear infinite;
 }
 
+@each $kind in themes.$kinds {
+  .rc-spinner--#{$kind} {
+    .rc-spinner__svg-path {
+      stroke: map.get(themes.$colors, $kind);
+    }
+  }
+}
+
 .rc-spinner__svg-path {
   animation: rotateSpinner 0.8s cubic-bezier(0.53, 0.26, 0.54, 0.74) infinite;
   fill: none;
@@ -25,7 +35,6 @@
   stroke-dashoffset: 0;
   transform-origin: center;
   stroke-linecap: round;
-  stroke: colors.$primary;
 }
 
 @keyframes rotateSpinner {

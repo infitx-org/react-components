@@ -1,6 +1,11 @@
 import React from "react";
+import { Kind, InputSize } from "types";
 import classnames from "classnames";
 import "./Spinner.scss";
+
+function getNumericSize(size: `${InputSize}`) {
+  return { small: 20, medium: 40, large: 60 }[size];
+}
 
 interface Point {
   x: number;
@@ -46,14 +51,19 @@ const describeArc = (
 };
 
 export type SpinnerProps = {
-  size?: number | "s" | "m" | "l";
+  size?: number | `${InputSize}`;
   center?: boolean;
   color?: string;
+  kind?: `${Kind}`;
 };
 
-function Spinner({ size = "s", center, color }: SpinnerProps): JSX.Element {
-  const realSize =
-    typeof size === "string" ? { s: 20, m: 40, l: 60 }[size] : size;
+function Spinner({
+  size = "small",
+  center,
+  kind = "primary",
+  color,
+}: SpinnerProps): JSX.Element {
+  const realSize = typeof size === "string" ? getNumericSize(size) : size;
   const strokeWidth = realSize / 10;
   const width = `${realSize}px`;
   const height = `${realSize}px`;
@@ -66,6 +76,7 @@ function Spinner({ size = "s", center, color }: SpinnerProps): JSX.Element {
 
   const spinnerClassName = classnames([
     "rc-spinner",
+    `rc-spinner--${kind}`,
     center && "rc-spinner--center",
   ]);
 
