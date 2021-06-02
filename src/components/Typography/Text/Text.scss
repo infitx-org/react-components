@@ -1,0 +1,42 @@
+@use "../../../scss/components/any.scss";
+
+.rc-text {
+  @include any.rc-component;
+}
+
+.rc-text--large {
+  font-size: 1.5rem;
+}
+
+.rc-text--medium {
+  font-size: 1rem;
+}
+
+.rc-text--small {
+  font-size: 0.75rem;
+}
+
+.rc-text--highlight {
+  color: #06c;
+}
+
+.rc-text--light {
+  color: #ccc;
+}
+
+.rc-text--underline {
+  text-decoration: underline;
+}
+
+.rc-text--bold {
+  font-weight: bold;
+}
+
+.rc-text--disabled {
+  opacity: 0.5;
+}
+
+.rc-text--clickable {
+  cursor: pointer;
+  user-select: none;
+}

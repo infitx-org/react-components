@@ -19,6 +19,7 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
+  // eslint-disable-next-line
   onChange: console.log,
 };
 

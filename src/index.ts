@@ -53,4 +53,5 @@ export {
   TabProps,
   TabsProps,
 } from "./components/Tabs";
+export { default as Text, TextProps } from "./components/Typography/Text";
 export { default as TextField, TextFieldProps } from "./components/TextField";
