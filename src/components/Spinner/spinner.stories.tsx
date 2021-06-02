@@ -8,9 +8,17 @@ export default {
   component: Spinner,
 };
 
-export const Default = () => <Spinner />;
+const Template = (args) => <Spinner {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  size: "small",
+  kind: "primary",
+  color: undefined,
+};
+
 export const Colors = () => (
-  <Row align="center space-between">
+  <Row align="center space-around">
     <Spinner color="#c33" />
     <Spinner color="#3c3" />
     <Spinner color="#33c" />
@@ -21,15 +29,14 @@ export const Colors = () => (
 
 export const PresetSizes = () => (
   <Row align="center space-between">
-    <Spinner size="s" />
-    <Spinner size="m" />
-    <Spinner size="l" />
+    <Spinner size="small" />
+    <Spinner size="medium" />
+    <Spinner size="large" />
   </Row>
 );
 
 export const NumericSizes = () => (
   <Row align="center space-between">
-    <Spinner size={10} />
     <Spinner size={20} />
     <Spinner size={30} />
     <Spinner size={40} />
@@ -44,8 +51,8 @@ export const CenteredRelativeToParent = () => (
     style={{
       height: "400px",
       width: "400px",
-      border: "5px dashed #ccc",
-      background: "linear-gradient(30deg, #f8f8f8, #d8d8d8)",
+      borderRadius: "10%",
+      background: "linear-gradient(30deg, #f8f8f8, #e8e8e8)",
     }}
   >
     <Spinner size={100} center />
