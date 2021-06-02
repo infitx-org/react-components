@@ -1,7 +1,7 @@
 /* eslint no-console: "off" */
 import { Size, Kind } from "types";
 import Row from "components/Layout/Row";
-import Dropdown from "./Dropdown";
+import Dropdown, { DropdownItem } from "./Dropdown";
 
 export default {
   title: "Components/Dropdown",
@@ -22,7 +22,10 @@ const icon = (
 );
 
 const Template = (args) => (
-  <Dropdown {...args} onClick={log} label="I am a button" />
+  <Dropdown {...args} onClick={log} label="I am a button">
+    <DropdownItem>It is a very very long option</DropdownItem>
+    <DropdownItem>It is a very very long option</DropdownItem>
+  </Dropdown>
 );
 
 export const Default = Template.bind({});

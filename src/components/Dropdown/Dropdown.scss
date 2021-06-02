@@ -1,12 +1,48 @@
+@use "../../scss/components/any.scss";
+@use "../../scss/themes.scss";
+@use "sass:map";
+
 .rc-dropdown {
+  @include any.rc-component;
+
   position: relative;
+  display: inline-flex;
 }
 
 .rc-dropdown__overlay {
   position: absolute;
   top: 100%;
   left: 0;
-  height: 100px;
-  width: 100px;
-  background: #f00;
+  min-width: 100%;
+  padding: 3px 0;
+}
+
+.rc-dropdown__overlay-content {
+  @include any.rc-component;
+
+  border: 1px solid #ccc;
+  width: 100%;
+  backdrop-filter: blur(4px);
+  background: rgba(200, 200, 200, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.rc-dropdown__item {
+  @include any.rc-component;
+
+  padding: 8px 10px;
+  color: #333;
+  cursor: pointer;
+}
+
+@each $kind in themes.$kinds {
+  .rc-dropdown__item--#{$kind} {
+    &:hover {
+      background: map.get(themes.$colors--dark, $kind);
+      color: map.get(themes.$colors--opposite, $kind);
+    }
+  }
 }
