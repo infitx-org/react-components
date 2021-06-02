@@ -20,7 +20,8 @@ function getParentOverflow<T extends HTMLElement>(element: T): HTMLElement {
 }
 
 export default function getSpaceAvailability<T extends HTMLDivElement>(
-  element: T | null
+  element: T | null,
+  within: boolean = false
 ): [number, number, boolean] {
   if (!element || !element.parentNode) {
     return [0, 0, false];
@@ -42,8 +43,19 @@ export default function getSpaceAvailability<T extends HTMLDivElement>(
     (parentRect.top - containerRect.top);
   const spaceBottom = Math.min(containerSpaceBottom, windowSpaceBottom);
 
-  if (elementRect.height < spaceBottom || spaceBottom > spaceTop) {
-    return [parentRect.height, spaceBottom, false];
+  const finalSpaceTop = within ? spaceTop + parentRect.height : spaceTop;
+  const finalSpaceBottom = within
+    ? spaceBottom + parentRect.height
+    : spaceBottom;
+  console.log(within, finalSpaceBottom, spaceBottom);
+
+  const finalTop = within ? 0 : parentRect.height;
+
+  if (
+    elementRect.height < finalSpaceBottom ||
+    finalSpaceBottom > finalSpaceTop
+  ) {
+    return [finalTop, finalSpaceBottom, false];
   }
-  return [parentRect.height, spaceTop, true];
+  return [finalTop, finalSpaceTop, true];
 }
