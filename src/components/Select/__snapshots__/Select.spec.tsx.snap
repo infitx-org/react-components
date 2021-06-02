@@ -17,8 +17,8 @@ exports[`renders the Select correctly when multiple props are set 1`] = `
       value=""
     />
     <svg
-      class="rc-select__indicator"
-      fill="rgba(0,0,0,0.4)"
+      class="rc-indicator rc-select__indicator"
+      fill="#000"
       height="11"
       stroke="transparent"
       width="11"

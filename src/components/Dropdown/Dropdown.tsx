@@ -1,20 +1,27 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind } from "types";
+import { Kind, Size } from "types";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import Indicator from "components/Select/components/Indicator";
 import Button, { ButtonProps } from "components/Button";
 import "./Dropdown.scss";
 
 interface DropdownItemProps {
+  size?: Size;
   kind?: Kind;
   label?: string;
   children?: React.ReactNode;
 }
-export function DropdownItem({ kind, label, children }: DropdownItemProps) {
+export function DropdownItem({
+  size,
+  kind,
+  label,
+  children,
+}: DropdownItemProps) {
   const dropdownItemClassName = classnames([
     "rc-dropdown__item",
     `rc-dropdown__item--${kind}`,
+    `rc-dropdown__item--${size}`,
   ]);
   return (
     <div className={dropdownItemClassName} role="presentation">
@@ -43,6 +50,7 @@ export default function Dropdown({
   kind = "primary",
   className,
   children,
+  style,
   size = "large",
   ...props
 }: DropdownProps) {
@@ -56,9 +64,10 @@ export default function Dropdown({
   const buttonClassname = classnames([className]);
 
   return (
-    <div className="rc-dropdown">
+    <div className="rc-dropdown" style={style}>
       <Button
         {...props}
+        size={size}
         kind={kind}
         onClick={() => setOpen(!open)}
         className={buttonClassname}
@@ -71,7 +80,7 @@ export default function Dropdown({
           {React.Children.toArray(children)
             .filter(isDropdownItem)
             .map((child) =>
-              React.cloneElement(child, { ...child.props, kind })
+              React.cloneElement(child, { ...child.props, kind, size })
             )}
         </DropdownOverlay>
       )}

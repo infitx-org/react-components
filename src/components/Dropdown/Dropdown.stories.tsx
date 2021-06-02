@@ -22,7 +22,7 @@ const icon = (
 );
 
 const Template = (args) => (
-  <Dropdown {...args} onClick={log} label="I am a button">
+  <Dropdown {...args} onClick={log} label="I am a dropdown">
     <DropdownItem>It is a very very long option</DropdownItem>
     <DropdownItem>It is a very very long option</DropdownItem>
   </Dropdown>
@@ -74,6 +74,11 @@ WithIconOnTheRight.args = {
 
 const kinds = Object.values(Kind);
 const sharedProps = (kind) => ({
+  children: [
+    <DropdownItem>It is a very very long option</DropdownItem>,
+    <DropdownItem>It is a very very long option</DropdownItem>,
+    <DropdownItem>It is a very very long option</DropdownItem>,
+  ],
   size: "medium",
   style: {
     margin: "2px",

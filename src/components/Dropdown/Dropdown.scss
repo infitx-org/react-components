@@ -1,4 +1,6 @@
 @use "../../scss/components/any.scss";
+@use "../../scss/components/input.scss";
+@use "../../scss/functions.scss";
 @use "../../scss/themes.scss";
 @use "sass:map";
 
@@ -11,23 +13,25 @@
 
 .rc-dropdown__overlay {
   position: absolute;
+  z-index: 1000;
   top: 100%;
   left: 0;
-  min-width: 100%;
   padding: 3px 0;
+  display: flex;
 }
 
 .rc-dropdown__overlay-content {
   @include any.rc-component;
 
-  border: 1px solid #ccc;
-  width: 100%;
-  backdrop-filter: blur(4px);
-  background: rgba(200, 200, 200, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  flex: 1 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  background: rgba(250, 250, 250, 0.5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   overflow: hidden;
   padding: 10px 0;
+  animation: fadeInOverlay 0.15s ease-in-out;
 }
 
 .rc-dropdown__item {
@@ -44,5 +48,30 @@
       background: map.get(themes.$colors--dark, $kind);
       color: map.get(themes.$colors--opposite, $kind);
     }
+  }
+}
+
+.rc-dropdown__item--small {
+  padding: 6px 10px;
+  font-size: functions.inputfontsize(input.$size--small);
+}
+
+.rc-dropdown__item--medium {
+  padding: 8px 13px;
+  font-size: functions.inputfontsize(input.$size--medium);
+}
+
+.rc-dropdown__item--large {
+  padding: 10px 16px;
+  font-size: functions.inputfontsize(input.$size--large);
+}
+
+@keyframes fadeInOverlay {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
