@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, Size } from "types";
-import useOnClickOutside from "hooks/useOnClickOutside";
 import useOverlayPosition from "hooks/useOverlayPosition";
 import Indicator from "components/Select/components/Indicator";
 import Button, { ButtonProps } from "components/Button";
@@ -11,12 +10,14 @@ interface DropdownItemProps {
   size?: `${Size}`;
   kind?: `${Kind}`;
   label?: string;
+  onClick?: () => void;
   children?: React.ReactNode;
 }
-export function DropdownItem({
+function DropdownItem({
   size,
   kind,
   label,
+  onClick,
   children,
 }: DropdownItemProps) {
   const dropdownItemClassName = classnames([
@@ -25,7 +26,11 @@ export function DropdownItem({
     `rc-dropdown__item--${size}`,
   ]);
   return (
-    <div className={dropdownItemClassName} role="presentation">
+    <div
+      className={dropdownItemClassName}
+      role="presentation"
+      onClick={onClick}
+    >
       {children || label}
     </div>
   );
@@ -59,24 +64,23 @@ function isDropdownItem(child: React.ReactNode): boolean {
 }
 
 interface DropdownProps extends Omit<ButtonProps, "children" | "iconPosition"> {
-  children: number;
+  children: React.ReactNode;
 }
 
-export default function Dropdown({
+const Dropdown = ({
   kind = "primary",
   className,
   children,
   style,
   size = "large",
   ...props
-}: DropdownProps) {
+}: DropdownProps) => {
   const [open, setOpen] = React.useState(false);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
-  function onClickOutside() {
+  function leave(e: any) {
     setOpen(false);
-    buttonRef.current?.blur();
+    props.onBlur?.(e);
   }
-  useOnClickOutside(buttonRef, onClickOutside);
   const buttonClassname = classnames([className]);
 
   return (
@@ -85,6 +89,7 @@ export default function Dropdown({
         {...props}
         size={size}
         kind={kind}
+        onBlur={leave}
         onClick={() => setOpen(!open)}
         className={buttonClassname}
         icon={<Indicator open={open} size={size} />}
@@ -103,4 +108,7 @@ export default function Dropdown({
       )}
     </div>
   );
-}
+};
+
+Dropdown.Item = DropdownItem;
+export default Dropdown;

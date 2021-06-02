@@ -1,7 +1,7 @@
 /* eslint no-console: "off" */
 import { Size, Kind } from "types";
 import Row from "components/Layout/Row";
-import Dropdown, { DropdownItem } from "./Dropdown";
+import Dropdown from "./Dropdown";
 
 export default {
   title: "Components/Dropdown",
@@ -23,8 +23,8 @@ const icon = (
 
 const Template = (args) => (
   <Dropdown {...args} onClick={log} label="I am a dropdown">
-    <DropdownItem>It is a very very long option</DropdownItem>
-    <DropdownItem>It is a very very long option</DropdownItem>
+    <Dropdown.Item>It is a very very long option</Dropdown.Item>
+    <Dropdown.Item>It is a very very long option</Dropdown.Item>
   </Dropdown>
 );
 
@@ -74,11 +74,6 @@ WithIconOnTheRight.args = {
 
 const kinds = Object.values(Kind);
 const sharedProps = (kind) => ({
-  children: [
-    <DropdownItem>It is a very very long option</DropdownItem>,
-    <DropdownItem>It is a very very long option</DropdownItem>,
-    <DropdownItem>It is a very very long option</DropdownItem>,
-  ],
   size: "medium",
   style: {
     margin: "2px",
@@ -93,12 +88,18 @@ export const Kinds = () => (
   <>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} />
+        <Dropdown {...sharedProps(kind)}>
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} noFill />
+        <Dropdown {...sharedProps(kind)} noFill>
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
   </>
@@ -108,12 +109,18 @@ export const KindsWithIcon = () => (
   <>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} icon={icon} />
+        <Dropdown {...sharedProps(kind)} icon={icon}>
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} noFill icon={icon} />
+        <Dropdown {...sharedProps(kind)} noFill icon={icon}>
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
   </>
@@ -123,12 +130,18 @@ export const KindsPeding = () => (
   <>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} pending />
+        <Dropdown {...sharedProps(kind)} pending>
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} noFill pending />
+        <Dropdown {...sharedProps(kind)} noFill pending>
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
   </>
@@ -138,12 +151,18 @@ export const Sizes = () => (
   <>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} size="small" />
+        <Dropdown {...sharedProps(kind)} size="small">
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} size="medium" />
+        <Dropdown {...sharedProps(kind)} size="medium">
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
     <br />
@@ -194,7 +213,10 @@ export const Sizes = () => (
     <br />
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Dropdown {...sharedProps(kind)} size="large" />
+        <Dropdown {...sharedProps(kind)} size="large">
+          <Dropdown.Item onClick={log}>Number one!</Dropdown.Item>
+          <Dropdown.Item onClick={log}>Number two!</Dropdown.Item>
+        </Dropdown>
       ))}
     </Row>
   </>
