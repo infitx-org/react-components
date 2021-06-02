@@ -10,15 +10,15 @@
 }
 
 .placeholder--small {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .placeholder--medium {
-  font-size: 13px;
+  font-size: 0.813px;
 }
 
 .placeholder--large {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .placeholder--active {
@@ -26,16 +26,16 @@
 
   &.placeholder--small {
     top: 5px;
-    font-size: 7px;
+    font-size: 0.438px;
   }
 
   &.placeholder--medium {
     top: 6px;
-    font-size: 9px;
+    font-size: 0.563px;
   }
 
   &.placeholder--large {
     top: 8px;
-    font-size: 11px;
+    font-size: 0.688px;
   }
 }

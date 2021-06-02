@@ -24,6 +24,10 @@ export {
   default as FileUploader,
   FileUploaderProps,
 } from "./components/FileUploader";
+export {
+  default as Heading,
+  HeadingProps,
+} from "./components/Typography/Heading";
 export { default as Icon, IconProps } from "./components/Icon";
 export {
   default as MessageBox,
