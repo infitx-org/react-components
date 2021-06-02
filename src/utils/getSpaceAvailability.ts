@@ -47,7 +47,6 @@ export default function getSpaceAvailability<T extends HTMLDivElement>(
   const finalSpaceBottom = within
     ? spaceBottom + parentRect.height
     : spaceBottom;
-  console.log(within, finalSpaceBottom, spaceBottom);
 
   const finalTop = within ? 0 : parentRect.height;
 
