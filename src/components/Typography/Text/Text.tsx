@@ -9,6 +9,7 @@ export interface TextProps {
   style?: React.CSSProperties;
   underline?: boolean;
   bold?: boolean;
+  italic?: boolean;
   highlight?: boolean;
   light?: boolean;
   color?: string;
@@ -23,6 +24,7 @@ export default function Text({
   style = {},
   underline = false,
   bold = false,
+  italic = false,
   highlight = false,
   light = false,
   color = "default",
@@ -35,6 +37,7 @@ export default function Text({
     `rc-text--${size}`,
     highlight && "rc-text--highlight",
     bold && "rc-text--bold",
+    italic && "rc-text--italic",
     light && "rc-text--light",
     underline && "rc-text--underline",
     disabled && "rc-text--disabled",

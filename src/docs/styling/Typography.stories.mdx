@@ -1,0 +1,130 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import Row from 'components/Layout/Row';
+import Text from 'components/Typography/Text';
+import Heading from 'components/Typography/Heading';
+
+<Meta title="Styles/Typography"/>
+
+# Typography
+
+Basic Typography capabilities are achieved using the little opinionated components `<Text>`, `<Heading>`.
+
+- [Heading](#heading)
+- [Text](#text)
+
+## Heading
+
+### h1
+
+<Canvas>
+  <Heading size="1">The Heading {'<h1>'}</Heading>
+</Canvas>
+
+<Text> The component renders as a main h1 tag </Text>
+
+### h2
+
+<Canvas>
+  <Heading size="2">The Heading {'<h2>'}</Heading>
+</Canvas>
+
+<Text> The component renders as a main h2 tag </Text>
+
+### h3
+
+<Canvas>
+  <Heading size="3">The Heading {'<h3>'}</Heading>
+</Canvas>
+
+<Text> The component renders as a main h3 tag </Text>
+
+### h4
+
+<Canvas>
+  <Heading size="4">The Heading {'<h4>'}</Heading>
+</Canvas>
+
+<Text> The component renders as a main h4 tag </Text>
+
+### h5
+
+<Canvas>
+  <Heading size="5">The Heading {'<h5>'}</Heading>
+</Canvas>
+
+<Text> The component renders as a main h5 tag </Text>
+
+### h6
+
+<Canvas>
+  <Heading size="6">The Heading {'<h6>'}</Heading>
+</Canvas>
+
+<Text> The component renders as a main h6 tag </Text>
+
+
+## Text
+
+### Small
+
+<Canvas>
+  <Text size="small">Renders as small sized text</Text>
+</Canvas>
+
+### Medium
+
+<Canvas>
+  <Text size="medium">Renders as medium sized text</Text>
+</Canvas>
+
+### Large
+
+<Canvas>
+  <Text size="large">Renders as large sized text</Text>
+</Canvas>
+
+### Variants
+
+<br />
+
+<Text bold>Note: </Text>
+<Text>The Text component has </Text>
+<Text underline>variants.</Text>
+
+<br />
+<br />
+
+<Text>It can render </Text>
+<Text bold>bold</Text>
+<Text>, </Text>
+<Text italic>italic</Text>
+<Text>, </Text>
+<Text underline>underlined</Text>
+<Text>.</Text>
+
+
+<br/>
+<br/>
+
+<Text>You can also </Text>
+<Text highlight>highligh </Text>
+<Text>the text tha deserves focus, </Text>
+<Text>and mark as </Text>
+<Text light>light </Text>
+<Text>the portion of text that should be less visible.</Text>
+
+<br />
+<br />
+
+<Text>When using text with interactive components </Text>
+<Text>you might pass the </Text>
+<Text disabled>disabled </Text>
+<Text>property to render the text as disabled.</Text>
+
+<br />
+<br />
+
+
+<Text>To simplify usage you can also pass the </Text>
+<Text color="red">color </Text>
+<Text>property to render colored text.</Text>
