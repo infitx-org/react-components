@@ -19,7 +19,7 @@ function getParentOverflow<T extends HTMLElement>(element: T): HTMLElement {
   return getParentOverflow(parent);
 }
 
-export default function getSpaceAvailability<T extends HTMLDivElement>(
+export default function getVerticalAvailability<T extends HTMLDivElement>(
   element: T | null,
   within: boolean = false
 ): [number, number, boolean] {

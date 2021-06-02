@@ -1,16 +1,16 @@
 import React from "react";
-import getSpaceAvailability from "utils/getSpaceAvailability";
-import getWidthAvailability from "utils/getWidthAvailability";
+import getVerticalAvailability from "utils/getVerticalAvailability";
+import getHorizontalAvailability from "utils/getHorizontalAvailability";
 
 const toPixel = (position: number): string => `${position}px`;
 
-interface PositionState {
-  offset?: number;
-  space?: number;
+interface VerticalState {
+  offsetTop?: number;
+  spaceTop?: number;
   reverse: boolean;
 }
 
-interface PositionStateL {
+interface HorizontalState {
   offsetLeft?: number;
   spaceLeft?: number;
   reverseHorizontal: boolean;
@@ -21,9 +21,6 @@ interface OverlayPosition {
   bottom?: string;
   height?: string;
   reverse: boolean;
-}
-
-interface OverlayPositionL {
   left?: string;
   right?: string;
   width?: string;
@@ -34,48 +31,54 @@ export default function useOverLayPosition<T extends HTMLDivElement>(
   element: T | null,
   withinHeight = false,
   withinWidth = false
-): OverlayPosition & OverlayPositionL {
-  const [position, setPosition] = React.useState<PositionState>({
-    offset: 0,
-    space: undefined,
+): OverlayPosition {
+  const [verticalState, setVerticalState] = React.useState<VerticalState>({
+    offsetTop: 0,
+    spaceTop: undefined,
     reverse: false,
   });
-  const [positionL, setPositionL] = React.useState<PositionStateL>({
-    offsetLeft: 0,
-    spaceLeft: undefined,
-    reverseHorizontal: false,
-  });
+  const [horizontalState, serHorizontalState] = React.useState<HorizontalState>(
+    {
+      offsetLeft: 0,
+      spaceLeft: undefined,
+      reverseHorizontal: false,
+    }
+  );
   React.useLayoutEffect(() => {
-    const [offset, space, reverse] = getSpaceAvailability<T>(
+    const [offsetTop, spaceTop, reverse] = getVerticalAvailability<T>(
       element,
       withinHeight
     );
-    const [offsetLeft, spaceLeft, reverseHorizontal] = getWidthAvailability<T>(
-      element,
-      withinWidth
-    );
+    const [
+      offsetLeft,
+      spaceLeft,
+      reverseHorizontal,
+    ] = getHorizontalAvailability<T>(element, withinWidth);
     if (
-      position.offset !== offset ||
-      position.space !== space ||
-      position.reverse !== reverse
+      verticalState.offsetTop !== offsetTop ||
+      verticalState.spaceTop !== spaceTop ||
+      verticalState.reverse !== reverse
     ) {
-      setPosition({ offset, space, reverse });
+      setVerticalState({ offsetTop, spaceTop, reverse });
     }
     if (
-      positionL.offsetLeft !== offsetLeft ||
-      positionL.spaceLeft !== spaceLeft ||
-      positionL.reverseHorizontal !== reverseHorizontal
+      horizontalState.offsetLeft !== offsetLeft ||
+      horizontalState.spaceLeft !== spaceLeft ||
+      horizontalState.reverseHorizontal !== reverseHorizontal
     ) {
-      setPositionL({ offsetLeft, spaceLeft, reverseHorizontal });
+      serHorizontalState({ offsetLeft, spaceLeft, reverseHorizontal });
     }
   });
 
-  const { offset, space, reverse } = position;
-  const top = !reverse && offset !== undefined ? toPixel(offset) : undefined;
-  const bottom = reverse && offset !== undefined ? toPixel(offset) : undefined;
-  const height = space ? toPixel(space) : undefined;
+  const { offsetTop, spaceTop, reverse } = verticalState;
+  const { offsetLeft, spaceLeft, reverseHorizontal } = horizontalState;
 
-  const { offsetLeft, spaceLeft, reverseHorizontal } = positionL;
+  const top =
+    !reverse && offsetTop !== undefined ? toPixel(offsetTop) : undefined;
+  const bottom =
+    reverse && offsetTop !== undefined ? toPixel(offsetTop) : undefined;
+  const height = spaceTop ? toPixel(spaceTop) : undefined;
+
   const left =
     !reverseHorizontal && offsetLeft !== undefined
       ? toPixel(offsetLeft)
