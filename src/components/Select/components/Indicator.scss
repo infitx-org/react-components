@@ -1,13 +1,14 @@
 @use "../../../scss/components/field.scss";
 
-.rc-select__indicator {
+.rc-indicator {
   @include field.icon;
 
+  fill: inherit;
   margin-top: 1px;
   transform: rotateZ(90deg) rotateY(0deg);
   transition: all 0.2s linear;
 }
 
-.rc-select__indicator--open {
+.rc-indicator--open {
   transform: rotateZ(90deg) rotateY(180deg);
 }

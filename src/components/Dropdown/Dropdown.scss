@@ -1,0 +1,12 @@
+.rc-dropdown {
+  position: relative;
+}
+
+.rc-dropdown__overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 100px;
+  width: 100px;
+  background: #f00;
+}

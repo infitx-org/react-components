@@ -240,7 +240,7 @@ export default forwardRef(function Select(
       {filter !== undefined && <Filter size={size} />}
       {invalid && <InvalidIcon size={size} />}
       {pending && <Loader size={size} />}
-      <Indicator open={open} size={size} />
+      <Indicator open={open} size={size} className="rc-select__indicator" />
       {open && (
         <Options
           size={size}
