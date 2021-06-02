@@ -5,5 +5,5 @@
 }
 
 @function inputfontsize($size) {
-  @return 11 + (math.div(strip-units($size) - 24, 7)) + px;
+  @return 11 + (math.div(strip-units($size) - 24, 6)) + px;
 }

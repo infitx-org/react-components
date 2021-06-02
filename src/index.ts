@@ -24,6 +24,10 @@ export {
   default as FileUploader,
   FileUploaderProps,
 } from "./components/FileUploader";
+export {
+  default as Heading,
+  HeadingProps,
+} from "./components/Typography/Heading";
 export { default as Icon, IconProps } from "./components/Icon";
 export {
   default as MessageBox,
@@ -49,4 +53,5 @@ export {
   TabProps,
   TabsProps,
 } from "./components/Tabs";
+export { default as Text, TextProps } from "./components/Typography/Text";
 export { default as TextField, TextFieldProps } from "./components/TextField";
