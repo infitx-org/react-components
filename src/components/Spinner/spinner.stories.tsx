@@ -17,15 +17,10 @@ Default.args = {
   color: undefined,
 };
 
-export const Colors = () => (
-  <Row align="center space-around">
-    <Spinner color="#c33" />
-    <Spinner color="#3c3" />
-    <Spinner color="#33c" />
-    <Spinner color="#cc3" />
-    <Spinner color="#3cc" />
-  </Row>
-);
+export const Color = Template.bind({});
+Color.args = {
+  color: "#f33",
+};
 
 export const PresetSizes = () => (
   <Row align="center space-between">
