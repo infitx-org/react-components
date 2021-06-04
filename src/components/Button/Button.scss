@@ -3,12 +3,14 @@
 @use "../../scss/base/shadows.scss";
 @use "../../scss/components/input.scss";
 @use "../../scss/components/any.scss";
+@use "../../scss/functions.scss";
 @use "../../scss/themes.scss";
 
 .rc-button {
   @include any.rc-component;
 
   outline: none;
+  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   display: inline-block;
@@ -72,25 +74,25 @@
 
 .rc-button--extra-small {
   padding: 4px 7px;
-  font-size: inputfontsize(input.$size--extra-small);
+  font-size: functions.inputfontsize(input.$size--extra-small);
   height: input.$size--extra-small;
 }
 
 .rc-button--small {
   padding: 6px 10px;
-  font-size: inputfontsize(input.$size--small);
+  font-size: functions.inputfontsize(input.$size--small);
   height: input.$size--small;
 }
 
 .rc-button--medium {
   padding: 8px 13px;
-  font-size: inputfontsize(input.$size--medium);
+  font-size: functions.inputfontsize(input.$size--medium);
   height: input.$size--medium;
 }
 
 .rc-button--large {
   padding: 10px 16px;
-  font-size: inputfontsize(input.$size--large);
+  font-size: functions.inputfontsize(input.$size--large);
   height: input.$size--large;
 }
 

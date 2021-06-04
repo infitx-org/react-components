@@ -25,23 +25,26 @@ export interface ButtonProps
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 }
 
-function Button({
-  children,
-  id,
-  className,
-  style,
-  label,
-  noFill,
-  disabled,
-  pending,
-  kind = Kind.Primary,
-  size = Size.Large,
-  icon,
-  iconPosition = "left",
-  onClick,
-  onKeyDown,
-  ...props
-}: ButtonProps): JSX.Element {
+const Button = React.forwardRef(function Button(
+  {
+    children,
+    id,
+    className,
+    style,
+    label,
+    noFill,
+    disabled,
+    pending,
+    kind = Kind.Primary,
+    size = Size.Large,
+    icon,
+    iconPosition = "left",
+    onClick,
+    onKeyDown,
+    ...props
+  }: ButtonProps,
+  ref: React.ForwardedRef<HTMLButtonElement>
+): JSX.Element {
   const classNames = classnames([
     className,
     "rc-button",
@@ -75,6 +78,7 @@ function Button({
       className={classNames}
       onClick={onClick}
       disabled={disabled}
+      ref={ref}
       {...props}
     >
       <div className="rc-button__content">
@@ -86,6 +90,6 @@ function Button({
   );
 
   return button;
-}
+});
 
 export default React.memo(Button);

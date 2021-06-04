@@ -1,30 +1,32 @@
 import classnames from "classnames";
 import Icon from "components/Icon";
-import { InputSize } from "types";
+import { Size } from "types";
 import Arrow from "../../../assets/icons/arrow.svg";
 import "./Indicator.scss";
 
 const indicatorSizes = {
-  [InputSize.Small]: 9,
-  [InputSize.Medium]: 10,
-  [InputSize.Large]: 11,
+  [Size.XSmall]: 8,
+  [Size.Small]: 9,
+  [Size.Medium]: 10,
+  [Size.Large]: 11,
 };
 interface IndicatorProps {
   open: boolean;
-  size: `${InputSize}`;
+  size: `${Size}`;
+  className?: string;
 }
 
-function Indicator({ open, size }: IndicatorProps) {
-  const className = classnames([
-    "rc-select__indicator",
-    open && "rc-select__indicator--open",
+function Indicator({ open, size, className }: IndicatorProps) {
+  const indicatorClassName = classnames([
+    "rc-indicator",
+    open && "rc-indicator--open",
+    className,
   ]);
   return (
     <Icon
-      className={className}
+      className={indicatorClassName}
       icon={<Arrow />}
       size={indicatorSizes[size]}
-      fill="rgba(0,0,0,0.4)"
     />
   );
 }

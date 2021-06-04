@@ -1,6 +1,6 @@
 @use "./colors.scss";
 
-$size: 0 0 0 3px !default;
+$size: 0 0 0 4px !default;
 $size--closed: 0 0 0 0 !default;
 
 $color--primary: lighten(colors.$primary, 20%) !default;
