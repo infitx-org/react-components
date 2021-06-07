@@ -1,6 +1,5 @@
 import React, { useState, useEffect, CSSProperties } from "react";
 import classnames from "classnames";
-import useTimeout from "hooks/useTimeout";
 import { Kind } from "types";
 import "./Tooltip.scss";
 

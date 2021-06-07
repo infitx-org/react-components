@@ -1,5 +1,3 @@
-import { Size, Kind } from "types";
-import Button from "components/Button";
 import Tooltip from "./Tooltip";
 
 export default {
