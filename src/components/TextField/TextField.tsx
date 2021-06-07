@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
-import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import "./TextField.scss";
 
