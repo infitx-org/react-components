@@ -99,7 +99,7 @@ function Tooltip({
   fixed,
   kind = Kind.Dark,
   delay = 200,
-}: TooltipProps) {
+}: TooltipProps): JSX.Element {
   const ref = React.useRef<HTMLDivElement>(document.createElement("div"));
   const timeout = React.useRef<NodeJS.Timeout>(null);
   const [sizes, setSizes] = useState<null | SizeAndOffset>(null);
@@ -148,7 +148,7 @@ function Tooltip({
   }, [fixed]);
 
   if (!label && !content) {
-    return children;
+    return <>{children}</>;
   }
 
   const childrenWithRef = React.Children.map(children, (child) =>

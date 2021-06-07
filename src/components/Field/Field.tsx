@@ -1,6 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize } from "types";
+import mergeRefs from "utils/mergeRefs";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import "./Field.scss";
 
@@ -17,18 +18,21 @@ export type FieldProps = {
   onClickOutside?: (e: MouseEvent) => void;
 };
 
-function Field({
-  kind = Kind.Primary,
-  size = InputSize.Large,
-  disabled,
-  required,
-  invalid,
-  children,
-  focused,
-  className,
-  onClick,
-  onClickOutside,
-}: FieldProps): JSX.Element {
+export default React.forwardRef(function Field(
+  {
+    kind = Kind.Primary,
+    size = InputSize.Large,
+    disabled,
+    required,
+    invalid,
+    children,
+    focused,
+    className,
+    onClick,
+    onClickOutside,
+  }: FieldProps,
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
+): JSX.Element {
   const fieldRef = React.useRef<HTMLDivElement>(null);
 
   useOnClickOutside(fieldRef, onClickOutside);
@@ -51,11 +55,9 @@ function Field({
       className={fieldClassname}
       onClick={onClick}
       role="presentation"
-      ref={fieldRef}
+      ref={mergeRefs<HTMLDivElement>(fieldRef, forwardedRef)}
     >
       {children}
     </div>
   );
-}
-
-export default React.memo(Field);
+});

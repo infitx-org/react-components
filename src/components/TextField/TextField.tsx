@@ -37,7 +37,7 @@ export default React.forwardRef(function TextField(
     onChange,
     ...props
   }: TextFieldProps,
-  ref: React.ForwardedRef<HTMLInputElement>
+  forwardedRef: React.ForwardedRef<HTMLInputElement>
 ): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [currentValue, setValue] = React.useState<string | undefined>(value);
@@ -108,6 +108,7 @@ export default React.forwardRef(function TextField(
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
+      ref={forwardedRef}
     >
       {placeholder && (
         <Placeholder
@@ -121,7 +122,7 @@ export default React.forwardRef(function TextField(
         value={currentValue}
         className={textFieldClassName}
         type={type}
-        ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
+        ref={inputRef}
         onChange={onValueChange}
         onFocus={onFocus}
         onBlur={onBlur}

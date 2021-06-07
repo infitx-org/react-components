@@ -1,3 +1,4 @@
+import TextField from "components/TextField";
 import Tooltip from "./Tooltip";
 
 export default {
@@ -19,7 +20,6 @@ const icon = (
 const Template = (args) => (
   <Tooltip {...args}>
     <div style={{ margin: "100px", display: "inline-block" }}>
-      {" "}
       Hover me to see the tooltip
     </div>
   </Tooltip>
@@ -80,3 +80,9 @@ Content.args = {
   fixed: true,
   position: "top",
 };
+
+export const Complex = () => (
+  <Tooltip label="e" position="right">
+    <TextField />
+  </Tooltip>
+);
