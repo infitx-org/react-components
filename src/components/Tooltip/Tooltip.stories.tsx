@@ -20,7 +20,10 @@ const icon = (
 
 const Template = (args) => (
   <Tooltip {...args}>
-    <Button label="hola!" style={{ margin: "100px" }} />
+    <div style={{ margin: "100px", display: "inline-block" }}>
+      {" "}
+      Hover me to see the tooltip
+    </div>
   </Tooltip>
 );
 
@@ -58,8 +61,16 @@ Bottom.args = {
 
 export const Fixed = Template.bind({});
 Fixed.args = {
-  fixed: true,
   ...Default.args,
+  fixed: true,
+  position: "top",
+};
+
+export const Delayed = Template.bind({});
+Delayed.args = {
+  ...Default.args,
+  delay: 1000,
+  label: "1 second delay",
   position: "top",
 };
 

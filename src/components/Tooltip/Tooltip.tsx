@@ -1,5 +1,6 @@
 import React, { useState, useEffect, CSSProperties } from "react";
 import classnames from "classnames";
+import useTimeout from "hooks/useTimeout";
 import { Kind } from "types";
 import "./Tooltip.scss";
 
@@ -82,39 +83,48 @@ function TooltipCard({ children, sizes, position }: TooltipCardProps) {
 }
 
 export interface TooltipProps {
+  children: React.ReactNode;
   content?: React.ReactNode;
-  children?: React.ReactNode;
-  fixed?: boolean;
   label?: string;
   position?: Position;
+  fixed?: boolean;
   kind?: `${Kind}`;
+  delay?: number;
 }
 
 function Tooltip({
-  label,
+  children,
   content,
+  label,
   position = "top",
   fixed,
   kind = Kind.Dark,
-  children,
+  delay = 200,
 }: TooltipProps) {
   const ref = React.useRef<HTMLDivElement>(document.createElement("div"));
+  const timeout = React.useRef<NodeJS.Timeout>(null);
   const [sizes, setSizes] = useState<null | SizeAndOffset>(null);
 
-  function setElementSizes(element: HTMLElement) {
-    const { offsetLeft, offsetTop } = element;
-    const { width, height } = element.getBoundingClientRect();
-    setSizes({ offsetTop, offsetLeft, width, height });
+  function setElementSizes() {
+    // @ts-ignore
+    timeout.current = setTimeout(() => {
+      const { offsetLeft, offsetTop } = ref.current as HTMLElement;
+      const { width, height } = ref.current.getBoundingClientRect();
+      setSizes({ offsetTop, offsetLeft, width, height });
+    }, delay);
   }
 
   const onLeave = () => {
     if (!fixed) {
       setSizes(null);
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
     }
   };
-  const onEnter = (e: Event) => {
-    if (e.target !== null) {
-      setElementSizes(e.target as HTMLElement);
+  const onEnter = () => {
+    if (ref.current) {
+      setElementSizes();
     }
   };
 
@@ -134,7 +144,7 @@ function Tooltip({
 
   useEffect(() => {
     if (fixed) {
-      setElementSizes(ref.current);
+      setElementSizes();
     }
   }, [fixed]);
 
