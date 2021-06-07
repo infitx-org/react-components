@@ -40,27 +40,27 @@
 
 @each $weight in themes.$weights {
   .color-scheme-blue--#{$weight} {
-    background: map.get(themes.$blue, $weight);
+    background: map.get(themes.$color__blue, $weight);
   }
   .color-scheme-dark-blue--#{$weight} {
-    background: map.get(themes.$dark-blue, $weight);
+    background: map.get(themes.$color__dark-blue, $weight);
   }
   .color-scheme-green--#{$weight} {
-    background: map.get(themes.$green, $weight);
+    background: map.get(themes.$color__green, $weight);
   }
   .color-scheme-orange--#{$weight} {
-    background: map.get(themes.$orange, $weight);
+    background: map.get(themes.$color__orange, $weight);
   }
   .color-scheme-red--#{$weight} {
-    background: map.get(themes.$red, $weight);
+    background: map.get(themes.$color__red, $weight);
   }
   .color-scheme-gray--#{$weight} {
-    background: map.get(themes.$gray, $weight);
+    background: map.get(themes.$color__gray, $weight);
   }
   .color-scheme-dark-gray--#{$weight} {
-    background: map.get(themes.$dark-gray, $weight);
+    background: map.get(themes.$color__dark-gray, $weight);
   }
   .color-scheme-alpha--#{$weight} {
-    background: map.get(themes.$alpha, $weight);
+    background: map.get(themes.$color__alpha, $weight);
   }
 }
