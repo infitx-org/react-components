@@ -13,6 +13,7 @@ export default function mergeRefs<T>(
       if (typeof ref === "function") {
         ref(element);
       } else if (ref) {
+        // TODO: Fix!
         // eslint-disable-next-line
         ref.current = element;
       }

@@ -55,7 +55,7 @@ export default React.forwardRef(function Field(
       className={fieldClassname}
       onClick={onClick}
       role="presentation"
-      ref={mergeRefs<HTMLDivElement>(fieldRef, forwardedRef)}
+      ref={mergeRefs(fieldRef, forwardedRef)}
     >
       {children}
     </div>

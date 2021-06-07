@@ -82,7 +82,7 @@ function TooltipCard({ children, sizes, position }: TooltipCardProps) {
 }
 
 export interface TooltipProps {
-  children: React.ReactNode;
+  children: React.ReactElement;
   content?: React.ReactNode;
   label?: string;
   position?: Position;
@@ -100,15 +100,16 @@ function Tooltip({
   kind = Kind.Dark,
   delay = 200,
 }: TooltipProps): JSX.Element {
-  const ref = React.useRef<HTMLDivElement>(document.createElement("div"));
+  const childRef = React.useRef<HTMLDivElement>(document.createElement("div"));
   const timeout = React.useRef<NodeJS.Timeout>(null);
   const [sizes, setSizes] = useState<null | SizeAndOffset>(null);
 
   function setElementSizes() {
+    // TODO: Fix!
     // @ts-ignore
     timeout.current = setTimeout(() => {
-      const { offsetLeft, offsetTop } = ref.current as HTMLElement;
-      const { width, height } = ref.current.getBoundingClientRect();
+      const { offsetLeft, offsetTop } = childRef.current as HTMLElement;
+      const { width, height } = childRef.current.getBoundingClientRect();
       setSizes({ offsetTop, offsetLeft, width, height });
     }, delay);
   }
@@ -122,24 +123,23 @@ function Tooltip({
     }
   };
   const onEnter = () => {
-    if (ref.current) {
+    if (childRef.current) {
       setElementSizes();
     }
   };
 
   useEffect(() => {
-    const contentRef = ref.current;
-    if (contentRef !== null) {
-      contentRef.addEventListener("mouseenter", onEnter);
-      contentRef.addEventListener("mouseleave", onLeave);
+    if (childRef.current !== null) {
+      childRef.current.addEventListener("mouseenter", onEnter);
+      childRef.current.addEventListener("mouseleave", onLeave);
     }
     return () => {
-      if (contentRef !== null) {
-        contentRef.removeEventListener("mouseenter", onEnter);
-        contentRef.removeEventListener("mouseleave", onLeave);
+      if (childRef.current !== null) {
+        childRef.current.removeEventListener("mouseenter", onEnter);
+        childRef.current.removeEventListener("mouseleave", onLeave);
       }
     };
-  }, [ref.current]);
+  }, [childRef.current]);
 
   useEffect(() => {
     if (fixed) {
@@ -151,10 +151,10 @@ function Tooltip({
     return <>{children}</>;
   }
 
-  const childrenWithRef = React.Children.map(children, (child) =>
-    // @ts-ignore
-    React.cloneElement(child, { ...child.props, ref })
-  );
+  const childrenWithRef = React.cloneElement(children, {
+    ...children.props,
+    childRef,
+  });
 
   return (
     <>
