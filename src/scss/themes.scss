@@ -76,7 +76,7 @@ $shadows: (
 );
 
 // Color schemes
-$blue: (
+$color__blue: (
   "lighter": colors.$blue--lighter,
   "light": colors.$blue--light,
   "regular": colors.$blue,
@@ -84,7 +84,7 @@ $blue: (
   "darker": colors.$blue--darker,
 );
 
-$dark-blue: (
+$color__dark-blue: (
   "lighter": colors.$dark-blue--lighter,
   "light": colors.$dark-blue--light,
   "regular": colors.$dark-blue,
@@ -92,7 +92,7 @@ $dark-blue: (
   "darker": colors.$dark-blue--darker,
 );
 
-$green: (
+$color__green: (
   "lighter": colors.$green--lighter,
   "light": colors.$green--light,
   "regular": colors.$green,
@@ -100,7 +100,7 @@ $green: (
   "darker": colors.$green--darker,
 );
 
-$orange: (
+$color__orange: (
   "lighter": colors.$orange--lighter,
   "light": colors.$orange--light,
   "regular": colors.$orange,
@@ -108,7 +108,7 @@ $orange: (
   "darker": colors.$orange--darker,
 );
 
-$red: (
+$color__red: (
   "lighter": colors.$red--lighter,
   "light": colors.$red--light,
   "regular": colors.$red,
@@ -116,7 +116,7 @@ $red: (
   "darker": colors.$red--darker,
 );
 
-$gray: (
+$color__gray: (
   "lighter": colors.$gray--lighter,
   "light": colors.$gray--light,
   "regular": colors.$gray,
@@ -124,7 +124,7 @@ $gray: (
   "darker": colors.$gray--darker,
 );
 
-$dark-gray: (
+$color__dark-gray: (
   "lighter": colors.$dark-gray--lighter,
   "light": colors.$dark-gray--light,
   "regular": colors.$dark-gray,
@@ -132,7 +132,7 @@ $dark-gray: (
   "darker": colors.$dark-gray--darker,
 );
 
-$alpha: (
+$color__alpha: (
   "lighter": colors.$alpha--lighter,
   "light": colors.$alpha--light,
   "regular": colors.$alpha,

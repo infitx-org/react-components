@@ -46,12 +46,12 @@ const Button = React.forwardRef(function Button(
   ref: React.ForwardedRef<HTMLButtonElement>
 ): JSX.Element {
   const classNames = classnames([
-    className,
     "rc-button",
     `rc-button--${kind}`,
     `rc-button--${size}`,
     disabled && "rc-button--disabled",
     noFill && "rc-button--noFill",
+    className,
   ]);
 
   let iconContent = null;
