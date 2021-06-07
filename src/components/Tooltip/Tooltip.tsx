@@ -1,4 +1,6 @@
-import React, { FC, useState, useEffect, CSSProperties } from "react";
+import React, { useState, useEffect, CSSProperties } from "react";
+import classnames from "classnames";
+import { Kind } from "types";
 import "./Tooltip.scss";
 
 type Position = "top" | "left" | "right" | "bottom";
@@ -15,8 +17,15 @@ interface Coordinates {
   y: number;
 }
 
-const Label = ({ label }: { label: string }) => (
-  <div className="rc-tooltip-card__label">{label}</div>
+const Label = ({ label, kind }: { label: string; kind: `${Kind}` }) => (
+  <div
+    className={classnames([
+      "rc-tooltip-card__label",
+      `rc-tooltip-card__label--${kind}`,
+    ])}
+  >
+    {label}
+  </div>
 );
 
 interface TooltipCardProps {
@@ -78,6 +87,7 @@ export interface TooltipProps {
   fixed?: boolean;
   label?: string;
   position?: Position;
+  kind?: `${Kind}`;
 }
 
 function Tooltip({
@@ -85,6 +95,7 @@ function Tooltip({
   content,
   position = "top",
   fixed,
+  kind = Kind.Dark,
   children,
 }: TooltipProps) {
   const ref = React.useRef<HTMLDivElement>(document.createElement("div"));
@@ -141,7 +152,7 @@ function Tooltip({
       {childrenWithRef}
       {sizes && (
         <TooltipCard sizes={sizes} position={position}>
-          {content || <Label label={label as string} />}
+          {content || <Label kind={kind} label={label as string} />}
         </TooltipCard>
       )}
     </>

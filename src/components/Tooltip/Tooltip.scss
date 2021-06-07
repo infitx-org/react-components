@@ -21,3 +21,12 @@
   color: #fff;
   border-radius: 2px;
 }
+
+@each $kind in themes.$kinds {
+  .rc-tooltip-card__label--#{$kind} {
+    background-color: map.get(themes.$colors--dark, $kind);
+    color: map.get(themes.$colors--opposite, $kind);
+    fill: map.get(themes.$colors--opposite, $kind);
+    stroke: map.get(themes.$colors--opposite, $kind);
+  }
+}

@@ -24,34 +24,42 @@ const Template = (args) => (
   </Tooltip>
 );
 
+export const Default = Template.bind({});
+Default.args = {
+  label: "I am a Tooltip",
+  fixed: false,
+  position: undefined,
+  kind: undefined,
+};
+
 export const Top = Template.bind({});
 Top.args = {
-  label: "I am a Tooltip",
+  ...Default.args,
   position: "top",
 };
 
 export const Right = Template.bind({});
 Right.args = {
-  ...Top.args,
+  ...Default.args,
   position: "right",
 };
 
 export const Left = Template.bind({});
 Left.args = {
-  ...Top.args,
+  ...Default.args,
   position: "left",
 };
 
 export const Bottom = Template.bind({});
 Bottom.args = {
-  ...Top.args,
+  ...Default.args,
   position: "bottom",
 };
 
 export const Fixed = Template.bind({});
 Fixed.args = {
   fixed: true,
-  ...Top.args,
+  ...Default.args,
   position: "top",
 };
 
