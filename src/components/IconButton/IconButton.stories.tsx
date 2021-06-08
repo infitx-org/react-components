@@ -23,7 +23,7 @@ const icon = (
 );
 
 export default {
-  title: "IconButton",
+  title: "components/IconButton",
   component: IconButton,
 };
 
