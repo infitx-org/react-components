@@ -1,7 +1,14 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
-import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import Field, {
+  FieldProps,
+  Loader,
+  Placeholder,
+  InvalidIcon,
+  withValidation,
+  ValidationProps,
+} from "components/Field";
 import "./TextField.scss";
 
 type BaseInput = Omit<
@@ -9,7 +16,7 @@ type BaseInput = Omit<
   "size" | "onChange"
 >;
 
-export interface TextFieldProps extends BaseInput {
+export interface BaseTextFieldProps extends BaseInput {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   type?: "text" | "password";
@@ -21,6 +28,8 @@ export interface TextFieldProps extends BaseInput {
   pending?: boolean;
   onChange?: (value: string) => void;
 }
+
+export type TextFieldProps = BaseTextFieldProps & Partial<ValidationProps>;
 
 export default React.forwardRef(function TextField(
   {
@@ -34,6 +43,7 @@ export default React.forwardRef(function TextField(
     invalid,
     pending,
     onChange,
+    message,
     ...props
   }: TextFieldProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
@@ -96,8 +106,12 @@ export default React.forwardRef(function TextField(
     `rc-textfield--${size}`,
   ]);
 
+  const FieldWithValidation = message
+    ? withValidation<FieldProps>(Field)
+    : Field;
+
   return (
-    <Field
+    <FieldWithValidation
       className={className}
       kind={kind}
       size={size}
@@ -108,6 +122,7 @@ export default React.forwardRef(function TextField(
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
+      message="diocane"
     >
       {placeholder && (
         <Placeholder
@@ -129,6 +144,6 @@ export default React.forwardRef(function TextField(
       />
       {pending && <Loader size={size} />}
       {invalid && <InvalidIcon size={size} />}
-    </Field>
+    </FieldWithValidation>
   );
 });

@@ -6,3 +6,8 @@ export { default as Placeholder } from "./components/Placeholder";
 export type { PlaceholderProps } from "./components/Placeholder";
 export { default as InvalidIcon } from "./components/InvalidIcon";
 export type { InvalidIconProps } from "./components/InvalidIcon";
+
+export {
+  default as withValidation,
+  ValidationProps,
+} from "./hocs/withValidation";

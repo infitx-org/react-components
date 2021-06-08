@@ -1,4 +1,4 @@
-import React, { useState, useEffect, CSSProperties } from "react";
+import React, { useState, useEffect, CSSProperties, useCallback } from "react";
 import classnames from "classnames";
 import { Kind } from "types";
 import "./Tooltip.scss";
@@ -114,14 +114,15 @@ function Tooltip({
     }, delay);
   }
 
-  const onLeave = () => {
+  const onLeave = React.useCallback(() => {
     if (!fixed) {
       setSizes(null);
       if (timeout.current) {
         clearTimeout(timeout.current);
       }
     }
-  };
+  }, [fixed]);
+
   const onEnter = () => {
     if (childRef.current) {
       setElementSizes();
@@ -129,21 +130,27 @@ function Tooltip({
   };
 
   useEffect(() => {
-    if (childRef.current !== null) {
-      childRef.current.addEventListener("mouseenter", onEnter);
-      childRef.current.addEventListener("mouseleave", onLeave);
+    if (typeof fixed !== "boolean") {
+      if (childRef.current !== null) {
+        childRef.current.addEventListener("mouseenter", onEnter);
+        childRef.current.addEventListener("mouseleave", onLeave);
+      }
     }
     return () => {
-      if (childRef.current !== null) {
-        childRef.current.removeEventListener("mouseenter", onEnter);
-        childRef.current.removeEventListener("mouseleave", onLeave);
+      if (typeof fixed !== "boolean") {
+        if (childRef.current !== null) {
+          childRef.current.removeEventListener("mouseenter", onEnter);
+          childRef.current.removeEventListener("mouseleave", onLeave);
+        }
       }
     };
   }, [childRef.current]);
 
   useEffect(() => {
-    if (fixed) {
+    if (fixed === true) {
       setElementSizes();
+    } else {
+      onLeave();
     }
   }, [fixed]);
 
