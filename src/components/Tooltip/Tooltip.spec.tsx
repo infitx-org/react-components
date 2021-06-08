@@ -1,10 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { Kind } from "types";
 import Tooltip from "./Tooltip";
-
-// kind
-// onClickOutside
 
 describe("tests the Tooltip props", () => {
   it("renders the Tooltip children", () => {
