@@ -12,7 +12,7 @@ export interface IconButtonProps {
   size?: number;
   fill?: string;
   disabled?: boolean;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const IconButton = React.forwardRef(function IconButton(
