@@ -4,9 +4,6 @@ import userEvent from "@testing-library/user-event";
 import { InputSize, Kind } from "types";
 import Field from "./Field";
 
-// kind
-// onClickOutside
-
 describe("tests the Field props", () => {
   it("renders the Field", () => {
     const { container } = render(<Field>test</Field>);

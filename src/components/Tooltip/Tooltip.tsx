@@ -1,4 +1,4 @@
-import React, { useState, useEffect, CSSProperties, useCallback } from "react";
+import React, { useState, useEffect, CSSProperties } from "react";
 import classnames from "classnames";
 import { Kind } from "types";
 import "./Tooltip.scss";
@@ -19,20 +19,11 @@ interface Coordinates {
 
 const Label = ({ label, kind }: { label: string; kind: `${Kind}` }) => (
   <div
-    className={classnames([
-      "rc-tooltip-card__label",
-      `rc-tooltip-card__label--${kind}`,
-    ])}
+    className={classnames(["rc-tooltip__label", `rc-tooltip__label--${kind}`])}
   >
     {label}
   </div>
 );
-
-interface TooltipCardProps {
-  children?: React.ReactNode;
-  sizes: SizeAndOffset;
-  position: Position;
-}
 
 function getPositionCoordinates(
   item: ClientRect,
@@ -58,6 +49,12 @@ function getPositionCoordinates(
     y = source.height + distance;
   }
   return { x: x + offsetLeft, y: y + offsetTop };
+}
+
+interface TooltipCardProps {
+  children?: React.ReactNode;
+  sizes: SizeAndOffset;
+  position: Position;
 }
 
 function TooltipCard({ children, sizes, position }: TooltipCardProps) {

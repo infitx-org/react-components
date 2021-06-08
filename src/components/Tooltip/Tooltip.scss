@@ -13,7 +13,7 @@
   opacity: 0;
 }
 
-.rc-tooltip-card__label {
+.rc-tooltip__label {
   display: inline-block;
   padding: 10px;
   font-size: 12px;
@@ -23,7 +23,7 @@
 }
 
 @each $kind in themes.$kinds {
-  .rc-tooltip-card__label--#{$kind} {
+  .rc-tooltip__label--#{$kind} {
     background-color: map.get(themes.$colors--dark, $kind);
     color: map.get(themes.$colors--opposite, $kind);
     fill: map.get(themes.$colors--opposite, $kind);
