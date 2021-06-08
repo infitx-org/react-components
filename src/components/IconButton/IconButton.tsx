@@ -15,7 +15,7 @@ export interface IconButtonProps {
 }
 
 function IconButton({
-  kind = "tertiary",
+  kind,
   size = 20,
   icon,
   fill,
@@ -25,7 +25,7 @@ function IconButton({
 }: IconButtonProps) {
   const iconClassName = classnames([
     "rc-icon-button",
-    `rc-icon-button--${kind}`,
+    kind && `rc-icon-button--${kind}`,
     disabled && "rc-icon-button--disabled",
     className,
   ]);
