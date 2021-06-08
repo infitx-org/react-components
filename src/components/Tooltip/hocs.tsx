@@ -10,7 +10,7 @@ export interface WithTooltipProps {
 }
 
 export default function withTooltip<P>(Component: React.ComponentType<P>) {
-  return React.forwardRef(function TooltipWrapper(
+  return React.forwardRef(function WithTooltip(
     props: P & WithTooltipProps,
     ref
   ) {

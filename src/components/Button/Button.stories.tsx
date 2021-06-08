@@ -41,6 +41,7 @@ Default.args = {
   style: undefined,
   onClick: undefined,
   onKeyDown: undefined,
+  tooltipLabel: "test",
 };
 
 export const Disabled = Template.bind({});
