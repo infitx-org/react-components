@@ -30,6 +30,10 @@ export {
 } from "./components/Typography/Heading";
 export { default as Icon, IconProps } from "./components/Icon";
 export {
+  default as IconButton,
+  IconButtonProps,
+} from "./components/IconButton";
+export {
   default as MessageBox,
   MessageBoxProps,
 } from "./components/MessageBox";
