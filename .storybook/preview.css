@@ -5,3 +5,5 @@ html, body {
 #root {
   position: relative;
 }
+
+.m5 { margin: 5px; }

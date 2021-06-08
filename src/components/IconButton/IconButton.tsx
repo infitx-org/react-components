@@ -12,7 +12,7 @@ export interface IconButtonProps {
   size?: number;
   fill?: string;
   disabled?: boolean;
-  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const IconButton = React.forwardRef(function IconButton(
@@ -25,9 +25,9 @@ const IconButton = React.forwardRef(function IconButton(
     onClick,
     disabled,
   }: IconButtonProps,
-  forwardedRef: React.ForwardedRef<HTMLDivElement>
+  forwardedRef: React.ForwardedRef<HTMLButtonElement>
 ) {
-  const iconClassName = classnames([
+  const buttonClassName = classnames([
     "rc-icon-button",
     kind && `rc-icon-button--${kind}`,
     disabled && "rc-icon-button--disabled",
@@ -35,10 +35,10 @@ const IconButton = React.forwardRef(function IconButton(
   ]);
 
   return (
-    <div
+    <button
+      type="button"
       ref={forwardedRef}
-      className={iconClassName}
-      role="presentation"
+      className={buttonClassName}
       onClick={disabled ? undefined : onClick}
       style={{ height: size, width: size }}
     >
@@ -49,7 +49,7 @@ const IconButton = React.forwardRef(function IconButton(
         style={{ fill: fill || "inherit" }}
         className="rc-icon-button__icon"
       />
-    </div>
+    </button>
   );
 });
 

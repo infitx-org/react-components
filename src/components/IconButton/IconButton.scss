@@ -4,12 +4,21 @@
 
 .rc-icon-button {
   flex: 0 0 auto;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: relative;
   fill: #666;
+  outline: none;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+
+  &:active {
+    fill: #333;
+  }
 
   &::before {
     content: "";
@@ -24,11 +33,14 @@
     z-index: 1;
   }
 
-  &:hover:not(.rc-icon-button--disabled) {
-    &::before {
-      opacity: 1;
-      transform: scale3d(math.sqrt(2), math.sqrt(2), 1);
-      transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:hover,
+  &:focus {
+    &:not(.rc-icon-button--disabled) {
+      &::before {
+        opacity: 1;
+        transform: scale3d(math.sqrt(2), math.sqrt(2), 1);
+        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
     }
   }
 }
@@ -45,6 +57,10 @@
 @each $kind in themes.$kinds {
   .rc-icon-button--#{$kind} {
     fill: map.get(themes.$colors, $kind);
+
+    &:active {
+      fill: map.get(themes.$colors--dark, $kind);
+    }
 
     &::before {
       background-color: rgba(map.get(themes.$shadows, $kind), 0.8);
