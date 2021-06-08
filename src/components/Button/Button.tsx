@@ -6,8 +6,9 @@ import { Size, Kind } from "types";
 import Spinner from "components/Spinner";
 import Icon from "components/Icon";
 import { getIconSizeByComponentSize } from "utils/size";
+import { withTooltip, WithTooltipProps } from "components/Tooltip";
 
-export interface ButtonProps
+interface BaseButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size"> {
   children?: React.ReactNode;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
@@ -24,6 +25,8 @@ export interface ButtonProps
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 }
+
+export type ButtonProps = BaseButtonProps & WithTooltipProps;
 
 const Button = React.forwardRef(function Button(
   {
@@ -92,4 +95,4 @@ const Button = React.forwardRef(function Button(
   return button;
 });
 
-export default React.memo(Button);
+export default React.memo(withTooltip(Button));

@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { Kind } from "types";
 import "./Tooltip.scss";
 
-type Position = "top" | "left" | "right" | "bottom";
+export type Position = "top" | "left" | "right" | "bottom";
 
 interface SizeAndOffset {
   offsetLeft: number;
