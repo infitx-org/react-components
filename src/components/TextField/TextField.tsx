@@ -1,16 +1,16 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
-import mergeRefs from "utils/mergeRefs";
-import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import { BaseInput } from "components/shared/types";
+import Field, {
+  Loader,
+  Placeholder,
+  InvalidIcon,
+  ValidationProps,
+} from "components/Field";
 import "./TextField.scss";
 
-type BaseInput = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "onChange"
->;
-
-export interface TextFieldProps extends BaseInput {
+export interface BaseTextFieldProps extends BaseInput {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   type?: "text" | "password";
@@ -22,6 +22,8 @@ export interface TextFieldProps extends BaseInput {
   pending?: boolean;
   onChange?: (value: string) => void;
 }
+
+export type TextFieldProps = BaseTextFieldProps & Partial<ValidationProps>;
 
 export default React.forwardRef(function TextField(
   {
@@ -37,7 +39,7 @@ export default React.forwardRef(function TextField(
     onChange,
     ...props
   }: TextFieldProps,
-  ref: React.ForwardedRef<HTMLInputElement>
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [currentValue, setValue] = React.useState<string | undefined>(value);
@@ -108,6 +110,8 @@ export default React.forwardRef(function TextField(
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
+      ref={forwardedRef}
+      validation={props.validation}
     >
       {placeholder && (
         <Placeholder
@@ -121,7 +125,7 @@ export default React.forwardRef(function TextField(
         value={currentValue}
         className={textFieldClassName}
         type={type}
-        ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
+        ref={inputRef}
         onChange={onValueChange}
         onFocus={onFocus}
         onBlur={onBlur}

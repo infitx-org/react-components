@@ -1,16 +1,16 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
-import mergeRefs from "utils/mergeRefs";
-import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import { BaseInput } from "components/shared/types";
+import Field, {
+  Loader,
+  Placeholder,
+  InvalidIcon,
+  ValidationProps,
+} from "components/Field";
 import "./NumberField.scss";
 
-type BaseInput = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "onChange" | "type"
->;
-
-export interface NumberFieldProps extends BaseInput {
+interface BaseNumberFieldProps extends BaseInput {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   className?: string;
@@ -22,6 +22,8 @@ export interface NumberFieldProps extends BaseInput {
   pending?: boolean;
   onChange?: (value?: number) => void;
 }
+
+export type NumberFieldProps = BaseNumberFieldProps & Partial<ValidationProps>;
 
 export default React.forwardRef(function NumberField(
   {
@@ -37,7 +39,7 @@ export default React.forwardRef(function NumberField(
     onChange,
     ...props
   }: NumberFieldProps,
-  ref: React.ForwardedRef<HTMLInputElement>
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
   function validNumber(num?: number | string): number | "" {
     return Number(num) || "";
@@ -117,6 +119,8 @@ export default React.forwardRef(function NumberField(
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
+      ref={forwardedRef}
+      validation={props.validation}
     >
       {placeholder && (
         <Placeholder
@@ -131,7 +135,7 @@ export default React.forwardRef(function NumberField(
         value={currentValue}
         className={textFieldClassName}
         type="number"
-        ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
+        ref={inputRef}
         onChange={onValueChange}
         onFocus={onFocus}
         onBlur={onBlur}

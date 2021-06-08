@@ -1,20 +1,21 @@
-import React, { forwardRef, ForwardedRef } from "react";
+import React, { forwardRef } from "react";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
-import mergeRefs from "utils/mergeRefs";
-import Field, { Loader, Placeholder, InvalidIcon } from "../Field";
+import { BaseSelect } from "components/shared/types";
+import Field, {
+  Loader,
+  Placeholder,
+  InvalidIcon,
+  ValidationProps,
+} from "components/Field";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
 import Filter from "./components/Filter";
 import "./Select.scss";
 
-export interface SelectProps
-  extends Omit<
-    React.SelectHTMLAttributes<HTMLInputElement>,
-    "size" | "value" | "onChange"
-  > {
+export interface BaseSelectProps extends BaseSelect {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   value?: OptionValue;
@@ -27,6 +28,8 @@ export interface SelectProps
   onChange?: (value: OptionValue) => void;
   onClear?: () => void;
 }
+
+export type SelectProps = BaseSelectProps & ValidationProps;
 
 export default forwardRef(function Select(
   {
@@ -43,7 +46,7 @@ export default forwardRef(function Select(
     onClear,
     ...props
   }: SelectProps,
-  ref: ForwardedRef<HTMLInputElement>
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const optionsRef = React.useRef<HTMLDivElement>(null);
@@ -218,6 +221,8 @@ export default forwardRef(function Select(
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
+      ref={forwardedRef}
+      validation={props.validation}
     >
       {placeholder && (
         <Placeholder
@@ -230,7 +235,7 @@ export default forwardRef(function Select(
         {...props}
         className={selectClassName}
         type="text"
-        ref={mergeRefs(ref, inputRef)}
+        ref={inputRef}
         onFocus={onFocus}
         onBlur={onBlur}
         onChange={(e) => setFilter(e.target.value)}
