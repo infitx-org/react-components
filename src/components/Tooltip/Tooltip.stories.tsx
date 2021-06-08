@@ -29,7 +29,7 @@ const Template = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   label: "I am a Tooltip",
-  fixed: false,
+  fixed: undefined,
   position: undefined,
   kind: undefined,
 };
