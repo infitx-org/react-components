@@ -1,15 +1,16 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
-import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import { BaseInput } from "components/shared/types";
+import Field, {
+  Loader,
+  Placeholder,
+  InvalidIcon,
+  ValidationProps,
+} from "components/Field";
 import "./NumberField.scss";
 
-type BaseInput = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "onChange" | "type"
->;
-
-export interface NumberFieldProps extends BaseInput {
+interface BaseNumberFieldProps extends BaseInput {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   className?: string;
@@ -21,6 +22,8 @@ export interface NumberFieldProps extends BaseInput {
   pending?: boolean;
   onChange?: (value?: number) => void;
 }
+
+export type NumberFieldProps = BaseNumberFieldProps & Partial<ValidationProps>;
 
 export default React.forwardRef(function NumberField(
   {
@@ -117,6 +120,7 @@ export default React.forwardRef(function NumberField(
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
+      validation={props.validation}
     >
       {placeholder && (
         <Placeholder

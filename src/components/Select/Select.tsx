@@ -3,17 +3,19 @@ import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
-import Field, { Loader, Placeholder, InvalidIcon } from "../Field";
+import { BaseSelect } from "components/shared/types";
+import Field, {
+  Loader,
+  Placeholder,
+  InvalidIcon,
+  ValidationProps,
+} from "components/Field";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
 import Filter from "./components/Filter";
 import "./Select.scss";
 
-export interface SelectProps
-  extends Omit<
-    React.SelectHTMLAttributes<HTMLInputElement>,
-    "size" | "value" | "onChange"
-  > {
+export interface BaseSelectProps extends BaseSelect {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   value?: OptionValue;
@@ -27,6 +29,8 @@ export interface SelectProps
   onClear?: () => void;
 }
 
+export type SelectProps = BaseSelectProps & ValidationProps;
+
 export default forwardRef(function Select(
   {
     kind = Kind.Primary,
@@ -38,6 +42,7 @@ export default forwardRef(function Select(
     invalid,
     pending,
     options = [],
+    message,
     onChange,
     onClear,
     ...props
@@ -218,6 +223,7 @@ export default forwardRef(function Select(
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
+      validation={props.validation}
     >
       {placeholder && (
         <Placeholder

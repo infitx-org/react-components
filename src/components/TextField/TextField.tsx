@@ -1,20 +1,14 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
+import { BaseInput } from "components/shared/types";
 import Field, {
-  FieldProps,
   Loader,
   Placeholder,
   InvalidIcon,
-  withValidation,
   ValidationProps,
 } from "components/Field";
 import "./TextField.scss";
-
-type BaseInput = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "onChange"
->;
 
 export interface BaseTextFieldProps extends BaseInput {
   kind?: `${Kind}`;
@@ -43,7 +37,6 @@ export default React.forwardRef(function TextField(
     invalid,
     pending,
     onChange,
-    message,
     ...props
   }: TextFieldProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
@@ -106,12 +99,8 @@ export default React.forwardRef(function TextField(
     `rc-textfield--${size}`,
   ]);
 
-  const FieldWithValidation = message
-    ? withValidation<FieldProps>(Field)
-    : Field;
-
   return (
-    <FieldWithValidation
+    <Field
       className={className}
       kind={kind}
       size={size}
@@ -122,7 +111,7 @@ export default React.forwardRef(function TextField(
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
-      message="diocane"
+      validation={props.validation}
     >
       {placeholder && (
         <Placeholder
@@ -144,6 +133,6 @@ export default React.forwardRef(function TextField(
       />
       {pending && <Loader size={size} />}
       {invalid && <InvalidIcon size={size} />}
-    </FieldWithValidation>
+    </Field>
   );
 });

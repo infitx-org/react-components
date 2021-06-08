@@ -2,18 +2,21 @@ import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
 import { format as dateFormat } from "date-fns";
-import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import { BaseInput } from "components/shared/types";
+import Field, {
+  Loader,
+  Placeholder,
+  InvalidIcon,
+  ValidationProps,
+} from "components/Field";
+
 import Calendar from "./components/Calendar";
 import CalendarIcon from "./components/CalendarIcon";
 import "./DatePicker.scss";
 
 type DateValue = Date | undefined;
 
-export interface DatePickerProps
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "size" | "onChange"
-  > {
+interface BaseDatePickerProps extends BaseInput {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   className?: string;
@@ -26,6 +29,7 @@ export interface DatePickerProps
   onChange?: (date: DateValue) => void;
 }
 
+export type DatePickerProps = BaseDatePickerProps & Partial<ValidationProps>;
 export default React.forwardRef(function DatePicker(
   {
     kind = Kind.Primary,
@@ -131,6 +135,7 @@ export default React.forwardRef(function DatePicker(
   ]);
 
   const visibleValue = getStringFromDate(selectedDate);
+
   return (
     <Field
       kind={kind}
@@ -143,6 +148,7 @@ export default React.forwardRef(function DatePicker(
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
+      validation={props.validation}
     >
       {placeholder && (
         <Placeholder

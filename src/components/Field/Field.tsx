@@ -4,8 +4,9 @@ import { Kind, InputSize } from "types";
 import mergeRefs from "utils/mergeRefs";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import "./Field.scss";
+import withValidation, { ValidationProps } from "./hocs/withValidation";
 
-export type FieldProps = {
+export interface FieldProps extends ValidationProps {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   required?: boolean;
@@ -16,9 +17,9 @@ export type FieldProps = {
   className?: string;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   onClickOutside?: (e: MouseEvent) => void;
-};
+}
 
-export default React.forwardRef(function Field(
+const Field = React.forwardRef(function Field(
   {
     kind = Kind.Primary,
     size = InputSize.Large,
@@ -61,3 +62,5 @@ export default React.forwardRef(function Field(
     </div>
   );
 });
+
+export default withValidation(Field);

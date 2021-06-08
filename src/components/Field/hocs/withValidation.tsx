@@ -2,8 +2,8 @@ import React from "react";
 import Tooltip from "components/Tooltip";
 
 export interface ValidationProps {
-  focused: boolean;
-  message: string;
+  focused?: boolean;
+  validation?: string;
 }
 
 export default function withValidationCard<P>(
@@ -13,10 +13,13 @@ export default function withValidationCard<P>(
     props: P & ValidationProps,
     ref
   ) {
+    if (!props.focused || !props.validation) {
+      return <Component {...(props as P)} ref={ref} />;
+    }
     return (
       <Tooltip
-        fixed={props.focused as boolean}
-        label={props.message}
+        fixed
+        label={props.validation as string}
         kind="success"
         position="right"
       >
