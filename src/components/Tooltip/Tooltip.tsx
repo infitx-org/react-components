@@ -153,7 +153,7 @@ function Tooltip({
 
   const childrenWithRef = React.cloneElement(children, {
     ...children.props,
-    childRef,
+    ref: childRef,
   });
 
   return (

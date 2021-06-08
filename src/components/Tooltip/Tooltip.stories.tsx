@@ -1,4 +1,5 @@
 import TextField from "components/TextField";
+import Icon from "components/Icon";
 import Tooltip from "./Tooltip";
 
 export default {
