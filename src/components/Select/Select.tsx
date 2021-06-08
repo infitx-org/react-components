@@ -42,7 +42,6 @@ export default forwardRef(function Select(
     invalid,
     pending,
     options = [],
-    message,
     onChange,
     onClear,
     ...props
