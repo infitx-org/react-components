@@ -36,7 +36,7 @@ export default React.forwardRef(function TextField(
     onChange,
     ...props
   }: TextFieldProps,
-  forwardedRef: React.ForwardedRef<HTMLInputElement>
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [currentValue, setValue] = React.useState<string | undefined>(value);

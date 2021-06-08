@@ -3,7 +3,6 @@ import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
 import readFileAsText from "@modusbox/ts-utils/lib/file/readFileAsText";
 import readFileAsBase64 from "@modusbox/ts-utils/lib/file/readFileAsBase64";
-import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Button from "components/Button";
 import "./FileUploader.scss";
@@ -41,7 +40,7 @@ export default React.forwardRef(function FileUploader(
     onChange,
     ...props
   }: FileUploaderProps,
-  ref: React.ForwardedRef<HTMLInputElement>
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [selectedFile, setFile] = React.useState<File | undefined>(file);
@@ -171,6 +170,7 @@ export default React.forwardRef(function FileUploader(
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
+      ref={forwardedRef}
     >
       {placeholder && (
         <Placeholder
@@ -183,7 +183,7 @@ export default React.forwardRef(function FileUploader(
         {...props}
         className="rc-fileuploader__input"
         type="file"
-        ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
+        ref={inputRef}
         onChange={onFileChange}
         onFocus={onFocus}
         onBlur={onBlur}

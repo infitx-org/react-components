@@ -2,7 +2,6 @@ import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
 import { format as dateFormat } from "date-fns";
-import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Calendar from "./components/Calendar";
 import CalendarIcon from "./components/CalendarIcon";
@@ -41,7 +40,7 @@ export default React.forwardRef(function DatePicker(
     onChange,
     ...props
   }: DatePickerProps,
-  ref: React.ForwardedRef<HTMLInputElement>
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
   function getDateFromString(date?: string): DateValue {
     return date ? new Date(date) : undefined;
@@ -143,6 +142,7 @@ export default React.forwardRef(function DatePicker(
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
+      ref={forwardedRef}
     >
       {placeholder && (
         <Placeholder
@@ -155,7 +155,7 @@ export default React.forwardRef(function DatePicker(
         {...props}
         className={inputClassName}
         type="text"
-        ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
+        ref={inputRef}
         onChange={(e) => e.preventDefault()}
         onFocus={onFocus}
         onBlur={onBlur}

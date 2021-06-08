@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
-import mergeRefs from "utils/mergeRefs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import "./NumberField.scss";
 
@@ -37,7 +36,7 @@ export default React.forwardRef(function NumberField(
     onChange,
     ...props
   }: NumberFieldProps,
-  ref: React.ForwardedRef<HTMLInputElement>
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
   function validNumber(num?: number | string): number | "" {
     return Number(num) || "";
@@ -117,6 +116,7 @@ export default React.forwardRef(function NumberField(
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
+      ref={forwardedRef}
     >
       {placeholder && (
         <Placeholder
@@ -131,7 +131,7 @@ export default React.forwardRef(function NumberField(
         value={currentValue}
         className={textFieldClassName}
         type="number"
-        ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
+        ref={inputRef}
         onChange={onValueChange}
         onFocus={onFocus}
         onBlur={onBlur}
