@@ -1,7 +1,8 @@
 import classnames from "classnames";
 import React from "react";
 import { Kind } from "types";
-import Icon from "../Icon";
+import Icon from "components/Icon";
+import { withTooltip } from "components/Tooltip";
 import "./IconButton.scss";
 
 export interface IconButtonProps {
@@ -14,15 +15,18 @@ export interface IconButtonProps {
   onClick: () => void;
 }
 
-function IconButton({
-  kind,
-  size = 20,
-  icon,
-  fill,
-  className,
-  onClick,
-  disabled,
-}: IconButtonProps) {
+const IconButton = React.forwardRef(function IconButton(
+  {
+    kind,
+    size = 20,
+    icon,
+    fill,
+    className,
+    onClick,
+    disabled,
+  }: IconButtonProps,
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
+) {
   const iconClassName = classnames([
     "rc-icon-button",
     kind && `rc-icon-button--${kind}`,
@@ -30,22 +34,23 @@ function IconButton({
     className,
   ]);
 
-  const iconComponent = (
+  return (
     <div
+      ref={forwardedRef}
       className={iconClassName}
       role="presentation"
       onClick={disabled ? undefined : onClick}
+      style={{ height: size, width: size }}
     >
       <Icon
         size={size}
         icon={icon}
         fill={fill}
+        style={{ fill: fill || "inherit" }}
         className="rc-icon-button__icon"
       />
     </div>
   );
+});
 
-  return <div style={{ height: size, width: size }}>{iconComponent}</div>;
-}
-
-export default IconButton;
+export default withTooltip(IconButton);

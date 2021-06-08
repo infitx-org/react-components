@@ -20,7 +20,7 @@ export default function withValidationCard<P>(
       <Tooltip
         fixed
         label={props.validation as string}
-        kind="success"
+        kind="danger"
         position="right"
       >
         <Component {...(props as P)} ref={ref} />
