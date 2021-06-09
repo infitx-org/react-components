@@ -53,7 +53,6 @@ export default React.forwardRef(function NumberField(
 
   function enter() {
     setFocused(true);
-    inputRef.current?.focus();
   }
 
   function leave() {

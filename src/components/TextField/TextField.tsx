@@ -33,6 +33,7 @@ export default React.forwardRef(function TextField(
     invalid,
     pending,
     onChange,
+    validation,
     ...props
   }: TextFieldProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
@@ -47,7 +48,6 @@ export default React.forwardRef(function TextField(
 
   function enter() {
     setFocused(true);
-    inputRef.current?.focus();
   }
 
   function leave() {
@@ -104,7 +104,7 @@ export default React.forwardRef(function TextField(
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
-      validation={props.validation}
+      validation={validation}
     >
       {placeholder && (
         <Placeholder

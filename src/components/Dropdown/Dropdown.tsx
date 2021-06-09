@@ -78,6 +78,11 @@ const Dropdown = ({
 }: DropdownProps) => {
   const [open, setOpen] = React.useState(false);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
+
+  function toggle() {
+    buttonRef.current?.focus();
+    setOpen(!open);
+  }
   function leave(e: any) {
     setOpen(false);
     props.onBlur?.(e);
@@ -91,7 +96,7 @@ const Dropdown = ({
         size={size}
         kind={kind}
         onBlur={leave}
-        onClick={() => setOpen(!open)}
+        onClick={toggle}
         className={buttonClassname}
         icon={<Indicator open={open} size={size} />}
         iconPosition="right"

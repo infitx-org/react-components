@@ -9,6 +9,7 @@
 .rc-button {
   @include any.rc-component;
 
+  margin: 0;
   outline: none;
   position: relative;
   cursor: pointer;
@@ -23,7 +24,6 @@
   border-radius: input.$border-radius;
   font-style: normal;
   font-weight: 400;
-  -webkit-font-smoothing: antialiased;
   border: 1px solid;
   align-items: center;
   border-bottom-width: 2px;
