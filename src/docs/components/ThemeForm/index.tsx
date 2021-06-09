@@ -4,6 +4,7 @@ import Column from "components/Layout/Column";
 import Checkbox from "components/Checkbox";
 import RadioGroup from "components/RadioGroup";
 import Select from "components/Select";
+import DatePicker from "components/DatePicker";
 import Button from "components/Button";
 
 export default function ThemeForm() {
@@ -31,6 +32,10 @@ export default function ThemeForm() {
           onChange={setKind}
           options={options}
         />
+      </Row>
+
+      <Row style={{ margin: "5px" }}>
+        <DatePicker size="small" kind={kind} />
       </Row>
       <Row style={{ margin: "5px" }}>
         <Button
