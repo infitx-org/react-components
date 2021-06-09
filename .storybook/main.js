@@ -7,6 +7,9 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/addon-controls',
   ],
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
   webpackFinal: async (config, { configType }) => {
 
     // Allow absolute paths

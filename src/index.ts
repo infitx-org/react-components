@@ -12,6 +12,7 @@ export {
   default as DatePicker,
   DatePickerProps,
 } from "./components/DatePicker";
+export { default as Dropdown, DropdownProps } from "./components/Dropdown";
 export {
   default as Field,
   FieldProps,

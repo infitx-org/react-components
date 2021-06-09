@@ -1,8 +1,8 @@
 import { Kind } from "types";
 import Row from "components/Layout/Row";
 import Column from "components/Layout/Column";
-import Box from "docs/styling/components/Box";
-import Label from "docs/styling/components/Label";
+import Box from "docs/components/Box";
+import Label from "docs/components/Label";
 import "./Themes.scss";
 
 const colors = [

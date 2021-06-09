@@ -4,9 +4,10 @@ import Column from "components/Layout/Column";
 import Checkbox from "components/Checkbox";
 import RadioGroup from "components/RadioGroup";
 import Select from "components/Select";
+import DatePicker from "components/DatePicker";
 import Button from "components/Button";
 
-export default function FormTheme() {
+export default function ThemeForm() {
   const options = [
     "primary",
     "secondary",
@@ -31,6 +32,10 @@ export default function FormTheme() {
           onChange={setKind}
           options={options}
         />
+      </Row>
+
+      <Row style={{ margin: "5px" }}>
+        <DatePicker size="small" kind={kind} />
       </Row>
       <Row style={{ margin: "5px" }}>
         <Button

@@ -2,13 +2,9 @@ import React from "react";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
 import { BaseInput } from "components/shared/types";
-import Field, {
-  Loader,
-  Placeholder,
-  InvalidIcon,
-  ValidationProps,
-} from "components/Field";
+import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import "./TextField.scss";
+import { WithValidationProps } from "hocs";
 
 export interface BaseTextFieldProps extends BaseInput {
   kind?: `${Kind}`;
@@ -23,7 +19,7 @@ export interface BaseTextFieldProps extends BaseInput {
   onChange?: (value: string) => void;
 }
 
-export type TextFieldProps = BaseTextFieldProps & Partial<ValidationProps>;
+export type TextFieldProps = BaseTextFieldProps & Partial<WithValidationProps>;
 
 export default React.forwardRef(function TextField(
   {

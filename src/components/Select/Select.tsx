@@ -4,12 +4,8 @@ import findIndex from "lodash/findIndex";
 import classnames from "classnames";
 import { Kind, InputSize, KeyCode } from "types";
 import { BaseSelect } from "components/shared/types";
-import Field, {
-  Loader,
-  Placeholder,
-  InvalidIcon,
-  ValidationProps,
-} from "components/Field";
+import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import { WithValidationProps } from "hocs";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
 import Filter from "./components/Filter";
@@ -29,7 +25,7 @@ export interface BaseSelectProps extends BaseSelect {
   onClear?: () => void;
 }
 
-export type SelectProps = BaseSelectProps & ValidationProps;
+export type SelectProps = BaseSelectProps & WithValidationProps;
 
 export default forwardRef(function Select(
   {

@@ -63,13 +63,29 @@ function TooltipCard({ children, sizes, position }: TooltipCardProps) {
     transform: "",
     visibility: "hidden",
   } as CSSProperties);
+  const [rect, setRect] = useState({
+    width: 0,
+    height: 0,
+  });
 
-  useEffect(() => {
+  function setStyleAndRect() {
     const item = ref.current.getBoundingClientRect();
     const { x, y } = getPositionCoordinates(item, sizes, position);
     const transform = `translate(${x}px, ${y}px)`;
     setStyle({ transform, visibility: "visible", opacity: 1 } as CSSProperties);
-  }, [sizes, position]);
+    setRect({ width: item.width, height: item.height });
+  }
+
+  // recalculates when the position ot the source size changes
+  useEffect(setStyleAndRect, [sizes, position]);
+
+  // Recalculates when the content changes
+  useEffect(() => {
+    const crect = ref.current.getBoundingClientRect();
+    if (crect.height !== rect.height || crect.width !== rect.width) {
+      setStyleAndRect();
+    }
+  });
 
   return (
     <div ref={ref} className="rc-tooltip" style={style}>
@@ -150,6 +166,18 @@ function Tooltip({
       onLeave();
     }
   }, [fixed]);
+
+  // useEffect(() => {
+  //   if(sizes) {
+  //     const { offsetLeft, offsetTop } = childRef.current as HTMLElement;
+  //     const { width, height } = childRef.current.getBoundingClientRect();
+  //     console.log('heip');
+  //     if (sizes.width !== width || sizes.height !== height || sizes.offsetLeft !== offsetLeft || sizes.offsetTop !== offsetTop) {
+  //       setSizes({ offsetTop, offsetLeft, width, height });
+  //     }
+  //     // setElementSizes();
+  //   }
+  // })
 
   if (!label && !content) {
     return <>{children}</>;

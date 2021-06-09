@@ -2,7 +2,7 @@ import classnames from "classnames";
 import React from "react";
 import { Kind } from "types";
 import Icon from "components/Icon";
-import { withTooltip } from "components/Tooltip";
+import withTooltip from "hocs/withTooltip";
 import "./IconButton.scss";
 
 export interface IconButtonProps {

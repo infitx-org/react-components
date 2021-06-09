@@ -21,7 +21,11 @@ Default.args = {
   pending: false,
   // eslint-disable-next-line
   onChange: console.log,
-  validation: "Test",
+  validation: [
+    { active: false, message: "Test" },
+    { active: true, message: "invalid" },
+    { active: undefined, message: "unknown" },
+  ],
 };
 
 export const TypePassword = Template.bind({});
