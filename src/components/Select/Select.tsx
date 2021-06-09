@@ -8,7 +8,7 @@ import Field, {
   Loader,
   Placeholder,
   InvalidIcon,
-  ValidationProps,
+  WithValidationProps,
 } from "components/Field";
 import Indicator from "./components/Indicator";
 import Options, { Option, OptionValue } from "./components/Options";
@@ -29,7 +29,7 @@ export interface BaseSelectProps extends BaseSelect {
   onClear?: () => void;
 }
 
-export type SelectProps = BaseSelectProps & ValidationProps;
+export type SelectProps = BaseSelectProps & WithValidationProps;
 
 export default forwardRef(function Select(
   {

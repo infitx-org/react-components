@@ -7,7 +7,7 @@ import Field, {
   Loader,
   Placeholder,
   InvalidIcon,
-  ValidationProps,
+  WithValidationProps,
 } from "components/Field";
 
 import Calendar from "./components/Calendar";
@@ -29,7 +29,8 @@ interface BaseDatePickerProps extends BaseInput {
   onChange?: (date: DateValue) => void;
 }
 
-export type DatePickerProps = BaseDatePickerProps & Partial<ValidationProps>;
+export type DatePickerProps = BaseDatePickerProps &
+  Partial<WithValidationProps>;
 export default React.forwardRef(function DatePicker(
   {
     kind = Kind.Primary,

@@ -1,7 +1,7 @@
 import React from "react";
 import Tooltip from "components/Tooltip";
 
-export interface ValidationProps {
+export interface WithValidationProps {
   focused?: boolean;
   validation?: string;
 }
@@ -10,7 +10,7 @@ export default function withValidationCard<P>(
   Component: React.ComponentType<P>
 ) {
   return React.forwardRef(function FieldWithValidation(
-    props: P & ValidationProps,
+    props: P & WithValidationProps,
     ref
   ) {
     if (!props.focused || !props.validation) {

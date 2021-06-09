@@ -6,7 +6,7 @@ import Field, {
   Loader,
   Placeholder,
   InvalidIcon,
-  ValidationProps,
+  WithValidationProps,
 } from "components/Field";
 import "./TextField.scss";
 
@@ -23,7 +23,7 @@ export interface BaseTextFieldProps extends BaseInput {
   onChange?: (value: string) => void;
 }
 
-export type TextFieldProps = BaseTextFieldProps & Partial<ValidationProps>;
+export type TextFieldProps = BaseTextFieldProps & Partial<WithValidationProps>;
 
 export default React.forwardRef(function TextField(
   {

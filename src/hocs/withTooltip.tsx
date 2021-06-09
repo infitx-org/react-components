@@ -1,6 +1,6 @@
 import React from "react";
 import { Kind } from "types";
-import Tooltip, { Position } from "./Tooltip";
+import Tooltip, { Position } from "components/Tooltip";
 
 export interface WithTooltipProps {
   tooltipKind?: `${Kind}`;

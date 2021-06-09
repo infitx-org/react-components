@@ -6,7 +6,7 @@ import Field, {
   Loader,
   Placeholder,
   InvalidIcon,
-  ValidationProps,
+  WithValidationProps,
 } from "components/Field";
 import "./NumberField.scss";
 
@@ -23,7 +23,8 @@ interface BaseNumberFieldProps extends BaseInput {
   onChange?: (value?: number) => void;
 }
 
-export type NumberFieldProps = BaseNumberFieldProps & Partial<ValidationProps>;
+export type NumberFieldProps = BaseNumberFieldProps &
+  Partial<WithValidationProps>;
 
 export default React.forwardRef(function NumberField(
   {

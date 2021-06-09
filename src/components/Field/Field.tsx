@@ -4,9 +4,9 @@ import { Kind, InputSize } from "types";
 import mergeRefs from "utils/mergeRefs";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import "./Field.scss";
-import withValidation, { ValidationProps } from "./hocs/withValidation";
+import withValidation, { WithValidationProps } from "hocs/withValidation";
 
-export interface FieldProps extends ValidationProps {
+export interface FieldProps extends WithValidationProps {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   required?: boolean;

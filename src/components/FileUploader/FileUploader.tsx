@@ -7,7 +7,7 @@ import Field, {
   Loader,
   Placeholder,
   InvalidIcon,
-  ValidationProps,
+  WithValidationProps,
 } from "components/Field";
 import Button from "components/Button";
 import { BaseInput } from "components/shared/types";
@@ -27,7 +27,7 @@ export interface BaseFileUploaderProps extends BaseInput {
   onChange?: (content?: string) => void;
 }
 
-export type FileUploaderProps = BaseFileUploaderProps & ValidationProps;
+export type FileUploaderProps = BaseFileUploaderProps & WithValidationProps;
 
 export default React.forwardRef(function FileUploader(
   {

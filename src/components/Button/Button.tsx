@@ -6,7 +6,7 @@ import { Size, Kind } from "types";
 import Spinner from "components/Spinner";
 import Icon from "components/Icon";
 import { getIconSizeByComponentSize } from "utils/size";
-import { withTooltip, WithTooltipProps } from "components/Tooltip";
+import withTooltip, { WithTooltipProps } from "hocs/withTooltip";
 
 interface BaseButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size"> {
