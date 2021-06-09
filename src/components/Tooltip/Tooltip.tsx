@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  CSSProperties,
-  useLayoutEffect,
-} from "react";
+import React, { useState, useEffect, CSSProperties } from "react";
 import classnames from "classnames";
 import { Kind } from "types";
 import "./Tooltip.scss";
