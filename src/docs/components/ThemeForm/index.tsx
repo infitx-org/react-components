@@ -6,7 +6,7 @@ import RadioGroup from "components/RadioGroup";
 import Select from "components/Select";
 import Button from "components/Button";
 
-export default function FormTheme() {
+export default function ThemeForm() {
   const options = [
     "primary",
     "secondary",
