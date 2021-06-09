@@ -11,18 +11,24 @@ export interface WithTooltipProps {
 
 export default function withTooltip<P>(Component: React.ComponentType<P>) {
   return React.forwardRef(function WithTooltip(
-    props: P & WithTooltipProps,
+    {
+      tooltipLabel,
+      tooltipKind,
+      tooltipPosition,
+      tooltipContent,
+      ...props
+    }: P & WithTooltipProps,
     ref
   ) {
-    if (!props.tooltipLabel && !props.tooltipContent) {
+    if (!tooltipLabel && !tooltipContent) {
       return <Component {...(props as P)} ref={ref} />;
     }
     return (
       <Tooltip
-        label={props.tooltipLabel}
-        kind={props.tooltipKind}
-        position={props.tooltipPosition}
-        content={props.tooltipContent}
+        label={tooltipLabel}
+        kind={tooltipKind}
+        position={tooltipPosition}
+        content={tooltipContent}
       >
         <Component {...(props as P)} ref={ref} />
       </Tooltip>
