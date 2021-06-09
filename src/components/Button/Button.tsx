@@ -95,4 +95,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   return button;
 });
 
-export default React.memo(withTooltip(Button));
+export default withTooltip<HTMLButtonElement, ButtonProps>(Button);

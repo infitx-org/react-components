@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, ComponentType } from "react";
 import { Kind } from "types";
 import Tooltip, { Position } from "components/Tooltip";
 
@@ -9,19 +9,19 @@ export interface WithTooltipProps {
   tooltipPosition?: Position;
 }
 
-export default function withTooltip<P>(Component: React.ComponentType<P>) {
-  return React.forwardRef(function WithTooltip(
+export default function withTooltip<T, Props>(Component: ComponentType<Props>) {
+  return forwardRef<T, Props & WithTooltipProps>(function WithTooltip(
     {
       tooltipLabel,
       tooltipKind,
       tooltipPosition,
       tooltipContent,
       ...props
-    }: P & WithTooltipProps,
+    }: Props & WithTooltipProps,
     ref
   ) {
     if (!tooltipLabel && !tooltipContent) {
-      return <Component {...(props as P)} ref={ref} />;
+      return <Component {...(props as Props)} ref={ref} />;
     }
     return (
       <Tooltip
@@ -30,7 +30,7 @@ export default function withTooltip<P>(Component: React.ComponentType<P>) {
         position={tooltipPosition}
         content={tooltipContent}
       >
-        <Component {...(props as P)} ref={ref} />
+        <Component {...(props as Props)} ref={ref} />
       </Tooltip>
     );
   });
