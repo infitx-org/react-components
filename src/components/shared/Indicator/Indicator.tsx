@@ -10,7 +10,8 @@ const indicatorSizes = {
   [Size.Medium]: 10,
   [Size.Large]: 11,
 };
-interface IndicatorProps {
+
+export interface IndicatorProps {
   open: boolean;
   size: `${Size}`;
   className?: string;
