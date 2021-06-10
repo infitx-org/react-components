@@ -1,6 +1,6 @@
 import classnames from "classnames";
-import Icon from "components/Icon";
 import { Size } from "types";
+import Icon from "components/Icon";
 import Arrow from "../../../assets/icons/arrow.svg";
 import "./Indicator.scss";
 
@@ -10,7 +10,8 @@ const indicatorSizes = {
   [Size.Medium]: 10,
   [Size.Large]: 11,
 };
-interface IndicatorProps {
+
+export interface IndicatorProps {
   open: boolean;
   size: `${Size}`;
   className?: string;

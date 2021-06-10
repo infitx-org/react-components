@@ -1,68 +1,12 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, Size, KeyCode } from "types";
-import useOverlayPosition from "hooks/useOverlayPosition";
+import { KeyCode } from "types";
 import useOnClickOutside from "hooks/useOnClickOutside";
-import mergeRefs from "utils/mergeRefs";
-import Indicator from "components/Select/components/Indicator";
+import Indicator from "components/shared/Indicator";
 import Button, { ButtonProps } from "components/Button";
+import DropdownItem, { DropdownItemProps } from "./components/DropdownItem";
+import DropdownOverlay from "./components/DropdownOverlay";
 import "./Dropdown.scss";
-
-interface DropdownItemProps {
-  size?: `${Size}`;
-  kind?: `${Kind}`;
-  label?: string;
-  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
-  children?: React.ReactNode;
-}
-function DropdownItem({
-  size,
-  kind,
-  label,
-  onClick,
-  children,
-}: DropdownItemProps) {
-  const dropdownItemClassName = classnames([
-    "rc-dropdown__item",
-    `rc-dropdown__item--${kind}`,
-    `rc-dropdown__item--${size}`,
-  ]);
-  return (
-    <div
-      className={dropdownItemClassName}
-      role="presentation"
-      onClick={onClick}
-    >
-      {children || label}
-    </div>
-  );
-}
-
-const DropdownOverlay = React.forwardRef(function DropdownOverlay(
-  { children }: { children: React.ReactNode },
-  forwardedRef: React.ForwardedRef<HTMLDivElement>
-) {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const {
-    top,
-    bottom,
-    height,
-    left,
-    right,
-  } = useOverlayPosition<HTMLDivElement>(ref.current, false, true);
-
-  const maxHeight = Math.min(220, parseInt(height || "", 10) || 220);
-
-  return (
-    <div
-      className="rc-dropdown__overlay"
-      ref={mergeRefs(ref, forwardedRef)}
-      style={{ top, bottom, left, right, maxHeight }}
-    >
-      <div className="rc-dropdown__overlay-content">{children}</div>
-    </div>
-  );
-});
 
 function isDropdownItem(child: React.ReactNode): boolean {
   return (child as React.ReactElement).type === DropdownItem;
