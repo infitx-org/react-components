@@ -33,13 +33,13 @@ export default React.forwardRef(function TextField(
     invalid,
     pending,
     onChange,
+    validation,
     ...props
   }: TextFieldProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [currentValue, setValue] = React.useState<string | undefined>(value);
-  const [open, setOpen] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
 
   React.useEffect(() => {
@@ -48,13 +48,10 @@ export default React.forwardRef(function TextField(
 
   function enter() {
     setFocused(true);
-    setOpen(true);
-    inputRef.current?.focus();
   }
 
   function leave() {
     setFocused(false);
-    setOpen(false);
   }
 
   async function onValueChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -76,7 +73,7 @@ export default React.forwardRef(function TextField(
   }
 
   function onFieldClick(): void {
-    if (!open) {
+    if (!focused) {
       enter();
     }
     inputRef.current?.focus();
@@ -107,7 +104,7 @@ export default React.forwardRef(function TextField(
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
-      validation={props.validation}
+      validation={validation}
     >
       {placeholder && (
         <Placeholder

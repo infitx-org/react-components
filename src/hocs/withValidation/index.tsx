@@ -91,28 +91,26 @@ export interface WithValidationProps {
   validation?: ValidationMessage[];
 }
 
-export default function withValidationCard<Props>(
+export default function withValidation<Props>(
   Component: React.ComponentType<Props>
 ) {
-  return React.forwardRef(function FieldWithValidation(
+  return React.forwardRef(function WithValidation(
     props: Props & WithValidationProps,
     ref
   ) {
-    if (!props.focused || !props.validation) {
-      return <Component {...(props as Props)} ref={ref} />;
-    }
+    const component = <Component {...(props as Props)} ref={ref} />;
+
     return (
       <Tooltip
-        fixed
+        fixed={!!props.focused && !!props.validation}
         content={
           <ValidationCard
             validation={props.validation as ValidationMessage[]}
           />
         }
-        kind="danger"
         position="right"
       >
-        <Component {...(props as Props)} ref={ref} />
+        {component}
       </Tooltip>
     );
   });

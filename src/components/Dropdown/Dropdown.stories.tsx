@@ -23,7 +23,7 @@ const icon = (
 
 const Template = (args) => (
   <Dropdown {...args} onClick={log} label="I am a dropdown">
-    <Dropdown.Item>It is a very very long option</Dropdown.Item>
+    <Dropdown.Item onClick={log}>It is a very very long option</Dropdown.Item>
     <Dropdown.Item>It is a very very long option</Dropdown.Item>
   </Dropdown>
 );
