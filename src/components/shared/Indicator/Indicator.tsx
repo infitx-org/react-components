@@ -1,6 +1,6 @@
 import classnames from "classnames";
-import Icon from "components/Icon";
 import { Size } from "types";
+import Icon from "components/Icon";
 import Arrow from "../../../assets/icons/arrow.svg";
 import "./Indicator.scss";
 

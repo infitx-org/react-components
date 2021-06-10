@@ -167,18 +167,6 @@ function Tooltip({
     }
   }, [fixed]);
 
-  // useEffect(() => {
-  //   if(sizes) {
-  //     const { offsetLeft, offsetTop } = childRef.current as HTMLElement;
-  //     const { width, height } = childRef.current.getBoundingClientRect();
-  //     console.log('heip');
-  //     if (sizes.width !== width || sizes.height !== height || sizes.offsetLeft !== offsetLeft || sizes.offsetTop !== offsetTop) {
-  //       setSizes({ offsetTop, offsetLeft, width, height });
-  //     }
-  //     // setElementSizes();
-  //   }
-  // })
-
   if (!label && !content) {
     return <>{children}</>;
   }
