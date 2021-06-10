@@ -1,0 +1,30 @@
+@use "../../../scss/base/colors.scss";
+
+.rc-menu__section {
+}
+
+.rc-menu__section-icon {
+  padding-right: 10px;
+}
+
+.rc-menu__section-label {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 10px;
+  background: #fff;
+  margin-top: 1px;
+}
+
+.rc-menu__section--disabled {
+  opacity: 0.5;
+}
+
+.rc-menu__section-items {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  background: colors.$gray--lighter;
+}

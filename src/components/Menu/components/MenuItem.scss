@@ -1,9 +1,4 @@
-@use "../../scss/base/colors.scss";
-
-.rc-menu {
-  overflow: hidden;
-  background: #f2f1f1;
-}
+@use "../../../scss/base/colors.scss";
 
 .rc-menu__item {
   display: flex;
