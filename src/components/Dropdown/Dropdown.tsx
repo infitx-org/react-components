@@ -68,7 +68,8 @@ function isDropdownItem(child: React.ReactNode): boolean {
   return (child as React.ReactElement).type === DropdownItem;
 }
 
-interface DropdownProps extends Omit<ButtonProps, "children" | "iconPosition"> {
+export interface DropdownProps
+  extends Omit<ButtonProps, "children" | "iconPosition"> {
   children: React.ReactNode;
 }
 
@@ -85,7 +86,7 @@ const Dropdown = ({
   const overlayRef = React.useRef<HTMLDivElement>(null);
 
   useOnClickOutside(buttonRef, (e: MouseEvent) => {
-    if (overlayRef.current?.contains(e.target)) {
+    if (overlayRef.current?.contains(e.target as Element)) {
       return;
     }
     setOpen(false);
