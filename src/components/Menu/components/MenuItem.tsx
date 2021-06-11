@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import Icon from "components/Icon";
 import Arrow from "../../../assets/icons/arrow.svg";
-import { getPathMatches, MenuContext, MenuItemProps } from '../shared';
+import { pathMatchesPathname, MenuContext, MenuItemProps } from "../shared";
 import "./MenuItem.scss";
 
 export default function MenuItem({
@@ -24,7 +24,7 @@ export default function MenuItem({
   if (back) {
     backIcon = (
       <Icon
-        className="rc-menu__item__back-icon"
+        className="rc-menu-item__back-icon"
         icon={<Arrow />}
         size={10}
         fill="#999"
@@ -35,9 +35,9 @@ export default function MenuItem({
 
   if (icon) {
     itemIcon = (
-      <div className="rc-menu__item__item-icon">
+      <div className="rc-menu-item__item-icon">
         <Icon
-          className="rc-menu__item__icon"
+          className="rc-menu-item__icon"
           icon={<Arrow />}
           size={size}
           fill={fill}
@@ -55,13 +55,13 @@ export default function MenuItem({
           }
         }
         const isActive =
-          active || (getPathMatches(pathname, path, partial) && !back);
+          active || (pathMatchesPathname(pathname, path, partial) && !back);
         const className = classnames([
-          "rc-menu__item",
-          isActive && "rc-menu__item--active",
-          disabled && "rc-menu__item--disabled",
-          back && "rc-menu__item--back",
-          icon && "rc-menu__item--with-icon",
+          "rc-menu-item",
+          isActive && "rc-menu-item--active",
+          disabled && "rc-menu-item--disabled",
+          back && "rc-menu-item--back",
+          icon && "rc-menu-item--with-icon",
         ]);
         return (
           <div className={className} onClick={doOnClick} role="presentation">

@@ -2,10 +2,15 @@ import React from "react";
 import classnames from "classnames";
 import Icon from "components/Icon";
 import Arrow from "../../../assets/icons/arrow.svg";
-import { MenuSectionProps, isMenuItem } from '../shared';
+import { MenuSectionProps, MenuItemElement } from "../shared";
+import MenuItem from './MenuItem';
 import "./MenuSection.scss";
 
-export default function MenuSection ({
+export function isMenuItem(child: React.ReactNode): child is MenuItemElement {
+  return (child as React.ReactElement).type === MenuItem;
+}
+
+export default function MenuSection({
   label,
   hidden,
   disabled = false,
@@ -22,7 +27,7 @@ export default function MenuSection ({
   let itemIcon = null;
   if (icon) {
     itemIcon = (
-      <div className="rc-menu__section-icon">
+      <div className="rc-menu-section__icon">
         <Icon icon={<Arrow />} size={size} fill={fill} />
       </div>
     );
@@ -31,7 +36,7 @@ export default function MenuSection ({
   let menuSectionLabel = null;
   if (label) {
     menuSectionLabel = (
-      <div className="rc-menu__section-label">
+      <div className="rc-menu-section__label">
         {itemIcon}
         {label}
       </div>
@@ -39,14 +44,14 @@ export default function MenuSection ({
   }
 
   const classNames = classnames([
-    "rc-menu__section",
-    disabled && "rc-menu__section--disabled",
+    "rc-menu-section",
+    disabled && "rc-menu-section--disabled",
   ]);
 
   return (
     <div className={classNames}>
       {menuSectionLabel}
-      <div className="rc-menu__section-items">{menuItems}</div>
+      <div className="rc-menu-section__items">{menuItems}</div>
     </div>
   );
-};
+}

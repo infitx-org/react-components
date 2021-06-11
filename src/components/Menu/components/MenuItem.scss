@@ -1,6 +1,6 @@
 @use "../../../scss/base/colors.scss";
 
-.rc-menu__item {
+.rc-menu-item {
   display: flex;
   align-items: center;
   width: 100%;
@@ -11,54 +11,51 @@
   border-left: 4px solid transparent;
   transition: border 0.2s linear, color 0.2s linear, fill 0.2s linear;
   font-size: 12px;
+  
+  .rc-menu-item__icon {
+    transition: fill 0.2s linear;
+    fill: #a7a7a7;
+  }
 
-  &:hover:not(.rc-menu__item--active) {
+  .rc-menu-item--active {
+    background: #f2f1f1;
+    font-weight: bold;
+    color: #333;
+  
+    .rc-menu-item__icon {
+      fill: colors.$dark-blue;
+    }
+  }
+
+  &:hover:not(.rc-menu-item--active) {
     color: colors.$primary;
 
-    .rc-menu__item__icon {
+    .rc-menu-item__icon {
       fill: colors.$primary;
     }
   }
 }
 
-.rc-menu__item__icon {
-  transition: fill 0.2s linear;
-  fill: #a7a7a7;
-}
-
-.rc-menu__item--active {
-  background: #f2f1f1;
-  font-weight: bold;
-  color: #333;
-
-  .rc-menu__item__icon {
-    fill: colors.$dark-blue;
-  }
-}
-
-.rc-menu__item--disabled {
+.rc-menu-item--disabled {
   color: #999;
   fill: #ccc;
   border-color: transparent;
 }
 
-.rc-menu__item--back {
+.rc-menu-item--back {
   padding-left: 0px;
   height: 40px;
   background: #fff;
   margin-top: 1px;
 }
 
-.rc-menu__item--with-icon {
-}
-
-.rc-menu__item__back-icon {
+.rc-menu-item__back-icon {
   transform: rotateZ(180deg);
   margin-left: 3px;
   margin-right: 3px;
 }
 
-.rc-menu__item__item-icon {
+.rc-menu-item__item-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +65,7 @@
   padding-bottom: 2px;
 }
 
-.rc-menu__item__item-named-icon {
+.rc-menu-item__item-named-icon {
   display: flex;
   align-items: center;
   justify-content: center;

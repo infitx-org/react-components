@@ -1,7 +1,4 @@
-
 import React from "react";
-import MenuItem from './components/MenuItem';
-import MenuSection from './components/MenuSection';
 
 export interface MenuSectionProps {
   label: string;
@@ -10,14 +7,12 @@ export interface MenuSectionProps {
   fill?: string;
   size?: number;
   disabled?: boolean;
-  children: MenuItemElement[];
+  children: MenuItemElement | MenuItemElement[];
 }
 
-export interface MenuItemProps {
+interface BaseMenuItemProps {
   label: string;
-  active: boolean;
-  path?: string;
-  to?: string;
+  active?: boolean;
   disabled?: boolean;
   hidden?: boolean;
   back?: boolean;
@@ -31,8 +26,19 @@ export interface MenuItemProps {
   // eslint-disable-next-line react/no-unused-prop-types
   partial?: boolean;
   // eslint-disable-next-line react/no-unused-prop-types
-  children?: MenuElement[];
+  children?: MenuItemElement | MenuElement[];
 }
+
+interface BaseMenuItemPropsWithTo extends BaseMenuItemProps {
+  to: string;
+  path?: string;
+}
+interface BaseMenuItemPropsWithPath extends BaseMenuItemProps {
+  to?: string;
+  path: string;
+}
+
+export type MenuItemProps = BaseMenuItemPropsWithTo | BaseMenuItemPropsWithPath;
 
 export type MenuItemElement = React.ReactElement<MenuItemProps>;
 export type MenuSectionElement = React.ReactElement<MenuSectionProps>;
@@ -48,7 +54,7 @@ export const MenuContext = React.createContext<MenuContextValue>({
   onClick: () => undefined,
 });
 
-export function getPathMatches(
+export function pathMatchesPathname(
   pathname: string,
   path: string | undefined,
   partial: boolean | undefined
@@ -76,12 +82,4 @@ export function getPathMatches(
     const isWild = pathChunk !== undefined && pathChunk.startsWith(":");
     return isExact || isWild;
   });
-}
-
-export function isMenuItem(child: React.ReactNode): child is MenuItemElement {
-  return (child as React.ReactElement).type === MenuItem;
-}
-
-export function isMenuSection(child: React.ReactNode): child is MenuSectionElement {
-  return (child as React.ReactElement).type === MenuSection;
 }

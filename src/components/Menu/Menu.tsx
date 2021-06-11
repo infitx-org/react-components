@@ -1,8 +1,25 @@
 import React from "react";
 import MenuItem from "./components/MenuItem";
-import MenuSection from './components/MenuSection';
-import { getPathMatches, MenuContext, MenuElement, MenuItemElement, isMenuItem, isMenuSection } from './shared';
+import MenuSection from "./components/MenuSection";
+import {
+  pathMatchesPathname,
+  MenuContext,
+  MenuElement,
+  MenuItemElement,
+  MenuSectionElement,
+} from "./shared";
 import "./Menu.scss";
+
+export function isMenuItem(child: React.ReactNode): child is MenuItemElement {
+  return (child as React.ReactElement).type === MenuItem;
+}
+
+export function isMenuSection(
+  child: React.ReactNode
+): child is MenuSectionElement {
+  return (child as React.ReactElement).type === MenuSection;
+}
+
 
 interface MenuItemsGroupProps {
   children: React.ReactNode;
@@ -37,13 +54,16 @@ function wrapItemsInSections(items: MenuElement[]) {
   );
 }
 
-function flattenMenuSections(items: MenuElement[]): MenuElement[] {
+function flattenMenuSections(
+  items: MenuItemElement | MenuElement[]
+): MenuElement[] {
+  const inArray = React.Children.toArray(items) as MenuElement[];
   // It flattens nested MenuSection, MenuItem components into a one-level array
-  return React.Children.toArray(items).reduce(
+  return inArray.reduce(
     (prevItems, currentItem) => [
       ...prevItems,
       ...(isMenuSection(currentItem)
-        ? flattenMenuSections(currentItem.props.children)
+        ? flattenMenuSections(currentItem.props.children as MenuElement[])
         : [currentItem]),
     ],
     [] as MenuElement[]
@@ -61,14 +81,14 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
   function getActiveNode(
     parentNode?: MenuItemElement
   ): MenuItemElement | undefined {
-    let activeNode: MenuElement | undefined;
+    let activeNode: MenuItemElement | undefined;
 
     const nodePath = parentNode?.props.path || path;
     const nodePartial = parentNode?.props.partial || false;
     const nodeChildren = parentNode?.props.children || children;
 
     // render Menu when pathname matches path
-    if (getPathMatches(pathname, nodePath, nodePartial)) {
+    if (pathMatchesPathname(pathname, nodePath, nodePartial)) {
       return undefined;
     }
     // Default to Menu when going manual - no route matching
@@ -84,7 +104,11 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
       // depending if needs to be treated like a root
       if (isMenuItem(node)) {
         const { asRoot, partial, active } = node.props;
-        const pathMatches = getPathMatches(pathname, node.props.path, partial);
+        const pathMatches = pathMatchesPathname(
+          pathname,
+          node.props.path,
+          partial
+        );
         // console.log('is menu', node.props.label, pathMatches, active, parentNode)
         if (pathMatches || active) {
           // asRoot prop is meant to be used when menu has child elements
@@ -108,7 +132,7 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
     menuComponents = wrapItemsInSections(
       React.Children.toArray(subChildren).filter(
         (element) => isMenuItem(element) || isMenuSection(element)
-      )
+      ) as MenuElement[]
     );
   }
   return (

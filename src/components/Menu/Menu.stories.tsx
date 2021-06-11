@@ -82,17 +82,7 @@ const Menu1 = ({ pathname, onChange, disabled, hidden }) => (
   </Menu>
 );
 
-const Menu2 = ({ pathname, onChange, disabled, hidden }) => (
-  <Menu onChange={onChange}>
-    <Menu.Item label="1" hidden={hidden} />
-    <Menu.Item label="2" />
-    <Menu.Item label="3" hidden={hidden} active />
-    <Menu.Item label="4" />
-    <Menu.Item label="5" hidden={hidden} />
-  </Menu>
-);
-
-const Menu3 = ({ pathname, onChange }) => (
+const Menu2 = ({ pathname, onChange }) => (
   <Menu path="/" pathname={pathname} onChange={onChange}>
     <Menu.Item label="/route" path="/route" />
     <Menu.Item label="/route/other" path="/route/other" />
@@ -132,13 +122,15 @@ class MenuTester extends PureComponent {
     }
   }
   onChangeDisabled() {
+    const disabled = !this.state.disabled;
     this.setState({
-      disabled: !this.state.disabled,
+      disabled,
     });
   }
   onChangeHidden() {
+    const hidden = !this.state.hidden;
     this.setState({
-      hidden: !this.state.hidden,
+      hidden
     });
   }
   render() {
@@ -193,10 +185,5 @@ export const TestMenu1 = () => (
 export const TestMenu2 = () => (
   <MenuTester>
     <Menu2 />
-  </MenuTester>
-);
-export const TestMenu3 = () => (
-  <MenuTester>
-    <Menu3 />
   </MenuTester>
 );
