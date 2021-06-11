@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface MenuContextValue {
-  pathname: string;
+  pathname?: string;
   onClick: (path: string) => void;
 }
 
@@ -11,14 +11,14 @@ export const MenuContext = React.createContext<MenuContextValue>({
 });
 
 export function isActivePath(
-  pathname: string,
+  pathname: string | undefined,
   path: string | undefined,
   partial?: boolean
 ): boolean {
   if (!path) {
     return false;
   }
-  if (partial && pathname.startsWith(path)) {
+  if (partial && pathname?.startsWith(path)) {
     return true;
   }
   if (path === pathname) {
@@ -26,7 +26,7 @@ export function isActivePath(
   }
 
   const pathChunks = path.split("/");
-  const pathNameChunks = pathname.split("/");
+  const pathNameChunks = pathname?.split("/") || [];
 
   if (pathChunks.length !== pathNameChunks.length) {
     return false;

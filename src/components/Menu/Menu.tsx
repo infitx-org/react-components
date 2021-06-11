@@ -33,7 +33,7 @@ function stripMenuSections(
 
 export interface MenuProps {
   path: string;
-  pathname: string;
+  pathname?: string;
   children: MenuItemElement | MenuElement[];
   onChange: (p: string) => void;
 }
@@ -44,18 +44,7 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
   ): MenuItemElement | undefined {
     let activeNode: MenuItemElement | undefined;
 
-    const nodePath = parentNode?.props.path || path;
-    const nodePartial = parentNode?.props.partial || false;
     const nodeChildren = parentNode?.props.children || children;
-
-    // render Menu when pathname matches path
-    if (isActivePath(pathname, nodePath, nodePartial)) {
-      return undefined;
-    }
-    // Default to Menu when going manual - no route matching
-    if (!parentNode && pathname === undefined) {
-      activeNode = undefined;
-    }
 
     // Flatten MenuSections in order not to have nested children when detecting active menu
     const menuItems = stripMenuSections(nodeChildren).filter(isMenuItem);
@@ -79,10 +68,15 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
     return activeNode;
   }
 
-  const rootMenuItem = getRootMenuItem();
-  const menuComponents = React.Children.toArray(
-    rootMenuItem?.props.children || children
-  ).filter(
+  // Default to Menu
+  let menuElements: MenuItemElement | MenuElement[] | undefined = children;
+  if (pathname !== path) {
+    const rootMenuItem = getRootMenuItem();
+    if (rootMenuItem) {
+      menuElements = rootMenuItem.props.children;
+    }
+  }
+  const menuComponents = React.Children.toArray(menuElements).filter(
     (element) => isMenuItem(element) || isMenuSection(element)
   ) as MenuElement[];
 
