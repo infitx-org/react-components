@@ -33,7 +33,7 @@ function stripMenuSections(
 
 function findVisibleElements(
   menuElements: MenuItemElement | MenuElement[],
-  pathname
+  pathname: string | undefined
 ): MenuItemElement | MenuElement[] | undefined {
   let activeNode: MenuItemElement | MenuElement[] | undefined;
 
