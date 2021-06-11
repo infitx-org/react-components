@@ -76,16 +76,6 @@ it("renders the menu items with icons", () => {
   );
 });
 
-// it('does not render the menu items if no route matches', () => {
-//   const { container } = render(
-//     <Menu path="/" pathname="/non-existing" onChange={onChangeMockEvent}>
-//       <Menu.Item path="/foo" label="foo" />
-//       <Menu.Item path="/bar" label="bar" />
-//     </Menu>,
-//   );
-//   expect(container.querySelectorAll('.rc-menu-item')).toHaveLength(0);
-// });
-
 it("renders the nested child when asRoot prop is set and route matches parent", () => {
   const { container } = render(
     <Menu path="/" pathname="/foo" onChange={onChangeMockEvent}>
