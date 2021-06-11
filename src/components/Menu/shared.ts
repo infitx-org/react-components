@@ -3,7 +3,7 @@ import React from "react";
 export interface MenuSectionProps {
   label: string;
   hidden?: boolean;
-  icon?: string;
+  icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   fill?: string;
   size?: number;
   disabled?: boolean;
@@ -16,7 +16,7 @@ interface BaseMenuItemProps {
   disabled?: boolean;
   hidden?: boolean;
   back?: boolean;
-  icon?: string;
+  icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   fill?: string;
   size?: number;
   // prop asRoot is not used directly by the MenuItem but it is used by the Menu component

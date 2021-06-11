@@ -20,7 +20,7 @@ export default function MenuItem({
   if (hidden) {
     return null;
   }
-  let backIcon = null;
+  let backIcon: React.ReactChild | null = null;
   if (back) {
     backIcon = (
       <Icon
@@ -31,14 +31,14 @@ export default function MenuItem({
       />
     );
   }
-  let itemIcon = null;
+  let itemIcon: React.ReactChild | null = null;
 
   if (icon) {
     itemIcon = (
       <div className="rc-menu-item__item-icon">
         <Icon
           className="rc-menu-item__icon"
-          icon={<Arrow />}
+          icon={icon}
           size={size}
           fill={fill}
         />
@@ -51,7 +51,7 @@ export default function MenuItem({
       {({ pathname, onClick }) => {
         function doOnClick() {
           if (!disabled) {
-            onClick(to || path);
+            onClick((to || path) as string);
           }
         }
         const isActive =
