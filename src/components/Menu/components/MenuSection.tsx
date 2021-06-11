@@ -1,8 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import Icon from "components/Icon";
-import Arrow from "../../../assets/icons/arrow.svg";
-import { MenuSectionProps, MenuItemElement } from "../shared";
+import { MenuSectionProps, MenuItemElement } from "../types";
 import MenuItem from "./MenuItem";
 import "./MenuSection.scss";
 
@@ -28,7 +27,7 @@ export default function MenuSection({
   if (icon) {
     itemIcon = (
       <div className="rc-menu-section__icon">
-        <Icon icon={<Arrow />} size={size} fill={fill} />
+        <Icon icon={icon} size={size} fill={fill} />
       </div>
     );
   }

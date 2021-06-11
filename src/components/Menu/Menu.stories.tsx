@@ -21,176 +21,62 @@ const icon = (
   </svg>
 );
 
-const Menu1 = ({ pathname, onChange, disabled, hidden }) => (
-  <Menu path="/" pathname={pathname} onChange={onChange}>
-    <Menu.Item path="/tracking" label="Tracking" hidden={hidden} icon={icon} />
-    <Menu.Item
-      path="/partners/partner/contacts"
-      label="Partners"
-      disabled={disabled}
-    >
-      <Menu.Section label="User Info">
-        <Menu.Item
-          path="/partners/partner/contacts"
-          label="Contacts"
-          fill="#c33"
-          size={6}
-        />
-        <Menu.Item
-          path="/partners/partner/identifiers"
-          label="Identifiers"
-          disabled={disabled}
-        />
-      </Menu.Section>
+export const Default = () => {
+  const [pathname, setPathname] = React.useState("/");
+  return (
+    <Menu path="/" pathname={pathname} onChange={setPathname}>
+      <Menu.Item label="One" path="/one" />
+      <Menu.Item label="Two" path="/two" />
+    </Menu>
+  );
+};
 
-      <Menu.Section label="Format Defaults" icon={icon}>
-        <Menu.Item path="/partners/partner/csv" label="CSV" />
-        <Menu.Item
-          path="/partners/partner/edifact"
-          label="EDIFACT"
-          icon={icon}
-        />
-        <Menu.Item path="/partners/partner/x12" label="X12" icon={icon} back />
-        <Menu.Item
-          path="/partners/partner/apps"
-          label="Partners and Applications and this is a very long text"
-        />
+export const WithSection = () => {
+  const [pathname, setPathname] = React.useState("/");
+  return (
+    <Menu path="/" pathname={pathname} onChange={setPathname}>
+      <Menu.Section label="Items">
+        <Menu.Item label="One" path="/one" />
+        <Menu.Item label="Two" path="/two" />
       </Menu.Section>
+    </Menu>
+  );
+};
 
-      <Menu.Section label="Configuration">
-        <Menu.Item
-          path="/partners/partner/documentDefinitions"
-          label="Document Definitions"
-        >
-          <Menu.Item
-            to="/partners/partner/contacts"
-            label="Document Definitions"
-            back
-          />
+export const Nested = () => {
+  const [pathname, setPathname] = React.useState("/");
+  return (
+    <Menu path="/" pathname={pathname} onChange={setPathname}>
+      <Menu.Section label="Items">
+        <Menu.Item label="One" path="/one" />
+        <Menu.Item label="Two" path="/two">
+          <Menu.Item label="Go Back" path="/" back />
+          <Menu.Item label="Two Nested" path="/two/test" />
         </Menu.Item>
       </Menu.Section>
-    </Menu.Item>
+    </Menu>
+  );
+};
 
-    <Menu.Item
-      path="/administration"
-      label="administration"
-      disabled={disabled}
-    >
-      <Menu.Item to="/" label="Administration" back />
-      <Menu.Item path="/administration/errorcodes" label="Error Codes" partial>
-        <Menu.Item
-          path="/administration/errorcodes/errorCode"
-          to="/administration/errorcodes"
-          label="Error Code"
-          back
-        />
-      </Menu.Item>
-    </Menu.Item>
-  </Menu>
-);
+export const Partial = () => {
+  const [pathname, setPathname] = React.useState("/");
+  return (
+    <Menu path="/" pathname={pathname} onChange={setPathname}>
+      <Menu.Item label="One" path="/one" />
+      <Menu.Item label="Two" path="/two" />
+      <Menu.Item label="User Account" path="/user/account" />
+      <Menu.Item label="User" path="/user" partial />
+    </Menu>
+  );
+};
 
-const Menu2 = ({ pathname, onChange }) => (
-  <Menu path="/" pathname={pathname} onChange={onChange}>
-    <Menu.Item label="/route" path="/route" />
-    <Menu.Item label="/route/other" path="/route/other" />
-    <Menu.Item
-      label="/route/other/subroute"
-      path="/route/other/subroute"
-      partial
-    />
-    <Menu.Item
-      label="/route/other/subroute/xyz/tre"
-      path="/route/other/subroute/xyz/tre"
-    />
-  </Menu>
-);
-
-class MenuTester extends PureComponent {
-  constructor() {
-    super();
-    this.onMenuChange = this.onMenuChange.bind(this);
-    this.onChangePath = this.onChangePath.bind(this);
-    this.onChangeDisabled = this.onChangeDisabled.bind(this);
-    this.onChangeHidden = this.onChangeHidden.bind(this);
-    this.state = {
-      pathname: "/",
-      disabled: false,
-      hidden: false,
-    };
-  }
-  onMenuChange(pathname) {
-    if (pathname !== this.state.pathname) {
-      this.setState({ pathname });
-    }
-  }
-  onChangePath(pathname) {
-    if (pathname !== this.state.pathname) {
-      this.setState({ pathname });
-    }
-  }
-  onChangeDisabled() {
-    const disabled = !this.state.disabled;
-    this.setState({
-      disabled,
-    });
-  }
-  onChangeHidden() {
-    const hidden = !this.state.hidden;
-    this.setState({
-      hidden,
-    });
-  }
-  render() {
-    const style = { margin: "5px" };
-    const componentWithProps = React.cloneElement(this.props.children, {
-      ...this.props.children.props,
-      pathname: this.state.pathname,
-      onChange: this.onMenuChange,
-      disabled: this.state.disabled,
-      hidden: this.state.hidden,
-    });
-    return (
-      <div style={{ ...style, border: "3px solid #eee" }}>
-        <Row align="left">
-          <TextField
-            onChange={this.onChangePath}
-            value={this.state.pathname}
-            style={{ ...style, width: "300px" }}
-          />
-          <Button
-            onClick={() => this.onChangePath("/partners/partner/contacts")}
-            label="Go To Contacts"
-            style={style}
-          />
-        </Row>
-        <Row align="left">
-          <Checkbox
-            onChange={this.onChangeDisabled}
-            checked={this.state.disabled}
-            label="Disable"
-            style={style}
-          />
-
-          <Checkbox
-            onChange={this.onChangeHidden}
-            checked={this.state.hidden}
-            label="Hide"
-            style={style}
-          />
-        </Row>
-        <div style={{ width: "200px" }}>{componentWithProps}</div>
-      </div>
-    );
-  }
-}
-
-export const TestMenu1 = () => (
-  <MenuTester>
-    <Menu1 />
-  </MenuTester>
-);
-export const TestMenu2 = () => (
-  <MenuTester>
-    <Menu2 />
-  </MenuTester>
-);
+export const Wildcard = () => {
+  const [pathname, setPathname] = React.useState("/users/1/comments");
+  return (
+    <Menu path="/" pathname={pathname} onChange={setPathname}>
+      <Menu.Item label="One" path="/one" />
+      <Menu.Item label="Two" path="/two" />
+      <Menu.Item label="User Comments" path="/user/*/comments" />
+    </Menu>
+  );
+};

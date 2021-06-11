@@ -1,7 +1,8 @@
 import classnames from "classnames";
 import Icon from "components/Icon";
 import Arrow from "../../../assets/icons/arrow.svg";
-import { isActivePath, MenuContext, MenuItemProps } from "../shared";
+import { isActivePath, MenuContext } from "../shared";
+import { MenuItemProps } from "../types";
 import "./MenuItem.scss";
 
 export default function MenuItem({

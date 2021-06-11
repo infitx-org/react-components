@@ -1,13 +1,8 @@
 import React from "react";
 import MenuItem from "./components/MenuItem";
 import MenuSection from "./components/MenuSection";
-import {
-  isActivePath,
-  MenuContext,
-  MenuElement,
-  MenuItemElement,
-  MenuSectionElement,
-} from "./shared";
+import { isActivePath, MenuContext } from "./shared";
+import { MenuElement, MenuItemElement, MenuSectionElement } from "./types";
 import "./Menu.scss";
 
 export function isMenuItem(child: React.ReactNode): child is MenuItemElement {
@@ -39,7 +34,7 @@ function stripMenuSections(
 export interface MenuProps {
   path: string;
   pathname: string;
-  children: MenuElement[];
+  children: MenuItemElement | MenuElement[];
   onChange: (p: string) => void;
 }
 
