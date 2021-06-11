@@ -19,9 +19,6 @@ interface BaseMenuItemProps {
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   fill?: string;
   size?: number;
-  // prop asRoot is not used directly by the MenuItem but it is used by the Menu component
-  // eslint-disable-next-line react/no-unused-prop-types
-  asRoot?: boolean;
   // prop partial is not used directly by the MenuItem but it is used by the Menu component
   // eslint-disable-next-line react/no-unused-prop-types
   partial?: boolean;
@@ -54,10 +51,10 @@ export const MenuContext = React.createContext<MenuContextValue>({
   onClick: () => undefined,
 });
 
-export function pathMatchesPathname(
+export function isActivePath(
   pathname: string,
   path: string | undefined,
-  partial: boolean | undefined
+  partial?: boolean
 ): boolean {
   if (!path) {
     return false;

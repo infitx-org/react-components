@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import Icon from "components/Icon";
 import Arrow from "../../../assets/icons/arrow.svg";
-import { pathMatchesPathname, MenuContext, MenuItemProps } from "../shared";
+import { isActivePath, MenuContext, MenuItemProps } from "../shared";
 import "./MenuItem.scss";
 
 export default function MenuItem({
@@ -56,7 +56,7 @@ export default function MenuItem({
         }
 
         const isActive =
-          active || (pathMatchesPathname(pathname, path, partial) && !back);
+          active || (isActivePath(pathname, path, partial) && !back);
         const className = classnames([
           "rc-menu-item",
           isActive && "rc-menu-item--active",

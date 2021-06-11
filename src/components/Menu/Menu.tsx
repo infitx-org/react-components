@@ -2,7 +2,7 @@ import React from "react";
 import MenuItem from "./components/MenuItem";
 import MenuSection from "./components/MenuSection";
 import {
-  pathMatchesPathname,
+  isActivePath,
   MenuContext,
   MenuElement,
   MenuItemElement,
@@ -20,40 +20,7 @@ export function isMenuSection(
   return (child as React.ReactElement).type === MenuSection;
 }
 
-interface MenuItemsGroupProps {
-  children: React.ReactNode;
-}
-
-function MenuItemsGroup({ children }: MenuItemsGroupProps) {
-  return <div className="rc-menu-section__items">{children}</div>;
-}
-
-function wrapItemsInSections(items: MenuElement[]) {
-  const groupedMenuItems: unknown[] = [];
-  let currentGroup: unknown[] = [];
-  const addCurrenntGroupToGroupedItems = () => {
-    if (currentGroup.length) {
-      groupedMenuItems.push(<MenuItemsGroup>{currentGroup}</MenuItemsGroup>);
-      currentGroup = [];
-    }
-  };
-
-  items.forEach((node) => {
-    if (isMenuSection(node) || node.props.back) {
-      addCurrenntGroupToGroupedItems();
-      groupedMenuItems.push(node);
-    } else {
-      currentGroup.push(node);
-    }
-  });
-
-  addCurrenntGroupToGroupedItems();
-  return groupedMenuItems.map((i, c) =>
-    React.cloneElement(i, { ...i.props, key: c.toString() })
-  );
-}
-
-function flattenMenuSections(
+function stripMenuSections(
   items: MenuItemElement | MenuElement[]
 ): MenuElement[] {
   const inArray = React.Children.toArray(items) as MenuElement[];
@@ -62,7 +29,7 @@ function flattenMenuSections(
     (prevItems, currentItem) => [
       ...prevItems,
       ...(isMenuSection(currentItem)
-        ? flattenMenuSections(currentItem.props.children as MenuElement[])
+        ? stripMenuSections(currentItem.props.children)
         : [currentItem]),
     ],
     [] as MenuElement[]
@@ -77,7 +44,7 @@ export interface MenuProps {
 }
 
 function Menu({ path, pathname, onChange, children }: MenuProps) {
-  function getActiveNode(
+  function getRootMenuItem(
     parentNode?: MenuItemElement
   ): MenuItemElement | undefined {
     let activeNode: MenuItemElement | undefined;
@@ -87,7 +54,7 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
     const nodeChildren = parentNode?.props.children || children;
 
     // render Menu when pathname matches path
-    if (pathMatchesPathname(pathname, nodePath, nodePartial)) {
+    if (isActivePath(pathname, nodePath, nodePartial)) {
       return undefined;
     }
     // Default to Menu when going manual - no route matching
@@ -96,44 +63,34 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
     }
 
     // Flatten MenuSections in order not to have nested children when detecting active menu
-    const nodes = flattenMenuSections(nodeChildren);
-
-    nodes.some((node) => {
+    const menuItems = stripMenuSections(nodeChildren).filter(isMenuItem);
+    menuItems.some((menuItem) => {
       // find the first matching menu item and return the parent or the item itself
       // depending if needs to be treated like a root
-      if (isMenuItem(node)) {
-        const { asRoot, partial, active } = node.props;
-        const pathMatches = pathMatchesPathname(
-          pathname,
-          node.props.path,
-          partial
-        );
-        // console.log('is menu', node.props.label, pathMatches, active, parentNode)
-        if (pathMatches || active) {
-          // asRoot prop is meant to be used when menu has child elements
-          // and we do not want to render the parent node but the child nodes
-          activeNode = asRoot ? node : parentNode;
-        } else if (node.props.children !== undefined) {
-          activeNode = getActiveNode(node);
-        }
+      const { partial, active } = menuItem.props;
+      const pathMatches = isActivePath(pathname, menuItem.props.path, partial);
+      if (active || pathMatches) {
+        // isRoot prop is meant to be used when menu has child elements
+        // and we do not want to render the parent menuItem but the child menuItems
+        const isRoot = menuItem.props.children !== undefined;
+        activeNode = isRoot ? menuItem : parentNode;
+      } else if (menuItem.props.children !== undefined) {
+        activeNode = getRootMenuItem(menuItem);
       }
+
       return !!activeNode;
     });
 
     return activeNode;
   }
 
-  let menuComponents = null;
-  const activeNode = getActiveNode();
-  const subChildren = activeNode?.props?.children || children;
+  const rootMenuItem = getRootMenuItem();
+  const menuComponents = React.Children.toArray(
+    rootMenuItem?.props.children || children
+  ).filter(
+    (element) => isMenuItem(element) || isMenuSection(element)
+  ) as MenuElement[];
 
-  if (subChildren !== null) {
-    menuComponents = wrapItemsInSections(
-      React.Children.toArray(subChildren).filter(
-        (element) => isMenuItem(element) || isMenuSection(element)
-      ) as MenuElement[]
-    );
-  }
   return (
     <MenuContext.Provider value={{ pathname, onClick: onChange }}>
       <div className="rc-menu">{menuComponents}</div>

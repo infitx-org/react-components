@@ -24,7 +24,11 @@ const icon = (
 const Menu1 = ({ pathname, onChange, disabled, hidden }) => (
   <Menu path="/" pathname={pathname} onChange={onChange}>
     <Menu.Item path="/tracking" label="Tracking" hidden={hidden} icon={icon} />
-    <Menu.Item path="/partners" label="Partners" disabled={disabled} asRoot>
+    <Menu.Item
+      path="/partners/partner/contacts"
+      label="Partners"
+      disabled={disabled}
+    >
       <Menu.Section label="User Info">
         <Menu.Item
           path="/partners/partner/contacts"
@@ -39,19 +43,14 @@ const Menu1 = ({ pathname, onChange, disabled, hidden }) => (
         />
       </Menu.Section>
 
-      <Menu.Section label="Format Defaults" icon="access-manager-color">
+      <Menu.Section label="Format Defaults" icon={icon}>
         <Menu.Item path="/partners/partner/csv" label="CSV" />
         <Menu.Item
           path="/partners/partner/edifact"
           label="EDIFACT"
-          icon="application-color"
+          icon={icon}
         />
-        <Menu.Item
-          path="/partners/partner/x12"
-          label="X12"
-          icon="calendar-small"
-          back
-        />
+        <Menu.Item path="/partners/partner/x12" label="X12" icon={icon} back />
         <Menu.Item
           path="/partners/partner/apps"
           label="Partners and Applications and this is a very long text"
@@ -64,8 +63,7 @@ const Menu1 = ({ pathname, onChange, disabled, hidden }) => (
           label="Document Definitions"
         >
           <Menu.Item
-            path="/partners/partner/documentDefinitions/documentDefinition"
-            to="/partners/partner/documentDefinitions"
+            to="/partners/partner/contacts"
             label="Document Definitions"
             back
           />
@@ -76,7 +74,6 @@ const Menu1 = ({ pathname, onChange, disabled, hidden }) => (
     <Menu.Item
       path="/administration"
       label="administration"
-      asRoot
       disabled={disabled}
     >
       <Menu.Item to="/" label="Administration" back />
