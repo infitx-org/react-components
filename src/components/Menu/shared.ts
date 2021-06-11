@@ -35,7 +35,7 @@ export function isActivePath(
   return pathNameChunks.every((chunk, index) => {
     const pathChunk = pathChunks[index];
     const isExact = pathChunk === chunk;
-    const isWild = pathChunk !== undefined && pathChunk.startsWith(":");
-    return isExact || isWild;
+    const isParam = pathChunk !== undefined && pathChunk.startsWith(":");
+    return isExact || isParam;
   });
 }

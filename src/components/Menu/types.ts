@@ -18,9 +18,7 @@ interface BaseMenuItemProps {
   fill?: string;
   size?: number;
   // prop partial is not used directly by the MenuItem but it is used by the Menu component
-  // eslint-disable-next-line react/no-unused-prop-types
   partial?: boolean;
-  // eslint-disable-next-line react/no-unused-prop-types
   children?: MenuItemElement | MenuElement[];
 }
 
