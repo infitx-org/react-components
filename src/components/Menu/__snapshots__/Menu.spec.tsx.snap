@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the menu correctly when multiple props are set 1`] = `
+<div>
+  <div
+    class="rc-menu"
+  >
+    <div
+      class="rc-menu-item"
+      role="presentation"
+    >
+      nested
+    </div>
+  </div>
+</div>
+`;

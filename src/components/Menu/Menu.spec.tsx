@@ -14,14 +14,18 @@ const onChangeMockEvent = jest.fn();
 
 it("renders only the menu", () => {
   const { container } = render(
-    <Menu path="/" pathname="/" onChange={onChangeMockEvent} />
+    <Menu path="/" pathname="/" onChange={onChangeMockEvent}>
+      <Menu.Item path="/foo" label="foo" />
+    </Menu>
   );
   expect(container.querySelectorAll(".rc-menu")).toHaveLength(1);
 });
 
 it("renders the menu wrapper also if pathname does not match any route", () => {
   const { container } = render(
-    <Menu path="/" pathname="/test" onChange={onChangeMockEvent} />
+    <Menu path="/" pathname="/test" onChange={onChangeMockEvent}>
+      <Menu.Item path="/foo" label="foo" />
+    </Menu>
   );
   expect(container.querySelectorAll(".rc-menu")).toHaveLength(1);
 });
@@ -176,89 +180,76 @@ it("renders the Menu when no pathname is set", () => {
   expect(menuItems).toHaveLength(2);
 });
 
-// it('renders the manually set active prop', () => {
-//   const { container } = render(
-//     <Menu onChange={onChangeMockEvent}>
-//       <Menu.Item label="foo" active />
-//       <Menu.Item label="bar" />
-//     </Menu>,
-//   );
-//   const activeMenuItem = container.querySelectorAll('.rc-menu-item--active');
-//   expect(activeMenuItem).toHaveLength(1);
-//   expect(activeMenuItem.text()).toBe('foo');
-// });
+it("renders the manually set active prop", () => {
+  const { container } = render(
+    <Menu onChange={onChangeMockEvent} path="?">
+      <Menu.Item label="foo" active path="/foo" />
+      <Menu.Item label="bar" path="/bar" />
+    </Menu>
+  );
+  const activeMenuItem = container.querySelector(".rc-menu-item--active");
+  expect(activeMenuItem).toBeTruthy();
+  expect(activeMenuItem?.textContent).toBe("foo");
+});
 
-// it('renders the disabled prop on menu item', () => {
-//   const { container } = render(
-//     <Menu onChange={onChangeMockEvent}>
-//       <Menu.Item label="foo" disabled />
-//       <Menu.Item label="bar" />
-//     </Menu>,
-//   );
-//   const disabledMenuItem = container.querySelectorAll('.rc-menu-item--disabled');
-//   expect(disabledMenuItem).toHaveLength(1);
-//   expect(disabledMenuItem.text()).toBe('foo');
-// });
+it("renders the disabled prop on menu item", () => {
+  const { container } = render(
+    <Menu onChange={onChangeMockEvent} path="?">
+      <Menu.Item label="foo" disabled path="/foo" />
+      <Menu.Item label="bar" path="/bar" />
+    </Menu>
+  );
+  const disabledMenuItem = container.querySelector(".rc-menu-item--disabled");
+  expect(disabledMenuItem).toBeTruthy();
+  expect(disabledMenuItem?.textContent).toBe("foo");
+});
 
-// it('does not render a hidden menu item', () => {
-//   const { container } = render(
-//     <Menu onChange={onChangeMockEvent}>
-//       <Menu.Item label="foo" hidden />
-//       <Menu.Item label="bar" />
-//     </Menu>,
-//   );
-//   const menuItems = container.querySelectorAll('.rc-menu-item');
-//   expect(menuItems).toHaveLength(1);
-// });
+it("does not render a hidden menu item", () => {
+  const { container } = render(
+    <Menu onChange={onChangeMockEvent} path="?">
+      <Menu.Item label="foo" hidden path="/foo" />
+      <Menu.Item label="bar" path="/bar" />
+    </Menu>
+  );
+  const menuItems = container.querySelectorAll(".rc-menu-item");
+  expect(menuItems).toHaveLength(1);
+});
 
-// it('does not render a hidden menu section', () => {
-//   const { container } = render(
-//     <Menu onChange={onChangeMockEvent}>
-//       <Menu.Section hidden>
-//         <Menu.Item label="foo" />
-//         <Menu.Item label="bar" />
-//       </Menu.Section>
-//     </Menu>,
-//   );
-//   const menuSection = container.querySelectorAll('.rc-men-section');
-//   expect(menuSection).toHaveLength(0);
-// });
+it("does not render a hidden menu section", () => {
+  const { container } = render(
+    <Menu onChange={onChangeMockEvent} path="?">
+      <Menu.Section hidden label="?">
+        <Menu.Item label="foo" path="/foo" />
+        <Menu.Item label="bar" path="/bar" />
+      </Menu.Section>
+    </Menu>
+  );
+  const menuSection = container.querySelectorAll(".rc-menu-section");
+  expect(menuSection).toHaveLength(0);
+});
 
-// it('trigger onChange when clicking a menu item', () => {
-//   const mockEvent = jest.fn();
-//   const { container } = render(
-//     <Menu path="/" pathname="/" onChange={mockEvent}>
-//       <Menu.Item path="/foo" label="foo" />
-//       <Menu.Item path="/bar" label="bar" />
-//     </Menu>,
-//   );
-//   const menuItems = container.querySelectorAll('.rc-menu-item');
-//   menuItems.at(0).simulate('click');
-//   expect(mockEvent).toHaveBeenCalled();
-// });
+it("trigger onChange when clicking a menu item", () => {
+  const mockEvent = jest.fn();
+  const { container } = render(
+    <Menu path="/" pathname="/" onChange={mockEvent}>
+      <Menu.Item label="foo" path="/foo" />
+      <Menu.Item label="bar" path="/bar" />
+    </Menu>
+  );
+  const menuItems = container.querySelectorAll(".rc-menu-item");
+  userEvent.click(menuItems[0]);
+  expect(mockEvent).toHaveBeenCalledWith("/foo");
+});
 
-// it('trigger onChange with correct value when clicking a menu item', () => {
-//   const mockEvent = jest.fn();
-//   const { container } = render(
-//     <Menu path="/" pathname="/" onChange={mockEvent}>
-//       <Menu.Item path="/foo" label="foo" />
-//       <Menu.Item path="/bar" label="bar" />
-//     </Menu>,
-//   );
-//   const menuItems = container.querySelectorAll('.rc-menu-item');
-//   menuItems.at(1).simulate('click');
-//   expect(mockEvent).toHaveBeenCalledWith('/bar');
-// });
-
-// // Snapshot
-// it('renders the menu correctly when multiple props are set', () => {
-//   const { container } = render(
-//     <Menu path="/" pathname="/foo" onChange={onChangeMockEvent}>
-//       <Menu.Item path="/foo" label="foo" asRoot>
-//         <Menu.Item path="/foo/nested" label="nested" />
-//       </Menu.Item>
-//       <Menu.Item path="/bar" label="bar" />
-//     </Menu>,
-//   );
-//   expect(shallowToJson(wrapper)).toMatchSnapshot();
-// });
+// Snapshot
+it("renders the menu correctly when multiple props are set", () => {
+  const { container } = render(
+    <Menu path="/" pathname="/foo" onChange={onChangeMockEvent}>
+      <Menu.Item path="/foo" label="foo">
+        <Menu.Item path="/foo/nested" label="nested" />
+      </Menu.Item>
+      <Menu.Item path="/bar" label="bar" />
+    </Menu>
+  );
+  expect(container).toMatchSnapshot();
+});
