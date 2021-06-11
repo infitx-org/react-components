@@ -31,6 +31,35 @@ function stripMenuSections(
   );
 }
 
+function findVisibleElements(
+  menuElements: MenuItemElement | MenuElement[],
+  pathname
+): MenuItemElement | MenuElement[] | undefined {
+  let activeNode: MenuItemElement | MenuElement[] | undefined;
+
+  // strip Menu.Section components in order to
+  // flat children when detecting active menu
+  stripMenuSections(menuElements)
+    .filter(isMenuItem)
+    .some((menuItem) => {
+      // find the first matching menu item and return the parent or the item itself
+      // depending if needs to be treated like a root
+      const { partial, path, active } = menuItem.props;
+      if (active || isActivePath(pathname, path, partial)) {
+        // isRoot prop is meant to be used when menu has child elements
+        // and we do not want to render the parent menuItem but the child menuItems
+        const isRoot = menuItem.props.children !== undefined;
+        activeNode = isRoot ? menuItem.props.children : menuElements;
+      } else if (menuItem.props.children !== undefined) {
+        activeNode = findVisibleElements(menuItem.props.children, pathname);
+      }
+
+      return !!activeNode;
+    });
+
+  return activeNode;
+}
+
 export interface MenuProps {
   path: string;
   pathname?: string;
@@ -39,42 +68,10 @@ export interface MenuProps {
 }
 
 function Menu({ path, pathname, onChange, children }: MenuProps) {
-  function getRootMenuItem(
-    parentNode?: MenuItemElement
-  ): MenuItemElement | undefined {
-    let activeNode: MenuItemElement | undefined;
-
-    const nodeChildren = parentNode?.props.children || children;
-
-    // Flatten MenuSections in order not to have nested children when detecting active menu
-    const menuItems = stripMenuSections(nodeChildren).filter(isMenuItem);
-    menuItems.some((menuItem) => {
-      // find the first matching menu item and return the parent or the item itself
-      // depending if needs to be treated like a root
-      const { partial, active } = menuItem.props;
-      const pathMatches = isActivePath(pathname, menuItem.props.path, partial);
-      if (active || pathMatches) {
-        // isRoot prop is meant to be used when menu has child elements
-        // and we do not want to render the parent menuItem but the child menuItems
-        const isRoot = menuItem.props.children !== undefined;
-        activeNode = isRoot ? menuItem : parentNode;
-      } else if (menuItem.props.children !== undefined) {
-        activeNode = getRootMenuItem(menuItem);
-      }
-
-      return !!activeNode;
-    });
-
-    return activeNode;
-  }
-
   // Default to Menu
   let menuElements: MenuItemElement | MenuElement[] | undefined = children;
   if (pathname !== path) {
-    const rootMenuItem = getRootMenuItem();
-    if (rootMenuItem) {
-      menuElements = rootMenuItem.props.children;
-    }
+    menuElements = findVisibleElements(children, pathname) || children;
   }
   const menuComponents = React.Children.toArray(menuElements).filter(
     (element) => isMenuItem(element) || isMenuSection(element)
