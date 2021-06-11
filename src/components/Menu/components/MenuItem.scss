@@ -1,0 +1,69 @@
+@use "../../../scss/base/colors.scss";
+@use "../../../scss/components/any.scss";
+
+.rc-menu-item {
+  @include any.rc-component;
+
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  width: 100%;
+  padding-left: 16px;
+  min-height: 40px;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: border 0.2s linear, color 0.2s linear, fill 0.2s linear;
+  background: #fcfcfc;
+
+  .rc-menu-item__icon {
+    transition: fill 0.2s linear;
+    fill: #a7a7a7;
+  }
+
+  &.rc-menu-item--active {
+    background: #f2f1f1;
+    font-weight: bold;
+    color: #333;
+
+    .rc-menu-item__icon {
+      fill: colors.$dark-blue;
+    }
+  }
+
+  &:hover:not(.rc-menu-item--active) {
+    color: colors.$primary;
+
+    .rc-menu-item__icon {
+      fill: colors.$primary;
+    }
+  }
+}
+
+.rc-menu-item--disabled {
+  color: #999;
+  fill: #ccc;
+  border-color: transparent;
+}
+
+.rc-menu-item--back {
+  padding-left: 0;
+  height: 40px;
+  background: #fff;
+  margin: 1px 0;
+}
+
+.rc-menu-item__back-icon {
+  transform: rotateZ(180deg);
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.rc-menu-item__item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 100%;
+  margin-right: 10px;
+  padding-bottom: 2px;
+}

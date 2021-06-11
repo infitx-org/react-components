@@ -101,7 +101,6 @@ describe("tests the buttton", () => {
 });
 
 // // Snapshot testing
-
 it("renders the button correctly when multiple props are set", () => {
   const { container } = render(
     <Button

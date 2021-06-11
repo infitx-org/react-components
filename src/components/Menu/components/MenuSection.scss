@@ -1,0 +1,32 @@
+@use "../../../scss/base/colors.scss";
+@use "../../../scss/components/any.scss";
+
+.rc-menu-section {
+  @include any.rc-component;
+}
+
+.rc-menu-section--disabled {
+  opacity: 0.5;
+}
+
+.rc-menu-section__icon {
+  padding-right: 10px;
+}
+
+.rc-menu-section__label {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 10px;
+  background: #fff;
+  margin-top: 1px;
+}
+
+.rc-menu-section__items {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  background: #fcfcfc;
+}
