@@ -34,6 +34,7 @@ export {
   default as IconButton,
   IconButtonProps,
 } from "./components/IconButton";
+export { default as Menu, MenuProps } from "./components/Menu";
 export {
   default as MessageBox,
   MessageBoxProps,
