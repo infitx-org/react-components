@@ -54,6 +54,7 @@ export default function MenuItem({
             onClick((to || path) as string);
           }
         }
+
         const isActive =
           active || (pathMatchesPathname(pathname, path, partial) && !back);
         const className = classnames([

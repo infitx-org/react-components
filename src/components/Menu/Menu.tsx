@@ -20,13 +20,12 @@ export function isMenuSection(
   return (child as React.ReactElement).type === MenuSection;
 }
 
-
 interface MenuItemsGroupProps {
   children: React.ReactNode;
 }
 
 function MenuItemsGroup({ children }: MenuItemsGroupProps) {
-  return <div className="rc-menu__section-items">{children}</div>;
+  return <div className="rc-menu-section__items">{children}</div>;
 }
 
 function wrapItemsInSections(items: MenuElement[]) {
@@ -70,7 +69,7 @@ function flattenMenuSections(
   );
 }
 
-interface MenuProps {
+export interface MenuProps {
   path: string;
   pathname: string;
   children: MenuElement[];
@@ -137,7 +136,7 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
   }
   return (
     <MenuContext.Provider value={{ pathname, onClick: onChange }}>
-      <div className="mb-element rc-menu">{menuComponents}</div>
+      <div className="rc-menu">{menuComponents}</div>
     </MenuContext.Provider>
   );
 }

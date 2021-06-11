@@ -140,7 +140,7 @@ class MenuTester extends PureComponent {
   onChangeHidden() {
     const hidden = !this.state.hidden;
     this.setState({
-      hidden
+      hidden,
     });
   }
   render() {

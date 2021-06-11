@@ -1,6 +1,9 @@
 @use "../../../scss/base/colors.scss";
+@use "../../../scss/components/any.scss";
 
 .rc-menu-item {
+  @include any.rc-component;
+
   display: flex;
   align-items: center;
   width: 100%;
@@ -11,17 +14,17 @@
   border-left: 4px solid transparent;
   transition: border 0.2s linear, color 0.2s linear, fill 0.2s linear;
   font-size: 12px;
-  
+
   .rc-menu-item__icon {
     transition: fill 0.2s linear;
     fill: #a7a7a7;
   }
 
-  .rc-menu-item--active {
+  &.rc-menu-item--active {
     background: #f2f1f1;
     font-weight: bold;
     color: #333;
-  
+
     .rc-menu-item__icon {
       fill: colors.$dark-blue;
     }

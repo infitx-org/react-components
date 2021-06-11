@@ -3,7 +3,7 @@ import classnames from "classnames";
 import Icon from "components/Icon";
 import Arrow from "../../../assets/icons/arrow.svg";
 import { MenuSectionProps, MenuItemElement } from "../shared";
-import MenuItem from './MenuItem';
+import MenuItem from "./MenuItem";
 import "./MenuSection.scss";
 
 export function isMenuItem(child: React.ReactNode): child is MenuItemElement {

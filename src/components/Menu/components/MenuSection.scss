@@ -1,4 +1,9 @@
 @use "../../../scss/base/colors.scss";
+@use "../../../scss/components/any.scss";
+
+.rc-menu-section {
+  @include any.rc-component;
+}
 
 .rc-menu-section--disabled {
   opacity: 0.5;
