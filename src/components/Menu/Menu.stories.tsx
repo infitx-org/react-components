@@ -11,7 +11,7 @@ export default {
   subcomponents: {
     "Menu.Item": Menu.Item,
     "Menu.Section": Menu.Section,
-  }, // 👈 Adds the ListItem component as a subcomponent
+  },
 };
 
 const icon = (
