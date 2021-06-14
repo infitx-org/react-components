@@ -3,7 +3,7 @@
 exports[`renders the tabs correctly when multiple props are set 1`] = `
 <div>
   <div
-    class="element rc-tabs"
+    class="rc-tabs"
     id="test-tabs"
     role="presentation"
     tabindex="0"
