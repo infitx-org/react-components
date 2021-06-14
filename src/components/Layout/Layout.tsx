@@ -8,7 +8,9 @@ export interface SharedProps {
   className?: string;
 }
 
-function Content({ children, className }: SharedProps) {
+export type LayoutContentProps = SharedProps;
+
+function LayoutContent({ children, className }: LayoutContentProps) {
   return (
     <div className={classnames(["rc-layout__content", className])}>
       {children}
@@ -16,13 +18,17 @@ function Content({ children, className }: SharedProps) {
   );
 }
 
-function Page({ children, className }: SharedProps) {
+export type LayoutPageProps = SharedProps;
+
+function LayoutPage({ children, className }: LayoutPageProps) {
   return (
     <div className={classnames(["rc-layout__page", className])}>{children}</div>
   );
 }
 
-function SideMenu({ children, className }: SharedProps) {
+export type LayoutSideMenuProps = SharedProps;
+
+function LayoutSideMenu({ children, className }: LayoutSideMenuProps) {
   return (
     <div className={classnames(["rc-layout__side-menu", className])}>
       {children}
@@ -30,7 +36,7 @@ function SideMenu({ children, className }: SharedProps) {
   );
 }
 
-export interface NavbarProps {
+export interface LayoutNavbarProps {
   title: string;
   username?: string;
   className?: string;
@@ -48,12 +54,12 @@ const icon = (
   </svg>
 );
 
-function Navbar({
+function LayoutNavbar({
   title,
   username = "-",
   className,
   onLogoutClick,
-}: NavbarProps) {
+}: LayoutNavbarProps) {
   return (
     <div className={classnames(["rc-layout__navbar", className])}>
       <div className="rc-layout__navbar__controls">
@@ -79,13 +85,15 @@ function Navbar({
   );
 }
 
-function Layout({ children, className }: SharedProps) {
+export type LayoutProps = SharedProps;
+
+function Layout({ children, className }: LayoutProps) {
   return <div className={classnames(["rc-layout", className])}>{children}</div>;
 }
 
-Layout.Navbar = Navbar;
-Layout.Page = Page;
-Layout.SideMenu = SideMenu;
-Layout.Content = Content;
+Layout.Navbar = LayoutNavbar;
+Layout.Page = LayoutPage;
+Layout.SideMenu = LayoutSideMenu;
+Layout.Content = LayoutContent;
 
 export default Layout;

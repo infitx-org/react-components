@@ -1,1 +1,2 @@
-export { default, SharedProps as LayoutProps } from "./Layout";
+export { default } from "./Layout";
+export type { LayoutProps } from "./Layout";
