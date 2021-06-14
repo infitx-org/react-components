@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the layout correctly when multiple props are set 1`] = `
+<div>
+  <div
+    class="rc-layout"
+  >
+    <div
+      class="rc-layout__navbar"
+    >
+      <div
+        class="rc-layout__navbar__controls"
+      >
+        <a
+          class="rc-layout__navbar__link"
+          href="/"
+        >
+          Layout
+        </a>
+      </div>
+      <div
+        class="rc-layout__navbar__user"
+      >
+        <div
+          class="rc-layout__navbar__user__icon"
+        >
+          <svg
+            fill="#fff"
+            height="20"
+            stroke="transparent"
+            viewBox="0 0 40 40"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="20"
+              cy="20"
+              r="20"
+            />
+          </svg>
+        </div>
+        <div
+          class="rc-layout__navbar__user__name"
+          role="presentation"
+        >
+          <span>
+            user
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="rc-layout__content"
+    >
+      <div
+        class="rc-layout__side-menu"
+      >
+        Menu
+      </div>
+      <div
+        class="rc-layout__page"
+      >
+        Page
+      </div>
+    </div>
+  </div>
+</div>
+`;

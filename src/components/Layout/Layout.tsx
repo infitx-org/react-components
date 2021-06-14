@@ -33,7 +33,8 @@ function SideMenu({ children, className }: SharedProps) {
 export interface NavbarProps {
   title: string;
   username?: string;
-  onLogoutClick: () => void;
+  className?: string;
+  onLogoutClick?: () => void;
 }
 
 const icon = (
@@ -47,9 +48,14 @@ const icon = (
   </svg>
 );
 
-function Navbar({ title, username = "-", onLogoutClick }: NavbarProps) {
+function Navbar({
+  title,
+  username = "-",
+  className,
+  onLogoutClick,
+}: NavbarProps) {
   return (
-    <div className="rc-layout__navbar">
+    <div className={classnames(["rc-layout__navbar", className])}>
       <div className="rc-layout__navbar__controls">
         <a className="rc-layout__navbar__link" href="/">
           {title}
