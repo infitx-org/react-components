@@ -1,0 +1,72 @@
+.rc-layout__container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rc-layout__content {
+  flex: 1 1 auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.rc-layout__page {
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  padding: 20px;
+}
+
+.rc-layout__side-menu {
+  flex: 0 0 200px;
+  border-right: 1px solid #ccc;
+  background: #eee;
+}
+
+.rc-layout__navbar {
+  flex: 0 0 55px;
+  user-select: none;
+  height: 55px;
+  width: 100%;
+  background: linear-gradient(269.81deg, #043865 0.01%, #02182b 100%);
+  border-bottom: 5px solid #4fc7e7;
+  display: flex;
+  align-items: center;
+}
+
+.rc-layout__navbar__controls {
+  flex: 0 0 auto;
+}
+
+.rc-layout__navbar__link {
+  margin-left: 30px;
+  color: #fff;
+  font-size: 17px;
+}
+
+.rc-layout__navbar__user {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.rc-layout__navbar__user__icon {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  margin: 0 20px;
+}
+
+.rc-layout__navbar__user__name {
+  color: #fff;
+  cursor: pointer;
+}
