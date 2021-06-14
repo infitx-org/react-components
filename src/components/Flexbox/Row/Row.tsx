@@ -1,11 +1,11 @@
-import Layout, { LayoutProps } from "../Layout";
+import Flexbox, { FlexboxProps } from "../Flexbox";
 import { mapAlignToProperty, mapJustifyToProperty } from "../helpers";
 import { JustifyWithMap, AlignWithMap } from "../types";
 
 type Combined = `${AlignWithMap} ${JustifyWithMap}`;
 export type Align = `${Combined}` | `${JustifyWithMap}`;
 
-export interface RowProps extends LayoutProps {
+export interface RowProps extends FlexboxProps {
   align?: Align;
 }
 
@@ -15,7 +15,7 @@ export default function Row({ align = "flex-start", ...props }: RowProps) {
     AlignWithMap
   ];
   return (
-    <Layout
+    <Flexbox
       flexDirection="row"
       alignItems={mapAlignToProperty(alignItems)}
       justifyContent={mapJustifyToProperty(justifyContent)}

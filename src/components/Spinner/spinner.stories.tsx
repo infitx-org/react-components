@@ -1,6 +1,6 @@
 import React from "react";
 
-import Row from "components/Layout/Row";
+import Row from "components/Flexbox/Row";
 import Spinner from "./Spinner";
 
 export default {

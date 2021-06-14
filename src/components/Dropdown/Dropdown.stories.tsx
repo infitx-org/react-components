@@ -1,11 +1,14 @@
 /* eslint no-console: "off" */
 import { Size, Kind } from "types";
-import Row from "components/Layout/Row";
+import Row from "components/Flexbox/Row";
 import Dropdown from "./Dropdown";
 
 export default {
   title: "Components/Dropdown",
   component: Dropdown,
+  subcomponents: {
+    "Dropdown.Item": Dropdown.Item,
+  },
 };
 
 const { log } = console;
@@ -74,7 +77,7 @@ WithIconOnTheRight.args = {
 
 const kinds = Object.values(Kind);
 const sharedProps = (kind) => ({
-  size: "medium",
+  size: Size.Medium,
   style: {
     margin: "2px",
   },
@@ -165,52 +168,6 @@ export const Sizes = () => (
         </Dropdown>
       ))}
     </Row>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
     <Row align="center space-between">
       {kinds.map((kind) => (
         <Dropdown {...sharedProps(kind)} size="large">

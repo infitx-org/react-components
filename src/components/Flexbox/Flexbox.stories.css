@@ -23,9 +23,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Verdana;
+  font-family: Verdana, sans-serif;
   color: #06c;
-  text-shadow: 0px 0px 4px #fff;
+  text-shadow: 0 0 4px #fff;
 }
 
 .block--small {

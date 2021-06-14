@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "components/Icon";
-import Column from "components/Layout/Column";
+import Column from "components/Flexbox/Column";
 import Box from "docs/components/Box";
 import Label from "docs/components/Label";
 import "./CustomIcon.scss";

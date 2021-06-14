@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import Tooltip from "components/Tooltip";
-import Row from "components/Layout/Row";
+import Row from "components/Flexbox/Row";
 import Icon from "components/Icon";
 import { ValidationMessage } from "@modusbox/ts-utils/lib/validation";
 import "./ValidationCard.scss";

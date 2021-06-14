@@ -1,48 +1,99 @@
-import React from "react";
-import { AlignItems, JustifyContent } from "./types";
+import classnames from "classnames";
+import Icon from "components/Icon";
+import Tooltip from "components/Tooltip";
+import "./Layout.scss";
 
-export interface LayoutProps {
-  wrap?: boolean;
-  grow?: number;
-  shrink?: number;
-  basis?: string;
+export interface SharedProps {
+  children: React.ReactNode;
   className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
 }
 
-export interface FlexboxProps {
-  alignItems?: AlignItems;
-  justifyContent?: JustifyContent;
-  flexDirection: "row" | "column";
-}
+export type LayoutContentProps = SharedProps;
 
-export default function Layout({
-  alignItems,
-  justifyContent,
-  flexDirection,
-  wrap = false,
-  grow,
-  shrink,
-  basis = "auto",
-  className,
-  style = {},
-  children,
-}: LayoutProps & FlexboxProps) {
-  const styles: React.CSSProperties = {
-    display: "flex",
-    flexDirection,
-    flexWrap: wrap ? "wrap" : undefined,
-    flexGrow: grow,
-    flexShrink: shrink,
-    flexBasis: basis,
-    alignItems,
-    justifyContent,
-    ...style,
-  };
+function LayoutContent({ children, className }: LayoutContentProps) {
   return (
-    <div className={className} style={styles}>
+    <div className={classnames(["rc-layout__content", className])}>
       {children}
     </div>
   );
 }
+
+export type LayoutPageProps = SharedProps;
+
+function LayoutPage({ children, className }: LayoutPageProps) {
+  return (
+    <div className={classnames(["rc-layout__page", className])}>{children}</div>
+  );
+}
+
+export type LayoutSideMenuProps = SharedProps;
+
+function LayoutSideMenu({ children, className }: LayoutSideMenuProps) {
+  return (
+    <div className={classnames(["rc-layout__side-menu", className])}>
+      {children}
+    </div>
+  );
+}
+
+export interface LayoutNavbarProps {
+  title: string;
+  username?: string;
+  className?: string;
+  onLogoutClick?: () => void;
+}
+
+const icon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+  >
+    <circle cx="20" cy="20" r="20" />
+  </svg>
+);
+
+function LayoutNavbar({
+  title,
+  username = "-",
+  className,
+  onLogoutClick,
+}: LayoutNavbarProps) {
+  return (
+    <div className={classnames(["rc-layout__navbar", className])}>
+      <div className="rc-layout__navbar__controls">
+        <a className="rc-layout__navbar__link" href="/">
+          {title}
+        </a>
+      </div>
+      <div className="rc-layout__navbar__user">
+        <div className="rc-layout__navbar__user__icon">
+          <Icon icon={icon} fill="#fff" />
+        </div>
+        <div
+          className="rc-layout__navbar__user__name"
+          onClick={onLogoutClick}
+          role="presentation"
+        >
+          <Tooltip label="Logout">
+            <span>{username}</span>
+          </Tooltip>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export type LayoutProps = SharedProps;
+
+function Layout({ children, className }: LayoutProps) {
+  return <div className={classnames(["rc-layout", className])}>{children}</div>;
+}
+
+Layout.Navbar = LayoutNavbar;
+Layout.Page = LayoutPage;
+Layout.SideMenu = LayoutSideMenu;
+Layout.Content = LayoutContent;
+
+export default Layout;
