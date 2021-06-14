@@ -1,28 +1,36 @@
+import classnames from "classnames";
 import Icon from "components/Icon";
 import Tooltip from "components/Tooltip";
 import "./Layout.scss";
 
-interface SharedProps {
+export interface SharedProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-function Container({ children }: SharedProps) {
-  return <div className="rc-layout__container">{children}</div>;
+function Content({ children, className }: SharedProps) {
+  return (
+    <div className={classnames(["rc-layout__content", className])}>
+      {children}
+    </div>
+  );
 }
 
-function Content({ children }: SharedProps) {
-  return <div className="rc-layout__content">{children}</div>;
+function Page({ children, className }: SharedProps) {
+  return (
+    <div className={classnames(["rc-layout__page", className])}>{children}</div>
+  );
 }
 
-function Page({ children }: SharedProps) {
-  return <div className="rc-layout__page">{children}</div>;
+function SideMenu({ children, className }: SharedProps) {
+  return (
+    <div className={classnames(["rc-layout__side-menu", className])}>
+      {children}
+    </div>
+  );
 }
 
-function SideMenu({ children }: SharedProps) {
-  return <div className="rc-layout__side-menu">{children}</div>;
-}
-
-interface NavbarProps {
+export interface NavbarProps {
   title: string;
   username?: string;
   onLogoutClick: () => void;
@@ -56,7 +64,7 @@ function Navbar({ title, username = "-", onLogoutClick }: NavbarProps) {
           onClick={onLogoutClick}
           role="presentation"
         >
-          <Tooltip label="logout">
+          <Tooltip label="Logout">
             <span>{username}</span>
           </Tooltip>
         </div>
@@ -65,12 +73,13 @@ function Navbar({ title, username = "-", onLogoutClick }: NavbarProps) {
   );
 }
 
-const Layout = {
-  Navbar,
-  Page,
-  Container,
-  SideMenu,
-  Content,
-};
+function Layout({ children, className }: SharedProps) {
+  return <div className={classnames(["rc-layout", className])}>{children}</div>;
+}
+
+Layout.Navbar = Navbar;
+Layout.Page = Page;
+Layout.SideMenu = SideMenu;
+Layout.Content = Content;
 
 export default Layout;
