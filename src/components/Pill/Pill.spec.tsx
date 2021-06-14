@@ -1,13 +1,10 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import TestIcon from "resources/icons/test.svg";
 import { Kind } from "types";
 import Pill from "./Pill";
 
-const icon = (
-  <svg viewBox="0 0 20 20">
-    <circle cx="10" r="5" cy="10" />
-  </svg>
-);
+const icon = <TestIcon />;
 
 describe("test the Pill component", () => {
   it("renders the component", () => {

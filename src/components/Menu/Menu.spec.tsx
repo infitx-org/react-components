@@ -1,14 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import TestIcon from "resources/icons/test.svg";
 import userEvent from "@testing-library/user-event";
 
 import Menu from "./Menu";
 
-const icon = (
-  <svg width="40" height="40" viewBox="0 0 40 40">
-    <circle cx="20" cy="20" r="20" />
-  </svg>
-);
+const icon = <TestIcon />;
 
 const onChangeMockEvent = jest.fn();
 

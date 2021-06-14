@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import Icon from "components/Icon";
 import Tooltip from "components/Tooltip";
+import TestIcon from "resources/icons/test.svg";
 import "./Layout.scss";
 
 export interface SharedProps {
@@ -43,17 +44,6 @@ export interface LayoutNavbarProps {
   onLogoutClick?: () => void;
 }
 
-const icon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="40"
-    height="40"
-    viewBox="0 0 40 40"
-  >
-    <circle cx="20" cy="20" r="20" />
-  </svg>
-);
-
 function LayoutNavbar({
   title,
   username = "-",
@@ -69,7 +59,7 @@ function LayoutNavbar({
       </div>
       <div className="rc-layout__navbar__user">
         <div className="rc-layout__navbar__user__icon">
-          <Icon icon={icon} fill="#fff" />
+          <Icon icon={<TestIcon />} fill="#fff" />
         </div>
         <div
           className="rc-layout__navbar__user__name"

@@ -2,7 +2,7 @@
 
 A collection of React components for the frontend apps.
 
-<p style="text-align:center;"><img src="src/assets/svgs/readme.svg"/></p>
+<p style="text-align:center;"><img src="./theme.svg"/></p>
 
 To install the module run `yarn add @modusbox/react-components`.
 

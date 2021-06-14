@@ -1,17 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
+import TestIcon from "resources/icons/test.svg";
 import { Kind, Size } from "types";
 import Button from "./Button";
 
 /* eslint-disable no-console */
 const { log } = console;
-
-const icon = (
-  <svg width="55" height="55" viewBox="-6 -3 55 55">
-    <circle cx="10" cy="10" r="20" />
-  </svg>
-);
+const icon = <TestIcon />;
 
 describe("tests the buttton", () => {
   it("renders the label", () => {

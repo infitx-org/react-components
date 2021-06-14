@@ -1,5 +1,6 @@
 /* eslint no-console: "off" */
 import { Size, Kind } from "types";
+import TestIcon from "resources/icons/test.svg";
 import Row from "components/Flexbox/Row";
 import Button from "./Button";
 
@@ -9,17 +10,7 @@ export default {
 };
 
 const { log } = console;
-
-const icon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="40"
-    height="40"
-    viewBox="0 0 40 40"
-  >
-    <circle cx="20" cy="20" r="20" />
-  </svg>
-);
+const icon = <TestIcon />;
 
 const Template = (args) => (
   <Button {...args} onClick={log} label="I am a button" />
@@ -72,7 +63,7 @@ WithIconOnTheRight.args = {
 
 const kinds = Object.values(Kind);
 const sharedProps = (kind) => ({
-  size: "medium",
+  size: Size.Medium,
   style: {
     margin: "2px",
   },
