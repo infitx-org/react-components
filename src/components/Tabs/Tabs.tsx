@@ -227,7 +227,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
     });
 
     const panel = rowPanels[selected] || null;
-    const tabsClassNames = classnames(["element", "rc-tabs", className]);
+    const tabsClassNames = classnames(["rc-tabs", className]);
 
     return (
       <div
