@@ -1,4 +1,10 @@
+@use "sass:map";
+@use "../../scss/components/any.scss";
+@use "../../scss/themes.scss";
+
 .rc-layout__container {
+  @include any.rc-component;
+
   height: 100%;
   width: 100%;
   display: flex;
@@ -6,6 +12,8 @@
 }
 
 .rc-layout__content {
+  @include any.rc-component;
+
   flex: 1 1 auto;
   max-width: 100%;
   display: flex;
@@ -15,24 +23,34 @@
 }
 
 .rc-layout__page {
+  @include any.rc-component;
+
   overflow-x: hidden;
   flex: 1 1 auto;
   padding: 20px;
 }
 
 .rc-layout__side-menu {
+  @include any.rc-component;
+
   flex: 0 0 200px;
   border-right: 1px solid #ccc;
   background: #eee;
 }
 
 .rc-layout__navbar {
+  @include any.rc-component;
+
   flex: 0 0 55px;
   user-select: none;
   height: 55px;
   width: 100%;
-  background: linear-gradient(269.81deg, #043865 0.01%, #02182b 100%);
-  border-bottom: 5px solid #4fc7e7;
+  background: linear-gradient(
+    269.81deg,
+    map.get(themes.$colors--dark, "secondary") 0%,
+    #02182b 100%
+  );
+  border-bottom: 5px solid map.get(themes.$colors, "primary");
   display: flex;
   align-items: center;
 }
