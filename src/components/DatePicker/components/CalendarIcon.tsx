@@ -1,7 +1,7 @@
 import Icon from "components/Icon";
 import { InputSize } from "types";
 import { getIconSizeByComponentSize } from "utils/size";
-import Calendar from "../../../assets/icons/calendar-small.svg";
+import Calendar from "../../../resources/icons/calendar-small.svg";
 import "./CalendarIcon.scss";
 
 interface CalendarIconProps {

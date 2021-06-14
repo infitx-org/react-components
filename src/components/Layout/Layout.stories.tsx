@@ -1,3 +1,4 @@
+/* eslint no-console: "off" */
 import Layout from "./Layout";
 
 export default {

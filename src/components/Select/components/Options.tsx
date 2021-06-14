@@ -5,8 +5,8 @@ import useOverlayPosition from "hooks/useOverlayPosition";
 import { getIconSizeByComponentSize } from "utils/size";
 import mergeRefs from "utils/mergeRefs";
 import Icon from "components/Icon";
-import InfoSmall from "../../../assets/icons/info-small.svg";
-import CloseSmall from "../../../assets/icons/close-small.svg";
+import InfoSmall from "../../../resources/icons/info-small.svg";
+import CloseSmall from "../../../resources/icons/close-small.svg";
 import "./Options.scss";
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */

@@ -1,7 +1,7 @@
 import Icon from "components/Icon";
 import { InputSize } from "types";
 import { getIconSizeByComponentSize } from "utils/size";
-import Search from "../../../assets/icons/search-small.svg";
+import Search from "../../../resources/icons/search-small.svg";
 import "./Filter.scss";
 
 interface FilterProps {
