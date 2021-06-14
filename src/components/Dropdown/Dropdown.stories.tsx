@@ -1,5 +1,6 @@
 /* eslint no-console: "off" */
 import { Size, Kind } from "types";
+import TestIcon from "resources/icons/test.svg";
 import Row from "components/Flexbox/Row";
 import Dropdown from "./Dropdown";
 
@@ -13,16 +14,7 @@ export default {
 
 const { log } = console;
 
-const icon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="40"
-    height="40"
-    viewBox="0 0 40 40"
-  >
-    <circle cx="20" cy="20" r="20" />
-  </svg>
-);
+const icon = <TestIcon />;
 
 const Template = (args) => (
   <Dropdown {...args} onClick={log} label="I am a dropdown">
