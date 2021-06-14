@@ -1,10 +1,10 @@
 import React from "react";
-import Column from "components/Layout/Column";
-import { Blocks, Title } from "components/Layout/Layout.stories";
+import Column from "components/Flexbox/Column";
+import { Blocks, Title } from "components/Flexbox/Flexbox.stories";
 import Row from "./Row";
 
 export default {
-  title: "Components/Layout/Row",
+  title: "Components/Flexbox/Row",
 };
 
 const Template = (args) => (

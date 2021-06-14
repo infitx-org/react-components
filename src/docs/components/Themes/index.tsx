@@ -1,6 +1,6 @@
 import { Kind } from "types";
-import Row from "components/Layout/Row";
-import Column from "components/Layout/Column";
+import Row from "components/Flexbox/Row";
+import Column from "components/Flexbox/Column";
 import Box from "docs/components/Box";
 import Label from "docs/components/Label";
 import "./Themes.scss";

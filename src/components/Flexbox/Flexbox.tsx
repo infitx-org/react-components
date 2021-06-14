@@ -1,7 +1,7 @@
 import React from "react";
 import { AlignItems, JustifyContent } from "./types";
 
-export interface LayoutProps {
+export interface FlexboxProps {
   wrap?: boolean;
   grow?: number;
   shrink?: number;
@@ -11,13 +11,13 @@ export interface LayoutProps {
   children?: React.ReactNode;
 }
 
-export interface FlexboxProps {
+interface BaseProps {
   alignItems?: AlignItems;
   justifyContent?: JustifyContent;
   flexDirection: "row" | "column";
 }
 
-export default function Layout({
+export default function Flexbox({
   alignItems,
   justifyContent,
   flexDirection,
@@ -28,7 +28,7 @@ export default function Layout({
   className,
   style = {},
   children,
-}: LayoutProps & FlexboxProps) {
+}: FlexboxProps & BaseProps) {
   const styles: React.CSSProperties = {
     display: "flex",
     flexDirection,

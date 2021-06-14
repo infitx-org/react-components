@@ -1,5 +1,5 @@
 /* eslint no-console: "off" */
-import Row from "components/Layout/Row";
+import Row from "components/Flexbox/Row";
 import IconButton from "./IconButton";
 
 const icon = (

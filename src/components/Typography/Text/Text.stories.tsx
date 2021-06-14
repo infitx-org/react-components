@@ -1,4 +1,4 @@
-import Column from "components/Layout/Column";
+import Column from "components/Flexbox/Column";
 import Text from "./Text";
 
 export default {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Layout.stories.css";
+import "./Flexbox.stories.css";
 
 export function Blocks() {
   return (

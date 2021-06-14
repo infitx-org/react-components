@@ -1,6 +1,6 @@
 /* eslint no-console: "off" */
 import { Size, Kind } from "types";
-import Row from "components/Layout/Row";
+import Row from "components/Flexbox/Row";
 import Dropdown from "./Dropdown";
 
 export default {

@@ -1,6 +1,6 @@
 import React from "react";
-import Row from "components/Layout/Row";
-import Column from "components/Layout/Column";
+import Row from "components/Flexbox/Row";
+import Column from "components/Flexbox/Column";
 import TextField from "components/TextField";
 
 export default function FormTheme() {

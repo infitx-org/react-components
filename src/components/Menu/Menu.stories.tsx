@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import Row from "components/Layout/Row";
+import Row from "components/Flexbox/Row";
 import TextField from "components/TextField";
 import Checkbox from "components/Checkbox";
 import Button from "components/Button";
