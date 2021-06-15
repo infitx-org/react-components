@@ -4,7 +4,7 @@ import useOnClickOutside from "hooks/useOnClickOutside";
 import Indicator from "components/shared/Indicator";
 import { BaseButton } from "components/Button";
 import { KeyCode } from "../../types";
-import { BaseButtonProps } from "../Button";
+import { ButtonProps } from "../Button";
 import DropdownItem, { DropdownItemProps } from "./components/DropdownItem";
 import DropdownOverlay from "./components/DropdownOverlay";
 import "./Dropdown.scss";
@@ -14,7 +14,7 @@ function isDropdownItem(child: React.ReactNode): boolean {
 }
 
 export interface DropdownProps
-  extends Omit<BaseButtonProps, "children" | "iconPosition"> {
+  extends Omit<ButtonProps, "children" | "iconPosition"> {
   children: React.ReactNode;
 }
 
