@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 import "./Heading.scss";
 
 function headerTag(size: number): string {
@@ -23,7 +24,7 @@ export default function Heading({
 }: HeadingProps) {
   const Header = headerTag(parseInt(size, 10)) as React.ElementType;
   return (
-    <Header style={style} className={className}>
+    <Header style={style} className={classnames(["rc-heading", className])}>
       {children}
     </Header>
   );
