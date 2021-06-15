@@ -1,8 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 import { WithValidationProps } from "hocs";
-import { BaseInput } from "components/shared/types";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import "./TextField.scss";
 
