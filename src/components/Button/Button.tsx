@@ -6,10 +6,10 @@ import { getIconSizeByComponentSize } from "utils/size";
 import withTooltip from "hocs/withTooltip";
 import { WithTooltipProps } from "../../hocs/withTooltip";
 import { Size, Kind } from "../../types";
-import { BaseButton } from "../shared/types";
+import { BaseButtonAttributes } from "../shared/types";
 import "./Button.scss";
 
-export interface BaseButtonProps extends BaseButton {
+export interface BaseButtonProps extends BaseButtonAttributes {
   children?: React.ReactNode;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   label?: string;
@@ -28,7 +28,7 @@ export interface BaseButtonProps extends BaseButton {
 
 export type ButtonProps = BaseButtonProps & WithTooltipProps;
 
-const ButtonWithRefs = forwardRef<HTMLButtonElement, ButtonProps>(
+export const BaseButton = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     {
       children,
@@ -97,4 +97,4 @@ const ButtonWithRefs = forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-export default withTooltip<ButtonProps>(ButtonWithRefs);
+export default withTooltip<ButtonProps>(BaseButton);

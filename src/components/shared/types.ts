@@ -8,7 +8,7 @@ export type BaseSelect = Omit<
   "size" | "value" | "onChange"
 >;
 
-export type BaseButton = Omit<
+export type BaseButtonAttributes = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   "size"
 >;

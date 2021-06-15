@@ -2,8 +2,9 @@ import React from "react";
 import classnames from "classnames";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import Indicator from "components/shared/Indicator";
-import Button, { ButtonProps } from "components/Button";
+import { BaseButton } from "components/Button";
 import { KeyCode } from "../../types";
+import { BaseButtonProps } from "../Button";
 import DropdownItem, { DropdownItemProps } from "./components/DropdownItem";
 import DropdownOverlay from "./components/DropdownOverlay";
 import "./Dropdown.scss";
@@ -13,7 +14,7 @@ function isDropdownItem(child: React.ReactNode): boolean {
 }
 
 export interface DropdownProps
-  extends Omit<ButtonProps, "children" | "iconPosition"> {
+  extends Omit<BaseButtonProps, "children" | "iconPosition"> {
   children: React.ReactNode;
 }
 
@@ -47,7 +48,7 @@ const Dropdown = ({
 
   return (
     <div className="rc-dropdown" style={style}>
-      <Button
+      <BaseButton
         {...props}
         size={size}
         kind={kind}
