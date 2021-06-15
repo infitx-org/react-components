@@ -1,6 +1,6 @@
 import React, { useState, useEffect, CSSProperties } from "react";
 import classnames from "classnames";
-import { Kind } from "types";
+import { Kind } from "../../types";
 import "./Tooltip.scss";
 
 export type Position = "top" | "left" | "right" | "bottom";

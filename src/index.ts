@@ -2,7 +2,7 @@
 import "./scss/vars.scss";
 
 // Types
-export * from "types";
+export type { Size, Kind, InputSize } from "./types";
 
 // Components
 export { default as Button, ButtonProps } from "./components/Button";
@@ -12,7 +12,7 @@ export {
   default as DatePicker,
   DatePickerProps,
 } from "./components/DatePicker";
-export { default as Dropdown, DropdownProps } from "./components/Dropdown";
+// export { default as Dropdown, DropdownProps } from "./components/Dropdown";
 export {
   default as Field,
   FieldProps,

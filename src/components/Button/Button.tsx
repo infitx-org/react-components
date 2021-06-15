@@ -1,15 +1,15 @@
 import React, { MouseEvent, KeyboardEvent, forwardRef } from "react";
 import classnames from "classnames";
-import "./Button.scss";
-
-import { Size, Kind } from "types";
 import Spinner from "components/Spinner";
 import Icon from "components/Icon";
 import { getIconSizeByComponentSize } from "utils/size";
-import withTooltip, { WithTooltipProps } from "hocs/withTooltip";
-import { BaseButton } from "components/shared/types";
+import withTooltip from "hocs/withTooltip";
+import { WithTooltipPropss } from "../../hocs/withTooltip";
+import { Size, Kind } from "../../types";
+import { BaseButton } from "../shared/types";
+import "./Button.scss";
 
-interface BaseButtonProps extends BaseButton {
+export interface BaseButtonProps extends BaseButton {
   children?: React.ReactNode;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   label?: string;
@@ -26,73 +26,75 @@ interface BaseButtonProps extends BaseButton {
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 }
 
-export type ButtonProps = BaseButtonProps & WithTooltipProps;
+export type ButtonProps = BaseButtonProps & WithTooltipPropss;
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {
-    children,
-    id,
-    className,
-    style,
-    label,
-    noFill,
-    disabled,
-    pending,
-    kind = Kind.Primary,
-    size = Size.Large,
-    icon,
-    iconPosition = "left",
-    onClick,
-    onKeyDown,
-    ...props
-  }: ButtonProps,
-  ref: React.ForwardedRef<HTMLButtonElement>
-): JSX.Element {
-  const classNames = classnames([
-    "rc-button",
-    `rc-button--${kind}`,
-    `rc-button--${size}`,
-    disabled && "rc-button--disabled",
-    noFill && "rc-button--noFill",
-    className,
-  ]);
+const ButtonWithRefs = forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
+    {
+      children,
+      id,
+      className,
+      style,
+      label,
+      noFill,
+      disabled,
+      pending,
+      kind = Kind.Primary,
+      size = Size.Large,
+      icon,
+      iconPosition = "left",
+      onClick,
+      onKeyDown,
+      ...props
+    }: ButtonProps,
+    ref: React.ForwardedRef<HTMLButtonElement>
+  ): JSX.Element {
+    const classNames = classnames([
+      "rc-button",
+      `rc-button--${kind}`,
+      `rc-button--${size}`,
+      disabled && "rc-button--disabled",
+      noFill && "rc-button--noFill",
+      className,
+    ]);
 
-  let iconContent = null;
-  if (icon || pending) {
-    const numericSize = getIconSizeByComponentSize(size);
-    let display;
-    if (pending) {
-      display = <Spinner color="inherit" size={numericSize} />;
-    } else if (icon) {
-      display = <Icon icon={icon} size={size} fill="inherit" />;
+    let iconContent = null;
+    if (icon || pending) {
+      const numericSize = getIconSizeByComponentSize(size);
+      let display;
+      if (pending) {
+        display = <Spinner color="inherit" size={numericSize} />;
+      } else if (icon) {
+        display = <Icon icon={icon} size={size} fill="inherit" />;
+      }
+      iconContent = (
+        <div className={`rc-button__icon rc-button__icon--${iconPosition}`}>
+          {display}
+        </div>
+      );
     }
-    iconContent = (
-      <div className={`rc-button__icon rc-button__icon--${iconPosition}`}>
-        {display}
-      </div>
+
+    const button = (
+      <button
+        type="button"
+        id={id}
+        style={style}
+        className={classNames}
+        onClick={onClick}
+        disabled={disabled}
+        ref={ref}
+        {...props}
+      >
+        <div className="rc-button__content">
+          {iconPosition === "left" && iconContent}
+          {label || children}
+          {iconPosition === "right" && iconContent}
+        </div>
+      </button>
     );
+
+    return button;
   }
+);
 
-  const button = (
-    <button
-      type="button"
-      id={id}
-      style={style}
-      className={classNames}
-      onClick={onClick}
-      disabled={disabled}
-      ref={ref}
-      {...props}
-    >
-      <div className="rc-button__content">
-        {iconPosition === "left" && iconContent}
-        {label || children}
-        {iconPosition === "right" && iconContent}
-      </div>
-    </button>
-  );
-
-  return button;
-});
-
-export default withTooltip<HTMLButtonElement, ButtonProps>(Button);
+export default withTooltip<ButtonProps>(ButtonWithRefs);
