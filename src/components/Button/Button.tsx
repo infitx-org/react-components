@@ -3,13 +3,16 @@ import classnames from "classnames";
 import Spinner from "components/Spinner";
 import Icon from "components/Icon";
 import { getIconSizeByComponentSize } from "utils/size";
-import withTooltip from "hocs/withTooltip";
-import { WithTooltipProps } from "../../hocs/withTooltip";
+import withTooltip from "../../hocs/withTooltip";
 import { Size, Kind } from "../../types";
-import { BaseButtonAttributes } from "../shared/types";
 import "./Button.scss";
 
-export interface BaseButtonProps extends BaseButtonAttributes {
+type BaseButtonAttributes = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "size"
+>;
+
+export interface ButtonProps extends BaseButtonAttributes {
   children?: React.ReactNode;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   label?: string;
@@ -25,8 +28,6 @@ export interface BaseButtonProps extends BaseButtonAttributes {
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 }
-
-export type ButtonProps = BaseButtonProps & WithTooltipProps;
 
 export const BaseButton = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(

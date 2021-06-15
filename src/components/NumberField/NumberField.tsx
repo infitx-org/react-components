@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
-import { WithValidationProps } from "hocs/withValidation";
+import { WithValidationProps } from "../../hocs/withValidation";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import "./NumberField.scss";

@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { format as dateFormat } from "date-fns";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 
-import { WithValidationProps } from "hocs/withValidation";
+import { WithValidationProps } from "../../hocs/withValidation";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import Calendar from "./components/Calendar";

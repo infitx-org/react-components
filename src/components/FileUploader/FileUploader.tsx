@@ -4,7 +4,7 @@ import readFileAsText from "@modusbox/ts-utils/lib/file/readFileAsText";
 import readFileAsBase64 from "@modusbox/ts-utils/lib/file/readFileAsBase64";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Button from "components/Button";
-import { WithValidationProps } from "hocs/withValidation";
+import { WithValidationProps } from "../../hocs/withValidation";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import "./FileUploader.scss";
