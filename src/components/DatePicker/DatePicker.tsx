@@ -2,15 +2,12 @@ import React from "react";
 import classnames from "classnames";
 import { format as dateFormat } from "date-fns";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
-
 import { WithValidationProps } from "../../hocs/withValidation";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import Calendar from "./components/Calendar";
 import CalendarIcon from "./components/CalendarIcon";
 import "./DatePicker.scss";
-
-type DateValue = Date | undefined;
 
 interface BaseDatePickerProps extends BaseInput {
   kind?: `${Kind}`;
@@ -22,7 +19,7 @@ interface BaseDatePickerProps extends BaseInput {
   required?: boolean;
   invalid?: boolean;
   pending?: boolean;
-  onChange?: (date: DateValue) => void;
+  onChange?: (date: Date | undefined) => void;
 }
 
 export type DatePickerProps = BaseDatePickerProps &
@@ -43,12 +40,12 @@ export default React.forwardRef(function DatePicker(
   }: DatePickerProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
 ): JSX.Element {
-  function getDateFromString(date?: string): DateValue {
+  function getDateFromString(date?: string): Date | undefined {
     return date ? new Date(date) : undefined;
   }
 
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [selectedDate, setDate] = React.useState<DateValue>(
+  const [selectedDate, setDate] = React.useState<Date | undefined>(
     getDateFromString(value)
   );
   const [open, setOpen] = React.useState(false);
