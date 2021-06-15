@@ -1,6 +1,6 @@
 import classnames from "classnames";
-import { Kind } from "types";
 import Icon from "components/Icon";
+import { Kind } from "../../types";
 import "./MessageBox.scss";
 
 function splitLines(prev: string[], curr: string): string[] {

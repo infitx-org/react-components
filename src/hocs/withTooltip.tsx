@@ -2,7 +2,7 @@ import React, { ComponentType } from "react";
 import Tooltip, { Position } from "components/Tooltip";
 import { Kind } from "../types";
 
-export interface WithTooltipPropss {
+export interface WithTooltipProps {
   tooltipKind?: `${Kind}`;
   tooltipLabel?: string;
   tooltipContent?: React.ReactNode;
@@ -16,7 +16,7 @@ export default function withTooltip<Props>(Component: ComponentType<Props>) {
     tooltipPosition,
     tooltipContent,
     ...props
-  }: Props & WithTooltipPropss) {
+  }: Props & WithTooltipProps) {
     if (!tooltipLabel && !tooltipContent) {
       return <Component {...(props as Props)} />;
     }

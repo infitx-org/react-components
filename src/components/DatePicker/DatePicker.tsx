@@ -1,11 +1,11 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, InputSize, KeyCode } from "types";
 import { format as dateFormat } from "date-fns";
-import { BaseInput } from "components/shared/types";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 
 import { WithValidationProps } from "hocs/withValidation";
+import { BaseInput } from "../shared/types";
+import { Kind, InputSize, KeyCode } from "../../types";
 import Calendar from "./components/Calendar";
 import CalendarIcon from "./components/CalendarIcon";
 import "./DatePicker.scss";

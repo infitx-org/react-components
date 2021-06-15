@@ -4,7 +4,7 @@ import Spinner from "components/Spinner";
 import Icon from "components/Icon";
 import { getIconSizeByComponentSize } from "utils/size";
 import withTooltip from "hocs/withTooltip";
-import { WithTooltipPropss } from "../../hocs/withTooltip";
+import { WithTooltipProps } from "../../hocs/withTooltip";
 import { Size, Kind } from "../../types";
 import { BaseButton } from "../shared/types";
 import "./Button.scss";
@@ -26,7 +26,7 @@ export interface BaseButtonProps extends BaseButton {
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 }
 
-export type ButtonProps = BaseButtonProps & WithTooltipPropss;
+export type ButtonProps = BaseButtonProps & WithTooltipProps;
 
 const ButtonWithRefs = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(

@@ -1,10 +1,10 @@
 import React from "react";
 import classnames from "classnames";
-import { InputSize } from "types";
 import useOverlayPosition from "hooks/useOverlayPosition";
 import { getIconSizeByComponentSize } from "utils/size";
 import mergeRefs from "utils/mergeRefs";
 import Icon from "components/Icon";
+import { InputSize } from "../../../types";
 import InfoSmall from "../../../resources/icons/info-small.svg";
 import CloseSmall from "../../../resources/icons/close-small.svg";
 import "./Options.scss";

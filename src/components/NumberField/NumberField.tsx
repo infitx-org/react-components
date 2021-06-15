@@ -1,10 +1,10 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, InputSize, KeyCode } from "types";
 import { BaseInput } from "components/shared/types";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
-import "./NumberField.scss";
 import { WithValidationProps } from "hocs/withValidation";
+import { Kind, InputSize, KeyCode } from "../../types";
+import "./NumberField.scss";
 
 interface BaseNumberFieldProps extends BaseInput {
   kind?: `${Kind}`;

@@ -1,9 +1,9 @@
 import React from "react";
 import classnames from "classnames";
-import { KeyCode } from "types";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import Indicator from "components/shared/Indicator";
 import Button, { ButtonProps } from "components/Button";
+import { KeyCode } from "../../types";
 import DropdownItem, { DropdownItemProps } from "./components/DropdownItem";
 import DropdownOverlay from "./components/DropdownOverlay";
 import "./Dropdown.scss";
