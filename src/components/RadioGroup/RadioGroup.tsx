@@ -10,7 +10,7 @@ export interface RadioGroupProps {
   kind?: `${Kind}`;
   id?: string;
   name?: string;
-  label: string;
+  label?: string;
   selected?: string;
   disabled?: boolean;
   options: Option[];
