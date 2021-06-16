@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import classnames from "classnames";
-import { Kind } from "types";
+import { Kind } from "../../types";
 
 export type RadioProps = {
   kind?: `${Kind}`;

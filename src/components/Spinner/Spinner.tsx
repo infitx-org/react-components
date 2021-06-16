@@ -1,6 +1,6 @@
 import React from "react";
-import { Kind, InputSize } from "types";
 import classnames from "classnames";
+import { Kind, InputSize } from "../../types";
 import "./Spinner.scss";
 
 function getNumericSize(size: `${InputSize}`) {

@@ -1,10 +1,10 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, InputSize } from "types";
 import mergeRefs from "utils/mergeRefs";
 import useOnClickOutside from "hooks/useOnClickOutside";
+import withValidation, { WithValidationProps } from "../../hocs/withValidation";
+import { Kind, InputSize } from "../../types";
 import "./Field.scss";
-import withValidation, { WithValidationProps } from "hocs/withValidation";
 
 export interface FieldProps extends WithValidationProps {
   kind?: `${Kind}`;

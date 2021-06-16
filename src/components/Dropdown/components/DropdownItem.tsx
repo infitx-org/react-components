@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, Size } from "types";
+import { Kind, Size } from "../../../types";
 import "./DropdownItem.scss";
 
 export interface DropdownItemProps {

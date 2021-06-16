@@ -1,6 +1,6 @@
 import React from "react";
-import { Size } from "types";
 import { getIconSizeByComponentSize } from "utils/size";
+import { Size } from "../../types";
 
 export type IconProps = {
   icon: React.ReactElement<React.SVGProps<SVGSVGElement>>;

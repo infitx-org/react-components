@@ -1,13 +1,13 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, InputSize, KeyCode } from "types";
 import readFileAsText from "@modusbox/ts-utils/lib/file/readFileAsText";
 import readFileAsBase64 from "@modusbox/ts-utils/lib/file/readFileAsBase64";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Button from "components/Button";
-import { BaseInput } from "components/shared/types";
+import { WithValidationProps } from "../../hocs/withValidation";
+import { BaseInput } from "../shared/types";
+import { Kind, InputSize, KeyCode } from "../../types";
 import "./FileUploader.scss";
-import { WithValidationProps } from "hocs/withValidation";
 
 export interface BaseFileUploaderProps extends BaseInput {
   kind?: `${Kind}`;

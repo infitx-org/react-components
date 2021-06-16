@@ -1,9 +1,10 @@
 import React from "react";
 import classnames from "classnames";
-import { KeyCode } from "types";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import Indicator from "components/shared/Indicator";
-import Button, { ButtonProps } from "components/Button";
+import { BaseButton } from "components/Button";
+import { KeyCode } from "../../types";
+import { ButtonProps } from "../Button";
 import DropdownItem, { DropdownItemProps } from "./components/DropdownItem";
 import DropdownOverlay from "./components/DropdownOverlay";
 import "./Dropdown.scss";
@@ -47,7 +48,7 @@ const Dropdown = ({
 
   return (
     <div className="rc-dropdown" style={style}>
-      <Button
+      <BaseButton
         {...props}
         size={size}
         kind={kind}

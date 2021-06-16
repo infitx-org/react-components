@@ -1,10 +1,10 @@
 import React from "react";
 import classnames from "classnames";
-import { Kind, InputSize, KeyCode } from "types";
-import { BaseInput } from "components/shared/types";
-import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
-import "./TextField.scss";
 import { WithValidationProps } from "hocs";
+import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import { BaseInput } from "../shared/types";
+import { Kind, InputSize, KeyCode } from "../../types";
+import "./TextField.scss";
 
 export interface BaseTextFieldProps extends BaseInput {
   kind?: `${Kind}`;

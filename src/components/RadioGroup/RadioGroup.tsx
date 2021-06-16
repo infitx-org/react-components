@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import classnames from "classnames";
-import { Kind } from "types";
+import { Kind } from "../../types";
 import Radio, { RadioProps } from "./Radio";
 import "./RadioGroup.scss";
 
