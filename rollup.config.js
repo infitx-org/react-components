@@ -29,7 +29,13 @@ export default {
   plugins: [
     terser(),
     peerDepsExternal(),
-    svgr(),
+    svgr({
+      svgoConfig: {
+        plugins: [{
+          removeViewBox: false
+        }]
+      }
+    }),
     babel({
       babelHelpers: "bundled",
     }),
