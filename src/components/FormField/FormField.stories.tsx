@@ -1,10 +1,10 @@
-import FormField from "./FormField";
+/* eslint-disable no-console */
+
+import FormField, { FormGroup } from "./FormField";
 
 export default {
   title: "Components/FormField",
 };
-
-/* eslint-disable no-console */
 
 const Template = (args) => <FormField {...args} />;
 
@@ -20,7 +20,6 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
-  // eslint-disable-next-line
   onChange: console.log,
   validation: [
     { active: false, message: "Test" },
@@ -28,6 +27,49 @@ Default.args = {
     { active: undefined, message: "unknown" },
   ],
 };
+
+const options = Array.from([1, 2, 3], (x) => ({
+  label: x.toString(),
+  value: x.toString(),
+}));
+export const Test = () => (
+  <div>
+    <FormGroup.Row>
+      <FormField type="text" label="this is a text" size="small"/>
+      <FormField type="checkbox" label="this is a checkbox" />
+      <FormField
+        type="radio"
+        label="this is a horizontal radiogroup"
+        options={options}
+        onChange={console.log}
+      />
+      <FormField
+        type="radio"
+        label="this is a vertical radiogroup"
+        vertical
+        options={options}
+        onChange={console.log}
+      />
+    </FormGroup.Row>
+    <FormGroup.Col>
+      <FormField type="text" label="this is a text" />
+      <FormField type="checkbox" label="this is a checkbox" />
+      <FormField
+        type="radio"
+        label="this is a horizontal radiogroup"
+        options={options}
+        onChange={console.log}
+      />
+      <FormField
+        type="radio"
+        label="this is a vertical radiogroup"
+        vertical
+        options={options}
+        onChange={console.log}
+      />
+    </FormGroup.Col>
+  </div>
+);
 
 export const TypePassword = Template.bind({});
 TypePassword.args = {
@@ -80,7 +122,7 @@ Large.args = {
   size: "large",
 };
 
-export const Test = () => {
+export const Validation = () => {
   const onFocus = () => {
     setTimeout(() => console.log(document.activeElement), 100);
   };

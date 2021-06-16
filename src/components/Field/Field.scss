@@ -37,7 +37,7 @@
     left: -#{input.$border-left-width};
     top: -#{input.$border-top-width};
     content: "";
-    box-shadow: shadows.$size;
+    box-shadow: shadows.$size--closed;
     color: transparent;
     opacity: 0;
     transition: input.$transition;
@@ -47,6 +47,7 @@
 
 .rc-field--focused {
   &::before {
+    box-shadow: shadows.$size;
     opacity: 1;
   }
 }

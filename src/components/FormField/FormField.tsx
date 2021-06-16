@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 import Checkbox from "components/Checkbox";
 import RadioGroup from "components/RadioGroup";
 import Select from "components/Select";
@@ -7,11 +7,12 @@ import { CheckboxProps as RawCheckboxProps } from "../Checkbox/Checkbox";
 import { RadioGroupProps as RawRadioGroupProps } from "../RadioGroup/RadioGroup";
 import { SelectProps as RawSelectProps } from "../Select/Select";
 import { TextFieldProps as RawTextFieldProps } from "../TextField/TextField";
+import "./FormField.scss";
 
-type CheckboxProps = Omit<RawCheckboxProps, "label">;
-type RadioGroupProps = Omit<RawRadioGroupProps, "label">;
-type SelectProps = RawSelectProps;
-type TextFieldProps = Omit<RawTextFieldProps, "type">;
+// type CheckboxProps = Omit<RawCheckboxProps, "label">;
+// type RadioGroupProps = Omit<RawRadioGroupProps, "label">;
+// type SelectProps = RawSelectProps;
+// type TextFieldProps = Omit<RawTextFieldProps, "type">;
 
 interface CheckboxFormProps extends RawCheckboxProps {
   type: "checkbox";
@@ -30,7 +31,7 @@ interface TextFieldFormProps extends RawTextFieldProps {
   label?: string;
 }
 
-type FormFieldProps =
+export type FormFieldProps =
   | CheckboxFormProps
   | RadioGroupFormProps
   | SelectFormProps
@@ -52,27 +53,53 @@ function isCheckbox(props: FormFieldProps): props is CheckboxFormProps {
   return props.type === "checkbox";
 }
 
+function Label({ label }: { label: string }) {
+  return <label className="rc-formfield__label">{label}</label>;
+}
+
 export default function FormField({ ...props }: FormFieldProps) {
-  let component;
+  let formComponent;
+  let labelComponent = null;
 
   if (isText(props)) {
-    component = <TextField {...props} />;
+    const { label, ...ownProps } = props;
+    labelComponent = label && <Label label={label} />;
+    formComponent = <TextField {...ownProps} />;
   } else if (isSelect(props)) {
-    component = <Select {...props} />;
+    const { label, ...ownProps } = props;
+    labelComponent = label && <Label label={label} />;
+    formComponent = <Select {...ownProps} />;
   } else if (isRadio(props)) {
-    component = <RadioGroup {...props} />;
+    const { label, ...ownProps } = props;
+    labelComponent = label && <Label label={label} />;
+    formComponent = <RadioGroup {...ownProps} />;
   } else if (isCheckbox(props)) {
-    component = <Checkbox {...props} />;
+    formComponent = <Checkbox {...props} />;
   }
 
   return (
-    <>
-      <div>{props.label}</div>
-      {component}
-    </>
+    <div className="rc-formfield">
+      {labelComponent}
+      {formComponent}
+    </div>
   );
 }
-<>
-  <FormField type="text" label="this is a text" />
-  <FormField type="checkbox" label="this is a checkbox" />
-</>;
+
+
+
+export const FormGroup = {
+  // @ts-ignore
+  Row: ({ children }) => (
+    <div className="rc-formgroup-row">
+      {/* @ts-ignore */}
+      {React.Children.toArray(children).map(child => React.cloneElement(child, { ...child.props, className: `rc-formgroup-row--${child.props.type}` }))}
+    </div>
+  ),
+  // @ts-ignore
+  Col: ({ children }) => (
+    <div className="rc-formgroup-col">
+      {/* @ts-ignore */}
+      {React.Children.toArray(children).map(child => React.cloneElement(child, { ...child.props, className: `rc-formgroup-col--${child.props.type}` }))}
+    </div>
+  )
+}
