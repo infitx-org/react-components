@@ -79,7 +79,7 @@ export const Test = () => {
   };
   return (
     <TextField
-      validation={[{ active: true, message: "diocane" }]}
+      validation={[{ active: true, message: "message!" }]}
       onFocus={onFocus}
     />
   );

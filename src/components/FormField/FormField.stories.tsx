@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 
-import FormField, { FormFields } from "./FormField";
+import FormField from "./FormField";
+import Row from "components/Flexbox/Row";
+import Button from "components/Button";
 
 export default {
   title: "Components/FormField",
@@ -39,9 +41,11 @@ const options2 = Array.from([4, 5, 6], (x) => ({
 }));
 export const Test = () => (
   <div>
-    <FormFields direction="row">
-      <FormField type="text" label="this is a text" size="small" />
+    <FormField.Container direction="row">
+      <FormField required type="text" label="this is a text" size="small" />
+      <Button label="test" size="small" />
       <FormField
+        required
         type="select"
         label="this is a text"
         size="small"
@@ -63,10 +67,15 @@ export const Test = () => (
         options={options2}
         onChange={console.log}
       />
-    </FormFields>
-    <FormFields>
-      <FormField type="text" label="this is a text" />
+    </FormField.Container>
+    <FormField.Container direction="column">
+      <FormField.Container direction="row">
+        <FormField required type="text" label="this is a text" />
+        <Button label="test" />
+      </FormField.Container>
+
       <FormField type="checkbox" label="this is a checkbox" />
+
       <FormField
         name="test3"
         type="radio"
@@ -82,71 +91,6 @@ export const Test = () => (
         options={options2}
         onChange={console.log}
       />
-    </FormFields>
+    </FormField.Container>
   </div>
 );
-
-export const TypePassword = Template.bind({});
-TypePassword.args = {
-  ...Default.args,
-  type: "password",
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  ...Default.args,
-  disabled: true,
-};
-
-export const Placeholder = Template.bind({});
-Placeholder.args = {
-  ...Default.args,
-  placeholder: "Placeholder...",
-};
-
-export const Pending = Template.bind({});
-Pending.args = {
-  ...Default.args,
-  pending: true,
-};
-
-export const Required = Template.bind({});
-Required.args = {
-  ...Default.args,
-  required: true,
-};
-
-export const Invalid = Template.bind({});
-Invalid.args = {
-  ...Default.args,
-  invalid: true,
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: "small",
-};
-
-export const Medium = Template.bind({});
-Medium.args = {
-  size: "medium",
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: "large",
-};
-
-export const Validation = () => {
-  const onFocus = () => {
-    setTimeout(() => console.log(document.activeElement), 100);
-  };
-  return (
-    <FormField
-      type="text"
-      label="O!"
-      validation={[{ active: true, message: "Hey!" }]}
-      onFocus={onFocus}
-    />
-  );
-};

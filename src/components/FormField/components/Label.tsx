@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import Icon from "components/Icon";
-import { getIconSizeByComponentSize } from "utils/size";
-import InfoSmall from "resources/icons/info-small.svg";
+import { getSmallerIconSizeByComponentSize } from "utils/size";
+import InfoSmall from "../../../resources/icons/info-small.svg";
 import { Size } from "../../../types";
 
 export interface LabelProps {
@@ -30,13 +30,12 @@ export default function Label({
       {required && (
         <Icon
           className="rc-formfield__label__icon"
-          size={getIconSizeByComponentSize(size)}
+          size={getSmallerIconSizeByComponentSize(size)}
           icon={<InfoSmall />}
           fill={complete ? "#39f" : "#f93"}
-          tooltip={complete ? "" : "This is a required field"}
         />
       )}
-      {label}
+      <span className={`rc-formfield__label__text--${size}`}>{label}</span>
     </label>
   );
 }

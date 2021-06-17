@@ -26,6 +26,10 @@ export {
   FileUploaderProps,
 } from "./components/FileUploader";
 export {
+  default as FormField,
+  FormFieldProps
+} from "./components/FormField";
+export {
   default as Heading,
   HeadingProps,
 } from "./components/Typography/Heading";
