@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 
-import FormField from "./FormField";
 import Row from "components/Flexbox/Row";
 import Button from "components/Button";
+import FormField from "./FormField";
 
 export default {
   title: "Components/FormField",
@@ -39,11 +39,13 @@ const options2 = Array.from([4, 5, 6], (x) => ({
   label: x.toString(),
   value: x.toString(),
 }));
-export const Test = () => (
+
+const { log } = console;
+export const ColumnLayout = () => (
   <div>
     <FormField.Container direction="row">
       <FormField required type="text" label="this is a text" size="small" />
-      <Button label="test" size="small" />
+      <FormField type="button" label="test" size="small" onClick={log} />
       <FormField
         required
         type="select"
@@ -51,27 +53,11 @@ export const Test = () => (
         size="small"
         options={options}
       />
-      <FormField type="checkbox" label="this is a checkbox" />
-      <FormField
-        name="test1"
-        type="radio"
-        label="this is a horizontal radiogroup"
-        options={options}
-        onChange={console.log}
-      />
-      <FormField
-        name="test2"
-        type="radio"
-        label="this is a vertical radiogroup"
-        vertical
-        options={options2}
-        onChange={console.log}
-      />
     </FormField.Container>
     <FormField.Container direction="column">
       <FormField.Container direction="row">
         <FormField required type="text" label="this is a text" />
-        <Button label="test" />
+        <FormField type="button" label="test" onClick={log} />
       </FormField.Container>
 
       <FormField type="checkbox" label="this is a checkbox" />
@@ -81,7 +67,7 @@ export const Test = () => (
         type="radio"
         label="this is a horizontal radiogroup"
         options={options}
-        onChange={console.log}
+        onChange={log}
       />
       <FormField
         name="test4"
@@ -89,7 +75,7 @@ export const Test = () => (
         label="this is a vertical radiogroup"
         vertical
         options={options2}
-        onChange={console.log}
+        onChange={log}
       />
     </FormField.Container>
   </div>

@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import Button from "components/Button";
 import Checkbox from "components/Checkbox";
 import DatePicker from "components/DatePicker";
 import FileUploader from "components/FileUploader";
@@ -23,42 +24,42 @@ function FormField({ outerDirection, ...props }: FormFieldProps) {
 
   if (shared.isCheckbox(props)) {
     formComponent = <Checkbox {...props} />;
+  } else if (shared.isButton(props)) {
+    formComponent = <Button {...props} />;
   } else if (shared.isRadio(props)) {
     const { label, ...ownProps } = props;
     labelComponent = label && <Label label={label} />;
     formComponent = <RadioGroup {...ownProps} />;
-  } else {
-    if (shared.isTextField(props)) {
-      const { label, ...ownProps } = props;
-      labelComponent = label && (
-        <Label label={label} size={props.size} required={props.required} />
-      );
-      formComponent = <TextField {...ownProps} />;
-    } else if (shared.isNumberField(props)) {
-      const { label, ...ownProps } = props;
-      labelComponent = label && (
-        <Label label={label} size={props.size} required={props.required} />
-      );
-      formComponent = <NumberField {...ownProps} />;
-    } else if (shared.isDatePicker(props)) {
-      const { label, ...ownProps } = props;
-      labelComponent = label && (
-        <Label label={label} size={props.size} required={props.required} />
-      );
-      formComponent = <DatePicker {...ownProps} />;
-    } else if (shared.isFileUploader(props)) {
-      const { label, ...ownProps } = props;
-      labelComponent = label && (
-        <Label label={label} size={props.size} required={props.required} />
-      );
-      formComponent = <FileUploader {...ownProps} />;
-    } else if (shared.isSelect(props)) {
-      const { label, ...ownProps } = props;
-      labelComponent = label && (
-        <Label label={label} size={props.size} required={props.required} />
-      );
-      formComponent = <Select {...ownProps} />;
-    }
+  } else if (shared.isTextField(props)) {
+    const { label, ...ownProps } = props;
+    labelComponent = label && (
+      <Label label={label} size={props.size} required={props.required} />
+    );
+    formComponent = <TextField {...ownProps} />;
+  } else if (shared.isNumberField(props)) {
+    const { label, ...ownProps } = props;
+    labelComponent = label && (
+      <Label label={label} size={props.size} required={props.required} />
+    );
+    formComponent = <NumberField {...ownProps} />;
+  } else if (shared.isDatePicker(props)) {
+    const { label, ...ownProps } = props;
+    labelComponent = label && (
+      <Label label={label} size={props.size} required={props.required} />
+    );
+    formComponent = <DatePicker {...ownProps} />;
+  } else if (shared.isFileUploader(props)) {
+    const { label, ...ownProps } = props;
+    labelComponent = label && (
+      <Label label={label} size={props.size} required={props.required} />
+    );
+    formComponent = <FileUploader {...ownProps} />;
+  } else if (shared.isSelect(props)) {
+    const { label, ...ownProps } = props;
+    labelComponent = label && (
+      <Label label={label} size={props.size} required={props.required} />
+    );
+    formComponent = <Select {...ownProps} />;
   }
 
   const className = classnames([

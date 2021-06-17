@@ -1,3 +1,4 @@
+import { ButtonProps as RawButtonProps } from "../Button";
 import { CheckboxProps as RawCheckboxProps } from "../Checkbox/Checkbox";
 import { DatePickerProps as RawDatePickerProps } from "../DatePicker/DatePicker";
 import { FileUploaderProps as RawFileUploaderProps } from "../FileUploader/FileUploader";
@@ -7,6 +8,10 @@ import { SelectProps as RawSelectProps } from "../Select/Select";
 import { TextFieldProps as RawTextFieldProps } from "../TextField/TextField";
 import "./FormField.scss";
 
+interface ButtonFormProps extends RawButtonProps {
+  type: "button";
+  label: string;
+}
 interface CheckboxFormProps extends RawCheckboxProps {
   type: "checkbox";
   label: string;
@@ -37,6 +42,7 @@ interface TextFieldFormProps extends RawTextFieldProps {
 }
 
 export type BaseFieldProps =
+  | ButtonFormProps
   | CheckboxFormProps
   | DatePickerFormProps
   | FileUploaderFormProps
@@ -44,6 +50,10 @@ export type BaseFieldProps =
   | RadioGroupFormProps
   | SelectFormProps
   | TextFieldFormProps;
+
+export function isButton(props: BaseFieldProps): props is ButtonFormProps {
+  return props.type === "button";
+}
 
 export function isTextField(
   props: BaseFieldProps
