@@ -45,7 +45,6 @@ function FormFields({
   ]);
 
   const content = childrenArray.map((child) =>
-    // @ts-ignore
     React.cloneElement(child, {
       ...child.props,
       outerDirection: props.direction,

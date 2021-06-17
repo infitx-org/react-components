@@ -11,12 +11,8 @@ import TextField from "components/TextField";
 import Label from "./components/Label";
 import Container from "./components/Container";
 import * as shared from "./shared";
-import { BaseFieldProps } from "./shared";
+import { FormFieldProps } from "./shared";
 import "./FormField.scss";
-
-export type FormFieldProps = BaseFieldProps & {
-  outerDirection?: "row" | "column";
-};
 
 function FormField({ outerDirection, ...props }: FormFieldProps) {
   let formComponent;

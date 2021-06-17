@@ -92,5 +92,5 @@ export function isCheckbox(props: BaseFieldProps): props is CheckboxFormProps {
 }
 
 export type FormFieldProps = BaseFieldProps & {
-  direction?: "row" | "column";
+  outerDirection?: "row" | "column";
 };
