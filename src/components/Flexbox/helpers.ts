@@ -1,22 +1,25 @@
 import {
-  AlignMap,
-  JustifyMap,
+  Mappers,
   AlignWithMap,
   JustifyWithMap,
   AlignItems,
   JustifyContent,
 } from "./types";
 
-export function mapAlignToProperty(property: AlignWithMap): AlignItems {
-  if (property in AlignMap) {
-    return AlignMap[property as keyof typeof AlignMap];
+export function mapAlignToProperty<T extends string>(
+  property: AlignWithMap<T>
+): AlignItems {
+  if (property in Mappers) {
+    return Mappers[property as keyof typeof Mappers];
   }
   return property as AlignItems;
 }
 
-export function mapJustifyToProperty(property: JustifyWithMap): JustifyContent {
-  if (property in JustifyMap) {
-    return JustifyMap[property as keyof typeof JustifyMap];
+export function mapJustifyToProperty<T extends string>(
+  property: JustifyWithMap<T>
+): JustifyContent {
+  if (property in Mappers) {
+    return Mappers[property as keyof typeof Mappers];
   }
   return property as JustifyContent;
 }
