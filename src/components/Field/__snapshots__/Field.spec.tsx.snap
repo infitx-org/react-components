@@ -3,7 +3,7 @@
 exports[`renders the Field correctly when multiple props are set 1`] = `
 <div>
   <div
-    class="rc-field rc-field--primary rc-field--large rc-field--large rc-field--disabled rc-field--invalid rc-field--required"
+    class="rc-field rc-field--primary rc-field--large rc-field--disabled rc-field--invalid"
     role="presentation"
   >
     test

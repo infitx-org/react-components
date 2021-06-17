@@ -3,7 +3,7 @@
 exports[`renders the DatePicker correctly when multiple props are set 1`] = `
 <div>
   <div
-    class="rc-field rc-field--primary rc-field--large rc-field--large"
+    class="rc-field rc-field--primary rc-field--large"
     role="presentation"
   >
     <label
