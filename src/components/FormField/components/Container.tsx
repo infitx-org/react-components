@@ -1,43 +1,75 @@
 import React from "react";
 import classnames from "classnames";
-import Row from "components/Flexbox/Row";
-import Column from "components/Flexbox/Column";
+import Row, { RowProps as RawRowProps } from "../../Flexbox/Row";
+import Column, { ColumnProps as RawColumnProps } from "../../Flexbox/Column";
 import type { FormFieldProps } from "../shared";
 
-type FormFieldsProps = {
+interface RowProps extends RawRowProps {
+  direction: "row";
+}
+
+interface ColumnProps extends RawColumnProps {
+  direction: "column";
+}
+
+type WhichProps = RowProps | ColumnProps;
+
+type FormFieldsProps = WhichProps & {
   outerDirection?: "row" | "column";
-  direction?: "row" | "column";
+  className?: string;
+  style?: React.CSSProperties;
   children: (
     | React.ReactElement<FormFieldProps>
     | React.ReactElement<FormFieldsProps>
   )[];
 };
 
+function isRow(props: WhichProps): props is RowProps {
+  return props.direction === "row";
+}
+
 function FormFields({
   outerDirection,
-  direction = "column",
-  children,
+  className,
+  style,
+  ...props
 }: FormFieldsProps) {
   const childrenArray = React.Children.toArray(
-    children
+    props.children
   ) as React.ReactElement<FormFieldProps>[];
 
-  const className = classnames([
-    `rc-formfields--${direction}`,
+  const rowColClassName = classnames([
+    `rc-formfields--${props.direction}`,
     outerDirection && `rc-formfields--${outerDirection}`,
+    className,
   ]);
 
   const content = childrenArray.map((child) =>
     // @ts-ignore
-    React.cloneElement(child, { ...child.props, outerDirection: direction })
+    React.cloneElement(child, {
+      ...child.props,
+      outerDirection: props.direction,
+    })
   );
 
-  return direction === "row" ? (
-    <Row className={className} align="bottom left">
-      {content}
-    </Row>
-  ) : (
-    <Column className={className} align="top left">
+  if (isRow(props)) {
+    return (
+      <Row
+        className={rowColClassName}
+        style={style}
+        align={props.align || "bottom left"}
+      >
+        {content}
+      </Row>
+    );
+  }
+
+  return (
+    <Column
+      className={rowColClassName}
+      style={style}
+      align={props.align || "top left"}
+    >
       {content}
     </Column>
   );

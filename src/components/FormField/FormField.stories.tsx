@@ -41,42 +41,78 @@ const options2 = Array.from([4, 5, 6], (x) => ({
 }));
 
 const { log } = console;
+
 export const ColumnLayout = () => (
-  <div>
+  <FormField.Container direction="column">
     <FormField.Container direction="row">
-      <FormField required type="text" label="this is a text" size="small" />
-      <FormField type="button" label="test" size="small" onClick={log} />
-      <FormField
-        required
-        type="select"
-        label="this is a text"
-        size="small"
-        options={options}
-      />
+      <FormField required type="text" label="this is a text" />
+      <FormField type="button" label="test" onClick={log} />
     </FormField.Container>
-    <FormField.Container direction="column">
-      <FormField.Container direction="row">
-        <FormField required type="text" label="this is a text" />
+
+    <FormField type="checkbox" label="this is a checkbox" />
+
+    <FormField
+      name="test3"
+      type="radio"
+      label="this is a horizontal radiogroup"
+      options={options}
+      onChange={log}
+    />
+    <FormField
+      name="test4"
+      type="radio"
+      label="this is a vertical radiogroup"
+      vertical
+      options={options2}
+      onChange={log}
+    />
+  </FormField.Container>
+);
+
+export const RowLayout = () => (
+  <FormField.Container direction="row">
+    <FormField required type="text" label="this is a text" size="small" />
+    <FormField type="button" label="test" size="small" onClick={log} />
+    <FormField
+      required
+      type="select"
+      label="this is a text"
+      size="small"
+      options={options}
+    />
+  </FormField.Container>
+);
+
+export const ComplexLayout = () => (
+  <FormField.Container direction="column">
+    <FormField.Container direction="row">
+      <FormField type="text" label="this is a text" />
+      <FormField type="text" label="this is a text" />
+      <FormField type="text" label="this is a text" />
+      <FormField type="button" label="test" onClick={log} />
+    </FormField.Container>
+    <FormField.Container direction="row">
+      <FormField type="text" label="this is a text" />
+      <FormField type="text" label="this is a text" />
+      <FormField type="text" label="this is a text" />
+      <FormField type="button" label="test" onClick={log} />
+    </FormField.Container>
+    <FormField.Container direction="row" align="stretch left">
+      <FormField.Container direction="column">
+        <FormField type="text" label="this is a text" />
         <FormField type="button" label="test" onClick={log} />
+        <FormField type="text" label="this is a text" />
       </FormField.Container>
-
-      <FormField type="checkbox" label="this is a checkbox" />
-
-      <FormField
-        name="test3"
-        type="radio"
-        label="this is a horizontal radiogroup"
-        options={options}
-        onChange={log}
-      />
-      <FormField
-        name="test4"
-        type="radio"
-        label="this is a vertical radiogroup"
-        vertical
-        options={options2}
-        onChange={log}
-      />
+      <FormField.Container direction="column">
+        <FormField type="text" label="this is a text" />
+        <FormField type="button" label="test" onClick={log} />
+        <FormField type="text" label="this is a text" />
+      </FormField.Container>
+      <FormField.Container direction="column" align="bottom flex-end">
+        <FormField size="small" type="text" label="this is a text" />
+        <FormField size="small" type="text" label="this is a text" />
+        <FormField size="small" type="text" label="this is a text" />
+      </FormField.Container>
     </FormField.Container>
-  </div>
+  </FormField.Container>
 );
