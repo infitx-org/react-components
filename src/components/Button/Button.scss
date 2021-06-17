@@ -97,6 +97,7 @@
       &:active,
       &:focus {
         box-shadow: shadows.$size map.get(themes.$shadows, $kind);
+        z-index: 3;
       }
 
       &:hover,

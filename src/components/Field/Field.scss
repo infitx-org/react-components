@@ -58,6 +58,7 @@
 
     &.rc-field--focused {
       &::before {
+        z-index: 3;
         color: map.get(themes.$shadows, $kind);
       }
     }
@@ -70,6 +71,7 @@
 
     &.rc-field--focused {
       &::before {
+        z-index: 3;
         color: map.get(themes.$shadows, $state);
       }
     }

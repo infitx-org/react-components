@@ -1,0 +1,35 @@
+@use "../../scss/components/any.scss";
+
+.rc-formfield {
+  display: inline-flex;
+  flex-direction: column;
+}
+.rc-formfield__label {
+  @include any.rc-component;
+  font-size: 0.875rem;
+  height: 19px;
+}
+
+.rc-formfield__label__icon {
+}
+
+.rc-formfields--row {
+  flex-direction: row;
+  display: flex;
+  align-items: flex-end;
+}
+
+.rc-formfields--column {
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.rc-formfield--column {
+  margin-bottom: 10px;
+}
+
+.rc-formfield--row {
+  margin-bottom: 10px;
+}
