@@ -13,7 +13,6 @@ const commonProps = {
   options,
   name: "test-name",
   onChange: jest.fn(),
-  label: "test-label",
 };
 
 describe("tests the radio group", () => {
@@ -21,13 +20,6 @@ describe("tests the radio group", () => {
     const { container } = render(<RadioGroup {...commonProps} />);
     expect(container.querySelector(".rc-radiogroup span")).toBeTruthy();
     expect(container.querySelectorAll('input[type="radio"]')).toHaveLength(5);
-  });
-
-  it("renders the label prop", () => {
-    const { container } = render(<RadioGroup {...commonProps} />);
-    expect(container.querySelector(".rc-radiogroup span")).toHaveTextContent(
-      "test-label"
-    );
   });
 
   it("renders the id prop", () => {

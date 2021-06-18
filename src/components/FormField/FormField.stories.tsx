@@ -1,7 +1,5 @@
 /* eslint-disable no-console */
 
-import Row from "components/Flexbox/Row";
-import Button from "components/Button";
 import FormField from "./FormField";
 
 export default {
@@ -35,11 +33,6 @@ const options = Array.from([1, 2, 3], (x) => ({
   value: x.toString(),
 }));
 
-const options2 = Array.from([4, 5, 6], (x) => ({
-  label: x.toString(),
-  value: x.toString(),
-}));
-
 const { log } = console;
 
 export const ColumnLayout = () => (
@@ -61,9 +54,9 @@ export const ColumnLayout = () => (
     <FormField
       name="test4"
       type="radio"
-      label="this is a vertical radiogroup"
+      label="vertical radiogroup"
       vertical
-      options={options2}
+      options={options}
       onChange={log}
     />
   </FormField.Container>
