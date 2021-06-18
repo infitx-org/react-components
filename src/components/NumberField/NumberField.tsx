@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
-import { WithValidationProps } from "../../hocs/withValidation";
+import { WithValidationProps, WithLabelProps } from "../../hocs";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import "./NumberField.scss";
@@ -20,7 +20,8 @@ interface BaseNumberFieldProps extends BaseInput {
 }
 
 export type NumberFieldProps = BaseNumberFieldProps &
-  Partial<WithValidationProps>;
+  Partial<WithValidationProps> &
+  WithLabelProps;
 
 export default React.forwardRef(function NumberField(
   {
@@ -34,6 +35,9 @@ export default React.forwardRef(function NumberField(
     invalid,
     pending,
     onChange,
+    // From hocs
+    label,
+    validation,
     ...props
   }: NumberFieldProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
@@ -106,14 +110,16 @@ export default React.forwardRef(function NumberField(
       className={className}
       kind={kind}
       size={size}
-      required={required && currentValue === ""}
+      required={required}
       invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
-      validation={props.validation}
+      label={label}
+      showRequired={currentValue === ""}
+      validation={validation}
     >
       {placeholder && (
         <Placeholder

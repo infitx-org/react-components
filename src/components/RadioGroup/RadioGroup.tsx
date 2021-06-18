@@ -63,6 +63,4 @@ function RadioGroup({
   );
 }
 
-// TODO: cannot find what is wrong here??
-// @ts-ignore
 export default withLabel(RadioGroup);

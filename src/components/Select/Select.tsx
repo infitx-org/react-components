@@ -2,9 +2,9 @@ import React, { forwardRef } from "react";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import classnames from "classnames";
-import { WithValidationProps } from "hocs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Indicator from "components/shared/Indicator";
+import { WithValidationProps, WithLabelProps } from "../../hocs";
 import { BaseSelect } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import Options, { Option, OptionValue } from "./components/Options";
@@ -25,7 +25,9 @@ export interface BaseSelectProps extends BaseSelect {
   onClear?: () => void;
 }
 
-export type SelectProps = BaseSelectProps & WithValidationProps;
+export type SelectProps = BaseSelectProps &
+  Partial<WithValidationProps> &
+  WithLabelProps;
 
 export default forwardRef(function Select(
   {
@@ -40,6 +42,9 @@ export default forwardRef(function Select(
     options = [],
     onChange,
     onClear,
+    // From hocs
+    label,
+    validation,
     ...props
   }: SelectProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
@@ -211,13 +216,15 @@ export default forwardRef(function Select(
       kind={kind}
       size={size}
       className={className}
-      required={required && selectedValue === undefined}
+      required={required}
       invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
+      label={label}
+      showRequired={selectedValue === undefined}
       validation={props.validation}
     >
       {placeholder && (

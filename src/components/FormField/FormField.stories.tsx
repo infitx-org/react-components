@@ -10,7 +10,7 @@ const Template = (args) => <FormField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  type: "text",
+  type: "number",
   kind: "primary",
   size: "large",
   value: "test",
@@ -80,9 +80,14 @@ export const RowLayout = () => (
 export const ComplexLayout = () => (
   <FormField.Container direction="column">
     <FormField.Container direction="row">
-      <FormField type="text" label="this is a text" />
-      <FormField type="text" label="this is a text" />
-      <FormField type="text" label="this is a text" />
+      <FormField required type="text" label="this is a text" />
+      <FormField
+        required
+        type="select"
+        label="this is a select"
+        options={options}
+      />
+      <FormField required type="date" label="this is a datepicker" />
       <FormField type="button" label="test" onClick={log} />
     </FormField.Container>
     <FormField.Container direction="row">
