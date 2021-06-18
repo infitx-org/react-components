@@ -2,11 +2,12 @@ import React, { ChangeEvent } from "react";
 import classnames from "classnames";
 import { Kind } from "../../types";
 import Radio, { RadioProps } from "./Radio";
+import withLabel, { WithLabelProps } from "../../hocs/withLabel";
 import "./RadioGroup.scss";
 
 type Option = Pick<RadioProps, "label" | "value" | "disabled" | "id" | "kind">;
 
-export interface RadioGroupProps {
+interface BaseRadioGroupProps {
   kind?: `${Kind}`;
   id?: string;
   name?: string;
@@ -16,6 +17,7 @@ export interface RadioGroupProps {
   vertical?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
+export type RadioGroupProps = BaseRadioGroupProps & WithLabelProps;
 
 function RadioGroup({
   kind,
@@ -61,4 +63,6 @@ function RadioGroup({
   );
 }
 
-export default React.memo(RadioGroup);
+// TODO: cannot find what is wrong here??
+// @ts-ignore
+export default withLabel(RadioGroup);

@@ -21,23 +21,17 @@ function FormField({ outerDirection, ...props }: FormFieldProps) {
   } else if (shared.isButton(props)) {
     formComponent = <Button {...props} />;
   } else if (shared.isRadio(props)) {
-    const { ...ownProps } = props;
-    formComponent = <RadioGroup {...ownProps} />;
+    formComponent = <RadioGroup {...props} />;
   } else if (shared.isTextField(props)) {
-    const { ...ownProps } = props;
-    formComponent = <TextField {...ownProps} />;
+    formComponent = <TextField {...props} />;
   } else if (shared.isNumberField(props)) {
-    const { ...ownProps } = props;
-    formComponent = <NumberField {...ownProps} />;
+    formComponent = <NumberField {...props} />;
   } else if (shared.isDatePicker(props)) {
-    const { ...ownProps } = props;
-    formComponent = <DatePicker {...ownProps} />;
+    formComponent = <DatePicker {...props} />;
   } else if (shared.isFileUploader(props)) {
-    const { ...ownProps } = props;
-    formComponent = <FileUploader {...ownProps} />;
+    formComponent = <FileUploader {...props} />;
   } else if (shared.isSelect(props)) {
-    const { ...ownProps } = props;
-    formComponent = <Select {...ownProps} />;
+    formComponent = <Select {...props} />;
   }
 
   const className = classnames([
