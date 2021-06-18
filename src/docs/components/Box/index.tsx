@@ -15,12 +15,7 @@ export default function Box({
   children,
 }: BoxProps) {
   return (
-    <div
-      className={`box box--${
-        is ? "overlay" : "normal"
-      } box--${size} ${className}`}
-      style={style}
-    >
+    <div className={`box box--normal box--${size} ${className}`} style={style}>
       {children}
     </div>
   );
