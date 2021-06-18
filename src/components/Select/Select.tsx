@@ -225,7 +225,7 @@ export default forwardRef(function Select(
       ref={forwardedRef}
       label={label}
       showRequired={selectedValue === undefined}
-      validation={props.validation}
+      validation={validation}
     >
       {placeholder && (
         <Placeholder

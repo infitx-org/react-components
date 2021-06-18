@@ -80,7 +80,7 @@ export const RowLayout = () => (
 export const ComplexLayout = () => (
   <FormField.Container direction="column">
     <FormField.Container direction="row">
-      <FormField required type="text" label="this is a text" />
+      <FormField required type="text" label="this is a text" className="test" />
       <FormField
         required
         type="select"
@@ -96,16 +96,20 @@ export const ComplexLayout = () => (
       <FormField type="text" label="this is a text" />
       <FormField type="button" label="test" onClick={log} />
     </FormField.Container>
-    <FormField.Container direction="row" align="stretch left">
+    <FormField.Container direction="row" align="left">
       <FormField.Container direction="column">
-        <FormField type="text" label="this is a text" />
-        <FormField type="button" label="test" onClick={log} />
-        <FormField type="text" label="this is a text" />
-      </FormField.Container>
-      <FormField.Container direction="column">
-        <FormField type="text" label="this is a text" />
-        <FormField type="button" label="test" onClick={log} />
-        <FormField type="text" label="this is a text" />
+        <FormField.Container direction="row" align="left">
+          <FormField type="text" label="this is a text" />
+          <FormField type="text" label="this is a text" />
+        </FormField.Container>
+        <FormField.Container direction="row" align="left">
+          <FormField type="button" label="test" onClick={log} />
+          <FormField type="button" label="test" onClick={log} size="small" />
+        </FormField.Container>
+        <FormField.Container direction="row" align="left">
+          <FormField type="text" label="this is a text" />
+          <FormField type="text" label="this is a text" />
+        </FormField.Container>
       </FormField.Container>
       <FormField.Container direction="column" align="bottom flex-end">
         <FormField size="small" type="text" label="this is a text" />
