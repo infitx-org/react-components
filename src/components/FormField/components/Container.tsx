@@ -28,6 +28,10 @@ function isRow(props: WhichProps): props is RowProps {
   return props.direction === "row";
 }
 
+function isColumn(props: WhichProps): props is ColumnProps {
+  return props.direction === "column";
+}
+
 function FormFields({
   outerDirection,
   className,
@@ -62,16 +66,19 @@ function FormFields({
       </Row>
     );
   }
+  if (isColumn(props)) {
+    return (
+      <Column
+        className={rowColClassName}
+        style={style}
+        align={props.align || "top left"}
+      >
+        {content}
+      </Column>
+    );
+  }
 
-  return (
-    <Column
-      className={rowColClassName}
-      style={style}
-      align={props.align || "top left"}
-    >
-      {content}
-    </Column>
-  );
+  return null;
 }
 
 export default FormFields;
