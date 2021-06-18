@@ -10,6 +10,7 @@ const Template = (args) => <TextField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  label: "test",
   kind: "primary",
   size: "large",
   value: "test",

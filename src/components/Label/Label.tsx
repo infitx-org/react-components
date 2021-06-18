@@ -1,8 +1,9 @@
 import classnames from "classnames";
 import Icon from "components/Icon";
 import { getSmallerIconSizeByComponentSize } from "utils/size";
-import InfoSmall from "../../../resources/icons/info-small.svg";
-import { Size } from "../../../types";
+import InfoSmall from "../../resources/icons/info-small.svg";
+import { Size } from "../../types";
+import "./Label.scss";
 
 export interface LabelProps {
   size?: `${Size}`;
@@ -21,21 +22,18 @@ export default function Label({
     return null;
   }
 
-  const className = classnames([
-    "rc-formfield__label",
-    `rc-formfield__label--${size}`,
-  ]);
+  const className = classnames(["rc-label", `rc-label--${size}`]);
   return (
     <label className={className}>
       {required && (
         <Icon
-          className="rc-formfield__label__icon"
+          className="rc-label__icon"
           size={getSmallerIconSizeByComponentSize(size)}
           icon={<InfoSmall />}
           fill={complete ? "#39f" : "#f93"}
         />
       )}
-      <span className={`rc-formfield__label__text--${size}`}>{label}</span>
+      <span className={`rc-label__text--${size}`}>{label}</span>
     </label>
   );
 }

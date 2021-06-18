@@ -8,7 +8,6 @@ import RadioGroup from "components/RadioGroup";
 import Select from "components/Select";
 import TextField from "components/TextField";
 
-import Label from "./components/Label";
 import Container from "./components/Container";
 import * as shared from "./shared";
 import { FormFieldProps } from "./shared";
@@ -16,45 +15,28 @@ import "./FormField.scss";
 
 function FormField({ outerDirection, ...props }: FormFieldProps) {
   let formComponent;
-  let labelComponent = null;
 
   if (shared.isCheckbox(props)) {
     formComponent = <Checkbox {...props} />;
   } else if (shared.isButton(props)) {
     formComponent = <Button {...props} />;
   } else if (shared.isRadio(props)) {
-    const { label, ...ownProps } = props;
-    labelComponent = label && <Label label={label} />;
+    const { ...ownProps } = props;
     formComponent = <RadioGroup {...ownProps} />;
   } else if (shared.isTextField(props)) {
-    const { label, ...ownProps } = props;
-    labelComponent = label && (
-      <Label label={label} size={props.size} required={props.required} />
-    );
+    const { ...ownProps } = props;
     formComponent = <TextField {...ownProps} />;
   } else if (shared.isNumberField(props)) {
-    const { label, ...ownProps } = props;
-    labelComponent = label && (
-      <Label label={label} size={props.size} required={props.required} />
-    );
+    const { ...ownProps } = props;
     formComponent = <NumberField {...ownProps} />;
   } else if (shared.isDatePicker(props)) {
-    const { label, ...ownProps } = props;
-    labelComponent = label && (
-      <Label label={label} size={props.size} required={props.required} />
-    );
+    const { ...ownProps } = props;
     formComponent = <DatePicker {...ownProps} />;
   } else if (shared.isFileUploader(props)) {
-    const { label, ...ownProps } = props;
-    labelComponent = label && (
-      <Label label={label} size={props.size} required={props.required} />
-    );
+    const { ...ownProps } = props;
     formComponent = <FileUploader {...ownProps} />;
   } else if (shared.isSelect(props)) {
-    const { label, ...ownProps } = props;
-    labelComponent = label && (
-      <Label label={label} size={props.size} required={props.required} />
-    );
+    const { ...ownProps } = props;
     formComponent = <Select {...ownProps} />;
   }
 
@@ -62,12 +44,7 @@ function FormField({ outerDirection, ...props }: FormFieldProps) {
     "rc-formfield",
     outerDirection && `rc-formfield--${outerDirection}`,
   ]);
-  return (
-    <div className={className}>
-      {labelComponent}
-      {formComponent}
-    </div>
-  );
+  return <div className={className}>{formComponent}</div>;
 }
 
 FormField.Container = Container;

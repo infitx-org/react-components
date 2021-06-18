@@ -3,10 +3,11 @@ import classnames from "classnames";
 import mergeRefs from "utils/mergeRefs";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import withValidation, { WithValidationProps } from "../../hocs/withValidation";
+import withLabel, { WithLabelProps } from "../../hocs/withLabel";
 import { Kind, InputSize } from "../../types";
 import "./Field.scss";
 
-export interface FieldProps extends WithValidationProps {
+type BaseFieldProps = {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   required?: boolean;
@@ -17,7 +18,9 @@ export interface FieldProps extends WithValidationProps {
   className?: string;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   onClickOutside?: (e: MouseEvent) => void;
-}
+};
+
+export type FieldProps = BaseFieldProps & WithValidationProps & WithLabelProps;
 
 const Field = React.forwardRef(function Field(
   {
@@ -61,4 +64,4 @@ const Field = React.forwardRef(function Field(
   );
 });
 
-export default withValidation(Field);
+export default withLabel(withValidation(Field));

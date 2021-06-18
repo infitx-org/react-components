@@ -10,35 +10,27 @@ import "./FormField.scss";
 
 interface ButtonFormProps extends RawButtonProps {
   type: "button";
-  label: string;
 }
 interface CheckboxFormProps extends RawCheckboxProps {
   type: "checkbox";
-  label: string;
 }
 interface DatePickerFormProps extends RawDatePickerProps {
   type: "date";
-  label: string;
 }
 interface FileUploaderFormProps extends RawFileUploaderProps {
   type: "file";
-  label: string;
 }
 interface NumberFieldFormProps extends RawNumberFieldProps {
   type: "number";
-  label: string;
 }
 interface RadioGroupFormProps extends RawRadioGroupProps {
   type: "radio";
-  label: string;
 }
 interface SelectFormProps extends RawSelectProps {
   type: "select";
-  label?: string;
 }
 interface TextFieldFormProps extends RawTextFieldProps {
   type: "text" | "password";
-  label?: string;
 }
 
 export type BaseFieldProps =
