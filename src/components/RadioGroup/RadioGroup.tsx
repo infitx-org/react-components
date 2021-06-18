@@ -10,7 +10,6 @@ export interface RadioGroupProps {
   kind?: `${Kind}`;
   id?: string;
   name?: string;
-  label: string;
   selected?: string;
   disabled?: boolean;
   options: Option[];
@@ -22,7 +21,6 @@ function RadioGroup({
   kind,
   id,
   name,
-  label,
   disabled,
   selected,
   options,
@@ -43,7 +41,6 @@ function RadioGroup({
   ]);
   return (
     <div className={classNames} id={id}>
-      {label && <span className="rc-radiogroup__label">{label}</span>}
       <div className="rc-radiogroup__inputs">
         {options.map((option: Option, index: number) => (
           <Radio

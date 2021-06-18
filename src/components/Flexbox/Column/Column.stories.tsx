@@ -25,8 +25,8 @@ const ColumnTemplate = (args) => (
   </Column>
 );
 
-const alignItems = ["top", "center", "bottom"];
-const justifyContent = ["left", "center", "right"];
+const alignItems = ["left", "center", "right"];
+const justifyContent = ["top", "center", "bottom"];
 
 function alignments(
   TemplateComponent: React.FunctionComponent,
@@ -49,5 +49,5 @@ function alignments(
 }
 
 export const Alignments = () => (
-  <Row>{alignments(ColumnTemplate, alignItems, justifyContent)}</Row>
+  <Row>{alignments(ColumnTemplate, justifyContent, alignItems)}</Row>
 );

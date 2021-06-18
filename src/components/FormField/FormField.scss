@@ -1,0 +1,60 @@
+@use "../../scss/components/any.scss";
+@use "../../scss/components/input.scss";
+@use "../../scss/functions.scss";
+
+.rc-formfield {
+  display: inline-flex;
+  flex-direction: column;
+}
+.rc-formfield__label {
+  @include any.rc-component;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+}
+.rc-formfield__label--small {
+  margin-bottom: 2px;
+}
+.rc-formfield__label--medium {
+  margin-bottom: 3px;
+}
+.rc-formfield__label--large {
+  margin-bottom: 4px;
+}
+
+.rc-formfield__label__text--small {
+  margin-left: 3px;
+  font-size: 12px;
+}
+.rc-formfield__label__text--medium {
+  margin-left: 3px;
+  font-size: 13px;
+}
+.rc-formfield__label__text--large {
+  margin-left: 3px;
+  font-size: 14px;
+}
+
+.rc-formfield__label__icon {
+  margin-left: 3px;
+}
+
+.rc-formfields--column {
+  margin-bottom: 10px;
+}
+.rc-formfield-inline--column {
+  margin-bottom: 10px;
+}
+.rc-formfield--column {
+  margin-bottom: 10px;
+}
+
+.rc-formfields--row {
+  margin-right: 10px;
+}
+.rc-formfield-inline--row {
+  margin-right: 10px;
+}
+.rc-formfield--row {
+  margin-right: 10px;
+}

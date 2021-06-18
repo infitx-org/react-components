@@ -1,9 +1,10 @@
 import Flexbox, { FlexboxProps } from "../Flexbox";
 import { mapAlignToProperty, mapJustifyToProperty } from "../helpers";
-import { JustifyWithMap, AlignWithMap } from "../types";
+import { JustifyWithMap, AlignWithMap, TopBottom, LeftRight } from "../types";
 
-type Combined = `${AlignWithMap} ${JustifyWithMap}`;
-export type Align = `${Combined}` | `${JustifyWithMap}`;
+type RowAlign = AlignWithMap<TopBottom>;
+type RowJustify = JustifyWithMap<LeftRight>;
+type Align = RowJustify | `${RowAlign} ${RowJustify}`;
 
 export interface RowProps extends FlexboxProps {
   align?: Align;
@@ -11,14 +12,14 @@ export interface RowProps extends FlexboxProps {
 
 export default function Row({ align = "flex-start", ...props }: RowProps) {
   const [justifyContent, alignItems] = align.split(" ").reverse() as [
-    JustifyWithMap,
-    AlignWithMap
+    RowJustify,
+    RowAlign
   ];
   return (
     <Flexbox
       flexDirection="row"
-      alignItems={mapAlignToProperty(alignItems)}
-      justifyContent={mapJustifyToProperty(justifyContent)}
+      alignItems={mapAlignToProperty<TopBottom>(alignItems)}
+      justifyContent={mapJustifyToProperty<LeftRight>(justifyContent)}
       {...props}
     />
   );

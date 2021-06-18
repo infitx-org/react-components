@@ -32,12 +32,12 @@ describe("tests the Column props", () => {
 
   it("renders the align top as align items flex-start", () => {
     const { container } = render(<Column align="top" />);
-    expect(getStyle(container).alignItems).toBe("flex-start");
+    expect(getStyle(container).justifyContent).toBe("flex-start");
   });
 
   it("renders the align bottom as align items flex-end", () => {
     const { container } = render(<Column align="bottom" />);
-    expect(getStyle(container).alignItems).toBe("flex-end");
+    expect(getStyle(container).justifyContent).toBe("flex-end");
   });
 
   it("renders the align items and justify content flex-end", () => {

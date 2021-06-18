@@ -5,11 +5,6 @@ exports[`renders the Icon correctly when multiple props are set 1`] = `
   <div
     class="rc-radiogroup"
   >
-    <span
-      class="rc-radiogroup__label"
-    >
-      test-label
-    </span>
     <div
       class="rc-radiogroup__inputs"
     >

@@ -1,9 +1,9 @@
-export enum AlignMap {
+export type TopBottom = "top" | "bottom";
+export type LeftRight = "left" | "right";
+
+export enum Mappers {
   "top" = "flex-start",
   "bottom" = "flex-end",
-}
-
-export enum JustifyMap {
   "left" = "flex-start",
   "right" = "flex-end",
 }
@@ -23,5 +23,5 @@ export type JustifyContent =
   | "space-around"
   | "space-evenly";
 
-export type AlignWithMap = `${AlignItems | keyof typeof AlignMap}`;
-export type JustifyWithMap = `${JustifyContent | keyof typeof JustifyMap}`;
+export type AlignWithMap<T extends string> = `${AlignItems}` | `${T}`;
+export type JustifyWithMap<T extends string> = `${JustifyContent}` | `${T}`;

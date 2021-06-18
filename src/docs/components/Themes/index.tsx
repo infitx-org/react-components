@@ -22,7 +22,7 @@ const states = ["invalid", "required"];
 export const Kinds = () => (
   <Row align="space-between">
     {kinds.map((kind) => (
-      <Column align="center">
+      <Column align="center center" key={kind}>
         <Box
           size="small"
           className={`color-scheme color-scheme--regular-${kind}`}
@@ -36,7 +36,7 @@ export const Kinds = () => (
 export const States = () => (
   <Row align="space-between">
     {states.map((state) => (
-      <Column align="center">
+      <Column align="center center" key={state}>
         <Box
           size="small"
           className={`color-scheme color-scheme--regular-${state}`}
@@ -50,7 +50,7 @@ export const States = () => (
 export const Colors = () => (
   <Row align="space-between">
     {colors.map((color) => (
-      <Column align="center">
+      <Column align="center center" key={color}>
         <Box
           size="small"
           className={`color-scheme color-scheme-${color}--regular`}
@@ -67,7 +67,7 @@ export const KindTheme = kinds.reduce((prev, kind) => {
     [kind]: () => (
       <Row align="space-between" key={kind}>
         {["active", "regular", "darken", "shadows"].map((type) => (
-          <Column align="center">
+          <Column align="center center" key={type}>
             <Box
               size="medium"
               className={`color-scheme color-scheme--${type}-${kind}`}
@@ -91,7 +91,7 @@ export const StateTheme = states.reduce((prev, state) => {
     [state]: () => (
       <Row align="space-between" key={state}>
         {["active", "regular", "darken", "shadows"].map((type) => (
-          <Column align="center">
+          <Column align="center center" key={type}>
             <Box
               size="medium"
               className={`color-scheme color-scheme--${type}-${state}`}
@@ -116,7 +116,7 @@ export const ColorTheme = colors.reduce((prev, color) => {
       <Row align="space-between">
         {["lighter", "light", "regular", "dark", "darker"].map((type) => {
           return (
-            <Column align="center">
+            <Column align="center center" key={type}>
               <Box
                 size="medium"
                 key={`${color} / ${type}`}

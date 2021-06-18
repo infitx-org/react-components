@@ -42,12 +42,10 @@ const Field = React.forwardRef(function Field(
     "rc-field",
     `rc-field--${kind}`,
     `rc-field--${size}`,
-    size === InputSize.Medium && "rc-field--medium",
-    size === InputSize.Large && "rc-field--large",
     focused && "rc-field--focused",
     disabled && "rc-field--disabled",
+    required && !invalid && "rc-field--required",
     invalid && "rc-field--invalid",
-    required && "rc-field--required",
     className,
   ]);
 
