@@ -1,11 +1,5 @@
-export enum TopBottom {
-  "top" = "flex-start",
-  "bottom" = "flex-end",
-}
-export enum LeftRight {
-  "left" = "flex-start",
-  "right" = "flex-end",
-}
+export type TopBottom = "top" | "bottom";
+export type LeftRight = "left" | "right";
 
 export enum Mappers {
   "top" = "flex-start",
