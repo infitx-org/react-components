@@ -49,5 +49,5 @@ function alignments(
 }
 
 export const Alignments = () => (
-  <Row>{alignments(ColumnTemplate, alignItems, justifyContent)}</Row>
+  <Row>{alignments(ColumnTemplate, justifyContent, alignItems)}</Row>
 );

@@ -2,12 +2,9 @@ import Flexbox, { FlexboxProps } from "../Flexbox";
 import { mapAlignToProperty, mapJustifyToProperty } from "../helpers";
 import { JustifyWithMap, AlignWithMap, TopBottom, LeftRight } from "../types";
 
-// type Combined = `${AlignWithMap} ${JustifyWithMap}`;
-// export type Align = `${Combined}` | `${AlignWithMap}`;
-
 type ColumnAlign = AlignWithMap<LeftRight>;
 type ColumnJustify = JustifyWithMap<TopBottom>;
-type Align = ColumnAlign | `${ColumnAlign} ${ColumnJustify}`;
+type Align = ColumnJustify | `${ColumnJustify} ${ColumnAlign}`;
 
 export interface ColumnProps extends FlexboxProps {
   align?: Align;
@@ -17,9 +14,9 @@ export default function Column({
   align = "flex-start",
   ...props
 }: ColumnProps) {
-  const [alignItems, justifyContent] = align.split(" ") as [
-    ColumnAlign,
-    ColumnJustify
+  const [justifyContent, alignItems] = align.split(" ") as [
+    ColumnJustify,
+    ColumnAlign
   ];
 
   return (
