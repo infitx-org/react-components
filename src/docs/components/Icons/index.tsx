@@ -64,7 +64,7 @@ const IconBoxed = ({
   icon: React.ReactElement;
   name: string;
 }) => (
-  <Column align="center">
+  <Column align="center center">
     <Box size="small" className="custom-icon">
       <Icon icon={icon} fill="inherit" size={40} />
     </Box>

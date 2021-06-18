@@ -1,14 +1,19 @@
 import React from "react";
 import "./Box.scss";
 
+interface BoxProps {
+  style?: React.CSSProperties;
+  size?: "small" | "medium" | "large";
+  className?: string;
+  children?: React.ReactNode;
+}
+
 export default function Box({
   style = {},
   size = "large",
   className = "",
   children,
-}) {
-  const [is, setIs] = React.useState(false);
-
+}: BoxProps) {
   return (
     <div
       className={`box box--${
