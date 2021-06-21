@@ -14,14 +14,15 @@ interface ColumnProps extends RawColumnProps {
 
 type WhichProps = RowProps | ColumnProps;
 
+type Child =
+  | React.ReactElement<FormFieldProps>
+  | React.ReactElement<FormFieldsProps>;
+
 type FormFieldsProps = WhichProps & {
   outerDirection?: "row" | "column";
   className?: string;
   style?: React.CSSProperties;
-  children: (
-    | React.ReactElement<FormFieldProps>
-    | React.ReactElement<FormFieldsProps>
-  )[];
+  children: Child | Child[];
 };
 
 function isRow(props: WhichProps): props is RowProps {
