@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
-import { WithValidationProps } from "hocs";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
+import { WithValidationProps, WithLabelProps } from "../../hocs";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import "./TextField.scss";
@@ -19,7 +19,9 @@ export interface BaseTextFieldProps extends BaseInput {
   onChange?: (value: string) => void;
 }
 
-export type TextFieldProps = BaseTextFieldProps & Partial<WithValidationProps>;
+export type TextFieldProps = BaseTextFieldProps &
+  Partial<WithValidationProps> &
+  WithLabelProps;
 
 export default React.forwardRef(function TextField(
   {
@@ -33,6 +35,8 @@ export default React.forwardRef(function TextField(
     invalid,
     pending,
     onChange,
+    // From hocs
+    label,
     validation,
     ...props
   }: TextFieldProps,
@@ -97,13 +101,15 @@ export default React.forwardRef(function TextField(
       className={className}
       kind={kind}
       size={size}
-      required={required && currentValue === ""}
+      required={required}
       invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
+      label={label}
+      showRequired={currentValue === ""}
       validation={validation}
     >
       {placeholder && (

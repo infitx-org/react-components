@@ -4,7 +4,7 @@ import readFileAsText from "@modusbox/ts-utils/lib/file/readFileAsText";
 import readFileAsBase64 from "@modusbox/ts-utils/lib/file/readFileAsBase64";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Button from "components/Button";
-import { WithValidationProps } from "../../hocs/withValidation";
+import { WithValidationProps, WithLabelProps } from "../../hocs";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import "./FileUploader.scss";
@@ -23,7 +23,9 @@ export interface BaseFileUploaderProps extends BaseInput {
   onChange?: (content?: string) => void;
 }
 
-export type FileUploaderProps = BaseFileUploaderProps & WithValidationProps;
+export type FileUploaderProps = BaseFileUploaderProps &
+  Partial<WithValidationProps> &
+  WithLabelProps;
 
 export default React.forwardRef(function FileUploader(
   {
@@ -38,6 +40,8 @@ export default React.forwardRef(function FileUploader(
     invalid,
     pending,
     onChange,
+    validation,
+    label,
     ...props
   }: FileUploaderProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
@@ -159,14 +163,16 @@ export default React.forwardRef(function FileUploader(
       className={className}
       kind={kind}
       size={size}
-      required={required && selectedFile === undefined}
+      required={required}
       invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
-      validation={props.validation}
+      label={label}
+      showRequired={selectedFile === undefined}
+      validation={validation}
     >
       {placeholder && (
         <Placeholder

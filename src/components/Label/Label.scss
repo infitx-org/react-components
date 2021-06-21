@@ -1,0 +1,40 @@
+@use "../../scss/components/any.scss";
+
+.rc-label {
+  @include any.rc-component;
+
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.rc-label--small {
+  margin-bottom: 2px;
+}
+
+.rc-label--medium {
+  margin-bottom: 3px;
+}
+
+.rc-label--large {
+  margin-bottom: 4px;
+}
+
+.rc-label__text--small {
+  margin-left: 3px;
+  font-size: 12px;
+}
+
+.rc-label__text--medium {
+  margin-left: 3px;
+  font-size: 13px;
+}
+
+.rc-label__text--large {
+  margin-left: 3px;
+  font-size: 14px;
+}
+
+.rc-label__icon {
+  margin-left: 3px;
+}

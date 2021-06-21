@@ -10,14 +10,15 @@ const Template = (args) => <FormField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  type: "text",
+  type: "number",
   kind: "primary",
   size: "large",
   value: "test",
+  label: "this is a label",
   disabled: false,
   className: undefined,
   placeholder: "Type something",
-  required: false,
+  required: true,
   invalid: false,
   pending: false,
   onChange: console.log,
@@ -79,9 +80,14 @@ export const RowLayout = () => (
 export const ComplexLayout = () => (
   <FormField.Container direction="column">
     <FormField.Container direction="row">
-      <FormField type="text" label="this is a text" />
-      <FormField type="text" label="this is a text" />
-      <FormField type="text" label="this is a text" />
+      <FormField required type="text" label="this is a text" className="test" />
+      <FormField
+        required
+        type="select"
+        label="this is a select"
+        options={options}
+      />
+      <FormField required type="date" label="this is a datepicker" />
       <FormField type="button" label="test" onClick={log} />
     </FormField.Container>
     <FormField.Container direction="row">
@@ -90,16 +96,20 @@ export const ComplexLayout = () => (
       <FormField type="text" label="this is a text" />
       <FormField type="button" label="test" onClick={log} />
     </FormField.Container>
-    <FormField.Container direction="row" align="stretch left">
+    <FormField.Container direction="row" align="left">
       <FormField.Container direction="column">
-        <FormField type="text" label="this is a text" />
-        <FormField type="button" label="test" onClick={log} />
-        <FormField type="text" label="this is a text" />
-      </FormField.Container>
-      <FormField.Container direction="column">
-        <FormField type="text" label="this is a text" />
-        <FormField type="button" label="test" onClick={log} />
-        <FormField type="text" label="this is a text" />
+        <FormField.Container direction="row" align="left">
+          <FormField type="text" label="this is a text" />
+          <FormField type="text" label="this is a text" />
+        </FormField.Container>
+        <FormField.Container direction="row" align="left">
+          <FormField type="button" label="test" onClick={log} />
+          <FormField type="button" label="test" onClick={log} size="small" />
+        </FormField.Container>
+        <FormField.Container direction="row" align="left">
+          <FormField type="text" label="this is a text" />
+          <FormField type="text" label="this is a text" />
+        </FormField.Container>
       </FormField.Container>
       <FormField.Container direction="column" align="bottom flex-end">
         <FormField size="small" type="text" label="this is a text" />

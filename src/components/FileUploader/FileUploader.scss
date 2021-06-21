@@ -1,13 +1,9 @@
 @use "../../scss/base/colors.scss";
 @use "../../scss/components/field.scss";
-
-.rc-fileuploader__input {
-  opacity: 0;
-  z-index: -1;
-  position: absolute;
-}
+@use "../../scss/components/any.scss";
 
 .rc-fileuploader {
+  @include any.rc-component;
   @include field.input;
 
   flex: 2 1 auto;
@@ -20,4 +16,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   color: colors.$dark-gray;
+}
+
+.rc-fileuploader__input {
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
 }

@@ -30,7 +30,11 @@ describe("tests the Field props", () => {
   });
 
   it("renders as required", () => {
-    const { container } = render(<Field required>test</Field>);
+    const { container } = render(
+      <Field required showRequired>
+        test
+      </Field>
+    );
     expect(container.querySelector(".rc-field--required")).toBeTruthy();
   });
 

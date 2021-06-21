@@ -1,7 +1,9 @@
 @use "../../scss/base/colors.scss";
 @use "../../scss/components/field.scss";
+@use "../../scss/components/any.scss";
 
 .rc-textfield {
+  @include any.rc-component;
   @include field.input;
 
   flex: 2 1 auto;

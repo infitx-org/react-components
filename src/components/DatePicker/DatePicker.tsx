@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import { format as dateFormat } from "date-fns";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
-import { WithValidationProps } from "../../hocs/withValidation";
+import { WithValidationProps, WithLabelProps } from "../../hocs";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import Calendar from "./components/Calendar";
@@ -23,7 +23,8 @@ interface BaseDatePickerProps extends BaseInput {
 }
 
 export type DatePickerProps = BaseDatePickerProps &
-  Partial<WithValidationProps>;
+  Partial<WithValidationProps> &
+  WithLabelProps;
 export default React.forwardRef(function DatePicker(
   {
     kind = Kind.Primary,
@@ -36,6 +37,9 @@ export default React.forwardRef(function DatePicker(
     invalid,
     pending,
     onChange,
+    // From hocs
+    label,
+    validation,
     ...props
   }: DatePickerProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>
@@ -135,14 +139,16 @@ export default React.forwardRef(function DatePicker(
       kind={kind}
       className={className}
       size={size}
-      required={required && selectedDate === undefined}
+      required={required}
       invalid={invalid}
       disabled={props.disabled}
       focused={focused}
       onClick={onFieldClick}
       onClickOutside={leave}
       ref={forwardedRef}
-      validation={props.validation}
+      label={label}
+      showRequired={selectedDate === undefined}
+      validation={validation}
     >
       {placeholder && (
         <Placeholder
