@@ -1,0 +1,130 @@
+@use "../../scss/themes.scss";
+@use "../../scss/base/colors.scss";
+@use "../../scss/components/any.scss";
+
+.rc-modal {
+  @include any.rc-component;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rc-modal__overlay {
+  opacity: 1;
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.rc-modal__container {
+  @include any.rc-component;
+
+  position: absolute;
+  opacity: 1;
+  background: #fff;
+  box-shadow: 0 6px 0 colors.$alpha--light;
+  width: 600px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInModalBox 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 1;
+}
+
+.rc-modal__close {
+  margin-left: 10px;
+}
+
+.rc-modal__submit {
+  margin-left: 10px;
+}
+
+.rc-modal__header {
+  @include any.rc-component;
+
+  width: 100%;
+  display: flex;
+  flex: 0 0 60px;
+  justify-content: space-between;
+  align-items: center;
+  background: #eee;
+  color: #666;
+  border-bottom: 2px solid colors.$alpha--light;
+
+  .rc-modal__header-title {
+    margin-left: 20px;
+    font-size: 24px;
+  }
+
+  .rc-modal__header-close {
+    margin-right: 18px;
+  }
+}
+
+.rc-modal__body {
+  @include any.rc-component;
+
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+}
+
+.rc-modal__body--tabbed {
+  overflow: hidden;
+}
+
+.rc-modal__body__content--flexible {
+  display: flex;
+  flex-direction: column;
+  flex: 2 1 auto;
+  width: 100%;
+}
+
+.rc-modal__footer {
+  @include any.rc-component;
+
+  width: 100%;
+  background: #f8f8f8;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+}
+
+.rc-modal__footer-right {
+  padding: 10px;
+  display: flex;
+}
+
+@keyframes fadeInModalBox {
+  0% {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInModalOverlay {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
