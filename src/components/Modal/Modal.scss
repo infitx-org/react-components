@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../../scss/themes.scss";
 @use "../../scss/base/colors.scss";
 @use "../../scss/components/any.scss";
@@ -49,21 +50,49 @@
 
   width: 100%;
   display: flex;
-  flex: 0 0 60px;
-  justify-content: space-between;
-  align-items: center;
   background: #eee;
-  color: #666;
   border-bottom: 2px solid colors.$alpha--light;
+}
+
+.rc-modal__header--default-view {
+  height: 60px;
+}
+
+@each $kind in themes.$kinds {
+  .rc-modal__header--#{$kind} {
+    background: map.get(themes.$colors, $kind);
+
+    .rc-modal__header__title {
+      color: map.get(themes.$colors--opposite, $kind);
+    }
+
+    .rc-modal__header__close {
+      fill: map.get(themes.$colors--opposite, $kind);
+
+      .rc-icon-button {
+        fill: inherit;
+      }
+    }
+  }
 }
 
 .rc-modal__header__title {
   margin-left: 20px;
   font-size: 24px;
+  color: #666;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .rc-modal__header__close {
+  margin-left: 10px;
   margin-right: 18px;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .rc-modal__content {
@@ -78,6 +107,10 @@
   border-bottom: 1px solid #ccc;
 }
 
+.rc-modal__content--default-view {
+  padding: 20px;
+}
+
 .rc-modal__footer {
   @include any.rc-component;
 
@@ -85,7 +118,10 @@
   background: #f8f8f8;
   display: flex;
   flex: 0 0 auto;
-  justify-content: space-between;
+}
+
+.rc-modal__footer--default-view {
+  height: 55px;
 }
 
 .rc-modal__footer__buttons {

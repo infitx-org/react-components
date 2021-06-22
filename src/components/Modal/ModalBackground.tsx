@@ -28,18 +28,18 @@ function getComponents(
     if (isExpectedChild(child)) {
       return child;
     }
-    return <ModalContent>{child}</ModalContent>;
+    return <ModalContent defaultView>{child}</ModalContent>;
   });
 
   const hasFooter = components.some(isFooter);
   const hasHeader = components.some(isHeader);
 
   if (!hasHeader && (props.title || props.onClose)) {
-    components.unshift(<ModalHeader {...props} />);
+    components.unshift(<ModalHeader defaultView {...props} />);
   }
 
   if ((!hasFooter && props.onSubmit) || props.onCancel) {
-    components.push(<ModalFooter {...props} />);
+    components.push(<ModalFooter defaultView {...props} />);
   }
 
   return components;

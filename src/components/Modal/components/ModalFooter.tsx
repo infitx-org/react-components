@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import Button from "components/Button";
 
 export interface ModalFooterProps {
@@ -9,6 +10,7 @@ export interface ModalFooterProps {
   isCancelDisabled?: boolean;
   cancelLabel?: string;
 
+  defaultView?: boolean;
   children?: React.ReactNode;
 }
 export default function ModalFooter({
@@ -18,10 +20,15 @@ export default function ModalFooter({
   onCancel,
   isCancelDisabled,
   cancelLabel = "Cancel",
+  defaultView,
   children,
 }: ModalFooterProps) {
+  const className = classnames([
+    "rc-modal__footer",
+    defaultView && `rc-modal__footer--default-view`,
+  ]);
   return (
-    <div className="rc-modal__footer">
+    <div className={className}>
       {children}
       {(onCancel || onSubmit) && (
         <div className="rc-modal__footer__buttons">
