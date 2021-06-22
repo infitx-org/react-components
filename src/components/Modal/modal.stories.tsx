@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Kind } from "types";
 import Select from "components/Select";
+import Button from "components/Button";
 import Modal from "./Modal";
 
 export default {
@@ -28,8 +29,7 @@ export const SpecifyComponents = () => (
 
 export const Maximise = () => (
   <Modal title="test" onClose={log} maximise>
-    <Modal.Content>test</Modal.Content>
-    <Modal.Footer>test</Modal.Footer>
+    Content is Maximized
   </Modal>
 );
 
@@ -49,6 +49,22 @@ export const Kinds = () => {
           onChange={(k) => setKind(k as Kind)}
         />
       </Modal.Content>
+    </Modal>
+  );
+};
+
+export const ModalInModal = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
+  return (
+    <Modal title="Parent Modal">
+      <Button onClick={openModal} label="Open modal!" />
+      {open && (
+        <Modal title="Child modal" onClose={closeModal}>
+          Close me and get back to the parent modal!
+        </Modal>
+      )}
     </Modal>
   );
 };
