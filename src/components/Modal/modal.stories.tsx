@@ -31,7 +31,8 @@ export const Maximise = () => (
 );
 
 export const NoFooter = () => (
-  <Modal title="test" onClose={log}>
+  <Modal>
+    <Modal.Header />
     test
   </Modal>
 );

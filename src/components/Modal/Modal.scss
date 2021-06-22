@@ -88,9 +88,11 @@
   justify-content: space-between;
 }
 
-.rc-modal__footer-right {
-  padding: 10px;
+.rc-modal__footer__buttons {
+  width: 100%;
   display: flex;
+  justify-content: flex-end;
+  padding: 10px;
 }
 
 .rc-modal__footer__button {

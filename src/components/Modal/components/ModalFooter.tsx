@@ -23,27 +23,28 @@ export default function ModalFooter({
   return (
     <div className="rc-modal__footer">
       {children}
-      <div className="rc-modal__footer-left" />
-      <div className="rc-modal__footer-right">
-        {onCancel && (
-          <Button
-            className="rc-modal__footer__button"
-            disabled={isCancelDisabled}
-            label={cancelLabel}
-            onClick={onCancel}
-            noFill
-            kind="danger"
-          />
-        )}
-        {onSubmit && (
-          <Button
-            className="rc-modal__footer__button"
-            disabled={isSubmitDisabled}
-            label={submitLabel}
-            onClick={onSubmit}
-          />
-        )}
-      </div>
+      {(onCancel || onSubmit) && (
+        <div className="rc-modal__footer__buttons">
+          {onCancel && (
+            <Button
+              className="rc-modal__footer__button"
+              disabled={isCancelDisabled}
+              label={cancelLabel}
+              onClick={onCancel}
+              noFill
+              kind="danger"
+            />
+          )}
+          {onSubmit && (
+            <Button
+              className="rc-modal__footer__button"
+              disabled={isSubmitDisabled}
+              label={submitLabel}
+              onClick={onSubmit}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 }
