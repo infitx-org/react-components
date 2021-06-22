@@ -13,8 +13,8 @@ class ModalPortal extends PureComponent<ModalPortalProps> {
   constructor(props: ModalPortalProps) {
     super(props);
     this.mountPoint = document.createElement("div");
-    this.mountPoint.className = "rc-modal";
-    this.modalIndex = document.querySelectorAll(".rc-modal").length;
+    this.mountPoint.className = "rc-modal__portal";
+    this.modalIndex = document.querySelectorAll(".rc-modal__portal").length;
   }
 
   componentDidMount() {

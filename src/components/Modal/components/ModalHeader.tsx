@@ -21,9 +21,9 @@ export default function ModalHeader({
   return (
     <div className="rc-modal__header">
       {children}
-      {title && <div className="rc-modal__header-title">{title}</div>}
+      {title && <div className="rc-modal__header__title">{title}</div>}
       {onClose && (
-        <div className="rc-modal__header-close">
+        <div className="rc-modal__header__close">
           <IconButton
             onClick={onClose}
             kind={kind && kind !== "primary" ? "light" : undefined}

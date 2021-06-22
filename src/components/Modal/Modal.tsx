@@ -1,22 +1,11 @@
-import { Kind } from "../../types";
-import ModalBackground from "./ModalBackground";
+import ModalBackground, { ModalBackgroundProps } from "./ModalBackground";
 import ModalPortal from "./ModalPortal";
 import ModalContent from "./components/ModalContent";
 import ModalFooter from "./components/ModalFooter";
 import ModalHeader from "./components/ModalHeader";
 import "./Modal.scss";
 
-interface ModalProps {
-  title?: string;
-  kind?: `${Kind}`;
-  flex?: boolean;
-  tabbed?: boolean;
-  maximise?: boolean;
-  onClose?: () => void;
-  children: React.ReactNode;
-}
-
-function Modal(props: ModalProps) {
+function Modal(props: ModalBackgroundProps) {
   return (
     <ModalPortal>
       <ModalBackground {...props} />

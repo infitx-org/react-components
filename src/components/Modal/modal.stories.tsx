@@ -7,29 +7,31 @@ export default {
   component: Modal,
 };
 
+const { log } = console;
+
 export const Simple = () => (
-  <Modal title="I am a modal" onClose={console.log}>
+  <Modal title="I am a modal" onClose={log} onCancel={log} onSubmit={log}>
     Content!
   </Modal>
 );
 
 export const SpecifyComponents = () => (
   <Modal>
-    <Modal.Header>Hello There!</Modal.Header>
-    <Modal.Content>test</Modal.Content>
-    <Modal.Footer>test</Modal.Footer>
+    <Modal.Header>Custom header content</Modal.Header>
+    <Modal.Content>Custom content</Modal.Content>
+    <Modal.Footer>Custom footer content</Modal.Footer>
   </Modal>
 );
 
 export const Maximise = () => (
-  <Modal title="test" onClose={console.log} maximise>
+  <Modal title="test" onClose={log} maximise>
     <Modal.Content>test</Modal.Content>
     <Modal.Footer>test</Modal.Footer>
   </Modal>
 );
 
 export const NoFooter = () => (
-  <Modal title="test" onClose={console.log}>
+  <Modal title="test" onClose={log}>
     test
   </Modal>
 );

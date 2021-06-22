@@ -3,6 +3,6 @@ export interface ModalContentProps {
   children: React.ReactNode;
 }
 
-export default function ModalContent({ flex, children }: ModalContentProps) {
-  return <div className="rc-modal__body">{children}</div>;
+export default function ModalContent({ children }: ModalContentProps) {
+  return <div className="rc-modal__content">{children}</div>;
 }

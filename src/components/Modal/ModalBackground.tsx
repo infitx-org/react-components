@@ -1,6 +1,7 @@
-import React, { ReactChild, ReactFragment, ReactPortal } from "react";
+import React from "react";
+import classnames from "classnames";
 import ModalHeader, { ModalHeaderProps } from "./components/ModalHeader";
-import ModalFooter from "./components/ModalFooter";
+import ModalFooter, { ModalFooterProps } from "./components/ModalFooter";
 import ModalContent from "./components/ModalContent";
 
 function isHeader(child: React.ReactNode): boolean {
@@ -20,10 +21,10 @@ function isExpectedChild(child: React.ReactNode) {
 }
 
 function getComponents(
-  childrenArray: (ReactChild | ReactFragment | ReactPortal)[],
-  props: ModalHeaderProps
+  children: React.ReactNode,
+  props: Partial<ModalHeaderProps & ModalFooterProps>
 ) {
-  const components = childrenArray.map((child) => {
+  const components = React.Children.toArray(children).map((child) => {
     if (isExpectedChild(child)) {
       return child;
     }
@@ -32,10 +33,13 @@ function getComponents(
 
   const hasFooter = components.some(isFooter);
   const hasHeader = components.some(isHeader);
-  const hasContent = components.some(isContent);
 
-  if ((!hasHeader && props.title) || props.onClose) {
+  if (!hasHeader && (props.title || props.onClose)) {
     components.unshift(<ModalHeader {...props} />);
+  }
+
+  if ((!hasFooter && props.onSubmit) || props.onCancel) {
+    components.push(<ModalFooter {...props} />);
   }
 
   return components;
@@ -44,29 +48,37 @@ function getComponents(
 interface BaseModalBackgroundProps {
   maximise?: boolean;
   modalIndex?: number;
-  children: any;
+  className?: string;
+  children: React.ReactNode;
 }
-type ModalBackgroundProps = BaseModalBackgroundProps & ModalHeaderProps;
+export type ModalBackgroundProps = BaseModalBackgroundProps &
+  ModalHeaderProps &
+  ModalFooterProps;
 
 export default function ModalBackground({
   maximise,
   modalIndex = 0,
+  className,
   children,
   ...props
 }: ModalBackgroundProps) {
-  const width = 600;
-  const maxHeight = maximise
-    ? "auto"
-    : `calc(100% - ${60 * modalIndex + 70}px)`;
+  const ref = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+    const { width } = ref.current.getBoundingClientRect();
 
-  const modalStyle = {
-    top: 50 + 60 * modalIndex,
-    bottom: maximise ? "20px" : undefined,
-    maxHeight,
-    width,
-    left: "50%",
-    marginLeft: `-${parseInt(width, 10) / 2}px`,
-  };
+    ref.current.style.top = `${50 + 60 * modalIndex}px`;
+    ref.current.style.opacity = "1";
+    ref.current.style.marginLeft = `-${width / 2}px`;
+  }, []);
+
+  const containerClassName = classnames([
+    "rc-modal",
+    maximise && "rc-modal--maximise",
+    className,
+  ]);
 
   return (
     <>
@@ -75,8 +87,8 @@ export default function ModalBackground({
         onClick={props.onClose}
         role="presentation"
       />
-      <div className="rc-modal__container" style={modalStyle}>
-        {getComponents(React.Children.toArray(children), props)}
+      <div className={containerClassName} ref={ref}>
+        {getComponents(children, props)}
       </div>
     </>
   );
