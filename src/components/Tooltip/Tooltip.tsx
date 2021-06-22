@@ -1,5 +1,6 @@
 import React, { useState, useEffect, CSSProperties } from "react";
 import classnames from "classnames";
+import mergeRefs from "utils/mergeRefs";
 import { Kind } from "../../types";
 import "./Tooltip.scss";
 
@@ -173,7 +174,8 @@ function Tooltip({
 
   const childrenWithRef = React.cloneElement(children, {
     ...children.props,
-    ref: childRef,
+    // @ts-ignore
+    ref: mergeRefs(children.ref, childRef),
   });
 
   return (

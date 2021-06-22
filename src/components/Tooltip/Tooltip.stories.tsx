@@ -1,6 +1,5 @@
 import TestIcon from "resources/icons/test.svg";
 import TextField from "components/TextField";
-import Icon from "components/Icon";
 import Tooltip from "./Tooltip";
 
 export default {
@@ -74,8 +73,17 @@ Content.args = {
   position: "top",
 };
 
-export const Complex = () => (
-  <Tooltip label="e" position="right">
-    <TextField />
+export const MultipleTooltips = () => (
+  <Tooltip
+    label="I am a simple tooltip, but try to focus the textfield"
+    position="bottom"
+  >
+    <TextField
+      validation={[
+        { active: false, message: "Test" },
+        { active: true, message: "invalid" },
+        { active: undefined, message: "unknown" },
+      ]}
+    />
   </Tooltip>
 );
