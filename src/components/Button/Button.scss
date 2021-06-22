@@ -13,7 +13,6 @@
   outline: none;
   position: relative;
   cursor: pointer;
-  box-sizing: border-box;
   display: inline-block;
   flex: 0 0 auto;
   white-space: nowrap;
@@ -22,8 +21,6 @@
   transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
     color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), background 0.1s ease-out;
   border-radius: input.$border-radius;
-  font-style: normal;
-  font-weight: 400;
   border: 1px solid;
   align-items: center;
   border-bottom-width: 2px;

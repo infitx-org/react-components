@@ -1,6 +1,4 @@
 /* eslint no-console: "off" */
-import React, { useState } from "react";
-
 // import Button from "../Button";
 import Modal from "./Modal";
 
@@ -9,8 +7,15 @@ export default {
   component: Modal,
 };
 
-export const Default = () => (
-  <Modal title="test" onClose={console.log}>
+export const Simple = () => (
+  <Modal title="I am a modal" onClose={console.log}>
+    Content!
+  </Modal>
+);
+
+export const SpecifyComponents = () => (
+  <Modal>
+    <Modal.Header>Hello There!</Modal.Header>
     <Modal.Content>test</Modal.Content>
     <Modal.Footer>test</Modal.Footer>
   </Modal>

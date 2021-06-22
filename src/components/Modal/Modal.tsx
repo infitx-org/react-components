@@ -1,9 +1,9 @@
 import { Kind } from "../../types";
 import ModalBackground from "./ModalBackground";
 import ModalPortal from "./ModalPortal";
-import ModalContent, { ModalContentProps } from "./components/ModalContent";
-import ModalFooter, { ModalFooterProps } from "./components/ModalFooter";
-import ModalHeader, { ModalHeaderProps } from "./components/ModalHeader";
+import ModalContent from "./components/ModalContent";
+import ModalFooter from "./components/ModalFooter";
+import ModalHeader from "./components/ModalHeader";
 import "./Modal.scss";
 
 interface ModalProps {
@@ -24,6 +24,7 @@ function Modal(props: ModalProps) {
   );
 }
 
+Modal.Header = ModalHeader;
 Modal.Content = ModalContent;
 Modal.Footer = ModalFooter;
 

@@ -19,7 +19,7 @@
 .rc-modal__overlay {
   opacity: 1;
   position: absolute;
-  background-color: transparent;
+  background: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
   height: 100%;
@@ -73,23 +73,13 @@
 .rc-modal__body {
   @include any.rc-component;
 
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-  flex: 1;
-  min-height: 0;
   position: relative;
   display: flex;
-}
-
-.rc-modal__body--tabbed {
-  overflow: hidden;
-}
-
-.rc-modal__body__content--flexible {
-  display: flex;
   flex-direction: column;
-  flex: 2 1 auto;
+  flex: 1;
   width: 100%;
+  min-height: 0;
+  border-bottom: 1px solid #ccc;
 }
 
 .rc-modal__footer {
