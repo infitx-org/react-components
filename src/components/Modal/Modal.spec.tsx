@@ -81,6 +81,22 @@ describe("tests the modal header", () => {
     expect(closeButton).toBeTruthy();
   });
 
+  it("renders the classname", () => {
+    const { container } = render(<Modal.Header className="test" />);
+    const header = container.querySelector(".rc-modal__header.test");
+    expect(header).toBeTruthy();
+  });
+
+  it("renders the children", () => {
+    const { container } = render(
+      <Modal.Header>
+        <div>content</div>
+      </Modal.Header>
+    );
+    const header = container.querySelector(".rc-modal__header");
+    expect(header?.innerHTML).toBe("<div>content</div>");
+  });
+
   it("triggers onClose when clicking the close button", () => {
     const mockFn = jest.fn();
     const { container } = render(<Modal.Header onClose={mockFn} />);
@@ -90,81 +106,56 @@ describe("tests the modal header", () => {
   });
 });
 
-// it("renders the disabled state", () => {
-//   const { container } = render(
-//     <Modal onClick={log} disabled>
-//       Test-Modal
-//     </Modal>
-//   );
-//   expect(container.querySelector("Modal")).toBeDisabled();
-// });
+describe("tests the modal footer", () => {
+  it("renders the footer", () => {
+    const { container } = render(<Modal.Footer />);
+    expect(container.querySelector(".rc-modal__footer")).toBeTruthy();
+  });
 
-// it("renders the spinner", () => {
-//   const { container } = render(<Modal onClick={log} pending />);
-//   expect(container.querySelector(".rc-spinner")).toBeTruthy();
-// });
+  it("renders the submit button", () => {
+    const { container } = render(<Modal.Footer onSubmit={log} />);
+    const closeButton = container.querySelector(".rc-modal__footer__button");
+    expect(closeButton).toBeTruthy();
+  });
 
-// it("renders the spinner before the icon", () => {
-//   const { container } = render(<Modal icon={icon} onClick={log} pending />);
-//   expect(container.querySelector(".rc-spinner")).toBeTruthy();
-// });
+  it("renders the cancel button", () => {
+    const { container } = render(<Modal.Footer onCancel={log} />);
+    const closeButton = container.querySelector(".rc-modal__footer__button");
+    expect(closeButton).toBeTruthy();
+  });
 
-// it("renders the icon", () => {
-//   const { container } = render(<Modal icon={icon} onClick={log} />);
-//   expect(container.querySelector("svg")).toBeTruthy();
-// });
+  it("renders the classname", () => {
+    const { container } = render(<Modal.Footer className="test" />);
+    const footer = container.querySelector(".rc-modal__footer.test");
+    expect(footer).toBeTruthy();
+  });
 
-// it("renders the id", () => {
-//   const { container } = render(<Modal id="test" onClick={log} />);
-//   expect(container.querySelector("Modal#test")).toBeTruthy();
-// });
+  it("renders the children", () => {
+    const { container } = render(
+      <Modal.Footer>
+        <div>content</div>
+      </Modal.Footer>
+    );
+    const footer = container.querySelector(".rc-modal__footer");
+    expect(footer?.innerHTML).toBe("<div>content</div>");
+  });
 
-// it("renders the className", () => {
-//   const { container } = render(<Modal className="test" onClick={log} />);
-//   expect(container.querySelector("Modal.test")).toBeTruthy();
-// });
+  it("triggers onSubmit when clicking the close button", () => {
+    const mockFn = jest.fn();
+    const { container } = render(<Modal.Footer onSubmit={mockFn} />);
+    const closeButton = container.querySelector(".rc-modal__footer__button");
+    fireEvent.click(closeButton as HTMLButtonElement);
+    expect(mockFn).toHaveBeenCalled();
+  });
 
-// it("renders the style prop", () => {
-//   const { container } = render(
-//     <Modal style={{ fill: "red" }} onClick={log} />
-//   );
-//   expect(container.querySelector("Modal")).toHaveAttribute(
-//     "style",
-//     "fill: red;"
-//   );
-// });
-
-// it("renders the default kind as primary kind", () => {
-//   const { container } = render(<Modal onClick={log} />);
-//   expect(container.querySelector("Modal.rc-Modal--primary")).toBeTruthy();
-// });
-
-// it("renders all the kinds", () => {
-//   Object.values(Kind).forEach((kind) => {
-//     const { container } = render(<Modal onClick={log} kind={kind} />);
-//     expect(container.querySelector(`Modal.rc-Modal--${kind}`)).toBeTruthy();
-//   });
-// });
-
-// it('renders with the "noFill" prop', () => {
-//   const { container } = render(<Modal onClick={log} noFill />);
-//   expect(container.querySelector("Modal.rc-Modal--noFill")).toBeTruthy();
-// });
-
-// it("renders the large, medium, small sizes", () => {
-//   Object.values(Size).forEach((size) => {
-//     const { container } = render(<Modal onClick={log} size={size} />);
-//     expect(container.querySelector(`.rc-Modal--${size}`)).toBeTruthy();
-//   });
-// });
-
-// it("triggers the onClick prop", () => {
-//   const mockEvent = jest.fn();
-//   const { container } = render(<Modal onClick={mockEvent} />);
-//   userEvent.click(container.querySelector("Modal") as HTMLModalElement);
-//   expect(mockEvent).toHaveBeenCalled();
-// });
-// });
+  it("triggers onCancel when clicking the close button", () => {
+    const mockFn = jest.fn();
+    const { container } = render(<Modal.Footer onCancel={mockFn} />);
+    const closeButton = container.querySelector(".rc-modal__footer__button");
+    fireEvent.click(closeButton as HTMLButtonElement);
+    expect(mockFn).toHaveBeenCalled();
+  });
+});
 
 // // Snapshot testing
 // it("renders the Modal correctly when multiple props are set", () => {

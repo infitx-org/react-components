@@ -10,6 +10,7 @@ export interface ModalFooterProps {
   isCancelDisabled?: boolean;
   cancelLabel?: string;
 
+  className?: string;
   defaultView?: boolean;
   children?: React.ReactNode;
 }
@@ -20,15 +21,17 @@ export default function ModalFooter({
   onCancel,
   isCancelDisabled,
   cancelLabel = "Cancel",
+  className,
   defaultView,
   children,
 }: ModalFooterProps) {
-  const className = classnames([
+  const footerClassName = classnames([
     "rc-modal__footer",
     defaultView && `rc-modal__footer--default-view`,
+    className,
   ]);
   return (
-    <div className={className}>
+    <div className={footerClassName}>
       {children}
       {(onCancel || onSubmit) && (
         <div className="rc-modal__footer__buttons">
