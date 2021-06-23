@@ -32,8 +32,9 @@ export default function ModalHeader({
       {children}
       {title && <div className="rc-modal__header__title">{title}</div>}
       {onClose && (
-        <div className="rc-modal__header__close">
+        <div className="rc-modal__header__close-container">
           <IconButton
+            className="rc-modal__header__close"
             onClick={onClose}
             icon={<CloseSmall />}
             size={20}

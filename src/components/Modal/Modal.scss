@@ -68,10 +68,6 @@
 
     .rc-modal__header__close {
       fill: map.get(themes.$colors--opposite, $kind);
-
-      .rc-icon-button {
-        fill: inherit;
-      }
     }
   }
 }
@@ -87,7 +83,7 @@
   justify-content: flex-start;
 }
 
-.rc-modal__header__close {
+.rc-modal__header__close-container {
   margin-left: 10px;
   margin-right: 18px;
   flex: 1 1 auto;
