@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import ReactDOM from "react-dom";
 
 interface ModalPortalProps {
+  root?: Element;
   children: React.ReactNode;
 }
 
@@ -18,7 +19,8 @@ class ModalPortal extends PureComponent<ModalPortalProps> {
   }
 
   componentDidMount() {
-    document.body.appendChild(this.mountPoint);
+    const parent = this.props.root || document.body;
+    parent.appendChild(this.mountPoint);
     if (!this.mountPoint.contains(document.activeElement)) {
       // @ts-ignore
       document.activeElement?.blur();
@@ -26,7 +28,8 @@ class ModalPortal extends PureComponent<ModalPortalProps> {
   }
 
   componentWillUnmount() {
-    document.body.removeChild(this.mountPoint);
+    const parent = this.props.root || document.body;
+    parent.removeChild(this.mountPoint);
   }
 
   render() {

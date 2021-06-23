@@ -42,7 +42,9 @@ function getComponents(
     components.push(<ModalFooter defaultView {...props} />);
   }
 
-  return components;
+  return components.map((c, key) =>
+    React.cloneElement(c, { ...c.props, key: key.toString() })
+  );
 }
 
 interface BaseModalBackgroundProps {

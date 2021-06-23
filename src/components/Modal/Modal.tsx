@@ -5,9 +5,9 @@ import ModalFooter from "./components/ModalFooter";
 import ModalHeader from "./components/ModalHeader";
 import "./Modal.scss";
 
-function Modal(props: ModalBackgroundProps) {
+function Modal({ root, ...props }: ModalBackgroundProps & { root?: Element }) {
   return (
-    <ModalPortal>
+    <ModalPortal root={root}>
       <ModalBackground {...props} />
     </ModalPortal>
   );
