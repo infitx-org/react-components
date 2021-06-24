@@ -1,11 +1,11 @@
 import classnames from "classnames";
 import Button from "components/Button";
 
-type BaseProps = {
+type BaseFooterProps = {
   className?: string;
 };
 
-interface PropsDriven {
+interface FixedFooterProps {
   onSubmit?: () => void;
   isSubmitDisabled?: boolean;
   submitLabel?: string;
@@ -13,18 +13,19 @@ interface PropsDriven {
   isCancelDisabled?: boolean;
   cancelLabel?: string;
 }
-interface ChildrenDriven {
+interface CustomFooterProps {
   children?: React.ReactNode;
 }
 
-export type ModalFooterProps = BaseProps & (PropsDriven | ChildrenDriven);
+export type ModalFooterProps = BaseFooterProps &
+  (FixedFooterProps | CustomFooterProps);
 
 export function hasFooterProps(
-  props: PropsDriven | ChildrenDriven
-): props is PropsDriven {
+  props: FixedFooterProps | CustomFooterProps
+): props is FixedFooterProps {
   return (
-    (props as PropsDriven).onSubmit !== undefined ||
-    (props as PropsDriven).onCancel !== undefined
+    (props as FixedFooterProps).onSubmit !== undefined ||
+    (props as FixedFooterProps).onCancel !== undefined
   );
 }
 
@@ -35,7 +36,7 @@ function ModalFooterButtons({
   onCancel,
   isCancelDisabled,
   cancelLabel,
-}: PropsDriven) {
+}: FixedFooterProps) {
   return (
     <div className="rc-modal__footer__buttons">
       {onCancel && (

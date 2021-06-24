@@ -3,6 +3,7 @@ import classnames from "classnames";
 import ModalHeader, {
   ModalHeaderProps,
   hasHeaderProps,
+  FixedHeaderProps,
 } from "./components/ModalHeader";
 import ModalFooter, {
   ModalFooterProps,
@@ -90,11 +91,13 @@ export default function ModalBackground({
     className,
   ]);
 
+  const onClick = (props as FixedHeaderProps).onClose;
+
   return (
     <>
       <div
         className="rc-modal__overlay"
-        onClick={props.onClose}
+        onClick={onClick}
         role="presentation"
       />
       <div className={containerClassName} ref={ref}>

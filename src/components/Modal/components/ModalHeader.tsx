@@ -4,33 +4,38 @@ import IconButton from "components/IconButton";
 import { Kind } from "../../../types";
 import CloseSmall from "../../../resources/icons/close-small.svg";
 
-type BaseProps = {
+type BaseHeaderProps = {
   className?: string;
   kind?: `${Kind}` | "default";
 };
 
-type PropsDriven = {
+export type FixedHeaderProps = {
   title?: string;
   onClose?: () => void;
   isCloseDisabled?: boolean;
 };
 
-type ChildrenDriven = {
+type CustomHeaderProps = {
   children?: React.ReactNode;
 };
 
-export type ModalHeaderProps = BaseProps & (PropsDriven | ChildrenDriven);
+export type ModalHeaderProps = BaseHeaderProps &
+  (FixedHeaderProps | CustomHeaderProps);
 
 export function hasHeaderProps(
-  props: PropsDriven | ChildrenDriven
-): props is PropsDriven {
+  props: FixedHeaderProps | CustomHeaderProps
+): props is FixedHeaderProps {
   return (
-    (props as PropsDriven).title !== undefined ||
-    (props as PropsDriven).onClose !== undefined
+    (props as FixedHeaderProps).title !== undefined ||
+    (props as FixedHeaderProps).onClose !== undefined
   );
 }
 
-function BaseModalHeader({ title, onClose, isCloseDisabled }: PropsDriven) {
+function BaseModalHeader({
+  title,
+  onClose,
+  isCloseDisabled,
+}: FixedHeaderProps) {
   return (
     <>
       {title && <div className="rc-modal__header__title">{title}</div>}
