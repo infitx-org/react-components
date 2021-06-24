@@ -6,8 +6,13 @@ import Button from "components/Button";
 import Modal from "./Modal";
 
 export default {
-  title: "Modal",
+  title: "components/Modal",
   component: Modal,
+  subcomponents: {
+    "Modal.Header": Modal.Header,
+    "Modal.Content": Modal.Content,
+    "Modal.Footer": Modal.Footer,
+  },
 };
 
 const { log } = console;
