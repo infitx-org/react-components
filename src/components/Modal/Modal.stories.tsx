@@ -19,7 +19,7 @@ const { log } = console;
 
 export const Simple = () => (
   <Modal title="I am a modal" onClose={log} onCancel={log} onSubmit={log}>
-    Body!
+    <div>Body!</div>
   </Modal>
 );
 
@@ -32,7 +32,7 @@ export const SpecifyComponents = () => (
 );
 
 export const Maximise = () => (
-  <Modal title="test" onClose={log} maximise>
+  <Modal title="test" onClose={log} maximise onSubmit={log}>
     Body is Maximized
   </Modal>
 );

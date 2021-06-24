@@ -79,13 +79,15 @@ export default function ModalBackground({
       return;
     }
     const { width } = ref.current.getBoundingClientRect();
-
     ref.current.style.top = `${50 + 60 * modalIndex}px`;
     ref.current.style.opacity = "1";
     ref.current.style.marginLeft = `-${width / 2}px`;
+    if (!maximise) {
+      ref.current.style.maxHeight = `calc(100% - ${60 * modalIndex + 70}px)`;
+    }
   }, []);
 
-  const containerClassName = classnames([
+  const modalClassName = classnames([
     "rc-modal",
     maximise && "rc-modal--maximise",
     className,
@@ -100,7 +102,7 @@ export default function ModalBackground({
         onClick={onClick}
         role="presentation"
       />
-      <div className={containerClassName} ref={ref}>
+      <div className={modalClassName} ref={ref}>
         {getComponents(children, props)}
       </div>
     </>
