@@ -8,14 +8,14 @@ import ModalFooter, {
   ModalFooterProps,
   hasFooterProps,
 } from "./components/ModalFooter";
-import ModalContent from "./components/ModalContent";
+import ModalBody from "./components/ModalBody";
 
 function isHeader(child: React.ReactNode): boolean {
   return (child as React.ReactElement).type === ModalHeader;
 }
 
 function isContent(child: React.ReactNode): boolean {
-  return (child as React.ReactElement).type === ModalContent;
+  return (child as React.ReactElement).type === ModalBody;
 }
 
 function isFooter(child: React.ReactNode): boolean {
@@ -34,7 +34,7 @@ function getComponents(
     if (isExpectedChild(child)) {
       return child;
     }
-    return <ModalContent defaultView>{child}</ModalContent>;
+    return <ModalBody common>{child}</ModalBody>;
   });
 
   const hasFooter = components.some(isFooter);

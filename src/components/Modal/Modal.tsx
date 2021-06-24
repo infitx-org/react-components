@@ -1,6 +1,6 @@
 import ModalBackground, { ModalBackgroundProps } from "./ModalBackground";
 import ModalPortal from "./ModalPortal";
-import ModalContent from "./components/ModalContent";
+import ModalBody from "./components/ModalBody";
 import ModalFooter from "./components/ModalFooter";
 import ModalHeader from "./components/ModalHeader";
 import "./Modal.scss";
@@ -14,7 +14,7 @@ function Modal({ root, ...props }: ModalBackgroundProps & { root?: Element }) {
 }
 
 Modal.Header = ModalHeader;
-Modal.Content = ModalContent;
+Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
 
 export default Modal;

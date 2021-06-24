@@ -52,7 +52,7 @@
   display: flex;
 }
 
-.rc-modal__header--default-view {
+.rc-modal__header--common {
   height: 60px;
   background: colors.$alpha--lighter;
   border-bottom: 2px solid colors.$alpha--light;
@@ -92,7 +92,7 @@
   justify-content: flex-end;
 }
 
-.rc-modal__content {
+.rc-modal__body {
   @include any.rc-component;
 
   position: relative;
@@ -103,7 +103,7 @@
   min-height: 0;
 }
 
-.rc-modal__content--default-view {
+.rc-modal__body--common {
   padding: 20px;
 }
 
@@ -113,7 +113,7 @@
   width: 100%;
 }
 
-.rc-modal__footer--default-view {
+.rc-modal__footer--common {
   padding: 10px;
   border-top: 1px solid #ccc;
   background: #f8f8f8;

@@ -19,19 +19,31 @@ describe("tests the modal", () => {
     const root = document.createElement("div");
     render(
       <Modal root={root} title="test" onSubmit={log}>
-        Content
+        Body
       </Modal>
     );
     expect(root.querySelector(".rc-modal__header")).toBeTruthy();
-    expect(root.querySelector(".rc-modal__content")).toBeTruthy();
+    expect(root.querySelector(".rc-modal__body")).toBeTruthy();
     expect(root.querySelector(".rc-modal__footer")).toBeTruthy();
+  });
+
+  it("renders the children as common props are set on the modal", () => {
+    const root = document.createElement("div");
+    render(
+      <Modal root={root} title="test" onSubmit={log}>
+        Body
+      </Modal>
+    );
+    expect(root.querySelector(".rc-modal__header--common")).toBeTruthy();
+    expect(root.querySelector(".rc-modal__body--common")).toBeTruthy();
+    expect(root.querySelector(".rc-modal__footer--common")).toBeTruthy();
   });
 
   it("renders the header when the header props are set", () => {
     const root = document.createElement("div");
     render(
       <Modal root={root} title="test">
-        Content
+        Body
       </Modal>
     );
     expect(root.querySelector(".rc-modal__header")).toBeTruthy();
@@ -41,7 +53,7 @@ describe("tests the modal", () => {
     const root = document.createElement("div");
     render(
       <Modal root={root} onSubmit={log}>
-        Content
+        Body
       </Modal>
     );
     expect(root.querySelector(".rc-modal__footer")).toBeTruthy();
@@ -52,13 +64,25 @@ describe("tests the modal", () => {
     render(
       <Modal root={root}>
         <Modal.Header>Custom header content</Modal.Header>
-        <Modal.Content>Custom content</Modal.Content>
+        <Modal.Body>Custom content</Modal.Body>
         <Modal.Footer>Custom footer content</Modal.Footer>
       </Modal>
     );
     expect(root.querySelector(".rc-modal__header")).toBeTruthy();
-    expect(root.querySelector(".rc-modal__content")).toBeTruthy();
+    expect(root.querySelector(".rc-modal__body")).toBeTruthy();
     expect(root.querySelector(".rc-modal__footer")).toBeTruthy();
+  });
+});
+
+describe("tests the modal container", () => {
+  it("renders the container", () => {
+    const { container } = render(<Modal.Body>test</Modal.Body>);
+    expect(container.querySelector(".rc-modal__body")).toBeTruthy();
+  });
+
+  it("renders the container as common when prop is set", () => {
+    const { container } = render(<Modal.Body common>test</Modal.Body>);
+    expect(container.querySelector(".rc-modal__body--common")).toBeTruthy();
   });
 });
 
@@ -66,6 +90,11 @@ describe("tests the modal header", () => {
   it("renders the header", () => {
     const { container } = render(<Modal.Header />);
     expect(container.querySelector(".rc-modal__header")).toBeTruthy();
+  });
+
+  it("renders the header as common when a prop is set", () => {
+    const { container } = render(<Modal.Header title="test" />);
+    expect(container.querySelector(".rc-modal__header--common")).toBeTruthy();
   });
 
   it("renders the title", () => {
@@ -112,16 +141,23 @@ describe("tests the modal footer", () => {
     expect(container.querySelector(".rc-modal__footer")).toBeTruthy();
   });
 
+  it("renders the footer as common when a prop is set", () => {
+    const { container } = render(<Modal.Footer onSubmit={log} />);
+    expect(container.querySelector(".rc-modal__footer--common")).toBeTruthy();
+  });
+
   it("renders the submit button", () => {
     const { container } = render(<Modal.Footer onSubmit={log} />);
-    const closeButton = container.querySelector(".rc-modal__footer__button");
-    expect(closeButton).toBeTruthy();
+    const submitButton = container.querySelector(".rc-modal__footer__button");
+    expect(submitButton).toBeTruthy();
+    expect(submitButton).toHaveTextContent("Submit");
   });
 
   it("renders the cancel button", () => {
     const { container } = render(<Modal.Footer onCancel={log} />);
-    const closeButton = container.querySelector(".rc-modal__footer__button");
-    expect(closeButton).toBeTruthy();
+    const cancelButton = container.querySelector(".rc-modal__footer__button");
+    expect(cancelButton).toBeTruthy();
+    expect(cancelButton).toHaveTextContent("Cancel");
   });
 
   it("renders the classname", () => {

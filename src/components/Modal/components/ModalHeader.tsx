@@ -55,17 +55,17 @@ export default function ModalHeader({
   ...props
 }: ModalHeaderProps) {
   let content;
-  let defaultView = false;
+  let common = false;
   if (hasHeaderProps(props)) {
     content = <BaseModalHeader {...props} />;
-    defaultView = true;
+    common = true;
   } else {
     content = props.children;
   }
   const headerClassName = classnames([
     "rc-modal__header",
     `rc-modal__header--${kind}`,
-    defaultView && `rc-modal__header--default-view`,
+    common && `rc-modal__header--common`,
     className,
   ]);
 

@@ -62,17 +62,17 @@ function ModalFooterButtons({
 
 export default function ModalFooter({ className, ...props }: ModalFooterProps) {
   let content;
-  let defaultView = false;
+  let common = false;
   if (hasFooterProps(props)) {
     content = <ModalFooterButtons {...props} />;
-    defaultView = true;
+    common = true;
   } else {
     content = props.children;
   }
 
   const footerClassName = classnames([
     "rc-modal__footer",
-    defaultView && `rc-modal__footer--default-view`,
+    common && `rc-modal__footer--common`,
     className,
   ]);
 

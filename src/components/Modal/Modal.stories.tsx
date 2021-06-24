@@ -10,7 +10,7 @@ export default {
   component: Modal,
   subcomponents: {
     "Modal.Header": Modal.Header,
-    "Modal.Content": Modal.Content,
+    "Modal.Body": Modal.Body,
     "Modal.Footer": Modal.Footer,
   },
 };
@@ -19,21 +19,21 @@ const { log } = console;
 
 export const Simple = () => (
   <Modal title="I am a modal" onClose={log} onCancel={log} onSubmit={log}>
-    Content!
+    Body!
   </Modal>
 );
 
 export const SpecifyComponents = () => (
   <Modal>
     <Modal.Header>Custom Header</Modal.Header>
-    <Modal.Content>Custom content</Modal.Content>
-    <Modal.Footer>Custom footer content</Modal.Footer>
+    <Modal.Body>Custom Body</Modal.Body>
+    <Modal.Footer>Custom Footer</Modal.Footer>
   </Modal>
 );
 
 export const Maximise = () => (
   <Modal title="test" onClose={log} maximise>
-    Content is Maximized
+    Body is Maximized
   </Modal>
 );
 
@@ -44,7 +44,7 @@ export const Kinds = () => {
 
   return (
     <Modal kind={kind} onClose={log} title={kind}>
-      <Modal.Content style={{ padding: "20px" }}>
+      <Modal.Body style={{ padding: "20px" }}>
         <Select
           options={Object.entries(Kind).map(([label, value]) => ({
             label,
@@ -52,7 +52,7 @@ export const Kinds = () => {
           }))}
           onChange={(k) => setKind(k as Kind)}
         />
-      </Modal.Content>
+      </Modal.Body>
     </Modal>
   );
 };

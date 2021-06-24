@@ -1,19 +1,19 @@
 import classnames from "classnames";
 
-export interface ModalContentProps {
+export interface ModalBodyProps {
   style?: React.CSSProperties;
-  defaultView?: boolean;
+  common?: boolean;
   children: React.ReactNode;
 }
 
-export default function ModalContent({
+export default function ModalBody({
   style,
-  defaultView,
+  common = false,
   children,
-}: ModalContentProps) {
+}: ModalBodyProps) {
   const className = classnames([
-    "rc-modal__content",
-    defaultView && `rc-modal__content--default-view`,
+    "rc-modal__body",
+    common && `rc-modal__body--common`,
   ]);
   return (
     <div className={className} style={style}>
