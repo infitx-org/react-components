@@ -49,6 +49,8 @@ function getComponents(
   }
 
   return components.map((c, key) =>
+    // TODO: Find a way to pass down the correcy keys
+    // @ts-ignore
     React.cloneElement(c, { ...c.props, key: key.toString() })
   );
 }
