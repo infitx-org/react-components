@@ -41,6 +41,7 @@ export {
   default as MessageBox,
   MessageBoxProps,
 } from "./components/MessageBox";
+export { default as Modal, ModalProps } from "./components/Modal";
 export {
   default as NumberField,
   NumberFieldProps,
