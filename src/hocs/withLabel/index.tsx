@@ -1,4 +1,4 @@
-import { ComponentType } from "react";
+import React, { ComponentType } from "react";
 import Label from "components/Label";
 import { Size } from "../../types";
 
@@ -17,7 +17,10 @@ interface LookingForProps {
 export default function withLabel<Props extends LookingForProps>(
   Component: ComponentType<Props>
 ) {
-  return function WithLabel({ label, ...props }: Props & WithLabelProps) {
+  return React.forwardRef(function WithLabel(
+    { label, ...props }: Props & WithLabelProps,
+    ref
+  ) {
     return (
       <>
         <Label
@@ -26,8 +29,8 @@ export default function withLabel<Props extends LookingForProps>(
           label={label}
           showRequired={props.showRequired}
         />
-        <Component {...(props as Props)} />
+        <Component {...(props as Props)} ref={ref} />
       </>
     );
-  };
+  });
 }

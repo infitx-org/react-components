@@ -9,7 +9,6 @@
   justify-content: center;
   cursor: pointer;
   position: relative;
-  fill: #666;
   outline: none;
   appearance: none;
   border: none;
@@ -25,7 +24,6 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, 0.1);
     border-radius: 100%;
     transform: scale3d(0.5, 0.5, 1);
     opacity: 0;
@@ -52,6 +50,18 @@
 
 .rc-icon-button__icon {
   z-index: 3;
+}
+
+.rc-icon-button--default {
+  fill: #666;
+
+  &:active {
+    fill: #333;
+  }
+
+  &::before {
+    background: rgba(0, 0, 0, 0.1);
+  }
 }
 
 @each $kind in themes.$kinds {

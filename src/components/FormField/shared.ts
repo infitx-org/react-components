@@ -1,35 +1,35 @@
-import { ButtonProps as RawButtonProps } from "../Button";
-import { CheckboxProps as RawCheckboxProps } from "../Checkbox/Checkbox";
-import { DatePickerProps as RawDatePickerProps } from "../DatePicker/DatePicker";
-import { FileUploaderProps as RawFileUploaderProps } from "../FileUploader/FileUploader";
-import { NumberFieldProps as RawNumberFieldProps } from "../NumberField/NumberField";
-import { RadioGroupProps as RawRadioGroupProps } from "../RadioGroup/RadioGroup";
-import { SelectProps as RawSelectProps } from "../Select/Select";
-import { TextFieldProps as RawTextFieldProps } from "../TextField/TextField";
+import { ButtonProps } from "../Button";
+import { CheckboxProps } from "../Checkbox/Checkbox";
+import { DatePickerProps } from "../DatePicker/DatePicker";
+import { FileUploaderProps } from "../FileUploader/FileUploader";
+import { NumberFieldProps } from "../NumberField/NumberField";
+import { RadioGroupProps } from "../RadioGroup/RadioGroup";
+import { SelectProps } from "../Select/Select";
+import { TextFieldProps } from "../TextField/TextField";
 import "./FormField.scss";
 
-interface ButtonFormProps extends RawButtonProps {
+interface ButtonFormProps extends ButtonProps {
   type: "button";
 }
-interface CheckboxFormProps extends RawCheckboxProps {
+interface CheckboxFormProps extends CheckboxProps {
   type: "checkbox";
 }
-interface DatePickerFormProps extends RawDatePickerProps {
+interface DatePickerFormProps extends DatePickerProps {
   type: "date";
 }
-interface FileUploaderFormProps extends RawFileUploaderProps {
+interface FileUploaderFormProps extends FileUploaderProps {
   type: "file";
 }
-interface NumberFieldFormProps extends RawNumberFieldProps {
+interface NumberFieldFormProps extends NumberFieldProps {
   type: "number";
 }
-interface RadioGroupFormProps extends RawRadioGroupProps {
+interface RadioGroupFormProps extends RadioGroupProps {
   type: "radio";
 }
-interface SelectFormProps extends RawSelectProps {
+interface SelectFormProps extends SelectProps {
   type: "select";
 }
-interface TextFieldFormProps extends RawTextFieldProps {
+interface TextFieldFormProps extends TextFieldProps {
   type: "text" | "password";
 }
 

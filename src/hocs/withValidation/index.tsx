@@ -46,7 +46,7 @@ const ValidationIcon = ({ active }: ValidationIconProps) => {
 
 interface ValidationMessageProps {
   message: string;
-  active: boolean;
+  active?: boolean;
 }
 const ValidationMessageRow = ({ message, active }: ValidationMessageProps) => {
   const className = classnames([
@@ -99,7 +99,6 @@ export default function withValidation<Props>(
     ref
   ) {
     const component = <Component {...(props as Props)} ref={ref} />;
-
     return (
       <Tooltip
         fixed={!!props.focused && !!props.validation}

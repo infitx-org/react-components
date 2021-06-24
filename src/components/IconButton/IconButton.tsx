@@ -30,6 +30,7 @@ const IconButton = React.forwardRef(function IconButton(
   const buttonClassName = classnames([
     "rc-icon-button",
     kind && `rc-icon-button--${kind}`,
+    !kind && `rc-icon-button--default`,
     disabled && "rc-icon-button--disabled",
     className,
   ]);
