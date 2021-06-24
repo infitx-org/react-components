@@ -1,5 +1,4 @@
 /* eslint no-console: "off" */
-// import Button from "../Button";
 import { useState } from "react";
 import { Kind } from "types";
 import Select from "components/Select";
@@ -21,7 +20,7 @@ export const Simple = () => (
 
 export const SpecifyComponents = () => (
   <Modal>
-    <Modal.Header>Custom header content</Modal.Header>
+    <Modal.Header title="test" />
     <Modal.Content>Custom content</Modal.Content>
     <Modal.Footer>Custom footer content</Modal.Footer>
   </Modal>

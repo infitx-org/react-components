@@ -1,6 +1,9 @@
 import React from "react";
 import classnames from "classnames";
-import ModalHeader, { ModalHeaderProps } from "./components/ModalHeader";
+import ModalHeader, {
+  ModalHeaderProps,
+  isPropsDriven,
+} from "./components/ModalHeader";
 import ModalFooter, { ModalFooterProps } from "./components/ModalFooter";
 import ModalContent from "./components/ModalContent";
 
@@ -22,7 +25,7 @@ function isExpectedChild(child: React.ReactNode) {
 
 function getComponents(
   children: React.ReactNode,
-  props: Partial<ModalHeaderProps & ModalFooterProps>
+  props: ModalHeaderProps & ModalFooterProps
 ) {
   const components = React.Children.toArray(children).map((child) => {
     if (isExpectedChild(child)) {
@@ -34,7 +37,7 @@ function getComponents(
   const hasFooter = components.some(isFooter);
   const hasHeader = components.some(isHeader);
 
-  if (!hasHeader && (props.title || props.onClose)) {
+  if (!hasHeader && isPropsDriven(props)) {
     components.unshift(<ModalHeader defaultView {...props} />);
   }
 

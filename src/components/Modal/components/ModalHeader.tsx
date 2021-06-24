@@ -23,10 +23,10 @@ type ChildrenDriven = {
 export type ModalHeaderProps = ModalHeaderBaseProps &
   (PropsDriven | ChildrenDriven);
 
-function isChildrenDriven(
+export function isPropsDriven(
   props: PropsDriven | ChildrenDriven
-): props is ChildrenDriven {
-  return (props as ChildrenDriven).children !== undefined;
+): props is PropsDriven {
+  return (props as ChildrenDriven).children === undefined;
 }
 
 export default function ModalHeader({
@@ -36,7 +36,7 @@ export default function ModalHeader({
   ...props
 }: ModalHeaderProps) {
   let content;
-  if (!isChildrenDriven(props)) {
+  if (isPropsDriven(props)) {
     const { title, onClose, isCloseDisabled } = props;
     content = (
       <>
