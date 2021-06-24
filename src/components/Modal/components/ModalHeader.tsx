@@ -4,10 +4,9 @@ import IconButton from "components/IconButton";
 import { Kind } from "../../../types";
 import CloseSmall from "../../../resources/icons/close-small.svg";
 
-type ModalHeaderBaseProps = {
+type BaseProps = {
   className?: string;
   kind?: `${Kind}` | "default";
-  defaultView?: boolean;
 };
 
 type PropsDriven = {
@@ -20,40 +19,46 @@ type ChildrenDriven = {
   children?: React.ReactNode;
 };
 
-export type ModalHeaderProps = ModalHeaderBaseProps &
-  (PropsDriven | ChildrenDriven);
+export type ModalHeaderProps = BaseProps & (PropsDriven | ChildrenDriven);
 
-export function isPropsDriven(
+export function hasHeaderProps(
   props: PropsDriven | ChildrenDriven
 ): props is PropsDriven {
-  return (props as ChildrenDriven).children === undefined;
+  return (
+    (props as PropsDriven).title !== undefined ||
+    (props as PropsDriven).onClose !== undefined
+  );
+}
+
+function BaseModalHeader({ title, onClose, isCloseDisabled }: PropsDriven) {
+  return (
+    <>
+      {title && <div className="rc-modal__header__title">{title}</div>}
+      {onClose && (
+        <div className="rc-modal__header__close-container">
+          <IconButton
+            className="rc-modal__header__close"
+            onClick={onClose}
+            icon={<CloseSmall />}
+            size={20}
+            disabled={isCloseDisabled}
+          />
+        </div>
+      )}
+    </>
+  );
 }
 
 export default function ModalHeader({
   className,
   kind = "default",
-  defaultView,
   ...props
 }: ModalHeaderProps) {
   let content;
-  if (isPropsDriven(props)) {
-    const { title, onClose, isCloseDisabled } = props;
-    content = (
-      <>
-        {title && <div className="rc-modal__header__title">{title}</div>}
-        {onClose && (
-          <div className="rc-modal__header__close-container">
-            <IconButton
-              className="rc-modal__header__close"
-              onClick={onClose}
-              icon={<CloseSmall />}
-              size={20}
-              disabled={isCloseDisabled}
-            />
-          </div>
-        )}
-      </>
-    );
+  let defaultView = false;
+  if (hasHeaderProps(props)) {
+    content = <BaseModalHeader {...props} />;
+    defaultView = true;
   } else {
     content = props.children;
   }

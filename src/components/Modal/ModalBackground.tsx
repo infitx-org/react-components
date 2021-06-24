@@ -2,9 +2,12 @@ import React from "react";
 import classnames from "classnames";
 import ModalHeader, {
   ModalHeaderProps,
-  isPropsDriven,
+  hasHeaderProps,
 } from "./components/ModalHeader";
-import ModalFooter, { ModalFooterProps } from "./components/ModalFooter";
+import ModalFooter, {
+  ModalFooterProps,
+  hasFooterProps,
+} from "./components/ModalFooter";
 import ModalContent from "./components/ModalContent";
 
 function isHeader(child: React.ReactNode): boolean {
@@ -37,12 +40,12 @@ function getComponents(
   const hasFooter = components.some(isFooter);
   const hasHeader = components.some(isHeader);
 
-  if (!hasHeader && isPropsDriven(props)) {
-    components.unshift(<ModalHeader defaultView {...props} />);
+  if (!hasHeader && hasHeaderProps(props)) {
+    components.unshift(<ModalHeader {...props} />);
   }
 
-  if ((!hasFooter && props.onSubmit) || props.onCancel) {
-    components.push(<ModalFooter defaultView {...props} />);
+  if (!hasFooter && hasFooterProps(props)) {
+    components.push(<ModalFooter {...props} />);
   }
 
   return components.map((c, key) =>

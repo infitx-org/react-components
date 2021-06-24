@@ -25,7 +25,7 @@ export const Simple = () => (
 
 export const SpecifyComponents = () => (
   <Modal>
-    <Modal.Header title="test" />
+    <Modal.Header>Custom Header</Modal.Header>
     <Modal.Content>Custom content</Modal.Content>
     <Modal.Footer>Custom footer content</Modal.Footer>
   </Modal>
