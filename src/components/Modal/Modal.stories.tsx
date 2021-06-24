@@ -19,7 +19,7 @@ const { log } = console;
 
 export const Simple = () => (
   <Modal title="I am a modal" onClose={log} onCancel={log} onSubmit={log}>
-    <div style={{ height: "2000px" }}>Body!</div>
+    <div>Body!</div>
   </Modal>
 );
 
