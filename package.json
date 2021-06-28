@@ -1,6 +1,6 @@
 {
   "name": "@modusbox/react-components",
-  "version": "0.1.1-37",
+  "version": "0.1.1-38",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "lib"
   ],
   "dependencies": {
-    "@modusbox/ts-utils": "0.0.2-6",
+    "@modusbox/ts-utils": "^0.0.2-7",
     "babel-plugin-react-docgen": "^4.2.1",
     "date-fns": "^2.21.3",
     "lodash": "^4.17.21",
