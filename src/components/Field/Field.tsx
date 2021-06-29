@@ -43,8 +43,7 @@ const Field = React.forwardRef(function Field(
 
   useOnClickOutside(fieldRef, onClickOutside);
 
-  const isInvalid = invalid;
-  const isRequired = required && !isInvalid && hasEmptyValue;
+  const isRequired = required && !invalid && hasEmptyValue;
 
   const fieldClassname = classnames([
     "rc-field",
@@ -53,7 +52,7 @@ const Field = React.forwardRef(function Field(
     focused && "rc-field--focused",
     disabled && "rc-field--disabled",
     isRequired && "rc-field--required",
-    isInvalid && "rc-field--invalid",
+    invalid && "rc-field--invalid",
     className,
   ]);
 
