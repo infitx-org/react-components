@@ -6,17 +6,15 @@ export interface WithLabelProps {
   label?: string;
 }
 
-interface LookingForProps {
+type LookingForProps = {
   hasEmptyValue?: boolean;
   required?: boolean;
   size?: `${Size}`;
-}
+};
 
-export default function withLabel<Props extends LookingForProps>(
-  Component: ComponentType<Props>
-) {
+export default function withLabel<Props>(Component: ComponentType<Props>) {
   return React.forwardRef(function WithLabel(
-    { label, ...props }: Props & WithLabelProps,
+    { label, ...props }: Props & WithLabelProps & LookingForProps,
     ref
   ) {
     return (
