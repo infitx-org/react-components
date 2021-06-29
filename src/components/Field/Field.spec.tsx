@@ -31,7 +31,7 @@ describe("tests the Field props", () => {
 
   it("renders as required", () => {
     const { container } = render(
-      <Field required showRequired>
+      <Field required hasEmptyValue>
         test
       </Field>
     );

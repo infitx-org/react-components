@@ -11,7 +11,7 @@ type BaseFieldProps = {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   required?: boolean;
-  showRequired?: boolean;
+  hasEmptyValue?: boolean;
   invalid?: boolean;
   disabled?: boolean;
   children: React.ReactNode;
@@ -29,7 +29,7 @@ const Field = React.forwardRef(function Field(
     size = InputSize.Large,
     disabled,
     required,
-    showRequired,
+    hasEmptyValue,
     invalid,
     children,
     focused,
@@ -43,14 +43,17 @@ const Field = React.forwardRef(function Field(
 
   useOnClickOutside(fieldRef, onClickOutside);
 
+  const isInvalid = invalid;
+  const isRequired = required && !isInvalid && hasEmptyValue;
+
   const fieldClassname = classnames([
     "rc-field",
     `rc-field--${kind}`,
     `rc-field--${size}`,
     focused && "rc-field--focused",
     disabled && "rc-field--disabled",
-    required && showRequired && !invalid && "rc-field--required",
-    invalid && "rc-field--invalid",
+    isRequired && "rc-field--required",
+    isInvalid && "rc-field--invalid",
     className,
   ]);
 
@@ -66,4 +69,4 @@ const Field = React.forwardRef(function Field(
   );
 });
 
-export default withLabel(withValidation(Field));
+export default withValidation(withLabel(Field));

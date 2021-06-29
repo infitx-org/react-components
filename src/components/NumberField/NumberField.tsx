@@ -118,7 +118,7 @@ export default React.forwardRef(function NumberField(
       onClickOutside={leave}
       ref={forwardedRef}
       label={label}
-      showRequired={currentValue === ""}
+      hasEmptyValue={currentValue === ""}
       validation={validation}
     >
       {placeholder && (

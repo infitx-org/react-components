@@ -3,22 +3,18 @@ import Label from "components/Label";
 import { Size } from "../../types";
 
 export interface WithLabelProps {
-  showRequired?: boolean;
-  required?: boolean;
   label?: string;
 }
 
-interface LookingForProps {
-  showRequired?: boolean;
+type LookingForProps = {
+  hasEmptyValue?: boolean;
   required?: boolean;
   size?: `${Size}`;
-}
+};
 
-export default function withLabel<Props extends LookingForProps>(
-  Component: ComponentType<Props>
-) {
+export default function withLabel<Props>(Component: ComponentType<Props>) {
   return React.forwardRef(function WithLabel(
-    { label, ...props }: Props & WithLabelProps,
+    { label, ...props }: Props & WithLabelProps & LookingForProps,
     ref
   ) {
     return (
@@ -27,7 +23,7 @@ export default function withLabel<Props extends LookingForProps>(
           size={props.size}
           required={props.required}
           label={label}
-          showRequired={props.showRequired}
+          hasEmptyValue={props.hasEmptyValue}
         />
         <Component {...(props as Props)} ref={ref} />
       </>

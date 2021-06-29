@@ -1,25 +1,55 @@
 import React from "react";
-import Row from "components/Flexbox/Row";
 import Column from "components/Flexbox/Column";
-import TextField from "components/TextField";
+import FormField from "components/FormField";
+import {
+  createValidation,
+  vd,
+  toValidationResult,
+} from "@modusbox/ts-utils/lib/validation";
+
+const formValidation = {
+  name: createValidation([vd.maxLength(10)]),
+  lastname: createValidation([vd.maxLength(10)]),
+  email: createValidation([vd.isEmail]),
+};
 
 export default function FormTheme() {
-  const [value, setValue] = React.useState("");
-  const validation = [];
-  validation.push({ active: true, message: "is true" });
-  if (value === "test") {
-    validation.push({ active: false, message: "is false" });
-  }
+  const [form, setForm] = React.useState({ name: "", lastname: "", email: "" });
+  const setFormValue = (field: string) => (value: string) =>
+    setForm({ ...form, [field]: value });
+  const validationResult = toValidationResult(form, formValidation);
+
   return (
     <Column align="top left">
-      <Row style={{ margin: "5px" }}>
-        <TextField
+      <FormField.Container direction="column">
+        <FormField
+          type="text"
           size="small"
-          value={value}
-          onChange={setValue}
-          validation={validation}
+          label="name"
+          placeholder="name"
+          value={form.name}
+          onChange={setFormValue("name")}
+          validation={validationResult.fields.name}
         />
-      </Row>
+        <FormField
+          type="text"
+          size="small"
+          label="lastname"
+          placeholder="lastname"
+          value={form.lastname}
+          onChange={setFormValue("lastname")}
+          validation={validationResult.fields.lastname}
+        />
+        <FormField
+          type="text"
+          size="small"
+          label="email"
+          placeholder="email"
+          value={form.email}
+          onChange={setFormValue("email")}
+          validation={validationResult.fields.email}
+        />
+      </FormField.Container>
     </Column>
   );
 }

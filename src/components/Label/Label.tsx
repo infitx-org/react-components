@@ -9,14 +9,14 @@ export interface LabelProps {
   size?: `${Size}`;
   label?: string;
   required?: boolean;
-  showRequired?: boolean;
+  hasEmptyValue?: boolean;
 }
 
 export default function Label({
   size = "large",
   label,
   required,
-  showRequired,
+  hasEmptyValue,
 }: LabelProps) {
   if (!label) {
     return null;
@@ -30,7 +30,7 @@ export default function Label({
           className="rc-label__icon"
           size={getSmallerIconSizeByComponentSize(size)}
           icon={<InfoSmall />}
-          fill={showRequired ? "#f93" : "#39f"}
+          fill={hasEmptyValue ? "#f93" : "#39f"}
         />
       )}
       <span className={`rc-label__text--${size}`}>{label}</span>
