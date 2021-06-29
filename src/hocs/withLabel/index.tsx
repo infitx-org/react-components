@@ -7,7 +7,7 @@ export interface WithLabelProps {
 }
 
 interface LookingForProps {
-  showRequired?: boolean;
+  hasEmptyValue?: boolean;
   required?: boolean;
   size?: `${Size}`;
 }
@@ -25,7 +25,7 @@ export default function withLabel<Props extends LookingForProps>(
           size={props.size}
           required={props.required}
           label={label}
-          showRequired={props.showRequired}
+          hasEmptyValue={props.hasEmptyValue}
         />
         <Component {...(props as Props)} ref={ref} />
       </>

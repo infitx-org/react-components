@@ -4,7 +4,7 @@ import { ValidationResult } from "@modusbox/ts-utils/lib/validation";
 import ValidationCard from "./ValidationCard";
 
 interface BaseProps {
-  showRequired?: boolean;
+  hasEmptyValue?: boolean;
   required?: boolean;
   invalid?: boolean;
 }
@@ -24,7 +24,8 @@ export default function withValidation<Props extends BaseProps>(
     const isValid = props.validation?.isValid;
     const newProps = {
       required: props.required || isRequired,
-      invalid: props.invalid || !isValid,
+      // invalid explicitely set or only when has value + validation
+      invalid: props.invalid || (!isValid && !props.hasEmptyValue),
     };
     const component = (
       <Component {...(props as Props)} {...newProps} ref={ref} />
@@ -34,7 +35,7 @@ export default function withValidation<Props extends BaseProps>(
         fixed={!!props.focused && !!props.validation}
         content={
           <ValidationCard
-            empty={props.showRequired}
+            empty={props.hasEmptyValue}
             messages={props.validation?.messages}
           />
         }

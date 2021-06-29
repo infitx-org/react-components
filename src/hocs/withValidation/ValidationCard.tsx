@@ -61,7 +61,7 @@ const ValidationMessageRow = ({ message, active }: ValidationMessage) => {
 };
 
 interface ValidationCardProps {
-  empty: boolean;
+  empty?: boolean;
   messages?: ValidationMessage[];
 }
 export default function ValidationCard({

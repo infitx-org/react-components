@@ -171,7 +171,7 @@ export default React.forwardRef(function FileUploader(
       onClickOutside={leave}
       ref={forwardedRef}
       label={label}
-      showRequired={selectedFile === undefined}
+      hasEmptyValue={selectedFile === undefined}
       validation={validation}
     >
       {placeholder && (

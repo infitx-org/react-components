@@ -147,7 +147,7 @@ export default React.forwardRef(function DatePicker(
       onClickOutside={leave}
       ref={forwardedRef}
       label={label}
-      showRequired={selectedDate === undefined}
+      hasEmptyValue={selectedDate === undefined}
       validation={validation}
     >
       {placeholder && (

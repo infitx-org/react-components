@@ -224,7 +224,7 @@ export default forwardRef(function Select(
       onClickOutside={leave}
       ref={forwardedRef}
       label={label}
-      showRequired={selectedValue === undefined}
+      hasEmptyValue={selectedValue === undefined}
       validation={validation}
     >
       {placeholder && (
