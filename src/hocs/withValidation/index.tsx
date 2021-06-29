@@ -25,7 +25,8 @@ export default function withValidation<Props extends BaseProps>(
     const newProps = {
       required: props.required || isRequired,
       // invalid explicitely set or only when has value + validation
-      invalid: props.invalid || (!isValid && !props.hasEmptyValue),
+      invalid:
+        props.invalid || (isValid === false && props.hasEmptyValue === false),
     };
     const component = (
       <Component {...(props as Props)} {...newProps} ref={ref} />
