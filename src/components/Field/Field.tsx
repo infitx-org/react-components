@@ -43,14 +43,17 @@ const Field = React.forwardRef(function Field(
 
   useOnClickOutside(fieldRef, onClickOutside);
 
+  const isInvalid = !showRequired && invalid;
+  const isRequired = required && !isInvalid && showRequired;
+
   const fieldClassname = classnames([
     "rc-field",
     `rc-field--${kind}`,
     `rc-field--${size}`,
     focused && "rc-field--focused",
     disabled && "rc-field--disabled",
-    required && showRequired && !invalid && "rc-field--required",
-    invalid && "rc-field--invalid",
+    isRequired && "rc-field--required",
+    isInvalid && "rc-field--invalid",
     className,
   ]);
 
@@ -66,4 +69,4 @@ const Field = React.forwardRef(function Field(
   );
 });
 
-export default withLabel(withValidation(Field));
+export default withValidation(withLabel(Field));

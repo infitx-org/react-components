@@ -3,8 +3,6 @@ import Label from "components/Label";
 import { Size } from "../../types";
 
 export interface WithLabelProps {
-  showRequired?: boolean;
-  required?: boolean;
   label?: string;
 }
 

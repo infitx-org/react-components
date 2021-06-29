@@ -9,7 +9,7 @@
     "lib"
   ],
   "dependencies": {
-    "@modusbox/ts-utils": "^0.0.2-7",
+    "@modusbox/ts-utils": "^0.0.2-8",
     "babel-plugin-react-docgen": "^4.2.1",
     "date-fns": "^2.21.3",
     "lodash": "^4.17.21",
