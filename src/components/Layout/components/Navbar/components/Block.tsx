@@ -30,6 +30,10 @@ export interface BlockProps {
 function Block({ icon, label, onClick, children }: BlockProps) {
   const [overlayVisible, setOverlayVisible] = React.useState(false);
   const onOverlayToggleClick = () => setOverlayVisible(!overlayVisible);
+  const items = React.Children.toArray(
+    children
+  ) as React.ReactElement<BlockItemProps>[];
+
   return (
     <div className="rc-layout__navbar__block">
       {icon && (
@@ -44,7 +48,19 @@ function Block({ icon, label, onClick, children }: BlockProps) {
       >
         <span>{label}</span>
       </div>
-      {children && overlayVisible && <Overlay>{children}</Overlay>}
+      {children && overlayVisible && (
+        <Overlay>
+          {items.map((c) =>
+            React.cloneElement(c, {
+              ...c.props,
+              onClick: () => {
+                setOverlayVisible(false);
+                c.props.onClick?.();
+              },
+            })
+          )}
+        </Overlay>
+      )}
     </div>
   );
 }

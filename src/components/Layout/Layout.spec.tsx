@@ -2,6 +2,25 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Layout from "./Layout";
 
+describe("tests the Layout as a whole", () => {
+  it("renders the layout components", () => {
+    const { container } = render(
+      <Layout>
+        <Layout.Navbar title="Layout" username="user" />
+        <Layout.Content>
+          <Layout.SideMenu>Menu</Layout.SideMenu>
+          <Layout.Page>Page</Layout.Page>
+        </Layout.Content>
+      </Layout>
+    );
+    expect(container.querySelector(".rc-layout")).toBeTruthy();
+    expect(container.querySelector(".rc-layout__navbar")).toBeTruthy();
+    expect(container.querySelector(".rc-layout__content")).toBeTruthy();
+    expect(container.querySelector(".rc-layout__side-menu")).toBeTruthy();
+    expect(container.querySelector(".rc-layout__page")).toBeTruthy();
+  });
+});
+
 describe("tests the Layout component", () => {
   it("renders the layout", () => {
     const { container } = render(<Layout>layout</Layout>);
@@ -12,40 +31,6 @@ describe("tests the Layout component", () => {
   it("renders the prop classname on the layout", () => {
     const { container } = render(<Layout className="test">content</Layout>);
     expect(container.querySelector(".rc-layout.test")).toBeTruthy();
-  });
-});
-
-describe("tests the Layout.Navbar component", () => {
-  it("renders the navbar", () => {
-    const { container } = render(
-      <Layout.Navbar title="Navbar" username="user" />
-    );
-    expect(container.querySelector(".rc-layout__navbar")).toBeTruthy();
-  });
-
-  it("renders the title on the navbar", () => {
-    const { container } = render(
-      <Layout.Navbar title="Navbar" username="user" />
-    );
-    expect(
-      container.querySelector(".rc-layout__navbar__link")?.textContent
-    ).toBe("Navbar");
-  });
-
-  it("renders the username on the navbar", () => {
-    const { container } = render(
-      <Layout.Navbar title="Navbar" username="User" />
-    );
-    expect(
-      container.querySelector(".rc-layout__navbar__user")?.textContent
-    ).toBe("User");
-  });
-
-  it("renders the prop classname on the navbar", () => {
-    const { container } = render(
-      <Layout.Navbar title="Layout" username="user" className="test" />
-    );
-    expect(container.querySelector(".rc-layout__navbar.test")).toBeTruthy();
   });
 });
 
@@ -100,26 +85,40 @@ describe("tests the Layout.Page component", () => {
   });
 });
 
-describe("tests the Layout as a whole", () => {
-  it("renders the layout components", () => {
+describe("tests the Layout.Navbar component", () => {
+  it("renders the navbar", () => {
     const { container } = render(
-      <Layout>
-        <Layout.Navbar title="Layout" username="user" />
-        <Layout.Content>
-          <Layout.SideMenu>Menu</Layout.SideMenu>
-          <Layout.Page>Page</Layout.Page>
-        </Layout.Content>
-      </Layout>
+      <Layout.Navbar title="Navbar" username="user" />
     );
-    expect(container.querySelector(".rc-layout")).toBeTruthy();
     expect(container.querySelector(".rc-layout__navbar")).toBeTruthy();
-    expect(container.querySelector(".rc-layout__content")).toBeTruthy();
-    expect(container.querySelector(".rc-layout__side-menu")).toBeTruthy();
-    expect(container.querySelector(".rc-layout__page")).toBeTruthy();
+  });
+
+  it("renders the title on the navbar", () => {
+    const { container } = render(
+      <Layout.Navbar title="Navbar" username="user" />
+    );
+    expect(
+      container.querySelector(".rc-layout__navbar__link")?.textContent
+    ).toBe("Navbar");
+  });
+
+  it("renders the username on the navbar", () => {
+    const { container } = render(
+      <Layout.Navbar title="Navbar" username="User" />
+    );
+    expect(
+      container.querySelector(".rc-layout__navbar__block")?.textContent
+    ).toBe("User");
+  });
+
+  it("renders the prop classname on the navbar", () => {
+    const { container } = render(
+      <Layout.Navbar title="Layout" username="user" className="test" />
+    );
+    expect(container.querySelector(".rc-layout__navbar.test")).toBeTruthy();
   });
 });
 
-// // Snapshot testing
 it("renders the layout correctly when multiple props are set", () => {
   const { container } = render(
     <Layout>
