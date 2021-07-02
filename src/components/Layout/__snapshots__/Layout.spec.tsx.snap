@@ -22,26 +22,6 @@ exports[`renders the layout correctly when multiple props are set 1`] = `
         class="rc-layout__navbar__user"
       >
         <div
-          class="rc-layout__navbar__user__icon"
-        >
-          <svg
-            fill="#fff"
-            height="20"
-            stroke="transparent"
-            viewBox="0 0 40 40"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g>
-              <circle
-                cx="20"
-                cy="20"
-                r="20"
-              />
-            </g>
-          </svg>
-        </div>
-        <div
           class="rc-layout__navbar__user__name"
           role="presentation"
         >
