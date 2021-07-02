@@ -47,7 +47,7 @@ Default.args = {
 
 export const ComposingNavbar = () => (
   <Layout.Navbar title="Composing Navbar">
-    <Layout.Navbar.Block label="Company">
+    <Layout.Navbar.Block label="Company" initial="C">
       <Layout.Navbar.Block.Item onClick={console.log}>
         Logout
       </Layout.Navbar.Block.Item>

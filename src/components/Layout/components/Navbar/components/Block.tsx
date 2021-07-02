@@ -47,29 +47,42 @@ function getBlockItems(
 
 export interface BlockProps {
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
+  initial?: string;
   label?: string;
   onClick?: () => void;
   children?: React.ReactNode;
 }
 
-function Block({ icon, label, onClick, children }: BlockProps) {
+function Block({ icon, initial, label, onClick, children }: BlockProps) {
   const blockRef = React.useRef<HTMLDivElement>(null);
   const [overlayVisible, setOverlayVisible] = React.useState(false);
   const onOverlayToggleClick = () => setOverlayVisible(!overlayVisible);
   useOnClickOutside(blockRef, () => setOverlayVisible(false));
 
+  let iconContent = null;
+  if (icon) {
+    iconContent = (
+      <div className="rc-layout__navbar__block__icon">
+        <Icon icon={icon} size={30} />
+      </div>
+    );
+  } else if (initial) {
+    iconContent = (
+      <div className="rc-layout__navbar__block__initial">
+        {initial.charAt(0)}
+      </div>
+    );
+  }
+
   return (
-    <div className="rc-layout__navbar__block" ref={blockRef}>
-      {icon && (
-        <div className="rc-layout__navbar__block__icon">
-          <Icon icon={icon} size={30} />
-        </div>
-      )}
-      <div
-        className="rc-layout__navbar__block__label"
-        onClick={onClick || onOverlayToggleClick}
-        role="presentation"
-      >
+    <div
+      className="rc-layout__navbar__block"
+      ref={blockRef}
+      onClick={onClick || onOverlayToggleClick}
+      role="presentation"
+    >
+      {iconContent}
+      <div className="rc-layout__navbar__block__label">
         <span>{label}</span>
       </div>
       {children && overlayVisible && (
