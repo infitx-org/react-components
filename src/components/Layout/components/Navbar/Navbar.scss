@@ -1,0 +1,118 @@
+@use "sass:map";
+@use "../../../../scss/components/any.scss";
+@use "../../../../scss/themes.scss";
+
+$end-color: #02182b;
+
+.rc-layout__navbar {
+  @include any.rc-component;
+
+  flex: 0 0 55px;
+  user-select: none;
+  height: 55px;
+  width: 100%;
+  background: linear-gradient(
+    269.81deg,
+    map.get(themes.$colors--dark, "secondary") 0%,
+    #02182b 100%
+  );
+  border-bottom: 5px solid map.get(themes.$colors, "primary");
+  display: flex;
+  align-items: center;
+}
+
+.rc-layout__navbar__controls {
+  flex: 1 0 auto;
+}
+
+.rc-layout__navbar__link {
+  margin-left: 30px;
+  color: #fff;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.rc-layout__navbar__content {
+  background: #f00;
+}
+
+.rc-layout__navbar__block {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  position: relative;
+  height: 100%;
+  min-width: 160px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.rc-layout__navbar__block__icon {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  margin-right: 20px;
+}
+
+.rc-layout__navbar__block__initial {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  background: #fff;
+  border-radius: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: map.get(themes.$colors, "secondary");
+}
+
+.rc-layout__navbar__block__label {
+  color: #fff;
+  font-size: 14px;
+}
+
+.rc-layout__navbar__overlay {
+  margin-top: 1px;
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+  padding: 0;
+  display: flex;
+  min-width: 160px;
+  border-bottom: 5px solid map.get(themes.$colors--dark, "primary");
+}
+
+.rc-layout__navbar__overlay-content {
+  @include any.rc-component;
+  @include any.rc-overlay;
+
+  background: map.get(themes.$colors--dark, "secondary");
+  flex: 1 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 10px 0;
+  animation: fadeInOverlay 0.15s ease-in-out;
+}
+
+.rc-layout__navbar__block__item {
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
