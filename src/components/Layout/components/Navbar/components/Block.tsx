@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "components/Icon";
+import useOnClickOutside from "hooks/useOnClickOutside";
 import Overlay from "./Overlay";
 
 interface BlockItemProps {
@@ -20,6 +21,30 @@ function BlockItem({ label, children, onClick }: BlockItemProps) {
   );
 }
 
+function isBlockItem(child: React.ReactNode): boolean {
+  return (child as React.ReactElement).type === BlockItem;
+}
+
+function getBlockItems(
+  children: React.ReactNode,
+  { onClick }: Partial<BlockItemProps>
+) {
+  const childrenArray = React.Children.toArray(children).filter(
+    isBlockItem
+  ) as React.ReactElement<BlockItemProps>[];
+
+  return childrenArray.map((blockItem) =>
+    React.cloneElement(blockItem, {
+      ...blockItem.props,
+      // merge the own click function with the outside one to close the overlay
+      onClick: () => {
+        onClick?.();
+        blockItem.props.onClick?.();
+      },
+    })
+  );
+}
+
 export interface BlockProps {
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   label?: string;
@@ -28,14 +53,13 @@ export interface BlockProps {
 }
 
 function Block({ icon, label, onClick, children }: BlockProps) {
+  const blockRef = React.useRef<HTMLDivElement>(null);
   const [overlayVisible, setOverlayVisible] = React.useState(false);
   const onOverlayToggleClick = () => setOverlayVisible(!overlayVisible);
-  const items = React.Children.toArray(
-    children
-  ) as React.ReactElement<BlockItemProps>[];
+  useOnClickOutside(blockRef, () => setOverlayVisible(false));
 
   return (
-    <div className="rc-layout__navbar__block">
+    <div className="rc-layout__navbar__block" ref={blockRef}>
       {icon && (
         <div className="rc-layout__navbar__block__icon">
           <Icon icon={icon} size={30} />
@@ -50,15 +74,7 @@ function Block({ icon, label, onClick, children }: BlockProps) {
       </div>
       {children && overlayVisible && (
         <Overlay>
-          {items.map((c) =>
-            React.cloneElement(c, {
-              ...c.props,
-              onClick: () => {
-                setOverlayVisible(false);
-                c.props.onClick?.();
-              },
-            })
-          )}
+          {getBlockItems(children, { onClick: () => setOverlayVisible(false) })}
         </Overlay>
       )}
     </div>
