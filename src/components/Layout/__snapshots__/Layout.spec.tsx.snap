@@ -19,10 +19,10 @@ exports[`renders the layout correctly when multiple props are set 1`] = `
         </a>
       </div>
       <div
-        class="rc-layout__navbar__user"
+        class="rc-layout__navbar__block"
       >
         <div
-          class="rc-layout__navbar__user__name"
+          class="rc-layout__navbar__block__label"
           role="presentation"
         >
           <span>

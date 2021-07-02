@@ -47,13 +47,21 @@ Default.args = {
 
 export const ComposingNavbar = () => (
   <Layout.Navbar title="Composing Navbar">
-    <Layout.Navbar.User username="User clickable name">
-      <Layout.Navbar.User.Item onClick={console.log}>
+    <Layout.Navbar.Block label="Company">
+      <Layout.Navbar.Block.Item onClick={console.log}>
         Logout
-      </Layout.Navbar.User.Item>
-      <Layout.Navbar.User.Item onClick={console.log}>
+      </Layout.Navbar.Block.Item>
+      <Layout.Navbar.Block.Item onClick={console.log}>
         Profile
-      </Layout.Navbar.User.Item>
-    </Layout.Navbar.User>
+      </Layout.Navbar.Block.Item>
+    </Layout.Navbar.Block>
+    <Layout.Navbar.Block label="User clickable name">
+      <Layout.Navbar.Block.Item onClick={console.log}>
+        Logout
+      </Layout.Navbar.Block.Item>
+      <Layout.Navbar.Block.Item onClick={console.log}>
+        Profile
+      </Layout.Navbar.Block.Item>
+    </Layout.Navbar.Block>
   </Layout.Navbar>
 );
