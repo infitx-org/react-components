@@ -54,7 +54,7 @@ export {
 } from "./components/RadioGroup";
 export { default as Row, RowProps } from "./components/Flexbox/Row";
 export { default as Select, SelectProps } from "./components/Select";
-export { default as ScrollBox, ScrollBoxProps } from "./components/ScrollBox";
+export { default as ScrollBox, ScrollBoxProps } from "./components/Scrollbox";
 export { default as Spinner, SpinnerProps } from "./components/Spinner";
 export {
   Tab,
