@@ -1,9 +1,8 @@
 import React from "react";
 import classnames from "classnames";
-import useOverlayPosition from "hooks/useOverlayPosition";
 import { getIconSizeByComponentSize } from "utils/size";
-import mergeRefs from "utils/mergeRefs";
 import Icon from "components/Icon";
+import Overlay from "components/Overlay";
 import { InputSize } from "../../../types";
 import InfoSmall from "../../../resources/icons/info-small.svg";
 import CloseSmall from "../../../resources/icons/close-small.svg";
@@ -93,18 +92,6 @@ function Options({
   onClear,
   optionsRef,
 }: OptionsProps) {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const { top, bottom, height, reverse } = useOverlayPosition<HTMLDivElement>(
-    ref.current
-  );
-
-  const className = classnames([
-    "rc-select__options",
-    reverse && "rc-select__options--reverse",
-  ]);
-
-  const maxHeight = Math.min(220, parseInt(height || "", 10) || 220);
-
   let clearOption = null;
   if (clearable && selected !== undefined) {
     clearOption = (
@@ -150,14 +137,18 @@ function Options({
     );
   }
   return (
-    <div
-      className={className}
-      ref={mergeRefs(ref, optionsRef)}
-      style={{ top, bottom, maxHeight }}
+    <Overlay
+      className="rc-select__options"
+      reverseClassName="rc-select__options--reverse"
+      applyLeft={false}
+      applyRight={false}
+      withinHeight={false}
+      withinWidth
+      ref={optionsRef}
     >
       {clearOption}
       {optionItems}
-    </div>
+    </Overlay>
   );
 }
 

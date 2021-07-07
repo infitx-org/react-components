@@ -5,10 +5,8 @@
 .rc-select__options {
   @include any.rc-overlay;
 
-  position: absolute;
   width: 100%;
   left: 0;
-  z-index: 1000;
   animation: fadeInOptions 0.15s ease-in-out;
   overflow-y: auto;
   border-bottom: 2px solid colors.$tertiary;
