@@ -46,6 +46,7 @@ export {
   default as NumberField,
   NumberFieldProps,
 } from "./components/NumberField";
+export { default as Overlay, OverlayProps } from "./components/Overlay";
 export { default as Pill, PillProps } from "./components/Pill";
 export {
   default as RadioGroup,

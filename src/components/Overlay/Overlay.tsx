@@ -4,7 +4,7 @@ import useOverlayPosition from "hooks/useOverlayPosition";
 import mergeRefs from "utils/mergeRefs";
 import "./Overlay.scss";
 
-interface OverlayProps {
+export interface OverlayProps {
   applyTop?: boolean;
   applyBottom?: boolean;
   applyLeft?: boolean;
