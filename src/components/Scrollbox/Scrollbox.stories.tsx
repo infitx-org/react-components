@@ -2,7 +2,7 @@ import React from "react";
 import ScrollBox from "./ScrollBox";
 
 export default {
-  title: "Components/Scrollbox/Ro",
+  title: "Components/Scrollbox",
 };
 
 // const Template = (args) => (
