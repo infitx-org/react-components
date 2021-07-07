@@ -85,26 +85,24 @@ $end-color: #02182b;
 }
 
 .rc-layout__navbar__overlay {
+  @include any.rc-overlay;
+
   margin-top: 1px;
   width: 100%;
-  position: absolute;
-  z-index: 1000;
   padding: 0;
   display: flex;
   min-width: 160px;
+  background: map.get(themes.$colors--dark, "secondary");
   border-bottom: 5px solid map.get(themes.$colors--dark, "primary");
+  animation: fadeInOverlay 0.15s ease-in-out;
 }
 
 .rc-layout__navbar__overlay-content {
   @include any.rc-component;
-  @include any.rc-overlay;
 
-  background: map.get(themes.$colors--dark, "secondary");
   flex: 1 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
   padding: 10px 0;
-  animation: fadeInOverlay 0.15s ease-in-out;
 }
 
 .rc-layout__navbar__block__item {

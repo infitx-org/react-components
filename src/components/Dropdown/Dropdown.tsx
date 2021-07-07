@@ -3,10 +3,10 @@ import classnames from "classnames";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import Indicator from "components/shared/Indicator";
 import { BaseButton } from "components/Button";
+import Overlay from "components/Overlay";
 import { KeyCode } from "../../types";
 import { ButtonProps } from "../Button";
 import DropdownItem, { DropdownItemProps } from "./components/DropdownItem";
-import DropdownOverlay from "./components/DropdownOverlay";
 import "./Dropdown.scss";
 
 function isDropdownItem(child: React.ReactNode): boolean {
@@ -60,22 +60,24 @@ const Dropdown = ({
         ref={buttonRef}
       />
       {open && (
-        <DropdownOverlay ref={overlayRef}>
-          {React.Children.toArray(children)
-            .filter(isDropdownItem)
-            .map((child) => child as React.ReactElement<DropdownItemProps>)
-            .map((child) =>
-              React.cloneElement(child, {
-                ...child.props,
-                onClick: (e: React.MouseEvent<HTMLDivElement>) => {
-                  child.props.onClick?.(e);
-                  setOpen(false);
-                },
-                kind,
-                size,
-              })
-            )}
-        </DropdownOverlay>
+        <Overlay ref={overlayRef} className="rc-dropdown__overlay">
+          <div className="rc-dropdown__overlay-content">
+            {React.Children.toArray(children)
+              .filter(isDropdownItem)
+              .map((child) => child as React.ReactElement<DropdownItemProps>)
+              .map((child) =>
+                React.cloneElement(child, {
+                  ...child.props,
+                  onClick: (e: React.MouseEvent<HTMLDivElement>) => {
+                    child.props.onClick?.(e);
+                    setOpen(false);
+                  },
+                  kind,
+                  size,
+                })
+              )}
+          </div>
+        </Overlay>
       )}
     </div>
   );

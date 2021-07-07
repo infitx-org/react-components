@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "components/Icon";
+import Overlay from "components/Overlay";
 import useOnClickOutside from "hooks/useOnClickOutside";
-import Overlay from "./Overlay";
 
 interface BlockItemProps {
   label?: string;
@@ -86,8 +86,19 @@ function Block({ icon, initial, label, onClick, children }: BlockProps) {
         <span>{label}</span>
       </div>
       {children && overlayVisible && (
-        <Overlay>
-          {getBlockItems(children, { onClick: () => setOverlayVisible(false) })}
+        <Overlay
+          className="rc-layout__navbar__overlay"
+          applyTop
+          applyBottom
+          applyLeft
+          applyRight
+          withinWidth
+        >
+          <div className="rc-layout__navbar__overlay-content">
+            {getBlockItems(children, {
+              onClick: () => setOverlayVisible(false),
+            })}
+          </div>
         </Overlay>
       )}
     </div>

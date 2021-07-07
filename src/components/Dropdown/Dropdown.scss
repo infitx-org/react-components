@@ -6,3 +6,21 @@
   position: relative;
   display: inline-flex;
 }
+
+.rc-dropdown__overlay {
+  padding: 3px 0;
+  display: flex;
+  min-width: max-content;
+}
+
+.rc-dropdown__overlay-content {
+  @include any.rc-component;
+  @include any.rc-overlay;
+
+  flex: 1 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 10px 0;
+  animation: fadeInOverlay 0.15s ease-in-out;
+}
