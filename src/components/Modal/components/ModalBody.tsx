@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import ScrollBox from "components/Scrollbox";
+import ScrollBox from "components/ScrollBox";
 
 export interface ModalBodyProps {
   style?: React.CSSProperties;
