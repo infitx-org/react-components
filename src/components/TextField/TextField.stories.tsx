@@ -73,15 +73,3 @@ export const Large = Template.bind({});
 Large.args = {
   size: "large",
 };
-
-export const Test = () => {
-  const onFocus = () => {
-    setTimeout(() => console.log(document.activeElement), 100);
-  };
-  return (
-    <TextField
-      validation={[{ active: true, message: "message!" }]}
-      onFocus={onFocus}
-    />
-  );
-};
