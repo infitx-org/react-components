@@ -60,7 +60,7 @@ const Dropdown = ({
         ref={buttonRef}
       />
       {open && (
-        <Overlay ref={overlayRef} className="rc-dropdown__overlay">
+        <Overlay ref={overlayRef} className="rc-dropdown__overlay" withinWidth>
           <div className="rc-dropdown__overlay-content">
             {React.Children.toArray(children)
               .filter(isDropdownItem)
