@@ -68,7 +68,7 @@ export default class ScrollBar extends PureComponent<
     this.dragging = true;
   }
 
-  onMouseMove(e) {
+  onMouseMove(e: MouseEvent) {
     if (this.dragging && this.trackerRef.current) {
       const { top, height } = this.trackerRef.current.getBoundingClientRect();
       const mousePosY = e.pageY - top;
