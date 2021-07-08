@@ -18,7 +18,9 @@ export default function ModalBody({
   ]);
   return (
     <ScrollBox>
-      <div className={className}>{children}</div>
+      <div className={className} style={style}>
+        {children}
+      </div>
     </ScrollBox>
   );
 }
