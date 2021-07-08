@@ -41,7 +41,6 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
   }
 
   componentDidUpdate() {
-    this.updateContentSize();
     this.updateScrollbar();
   }
 
@@ -53,7 +52,7 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
   }
 
   handleResize() {
-    this.updateContentSize();
+    console.log("dio");
     this.updateScrollbar();
   }
 
@@ -101,10 +100,8 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
     const paddingRight = parseFloat(
       computedStyle.getPropertyValue("padding-right")
     );
-    const exactWidth = `${width - paddingLeft + paddingRight}px`;
+    const exactWidth = `${width - paddingLeft - paddingRight}px`;
 
-    this.contentRef.current!.style.minWidth = exactWidth;
-    this.contentRef.current!.style.maxWidth = exactWidth;
     this.contentRef.current!.style.width = exactWidth;
   }
 
@@ -129,19 +126,10 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
     ]);
 
     return (
-      <ReactResizeDetector
-        handleWidth
-        handleHeight
-        onResize={this.handleResize}
-        targetRef={this.wrapperRef}
-      >
+      <ReactResizeDetector handleHeight targetRef={this.wrapperRef}>
         <div ref={this.wrapperRef} className={wrapperClassName} style={style}>
           <div ref={this.contentBoxRef} className={contentBoxClassName}>
-            <ReactResizeDetector
-              handleHeight
-              onResize={this.handleResize}
-              targetRef={this.contentRef}
-            >
+            <ReactResizeDetector handleHeight targetRef={this.contentRef}>
               <div ref={this.contentRef} className={contentClassName}>
                 {children}
               </div>

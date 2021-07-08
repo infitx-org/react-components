@@ -31,11 +31,20 @@ export const SpecifyComponents = () => (
   </Modal>
 );
 
-export const Maximise = () => (
-  <Modal title="test" onClose={log} maximise onSubmit={log}>
-    Body is Maximized
-  </Modal>
-);
+export const Maximise = () => {
+  const [count, setCount] = useState(0);
+  setInterval(() => setCount(count + 1), 1000);
+  return (
+    <Modal title="test" onClose={log} maximise onSubmit={log}>
+      <div>
+        <div style={{ height: "2000px" }}>Body is Maximized</div>
+        {new Array(count).fill(1).map(() => (
+          <div style={{ height: "20px" }}>{count}</div>
+        ))}
+      </div>
+    </Modal>
+  );
+};
 
 export const NoFooterAndNoHeader = () => <Modal>test</Modal>;
 

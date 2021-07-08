@@ -6,7 +6,6 @@
   position: relative;
   overflow-x: hidden;
   display: flex;
-  flex: 1 1 auto;
   flex-direction: row;
   max-height: 100%;
 }
@@ -18,17 +17,10 @@
   -webkit-overflow-scrolling: touch;
   padding-right: 20px;
   flex: 1 0 auto;
-  flex-direction: column;
 }
 
 .rc-scrollbox__content-box--flexible {
   display: flex;
-}
-
-.rc-scrollbox__content {
-  width: calc(100% + 20px);
-  flex: 2 0 auto;
-  flex-direction: column;
 }
 
 .rc-scrollbox__content--flexible {

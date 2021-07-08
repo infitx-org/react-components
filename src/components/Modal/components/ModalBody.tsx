@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import ScrollBox from "components/Scrollbox";
 
 export interface ModalBodyProps {
   style?: React.CSSProperties;
@@ -16,8 +17,8 @@ export default function ModalBody({
     common && `rc-modal__body--common`,
   ]);
   return (
-    <div className={className} style={style}>
-      {children}
-    </div>
+    <ScrollBox>
+      <div className={className}>{children}</div>
+    </ScrollBox>
   );
 }
