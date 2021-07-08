@@ -1,6 +1,6 @@
 {
   "name": "@modusbox/react-components",
-  "version": "0.1.1-49",
+  "version": "0.1.1-50",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "license": "MIT",
