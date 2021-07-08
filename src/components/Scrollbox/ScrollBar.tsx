@@ -1,4 +1,4 @@
-import React, { PureComponent, MouseEvent } from "react";
+import React, { PureComponent } from "react";
 import classNames from "classnames";
 
 interface Position {
@@ -63,7 +63,7 @@ export default class ScrollBar extends PureComponent<
     window.removeEventListener("mouseup", this.onMouseUp);
   }
 
-  onMouseDown(e: MouseEvent) {
+  onMouseDown(e: React.MouseEvent) {
     this.originMouseY = e.nativeEvent.offsetY;
     this.dragging = true;
   }
