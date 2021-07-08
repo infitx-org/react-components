@@ -96,12 +96,6 @@
 
 .rc-modal__body {
   @include any.rc-component;
-
-  position: relative;
-  width: 100%;
-  overflow: auto;
-  min-height: 0;
-  flex: 1;
 }
 
 .rc-modal__body--common {
