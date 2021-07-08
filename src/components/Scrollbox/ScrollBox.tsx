@@ -52,7 +52,6 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
   }
 
   handleResize() {
-    console.log("dio");
     this.updateScrollbar();
   }
 
