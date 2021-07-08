@@ -93,7 +93,7 @@ $end-color: #02182b;
   display: flex;
   min-width: 160px;
   background: map.get(themes.$colors--dark, "secondary");
-  border-bottom: 5px solid map.get(themes.$colors--dark, "primary");
+  border-bottom: 5px solid map.get(themes.$colors, "primary");
   animation: fadeInOverlay 0.15s ease-in-out;
 }
 
