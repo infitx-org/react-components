@@ -6,7 +6,7 @@ export default {
 };
 
 /* eslint-disable no-console */
-const options = new Array(3).fill(0).map((_, index: number) => ({
+const options = new Array(6).fill(0).map((_, index: number) => ({
   label: index + 1,
   value: index + 1,
 }));

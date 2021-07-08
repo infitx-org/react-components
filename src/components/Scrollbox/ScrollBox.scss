@@ -1,0 +1,61 @@
+@use "../../scss/components/any.scss";
+
+.rc-scrollbox__wrapper {
+  @include any.rc-component;
+
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  max-height: 100%;
+}
+
+.rc-scrollbox__content-box {
+  width: calc(100% + 20px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 20px;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.rc-scrollbox__content-box--flexible {
+  display: flex;
+}
+
+.rc-scrollbox__content {
+  width: calc(100% + 20px);
+  flex: 2 0 auto;
+  flex-direction: column;
+}
+
+.rc-scrollbox__content--flexible {
+  height: auto;
+  display: flex;
+}
+
+.rc-scrollbox__scrollbar {
+  width: 6px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: transparent;
+
+  &.show-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .scrollbar-handle {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.7;
+    width: 100%;
+    transition: opacity 0.2s linear;
+
+    &.moving {
+      opacity: 1;
+    }
+  }
+}

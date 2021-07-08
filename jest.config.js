@@ -1,4 +1,8 @@
 module.exports = {
+  "setupFiles": ["./setupTests.js"],
+  "globals": {
+    "window": {}
+  },
   moduleFileExtensions: ["tsx", "ts", "js", "json"],
   moduleDirectories: ["node_modules", "src"],
   roots: ["src"],
