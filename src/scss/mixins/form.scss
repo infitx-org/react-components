@@ -34,3 +34,15 @@
     }
   }
 }
+
+@mixin paddings--bySize($sizes, $xRatio, $yRatio) {
+  @each $size in $sizes {
+    &--#{$size} {
+      padding: functions.padding-size(
+        map.get(input.$sizes, $size),
+        $xRatio,
+        $yRatio
+      );
+    }
+  }
+}

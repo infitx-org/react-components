@@ -9,11 +9,13 @@ $item-sizes: "extra-small", "small", "medium", "large";
 .rc-dropdown__item {
   @include any.rc-component;
   @include form.font-size--bySize($item-sizes);
-  @include form.height--bySize($item-sizes);
+  @include form.paddings--bySize($item-sizes, 3, 4);
 
   padding: 8px 10px;
   color: #333;
   cursor: pointer;
+  align-items: center;
+  display: flex;
 }
 
 @each $kind in themes.$kinds {
@@ -23,18 +25,6 @@ $item-sizes: "extra-small", "small", "medium", "large";
       color: map.get(themes.$colors--opposite, $kind);
     }
   }
-}
-
-.rc-dropdown__item--small {
-  padding: 6px 10px;
-}
-
-.rc-dropdown__item--medium {
-  padding: 8px 13px;
-}
-
-.rc-dropdown__item--large {
-  padding: 10px 16px;
 }
 
 @keyframes fadeInOverlay {

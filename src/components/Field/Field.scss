@@ -13,6 +13,7 @@ $field-sizes: "small", "medium", "large";
   @include form.border-color;
   @include form.font-size--bySize($field-sizes);
   @include form.height--bySize($field-sizes);
+  @include form.paddings--bySize($field-sizes, 3, -1);
 
   border-radius: input.$border-radius;
   position: relative;
@@ -78,19 +79,4 @@ $field-sizes: "small", "medium", "large";
   opacity: input.$opacity--disabled;
   pointer-events: none;
   cursor: auto;
-}
-
-.rc-field--small {
-  padding-left: 10px;
-  padding-right: 6px;
-}
-
-.rc-field--medium {
-  padding-left: 13px;
-  padding-right: 8px;
-}
-
-.rc-field--large {
-  padding-left: 16px;
-  padding-right: 10px;
 }

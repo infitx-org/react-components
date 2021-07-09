@@ -13,6 +13,7 @@ $button-sizes: "extra-small", "small", "medium", "large";
   @include form.border-size;
   @include form.font-size--bySize($button-sizes);
   @include form.height--bySize($button-sizes);
+  @include form.paddings--bySize($button-sizes, 2.5, -1);
 
   margin: 0;
   outline: none;
@@ -46,22 +47,6 @@ $button-sizes: "extra-small", "small", "medium", "large";
 
   &:not(.rc-button--noFill):not(:disabled) {
     border-bottom-color: rgba(0, 0, 0, 0.2);
-  }
-
-  &.rc-button--extra-small {
-    padding: 4px 7px;
-  }
-
-  &.rc-button--small {
-    padding: 6px 10px;
-  }
-
-  &.rc-button--medium {
-    padding: 8px 13px;
-  }
-
-  &.rc-button--large {
-    padding: 10px 16px;
   }
 
   @each $kind in themes.$kinds {
