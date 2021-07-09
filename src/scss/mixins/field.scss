@@ -1,5 +1,5 @@
 @use "../functions.scss";
-@use "./input.scss";
+@use "../base/input.scss";
 
 @mixin icon {
   flex: 0 0 auto;

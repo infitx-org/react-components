@@ -1,4 +1,4 @@
-@use "../../scss/components/any.scss";
+@use "../../scss/mixins/any.scss";
 
 .rc-label {
   @include any.rc-component;

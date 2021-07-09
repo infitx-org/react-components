@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "../../scss/base/colors.scss";
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss";
+@use "../../scss/mixins/any.scss";
 
 .rc-pill {
   @include any.rc-component;

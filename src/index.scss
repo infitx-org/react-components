@@ -2,12 +2,13 @@
 @forward "./scss/base/fonts.scss";
 @forward "./scss/base/shadows.scss";
 @forward "./scss/base/transitions.scss";
-@forward "./scss/components/input.scss";
-@forward "./scss/components/field.scss";
-@forward "./scss/components/any.scss";
+@forward "./scss/base/input.scss";
 @forward "./scss/functions.scss";
 @forward "./scss/themes.scss";
 @forward "./scss/vars.scss";
+@forward "./scss/mixins/form.scss";
+@forward "./scss/mixins/field.scss";
+@forward "./scss/mixins/any.scss";
 @forward "./components/Button/Button.scss";
 @forward "./components/Checkbox/Checkbox.scss";
 @forward "./components/DatePicker/index.scss";
