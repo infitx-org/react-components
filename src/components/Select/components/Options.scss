@@ -1,6 +1,6 @@
 @use "../../../scss/base/colors.scss";
-@use "../../../scss/components/input.scss";
-@use "../../../scss/components/any.scss";
+@use "../../../scss/base/input.scss";
+@use "../../../scss/mixins/any.scss";
 
 .rc-select__options {
   @include any.rc-overlay;

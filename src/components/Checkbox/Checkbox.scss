@@ -1,9 +1,9 @@
 @use "sass:map";
 @use "../../scss/base/shadows.scss";
 @use "../../scss/base/colors.scss";
-@use "../../scss/components/input.scss";
+@use "../../scss/base/input.scss";
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss";
+@use "../../scss/mixins/any.scss";
 
 .rc-checkbox__wrapper {
   @include any.rc-component;

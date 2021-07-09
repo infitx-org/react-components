@@ -1,13 +1,15 @@
 @use "sass:map";
-@use "../../scss/base/colors.scss";
-@use "../../scss/components/input.scss";
+@use "../../scss/base/input.scss";
 @use "../../scss/base/shadows.scss";
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss";
+@use "../../scss/mixins/any.scss";
+@use "../../scss/mixins/form.scss";
 @use "../../scss/functions.scss";
 
 .rc-field {
   @include any.rc-component;
+  @include form.border-size;
+  @include form.border-color;
 
   border-radius: input.$border-radius;
   position: relative;
@@ -16,15 +18,6 @@
   width: 200px;
   transition: input.$transition;
   background: input.$background;
-  border-bottom-color: input.$border-bottom-color;
-  border-right-color: input.$border-right-color;
-  border-left-color: input.$border-left-color;
-  border-top-color: input.$border-top-color;
-  border-left-width: input.$border-left-width;
-  border-right-width: input.$border-right-width;
-  border-top-width: input.$border-top-width;
-  border-bottom-width: input.$border-bottom-width;
-  border-style: solid;
 
   &::before {
     position: absolute;

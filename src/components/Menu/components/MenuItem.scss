@@ -1,5 +1,5 @@
 @use "../../../scss/base/colors.scss";
-@use "../../../scss/components/any.scss";
+@use "../../../scss/mixins/any.scss";
 
 .rc-menu-item {
   @include any.rc-component;

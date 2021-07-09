@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "../../scss/base/shadows.scss";
 @use "../../scss/base/colors.scss";
-@use "../../scss/components/any.scss";
+@use "../../scss/mixins/any.scss";
 @use "../../scss/themes.scss";
 
 .rc-radiogroup {

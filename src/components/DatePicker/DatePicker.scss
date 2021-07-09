@@ -1,6 +1,6 @@
 @use "../../scss/base/colors.scss";
-@use "../../scss/components/field.scss";
-@use "../../scss/components/any.scss";
+@use "../../scss/mixins/field.scss";
+@use "../../scss/mixins/any.scss";
 
 .rc-datepicker {
   @include any.rc-component;

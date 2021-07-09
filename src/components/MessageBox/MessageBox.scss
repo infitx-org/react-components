@@ -1,8 +1,8 @@
 @use "sass:map";
 @use "../../scss/base/colors.scss";
 @use "../../scss/themes.scss";
-@use "../../scss/components/any.scss";
-@use "../../scss/components/input.scss";
+@use "../../scss/mixins/any.scss";
+@use "../../scss/base/input.scss";
 
 .rc-message-box {
   @include any.rc-component;

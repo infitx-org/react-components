@@ -1,4 +1,4 @@
-@use "../../../scss/components/field.scss";
+@use "../../../scss/mixins/field.scss";
 
 .rc-datepicker__calendar-icon {
   @include field.icon;

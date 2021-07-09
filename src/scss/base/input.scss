@@ -1,0 +1,27 @@
+@use "./colors.scss";
+@use "./transitions.scss";
+
+$size--extra-small: 24px !default;
+$size--small: 30px !default;
+$size--medium: 36px !default;
+$size--large: 42px !default;
+
+$border-radius: 0 !default;
+$border-left-width: 1px !default;
+$border-right-width: 1px !default;
+$border-top-width: 1px !default;
+$border-bottom-width: 2px !default;
+
+$border-left-color: #e5e5e5 !default;
+$border-right-color: #e5e5e5 !default;
+$border-top-color: #e5e5e5 !default;
+$border-bottom-color: colors.$primary !default;
+
+$background: #fcfcfc !default;
+
+$opacity--disabled: 0.5 !default;
+
+$placeholder-color: #999 !default;
+
+$transition: box-shadow 0.2s ease-out, color 0.5s transitions.$main-easing,
+  opacity 0.5s transitions.$main-easing, border 0.2s ease-out !default;
