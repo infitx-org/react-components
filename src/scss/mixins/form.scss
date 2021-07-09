@@ -1,4 +1,6 @@
+@use "sass:map";
 @use '../base/input.scss';
+@use "../functions.scss";
 
 @mixin border-size {
   border: none;
@@ -15,4 +17,20 @@
   border-right-color: input.$border-right-color;
   border-left-color: input.$border-left-color;
   border-top-color: input.$border-top-color;
+}
+
+@mixin font-size--bySize($sizes) {
+  @each $size in $sizes {
+    &--#{$size} {
+      font-size: functions.input-font-size(map.get(input.$sizes, $size));
+    }
+  }
+}
+
+@mixin height--bySize($sizes) {
+  @each $size in $sizes {
+    &--#{$size} {
+      height: map.get(input.$sizes, $size);
+    }
+  }
 }

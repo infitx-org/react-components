@@ -1,11 +1,15 @@
-@use "../../../scss/mixins/any.scss";
-@use "../../../scss/base/input.scss";
-@use "../../../scss/functions.scss";
-@use "../../../scss/themes.scss";
 @use "sass:map";
+@use "../../../scss/mixins/any.scss";
+@use "../../../scss/mixins/form.scss";
+@use "../../../scss/base/input.scss";
+@use "../../../scss/themes.scss";
+
+$item-sizes: "extra-small", "small", "medium", "large";
 
 .rc-dropdown__item {
   @include any.rc-component;
+  @include form.font-size--bySize($item-sizes);
+  @include form.height--bySize($item-sizes);
 
   padding: 8px 10px;
   color: #333;
@@ -23,17 +27,14 @@
 
 .rc-dropdown__item--small {
   padding: 6px 10px;
-  font-size: functions.inputfontsize(input.$size--small);
 }
 
 .rc-dropdown__item--medium {
   padding: 8px 13px;
-  font-size: functions.inputfontsize(input.$size--medium);
 }
 
 .rc-dropdown__item--large {
   padding: 10px 16px;
-  font-size: functions.inputfontsize(input.$size--large);
 }
 
 @keyframes fadeInOverlay {

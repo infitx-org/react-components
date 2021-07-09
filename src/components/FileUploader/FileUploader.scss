@@ -4,7 +4,6 @@
 
 .rc-fileuploader {
   @include any.rc-component;
-  @include field.input;
 
   flex: 2 1 auto;
   position: relative;

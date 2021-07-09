@@ -4,12 +4,15 @@
 @use "../../scss/themes.scss";
 @use "../../scss/mixins/any.scss";
 @use "../../scss/mixins/form.scss";
-@use "../../scss/functions.scss";
+
+$field-sizes: "small", "medium", "large";
 
 .rc-field {
   @include any.rc-component;
   @include form.border-size;
   @include form.border-color;
+  @include form.font-size--bySize($field-sizes);
+  @include form.height--bySize($field-sizes);
 
   border-radius: input.$border-radius;
   position: relative;
@@ -78,22 +81,16 @@
 }
 
 .rc-field--small {
-  height: input.$size--small;
   padding-left: 10px;
   padding-right: 6px;
-  font-size: functions.inputfontsize(input.$size--small);
 }
 
 .rc-field--medium {
-  height: input.$size--medium;
   padding-left: 13px;
   padding-right: 8px;
-  font-size: functions.inputfontsize(input.$size--medium);
 }
 
 .rc-field--large {
-  height: input.$size--large;
   padding-left: 16px;
   padding-right: 10px;
-  font-size: functions.inputfontsize(input.$size--large);
 }
