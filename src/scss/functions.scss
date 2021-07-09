@@ -4,6 +4,21 @@
   @return math.div($number, $number * 0 + 1);
 }
 
-@function inputfontsize($size) {
+@function input-font-size($size) {
   @return 11 + (math.div(strip-units($size) - 24, 6)) + px;
+}
+
+@function divide-non-negative($dividing, $divider) {
+  @if ($divider > 0) {
+    @return math.div($dividing, $divider);
+  } @else {
+    @return 0;
+  }
+}
+
+@function padding-size($size, $xRatio, $yRatio) {
+  $y: divide-non-negative(strip-units($size), $yRatio) + px;
+  $x: divide-non-negative(strip-units($size), $xRatio) + px;
+
+  @return $y $x;
 }

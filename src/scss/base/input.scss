@@ -25,3 +25,10 @@ $placeholder-color: #999 !default;
 
 $transition: box-shadow 0.2s ease-out, color 0.5s transitions.$main-easing,
   opacity 0.5s transitions.$main-easing, border 0.2s ease-out !default;
+
+$sizes: (
+  "extra-small": $size--extra-small,
+  "small": $size--small,
+  "medium": $size--medium,
+  "large": $size--large,
+);
