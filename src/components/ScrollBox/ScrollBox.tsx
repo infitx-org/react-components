@@ -97,14 +97,12 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
     const wrapperWidth = this.wrapperRef.current.getBoundingClientRect().width;
     const scrollbarWidth = contentBoxWidth - contentWidth;
 
-    console.log(wrapperWidth, contentBoxWidth, contentWidth, scrollbarWidth);
-
+    // TODO: make it work
     // this.contentRef.current.style.width = `${wrapperWidth}px`;
     // this.contentBoxRef.current.style.paddingRight = `${scrollbarWidth}px`;
     // this.wrapperRef.current.style.width = `${wrapperWidth}px`;
     // this.contentBoxRef.current.style.width = `${contentBoxWidth + scrollbarWidth}px`;
     // this.contentBoxRef.current.style.overflowY = 'scroll';
-
     // this.wrapperRef.current.style.paddingRight = `${scrollbarWidth}px`;
     // this.contentRef.current.style.width = `${contentBoxWidth}px`;
   }

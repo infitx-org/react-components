@@ -3,6 +3,7 @@ import classnames from "classnames";
 import Row, { RowProps as RawRowProps } from "../../Flexbox/Row";
 import Column, { ColumnProps as RawColumnProps } from "../../Flexbox/Column";
 import type { FormFieldProps } from "../shared";
+import FormField from "../FormField";
 
 interface RowProps extends RawRowProps {
   direction: "row";
@@ -33,6 +34,14 @@ function isColumn(props: WhichProps): props is ColumnProps {
   return props.direction === "column";
 }
 
+function isFormField(child: React.ReactNode): child is Child {
+  return (
+    (child as React.ReactElement).type === FormField ||
+    // eslint-disable-next-line
+    (child as React.ReactElement).type === FormFields
+  );
+}
+
 function FormFields({
   outerDirection,
   className,
@@ -49,12 +58,15 @@ function FormFields({
     className,
   ]);
 
-  const content = childrenArray.map((child) =>
-    React.cloneElement(child, {
+  const content = childrenArray.map((child) => {
+    if (!isFormField(child)) {
+      return child;
+    }
+    return React.cloneElement(child, {
       ...child.props,
       outerDirection: props.direction,
-    })
-  );
+    });
+  });
 
   if (isRow(props)) {
     return (
