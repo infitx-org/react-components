@@ -1,20 +1,9 @@
-@use "../../scss/base/colors.scss";
-@use "../../scss/mixins/field.scss";
+@use "../../scss/mixins/form.scss";
 @use "../../scss/mixins/any.scss";
 
 .rc-fileuploader {
   @include any.rc-component;
-
-  flex: 2 1 auto;
-  position: relative;
-  height: 20px;
-  vertical-align: middle;
-  line-height: 20px;
-  pointer-events: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: colors.$dark-gray;
+  @include form.input;
 }
 
 .rc-fileuploader__input {

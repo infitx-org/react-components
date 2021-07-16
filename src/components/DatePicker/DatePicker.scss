@@ -1,21 +1,7 @@
-@use "../../scss/base/colors.scss";
-@use "../../scss/mixins/field.scss";
+@use "../../scss/mixins/form.scss";
 @use "../../scss/mixins/any.scss";
 
 .rc-datepicker {
   @include any.rc-component;
-
-  flex: 2 1 auto;
-  vertical-align: middle;
-  position: relative;
-  height: 20px;
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 0;
-  pointer-events: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: colors.$dark-gray;
+  @include form.input;
 }

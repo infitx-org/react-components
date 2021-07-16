@@ -1,8 +1,8 @@
-@use "../../../scss/mixins/field.scss";
+@use "../../../scss/mixins/form.scss";
 @use "../../../scss/base/colors.scss";
 
 .rc-invalid-icon {
-  @include field.icon;
+  @include form.input-icon;
 
   fill: colors.$danger;
 }

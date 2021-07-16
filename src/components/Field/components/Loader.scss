@@ -1,5 +1,5 @@
-@use "../../../scss/mixins/field.scss";
+@use "../../../scss/mixins/form.scss";
 
 .rc-loader {
-  @include field.icon;
+  @include form.input-icon;
 }

@@ -1,7 +1,7 @@
-@use "../../../scss/mixins/field.scss";
+@use "../../../scss/mixins/form.scss";
 
 .rc-select__filter {
-  @include field.icon;
+  @include form.input-icon;
 
   fill: #999;
 }
