@@ -19,15 +19,18 @@ exports[`renders the FileUploader correctly when multiple props are set 1`] = `
       class="rc-fileuploader rc-fileuploader--large"
     />
     <button
-      class="rc-button rc-button--primary rc-button--extra-small rc-button--noFill"
-      tabindex="-1"
+      class="rc-icon-button rc-icon-button--default rc-fileuploader__button"
+      style="height: 18px; width: 18px;"
       type="button"
     >
-      <div
-        class="rc-button__content"
-      >
-        Choose File
-      </div>
+      <svg
+        class="rc-icon-button__icon"
+        fill="#000"
+        height="18"
+        stroke="transparent"
+        style="fill: inherit;"
+        width="18"
+      />
     </button>
   </div>
 </div>

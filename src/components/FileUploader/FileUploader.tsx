@@ -3,7 +3,9 @@ import classnames from "classnames";
 import readFileAsText from "@modusbox/ts-utils/lib/file/readFileAsText";
 import readFileAsBase64 from "@modusbox/ts-utils/lib/file/readFileAsBase64";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
-import Button from "components/Button";
+import FolderPlusIcon from "bootstrap-icons/icons/folder-plus.svg";
+import TrashIcon from "bootstrap-icons/icons/trash.svg";
+import IconButton from "components/IconButton";
 import { WithValidationProps, WithLabelProps } from "../../hocs";
 import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
@@ -141,15 +143,16 @@ export default React.forwardRef(function FileUploader(
   }
 
   const button = (
-    <Button
-      noFill={!focused}
-      tabIndex={-1}
-      size="extra-small"
-      label={selectedFileName ? "Remove File" : "Choose File"}
+    <IconButton
+      /* noFill={!focused} */
+      icon={selectedFileName ? <TrashIcon /> : <FolderPlusIcon />}
+      className="rc-fileuploader__button"
+      size={18}
+      tooltipLabel={selectedFileName ? "Remove File" : "Choose File"}
       onClick={
         selectedFileName ? onRemoveFileButtonClick : onChooseFileButtonClick
       }
-      kind={selectedFileName ? "danger" : "primary"}
+      kind={selectedFileName ? "danger" : undefined}
     />
   );
 
