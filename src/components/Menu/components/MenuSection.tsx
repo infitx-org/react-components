@@ -14,8 +14,8 @@ export default function MenuSection({
   hidden,
   disabled = false,
   icon,
-  size = 14,
-  fill = "#7C7C7C",
+  iconSize = 14,
+  iconFill = "#7C7C7C",
   children,
 }: MenuSectionProps) {
   if (hidden) {
@@ -27,7 +27,7 @@ export default function MenuSection({
   if (icon) {
     itemIcon = (
       <div className="rc-menu-section__icon">
-        <Icon icon={icon} size={size} fill={fill} />
+        <Icon icon={icon} size={iconSize} fill={iconFill} />
       </div>
     );
   }
