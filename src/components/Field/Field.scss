@@ -19,7 +19,7 @@ $field-sizes: "small", "medium", "large";
   position: relative;
   display: inline-flex;
   align-items: center;
-  width: 200px;
+  min-width: 200px;
   transition: input.$transition;
   background: input.$background;
 

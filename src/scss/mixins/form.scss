@@ -1,5 +1,6 @@
 @use "sass:map";
 @use '../base/input.scss';
+@use '../base/colors.scss';
 @use "../functions.scss";
 
 @mixin border-size {
@@ -17,6 +18,28 @@
   border-right-color: input.$border-right-color;
   border-left-color: input.$border-left-color;
   border-top-color: input.$border-top-color;
+}
+
+@mixin input {
+  flex: 2 1 auto;
+  vertical-align: middle;
+  position: relative;
+  height: 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: colors.$dark-gray;
+}
+
+@mixin input-icon {
+  flex: 0 0 auto;
+  fill: #999;
+  margin-left: 5px;
 }
 
 @mixin font-size--bySize($sizes) {
