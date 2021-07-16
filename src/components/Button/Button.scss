@@ -15,7 +15,6 @@ $button-sizes: "extra-small", "small", "medium", "large";
   @include form.height--bySize($button-sizes);
   @include form.paddings--bySize($button-sizes, 2.5, -1);
 
-  margin: 0;
   outline: none;
   cursor: pointer;
   position: relative;
@@ -37,7 +36,7 @@ $button-sizes: "extra-small", "small", "medium", "large";
 
   &:hover,
   &:focus {
-    border-bottom-width: 2px;
+    border-bottom-width: input.$border-bottom-width;
     border-bottom-color: rgba(0, 0, 0, 0.2);
 
     &:active {
