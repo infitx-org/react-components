@@ -82,21 +82,20 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
     }
   }
 
+  // eslint-disable-next-line
   updateContentSize() {
-    if (
-      !this.wrapperRef.current ||
-      !this.contentBoxRef.current ||
-      !this.contentRef.current
-    ) {
-      return;
-    }
-
-    const contentBoxWidth = this.contentBoxRef.current.getBoundingClientRect()
-      .width;
-    const contentWidth = this.contentRef.current.getBoundingClientRect().width;
-    const wrapperWidth = this.wrapperRef.current.getBoundingClientRect().width;
-    const scrollbarWidth = contentBoxWidth - contentWidth;
-
+    // if (
+    //   !this.wrapperRef.current ||
+    //   !this.contentBoxRef.current ||
+    //   !this.contentRef.current
+    // ) {
+    //   return;
+    // }
+    // const contentBoxWidth = this.contentBoxRef.current.getBoundingClientRect()
+    //   .width;
+    // const contentWidth = this.contentRef.current.getBoundingClientRect().width;
+    // const wrapperWidth = this.wrapperRef.current.getBoundingClientRect().width;
+    // const scrollbarWidth = contentBoxWidth - contentWidth;
     // TODO: make it work
     // this.contentRef.current.style.width = `${wrapperWidth}px`;
     // this.contentBoxRef.current.style.paddingRight = `${scrollbarWidth}px`;
