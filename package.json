@@ -1,6 +1,6 @@
 {
   "name": "@modusbox/react-components",
-  "version": "0.1.1-52",
+  "version": "0.1.1-53",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "license": "MIT",
@@ -14,8 +14,7 @@
     "bootstrap-icons": "^1.5.0",
     "date-fns": "^2.21.3",
     "lodash": "^4.17.21",
-    "react-day-picker": "^7.4.10",
-    "react-resize-detector": "^6.7.4"
+    "react-day-picker": "^7.4.10"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",

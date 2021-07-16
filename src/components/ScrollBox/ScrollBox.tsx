@@ -1,12 +1,10 @@
 import classnames from "classnames";
 import React, { PureComponent } from "react";
-import ReactResizeDetector from "react-resize-detector";
 import ScrollBar from "./ScrollBar";
 import "./ScrollBox.scss";
 
 export interface ScrollBoxProps {
   className?: string;
-  flex?: boolean;
   style?: React.CSSProperties;
   trackStyle?: React.CSSProperties;
   handleStyle?: React.CSSProperties;
@@ -32,7 +30,7 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
   }
 
   componentDidMount() {
-    this.updateContentSize();
+    setTimeout(() => this.updateContentSize(), 0);
     this.updateScrollbar();
     this.contentBoxRef.current?.addEventListener(
       "scroll",
@@ -85,23 +83,30 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
   }
 
   updateContentSize() {
-    if (!this.wrapperRef.current) {
+    if (
+      !this.wrapperRef.current ||
+      !this.contentBoxRef.current ||
+      !this.contentRef.current
+    ) {
       return;
     }
-    const { width } = this.wrapperRef.current.getBoundingClientRect();
-    const computedStyle = window.getComputedStyle(
-      this.wrapperRef.current,
-      null
-    );
-    const paddingLeft = parseFloat(
-      computedStyle.getPropertyValue("padding-left")
-    );
-    const paddingRight = parseFloat(
-      computedStyle.getPropertyValue("padding-right")
-    );
-    const exactWidth = `${width - paddingLeft - paddingRight}px`;
 
-    this.contentRef.current!.style.width = exactWidth;
+    const contentBoxWidth = this.contentBoxRef.current.getBoundingClientRect()
+      .width;
+    const contentWidth = this.contentRef.current.getBoundingClientRect().width;
+    const wrapperWidth = this.wrapperRef.current.getBoundingClientRect().width;
+    const scrollbarWidth = contentBoxWidth - contentWidth;
+
+    console.log(wrapperWidth, contentBoxWidth, contentWidth, scrollbarWidth);
+
+    // this.contentRef.current.style.width = `${wrapperWidth}px`;
+    // this.contentBoxRef.current.style.paddingRight = `${scrollbarWidth}px`;
+    // this.wrapperRef.current.style.width = `${wrapperWidth}px`;
+    // this.contentBoxRef.current.style.width = `${contentBoxWidth + scrollbarWidth}px`;
+    // this.contentBoxRef.current.style.overflowY = 'scroll';
+
+    // this.wrapperRef.current.style.paddingRight = `${scrollbarWidth}px`;
+    // this.contentRef.current.style.width = `${contentBoxWidth}px`;
   }
 
   render() {
@@ -111,39 +116,25 @@ class ScrollBox extends PureComponent<ScrollBoxProps> {
       trackStyle,
       style,
       children,
-      flex,
       className,
     } = this.props;
     const wrapperClassName = classnames(["rc-scrollbox__wrapper", className]);
-    const contentBoxClassName = classnames([
-      "rc-scrollbox__content-box",
-      flex && "rc-scrollbox__content-box--flexible",
-    ]);
-    const contentClassName = classnames([
-      "rc-scrollbox__content",
-      flex && "rc-scrollbox__content--flexible",
-    ]);
 
     return (
-      <ReactResizeDetector handleHeight targetRef={this.wrapperRef}>
-        <div ref={this.wrapperRef} className={wrapperClassName} style={style}>
-          <div ref={this.contentBoxRef} className={contentBoxClassName}>
-            <ReactResizeDetector handleHeight targetRef={this.contentRef}>
-              <div ref={this.contentRef} className={contentClassName}>
-                {children}
-              </div>
-            </ReactResizeDetector>
+      <div ref={this.wrapperRef} className={wrapperClassName} style={style}>
+        <div ref={this.contentBoxRef} className="rc-scrollbox__content-box">
+          <div ref={this.contentRef} className="rc-scrollbox__content">
+            {children}
           </div>
-
-          <ScrollBar
-            ref={this.scrollbarRef}
-            trackStyle={trackStyle}
-            handleStyle={handleStyle}
-            showTrack={showTrack}
-            onDrag={this.onDrag}
-          />
         </div>
-      </ReactResizeDetector>
+        <ScrollBar
+          ref={this.scrollbarRef}
+          trackStyle={trackStyle}
+          handleStyle={handleStyle}
+          showTrack={showTrack}
+          onDrag={this.onDrag}
+        />
+      </div>
     );
   }
 }

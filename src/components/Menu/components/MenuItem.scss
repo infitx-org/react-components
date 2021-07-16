@@ -6,10 +6,10 @@
 
   display: flex;
   align-items: center;
-  font-size: 13px;
+  font-size: 15px;
   width: 100%;
   padding-left: 16px;
-  min-height: 40px;
+  min-height: 44px;
   cursor: pointer;
   border-left: 4px solid transparent;
   transition: border 0.2s linear, color 0.2s linear, fill 0.2s linear;
@@ -23,18 +23,18 @@
   &.rc-menu-item--active {
     background: #f2f1f1;
     font-weight: bold;
-    color: #333;
+    color: colors.$dark-gray;
 
     .rc-menu-item__icon {
-      fill: colors.$dark-blue;
+      fill: colors.$dark-gray;
     }
   }
 
   &:hover:not(.rc-menu-item--active) {
-    color: colors.$primary;
+    color: colors.$secondary;
 
     .rc-menu-item__icon {
-      fill: colors.$primary;
+      fill: colors.$secondary;
     }
   }
 }
@@ -55,14 +55,13 @@
 .rc-menu-item__back-icon {
   transform: rotateZ(180deg);
   margin-left: 3px;
-  margin-right: 3px;
+  margin-right: 10px;
 }
 
 .rc-menu-item__item-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
   height: 100%;
   margin-right: 10px;
   padding-bottom: 2px;

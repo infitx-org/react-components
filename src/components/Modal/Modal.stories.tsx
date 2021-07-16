@@ -19,7 +19,7 @@ const { log } = console;
 
 export const Simple = () => (
   <Modal title="I am a modal" onClose={log} onCancel={log} onSubmit={log}>
-    <div>Body!</div>
+    <div style={{ width: "200px" }}>Body!</div>
   </Modal>
 );
 
@@ -32,16 +32,9 @@ export const SpecifyComponents = () => (
 );
 
 export const Maximise = () => {
-  const [count, setCount] = useState(0);
-  setInterval(() => setCount(count + 1), 1000);
   return (
     <Modal title="test" onClose={log} maximise onSubmit={log}>
-      <div>
-        <div style={{ height: "2000px" }}>Body is Maximized</div>
-        {new Array(count).fill(1).map(() => (
-          <div style={{ height: "20px" }}>{count}</div>
-        ))}
-      </div>
+      <div style={{ width: "300px", height: "2000px", background: "#f00" }} />
     </Modal>
   );
 };

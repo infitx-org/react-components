@@ -8,8 +8,8 @@ import "./MenuItem.scss";
 export default function MenuItem({
   label,
   icon,
-  fill,
-  size = 14,
+  iconFill,
+  iconSize = 16,
   to,
   path,
   disabled,
@@ -27,7 +27,7 @@ export default function MenuItem({
       <Icon
         className="rc-menu-item__back-icon"
         icon={<Arrow />}
-        size={10}
+        size={12}
         fill="#999"
       />
     );
@@ -40,8 +40,8 @@ export default function MenuItem({
         <Icon
           className="rc-menu-item__icon"
           icon={icon}
-          size={size}
-          fill={fill}
+          size={iconSize}
+          fill={iconFill}
         />
       </div>
     );

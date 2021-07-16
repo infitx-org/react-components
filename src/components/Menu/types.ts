@@ -2,8 +2,8 @@ export interface MenuSectionProps {
   label: string;
   hidden?: boolean;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
-  fill?: string;
-  size?: number;
+  iconFill?: string;
+  iconSize?: number;
   disabled?: boolean;
   children: MenuItemElement | MenuItemElement[];
 }
@@ -15,8 +15,8 @@ interface BaseMenuItemProps {
   hidden?: boolean;
   back?: boolean;
   icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>;
-  fill?: string;
-  size?: number;
+  iconFill?: string;
+  iconSize?: number;
   // prop partial is not used directly by the MenuItem but it is used by the Menu component
   partial?: boolean;
   children?: MenuItemElement | MenuElement[];
