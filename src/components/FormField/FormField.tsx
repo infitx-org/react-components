@@ -7,6 +7,8 @@ import NumberField from "components/NumberField";
 import RadioGroup from "components/RadioGroup";
 import Select from "components/Select";
 import TextField from "components/TextField";
+// eslint-disable-next-line
+import Container from "./components/Container";
 import * as shared from "./shared";
 import type { FormFieldProps } from "./shared";
 import "./FormField.scss";
@@ -38,5 +40,7 @@ function FormField({ outerDirection, ...props }: FormFieldProps) {
   ]);
   return <div className={className}>{formComponent}</div>;
 }
+
+FormField.Container = Container;
 
 export default FormField;
