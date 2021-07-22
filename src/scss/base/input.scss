@@ -8,19 +8,21 @@ $size--large: 42px !default;
 
 $border-radius: 0 !default;
 
-$border-left-width: 1px !default;
-$border-right-width: 1px !default;
-$border-top-width: 1px !default;
-$border-bottom-width: 1px !default;
+$border-color--default: #e5e5e5 !default;
+$border-color--themed: colors.$primary !default;
 
-$border-left-color: #e5e5e5 !default;
-$border-right-color: #e5e5e5 !default;
-$border-top-color: #e5e5e5 !default;
-$border-bottom-color: #e5e5e5 !default;
-$border-default-color: #e5e5e5 !default;
+$border-width--default: 1px !default;
+$border-width--themed: 2px !default;
 
-$border-themed-color: colors.$primary !default;
-$border-themed-width: 2px !default;
+$border-left-width: $border-width--default !default;
+$border-right-width: $border-width--default !default;
+$border-top-width: $border-width--default !default;
+$border-bottom-width: $border-width--default !default;
+
+$border-left-color: $border-color--default !default;
+$border-right-color: $border-color--default !default;
+$border-top-color: $border-color--default !default;
+$border-bottom-color: $border-color--default !default;
 
 $background: #fcfcfc !default;
 

@@ -4,9 +4,9 @@
 @use "../functions.scss";
 @use "../base/flags.scss";
 
-@function getBorderSize($type) {
+@function get-border-size($type) {
   @if (map.get(flags.$themed-borders, $type)) {
-    @return input.$border-themed-width;
+    @return input.$border-width--themed;
   }
 
   @return map.get(input.$border-widths, $type);
@@ -16,25 +16,25 @@
   border: none;
   border-style: solid;
   border-radius: input.$border-radius;
-  border-top-width: getbordersize("top");
-  border-left-width: getbordersize("left");
-  border-right-width: getbordersize("right");
-  border-bottom-width: getbordersize("bottom");
+  border-top-width: get-border-size("top");
+  border-left-width: get-border-size("left");
+  border-right-width: get-border-size("right");
+  border-bottom-width: get-border-size("bottom");
 }
 
-@function getBorderColor($type) {
+@function get-border-color($type) {
   @if (map.get(flags.$themed-borders, $type)) {
-    @return input.$border-themed-color;
+    @return input.$border-color--themed;
   }
 
   @return map.get(input.$border-colors, $type);
 }
 
 @mixin border-color {
-  border-top-color: getbordercolor("top");
-  border-left-color: getbordercolor("left");
-  border-right-color: getbordercolor("right");
-  border-bottom-color: getbordercolor("bottom");
+  border-top-color: get-border-color("top");
+  border-left-color: get-border-color("left");
+  border-right-color: get-border-color("right");
+  border-bottom-color: get-border-color("bottom");
 }
 
 @mixin input {
