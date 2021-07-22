@@ -51,7 +51,7 @@ $field-sizes: "small", "medium", "large";
 
 @each $kind in themes.$kinds {
   .rc-field--#{$kind} {
-    border-bottom-color: map.get(themes.$colors, $kind);
+    @include form.themed-border-color(map.get(themes.$colors, $kind));
 
     &.rc-field--focused {
       &::before {
@@ -62,9 +62,9 @@ $field-sizes: "small", "medium", "large";
   }
 }
 
-@each $state in "invalid", "required" {
+@each $state in themes.$states {
   .rc-field--#{$state} {
-    border-bottom-color: map.get(themes.$colors, $state);
+    @include form.themed-border-color(map.get(themes.$colors, $state));
 
     &.rc-field--focused {
       &::before {

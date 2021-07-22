@@ -1,6 +1,7 @@
 @use "sass:map";
 @use '../base/input.scss';
 @use '../base/colors.scss';
+@use "../themes.scss";
 @use "../functions.scss";
 @use "../base/flags.scss";
 
@@ -35,6 +36,14 @@
   border-left-color: get-border-color("left");
   border-right-color: get-border-color("right");
   border-bottom-color: get-border-color("bottom");
+}
+
+@mixin themed-border-color($color) {
+  @each $type in "top", "left", "right", "bottom" {
+    @if (map.get(flags.$themed-borders, $type)) {
+      border-#{$type}-color: $color;
+    }
+  }
 }
 
 @mixin input {
