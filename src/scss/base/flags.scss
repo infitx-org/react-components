@@ -1,7 +1,7 @@
-$themed-border-top: true !default;
+$themed-border-top: false !default;
 $themed-border-bottom: true !default;
-$themed-border-left: true !default;
-$themed-border-right: true !default;
+$themed-border-left: false !default;
+$themed-border-right: false !default;
 
 $themed-borders: (
   "top": $themed-border-top,
