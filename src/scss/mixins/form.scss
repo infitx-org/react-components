@@ -4,6 +4,14 @@
 @use "../functions.scss";
 @use "../base/flags.scss";
 
+@function getBorderSize($type) {
+  @if (map.get(flags.$themed-borders, $type)) {
+    @return input.$border-themed-width;
+  }
+
+  @return map.get(input.$border-widths, $type);
+}
+
 @mixin border-size {
   border: none;
   border-style: solid;
@@ -20,14 +28,6 @@
   }
 
   @return map.get(input.$border-colors, $type);
-}
-
-@function getBorderSize($type) {
-  @if (map.get(flags.$themed-borders, $type)) {
-    @return input.$border-themed-width;
-  }
-
-  @return map.get(input.$border-widths, $type);
 }
 
 @mixin border-color {
