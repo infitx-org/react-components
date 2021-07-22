@@ -26,13 +26,13 @@ $field-sizes: "small", "medium", "large";
   &::before {
     position: absolute;
     height: calc(
-      100% + #{input.$border-top-width} + #{input.$border-bottom-width}
+      100% + #{form.get-border-size("top")} + #{form.get-border-size("bottom")}
     );
     width: calc(
-      100% + #{input.$border-left-width} + #{input.$border-right-width}
+      100% + #{form.get-border-size("left")} + #{form.get-border-size("right")}
     );
-    left: -#{input.$border-left-width};
-    top: -#{input.$border-top-width};
+    left: -#{form.get-border-size("left")};
+    top: -#{form.get-border-size("right")};
     content: "";
     box-shadow: shadows.$size--closed;
     color: transparent;
