@@ -7,15 +7,20 @@ $size--medium: 36px !default;
 $size--large: 42px !default;
 
 $border-radius: 0 !default;
+
 $border-left-width: 1px !default;
 $border-right-width: 1px !default;
 $border-top-width: 1px !default;
-$border-bottom-width: 2px !default;
+$border-bottom-width: 1px !default;
 
 $border-left-color: #e5e5e5 !default;
 $border-right-color: #e5e5e5 !default;
 $border-top-color: #e5e5e5 !default;
-$border-bottom-color: colors.$primary !default;
+$border-bottom-color: #e5e5e5 !default;
+$border-default-color: #e5e5e5 !default;
+
+$border-themed-color: colors.$primary !default;
+$border-themed-width: 2px !default;
 
 $background: #fcfcfc !default;
 
@@ -31,4 +36,18 @@ $sizes: (
   "small": $size--small,
   "medium": $size--medium,
   "large": $size--large,
+);
+
+$border-colors: (
+  "left": $border-left-color,
+  "right": $border-right-color,
+  "top": $border-top-color,
+  "bottom": $border-bottom-color,
+);
+
+$border-widths: (
+  "left": $border-left-width,
+  "right": $border-right-width,
+  "top": $border-top-width,
+  "bottom": $border-bottom-width,
 );

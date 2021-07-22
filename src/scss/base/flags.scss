@@ -1,2 +1,11 @@
-$themed-border: true !default;
-$themed-border-all: false !default;
+$themed-border-top: true !default;
+$themed-border-bottom: true !default;
+$themed-border-left: true !default;
+$themed-border-right: true !default;
+
+$themed-borders: (
+  "top": $themed-border-top,
+  "bottom": $themed-border-bottom,
+  "left": $themed-border-left,
+  "right": $themed-border-right,
+);
