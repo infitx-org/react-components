@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Documentation/Using The Flags"/>
+
+## Using the flags
+
+The SCSS version of the styles exposes a set of configurable flags, which some components will react to and change their look upon that.
+
+
+#### Theme flags
+
+When setting the themed-* flags, the input fields will change their default and themed appearance.
+
+They will set a themed border appearance on the flagged borders, and keep a default appearance on the other ones.
+
+The individual borders are choosen by setting `true/false` on the following
+
+- `$themed-border-top` - `true/false`
+- `$themed-border-bottom` - `true/false`
+- `$themed-border-left` - `true/false`
+- `$themed-border-right` - `true/false`
+
+The default and themed appearance is set with:
+
+- `$border-width--default`: 1px;
+- `$border-width--themed`: 2px;
+- `$border-color--default`: #e5e5e5
+- `$border-color--themed`: colors.$primary
