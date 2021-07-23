@@ -1,3 +1,4 @@
+// SCSS
 @forward "./scss/base/colors.scss";
 @forward "./scss/base/fonts.scss";
 @forward "./scss/base/flags.scss";
@@ -9,6 +10,8 @@
 @forward "./scss/vars.scss";
 @forward "./scss/mixins/form.scss";
 @forward "./scss/mixins/any.scss";
+
+// Components
 @forward "./components/Button/Button.scss";
 @forward "./components/Checkbox/Checkbox.scss";
 @forward "./components/DatePicker/index.scss";
@@ -34,3 +37,6 @@
 @forward "./components/Typography/Text/Text.scss";
 @forward "./components/TextField/TextField.scss";
 @forward "./components/Tooltip/Tooltip.scss";
+
+// Hocs
+@forward "./hocs/withValidation/ValidationCard.scss";
