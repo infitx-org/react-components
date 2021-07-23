@@ -1,9 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import RadioGroup from "./RadioGroup";
-
-const { log } = console;
 
 const options = new Array(5)
   .fill(0)
@@ -57,12 +55,15 @@ describe("tests the radio group", () => {
     const { container } = render(
       <RadioGroup {...commonProps} onChange={mockEvent} />
     );
-    userEvent.click(container.querySelector('input[type="radio"][value="1"]'));
-    expect(mockEvent).toHaveBeenCalledWith(
-      expect.objectContaining({
-        target: expect.objectContaining({ value: "1" }),
-      })
+    userEvent.click(
+      container.querySelector('input[type="radio"][value="1"]') as Element
     );
+    expect(mockEvent).toHaveBeenCalledWith("1");
+    // TODO: Let's see if using string is better than changeEvent
+    //   expect.objectContaining({
+    //     target: expect.objectContaining({ value: "1" }),
+    //   })
+    // );
   });
 });
 

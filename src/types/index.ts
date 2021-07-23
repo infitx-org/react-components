@@ -23,3 +23,5 @@ export enum InputSize {
   Medium = "medium",
   Large = "large",
 }
+
+export type OptionValue = string | number;
