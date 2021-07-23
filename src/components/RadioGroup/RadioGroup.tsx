@@ -15,7 +15,7 @@ interface BaseRadioGroupProps {
   disabled?: boolean;
   options: Option[];
   vertical?: boolean;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (value: string) => void;
 }
 export type RadioGroupProps = BaseRadioGroupProps & WithLabelProps;
 
@@ -35,7 +35,7 @@ function RadioGroup({
   }, [selected]);
   const compositeOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelected(e.target.value);
-    onChange?.(e);
+    onChange?.(e.target.value);
   };
   const classNames = classnames([
     "rc-radiogroup",
