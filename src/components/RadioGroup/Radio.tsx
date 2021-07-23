@@ -8,7 +8,7 @@ export type RadioProps = {
   name?: string;
   checked: boolean;
   label?: string;
-  value: string;
+  value: string | number;
   disabled?: boolean;
   vertical?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -46,7 +46,7 @@ function Radio({
         className={inputClassName}
         onChange={onChange}
         checked={checked}
-        value={value}
+        value={value.toString()}
         disabled={disabled}
       />
       <span className={labelClassName}>{label}</span>
