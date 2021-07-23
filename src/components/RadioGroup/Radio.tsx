@@ -46,7 +46,7 @@ function Radio({
         className={inputClassName}
         onChange={onChange}
         checked={checked}
-        value={value.toString()}
+        value={value}
         disabled={disabled}
       />
       <span className={labelClassName}>{label}</span>
