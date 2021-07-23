@@ -5,9 +5,9 @@ import classnames from "classnames";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
 import Indicator from "components/shared/Indicator";
 import { WithValidationProps, WithLabelProps } from "../../hocs";
+import { Kind, InputSize, KeyCode, OptionValue } from "../../types";
 import { BaseSelect } from "../shared/types";
-import { Kind, InputSize, KeyCode } from "../../types";
-import Options, { Option, OptionValue } from "./components/Options";
+import Options, { Option } from "./components/Options";
 import Filter from "./components/Filter";
 import "./Select.scss";
 

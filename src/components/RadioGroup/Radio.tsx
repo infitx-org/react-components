@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import classnames from "classnames";
-import { Kind } from "../../types";
+import { Kind, OptionValue } from "../../types";
 
 export type RadioProps = {
   kind?: `${Kind}`;
@@ -8,7 +8,7 @@ export type RadioProps = {
   name?: string;
   checked: boolean;
   label?: string;
-  value: string | number;
+  value: OptionValue;
   disabled?: boolean;
   vertical?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;

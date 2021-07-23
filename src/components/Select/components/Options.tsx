@@ -4,7 +4,7 @@ import { getIconSizeByComponentSize } from "utils/size";
 import Icon from "components/Icon";
 import Overlay from "components/Overlay";
 import ScrollBox from "components/ScrollBox";
-import { InputSize } from "../../../types";
+import type { InputSize, OptionValue } from "../../../types";
 import InfoSmall from "../../../resources/icons/info-small.svg";
 import CloseSmall from "../../../resources/icons/close-small.svg";
 import "./Options.scss";
@@ -12,7 +12,6 @@ import "./Options.scss";
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/tabindex-no-positive */
 
-export type OptionValue = string | number | boolean;
 type OptionLabel = string | number;
 
 export type Option = {
