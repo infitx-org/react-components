@@ -79,12 +79,13 @@ describe("tests the checbox", () => {
     userEvent.click(
       container.querySelector('input[type="checkbox"]') as Element
     );
-    expect(mockEvent).toHaveBeenCalledWith(
-      expect.objectContaining({
-        type: "change",
-        target: expect.objectContaining({ checked: true }),
-      })
-    );
+    expect(mockEvent).toHaveBeenCalledWith(true);
+    // TODO: Let's see if using boolean is better than changeEvent
+    // expect.objectContaining({
+    //   type: "change",
+    //   target: expect.objectContaining({ checked: true }),
+    // })
+    // );
   });
 });
 

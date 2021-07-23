@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { Kind } from "../../types";
 import "./Checkbox.scss";
 
@@ -14,7 +14,7 @@ export interface CheckboxProps {
   semi?: boolean;
   round?: boolean;
   disabled?: boolean;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: boolean) => void;
 }
 
 function Checkbox({
@@ -56,7 +56,7 @@ function Checkbox({
         className={checkboxClassName}
         onChange={(e) => {
           setChecked(!isChecked);
-          onChange?.(e);
+          onChange?.(e.target.checked);
         }}
         checked={isChecked && semi !== true}
         disabled={disabled}

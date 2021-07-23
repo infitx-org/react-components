@@ -21,7 +21,7 @@ export default function ThemeForm() {
     label: v,
     value: v,
   }));
-  const [kind, setKind] = React.useState("primary");
+  const [kind, setKind] = React.useState<string | undefined>("primary");
   return (
     <Column align="top left">
       <Row style={{ margin: "5px" }}>
@@ -59,7 +59,7 @@ export default function ThemeForm() {
           selected={kind}
           options={options}
           kind={kind}
-          onChange={(e) => setKind(e.target.value)}
+          onChange={(value) => setKind(value)}
         />
       </Row>
     </Column>
