@@ -6,6 +6,7 @@ import { MenuItemProps } from "../types";
 import "./MenuItem.scss";
 
 export default function MenuItem({
+  className,
   label,
   icon,
   iconFill,
@@ -58,15 +59,20 @@ export default function MenuItem({
 
         const isActive =
           active || (isActivePath(pathname, path, partial) && !back);
-        const className = classnames([
+        const itemClassName = classnames([
           "rc-menu-item",
           isActive && "rc-menu-item--active",
           disabled && "rc-menu-item--disabled",
           back && "rc-menu-item--back",
           icon && "rc-menu-item--with-icon",
+          className,
         ]);
         return (
-          <div className={className} onClick={doOnClick} role="presentation">
+          <div
+            className={itemClassName}
+            onClick={doOnClick}
+            role="presentation"
+          >
             {backIcon}
             {itemIcon}
             {label}
