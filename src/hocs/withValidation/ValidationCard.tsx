@@ -35,8 +35,8 @@ const ValidationIcon = ({ active }: ValidationIconProps) => {
 const ValidationMessageRow = ({ message, active }: ValidationMessage) => {
   const className = classnames([
     "validation__message",
-    active && "validation__message--active",
-    active === false && "validation__message--inactive",
+    active && "validation__message--invalid",
+    active === false && "validation__message--valid",
   ]);
   return (
     <Row>
@@ -53,14 +53,28 @@ const ValidationMessageRow = ({ message, active }: ValidationMessage) => {
 interface ValidationCardProps {
   empty?: boolean;
   messages?: ValidationMessage[];
+  required?: boolean;
+  invalid?: boolean;
 }
 export default function ValidationCard({
   empty,
   messages = [],
+  required,
+  invalid,
 }: ValidationCardProps) {
+  const unknown =
+    !required && messages.every(({ active }) => active === undefined);
+  const success = messages.every(({ active }) => active === false);
+  const className = classnames([
+    "validation__messages",
+    required && "validation__messages--required",
+    invalid && "validation__messages--invalid",
+    success && "validation__messages--valid",
+    unknown && "validation__messages--unknown",
+  ]);
   return (
     <div>
-      <ul className="validation__messages">
+      <ul className={className}>
         {messages.map(({ message, active }, i) => (
           <ValidationMessageRow
             key={i.toString()}

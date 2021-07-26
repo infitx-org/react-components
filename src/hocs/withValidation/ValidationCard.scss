@@ -9,12 +9,28 @@
   margin: 0;
   padding: 10px;
   padding-right: 18px;
-  backdrop-filter: blur(12px);
-  background: rgba(250, 250, 250, 0.5);
+  background: #f8f8f8;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
+  border-left: 3px solid;
   min-width: 60px;
   display: block;
+}
+
+.validation__messages--required {
+  border-color: colors.$required;
+}
+
+.validation__messages--invalid {
+  border-color: colors.$danger;
+}
+
+.validation__messages--valid {
+  border-color: colors.$success;
+}
+
+.validation__messages--unknown {
+  border-color: #ddd;
 }
 
 .validation__message {
@@ -27,11 +43,11 @@
   min-width: 60px;
 }
 
-.validation__message--active {
+.validation__message--invalid {
   fill: colors.$danger;
 }
 
-.validation__message--inactive {
+.validation__message--valid {
   fill: colors.$success;
   text-decoration: line-through;
   stroke: none;
