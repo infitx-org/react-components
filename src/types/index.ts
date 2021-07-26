@@ -24,4 +24,4 @@ export enum InputSize {
   Large = "large",
 }
 
-export type OptionValue = string | number;
+export type OptionValue = string | number | undefined;
