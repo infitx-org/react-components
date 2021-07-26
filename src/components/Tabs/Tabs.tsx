@@ -1,13 +1,12 @@
 import classnames from "classnames";
-import React, {
-  PureComponent,
-  KeyboardEvent,
-  MouseEvent,
-  FocusEvent,
-} from "react";
+import React, { PureComponent, KeyboardEvent, FocusEvent } from "react";
 import "./Tabs.scss";
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+
+type CustomSelectEvent = React.MouseEvent<HTMLDivElement, MouseEvent> & {
+  target: HTMLDivElement;
+};
 
 export interface TabProps {
   children: React.ReactNode;
@@ -17,7 +16,7 @@ export interface TabProps {
   flex?: boolean;
   style?: React.CSSProperties;
   className?: string;
-  onSelect?: (e: MouseEvent<HTMLDivElement>) => void;
+  onSelect?: (e: CustomSelectEvent) => void;
 }
 
 type TabWithRefProps = TabProps & {
@@ -92,7 +91,7 @@ export interface TabsProps {
   disabled?: boolean;
   flex?: boolean;
   children: TabElement[] | TabPanelElement[];
-  onSelect?: (evt: MouseEvent, index: number) => void;
+  onSelect?: (evt: CustomSelectEvent, index: number) => void;
   onFocus?: (evt: FocusEvent) => void;
   onBlur?: (evt: FocusEvent) => void;
 }
@@ -160,7 +159,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
     );
   }
 
-  onSelect(evt: MouseEvent, index: number): void {
+  onSelect(evt: CustomSelectEvent, index: number): void {
     this.setState({ selected: index, hasFocus: true }, () => {
       this.props.onSelect?.(evt, index);
     });
@@ -214,7 +213,7 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
       const onSelect =
         isDisabled || isSelected
           ? undefined
-          : (evt: MouseEvent) => this.onSelect(evt, index);
+          : (evt: CustomSelectEvent) => this.onSelect(evt, index);
       return React.cloneElement(tab, {
         ...tab.props,
         key: index.toString(),
