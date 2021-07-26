@@ -2,22 +2,38 @@
 @use "../../scss/base/colors.scss";
 @use "../../scss/mixins/any.scss";
 
-.validation__messages {
+.rc-validation__messages {
   @include any.rc-component;
 
   list-style-type: none;
   margin: 0;
   padding: 10px;
   padding-right: 18px;
-  backdrop-filter: blur(12px);
-  background: rgba(250, 250, 250, 0.5);
+  background: #f8f8f8;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
+  border-left: 3px solid;
   min-width: 60px;
   display: block;
 }
 
-.validation__message {
+.rc-validation__messages--required {
+  border-color: colors.$required;
+}
+
+.rc-validation__messages--invalid {
+  border-color: colors.$danger;
+}
+
+.rc-validation__messages--valid {
+  border-color: colors.$success;
+}
+
+.rc-validation__messages--unset {
+  border-color: #ddd;
+}
+
+.rc-validation__message {
   @include any.rc-component;
 
   display: flex;
@@ -27,38 +43,38 @@
   min-width: 60px;
 }
 
-.validation__message--active {
+.rc-validation__message--invalid {
   fill: colors.$danger;
 }
 
-.validation__message--inactive {
+.rc-validation__message--valid {
   fill: colors.$success;
   text-decoration: line-through;
   stroke: none;
 }
 
-.validation__message__text {
+.rc-validation__message__text {
   white-space: nowrap;
 }
 
-.validation__message__icon-container {
+.rc-validation__message__icon-container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 8px;
 }
 
-.validation__message__icon {
+.rc-validation__message__icon {
   animation: fadeInValidationMessageIcon 0.2s ease-out;
   fill: inherit;
 }
 
-.validation__message__icon--unset {
-  animation: fadeInValidationMessageIcon 0.2s ease-out;
+.rc-validation__message__icon--unset {
+  display: flex;
   height: 6px;
   width: 6px;
   margin: 7px;
   border-radius: 3px;
-  display: flex;
   background: #ddd;
+  animation: fadeInValidationMessageIcon 0.2s ease-out;
 }

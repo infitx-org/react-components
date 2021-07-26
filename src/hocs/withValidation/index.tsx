@@ -22,11 +22,14 @@ export default function withValidation<Props extends BaseProps>(
   ) {
     const isRequired = props.validation?.isRequired;
     const isValid = props.validation?.isValid;
+    const required = props.required || isRequired;
+    // invalid explicitely set or only when has value + validation
+    const invalid =
+      props.invalid || (isValid === false && props.hasEmptyValue === false);
     const newProps = {
-      required: props.required || isRequired,
+      required,
       // invalid explicitely set or only when has value + validation
-      invalid:
-        props.invalid || (isValid === false && props.hasEmptyValue === false),
+      invalid,
     };
     const component = (
       <Component {...(props as Props)} {...newProps} ref={ref} />
@@ -38,6 +41,8 @@ export default function withValidation<Props extends BaseProps>(
           <ValidationCard
             empty={props.hasEmptyValue}
             messages={props.validation?.messages}
+            required={required}
+            invalid={invalid}
           />
         }
         position="right"
