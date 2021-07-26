@@ -19,6 +19,7 @@ interface BaseMenuItemProps {
   iconSize?: number;
   // prop partial is not used directly by the MenuItem but it is used by the Menu component
   partial?: boolean;
+  className?: string;
   children?: MenuItemElement | MenuElement[];
 }
 
