@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "../../scss/base/colors.scss";
+@use "../../scss/mixins/any.scss";
+
+.rc-calendar {
+  @include any.rc-component;
+
+  border: 1px solid #333;
+  font-size: 14px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.rc-calendar__year {
+  height: 40px;
+}
+
+.rc-calendar__month {
+  height: 40px;
+}
+
+.rc-calendar__cell {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.rc-calendar__dayname {
+  @extend .rc-calendar__cell;
+
+  color: #666;
+  font-size: 11px;
+  height: 20px;
+  border-bottom: 2px solid #eee;
+}
+
+.rc-calendar__day {
+  @extend .rc-calendar__cell;
+
+  cursor: pointer;
+
+  &:hover {
+    background: #eee;
+  }
+
+  &.rc-calendar__day--today {
+    border: 2px solid colors.$primary;
+  }
+
+  &.rc-calendar__day--selected {
+    background: colors.$secondary;
+    color: #fff;
+  }
+}
