@@ -1,15 +1,12 @@
 import classnames from "classnames";
-import React, {
-  PureComponent,
-  KeyboardEvent,
-  MouseEvent,
-  FocusEvent,
-} from "react";
+import React, { PureComponent, KeyboardEvent, FocusEvent } from "react";
 import "./Tabs.scss";
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
-type CustomSelectEvent = MouseEvent<HTMLDivElement, MouseEvent>;
+type CustomSelectEvent = React.MouseEvent<HTMLDivElement, MouseEvent> & {
+  target: HTMLDivElement;
+};
 
 export interface TabProps {
   children: React.ReactNode;
