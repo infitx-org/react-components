@@ -48,9 +48,9 @@ export default function Matrix({
   onNextMonthClick,
   onDayClick,
 }: MatrixProps) {
-  const matrix = getMountMatrix({ year, month }, (day, { sameMonth }) =>
-    sameMonth ? format(day, "dd") : undefined
-  );
+  const matrix = getMountMatrix({ year, month }, (day, { sameMonth }) => {
+    return sameMonth ? format(day, "dd") : undefined;
+  });
 
   return (
     <table className="rc-calendar__table">

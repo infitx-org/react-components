@@ -41,12 +41,20 @@ export default class Calendar extends PureComponent<
 
     const today = new Date();
 
+    const {
+      initialMonth,
+      initialYear,
+      selectedDate,
+      selectedRange,
+    } = this.props;
+
     this.state = {
       today,
-      currentYear: this.props.initialYear || today.getFullYear(),
-      currentMonth: this.props.initialMonth || (today.getMonth() as Month),
-      selectedDay: this.props.selectedDate || undefined,
-      selectedRange: this.props.selectedRange || [undefined, undefined],
+      currentYear: initialYear || today.getFullYear(),
+      currentMonth:
+        initialMonth !== undefined ? initialMonth : (today.getMonth() as Month),
+      selectedDay: selectedDate || undefined,
+      selectedRange: selectedRange || [undefined, undefined],
     };
 
     this.onPrevYearClick = this.onPrevYearClick.bind(this);
