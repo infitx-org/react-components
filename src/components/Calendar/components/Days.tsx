@@ -6,6 +6,7 @@ import { Month, Matrix, PossibleDay, DisabledDays } from "../types";
 interface DayProps {
   isToday: boolean;
   isSelected: boolean;
+  isDisabled?: boolean;
   day: PossibleDay;
   onClick: () => void;
 }
@@ -34,7 +35,7 @@ interface DaysProps {
   year: number;
   month: Month;
   selectedDay?: Date;
-  disabledDays: DisabledDays;
+  disabledDays?: DisabledDays;
   onDayClick: (day: Date) => void;
 }
 export default function Days({

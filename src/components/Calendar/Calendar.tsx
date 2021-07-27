@@ -1,7 +1,7 @@
 import { PureComponent } from "react";
 import isSameDay from "date-fns/isSameDay";
 import Matrix from "./components/Matrix";
-import { DisabledDays, Month } from "./types";
+import { DateRange, DisabledDays, Month, PossibleDate } from "./types";
 import "./Calendar.scss";
 
 /* eslint-disable react/no-access-state-in-setstate */
@@ -10,15 +10,18 @@ interface CalendarProps {
   initialMonth?: Month;
   initialYear?: number;
   selectedDate?: Date;
+  selectedDateRange?: DateRange;
   disabledDays?: DisabledDays;
-  onDayClick?: (day: Date | undefined) => void;
+  onDayClick?: (day: PossibleDate) => void;
+  onDateRangeClick?: (range: DateRange) => void;
 }
 
 interface CalendarState {
   currentYear: number;
   currentMonth: Month;
   today: Date;
-  selectedDay: Date | undefined;
+  selectedDay: PossibleDate;
+  selectedRange?: DateRange;
 }
 
 export default class Calendar extends PureComponent<
