@@ -37,12 +37,12 @@ function Day({
     (isRangeStart || isRangeEnd) &&
       isRangePartial &&
       "rc-calendar__day--range-partial",
-    isDisabled && "rc-calendar__day--disabled",
   ]);
 
   const cellClassName = classnames([
     "rc-calendar__day__cell",
     isToday && "rc-calendar__day__cell--today",
+    isDisabled && "rc-calendar__day__cell--disabled",
   ]);
   return (
     <td className={cellClassName} onClick={onClick} role="presentation">

@@ -1,6 +1,16 @@
 @use "sass:map";
+@use "sass:math";
+@use "../../scss/functions.scss";
 @use "../../scss/base/colors.scss";
 @use "../../scss/mixins/any.scss";
+
+$cell-size: 40px;
+$cell-content-spacing: 3px;
+$cell-content-size: $cell-size - $cell-content-spacing * 2;
+$cell-content-border-radius: math.div(
+    functions.strip-units($cell-content-size),
+    2
+  ) + px;
 
 .rc-calendar {
   @include any.rc-component;
@@ -16,8 +26,8 @@
 
 .rc-calendar__cell {
   box-sizing: border-box;
-  width: 40px;
-  height: 40px;
+  width: $cell-size;
+  height: $cell-size;
   vertical-align: middle;
   text-align: center;
 }
@@ -39,7 +49,7 @@
 }
 
 .rc-calendar__year {
-  height: 40px;
+  height: $cell-size;
   font-size: 20px;
 }
 
@@ -56,7 +66,7 @@
 }
 
 .rc-calendar__month {
-  height: 40px;
+  height: $cell-size;
   font-size: 16px;
 }
 
@@ -69,11 +79,83 @@
   border-bottom: 2px solid #eee;
 }
 
+@mixin rc-calendar__day--selected {
+  box-sizing: border-box;
+  font-weight: bold;
+  color: colors.$secondary--opposite;
+  background: colors.$secondary;
+}
+
+@mixin rc-calendar__day--selected-left {
+  @include rc-calendar__day--selected;
+
+  width: $cell-size - $cell-content-spacing;
+  margin-left: $cell-content-spacing;
+  padding-right: $cell-content-spacing;
+  border-top-left-radius: $cell-content-border-radius;
+  border-bottom-left-radius: $cell-content-border-radius;
+}
+
+@mixin rc-calendar__day--selected-right {
+  @include rc-calendar__day--selected;
+
+  width: $cell-size - $cell-content-spacing;
+  margin-right: $cell-content-spacing;
+  padding-left: $cell-content-spacing;
+  border-top-right-radius: $cell-content-border-radius;
+  border-bottom-right-radius: $cell-content-border-radius;
+}
+
+.rc-calendar__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: $cell-content-size;
+  height: $cell-content-size;
+
+  &.rc-calendar__day--empty {
+    background: #fafafa;
+    cursor: initial;
+  }
+
+  &.rc-calendar__day--selected {
+    @include rc-calendar__day--selected-left;
+    @include rc-calendar__day--selected-right;
+
+    width: $cell-content-size;
+    padding: 0;
+  }
+
+  &.rc-calendar__day--range-between {
+    width: $cell-size;
+    color: colors.$secondary--opposite;
+    background: colors.$secondary--light;
+  }
+
+  &.rc-calendar__day--range-start {
+    @include rc-calendar__day--selected-left;
+  }
+
+  &.rc-calendar__day--range-end {
+    @include rc-calendar__day--selected-right;
+  }
+
+  &.rc-calendar__day--range-partial {
+    @include rc-calendar__day--selected-left;
+    @include rc-calendar__day--selected-right;
+
+    width: $cell-content-size;
+    padding: 0;
+  }
+}
+
 .rc-calendar__day__cell {
   @extend .rc-calendar__cell;
 
   vertical-align: middle;
   text-align: center;
+  cursor: pointer;
 
   &.rc-calendar__day__cell--today {
     position: relative;
@@ -91,78 +173,20 @@
       left: 1px;
     }
   }
-}
 
-.rc-calendar__day {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  width: 34px;
-  height: 34px;
-
-  &:hover {
-    background: #eee;
-    color: colors.$secondary;
-    font-weight: bold;
-  }
-
-  &.rc-calendar__day--empty {
-    background: #fafafa;
-    cursor: initial;
-  }
-
-  &.rc-calendar__day--selected {
-    background: colors.$secondary;
-    color: #fff;
-    font-weight: bold;
-  }
-
-  &.rc-calendar__day--range-between {
-    width: 40px;
-    color: #fff;
-    background: colors.$secondary--light;
-  }
-
-  &.rc-calendar__day--range-start {
-    box-sizing: border-box;
-    font-weight: bold;
-    color: #fff;
-    width: 37px;
-    margin-left: 3px;
-    padding-right: 3px;
-    background: colors.$secondary;
-    border-top-left-radius: 17px;
-    border-bottom-left-radius: 17px;
-  }
-
-  &.rc-calendar__day--range-end {
-    box-sizing: border-box;
-    font-weight: bold;
-    color: #fff;
-    width: 37px;
-    margin-right: 3px;
-    padding-left: 3px;
-    background: colors.$secondary;
-    border-top-right-radius: 17px;
-    border-bottom-right-radius: 17px;
-  }
-
-  &.rc-calendar__day--range-partial {
-    font-weight: bold;
-    color: #fff;
-    width: 34px;
-    margin-right: 3px;
-    margin-left: 3px;
-    padding: 0;
-    background: colors.$secondary;
-    border-radius: 17px;
-  }
-
-  &.rc-calendar__day--disabled {
+  &.rc-calendar__day__cell--disabled {
     cursor: initial;
     color: colors.$disabled;
     background: #eee;
+    pointer-events: none;
+  }
+
+  &:hover {
+    .rc-calendar__day:not(.rc-calendar__day--selected):not(.rc-calendar__day--range-between):not(.rc-calendar__day--range-start):not(.rc-calendar__day--range-end):not(.rc-calendar__day--range-partial) {
+      background: #eee;
+      color: colors.$secondary;
+      font-weight: bold;
+      border-radius: $cell-content-border-radius;
+    }
   }
 }
