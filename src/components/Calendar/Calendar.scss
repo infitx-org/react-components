@@ -141,6 +141,10 @@ $cell-content-border-radius: math.div(
     @include rc-calendar__day--selected-right;
   }
 
+  &.rc-calendar__day--range-start.rc-calendar__day--range-end {
+    width: $cell-content-size;
+  }
+
   &.rc-calendar__day--range-partial {
     @include rc-calendar__day--selected-left;
     @include rc-calendar__day--selected-right;
