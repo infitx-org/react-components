@@ -10,7 +10,7 @@ interface CalendarProps {
   initialMonth?: Month;
   initialYear?: number;
   selectedDate?: Date;
-  selectedDateRange?: DateRange;
+  selectedRange?: DateRange;
   disabledDays?: DisabledDays;
   onDayClick?: (day: PossibleDate) => void;
   onDateRangeClick?: (range: DateRange) => void;
@@ -21,13 +21,21 @@ interface CalendarState {
   currentMonth: Month;
   today: Date;
   selectedDay: PossibleDate;
-  selectedRange?: DateRange;
+  selectedRange: DateRange;
 }
 
 export default class Calendar extends PureComponent<
   CalendarProps,
   CalendarState
 > {
+  static getSelectedRange(range: DateRange, day: PossibleDate): DateRange {
+    const [from, to] = range;
+    if (from && !to) {
+      return [from, day];
+    }
+    return [day, undefined];
+  }
+
   constructor(props: CalendarProps) {
     super(props);
 
@@ -38,6 +46,7 @@ export default class Calendar extends PureComponent<
       currentYear: this.props.initialYear || today.getFullYear(),
       currentMonth: this.props.initialMonth || (today.getMonth() as Month),
       selectedDay: this.props.selectedDate || undefined,
+      selectedRange: this.props.selectedRange || [undefined, undefined],
     };
 
     this.onPrevYearClick = this.onPrevYearClick.bind(this);
@@ -88,13 +97,21 @@ export default class Calendar extends PureComponent<
   }
 
   onDayClick(day: Date) {
-    const { selectedDay } = this.state;
+    const { selectedDay, selectedRange } = this.state;
+    const wasSelected = selectedDay && isSameDay(day, selectedDay);
+    const newSelectedDay = wasSelected ? undefined : day;
+
     this.setState(
       {
-        selectedDay:
-          selectedDay && isSameDay(day, selectedDay) ? undefined : day,
+        selectedDay: newSelectedDay,
+        selectedRange: Calendar.getSelectedRange(selectedRange, day),
       },
-      () => this.props.onDayClick?.(this.state.selectedDay)
+      () => {
+        // call the single day selected function
+        this.props.onDayClick?.(this.state.selectedDay);
+        // call also the range selection function if set
+        this.props.onDateRangeClick?.(this.state.selectedRange);
+      }
     );
   }
 
@@ -107,6 +124,7 @@ export default class Calendar extends PureComponent<
           year={this.state.currentYear}
           disabledDays={this.props.disabledDays}
           selectedDay={this.state.selectedDay}
+          selectedRange={this.state.selectedRange}
           onPrevYearClick={this.onPrevYearClick}
           onNextYearClick={this.onNextYearClick}
           onPrevMonthClick={this.onPrevMonthClick}

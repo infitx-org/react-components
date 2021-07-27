@@ -26,9 +26,19 @@ SelectedDate.args = {
   selectedDate: addDays(new Date(), -3),
 };
 
+export const SelectedRange = Template.bind({});
+SelectedRange.args = {
+  selectedRange: [addDays(new Date(), -3), addDays(new Date(), 2)],
+};
+
 export const onDayClick = Template.bind({});
 onDayClick.args = {
   onDayClick: console.log,
+};
+
+export const OnDateRangeClick = Template.bind({});
+OnDateRangeClick.args = {
+  onDateRangeClick: console.log,
 };
 
 export const DisabledDays = Template.bind({});

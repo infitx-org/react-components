@@ -2,6 +2,7 @@ import eachDayOfInterval from "date-fns/eachDayOfInterval";
 import endOfISOWeek from "date-fns/endOfISOWeek";
 import endOfMonth from "date-fns/endOfMonth";
 import isSameMonth from "date-fns/isSameMonth";
+import isSameDayDateFns from "date-fns/isSameDay";
 import startOfISOWeek from "date-fns/startOfISOWeek";
 import startOfMonth from "date-fns/startOfMonth";
 import eachWeekOfInterval from "date-fns/eachWeekOfInterval";
@@ -37,3 +38,14 @@ export const getMountMatrix = (
     )
   );
 };
+
+export function isSameDay(
+  dateLeft: Date | undefined,
+  dateRight: Date | undefined
+): boolean {
+  if (!dateLeft || !dateRight) {
+    return false;
+  }
+
+  return isSameDayDateFns(dateLeft, dateRight);
+}

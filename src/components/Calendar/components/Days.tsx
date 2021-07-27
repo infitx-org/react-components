@@ -1,21 +1,35 @@
 import React from "react";
 import classnames from "classnames";
-import isSameDay from "date-fns/isSameDay";
-import { Month, Matrix, PossibleDay, DisabledDays } from "../types";
+import isAfter from "date-fns/isAfter";
+import isBefore from "date-fns/isBefore";
+import { isSameDay } from "../helpers";
+import { Month, Matrix, PossibleDay, DisabledDays, DateRange } from "../types";
 
 interface DayProps {
   isToday: boolean;
   isSelected: boolean;
+  isRangeSelected?: boolean;
+  isRangeBetween?: boolean;
   isDisabled?: boolean;
   day: PossibleDay;
   onClick: () => void;
 }
 
-function Day({ isToday, isSelected, isDisabled, day, onClick }: DayProps) {
+function Day({
+  isToday,
+  isSelected,
+  isRangeSelected,
+  isRangeBetween,
+  isDisabled,
+  day,
+  onClick,
+}: DayProps) {
   const className = classnames([
     "rc-calendar__day",
     isToday && "rc-calendar__day--today",
     isSelected && "rc-calendar__day--selected",
+    isRangeBetween && "rc-calendar__day--range-between",
+    isRangeSelected && "rc-calendar__day--range-selected",
     isDisabled && "rc-calendar__day--disabled",
   ]);
   return (
@@ -35,6 +49,7 @@ interface DaysProps {
   year: number;
   month: Month;
   selectedDay?: Date;
+  selectedRange: DateRange;
   disabledDays?: DisabledDays;
   onDayClick: (day: Date) => void;
 }
@@ -44,9 +59,11 @@ export default function Days({
   month,
   today,
   selectedDay,
+  selectedRange,
   disabledDays,
   onDayClick,
 }: DaysProps) {
+  const [from, to] = selectedRange;
   return (
     <>
       {matrix.map((week) => (
@@ -59,7 +76,11 @@ export default function Days({
 
             const isDisabled = disabledDays?.(dayDate);
             const isToday = isSameDay(today, dayDate);
-            const isSelected = !!selectedDay && isSameDay(dayDate, selectedDay);
+            const isSelected = isSameDay(dayDate, selectedDay);
+            const isRangeSelected =
+              isSameDay(dayDate, from) || isSameDay(dayDate, to);
+            const isRangeBetween =
+              from && to && isAfter(dayDate, from) && isBefore(dayDate, to);
 
             return (
               <Day
@@ -67,6 +88,8 @@ export default function Days({
                 key={(day || index).toString()}
                 isToday={isToday}
                 isSelected={isSelected}
+                isRangeSelected={isRangeSelected}
+                isRangeBetween={isRangeBetween}
                 isDisabled={isDisabled}
                 onClick={() => onDayClick(dayDate)}
               />

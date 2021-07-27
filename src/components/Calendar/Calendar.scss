@@ -95,6 +95,16 @@
     font-weight: bold;
   }
 
+  &.rc-calendar__day--range-between {
+    color: #fff;
+    background: colors.$secondary--light;
+  }
+
+  &.rc-calendar__day--range-selected {
+    color: #fff;
+    background: colors.$secondary;
+  }
+
   &.rc-calendar__day--disabled {
     cursor: initial;
     color: colors.$disabled;
