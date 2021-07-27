@@ -1,4 +1,5 @@
 import { PureComponent } from "react";
+import isSameDay from "date-fns/isSameDay";
 import Matrix from "./components/Matrix";
 import { Month } from "./types";
 import "./Calendar.scss";
@@ -9,7 +10,7 @@ interface CalendarProps {
   initialMonth?: Month;
   initialYear?: number;
   selectedDate?: Date;
-  onDayClick?: (day: Date) => void;
+  onDayClick?: (day: Date | undefined) => void;
 }
 
 interface CalendarState {
@@ -83,9 +84,14 @@ export default class Calendar extends PureComponent<
   }
 
   onDayClick(day: Date) {
-    this.setState({
-      selectedDay: day,
-    });
+    const { selectedDay } = this.state;
+    this.setState(
+      {
+        selectedDay:
+          selectedDay && isSameDay(day, selectedDay) ? undefined : day,
+      },
+      () => this.props.onDayClick?.(this.state.selectedDay)
+    );
   }
 
   render() {

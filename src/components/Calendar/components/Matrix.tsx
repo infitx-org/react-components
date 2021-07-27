@@ -53,28 +53,48 @@ export default function Matrix({
   return (
     <table className="rc-calendar__table">
       <thead>
-        <tr>
+        <tr className="rc-calendar__year-row">
           <th>
-            <IconButton size={12} icon={<Arrow />} onClick={onPrevYearClick} />
+            <IconButton
+              className="rc-calendar__year-prev"
+              size={24}
+              icon={<Arrow />}
+              onClick={onPrevYearClick}
+            />
           </th>
           <th colSpan={5} className="rc-calendar__year">
             {year}
           </th>
           <th>
-            <IconButton size={12} icon={<Arrow />} onClick={onNextYearClick} />
+            <IconButton
+              className="rc-calendar__year-next"
+              size={24}
+              icon={<Arrow />}
+              onClick={onNextYearClick}
+            />
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th>
-            <IconButton size={12} icon={<Arrow />} onClick={onPrevMonthClick} />
+            <IconButton
+              className="rc-calendar__month-prev"
+              size={24}
+              icon={<Arrow />}
+              onClick={onPrevMonthClick}
+            />
           </th>
           <th colSpan={5} className="rc-calendar__month">
             {monthNames[month]}
           </th>
           <th>
-            <IconButton size={12} icon={<Arrow />} onClick={onNextMonthClick} />
+            <IconButton
+              className="rc-calendar__month-next"
+              size={24}
+              icon={<Arrow />}
+              onClick={onNextMonthClick}
+            />
           </th>
         </tr>
         <tr>

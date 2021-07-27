@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 import isSameDay from "date-fns/isSameDay";
-import parseISO from "date-fns/parseISO";
 import { Month, Matrix, PossibleDay } from "../types";
 
 interface DayProps {

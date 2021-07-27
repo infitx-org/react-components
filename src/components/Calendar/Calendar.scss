@@ -5,10 +5,21 @@
 .rc-calendar {
   @include any.rc-component;
 
-  border: 1px solid #333;
-  font-size: 14px;
+  font-size: 13px;
   padding: 5px;
   display: inline-block;
+}
+
+.rc-calendar__button {
+  padding: 6px;
+}
+
+.rc-calendar__cell {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .rc-calendar__table {
@@ -23,20 +34,30 @@
   }
 }
 
+.rc-calendar__year-row {
+  border-bottom: 2px solid #ddd;
+}
+
 .rc-calendar__year {
   height: 40px;
+  font-size: 20px;
+}
+
+.rc-calendar__year-prev,
+.rc-calendar__month-prev {
+  @extend .rc-calendar__button;
+
+  transform: rotate(180deg);
+}
+
+.rc-calendar__year-next,
+.rc-calendar__month-next {
+  @extend .rc-calendar__button;
 }
 
 .rc-calendar__month {
   height: 40px;
-}
-
-.rc-calendar__cell {
-  box-sizing: border-box;
-  width: 40px;
-  height: 40px;
-  vertical-align: middle;
-  text-align: center;
+  font-size: 16px;
 }
 
 .rc-calendar__dayname {
@@ -44,7 +65,7 @@
 
   color: #666;
   font-size: 11px;
-  height: 20px;
+  height: 24px;
   border-bottom: 2px solid #eee;
 }
 
@@ -59,6 +80,7 @@
 
   &.rc-calendar__day--empty {
     background: #fafafa;
+    cursor: initial;
   }
 
   &.rc-calendar__day--today {

@@ -25,3 +25,8 @@ export const SelectedDate = Template.bind({});
 SelectedDate.args = {
   selectedDate: addDays(new Date(), -3),
 };
+
+export const onDayClick = Template.bind({});
+onDayClick.args = {
+  onDayClick: console.log,
+};
