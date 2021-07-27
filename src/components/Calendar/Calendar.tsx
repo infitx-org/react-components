@@ -1,13 +1,16 @@
 import { PureComponent } from "react";
-
 import Matrix from "./components/Matrix";
+import { Month } from "./types";
 import "./Calendar.scss";
 
 /* eslint-disable react/no-access-state-in-setstate */
 
-type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
-
-interface CalendarProps {}
+interface CalendarProps {
+  initialMonth?: Month;
+  initialYear?: number;
+  selectedDate?: Date;
+  onDayClick?: (day: Date) => void;
+}
 
 interface CalendarState {
   currentYear: number;
@@ -24,11 +27,12 @@ export default class Calendar extends PureComponent<
     super(props);
 
     const today = new Date();
+
     this.state = {
       today,
-      currentYear: today.getFullYear(),
-      currentMonth: today.getMonth(),
-      selectedDay: undefined,
+      currentYear: this.props.initialYear || today.getFullYear(),
+      currentMonth: this.props.initialMonth || today.getMonth(),
+      selectedDay: this.props.selectedDate || undefined,
     };
 
     this.onPrevYearClick = this.onPrevYearClick.bind(this);
@@ -86,17 +90,19 @@ export default class Calendar extends PureComponent<
 
   render() {
     return (
-      <Matrix
-        today={this.state.today}
-        month={this.state.currentMonth as Month}
-        year={this.state.currentYear}
-        selectedDay={this.state.selectedDay}
-        onPrevYearClick={this.onPrevYearClick}
-        onNextYearClick={this.onNextYearClick}
-        onPrevMonthClick={this.onPrevMonthClick}
-        onNextMonthClick={this.onNextMonthClick}
-        onDayClick={this.onDayClick}
-      />
+      <div className="rc-calendar">
+        <Matrix
+          today={this.state.today}
+          month={this.state.currentMonth as Month}
+          year={this.state.currentYear}
+          selectedDay={this.state.selectedDay}
+          onPrevYearClick={this.onPrevYearClick}
+          onNextYearClick={this.onNextYearClick}
+          onPrevMonthClick={this.onPrevMonthClick}
+          onNextMonthClick={this.onNextMonthClick}
+          onDayClick={this.onDayClick}
+        />
+      </div>
     );
   }
 }

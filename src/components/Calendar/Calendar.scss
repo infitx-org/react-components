@@ -7,8 +7,20 @@
 
   border: 1px solid #333;
   font-size: 14px;
+  padding: 5px;
+  display: inline-block;
+}
+
+.rc-calendar__table {
+  @include any.rc-component;
+
   border-spacing: 0;
   border-collapse: collapse;
+
+  th,
+  td {
+    padding: 0;
+  }
 }
 
 .rc-calendar__year {
@@ -43,6 +55,10 @@
 
   &:hover {
     background: #eee;
+  }
+
+  &.rc-calendar__day--empty {
+    background: #fafafa;
   }
 
   &.rc-calendar__day--today {
