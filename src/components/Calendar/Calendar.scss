@@ -69,24 +69,48 @@
   border-bottom: 2px solid #eee;
 }
 
-.rc-calendar__day {
+.rc-calendar__day__cell {
   @extend .rc-calendar__cell;
 
+  vertical-align: middle;
+  text-align: center;
+
+  &.rc-calendar__day__cell--today {
+    position: relative;
+
+    &::before {
+      cursor: pointer;
+      content: "";
+      box-shadow: 0 0 0 2px colors.$primary;
+      border-radius: 20px;
+      position: absolute;
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      top: 1px;
+      left: 1px;
+    }
+  }
+}
+
+.rc-calendar__day {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 34px;
+  height: 34px;
 
   &:hover {
     background: #eee;
     color: colors.$secondary;
-    transition: all 0.05s linear;
+    font-weight: bold;
   }
 
   &.rc-calendar__day--empty {
     background: #fafafa;
     cursor: initial;
-  }
-
-  &.rc-calendar__day--today {
-    border: 2px solid colors.$primary;
   }
 
   &.rc-calendar__day--selected {
@@ -96,13 +120,44 @@
   }
 
   &.rc-calendar__day--range-between {
+    width: 40px;
     color: #fff;
     background: colors.$secondary--light;
   }
 
-  &.rc-calendar__day--range-selected {
+  &.rc-calendar__day--range-start {
+    box-sizing: border-box;
+    font-weight: bold;
     color: #fff;
+    width: 37px;
+    margin-left: 3px;
+    padding-right: 3px;
     background: colors.$secondary;
+    border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px;
+  }
+
+  &.rc-calendar__day--range-end {
+    box-sizing: border-box;
+    font-weight: bold;
+    color: #fff;
+    width: 37px;
+    margin-right: 3px;
+    padding-left: 3px;
+    background: colors.$secondary;
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
+  }
+
+  &.rc-calendar__day--range-partial {
+    font-weight: bold;
+    color: #fff;
+    width: 34px;
+    margin-right: 3px;
+    margin-left: 3px;
+    padding: 0;
+    background: colors.$secondary;
+    border-radius: 17px;
   }
 
   &.rc-calendar__day--disabled {

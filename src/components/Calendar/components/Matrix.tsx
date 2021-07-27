@@ -5,7 +5,7 @@ import Arrow from "../../../resources/icons/arrow.svg";
 import IconButton from "../../IconButton";
 import Days from "./Days";
 import { DateRange, DisabledDays, Month } from "../types";
-import { getMountMatrix } from "../helpers";
+import { getMountMatrix, getDayNames } from "../helpers";
 
 const monthNames = [
   "January",
@@ -21,7 +21,6 @@ const monthNames = [
   "November",
   "December",
 ];
-const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 interface MatrixProps {
   today: Date;
@@ -102,7 +101,7 @@ export default function Matrix({
           </th>
         </tr>
         <tr>
-          {dayNames.map((dayName) => (
+          {getDayNames().map((dayName) => (
             <td key={dayName} className="rc-calendar__dayname">
               {dayName}
             </td>

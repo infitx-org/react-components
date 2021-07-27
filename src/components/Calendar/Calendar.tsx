@@ -28,10 +28,10 @@ export default class Calendar extends PureComponent<
   CalendarProps,
   CalendarState
 > {
-  static getSelectedRange(range: DateRange, day: PossibleDate): DateRange {
+  static getSelectedRange(range: DateRange, day: Date): DateRange {
     const [from, to] = range;
     if (from && !to) {
-      return [from, day];
+      return [from, day].sort((a, b) => a.getTime() - b.getTime()) as DateRange;
     }
     return [day, undefined];
   }

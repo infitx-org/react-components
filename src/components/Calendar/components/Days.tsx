@@ -2,13 +2,15 @@ import React from "react";
 import classnames from "classnames";
 import isAfter from "date-fns/isAfter";
 import isBefore from "date-fns/isBefore";
-import { isSameDay } from "../helpers";
+import { isSameDaySafe } from "../helpers";
 import { Month, Matrix, PossibleDay, DisabledDays, DateRange } from "../types";
 
 interface DayProps {
   isToday: boolean;
   isSelected: boolean;
-  isRangeSelected?: boolean;
+  isRangeStart?: boolean;
+  isRangeEnd?: boolean;
+  isRangePartial?: boolean;
   isRangeBetween?: boolean;
   isDisabled?: boolean;
   day: PossibleDay;
@@ -18,7 +20,9 @@ interface DayProps {
 function Day({
   isToday,
   isSelected,
-  isRangeSelected,
+  isRangeStart,
+  isRangeEnd,
+  isRangePartial,
   isRangeBetween,
   isDisabled,
   day,
@@ -29,18 +33,29 @@ function Day({
     isToday && "rc-calendar__day--today",
     isSelected && "rc-calendar__day--selected",
     isRangeBetween && "rc-calendar__day--range-between",
-    isRangeSelected && "rc-calendar__day--range-selected",
+    isRangeStart && "rc-calendar__day--range-start",
+    isRangeEnd && "rc-calendar__day--range-end",
+    (isRangeStart || isRangeEnd) &&
+      isRangePartial &&
+      "rc-calendar__day--range-partial",
     isDisabled && "rc-calendar__day--disabled",
   ]);
+
+  const cellClassName = classnames([
+    "rc-calendar__day__cell",
+    isToday && "rc-calendar__day__cell--today",
+  ]);
   return (
-    <td className={className} onClick={onClick} role="presentation">
-      {day}
+    <td className={cellClassName} onClick={onClick} role="presentation">
+      <div className={className}>{day}</div>
     </td>
   );
 }
 
 function EmptyDay() {
-  return <td className="rc-calendar__day rc-calendar__day--empty" />;
+  return (
+    <td className="rc-calendar__day__cell rc-calendar__day__cell--empty" />
+  );
 }
 
 interface DaysProps {
@@ -75,10 +90,10 @@ export default function Days({
             const dayDate = new Date(year, month, parseInt(day, 10));
 
             const isDisabled = disabledDays?.(dayDate);
-            const isToday = isSameDay(today, dayDate);
-            const isSelected = isSameDay(dayDate, selectedDay);
-            const isRangeSelected =
-              isSameDay(dayDate, from) || isSameDay(dayDate, to);
+            const isToday = isSameDaySafe(today, dayDate);
+            const isSelected = isSameDaySafe(dayDate, selectedDay);
+            const isRangeStart = isSameDaySafe(dayDate, from);
+            const isRangeEnd = isSameDaySafe(dayDate, to);
             const isRangeBetween =
               from && to && isAfter(dayDate, from) && isBefore(dayDate, to);
 
@@ -88,7 +103,9 @@ export default function Days({
                 key={(day || index).toString()}
                 isToday={isToday}
                 isSelected={isSelected}
-                isRangeSelected={isRangeSelected}
+                isRangeStart={isRangeStart}
+                isRangeEnd={isRangeEnd}
+                isRangePartial={(from && !to) || (to && !from)}
                 isRangeBetween={isRangeBetween}
                 isDisabled={isDisabled}
                 onClick={() => onDayClick(dayDate)}
