@@ -98,31 +98,23 @@ export default class Calendar extends PureComponent<
 
   onDayClick(day: Date) {
     const { selectedDay, selectedRange } = this.state;
+    const isRange = this.props.onDateRangeClick !== undefined;
     const wasSelected = selectedDay && isSameDay(day, selectedDay);
 
-    if (this.props.onDateRangeClick) {
-      this.setState(
-        {
-          selectedRange: Calendar.getSelectedRange(selectedRange, day),
-        },
-        () => {
-          // call the single day selected function
-          this.props.onDayClick?.(day);
-          // call also the range selection function if set
-          this.props.onDateRangeClick?.(this.state.selectedRange);
-        }
-      );
-    } else {
-      this.setState(
-        {
-          selectedDay: wasSelected ? undefined : day,
-        },
-        () => {
-          // call the single day selected function
-          this.props.onDayClick?.(this.state.selectedDay);
-        }
-      );
-    }
+    this.setState(
+      {
+        selectedDay: isRange || wasSelected ? undefined : day,
+        selectedRange: isRange
+          ? Calendar.getSelectedRange(selectedRange, day)
+          : selectedRange,
+      },
+      () => {
+        // call the single day selected function
+        this.props.onDayClick?.(day);
+        // call also the range selection function if set
+        this.props.onDateRangeClick?.(this.state.selectedRange);
+      }
+    );
   }
 
   render() {
