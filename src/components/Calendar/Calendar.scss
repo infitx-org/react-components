@@ -76,6 +76,8 @@
 
   &:hover {
     background: #eee;
+    color: colors.$secondary;
+    transition: all 0.05s linear;
   }
 
   &.rc-calendar__day--empty {
@@ -90,5 +92,12 @@
   &.rc-calendar__day--selected {
     background: colors.$secondary;
     color: #fff;
+    font-weight: bold;
+  }
+
+  &.rc-calendar__day--disabled {
+    cursor: initial;
+    color: colors.$disabled;
+    background: #eee;
   }
 }

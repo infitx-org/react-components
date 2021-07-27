@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import isSameDay from "date-fns/isSameDay";
-import { Month, Matrix, PossibleDay } from "../types";
+import { Month, Matrix, PossibleDay, DisabledDays } from "../types";
 
 interface DayProps {
   isToday: boolean;
@@ -10,11 +10,12 @@ interface DayProps {
   onClick: () => void;
 }
 
-function Day({ isToday, isSelected, day, onClick }: DayProps) {
+function Day({ isToday, isSelected, isDisabled, day, onClick }: DayProps) {
   const className = classnames([
     "rc-calendar__day",
     isToday && "rc-calendar__day--today",
     isSelected && "rc-calendar__day--selected",
+    isDisabled && "rc-calendar__day--disabled",
   ]);
   return (
     <td className={className} onClick={onClick} role="presentation">
@@ -33,6 +34,7 @@ interface DaysProps {
   year: number;
   month: Month;
   selectedDay?: Date;
+  disabledDays: DisabledDays;
   onDayClick: (day: Date) => void;
 }
 export default function Days({
@@ -41,6 +43,7 @@ export default function Days({
   month,
   today,
   selectedDay,
+  disabledDays,
   onDayClick,
 }: DaysProps) {
   return (
@@ -53,6 +56,7 @@ export default function Days({
             }
             const dayDate = new Date(year, month, parseInt(day, 10));
 
+            const isDisabled = disabledDays?.(dayDate);
             const isToday = isSameDay(today, dayDate);
             const isSelected = !!selectedDay && isSameDay(dayDate, selectedDay);
 
@@ -62,6 +66,7 @@ export default function Days({
                 key={(day || index).toString()}
                 isToday={isToday}
                 isSelected={isSelected}
+                isDisabled={isDisabled}
                 onClick={() => onDayClick(dayDate)}
               />
             );

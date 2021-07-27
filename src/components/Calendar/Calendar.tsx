@@ -1,7 +1,7 @@
 import { PureComponent } from "react";
 import isSameDay from "date-fns/isSameDay";
 import Matrix from "./components/Matrix";
-import { Month } from "./types";
+import { DisabledDays, Month } from "./types";
 import "./Calendar.scss";
 
 /* eslint-disable react/no-access-state-in-setstate */
@@ -10,12 +10,13 @@ interface CalendarProps {
   initialMonth?: Month;
   initialYear?: number;
   selectedDate?: Date;
+  disabledDays?: DisabledDays;
   onDayClick?: (day: Date | undefined) => void;
 }
 
 interface CalendarState {
   currentYear: number;
-  currentMonth: number;
+  currentMonth: Month;
   today: Date;
   selectedDay: Date | undefined;
 }
@@ -32,7 +33,7 @@ export default class Calendar extends PureComponent<
     this.state = {
       today,
       currentYear: this.props.initialYear || today.getFullYear(),
-      currentMonth: this.props.initialMonth || today.getMonth(),
+      currentMonth: this.props.initialMonth || (today.getMonth() as Month),
       selectedDay: this.props.selectedDate || undefined,
     };
 
@@ -49,7 +50,7 @@ export default class Calendar extends PureComponent<
 
     this.setState({
       currentYear: prevYear.getFullYear(),
-      currentMonth: prevYear.getMonth(),
+      currentMonth: prevYear.getMonth() as Month,
     });
   }
 
@@ -59,7 +60,7 @@ export default class Calendar extends PureComponent<
 
     this.setState({
       currentYear: nextMonth.getFullYear(),
-      currentMonth: nextMonth.getMonth(),
+      currentMonth: nextMonth.getMonth() as Month,
     });
   }
 
@@ -69,7 +70,7 @@ export default class Calendar extends PureComponent<
 
     this.setState({
       currentYear: prevMonth.getFullYear(),
-      currentMonth: prevMonth.getMonth(),
+      currentMonth: prevMonth.getMonth() as Month,
     });
   }
 
@@ -79,7 +80,7 @@ export default class Calendar extends PureComponent<
 
     this.setState({
       currentYear: nextMonth.getFullYear(),
-      currentMonth: nextMonth.getMonth(),
+      currentMonth: nextMonth.getMonth() as Month,
     });
   }
 
@@ -99,8 +100,9 @@ export default class Calendar extends PureComponent<
       <div className="rc-calendar">
         <Matrix
           today={this.state.today}
-          month={this.state.currentMonth as Month}
+          month={this.state.currentMonth}
           year={this.state.currentYear}
+          disabledDays={this.props.disabledDays}
           selectedDay={this.state.selectedDay}
           onPrevYearClick={this.onPrevYearClick}
           onNextYearClick={this.onNextYearClick}

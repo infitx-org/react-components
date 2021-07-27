@@ -30,3 +30,8 @@ export const onDayClick = Template.bind({});
 onDayClick.args = {
   onDayClick: console.log,
 };
+
+export const DisabledDays = Template.bind({});
+DisabledDays.args = {
+  disabledDays: (day) => day.getDay() === 0,
+};

@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import Arrow from "../../../resources/icons/arrow.svg";
 import IconButton from "../../IconButton";
 import Days from "./Days";
-import { Month } from "../types";
+import { DisabledDays, Month } from "../types";
 import { getMountMatrix } from "../helpers";
 
 const monthNames = [
@@ -28,6 +28,7 @@ interface MatrixProps {
   year: number;
   month: Month;
   selectedDay?: Date;
+  disabledDays?: DisabledDays;
   onPrevYearClick: () => void;
   onNextYearClick: () => void;
   onPrevMonthClick: () => void;
@@ -40,6 +41,7 @@ export default function Matrix({
   year,
   month,
   selectedDay,
+  disabledDays,
   onPrevYearClick,
   onNextYearClick,
   onPrevMonthClick,
@@ -110,6 +112,7 @@ export default function Matrix({
           year={year}
           month={month}
           selectedDay={selectedDay}
+          disabledDays={disabledDays}
           onDayClick={onDayClick}
         />
       </tbody>
