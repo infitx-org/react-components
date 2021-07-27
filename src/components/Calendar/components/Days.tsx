@@ -1,4 +1,3 @@
-import React from "react";
 import classnames from "classnames";
 import isAfter from "date-fns/isAfter";
 import isBefore from "date-fns/isBefore";

@@ -6,13 +6,13 @@ import "./Calendar.scss";
 
 /* eslint-disable react/no-access-state-in-setstate */
 
-interface CalendarProps {
+export interface CalendarProps {
   initialMonth?: Month;
   initialYear?: number;
   selectedDate?: Date;
   selectedRange?: DateRange;
   disabledDays?: DisabledDays;
-  onDayClick?: (day: PossibleDate) => void;
+  onDayClick?: (day: Date, { selected }: { selected: boolean }) => void;
   onDateRangeClick?: (range: DateRange) => void;
 }
 
@@ -110,7 +110,7 @@ export default class Calendar extends PureComponent<
       },
       () => {
         // call the single day selected function
-        this.props.onDayClick?.(day);
+        this.props.onDayClick?.(day, { selected: !!wasSelected });
         // call also the range selection function if set
         this.props.onDateRangeClick?.(this.state.selectedRange);
       }

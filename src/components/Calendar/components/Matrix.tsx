@@ -1,4 +1,3 @@
-import React from "react";
 // import classnames from "classnames";
 import { format } from "date-fns";
 import Arrow from "../../../resources/icons/arrow.svg";
