@@ -56,6 +56,7 @@ interface ValidationCardProps {
   required?: boolean;
   invalid?: boolean;
 }
+
 export default function ValidationCard({
   empty,
   messages = [],
