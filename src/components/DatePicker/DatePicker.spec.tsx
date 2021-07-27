@@ -10,7 +10,7 @@ const commonProps = {
 
 function getCalendarDays(container: HTMLElement): NodeListOf<HTMLDivElement> {
   return container.querySelectorAll(
-    ".DayPicker-Day:not(.DayPicker-Day--outside)"
+    ".rc-calendar__day"
   ) as NodeListOf<HTMLDivElement>;
 }
 function getCalendar(container: HTMLElement): HTMLDivElement {
@@ -190,7 +190,7 @@ describe("tests the datepicker props", () => {
       <DatePicker
         {...commonProps}
         onChange={mockFn}
-        value={new Date("01/01/2021").toString()}
+        value={new Date(2021, 1, 1).toString()}
       />
     );
     userEvent.click(getInput(container));
