@@ -3,8 +3,6 @@ import "@testing-library/jest-dom/extend-expect";
 import MockDate from "../../../__mocks__/dateMock";
 import Calendar from "./Calendar";
 
-// initialMonth ?: Month;
-// initialYear ?: number;
 // selectedDate ?: Date;
 // selectedRange ?: DateRange;
 // disabledDays ?: DisabledDays;
@@ -68,6 +66,21 @@ describe("tests the Calendar", () => {
     ).toBeTruthy();
     expect(
       JanuaryTen?.className.includes("rc-calendar__day__cell--disabled")
+    ).toBeTruthy();
+  });
+
+  it("renders the selected date", () => {
+    const { container } = render(
+      <Calendar
+        initialYear={2021}
+        initialMonth={0}
+        selectedDate={new Date(2021, 0, 5)}
+      />
+    );
+    const days = container.querySelectorAll(".rc-calendar__day");
+    const JanuaryFive = Array.from(days).find((d) => d.textContent === "05");
+    expect(
+      JanuaryFive?.className.includes("rc-calendar__day--selected")
     ).toBeTruthy();
   });
 });
