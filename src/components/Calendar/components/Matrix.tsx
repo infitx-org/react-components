@@ -27,12 +27,14 @@ interface MatrixProps {
   month: Month;
   selectedDay?: Date;
   selectedRange: DateRange;
+  tempRangeEnd: Date | undefined;
   disabledDays?: DisabledDays;
   onPrevYearClick: () => void;
   onNextYearClick: () => void;
   onPrevMonthClick: () => void;
   onNextMonthClick: () => void;
   onDayClick: (day: Date) => void;
+  onDayHover: (day: Date) => void;
 }
 
 export default function Matrix({
@@ -41,12 +43,14 @@ export default function Matrix({
   month,
   selectedDay,
   selectedRange,
+  tempRangeEnd,
   disabledDays,
   onPrevYearClick,
   onNextYearClick,
   onPrevMonthClick,
   onNextMonthClick,
   onDayClick,
+  onDayHover,
 }: MatrixProps) {
   const matrix = getMountMatrix({ year, month }, (day, { sameMonth }) => {
     return sameMonth ? format(day, "dd") : undefined;
@@ -113,8 +117,10 @@ export default function Matrix({
           month={month}
           selectedDay={selectedDay}
           selectedRange={selectedRange}
+          tempRangeEnd={tempRangeEnd}
           disabledDays={disabledDays}
           onDayClick={onDayClick}
+          onDayHover={onDayHover}
         />
       </tbody>
     </table>

@@ -1,7 +1,8 @@
 import classnames from "classnames";
 import isAfter from "date-fns/isAfter";
 import isBefore from "date-fns/isBefore";
-import { isSameDaySafe } from "../helpers";
+import isWithinInterval from "date-fns/isWithinInterval";
+import { isSameDaySafe, sortDates } from "../helpers";
 import { Month, Matrix, PossibleDay, DisabledDays, DateRange } from "../types";
 
 interface DayProps {
@@ -11,9 +12,11 @@ interface DayProps {
   isRangeEnd?: boolean;
   isRangePartial?: boolean;
   isRangeBetween?: boolean;
+  isTempRangeBetween?: boolean;
   isDisabled?: boolean;
   day: PossibleDay;
   onClick: () => void;
+  onMouseEnter: () => void;
 }
 
 function Day({
@@ -23,9 +26,11 @@ function Day({
   isRangeEnd,
   isRangePartial,
   isRangeBetween,
+  isTempRangeBetween,
   isDisabled,
   day,
   onClick,
+  onMouseEnter,
 }: DayProps) {
   const className = classnames([
     "rc-calendar__day",
@@ -37,6 +42,7 @@ function Day({
     (isRangeStart || isRangeEnd) &&
       isRangePartial &&
       "rc-calendar__day--range-partial",
+    isTempRangeBetween && "rc-calendar__day--temp-range-between",
   ]);
 
   const cellClassName = classnames([
@@ -45,7 +51,12 @@ function Day({
     isDisabled && "rc-calendar__day__cell--disabled",
   ]);
   return (
-    <td className={cellClassName} onClick={onClick} role="presentation">
+    <td
+      className={cellClassName}
+      onClick={onClick}
+      role="presentation"
+      onMouseEnter={onMouseEnter}
+    >
       <div className={className}>{day}</div>
     </td>
   );
@@ -64,8 +75,10 @@ interface DaysProps {
   month: Month;
   selectedDay?: Date;
   selectedRange: DateRange;
+  tempRangeEnd: Date | undefined;
   disabledDays?: DisabledDays;
   onDayClick: (day: Date) => void;
+  onDayHover: (day: Date) => void;
 }
 export default function Days({
   matrix,
@@ -74,8 +87,10 @@ export default function Days({
   today,
   selectedDay,
   selectedRange,
+  tempRangeEnd,
   disabledDays,
   onDayClick,
+  onDayHover,
 }: DaysProps) {
   const [from, to] = selectedRange;
   return (
@@ -96,6 +111,13 @@ export default function Days({
             const isRangeBetween =
               from && to && isAfter(dayDate, from) && isBefore(dayDate, to);
 
+            let isTempRangeBetween = false;
+            if (!to && from && tempRangeEnd && !isRangeStart) {
+              const [start, end] =
+                from && tempRangeEnd && sortDates(from, tempRangeEnd);
+              isTempRangeBetween = isWithinInterval(dayDate, { start, end });
+            }
+
             return (
               <Day
                 day={day}
@@ -106,8 +128,10 @@ export default function Days({
                 isRangeEnd={isRangeEnd}
                 isRangePartial={(from && !to) || (to && !from)}
                 isRangeBetween={isRangeBetween}
+                isTempRangeBetween={isTempRangeBetween}
                 isDisabled={isDisabled}
                 onClick={() => onDayClick(dayDate)}
+                onMouseEnter={() => onDayHover(dayDate)}
               />
             );
           })}

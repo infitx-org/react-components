@@ -133,6 +133,14 @@ $cell-content-border-radius: math.div(
     background: colors.$secondary--light;
   }
 
+  &.rc-calendar__day--temp-range-between {
+    width: $cell-content-size - 8px;
+    height: $cell-content-size - 8px;
+    color: colors.$secondary--opposite;
+    background: colors.$secondary--light;
+    border-radius: 50%;
+  }
+
   &.rc-calendar__day--range-start {
     @include rc-calendar__day--selected-left;
   }

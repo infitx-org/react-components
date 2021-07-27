@@ -14,6 +14,12 @@ type Options = {
   month: Month;
 };
 
+export function sortDates(dateLeft: Date, dateRight: Date): [Date, Date] {
+  if (dateLeft.getTime() < dateRight.getTime()) {
+    return [dateLeft, dateRight];
+  }
+  return [dateRight, dateLeft];
+}
 function getWeekStartsOnSunday(): boolean {
   return navigator.language === "en-US";
 }
