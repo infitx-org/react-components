@@ -79,6 +79,7 @@ interface DaysProps {
   disabledDays?: DisabledDays;
   onDayClick: (day: Date) => void;
   onDayHover: (day: Date) => void;
+  onGoToTodayClick: () => void;
 }
 export default function Days({
   matrix,
@@ -91,6 +92,7 @@ export default function Days({
   disabledDays,
   onDayClick,
   onDayHover,
+  onGoToTodayClick,
 }: DaysProps) {
   const [from, to] = selectedRange;
   return (
@@ -144,6 +146,19 @@ export default function Days({
           })}
         </tr>
       ))}
+      <tr>
+        <td className="rc-calendar__go-to-today__cell" colSpan={7}>
+          {(today.getMonth() !== month || today.getFullYear() !== year) && (
+            <div
+              role="presentation"
+              className="rc-calendar__go-to-today"
+              onClick={onGoToTodayClick}
+            >
+              Today
+            </div>
+          )}
+        </td>
+      </tr>
     </>
   );
 }

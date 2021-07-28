@@ -38,8 +38,8 @@ interface MatrixProps {
   onNextMonthClick: () => void;
   onDayClick: (day: Date) => void;
   onDayHover: (day: Date) => void;
-  onGoToTodayClick: () => void;
   onCurrentMonthClick: () => void;
+  onGoToTodayClick: () => void;
 }
 
 export default function Matrix({
@@ -117,7 +117,11 @@ export default function Matrix({
           </th>
         </tr>
         {showMonthMatrix ? (
-          <Months onMonthClick={onMonthClick} selectedMonth={month} />
+          <Months
+            onMonthClick={onMonthClick}
+            todayMonth={today.getMonth()}
+            currentMonth={month}
+          />
         ) : (
           <Days
             matrix={matrix}
@@ -130,21 +134,9 @@ export default function Matrix({
             disabledDays={disabledDays}
             onDayClick={onDayClick}
             onDayHover={onDayHover}
+            onGoToTodayClick={onGoToTodayClick}
           />
         )}
-        <tr>
-          <td className="rc-calendar__go-to-today__cell" colSpan={7}>
-            {(today.getMonth() !== month || today.getFullYear() !== year) && (
-              <div
-                role="presentation"
-                className="rc-calendar__go-to-today"
-                onClick={onGoToTodayClick}
-              >
-                Today
-              </div>
-            )}
-          </td>
-        </tr>
       </tbody>
     </table>
   );

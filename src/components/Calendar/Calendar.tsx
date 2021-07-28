@@ -95,7 +95,7 @@ export default class Calendar extends PureComponent<
   }
 
   onMonthClick(month: number) {
-    this.setState({ currentMonth: month });
+    this.setState({ currentMonth: month, showMonthMatrix: false });
   }
 
   onPrevMonthClick() {

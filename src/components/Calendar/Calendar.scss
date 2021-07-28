@@ -254,18 +254,6 @@ $month-cell-content-size: ($ms - 6) + px;
   width: 0;
 }
 
-.rc-calendar__month__cell {
-  font-size: 13px;
-  height: $cell-size;
-  text-align: center;
-  vertical-align: middle;
-  width: $month-cell-size;
-
-  &.rc-calendar__month--current {
-    @include cell-selected;
-  }
-}
-
 .rc-calendar__month {
   height: $cell-content-size;
   width: $month-cell-content-size;
@@ -274,10 +262,31 @@ $month-cell-content-size: ($ms - 6) + px;
   align-items: center;
   justify-content: center;
 
-  &:hover {
+  &.rc-calendar__month--current {
     cursor: pointer;
     background: colors.$secondary;
     color: colors.$secondary--opposite;
     border-radius: 17px;
+  }
+}
+
+.rc-calendar__month__cell {
+  font-size: 13px;
+  height: $cell-size;
+  text-align: center;
+  vertical-align: middle;
+  width: $month-cell-size;
+
+  &.rc-calendar__month__cell--today {
+    @include cell-selected;
+  }
+
+  &:hover {
+    .rc-calendar__month {
+      cursor: pointer;
+      background: colors.$secondary;
+      color: colors.$secondary--opposite;
+      border-radius: 17px;
+    }
   }
 }
