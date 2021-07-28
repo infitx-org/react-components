@@ -25,7 +25,11 @@ $month-cell-content-size: ($ms - 6) + px;
 }
 
 .rc-calendar__button {
-  padding: 6px;
+  fill: #ccc;
+
+  &:hover {
+    fill: colors.$secondary;
+  }
 }
 
 @mixin hoverable-text {
@@ -73,7 +77,7 @@ $month-cell-content-size: ($ms - 6) + px;
 }
 
 .rc-calendar__year-row {
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #eee;
 }
 
 .rc-calendar__current-year {

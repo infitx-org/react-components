@@ -1,9 +1,8 @@
 // import classnames from "classnames";
 import { format } from "date-fns";
-import Arrow from "../../../resources/icons/arrow.svg";
-import IconButton from "../../IconButton";
 import Days from "./Days";
 import Months from "./Months";
+import Control from "./Control";
 import { DateRange, DisabledDays } from "../types";
 import { getMountMatrix } from "../helpers";
 
@@ -69,37 +68,16 @@ export default function Matrix({
     <table className="rc-calendar__table">
       <thead>
         <tr className="rc-calendar__year-row">
-          <th className="rc-calendar__year-control">
-            <IconButton
-              className="rc-calendar__year-prev"
-              size={24}
-              icon={<Arrow />}
-              onClick={onPrevYearClick}
-            />
-          </th>
+          <Control type="year" direction="prev" onClick={onPrevYearClick} />
           <th colSpan={5} className="rc-calendar__current-year">
             {year}
           </th>
-          <th className="rc-calendar__year-control">
-            <IconButton
-              className="rc-calendar__year-next"
-              size={24}
-              icon={<Arrow />}
-              onClick={onNextYearClick}
-            />
-          </th>
+          <Control type="year" direction="next" onClick={onNextYearClick} />
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th className="rc-calendar__month-control">
-            <IconButton
-              className="rc-calendar__month-prev"
-              size={24}
-              icon={<Arrow />}
-              onClick={onPrevMonthClick}
-            />
-          </th>
+          <Control type="month" direction="prev" onClick={onPrevMonthClick} />
           <th
             colSpan={5}
             className="rc-calendar__current-month"
@@ -107,14 +85,7 @@ export default function Matrix({
           >
             {monthNames[month]}
           </th>
-          <th className="rc-calendar__month-control">
-            <IconButton
-              className="rc-calendar__month-next"
-              size={24}
-              icon={<Arrow />}
-              onClick={onNextMonthClick}
-            />
-          </th>
+          <Control type="month" direction="next" onClick={onNextMonthClick} />
         </tr>
         {showMonthMatrix ? (
           <Months
