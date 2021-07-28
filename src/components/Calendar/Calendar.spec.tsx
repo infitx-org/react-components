@@ -1,25 +1,25 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import MockDate from "../../../__mocks__/dateMock";
+import userEvent from "@testing-library/user-event";
 import Calendar from "./Calendar";
 
-// selectedDate ?: Date;
-// selectedRange ?: DateRange;
-// disabledDays ?: DisabledDays;
-// onDayClick ?: (day: Date, { selected }: { selected: boolean }) => void;
-// onDateRangeClick ?: (range: DateRange) => void;
+function getDay(
+  container: HTMLElement,
+  { cell = false, day = "01" }: { cell?: boolean; day: string }
+): Element | undefined {
+  const days = container.querySelectorAll(".rc-calendar__day__cell");
+  const dayCell = Array.from(days).find((d) => d.textContent === day);
+  if (!dayCell) {
+    return undefined;
+  }
+  if (cell) {
+    return dayCell;
+  }
+  return dayCell.querySelector(".rc-calendar__day") as Element;
+}
 
 describe("tests the Calendar", () => {
-  // beforeAll(() => {
-  //   // @ts-ignore
-  //   window.Date = MockDate;
-  //   // @ts-ignore
-  //   global.Date = MockDate;
-  // });
 
-  // afterAll(() => {
-  //   window.Date = MockDate.getRealDate();
-  // });
   it("renders the Calendar", () => {
     const { container } = render(
       <Calendar initialMonth={0} initialYear={2021} />
@@ -58,9 +58,9 @@ describe("tests the Calendar", () => {
         disabledDays={(d) => d.getDay() === 0}
       />
     );
-    const days = container.querySelectorAll(".rc-calendar__day__cell");
-    const JanuaryThree = Array.from(days).find((d) => d.textContent === "03");
-    const JanuaryTen = Array.from(days).find((d) => d.textContent === "10");
+    const JanuaryThree = getDay(container, { day: "03", cell: true });
+    const JanuaryTen = getDay(container, { day: "10", cell: true });
+
     expect(
       JanuaryThree?.className.includes("rc-calendar__day__cell--disabled")
     ).toBeTruthy();
@@ -77,10 +77,74 @@ describe("tests the Calendar", () => {
         selectedDate={new Date(2021, 0, 5)}
       />
     );
-    const days = container.querySelectorAll(".rc-calendar__day");
-    const JanuaryFive = Array.from(days).find((d) => d.textContent === "05");
+    const JanuaryFive = getDay(container, { day: "05" });
     expect(
       JanuaryFive?.className.includes("rc-calendar__day--selected")
     ).toBeTruthy();
+  });
+
+  it("renders the selected range", () => {
+    const { container } = render(
+      <Calendar
+        initialYear={2021}
+        initialMonth={0}
+        selectedDate={new Date(2021, 0, 5)}
+      />
+    );
+    const JanuaryFive = getDay(container, { day: "05" });
+    expect(
+      JanuaryFive?.className.includes("rc-calendar__day--selected")
+    ).toBeTruthy();
+  });
+
+  it("triggers onDayClick", () => {
+    const onDayClickMock = jest.fn();
+    const { container } = render(
+      <Calendar
+        initialYear={2021}
+        initialMonth={0}
+        onDayClick={onDayClickMock}
+      />
+    );
+    const JanuaryTen = getDay(container, { day: "10" }) as Element;
+
+    userEvent.click(JanuaryTen);
+
+    const date = new Date("2021-01-10T00:00:00.000Z");
+    const exportValue = [date, { selected: false }];
+
+    expect(onDayClickMock).toHaveBeenCalledWith(...exportValue);
+  });
+
+  it("triggers onRangeClick", () => {
+    const onDayClickMock = jest.fn();
+    const onRangeClickMock = jest.fn();
+    const { container } = render(
+      <Calendar
+        initialYear={2021}
+        initialMonth={0}
+        onDayClick={onDayClickMock}
+        onDateRangeClick={onRangeClickMock}
+      />
+    );
+    const JanuaryTen = getDay(container, { day: "10" }) as Element;
+    const JanuaryTwelve = getDay(container, { day: "12" }) as Element;
+
+    userEvent.click(JanuaryTen);
+    userEvent.click(JanuaryTwelve);
+
+    const startDate = new Date("2021-01-10T00:00:00.000Z");
+    const exportStart = [startDate, { selected: false }];
+
+    const endDate = new Date("2021-01-12T00:00:00.000Z");
+    const exportEnd = [endDate, { selected: false }];
+
+    expect(onDayClickMock).toHaveBeenCalledTimes(2);
+    expect(onDayClickMock).toHaveBeenCalledWith(...exportStart);
+    expect(onDayClickMock).toHaveBeenCalledWith(...exportEnd);
+
+    expect(onRangeClickMock).toHaveBeenCalledTimes(2);
+    expect(onRangeClickMock).toHaveBeenCalledWith([startDate, undefined]);
+    expect(onRangeClickMock).toHaveBeenCalledWith([startDate, endDate]);
   });
 });
