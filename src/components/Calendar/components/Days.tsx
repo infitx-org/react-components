@@ -3,7 +3,7 @@ import isAfter from "date-fns/isAfter";
 import isBefore from "date-fns/isBefore";
 import isWithinInterval from "date-fns/isWithinInterval";
 import { isSameDaySafe, sortDates, getDayNames } from "../helpers";
-import { Month, Matrix, PossibleDay, DisabledDays, DateRange } from "../types";
+import { Matrix, PossibleDay, DisabledDays, DateRange } from "../types";
 
 interface DayProps {
   isToday: boolean;
@@ -72,7 +72,7 @@ interface DaysProps {
   matrix: Matrix;
   today: Date;
   year: number;
-  month: Month;
+  month: number;
   selectedDay?: Date;
   selectedRange: DateRange;
   tempRangeEnd: Date | undefined;
