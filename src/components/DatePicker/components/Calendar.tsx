@@ -1,7 +1,5 @@
-import DayPicker from "react-day-picker";
 import Overlay from "components/Overlay";
-import "./DayPicker-default.scss";
-import "./DayPicker.scss";
+import CalendarComponent from "components/Calendar";
 import "./Calendar.scss";
 
 interface CalendarProps {
@@ -19,9 +17,9 @@ export default function Calendar({ selectedDate, onDayClick }: CalendarProps) {
       onClick={(e) => e.stopPropagation()}
     >
       <div className="rc-datepicker__calendar__container">
-        <DayPicker
-          month={selectedDate}
-          selectedDays={selectedDate}
+        <CalendarComponent
+          initialMonth={selectedDate ? selectedDate.getMonth() : undefined}
+          selectedDate={selectedDate}
           onDayClick={(day: Date, { selected }) => onDayClick(day, selected)}
         />
       </div>
