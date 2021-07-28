@@ -1,8 +1,7 @@
 module.exports = {
   "plugins": [
     ["prismjs", {
-      "languages": ["markup", "xml", "json"],
-      "plugins": ["line-numbers"],
+      "languages": ["markup", "json"],
     }]
   ],
   presets: [
