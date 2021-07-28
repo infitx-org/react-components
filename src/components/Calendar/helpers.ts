@@ -7,11 +7,11 @@ import isSameDayDateFns from "date-fns/isSameDay";
 import startOfWeek from "date-fns/startOfWeek";
 import startOfMonth from "date-fns/startOfMonth";
 import eachWeekOfInterval from "date-fns/eachWeekOfInterval";
-import { Month, PossibleDay, Matrix } from "./types";
+import { PossibleDay, Matrix } from "./types";
 
 type Options = {
   year: number;
-  month: Month;
+  month: number;
 };
 
 export function sortDates(dateLeft: Date, dateRight: Date): [Date, Date] {
