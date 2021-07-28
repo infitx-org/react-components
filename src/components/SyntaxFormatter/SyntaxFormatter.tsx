@@ -1,18 +1,29 @@
+import React, { useEffect } from "react";
 import Prism from "prismjs";
 import "./SyntaxFormatter.scss";
 
 export interface SyntaxFormatterProps {
-  code: "markup" | "xml" | "json";
-  lang: string;
+  code: string;
+  lang: "markup" | "json";
 }
 
 /* eslint-disable react/no-danger */
 
 export default function SyntaxFormatter({ code, lang }: SyntaxFormatterProps) {
-  const formatted = Prism.highlight(code, Prism.languages[lang], lang);
+  const ref = React.useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (!code) {
+      return;
+    }
+    const formatted = Prism.highlight(code, Prism.languages[lang], lang);
+    ref.current!.innerHTML = formatted;
+  }, [code]);
+
   return (
-    <pre className="rc-syntax-formatter">
-      <code dangerouslySetInnerHTML={{ __html: formatted }} />
-    </pre>
+    <div className="rc-syntax-formatter">
+      <pre>
+        <code ref={ref} />
+      </pre>
+    </div>
   );
 }

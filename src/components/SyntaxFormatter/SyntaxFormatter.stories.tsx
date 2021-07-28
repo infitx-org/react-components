@@ -5,7 +5,7 @@ export default {
   component: SyntaxFormatter,
 };
 
-const xml = `<?xml version="1.0" encoding="UTF-8"?>
+const xmlString = `<?xml version="1.0" encoding="UTF-8"?>
 <note>
   <to>Tove</to>
   <from>Jani</from>
@@ -13,7 +13,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
   <body>Don't forget me this weekend!</body>
 </note>`;
 
-const json = `{
+const jsonString = `{
   "name": "@modusbox/react-components",
   "files": [
     "lib"
@@ -48,12 +48,12 @@ const Template = (args) => (
 
 export const XMLSyntax = Template.bind({});
 XMLSyntax.args = {
-  code: xml,
-  lang: "xml",
+  code: xmlString,
+  lang: "markup",
 };
 
 export const JSONSyntax = Template.bind({});
 JSONSyntax.args = {
-  code: json,
+  code: jsonString,
   lang: "json",
 };
