@@ -58,6 +58,10 @@ export { default as Select, SelectProps } from "./components/Select";
 export { default as ScrollBox, ScrollBoxProps } from "./components/ScrollBox";
 export { default as Spinner, SpinnerProps } from "./components/Spinner";
 export {
+  default as SyntaxFormatter,
+  SyntaxFormatterProps,
+} from "./components/SyntaxFormatter";
+export {
   Tab,
   Tabs,
   TabPanel,
