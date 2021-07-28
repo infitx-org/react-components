@@ -145,6 +145,45 @@ describe("tests the Calendar", () => {
   });
 });
 
+describe("Tests the calendar day selection", () => {
+  it("Today selection button is not available on current year and month", () => {
+    const { container } = render(<Calendar />);
+
+    expect(
+      container.querySelector(".rc-calendar__go-to-today")
+    ).not.toBeInTheDocument();
+  });
+
+  it("Today selection button is available on different year or month", () => {
+    const { container } = render(<Calendar initialYear={2000} />);
+
+    expect(
+      container.querySelector(".rc-calendar__go-to-today")
+    ).toBeInTheDocument();
+  });
+
+  it("Sets the year and month of current date when clicking on the today button", () => {
+    const { container } = render(
+      <Calendar initialYear={1980} initialMonth={0} />
+    );
+
+    userEvent.click(
+      container.querySelector(".rc-calendar__go-to-today") as Element
+    );
+
+    const today = new Date();
+    const month = today.toLocaleString("default", { month: "long" });
+    const year = today.getFullYear();
+
+    expect(
+      container.querySelector(".rc-calendar__current-year") as Element
+    ).toHaveTextContent(year.toString());
+    expect(
+      container.querySelector(".rc-calendar__current-month") as Element
+    ).toHaveTextContent(month);
+  });
+});
+
 describe("Tests the calendar year selection", () => {
   it("Sets the prev year clicking on the prev year icon button", () => {
     const { container } = render(
