@@ -3,8 +3,9 @@ import { format } from "date-fns";
 import Arrow from "../../../resources/icons/arrow.svg";
 import IconButton from "../../IconButton";
 import Days from "./Days";
-import { DateRange, DisabledDays, Month } from "../types";
-import { getMountMatrix, getDayNames } from "../helpers";
+import Months from "./Months";
+import { DateRange, DisabledDays } from "../types";
+import { getMountMatrix } from "../helpers";
 
 const monthNames = [
   "January",
@@ -24,17 +25,21 @@ const monthNames = [
 interface MatrixProps {
   today: Date;
   year: number;
-  month: Month;
+  month: number;
   selectedDay?: Date;
   selectedRange: DateRange;
   tempRangeEnd: Date | undefined;
   disabledDays?: DisabledDays;
+  showMonthMatrix: boolean;
   onPrevYearClick: () => void;
   onNextYearClick: () => void;
+  onMonthClick: (month: number) => void;
   onPrevMonthClick: () => void;
   onNextMonthClick: () => void;
   onDayClick: (day: Date) => void;
   onDayHover: (day: Date) => void;
+  onGoToTodayClick: () => void;
+  onCurrentMonthClick: () => void;
 }
 
 export default function Matrix({
@@ -45,12 +50,16 @@ export default function Matrix({
   selectedRange,
   tempRangeEnd,
   disabledDays,
+  showMonthMatrix,
   onPrevYearClick,
   onNextYearClick,
+  onMonthClick,
   onPrevMonthClick,
   onNextMonthClick,
   onDayClick,
   onDayHover,
+  onCurrentMonthClick,
+  onGoToTodayClick,
 }: MatrixProps) {
   const matrix = getMountMatrix({ year, month }, (day, { sameMonth }) => {
     return sameMonth ? format(day, "dd") : undefined;
@@ -60,7 +69,7 @@ export default function Matrix({
     <table className="rc-calendar__table">
       <thead>
         <tr className="rc-calendar__year-row">
-          <th>
+          <th className="rc-calendar__year-control">
             <IconButton
               className="rc-calendar__year-prev"
               size={24}
@@ -68,10 +77,10 @@ export default function Matrix({
               onClick={onPrevYearClick}
             />
           </th>
-          <th colSpan={5} className="rc-calendar__year">
+          <th colSpan={5} className="rc-calendar__current-year">
             {year}
           </th>
-          <th>
+          <th className="rc-calendar__year-control">
             <IconButton
               className="rc-calendar__year-next"
               size={24}
@@ -83,7 +92,7 @@ export default function Matrix({
       </thead>
       <tbody>
         <tr>
-          <th>
+          <th className="rc-calendar__month-control">
             <IconButton
               className="rc-calendar__month-prev"
               size={24}
@@ -91,10 +100,14 @@ export default function Matrix({
               onClick={onPrevMonthClick}
             />
           </th>
-          <th colSpan={5} className="rc-calendar__month">
+          <th
+            colSpan={5}
+            className="rc-calendar__current-month"
+            onClick={onCurrentMonthClick}
+          >
             {monthNames[month]}
           </th>
-          <th>
+          <th className="rc-calendar__month-control">
             <IconButton
               className="rc-calendar__month-next"
               size={24}
@@ -103,25 +116,35 @@ export default function Matrix({
             />
           </th>
         </tr>
+        {showMonthMatrix ? (
+          <Months onMonthClick={onMonthClick} selectedMonth={month} />
+        ) : (
+          <Days
+            matrix={matrix}
+            today={today}
+            year={year}
+            month={month}
+            selectedDay={selectedDay}
+            selectedRange={selectedRange}
+            tempRangeEnd={tempRangeEnd}
+            disabledDays={disabledDays}
+            onDayClick={onDayClick}
+            onDayHover={onDayHover}
+          />
+        )}
         <tr>
-          {getDayNames().map((dayName) => (
-            <td key={dayName} className="rc-calendar__dayname">
-              {dayName}
-            </td>
-          ))}
+          <td className="rc-calendar__go-to-today__cell" colSpan={7}>
+            {(today.getMonth() !== month || today.getFullYear() !== year) && (
+              <div
+                role="presentation"
+                className="rc-calendar__go-to-today"
+                onClick={onGoToTodayClick}
+              >
+                Today
+              </div>
+            )}
+          </td>
         </tr>
-        <Days
-          matrix={matrix}
-          today={today}
-          year={year}
-          month={month}
-          selectedDay={selectedDay}
-          selectedRange={selectedRange}
-          tempRangeEnd={tempRangeEnd}
-          disabledDays={disabledDays}
-          onDayClick={onDayClick}
-          onDayHover={onDayHover}
-        />
       </tbody>
     </table>
   );

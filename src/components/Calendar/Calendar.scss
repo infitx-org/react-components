@@ -12,6 +12,10 @@ $cell-content-border-radius: math.div(
     2
   ) + px;
 
+$ms: math.div(functions.strip-units($cell-size) * 5, 3);
+$month-cell-size: $ms + px;
+$month-cell-content-size: ($ms - 6) + px;
+
 .rc-calendar {
   @include any.rc-component;
 
@@ -24,7 +28,31 @@ $cell-content-border-radius: math.div(
   padding: 6px;
 }
 
-.rc-calendar__cell {
+@mixin hoverable-text {
+  &:hover {
+    cursor: pointer;
+    color: colors.$secondary;
+  }
+}
+
+@mixin cell-selected {
+  position: relative;
+
+  &::before {
+    cursor: pointer;
+    content: "";
+    box-shadow: 0 0 0 2px colors.$primary;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 3;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    top: 1px;
+    left: 1px;
+  }
+}
+
+@mixin rc-calendar__cell {
   box-sizing: border-box;
   width: $cell-size;
   height: $cell-size;
@@ -48,7 +76,9 @@ $cell-content-border-radius: math.div(
   border-bottom: 2px solid #ddd;
 }
 
-.rc-calendar__year {
+.rc-calendar__current-year {
+  @include hoverable-text;
+
   height: $cell-size;
   font-size: 20px;
 }
@@ -65,13 +95,23 @@ $cell-content-border-radius: math.div(
   @extend .rc-calendar__button;
 }
 
-.rc-calendar__month {
+.rc-calendar__current-month {
+  @include hoverable-text;
+
   height: $cell-size;
   font-size: 16px;
 }
 
+.rc-calendar__year-control {
+  @include rc-calendar__cell;
+}
+
+.rc-calendar__month-control {
+  @include rc-calendar__cell;
+}
+
 .rc-calendar__dayname {
-  @extend .rc-calendar__cell;
+  @include rc-calendar__cell;
 
   color: #666;
   font-size: 11px;
@@ -163,27 +203,14 @@ $cell-content-border-radius: math.div(
 }
 
 .rc-calendar__day__cell {
-  @extend .rc-calendar__cell;
+  @include rc-calendar__cell;
 
   vertical-align: middle;
   text-align: center;
   cursor: pointer;
 
   &.rc-calendar__day__cell--today {
-    position: relative;
-
-    &::before {
-      cursor: pointer;
-      content: "";
-      box-shadow: 0 0 0 2px colors.$primary;
-      border-radius: 20px;
-      position: absolute;
-      z-index: 3;
-      width: 38px;
-      height: 38px;
-      top: 1px;
-      left: 1px;
-    }
+    @include cell-selected;
   }
 
   &.rc-calendar__day__cell--disabled {
@@ -195,10 +222,62 @@ $cell-content-border-radius: math.div(
 
   &:hover {
     .rc-calendar__day:not(.rc-calendar__day--selected):not(.rc-calendar__day--range-between):not(.rc-calendar__day--range-start):not(.rc-calendar__day--range-end):not(.rc-calendar__day--range-partial) {
-      background: #eee;
-      color: colors.$secondary;
+      color: colors.$secondary--opposite;
+      background: colors.$secondary;
       font-weight: bold;
       border-radius: $cell-content-border-radius;
     }
+  }
+}
+
+.rc-calendar__go-to-today__cell {
+  text-align: center;
+  vertical-align: middle;
+  height: $cell-size;
+}
+
+.rc-calendar__go-to-today {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+  height: $cell-size;
+  font-weight: bold;
+
+  &:hover {
+    color: colors.$secondary;
+  }
+}
+
+.rc-calendar__month__cell--empty {
+  width: 0;
+}
+
+.rc-calendar__month__cell {
+  font-size: 13px;
+  height: $cell-size;
+  text-align: center;
+  vertical-align: middle;
+  width: $month-cell-size;
+
+  &.rc-calendar__month--current {
+    @include cell-selected;
+  }
+}
+
+.rc-calendar__month {
+  height: $cell-content-size;
+  width: $month-cell-content-size;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+    background: colors.$secondary;
+    color: colors.$secondary--opposite;
+    border-radius: 17px;
   }
 }

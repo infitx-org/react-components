@@ -19,7 +19,6 @@ function getDay(
 }
 
 describe("tests the Calendar", () => {
-
   it("renders the Calendar", () => {
     const { container } = render(
       <Calendar initialMonth={0} initialYear={2021} />
@@ -36,18 +35,18 @@ describe("tests the Calendar", () => {
     const { container } = render(
       <Calendar initialMonth={0} initialYear={2000} />
     );
-    expect(container.querySelector(".rc-calendar__year")).toHaveTextContent(
-      "2000"
-    );
+    expect(
+      container.querySelector(".rc-calendar__current-year")
+    ).toHaveTextContent("2000");
   });
 
   it("Sets the correct Initial Month", () => {
     const { container } = render(
       <Calendar initialYear={2021} initialMonth={0} />
     );
-    expect(container.querySelector(".rc-calendar__month")).toHaveTextContent(
-      "January"
-    );
+    expect(
+      container.querySelector(".rc-calendar__current-month")
+    ).toHaveTextContent("January");
   });
 
   it("Renders disabled sundays", () => {

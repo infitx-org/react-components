@@ -1,13 +1,13 @@
 import { PureComponent } from "react";
 import isSameDay from "date-fns/isSameDay";
 import Matrix from "./components/Matrix";
-import { DateRange, DisabledDays, Month, PossibleDate } from "./types";
+import { DateRange, DisabledDays, PossibleDate } from "./types";
 import "./Calendar.scss";
 
 /* eslint-disable react/no-access-state-in-setstate */
 
 export interface CalendarProps {
-  initialMonth?: Month;
+  initialMonth?: number;
   initialYear?: number;
   selectedDate?: Date;
   selectedRange?: DateRange;
@@ -18,11 +18,12 @@ export interface CalendarProps {
 
 interface CalendarState {
   currentYear: number;
-  currentMonth: Month;
+  currentMonth: number;
   today: Date;
   selectedDay: PossibleDate;
   selectedRange: DateRange;
   tempRangeEnd: Date | undefined;
+  showMonthMatrix: boolean;
 }
 
 export default class Calendar extends PureComponent<
@@ -53,19 +54,24 @@ export default class Calendar extends PureComponent<
       today,
       currentYear: initialYear || today.getFullYear(),
       currentMonth:
-        initialMonth !== undefined ? initialMonth : (today.getMonth() as Month),
+        initialMonth !== undefined ? initialMonth : today.getMonth(),
       selectedDay: selectedDate || undefined,
       selectedRange: selectedRange || [undefined, undefined],
       tempRangeEnd: undefined,
+      showMonthMatrix: false,
     };
 
     this.onPrevYearClick = this.onPrevYearClick.bind(this);
     this.onNextYearClick = this.onNextYearClick.bind(this);
+    this.onMonthClick = this.onMonthClick.bind(this);
     this.onPrevMonthClick = this.onPrevMonthClick.bind(this);
     this.onNextMonthClick = this.onNextMonthClick.bind(this);
     this.onDayClick = this.onDayClick.bind(this);
     this.onDayHover = this.onDayHover.bind(this);
     this.onCalendarMouseLeave = this.onCalendarMouseLeave.bind(this);
+
+    this.onCurrentMonthClick = this.onCurrentMonthClick.bind(this);
+    this.onGoToTodayClick = this.onGoToTodayClick.bind(this);
   }
 
   onPrevYearClick() {
@@ -74,7 +80,7 @@ export default class Calendar extends PureComponent<
 
     this.setState({
       currentYear: prevYear.getFullYear(),
-      currentMonth: prevYear.getMonth() as Month,
+      currentMonth: prevYear.getMonth(),
     });
   }
 
@@ -84,8 +90,12 @@ export default class Calendar extends PureComponent<
 
     this.setState({
       currentYear: nextMonth.getFullYear(),
-      currentMonth: nextMonth.getMonth() as Month,
+      currentMonth: nextMonth.getMonth(),
     });
+  }
+
+  onMonthClick(month: number) {
+    this.setState({ currentMonth: month });
   }
 
   onPrevMonthClick() {
@@ -94,7 +104,7 @@ export default class Calendar extends PureComponent<
 
     this.setState({
       currentYear: prevMonth.getFullYear(),
-      currentMonth: prevMonth.getMonth() as Month,
+      currentMonth: prevMonth.getMonth(),
     });
   }
 
@@ -104,7 +114,7 @@ export default class Calendar extends PureComponent<
 
     this.setState({
       currentYear: nextMonth.getFullYear(),
-      currentMonth: nextMonth.getMonth() as Month,
+      currentMonth: nextMonth.getMonth(),
     });
   }
 
@@ -145,6 +155,19 @@ export default class Calendar extends PureComponent<
     });
   }
 
+  onCurrentMonthClick() {
+    this.setState({
+      showMonthMatrix: !this.state.showMonthMatrix,
+    });
+  }
+
+  onGoToTodayClick() {
+    this.setState({
+      currentMonth: this.state.today.getMonth(),
+      currentYear: this.state.today.getFullYear(),
+    });
+  }
+
   render() {
     return (
       <div className="rc-calendar" onMouseLeave={this.onCalendarMouseLeave}>
@@ -156,12 +179,16 @@ export default class Calendar extends PureComponent<
           selectedDay={this.state.selectedDay}
           selectedRange={this.state.selectedRange}
           tempRangeEnd={this.state.tempRangeEnd}
+          showMonthMatrix={this.state.showMonthMatrix}
           onPrevYearClick={this.onPrevYearClick}
           onNextYearClick={this.onNextYearClick}
+          onMonthClick={this.onMonthClick}
           onPrevMonthClick={this.onPrevMonthClick}
           onNextMonthClick={this.onNextMonthClick}
           onDayClick={this.onDayClick}
           onDayHover={this.onDayHover}
+          onCurrentMonthClick={this.onCurrentMonthClick}
+          onGoToTodayClick={this.onGoToTodayClick}
         />
       </div>
     );

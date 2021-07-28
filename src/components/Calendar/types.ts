@@ -1,5 +1,3 @@
-export type Month = number;
-
 export type PossibleDate = Date | undefined;
 
 export type PossibleDay = string | undefined;
