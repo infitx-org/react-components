@@ -1,6 +1,6 @@
+import { PropsWithChildren } from "react";
 import { Item, Row } from "../types";
 import Checkbox from "../../Checkbox";
-import { PropsWithChildren } from "react";
 
 interface TableBodyProps<RowType extends Row> {
   items: Item<RowType>[];

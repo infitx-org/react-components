@@ -1,4 +1,4 @@
-export type Row = Record<string, unknown>;
+export type Row = {};
 
 export type CellValue = null | undefined | string | React.ReactNode;
 
