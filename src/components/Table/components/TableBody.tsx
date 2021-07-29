@@ -7,7 +7,7 @@ interface TableBodyProps {
   checked: Row[];
   flexBasis: string;
   onCheckboxChange: (row: Row) => void;
-  onRowClick: (row: Row) => void;
+  onRowClick?: (row: Row) => void;
 }
 
 export default function TableBody({
