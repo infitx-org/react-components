@@ -1,4 +1,14 @@
+@use "sass:map";
+@use "../../scss/base/colors.scss";
+@use "../../scss/base/shadows.scss";
+@use "../../scss/base/input.scss";
+@use "../../scss/mixins/any.scss";
+@use "../../scss/mixins/form.scss";
+@use "../../scss/themes.scss";
+
 .rc-table {
+  @include any.rc-component;
+
   display: block;
   width: 100%;
   height: 400px;
@@ -13,39 +23,79 @@
 }
 
 .rc-table__header {
-  border-bottom: 3px solid #eee;
+  display: block;
 }
 
 .rc-table__body {
   overflow-y: auto;
 }
 
-.rc-table__header__row {
+@mixin base-row {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+
+.rc-table__header__row {
+  @include base-row();
 }
 
 .rc-table__body__row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+  @include base-row();
+
+  border-bottom: 1px solid #ccc;
 }
 
-.rc-table__header__cell {
+@mixin base-cell {
   flex: 1 1 auto;
-  border: 1px solid #333;
   min-height: 40px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   padding: 5px;
 }
 
+.rc-table__header__cell {
+  @include base-cell();
+
+  border-bottom: 3px solid #ccc;
+}
+
+.rc-table__header__cell--sorting {
+  border-color: colors.$secondary;
+}
+
+.rc-table__header__cell--filtering {
+  border-color: colors.$orange;
+}
+
 .rc-table__body__cell {
-  flex: 1 1 auto;
-  border: 1px solid #333;
-  min-height: 40px;
-  padding: 3px;
-  align-items: center;
+  @include base-cell();
+}
+
+.rc-table__header__cell-content {
+  height: 30px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+.rc-table__body__cell-content {
+  height: 30px;
+}
+
+.rc-table__header__control {
+  margin: 5px;
+}
+
+.rc-table__header__filter {
+  @include any.rc-component;
+
+  flex: 1;
+  border: 0;
+  outline: none;
+  appearance: none;
+  background: transparent;
+  color: colors.$orange--darker;
+  padding: 0;
 }

@@ -24,17 +24,36 @@ export default function Table({ rows, columns }: TableProps) {
   const setFilter = (value: string, index: number) => {
     setFilters([
       ...filters.slice(0, index),
-      value === "" ? undefined : value,
+      { value: value === "" ? undefined : value, filtering: true },
       ...filters.slice(index + 1),
     ]);
   };
+
+  function onSearchIconClick(index: number) {
+    setFilters([
+      ...filters.slice(0, index),
+      { value: undefined, filtering: true },
+      ...filters.slice(index + 1),
+    ]);
+  }
+
+  function onFilterRemoveIconClick(index: number) {
+    setFilters([
+      ...filters.slice(0, index),
+      { value: undefined, filtering: false },
+      ...filters.slice(index + 1),
+    ]);
+  }
 
   return (
     <div className="rc-table">
       <TableHeader
         columns={columns}
+        filters={filters}
         flexBasis={flexBasis}
         onFilterChange={setFilter}
+        onSearchIconClick={onSearchIconClick}
+        onFilterRemoveIconClick={onFilterRemoveIconClick}
       />
       <TableBody items={filteredItems} flexBasis={flexBasis} />
     </div>

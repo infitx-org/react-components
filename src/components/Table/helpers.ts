@@ -1,4 +1,4 @@
-import { Row, CellContent, CellValue, Column } from "./types";
+import { Row, CellContent, CellValue, Column, Filter } from "./types";
 
 export function getItems(rows: Row[], columns: Column[]): CellContent[][] {
   return rows.map((row) =>
@@ -36,12 +36,12 @@ function defaultFn(
 export function filterItems(
   items: CellContent[][],
   columns: Column[],
-  filters: string | undefined[]
+  filters: Filter[]
 ): CellContent[][] {
   return items.filter((itemRow) => {
     return itemRow.every((item, columnIndex) => {
       const filterFn = columns[columnIndex].search;
-      const filterValue = filters[columnIndex];
+      const filterValue = filters[columnIndex]?.value;
       if (filterFn && filterValue) {
         return filterFn(
           item.transformedCellValue,
