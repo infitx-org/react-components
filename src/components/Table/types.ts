@@ -7,6 +7,11 @@ export interface CellContent {
   transformedCellValue: CellValue;
 }
 
+export interface Item {
+  row: Row;
+  items: CellContent[];
+}
+
 export interface Column {
   key: string;
   label: string;

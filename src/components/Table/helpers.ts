@@ -1,4 +1,12 @@
-import { Row, CellContent, CellValue, Column, Filter, Sort } from "./types";
+import {
+  Row,
+  CellContent,
+  Item,
+  CellValue,
+  Column,
+  Filter,
+  Sort,
+} from "./types";
 
 export function getSorting(
   columns: Column[],
@@ -14,9 +22,10 @@ export function getSorting(
   return undefined;
 }
 
-export function getItems(rows: Row[], columns: Column[]): CellContent[][] {
-  return rows.map((row) =>
-    columns.map(
+export function getItems(rows: Row[], columns: Column[]): Item[] {
+  return rows.map((row) => ({
+    row,
+    items: columns.map(
       (col): CellContent => {
         const originalCellValue = row[col.key] as string | undefined;
         let transformedCellValue;
@@ -28,8 +37,8 @@ export function getItems(rows: Row[], columns: Column[]): CellContent[][] {
           transformedCellValue,
         };
       }
-    )
-  );
+    ),
+  }));
 }
 
 function isString(value: CellValue): value is string {
@@ -49,12 +58,12 @@ function defaultFn(
 }
 
 export function filterItems(
-  items: CellContent[][],
+  items: Item[],
   columns: Column[],
   filters: Filter[]
-): CellContent[][] {
+): Item[] {
   return items.filter((itemRow) => {
-    return itemRow.every((item, columnIndex) => {
+    return itemRow.items.every((item, columnIndex) => {
       const filterFn = columns[columnIndex].search;
       const filterValue = filters[columnIndex]?.value;
       if (filterFn && filterValue) {
@@ -77,10 +86,10 @@ export function filterItems(
 }
 
 export function sortItems(
-  items: CellContent[][],
+  items: Item[],
   columns: Column[],
   sorting: Sort | undefined
-): CellContent[][] {
+): Item[] {
   if (sorting?.index === undefined) {
     return items;
   }
@@ -88,8 +97,8 @@ export function sortItems(
   const sortingColumn = columns[sorting.index];
 
   const sorted = items.sort((leftRow, rightRow) => {
-    const leftItem = leftRow[sorting.index];
-    const rightItem = rightRow[sorting.index];
+    const leftItem = leftRow.items[sorting.index];
+    const rightItem = rightRow.items[sorting.index];
 
     if (sortingColumn.sort !== undefined) {
       return sortingColumn.sort(

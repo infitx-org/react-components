@@ -10,7 +10,7 @@ export default {
 const baseSuffixes = ["man", "boy", "ish", "car", "boat", "food", "house"];
 const suffixes: string[] = [];
 
-for (let i = 100; i > 0; i -= 1) {
+for (let i = 10; i > 0; i -= 1) {
   suffixes.push(...baseSuffixes);
 }
 
@@ -72,4 +72,11 @@ CustomFilter.args = {
         originalValue.endsWith(value),
     },
   ],
+};
+
+export const Checkable = Template.bind({});
+Checkable.args = {
+  rows,
+  columns,
+  checkable: true,
 };

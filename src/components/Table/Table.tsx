@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Column, Sort } from "./types";
+import { Row, Column, Sort, Item } from "./types";
 import * as helpers from "./helpers";
 import TableHeader from "./components/TableHeader";
 import TableBody from "./components/TableBody";
@@ -14,6 +14,7 @@ export interface TableProps {
   columns: Column[];
   sortBy?: string;
   sortAsc?: boolean;
+  checkable?: boolean;
 }
 
 export default function Table({
@@ -21,11 +22,13 @@ export default function Table({
   columns,
   sortBy,
   sortAsc = true,
+  checkable,
 }: TableProps) {
   const [filters, setFilters] = React.useState(new Array(columns.length));
   const [sorting, setSorting] = React.useState<Sort | undefined>(
     helpers.getSorting(columns, sortBy, sortAsc)
   );
+  const [checked, setChecked] = React.useState<Row[]>([]);
   const items = helpers.getItems(rows, columns);
   const filteredItems = helpers.filterItems(items, columns, filters);
   const sortedItems = helpers.sortItems(filteredItems, columns, sorting);
@@ -61,19 +64,46 @@ export default function Table({
     setSorting({ index, asc });
   }
 
+  function onBodyCheckboxChange(row: Row) {
+    const index = checked.indexOf(row);
+    if (index === -1) {
+      setChecked([...checked, row]);
+    } else {
+      setChecked([...checked.slice(0, index), ...checked.slice(index + 1)]);
+    }
+  }
+
+  function onHeaderCheckboxChange() {
+    if (checked.length === rows.length) {
+      setChecked([]);
+    } else {
+      setChecked(rows);
+    }
+  }
+
   return (
     <div className="rc-table">
       <TableHeader
         columns={columns}
         filters={filters}
         sorting={sorting}
+        checkable={!!checkable}
+        checkedAll={checked.length === rows.length}
+        checkedSemi={checked.length > 0 && checked.length !== rows.length}
         flexBasis={flexBasis}
         onFilterChange={setFilter}
         onSearchIconClick={onSearchIconClick}
         onFilterRemoveIconClick={onFilterRemoveIconClick}
         onSortIconClick={onSortIconClick}
+        onCheckboxChange={onHeaderCheckboxChange}
       />
-      <TableBody items={sortedItems} flexBasis={flexBasis} />
+      <TableBody
+        items={sortedItems}
+        flexBasis={flexBasis}
+        checkable={!!checkable}
+        checked={checked}
+        onCheckboxChange={onBodyCheckboxChange}
+      />
     </div>
   );
 }

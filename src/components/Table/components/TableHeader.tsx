@@ -5,6 +5,7 @@ import CloseSmallIcon from "../../../resources/icons/close-small.svg";
 import Arrow from "../../../resources/icons/arrow.svg";
 import IconButton from "../../IconButton";
 import Icon from "../../Icon";
+import Checkbox from "../../Checkbox";
 import { Column, Filter, Sort } from "../types";
 
 /* eslint-disable jsx-a11y/no-autofocus */
@@ -13,22 +14,30 @@ interface TableHeaderProps {
   columns: Column[];
   filters: Filter[];
   sorting: Sort | undefined;
+  checkable: boolean;
+  checkedAll: boolean;
+  checkedSemi: boolean;
   flexBasis: string;
   onFilterChange: (value: string, index: number) => void;
   onSearchIconClick: (index: number) => void;
   onFilterRemoveIconClick: (index: number) => void;
   onSortIconClick: (index: number) => void;
+  onCheckboxChange: () => void;
 }
 
 export default function TableHeader({
   columns,
   filters,
   sorting,
+  checkable,
+  checkedAll,
+  checkedSemi,
   flexBasis,
   onFilterChange,
   onSearchIconClick,
   onFilterRemoveIconClick,
   onSortIconClick,
+  onCheckboxChange,
 }: TableHeaderProps) {
   const style = { flexBasis };
   const onHeaderFilterChange = (index: number) => (
@@ -44,6 +53,16 @@ export default function TableHeader({
   return (
     <div className="rc-table__header">
       <div className="rc-table__header__row">
+        {checkable && (
+          <div className="rc-table__header__cell">
+            <Checkbox
+              label=""
+              checked={checkedAll}
+              semi={checkedSemi}
+              onChange={onCheckboxChange}
+            />
+          </div>
+        )}
         {columns.map((column, index) => {
           const filter = filters[index];
           const isFiltering = filter?.filtering;
