@@ -20,7 +20,7 @@ interface TableHeaderProps {
   flexBasis: string;
   onFilterChange: (value: string, index: number) => void;
   onSearchIconClick: (index: number) => void;
-  onFilterRemoveIconClick: (index: number) => void;
+  onFilterRemove: (index: number) => void;
   onSortIconClick: (index: number) => void;
   onCheckboxChange: () => void;
 }
@@ -35,7 +35,7 @@ export default function TableHeader({
   flexBasis,
   onFilterChange,
   onSearchIconClick,
-  onFilterRemoveIconClick,
+  onFilterRemove,
   onSortIconClick,
   onCheckboxChange,
 }: TableHeaderProps) {
@@ -43,11 +43,18 @@ export default function TableHeader({
   const onHeaderFilterChange = (index: number) => (
     e: React.ChangeEvent<HTMLInputElement>
   ) => onFilterChange(e.currentTarget.value, index);
+  const onHeaderFilterLeave = (index: number) => (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (e.currentTarget.value === "") {
+      onFilterRemove(index);
+    }
+  };
 
   const onHeaderSearchIconClick = (index: number) => () =>
     onSearchIconClick(index);
   const onHeaderFilterRemoveIconClick = (index: number) => () =>
-    onFilterRemoveIconClick(index);
+    onFilterRemove(index);
   const onHeaderSortIconClick = (index: number) => () => onSortIconClick(index);
 
   return (
@@ -99,6 +106,7 @@ export default function TableHeader({
                       placeholder={column.label}
                       type="text"
                       onChange={onHeaderFilterChange(index)}
+                      onBlur={onHeaderFilterLeave(index)}
                       autoFocus
                     />
                     <IconButton
@@ -115,7 +123,11 @@ export default function TableHeader({
 
                 {column.sortable !== false && (
                   <IconButton
-                    className="rc-table__header__control"
+                    className={classnames([
+                      "rc-table__header__control",
+                      "rc-table__header__control--sort",
+                      sorting?.asc && "rc-table__header__control--sorting-asc",
+                    ])}
                     kind="secondary"
                     size={16}
                     icon={<Icon icon={<Arrow />} size={10} />}

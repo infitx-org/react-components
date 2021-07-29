@@ -93,7 +93,7 @@ export default function Table({
         flexBasis={flexBasis}
         onFilterChange={setFilter}
         onSearchIconClick={onSearchIconClick}
-        onFilterRemoveIconClick={onFilterRemoveIconClick}
+        onFilterRemove={onFilterRemoveIconClick}
         onSortIconClick={onSortIconClick}
         onCheckboxChange={onHeaderCheckboxChange}
       />
