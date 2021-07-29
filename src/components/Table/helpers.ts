@@ -8,8 +8,8 @@ import {
   Sort,
 } from "./types";
 
-export function getSorting(
-  columns: Column[],
+export function getSorting<RowType extends Row>(
+  columns: Column<RowType>[],
   sortBy?: string,
   sortAsc?: boolean
 ): Sort | undefined {
@@ -22,7 +22,10 @@ export function getSorting(
   return undefined;
 }
 
-export function getItems(rows: Row[], columns: Column[]): Item[] {
+export function getItems<RowType extends Row>(
+  rows: RowType[],
+  columns: Column<RowType>[]
+): Item<RowType>[] {
   return rows.map((row) => ({
     row,
     items: columns.map(
@@ -57,11 +60,11 @@ function defaultFn(
   return false;
 }
 
-export function filterItems(
-  items: Item[],
-  columns: Column[],
+export function filterItems<RowType extends Row>(
+  items: Item<RowType>[],
+  columns: Column<RowType>[],
   filters: Filter[]
-): Item[] {
+): Item<RowType>[] {
   return items.filter((itemRow) => {
     return itemRow.items.every((item, columnIndex) => {
       const filterFn = columns[columnIndex].search;
@@ -85,11 +88,11 @@ export function filterItems(
   });
 }
 
-export function sortItems(
-  items: Item[],
-  columns: Column[],
+export function sortItems<RowType extends Row>(
+  items: Item<RowType>[],
+  columns: Column<RowType>[],
   sorting: Sort | undefined
-): Item[] {
+): Item<RowType>[] {
   if (sorting?.index === undefined) {
     return items;
   }

@@ -7,13 +7,13 @@ export interface CellContent {
   transformedCellValue: CellValue;
 }
 
-export interface Item {
-  row: Row;
+export interface Item<RowType extends Row> {
+  row: RowType;
   items: CellContent[];
 }
 
-export interface Column {
-  key: string;
+export interface Column<RowType extends Row> {
+  key: keyof RowType;
   label: string;
   sortable?: boolean;
   sort?: (
@@ -24,7 +24,7 @@ export interface Column {
   ) => number;
   searchable?: boolean;
   search?: (value: unknown, originalValue: unknown, filter: string) => boolean;
-  fn?: (value: unknown, row: Row) => null | string | React.ReactNode;
+  fn?: (value: any, row: RowType) => null | string | React.ReactNode;
 }
 
 export interface Filter {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Row, Column, Sort } from "./types";
 import * as helpers from "./helpers";
 import TableHeader from "./components/TableHeader";
@@ -9,17 +9,17 @@ function getWidth(items: unknown[]) {
   return `${100 / items.length}%`;
 }
 
-export interface TableProps {
-  rows: Row[];
-  columns: Column[];
+export interface TableProps<RowType extends Row> {
+  rows: RowType[];
+  columns: Column<RowType>[];
   sortBy?: string;
   sortAsc?: boolean;
   checkable?: boolean;
-  onCheck?: (rows: Row[]) => void;
-  onSelect?: (row: Row) => void;
+  onCheck?: (rows: RowType[]) => void;
+  onSelect?: (row: RowType) => void;
 }
 
-export default function Table({
+export default function Table<RowType extends Row>({
   rows,
   columns,
   sortBy,
@@ -27,19 +27,23 @@ export default function Table({
   checkable,
   onCheck,
   onSelect,
-}: TableProps) {
+}: PropsWithChildren<TableProps<RowType>>) {
   const [filters, setFilters] = React.useState(new Array(columns.length));
   const [sorting, setSorting] = React.useState<Sort | undefined>(
-    helpers.getSorting(columns, sortBy, sortAsc)
+    helpers.getSorting<RowType>(columns, sortBy, sortAsc)
   );
-  const [checked, setChecked] = React.useState<Row[]>([]);
-  const items = helpers.getItems(rows, columns);
-  const filteredItems = helpers.filterItems(items, columns, filters);
-  const sortedItems = helpers.sortItems(filteredItems, columns, sorting);
+  const [checked, setChecked] = React.useState<RowType[]>([]);
+  const items = helpers.getItems<RowType>(rows, columns);
+  const filteredItems = helpers.filterItems<RowType>(items, columns, filters);
+  const sortedItems = helpers.sortItems<RowType>(
+    filteredItems,
+    columns,
+    sorting
+  );
 
   const flexBasis = getWidth(columns);
 
-  function setCheckedAndExport(checkedRows: Row[]) {
+  function setCheckedAndExport(checkedRows: RowType[]) {
     setChecked(checkedRows);
     onCheck?.(checkedRows);
   }
@@ -73,7 +77,7 @@ export default function Table({
     setSorting({ index, asc });
   }
 
-  function onBodyCheckboxChange(row: Row): void {
+  function onBodyCheckboxChange(row: RowType): void {
     const index = checked.indexOf(row);
     if (index === -1) {
       setCheckedAndExport([...checked, row]);

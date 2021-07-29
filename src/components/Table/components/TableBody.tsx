@@ -1,26 +1,27 @@
 import { Item, Row } from "../types";
 import Checkbox from "../../Checkbox";
+import { PropsWithChildren } from "react";
 
-interface TableBodyProps {
-  items: Item[];
+interface TableBodyProps<RowType extends Row> {
+  items: Item<RowType>[];
   checkable: boolean;
-  checked: Row[];
+  checked: RowType[];
   flexBasis: string;
-  onCheckboxChange: (row: Row) => void;
-  onRowClick?: (row: Row) => void;
+  onCheckboxChange: (row: RowType) => void;
+  onRowClick?: (row: RowType) => void;
 }
 
-export default function TableBody({
+export default function TableBody<RowType extends Row>({
   items,
   checkable,
   checked,
   flexBasis,
   onCheckboxChange,
   onRowClick,
-}: TableBodyProps) {
+}: PropsWithChildren<TableBodyProps<RowType>>) {
   const style = { flexBasis };
-  const onRowCheckboxChange = (item: Row) => () => {
-    onCheckboxChange(item);
+  const onRowCheckboxChange = (row: RowType) => () => {
+    onCheckboxChange(row);
   };
   return (
     <div className="rc-table__body">
