@@ -18,13 +18,13 @@ export default function SyntaxFormatter({ code, lang }: SyntaxFormatterProps) {
     if (!code || !ref.current) {
       return;
     }
-    ref.current!.innerHTML = Prism.highlight(code, Prism.languages[lang], lang);
+    Prism.highlightElement(ref.current);
   }, [code, ref.current]);
 
   return (
     <pre className="rc-syntax-formatter">
       <code ref={ref} className={`language-${lang}`}>
-        {code.trim()}
+        {code}
       </code>
     </pre>
   );

@@ -1,9 +1,4 @@
 module.exports = {
-  "plugins": [
-    ["prismjs", {
-      "languages": ["markup", "json"],
-    }]
-  ],
   presets: [
     ["@babel/preset-env", { targets: { node: "current" } }],
     "@babel/preset-typescript",
@@ -13,5 +8,10 @@ module.exports = {
         runtime: "automatic",
       },
     ],
+  ],
+  plugins: [
+    ["prismjs", {
+      "languages": ["markup", "json"],
+    }]
   ],
 };

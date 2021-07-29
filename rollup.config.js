@@ -37,7 +37,13 @@ export default {
       }
     }),
     babel({
+      babelrc: true,
       babelHelpers: "bundled",
+      plugins: [
+        ["prismjs", {
+          "languages": ["markup", "json"],
+        }]
+      ],
     }),
     resolve(),
     commonjs(),
