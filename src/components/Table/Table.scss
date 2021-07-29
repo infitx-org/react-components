@@ -1,0 +1,51 @@
+.rc-table {
+  display: block;
+  width: 100%;
+  height: 400px;
+  overflow-y: auto;
+  position: relative;
+  table-layout: fixed;
+}
+
+.rc-table-cell {
+  height: 100px;
+  border: 1px solid #ccc;
+}
+
+.rc-table__header {
+  border-bottom: 3px solid #eee;
+}
+
+.rc-table__body {
+  overflow-y: auto;
+}
+
+.rc-table__header__row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.rc-table__body__row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.rc-table__header__cell {
+  flex: 1 1 auto;
+  border: 1px solid #333;
+  min-height: 40px;
+  display: flex;
+  align-items: flex-end;
+  padding: 5px;
+}
+
+.rc-table__body__cell {
+  flex: 1 1 auto;
+  border: 1px solid #333;
+  min-height: 40px;
+  padding: 3px;
+  align-items: center;
+  display: flex;
+}
