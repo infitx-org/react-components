@@ -25,15 +25,15 @@ const rows = suffixes.map((suffix) => col(suffix));
 const columns = [
   {
     key: "dog",
-    label: "cat",
+    label: "Dogs",
   },
   {
     key: "cat",
-    label: "cat",
+    label: "Cats",
   },
   {
     key: "bird",
-    label: "bird",
+    label: "Birds",
   },
 ];
 
