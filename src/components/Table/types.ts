@@ -10,6 +10,13 @@ export interface CellContent {
 export interface Column {
   key: string;
   label: string;
+  sortable?: boolean;
+  sort?: (
+    leftValue: unknown,
+    leftOriginalValue: unknown,
+    rightValue: unknown,
+    rightOriginalValue: unknown
+  ) => number;
   searchable?: boolean;
   search?: (value: unknown, originalValue: unknown, filter: string) => boolean;
   fn?: (value: unknown, row: Row) => null | string | React.ReactNode;
@@ -18,4 +25,9 @@ export interface Column {
 export interface Filter {
   filtering?: boolean;
   value: string | undefined;
+}
+
+export interface Sort {
+  index: number;
+  asc: boolean;
 }

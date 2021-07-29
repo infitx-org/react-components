@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, CellContent, Column } from "./types";
+import { Row, Column, Sort } from "./types";
 import * as helpers from "./helpers";
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
@@ -14,10 +14,22 @@ export interface TableProps {
   columns: Column[];
 }
 
+function getSorting(columns: Column[]): Sort | undefined {
+  const index = columns.findIndex((col) => col.sortable);
+  if (index >= 0) {
+    return { index, asc: true };
+  }
+  return undefined;
+}
+
 export default function Table({ rows, columns }: TableProps) {
   const [filters, setFilters] = React.useState(new Array(columns.length));
+  const [sorting, setSorting] = React.useState<Sort | undefined>(
+    getSorting(columns)
+  );
   const items = helpers.getItems(rows, columns);
   const filteredItems = helpers.filterItems(items, columns, filters);
+  const sortedItems = helpers.sortItems(filteredItems, columns, sorting);
 
   const flexBasis = getWidth(columns);
 
@@ -45,17 +57,24 @@ export default function Table({ rows, columns }: TableProps) {
     ]);
   }
 
+  function onSortIconClick(index: number) {
+    const asc = sorting?.index === index ? !sorting.asc : true;
+    setSorting({ index, asc });
+  }
+
   return (
     <div className="rc-table">
       <TableHeader
         columns={columns}
         filters={filters}
+        sorting={sorting}
         flexBasis={flexBasis}
         onFilterChange={setFilter}
         onSearchIconClick={onSearchIconClick}
         onFilterRemoveIconClick={onFilterRemoveIconClick}
+        onSortIconClick={onSortIconClick}
       />
-      <TableBody items={filteredItems} flexBasis={flexBasis} />
+      <TableBody items={sortedItems} flexBasis={flexBasis} />
     </div>
   );
 }
