@@ -1,4 +1,3 @@
-import React from "react";
 import { Item, Row } from "../types";
 import Checkbox from "../../Checkbox";
 
