@@ -15,6 +15,7 @@ export interface TableProps {
   sortBy?: string;
   sortAsc?: boolean;
   checkable?: boolean;
+  onCheck: (rows: Row[]) => void;
 }
 
 export default function Table({
@@ -23,6 +24,7 @@ export default function Table({
   sortBy,
   sortAsc = true,
   checkable,
+  onCheck,
 }: TableProps) {
   const [filters, setFilters] = React.useState(new Array(columns.length));
   const [sorting, setSorting] = React.useState<Sort | undefined>(
@@ -35,15 +37,20 @@ export default function Table({
 
   const flexBasis = getWidth(columns);
 
-  const setFilter = (value: string, index: number) => {
+  function setCheckedAndExport(checkedRows: Row[]) {
+    setChecked(checkedRows);
+    onCheck?.(checkedRows);
+  }
+
+  function setFilter(value: string, index: number): void {
     setFilters([
       ...filters.slice(0, index),
       { value: value === "" ? undefined : value, filtering: true },
       ...filters.slice(index + 1),
     ]);
-  };
+  }
 
-  function onSearchIconClick(index: number) {
+  function onSearchIconClick(index: number): void {
     setFilters([
       ...filters.slice(0, index),
       { value: undefined, filtering: true },
@@ -51,7 +58,7 @@ export default function Table({
     ]);
   }
 
-  function onFilterRemoveIconClick(index: number) {
+  function onFilterRemoveIconClick(index: number): void {
     setFilters([
       ...filters.slice(0, index),
       { value: undefined, filtering: false },
@@ -59,25 +66,28 @@ export default function Table({
     ]);
   }
 
-  function onSortIconClick(index: number) {
+  function onSortIconClick(index: number): void {
     const asc = sorting?.index === index ? !sorting.asc : true;
     setSorting({ index, asc });
   }
 
-  function onBodyCheckboxChange(row: Row) {
+  function onBodyCheckboxChange(row: Row): void {
     const index = checked.indexOf(row);
     if (index === -1) {
-      setChecked([...checked, row]);
+      setCheckedAndExport([...checked, row]);
     } else {
-      setChecked([...checked.slice(0, index), ...checked.slice(index + 1)]);
+      setCheckedAndExport([
+        ...checked.slice(0, index),
+        ...checked.slice(index + 1),
+      ]);
     }
   }
 
-  function onHeaderCheckboxChange() {
+  function onHeaderCheckboxChange(): void {
     if (checked.length === rows.length) {
-      setChecked([]);
+      setCheckedAndExport([]);
     } else {
-      setChecked(rows);
+      setCheckedAndExport(rows);
     }
   }
 
