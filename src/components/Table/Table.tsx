@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Column, Sort } from "./types";
 import * as helpers from "./helpers";
-import TableHeader from "./TableHeader";
-import TableBody from "./TableBody";
+import TableHeader from "./components/TableHeader";
+import TableBody from "./components/TableBody";
 import "./Table.scss";
 
 function getWidth(items: unknown[]) {

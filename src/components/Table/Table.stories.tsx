@@ -7,7 +7,13 @@ export default {
   component: Table,
 };
 
-const suffixes = ["man", "boy", "ish", "car", "boat", "food", "house"];
+const baseSuffixes = ["man", "boy", "ish", "car", "boat", "food", "house"];
+const suffixes: string[] = [];
+
+for (let i = 100; i > 0; i -= 1) {
+  suffixes.push(...baseSuffixes);
+}
+
 const col = (suffix: string) => ({
   dog: `dog-${suffix}`,
   cat: `cat-${suffix}`,
