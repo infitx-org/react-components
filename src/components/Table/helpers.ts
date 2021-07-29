@@ -1,5 +1,19 @@
 import { Row, CellContent, CellValue, Column, Filter, Sort } from "./types";
 
+export function getSorting(
+  columns: Column[],
+  sortBy?: string,
+  sortAsc?: boolean
+): Sort | undefined {
+  const index = columns.findIndex(
+    (col) => col.sortable && col.label === sortBy
+  );
+  if (index >= 0) {
+    return { index, asc: sortAsc !== undefined ? sortAsc : true };
+  }
+  return undefined;
+}
+
 export function getItems(rows: Row[], columns: Column[]): CellContent[][] {
   return rows.map((row) =>
     columns.map(

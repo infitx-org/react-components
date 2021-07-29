@@ -12,20 +12,19 @@ function getWidth(items: unknown[]) {
 export interface TableProps {
   rows: Row[];
   columns: Column[];
+  sortBy?: string;
+  sortAsc?: boolean;
 }
 
-function getSorting(columns: Column[]): Sort | undefined {
-  const index = columns.findIndex((col) => col.sortable);
-  if (index >= 0) {
-    return { index, asc: true };
-  }
-  return undefined;
-}
-
-export default function Table({ rows, columns }: TableProps) {
+export default function Table({
+  rows,
+  columns,
+  sortBy,
+  sortAsc = true,
+}: TableProps) {
   const [filters, setFilters] = React.useState(new Array(columns.length));
   const [sorting, setSorting] = React.useState<Sort | undefined>(
-    getSorting(columns)
+    helpers.getSorting(columns, sortBy, sortAsc)
   );
   const items = helpers.getItems(rows, columns);
   const filteredItems = helpers.filterItems(items, columns, filters);
