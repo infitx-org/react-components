@@ -56,6 +56,7 @@ export default function TableHeader({
         {checkable && (
           <div className="rc-table__header__cell">
             <Checkbox
+              round
               label=""
               checked={checkedAll}
               semi={checkedSemi}

@@ -29,6 +29,7 @@ export default function TableBody({
             {checkable && (
               <div className="rc-table__body__cell">
                 <Checkbox
+                  round
                   label=""
                   onChange={onRowCheckboxChange(item.row)}
                   checked={checked.includes(item.row)}
