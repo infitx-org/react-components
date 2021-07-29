@@ -6,7 +6,8 @@ interface TableBodyProps {
   checkable: boolean;
   checked: Row[];
   flexBasis: string;
-  onCheckboxChange: (item: Row) => void;
+  onCheckboxChange: (row: Row) => void;
+  onRowClick: (row: Row) => void;
 }
 
 export default function TableBody({
@@ -15,6 +16,7 @@ export default function TableBody({
   checked,
   flexBasis,
   onCheckboxChange,
+  onRowClick,
 }: TableBodyProps) {
   const style = { flexBasis };
   const onRowCheckboxChange = (item: Row) => () => {
@@ -24,7 +26,12 @@ export default function TableBody({
     <div className="rc-table__body">
       {items.map((item, index) => {
         return (
-          <div key={index.toString()} className="rc-table__body__row">
+          <div
+            key={index.toString()}
+            className="rc-table__body__row"
+            onClick={() => onRowClick?.(item.row)}
+            role="presentation"
+          >
             {checkable && (
               <div className="rc-table__body__cell">
                 <Checkbox

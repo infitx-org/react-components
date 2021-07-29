@@ -15,7 +15,8 @@ export interface TableProps {
   sortBy?: string;
   sortAsc?: boolean;
   checkable?: boolean;
-  onCheck: (rows: Row[]) => void;
+  onCheck?: (rows: Row[]) => void;
+  onSelect?: (row: Row) => void;
 }
 
 export default function Table({
@@ -25,6 +26,7 @@ export default function Table({
   sortAsc = true,
   checkable,
   onCheck,
+  onSelect,
 }: TableProps) {
   const [filters, setFilters] = React.useState(new Array(columns.length));
   const [sorting, setSorting] = React.useState<Sort | undefined>(
@@ -113,6 +115,7 @@ export default function Table({
         checkable={!!checkable}
         checked={checked}
         onCheckboxChange={onBodyCheckboxChange}
+        onRowClick={onSelect}
       />
     </div>
   );
