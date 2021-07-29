@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import SearchIcon from "bootstrap-icons/icons/search.svg";
 import classnames from "classnames";
 import CloseSmallIcon from "../../../resources/icons/close-small.svg";
@@ -6,12 +6,12 @@ import Arrow from "../../../resources/icons/arrow.svg";
 import IconButton from "../../IconButton";
 import Icon from "../../Icon";
 import Checkbox from "../../Checkbox";
-import { Column, Filter, Sort } from "../types";
+import { Column, Filter, Sort, Row } from "../types";
 
 /* eslint-disable jsx-a11y/no-autofocus */
 
-interface TableHeaderProps {
-  columns: Column[];
+interface TableHeaderProps<RowType extends Row> {
+  columns: Column<RowType>[];
   filters: Filter[];
   sorting: Sort | undefined;
   checkable: boolean;
@@ -25,7 +25,7 @@ interface TableHeaderProps {
   onCheckboxChange: () => void;
 }
 
-export default function TableHeader({
+export default function TableHeader<RowType>({
   columns,
   filters,
   sorting,
@@ -38,7 +38,7 @@ export default function TableHeader({
   onFilterRemove,
   onSortIconClick,
   onCheckboxChange,
-}: TableHeaderProps) {
+}: PropsWithChildren<TableHeaderProps<RowType>>) {
   const style = { flexBasis };
   const onHeaderFilterChange = (index: number) => (
     e: React.ChangeEvent<HTMLInputElement>

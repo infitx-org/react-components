@@ -79,4 +79,5 @@ Checkable.args = {
   rows,
   columns,
   checkable: true,
+  onCheck: console.log,
 };
