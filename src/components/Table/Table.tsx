@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Column, Sort, Item } from "./types";
+import { Row, Column, Sort } from "./types";
 import * as helpers from "./helpers";
 import TableHeader from "./components/TableHeader";
 import TableBody from "./components/TableBody";

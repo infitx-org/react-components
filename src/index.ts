@@ -65,6 +65,7 @@ export {
   TabProps,
   TabsProps,
 } from "./components/Tabs";
+export { default as Table, TableProps } from "./components/Table";
 export { default as Text, TextProps } from "./components/Typography/Text";
 export { default as TextField, TextFieldProps } from "./components/TextField";
 export { default as Tooltip, TooltipProps } from "./components/Tooltip";
