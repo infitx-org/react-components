@@ -1,0 +1,128 @@
+@use "sass:map";
+@use "../../scss/base/colors.scss";
+@use "../../scss/base/shadows.scss";
+@use "../../scss/base/input.scss";
+@use "../../scss/mixins/any.scss";
+@use "../../scss/mixins/form.scss";
+@use "../../scss/themes.scss";
+
+.rc-table {
+  @include any.rc-component;
+
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  table-layout: fixed;
+}
+
+.rc-table--flexible {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.rc-table__header {
+  display: block;
+}
+
+.rc-table__body {
+  overflow-y: auto;
+}
+
+@mixin base-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.rc-table__header__row {
+  @include base-row();
+}
+
+.rc-table__body__row {
+  @include base-row();
+
+  border-bottom: 1px solid #ccc;
+}
+
+@mixin base-cell {
+  flex: 1 1 auto;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.rc-table__header__cell {
+  @include base-cell();
+
+  border-bottom: 3px solid #ccc;
+  padding-left: 3px;
+  transition: all 0.3s ease-out;
+}
+
+.rc-table__header__cell--sortable {
+  cursor: pointer;
+
+  &:hover {
+    background: #f9f9f9;
+  }
+}
+
+.rc-table__header__cell--sorting {
+  border-color: colors.$secondary;
+}
+
+.rc-table__header__cell--filtering {
+  border-color: colors.$orange;
+}
+
+.rc-table__body__cell {
+  @include base-cell();
+
+  height: 30px;
+  font-size: 14px;
+  transform: translate3d(0, 0, 0);
+}
+
+.rc-table__header__cell-content {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+.rc-table__header__control {
+  margin: 5px;
+}
+
+.rc-table__header__control--sort {
+  transform: rotate(90deg);
+}
+
+.rc-table__header__control--sorting-asc {
+  transform: rotate(270deg);
+}
+
+.rc-table__header__label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 2px;
+}
+
+.rc-table__header__filter {
+  @include any.rc-component;
+
+  flex: 1;
+  border: 0;
+  outline: none;
+  appearance: none;
+  background: transparent;
+  color: colors.$orange--darker;
+  padding: 0;
+  padding-left: 2px;
+  font-size: 14px;
+}

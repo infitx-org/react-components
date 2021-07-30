@@ -9,7 +9,7 @@ import Button from "./Button";
 const { log } = console;
 const icon = <TestIcon />;
 
-describe("tests the buttton", () => {
+describe("tests the Button", () => {
   it("renders the label", () => {
     render(<Button label="Test-Button" onClick={log} />);
     expect(screen.getByText("Test-Button")).toBeDefined();
