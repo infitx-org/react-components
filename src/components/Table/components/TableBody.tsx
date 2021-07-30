@@ -3,6 +3,23 @@ import classnames from "classnames";
 import { Item, Row } from "../types";
 import Checkbox from "../../Checkbox";
 
+interface TableBodyCellProps {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+function TableBodyCell({ children, className, style }: TableBodyCellProps) {
+  return (
+    <div
+      style={style}
+      className={classnames(["rc-table__body__cell", className])}
+    >
+      {children}
+    </div>
+  );
+}
+
 interface TableBodyProps<RowType extends Row> {
   items: Item<RowType>[];
   checkable: boolean;
@@ -35,27 +52,24 @@ export default function TableBody<RowType extends Row>({
             role="presentation"
           >
             {checkable && (
-              <div className="rc-table__body__cell">
+              <TableBodyCell>
                 <Checkbox
                   round
                   label=""
                   onChange={onRowCheckboxChange(item.row)}
                   checked={checked.includes(item.row)}
                 />
-              </div>
+              </TableBodyCell>
             )}
             {item.items.map((cell, itemIndex) => {
               return (
-                <div
+                <TableBodyCell
                   key={itemIndex.toString()}
                   style={style}
-                  className={classnames([
-                    "rc-table__body__cell",
-                    ...cell.classNames,
-                  ])}
+                  className={classnames(cell.classNames)}
                 >
                   {cell.resultValue || cell.rawValue}
-                </div>
+                </TableBodyCell>
               );
             })}
           </div>

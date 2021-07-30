@@ -9,6 +9,101 @@ import Checkbox from "../../Checkbox";
 import { Column, Filter, Sort, Row } from "../types";
 
 /* eslint-disable jsx-a11y/no-autofocus */
+interface TableHeaderCellProps {
+  className?: string;
+  style?: React.CSSProperties;
+  label?: string;
+  isFiltering: boolean;
+  isSorting: boolean;
+  isSortable: boolean;
+  isSortingAsc: boolean;
+  isSearchable: boolean;
+  onHeaderSearchIconClick: () => void;
+  onHeaderFilterRemoveClick: () => void;
+  onHeaderFilterChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onHeaderFilterLeave: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onHeaderSortIconClick: () => void;
+}
+
+function TableHeaderCell({
+  style,
+  className,
+  label,
+  isFiltering,
+  isSorting,
+  isSortable,
+  isSearchable,
+  isSortingAsc,
+  onHeaderSearchIconClick,
+  onHeaderFilterRemoveClick,
+  onHeaderFilterChange,
+  onHeaderFilterLeave,
+  onHeaderSortIconClick,
+}: TableHeaderCellProps) {
+  return (
+    <div
+      style={style}
+      className={classnames([
+        "rc-table__header__cell",
+        isFiltering && "rc-table__header__cell--filtering",
+        isSorting && "rc-table__header__cell--sorting",
+        isSortable && "rc-table__header__cell--sortable",
+        className,
+      ])}
+      role="presentation"
+      onClick={isSortable ? onHeaderSortIconClick : undefined}
+    >
+      <div style={style} className="rc-table__header__cell-content">
+        {isSearchable !== false &&
+          (!isFiltering ? (
+            <IconButton
+              className="rc-table__header__control"
+              size={16}
+              icon={<Icon icon={<SearchIcon />} size={12} />}
+              onClick={onHeaderSearchIconClick}
+            />
+          ) : (
+            <IconButton
+              className="rc-table__header__control"
+              kind="danger"
+              size={16}
+              icon={<Icon icon={<CloseSmallIcon />} size={12} />}
+              onClick={onHeaderFilterRemoveClick}
+            />
+          ))}
+        {isFiltering ? (
+          <>
+            <input
+              className="rc-table__header__filter"
+              placeholder={label}
+              type="text"
+              onChange={onHeaderFilterChange}
+              onBlur={onHeaderFilterLeave}
+              onClick={(e) => e.stopPropagation()}
+              autoFocus
+            />
+          </>
+        ) : (
+          <div className="rc-table__header__label">{label}</div>
+        )}
+
+        {isSortable !== false && (
+          <IconButton
+            className={classnames([
+              "rc-table__header__control",
+              "rc-table__header__control--sort",
+              isSortingAsc && "rc-table__header__control--sorting-asc",
+            ])}
+            kind="secondary"
+            size={16}
+            icon={<Icon icon={<Arrow />} size={10} />}
+            onClick={onHeaderSortIconClick}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
 
 interface TableHeaderProps<RowType extends Row> {
   columns: Column<RowType>[];
@@ -40,6 +135,11 @@ export default function TableHeader<RowType>({
   onCheckboxChange,
 }: PropsWithChildren<TableHeaderProps<RowType>>) {
   const style = { flexBasis };
+  const onHeaderSearchIconClick = (index: number) => () =>
+    onSearchIconClick(index);
+  const onHeaderFilterRemoveClick = (index: number) => () =>
+    onFilterRemove(index);
+  const onHeaderSortIconClick = (index: number) => () => onSortIconClick(index);
   const onHeaderFilterChange = (index: number) => (
     e: React.ChangeEvent<HTMLInputElement>
   ) => onFilterChange(e.currentTarget.value, index);
@@ -50,12 +150,6 @@ export default function TableHeader<RowType>({
       onFilterRemove(index);
     }
   };
-
-  const onHeaderSearchIconClick = (index: number) => () =>
-    onSearchIconClick(index);
-  const onHeaderFilterRemoveIconClick = (index: number) => () =>
-    onFilterRemove(index);
-  const onHeaderSortIconClick = (index: number) => () => onSortIconClick(index);
 
   return (
     <div className="rc-table__header">
@@ -73,78 +167,28 @@ export default function TableHeader<RowType>({
         )}
         {columns.map((column, index) => {
           const filter = filters[index];
-          const isFiltering = filter?.filtering;
+          const isFiltering = filter?.filtering === true;
           const isSorting = sorting?.index === index;
           const isSortable = column.sortable !== false;
+          const isSearchable = column.searchable !== false;
 
           return (
-            <div
+            <TableHeaderCell
               key={index.toString()}
               style={style}
-              className={classnames([
-                "rc-table__header__cell",
-                isFiltering && "rc-table__header__cell--filtering",
-                isSorting && "rc-table__header__cell--sorting",
-                isSortable && "rc-table__header__cell--sortable",
-                column.className,
-                column.headerClassName,
-              ])}
-              role="presentation"
-              onClick={isSortable ? onHeaderSortIconClick(index) : undefined}
-            >
-              <div
-                key={index.toString()}
-                style={style}
-                className="rc-table__header__cell-content"
-              >
-                {column.searchable !== false &&
-                  (!isFiltering ? (
-                    <IconButton
-                      className="rc-table__header__control"
-                      size={16}
-                      icon={<Icon icon={<SearchIcon />} size={12} />}
-                      onClick={onHeaderSearchIconClick(index)}
-                    />
-                  ) : (
-                    <IconButton
-                      className="rc-table__header__control"
-                      kind="danger"
-                      size={16}
-                      icon={<Icon icon={<CloseSmallIcon />} size={12} />}
-                      onClick={onHeaderFilterRemoveIconClick(index)}
-                    />
-                  ))}
-                {isFiltering ? (
-                  <>
-                    <input
-                      className="rc-table__header__filter"
-                      placeholder={column.label}
-                      type="text"
-                      onChange={onHeaderFilterChange(index)}
-                      onBlur={onHeaderFilterLeave(index)}
-                      onClick={(e) => e.stopPropagation()}
-                      autoFocus
-                    />
-                  </>
-                ) : (
-                  <div className="rc-table__header__label">{column.label}</div>
-                )}
-
-                {column.sortable !== false && (
-                  <IconButton
-                    className={classnames([
-                      "rc-table__header__control",
-                      "rc-table__header__control--sort",
-                      sorting?.asc && "rc-table__header__control--sorting-asc",
-                    ])}
-                    kind="secondary"
-                    size={16}
-                    icon={<Icon icon={<Arrow />} size={10} />}
-                    onClick={onHeaderSortIconClick(index)}
-                  />
-                )}
-              </div>
-            </div>
+              className={classnames([column.className, column.headerClassName])}
+              label={column.label}
+              isFiltering={isFiltering}
+              isSorting={isSorting}
+              isSortable={isSortable}
+              isSortingAsc={sorting?.asc === true}
+              isSearchable={isSearchable}
+              onHeaderFilterRemoveClick={onHeaderFilterRemoveClick(index)}
+              onHeaderFilterChange={onHeaderFilterChange(index)}
+              onHeaderFilterLeave={onHeaderFilterLeave(index)}
+              onHeaderSearchIconClick={onHeaderSearchIconClick(index)}
+              onHeaderSortIconClick={onHeaderSortIconClick(index)}
+            />
           );
         })}
       </div>
