@@ -8,18 +8,23 @@ import {
   Sort,
 } from "./types";
 
+// typeguard on CellValue
+function isString(value: CellValue): value is string {
+  return typeof value === "string";
+}
+
 export function getSorting<RowType extends Row>(
   columns: Column<RowType>[],
   sortBy?: string,
   sortAsc?: boolean
 ): Sort | undefined {
   const index = columns.findIndex(
-    (col) => col.sortable && col.label === sortBy
+    (column) => column.sortable && column.label === sortBy
   );
-  if (index >= 0) {
-    return { index, asc: sortAsc !== undefined ? sortAsc : true };
+  if (index === -1) {
+    return undefined;
   }
-  return undefined;
+  return { index, asc: sortAsc !== undefined ? sortAsc : true };
 }
 
 export function getItems<RowType extends Row>(
@@ -29,20 +34,16 @@ export function getItems<RowType extends Row>(
   return rows.map((row) => ({
     row,
     items: columns.map(
-      (col): CellContent => {
-        const rawValue = row[col.key];
+      (column): CellContent<RowType> => {
+        const rawValue = row[column.key];
         return {
-          classNames: [col.className, col.bodyClassName],
+          classNames: [column.className, column.bodyClassName],
           rawValue,
-          resultValue: col.fn ? col.fn(rawValue, row) : undefined,
+          resultValue: column.fn ? column.fn(rawValue, row) : undefined,
         };
       }
     ),
   }));
-}
-
-function isString(value: CellValue): value is string {
-  return typeof value === "string";
 }
 
 function defaultFn(
@@ -67,7 +68,12 @@ export function filterItems<RowType extends Row>(
       const filterFn = columns[columnIndex].search;
       const filterValue = filters[columnIndex]?.value;
       if (filterFn && filterValue) {
-        return filterFn(item.resultValue, item.rawValue, filterValue);
+        return filterFn(
+          item.resultValue,
+          item.rawValue,
+          itemRow.row,
+          filterValue
+        );
       }
       if (filterValue) {
         return defaultFn(item.resultValue, item.rawValue, filterValue);
@@ -88,21 +94,19 @@ export function sortItems<RowType extends Row>(
 
   const sortingColumn = columns[sorting.index];
 
-  const sorted = items.sort((leftRow, rightRow) => {
-    const leftItem = leftRow.items[sorting.index];
-    const rightItem = rightRow.items[sorting.index];
+  const sorted = items.sort((leftItem, rightItem) => {
+    const leftCell = leftItem.items[sorting.index];
+    const rightCell = rightItem.items[sorting.index];
 
     if (sortingColumn.sort !== undefined) {
-      return sortingColumn.sort(
-        leftItem.resultValue,
-        leftItem.rawValue,
-        rightItem.resultValue,
-        rightItem.rawValue
-      );
+      return sortingColumn.sort(leftItem.row, rightItem.row, {
+        leftCell,
+        rightCell,
+      });
     }
 
-    const leftValue = leftItem.resultValue || leftItem.rawValue;
-    const rightValue = rightItem.resultValue || rightItem.rawValue;
+    const leftValue = leftCell.resultValue || leftCell.rawValue;
+    const rightValue = rightCell.resultValue || rightCell.rawValue;
 
     if (isString(leftValue) && isString(rightValue)) {
       if (leftValue > rightValue) {

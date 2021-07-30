@@ -2,33 +2,40 @@ export type Row = {};
 
 export type CellValue = null | undefined | string | React.ReactNode;
 
-export interface CellContent {
+export interface CellContent<RowType extends Row> {
   classNames: (string | undefined)[];
-  rawValue: CellValue;
+  rawValue: RowType[keyof RowType];
   resultValue: CellValue;
 }
 
 export interface Item<RowType extends Row> {
   row: RowType;
-  items: CellContent[];
+  items: CellContent<RowType>[];
 }
 
 export interface Column<RowType extends Row> {
-  key: keyof RowType;
+  key: T;
   label: string;
   sortable?: boolean;
   sort?: (
-    leftValue: unknown,
-    leftOriginalValue: unknown,
-    rightValue: unknown,
-    rightOriginalValue: unknown
+    leftRow: RowType,
+    rightRow: RowType,
+    others: {
+      leftCell: CellContent<RowType>;
+      rightCell: CellContent<RowType>;
+    }
   ) => number;
   searchable?: boolean;
   className?: string;
   headerClassName?: string;
   bodyClassName?: string;
-  search?: (value: unknown, originalValue: unknown, filter: string) => boolean;
-  fn?: (value: any, row: RowType) => null | string | React.ReactNode;
+  search?: (
+    value: CellValue,
+    rawValue: RowType[keyof RowType],
+    row: RowType,
+    filter: string
+  ) => boolean;
+  fn?: (rawValue: RowType[keyof RowType], row: RowType) => CellValue;
 }
 
 export interface Filter {

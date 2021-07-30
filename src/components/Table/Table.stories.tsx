@@ -74,6 +74,23 @@ CustomFilter.args = {
   ],
 };
 
+export const CustomSort = Template.bind({});
+CustomSort.args = {
+  rows,
+  columns: [
+    ...columns,
+    {
+      key: "dog",
+      label: "Custom Sort",
+      sort: (a, b) => {
+        if (a.dog > b.dog) return 1;
+        if (a.dog < b.dog) return -1;
+        return 0;
+      },
+    },
+  ],
+};
+
 export const Checkable = Template.bind({});
 Checkable.args = {
   rows,
