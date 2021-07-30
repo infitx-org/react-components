@@ -167,10 +167,6 @@ export default function TableHeader<RowType>({
         )}
         {columns.map((column, index) => {
           const filter = filters[index];
-          const isFiltering = filter?.filtering === true;
-          const isSorting = sorting?.index === index;
-          const isSortable = column.sortable !== false;
-          const isSearchable = column.searchable !== false;
 
           return (
             <TableHeaderCell
@@ -178,11 +174,11 @@ export default function TableHeader<RowType>({
               style={style}
               className={classnames([column.className, column.headerClassName])}
               label={column.label}
-              isFiltering={isFiltering}
-              isSorting={isSorting}
-              isSortable={isSortable}
+              isFiltering={filter?.filtering === true}
+              isSorting={sorting?.index === index}
+              isSortable={column.sortable !== false}
               isSortingAsc={sorting?.asc === true}
-              isSearchable={isSearchable}
+              isSearchable={column.searchable !== false}
               onHeaderFilterRemoveClick={onHeaderFilterRemoveClick(index)}
               onHeaderFilterChange={onHeaderFilterChange(index)}
               onHeaderFilterLeave={onHeaderFilterLeave(index)}
