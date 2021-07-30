@@ -19,7 +19,7 @@ export function getSorting<RowType extends Row>(
   sortAsc?: boolean
 ): Sort | undefined {
   const index = columns.findIndex(
-    (column) => column.sortable && column.label === sortBy
+    (column) => column.sortable !== false && column.label === sortBy
   );
   if (index === -1) {
     return undefined;

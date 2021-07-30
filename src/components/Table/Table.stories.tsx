@@ -69,35 +69,19 @@ RenderComponents.args = {
   ],
 };
 
-export const CustomFilter = Template.bind({});
-CustomFilter.args = {
+export const InitialSortBy = Template.bind({});
+InitialSortBy.args = {
   rows,
-  columns: [
-    ...columns,
-    {
-      key: "dog",
-      label: "Custom Filter",
-      search: (_: unknown, originalValue: string, value: string) =>
-        originalValue.endsWith(value),
-    },
-  ],
+  columns,
+  sortBy: columns[0].label,
 };
 
-export const CustomSort = Template.bind({});
-CustomSort.args = {
+export const InitialSortByAndDesc = Template.bind({});
+InitialSortByAndDesc.args = {
   rows,
-  columns: [
-    ...columns,
-    {
-      key: "dog",
-      label: "Custom Sort",
-      sort: (a, b) => {
-        if (a.dog > b.dog) return 1;
-        if (a.dog < b.dog) return -1;
-        return 0;
-      },
-    },
-  ],
+  columns,
+  sortBy: columns[0].label,
+  sortAsc: false,
 };
 
 export const Checkable = Template.bind({});
@@ -132,5 +116,36 @@ BodyClassname.args = {
   columns: [
     { ...columns[0], bodyClassName: "custom-background" },
     ...columns.slice(1),
+  ],
+};
+
+export const CustomFilter = Template.bind({});
+CustomFilter.args = {
+  rows,
+  columns: [
+    ...columns,
+    {
+      key: "dog",
+      label: "Custom Filter",
+      search: (_: unknown, originalValue: string, value: string) =>
+        originalValue.endsWith(value),
+    },
+  ],
+};
+
+export const CustomSort = Template.bind({});
+CustomSort.args = {
+  rows,
+  columns: [
+    ...columns,
+    {
+      key: "dog",
+      label: "Custom Sort",
+      sort: (a, b) => {
+        if (a.dog > b.dog) return 1;
+        if (a.dog < b.dog) return -1;
+        return 0;
+      },
+    },
   ],
 };
