@@ -30,15 +30,11 @@ export function getItems<RowType extends Row>(
     row,
     items: columns.map(
       (col): CellContent => {
-        const originalCellValue = row[col.key] as string | undefined;
-        let transformedCellValue;
-        if (col.fn) {
-          transformedCellValue = col.fn(originalCellValue, row);
-        }
+        const rawValue = row[col.key];
         return {
           classNames: [col.className, col.bodyClassName],
-          originalCellValue,
-          transformedCellValue,
+          rawValue,
+          resultValue: col.fn ? col.fn(rawValue, row) : undefined,
         };
       }
     ),
@@ -71,18 +67,10 @@ export function filterItems<RowType extends Row>(
       const filterFn = columns[columnIndex].search;
       const filterValue = filters[columnIndex]?.value;
       if (filterFn && filterValue) {
-        return filterFn(
-          item.transformedCellValue,
-          item.originalCellValue,
-          filterValue
-        );
+        return filterFn(item.resultValue, item.rawValue, filterValue);
       }
       if (filterValue) {
-        return defaultFn(
-          item.transformedCellValue,
-          item.originalCellValue,
-          filterValue
-        );
+        return defaultFn(item.resultValue, item.rawValue, filterValue);
       }
       return true;
     });
@@ -106,17 +94,15 @@ export function sortItems<RowType extends Row>(
 
     if (sortingColumn.sort !== undefined) {
       return sortingColumn.sort(
-        leftItem.transformedCellValue,
-        leftItem.originalCellValue,
-        rightItem.transformedCellValue,
-        rightItem.originalCellValue
+        leftItem.resultValue,
+        leftItem.rawValue,
+        rightItem.resultValue,
+        rightItem.rawValue
       );
     }
 
-    const leftValue =
-      leftItem.transformedCellValue || leftItem.originalCellValue;
-    const rightValue =
-      rightItem.transformedCellValue || rightItem.originalCellValue;
+    const leftValue = leftItem.resultValue || leftItem.rawValue;
+    const rightValue = rightItem.resultValue || rightItem.rawValue;
 
     if (isString(leftValue) && isString(rightValue)) {
       if (leftValue > rightValue) {

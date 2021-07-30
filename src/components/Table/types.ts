@@ -4,8 +4,8 @@ export type CellValue = null | undefined | string | React.ReactNode;
 
 export interface CellContent {
   classNames: (string | undefined)[];
-  originalCellValue: CellValue;
-  transformedCellValue: CellValue;
+  rawValue: CellValue;
+  resultValue: CellValue;
 }
 
 export interface Item<RowType extends Row> {

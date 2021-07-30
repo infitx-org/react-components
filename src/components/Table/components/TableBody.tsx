@@ -54,7 +54,7 @@ export default function TableBody<RowType extends Row>({
                     ...cell.classNames,
                   ])}
                 >
-                  {cell.transformedCellValue || cell.originalCellValue}
+                  {cell.resultValue || cell.rawValue}
                 </div>
               );
             })}
