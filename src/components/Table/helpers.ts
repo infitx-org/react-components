@@ -35,7 +35,7 @@ export function getItems<RowType extends Row>(
     row,
     items: columns.map(
       (column): CellContent<RowType> => {
-        const rawValue = row[column.key];
+        const rawValue = row[column.key as keyof RowType];
         return {
           classNames: [column.className, column.bodyClassName],
           rawValue,
