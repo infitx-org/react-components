@@ -57,14 +57,14 @@ function TableHeaderCell({
         {isSearchable !== false &&
           (!isFiltering ? (
             <IconButton
-              className="rc-table__header__control"
+              className="rc-table__header__control rc-table__header__control--open-filter"
               size={16}
               icon={<Icon icon={<SearchIcon />} size={12} />}
               onClick={onHeaderSearchIconClick}
             />
           ) : (
             <IconButton
-              className="rc-table__header__control"
+              className="rc-table__header__control rc-table__header__control--close-filter"
               kind="danger"
               size={16}
               icon={<Icon icon={<CloseSmallIcon />} size={12} />}
