@@ -11,3 +11,11 @@ body {
 }
 
 .m5 { margin: 5px; }
+
+.custom-background {
+  background: #f99;
+  justify-content: center;
+}
+.custom-border {
+  border: 2px solid #f99 !important;
+}

@@ -81,3 +81,30 @@ Checkable.args = {
   checkable: true,
   onCheck: console.log,
 };
+
+export const ColumnClassname = Template.bind({});
+ColumnClassname.args = {
+  rows,
+  columns: [
+    { ...columns[0], className: "custom-background" },
+    ...columns.slice(1),
+  ],
+};
+
+export const HeaderClassname = Template.bind({});
+HeaderClassname.args = {
+  rows,
+  columns: [
+    { ...columns[0], headerClassName: "custom-border" },
+    ...columns.slice(1),
+  ],
+};
+
+export const BodyClassname = Template.bind({});
+BodyClassname.args = {
+  rows,
+  columns: [
+    { ...columns[0], bodyClassName: "custom-background" },
+    ...columns.slice(1),
+  ],
+};

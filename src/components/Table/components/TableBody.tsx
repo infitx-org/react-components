@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import classnames from "classnames";
 import { Item, Row } from "../types";
 import Checkbox from "../../Checkbox";
 
@@ -48,7 +49,10 @@ export default function TableBody<RowType extends Row>({
                 <div
                   key={itemIndex.toString()}
                   style={style}
-                  className="rc-table__body__cell"
+                  className={classnames([
+                    "rc-table__body__cell",
+                    ...cell.classNames,
+                  ])}
                 >
                   {cell.transformedCellValue || cell.originalCellValue}
                 </div>

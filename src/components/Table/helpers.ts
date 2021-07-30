@@ -36,6 +36,7 @@ export function getItems<RowType extends Row>(
           transformedCellValue = col.fn(originalCellValue, row);
         }
         return {
+          classNames: [col.className, col.bodyClassName],
           originalCellValue,
           transformedCellValue,
         };

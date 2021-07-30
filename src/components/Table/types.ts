@@ -3,6 +3,7 @@ export type Row = {};
 export type CellValue = null | undefined | string | React.ReactNode;
 
 export interface CellContent {
+  classNames: (string | undefined)[];
   originalCellValue: CellValue;
   transformedCellValue: CellValue;
 }
@@ -23,6 +24,9 @@ export interface Column<RowType extends Row> {
     rightOriginalValue: unknown
   ) => number;
   searchable?: boolean;
+  className?: string;
+  headerClassName?: string;
+  bodyClassName?: string;
   search?: (value: unknown, originalValue: unknown, filter: string) => boolean;
   fn?: (value: any, row: RowType) => null | string | React.ReactNode;
 }

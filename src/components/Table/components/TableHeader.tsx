@@ -75,6 +75,7 @@ export default function TableHeader<RowType>({
           const filter = filters[index];
           const isFiltering = filter?.filtering;
           const isSorting = sorting?.index === index;
+          const isSortable = column.sortable !== false;
 
           return (
             <div
@@ -84,21 +85,35 @@ export default function TableHeader<RowType>({
                 "rc-table__header__cell",
                 isFiltering && "rc-table__header__cell--filtering",
                 isSorting && "rc-table__header__cell--sorting",
+                isSortable && "rc-table__header__cell--sortable",
+                column.className,
+                column.headerClassName,
               ])}
+              role="presentation"
+              onClick={isSortable ? onHeaderSortIconClick(index) : undefined}
             >
               <div
                 key={index.toString()}
                 style={style}
                 className="rc-table__header__cell-content"
               >
-                {column.searchable !== false && (
-                  <IconButton
-                    className="rc-table__header__control"
-                    size={16}
-                    icon={<Icon icon={<SearchIcon />} size={12} />}
-                    onClick={onHeaderSearchIconClick(index)}
-                  />
-                )}
+                {column.searchable !== false &&
+                  (!isFiltering ? (
+                    <IconButton
+                      className="rc-table__header__control"
+                      size={16}
+                      icon={<Icon icon={<SearchIcon />} size={12} />}
+                      onClick={onHeaderSearchIconClick(index)}
+                    />
+                  ) : (
+                    <IconButton
+                      className="rc-table__header__control"
+                      kind="danger"
+                      size={16}
+                      icon={<Icon icon={<CloseSmallIcon />} size={12} />}
+                      onClick={onHeaderFilterRemoveIconClick(index)}
+                    />
+                  ))}
                 {isFiltering ? (
                   <>
                     <input
@@ -107,14 +122,8 @@ export default function TableHeader<RowType>({
                       type="text"
                       onChange={onHeaderFilterChange(index)}
                       onBlur={onHeaderFilterLeave(index)}
+                      onClick={(e) => e.stopPropagation()}
                       autoFocus
-                    />
-                    <IconButton
-                      className="rc-table__header__control"
-                      kind="danger"
-                      size={16}
-                      icon={<Icon icon={<CloseSmallIcon />} size={12} />}
-                      onClick={onHeaderFilterRemoveIconClick(index)}
                     />
                   </>
                 ) : (
