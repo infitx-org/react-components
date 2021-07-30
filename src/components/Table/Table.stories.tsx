@@ -1,4 +1,6 @@
 /* eslint no-console: "off" */
+import React from "react";
+import { useInterval } from "../../hooks/useTimeout";
 import Table from "./Table";
 import Button from "../Button";
 
@@ -6,6 +8,13 @@ export default {
   title: "Components/Table",
   component: Table,
 };
+
+// Test component for performance purposes
+function Timer() {
+  const [time, setTime] = React.useState<number>(0);
+  useInterval(() => setTime((prevTime) => prevTime + 1), 1000);
+  return <span>Time elapsed: {time}s</span>;
+}
 
 const baseSuffixes = ["man", "boy", "ish", "car", "boat", "food", "house"];
 const suffixes: string[] = [];
@@ -55,7 +64,7 @@ RenderComponents.args = {
     {
       key: "dog",
       label: "Component",
-      fn: (key: string) => <Button label={key} onClick={log} />,
+      fn: () => <Timer />,
     },
   ],
 };

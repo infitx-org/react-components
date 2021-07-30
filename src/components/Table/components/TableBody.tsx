@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, memo } from "react";
 import classnames from "classnames";
 import { Item, Row } from "../types";
 import Checkbox from "../../Checkbox";
@@ -20,6 +20,7 @@ function TableBodyCell({ children, className, style }: TableBodyCellProps) {
   );
 }
 
+const MemoizedTableBodyCell = memo(TableBodyCell);
 interface TableBodyProps<RowType extends Row> {
   items: Item<RowType>[];
   checkable: boolean;
@@ -52,24 +53,24 @@ export default function TableBody<RowType extends Row>({
             role="presentation"
           >
             {checkable && (
-              <TableBodyCell>
+              <MemoizedTableBodyCell>
                 <Checkbox
                   round
                   label=""
                   onChange={onRowCheckboxChange(item.row)}
                   checked={checked.includes(item.row)}
                 />
-              </TableBodyCell>
+              </MemoizedTableBodyCell>
             )}
             {item.items.map((cell, itemIndex) => {
               return (
-                <TableBodyCell
+                <MemoizedTableBodyCell
                   key={itemIndex.toString()}
                   style={style}
                   className={classnames(cell.classNames)}
                 >
                   {cell.resultValue || cell.rawValue}
-                </TableBodyCell>
+                </MemoizedTableBodyCell>
               );
             })}
           </div>

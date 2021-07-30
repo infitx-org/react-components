@@ -105,6 +105,8 @@ function TableHeaderCell({
   );
 }
 
+const MemoizedTableHeaderCell = React.memo(TableHeaderCell);
+
 interface TableHeaderProps<RowType extends Row> {
   columns: Column<RowType>[];
   filters: Filter[];
@@ -169,7 +171,7 @@ export default function TableHeader<RowType>({
           const filter = filters[index];
 
           return (
-            <TableHeaderCell
+            <MemoizedTableHeaderCell
               key={index.toString()}
               style={style}
               className={classnames([column.className, column.headerClassName])}
