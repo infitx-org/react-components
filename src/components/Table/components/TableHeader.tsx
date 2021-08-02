@@ -58,16 +58,16 @@ function TableHeaderCell({
           (!isFiltering ? (
             <IconButton
               className="rc-table__header__control rc-table__header__control--open-filter"
-              size={16}
-              icon={<Icon icon={<SearchIcon />} size={12} />}
+              size={20}
+              icon={<Icon icon={<SearchIcon />} size={14} />}
               onClick={onHeaderSearchIconClick}
             />
           ) : (
             <IconButton
               className="rc-table__header__control rc-table__header__control--close-filter"
               kind="danger"
-              size={16}
-              icon={<Icon icon={<CloseSmallIcon />} size={12} />}
+              size={20}
+              icon={<Icon icon={<CloseSmallIcon />} size={14} />}
               onClick={onHeaderFilterRemoveClick}
             />
           ))}
@@ -95,8 +95,8 @@ function TableHeaderCell({
               isSortingAsc && "rc-table__header__control--sorting-asc",
             ])}
             kind="secondary"
-            size={16}
-            icon={<Icon icon={<Arrow />} size={10} />}
+            size={20}
+            icon={<Icon icon={<Arrow />} size={12} />}
             onClick={onHeaderSortIconClick}
           />
         )}

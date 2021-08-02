@@ -48,7 +48,13 @@ const columns = [
 
 const { log } = console;
 
-const Template = (args) => <Table {...args} />;
+const Template = ({ Wrapper = undefined, ...args }) => {
+  const table = <Table {...args} />;
+  if (!Wrapper) {
+    return table;
+  }
+  return <Wrapper>{table}</Wrapper>;
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -90,6 +96,33 @@ Checkable.args = {
   columns,
   checkable: true,
   onCheck: console.log,
+};
+
+export const Flexible = Template.bind({});
+Flexible.args = {
+  rows,
+  columns,
+  flexible: true,
+  Wrapper: ({ children }) => (
+    <div
+      style={{
+        height: "300px",
+        padding: "20px",
+        border: "2px solid #333",
+        display: "flex",
+        overflow: "scroll",
+      }}
+    >
+      {children}
+    </div>
+  ),
+};
+
+export const Bordered = Template.bind({});
+Bordered.args = {
+  rows,
+  columns,
+  bordered: true,
 };
 
 export const ColumnClassname = Template.bind({});
