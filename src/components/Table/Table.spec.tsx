@@ -151,6 +151,24 @@ describe("tests the Table", () => {
       expect(rowCheckbox).toBeTruthy();
     });
   });
+
+  it("shows the borders with bordered prop is true", () => {
+    const { container } = render(
+      <Table rows={makeRows(3)} columns={testColumns} bordered />
+    );
+    expect(
+      container.querySelector(".rc-table.rc-table--bordered")
+    ).toBeInTheDocument();
+  });
+
+  it("shows the borders with flexible prop is true", () => {
+    const { container } = render(
+      <Table rows={makeRows(3)} columns={testColumns} flexible />
+    );
+    expect(
+      container.querySelector(".rc-table.rc-table--flexible")
+    ).toBeInTheDocument();
+  });
 });
 
 describe("Tests the Table Checkbox functionalities", () => {
