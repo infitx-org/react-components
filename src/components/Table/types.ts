@@ -13,8 +13,8 @@ export interface Item<RowType extends Row> {
   items: CellContent<RowType>[];
 }
 
-export interface Column<RowType extends Row> {
-  key: T;
+export type Column<RowType extends Row> = {
+  key?: string;
   label: string;
   sortable?: boolean;
   sort?: (
@@ -31,12 +31,12 @@ export interface Column<RowType extends Row> {
   bodyClassName?: string;
   search?: (
     value: CellValue,
-    rawValue: RowType[keyof RowType],
+    rawValue: any,
     row: RowType,
     filter: string
   ) => boolean;
-  fn?: (rawValue: RowType[keyof RowType], row: RowType) => CellValue;
-}
+  fn?: (rawValue: any, row: RowType) => CellValue;
+};
 
 export interface Filter {
   filtering?: boolean;

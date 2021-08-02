@@ -2,7 +2,6 @@
 import React from "react";
 import { useInterval } from "../../hooks/useTimeout";
 import Table from "./Table";
-import Button from "../Button";
 
 export default {
   title: "Components/Table",
@@ -23,7 +22,12 @@ for (let i = 10; i > 0; i -= 1) {
   suffixes.push(...baseSuffixes);
 }
 
-const col = (suffix: string) => ({
+type Row = {
+  dog: string;
+  cat: string;
+  bird: string;
+};
+const col = (suffix: string): Row => ({
   dog: `dog-${suffix}`,
   cat: `cat-${suffix}`,
   bird: `bird-${suffix}`,
@@ -48,7 +52,13 @@ const columns = [
 
 const { log } = console;
 
-const Template = (args) => <Table {...args} />;
+const Template = ({ Wrapper = undefined, ...args }) => {
+  const table = <Table {...args} />;
+  if (!Wrapper) {
+    return table;
+  }
+  return <Wrapper>{table}</Wrapper>;
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -90,6 +100,33 @@ Checkable.args = {
   columns,
   checkable: true,
   onCheck: console.log,
+};
+
+export const Flexible = Template.bind({});
+Flexible.args = {
+  rows,
+  columns,
+  flexible: true,
+  Wrapper: ({ children }) => (
+    <div
+      style={{
+        height: "300px",
+        padding: "20px",
+        border: "2px solid #333",
+        display: "flex",
+        overflow: "scroll",
+      }}
+    >
+      {children}
+    </div>
+  ),
+};
+
+export const Bordered = Template.bind({});
+Bordered.args = {
+  rows,
+  columns,
+  bordered: true,
 };
 
 export const ColumnClassname = Template.bind({});
@@ -147,5 +184,14 @@ CustomSort.args = {
         return 0;
       },
     },
+  ],
+};
+
+export const NoKey = Template.bind({});
+NoKey.args = {
+  rows,
+  columns: [
+    { label: "no-key label", fn: (_: unknown, row: Row) => row.bird },
+    ...columns,
   ],
 };

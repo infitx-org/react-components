@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from "react";
+import classnames from "classnames";
 import { Row, Column, Sort } from "./types";
 import * as helpers from "./helpers";
 import TableHeader from "./components/TableHeader";
@@ -15,6 +16,9 @@ export interface TableProps<RowType extends Row> {
   sortBy?: string;
   sortAsc?: boolean;
   checkable?: boolean;
+  className?: string;
+  flexible?: string;
+  bordered?: boolean;
   onCheck?: (rows: RowType[]) => void;
   onSelect?: (row: RowType) => void;
 }
@@ -25,6 +29,9 @@ export default function Table<RowType extends Row>({
   sortBy,
   sortAsc = true,
   checkable,
+  className,
+  flexible,
+  bordered,
   onCheck,
   onSelect,
 }: PropsWithChildren<TableProps<RowType>>) {
@@ -98,7 +105,14 @@ export default function Table<RowType extends Row>({
   }
 
   return (
-    <div className="rc-table">
+    <div
+      className={classnames([
+        "rc-table",
+        flexible && "rc-table--flexible",
+        bordered && "rc-table--bordered",
+        className,
+      ])}
+    >
       <TableHeader
         columns={columns}
         filters={filters}
