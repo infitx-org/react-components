@@ -1,4 +1,5 @@
 import { Story } from "@storybook/react";
+import log from "resources/log";
 import addDays from "date-fns/addDays";
 import Calendar, { CalendarProps } from "./Calendar";
 
@@ -34,12 +35,12 @@ SelectedRange.args = {
 
 export const onDayClick = Template.bind({});
 onDayClick.args = {
-  onDayClick: console.log,
+  onDayClick: log,
 };
 
 export const OnDateRangeClick = Template.bind({});
 OnDateRangeClick.args = {
-  onDateRangeClick: console.log,
+  onDateRangeClick: log,
 };
 
 export const DisabledDays = Template.bind({});

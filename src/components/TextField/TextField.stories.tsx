@@ -1,12 +1,11 @@
 import { Story } from "@storybook/react";
+import log from "resources/log";
 import TextField, { TextFieldProps } from "./TextField";
 
 export default {
   title: "Components/TextField",
   component: TextField,
 };
-
-/* eslint-disable no-console */
 
 const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
 
@@ -22,8 +21,7 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
-  // eslint-disable-next-line
-  onChange: console.log,
+  onChange: log,
   validation: {
     isRequired: false,
     isValid: true,

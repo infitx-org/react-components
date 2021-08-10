@@ -1,5 +1,5 @@
-/* eslint no-console: "off" */
 import { Story } from "@storybook/react";
+import log from "resources/log";
 import Layout, { LayoutProps } from "./Layout";
 
 export default {
@@ -35,7 +35,7 @@ Default.args = {
       <Layout.Navbar
         title="Layout"
         username="test"
-        onUsernameClick={console.log}
+        onUsernameClick={log}
         userIcon={userIcon}
       />
       <Layout.Content>
@@ -49,20 +49,12 @@ Default.args = {
 export const ComposingNavbar = () => (
   <Layout.Navbar title="Composing Navbar">
     <Layout.Navbar.Block label="Company" initial="C">
-      <Layout.Navbar.Block.Item onClick={console.log}>
-        Logout
-      </Layout.Navbar.Block.Item>
-      <Layout.Navbar.Block.Item onClick={console.log}>
-        Profile
-      </Layout.Navbar.Block.Item>
+      <Layout.Navbar.Block.Item onClick={log}>Logout</Layout.Navbar.Block.Item>
+      <Layout.Navbar.Block.Item onClick={log}>Profile</Layout.Navbar.Block.Item>
     </Layout.Navbar.Block>
     <Layout.Navbar.Block label="User clickable name">
-      <Layout.Navbar.Block.Item onClick={console.log}>
-        Logout
-      </Layout.Navbar.Block.Item>
-      <Layout.Navbar.Block.Item onClick={console.log}>
-        Profile
-      </Layout.Navbar.Block.Item>
+      <Layout.Navbar.Block.Item onClick={log}>Logout</Layout.Navbar.Block.Item>
+      <Layout.Navbar.Block.Item onClick={log}>Profile</Layout.Navbar.Block.Item>
     </Layout.Navbar.Block>
   </Layout.Navbar>
 );
