@@ -1,8 +1,9 @@
 /* eslint no-console: "off" */
+import { Story } from "@storybook/react";
 import { Size, Kind } from "types";
 import TestIcon from "resources/icons/test.svg";
 import Row from "components/Flexbox/Row";
-import Dropdown from "./Dropdown";
+import Dropdown, { DropdownProps } from "./Dropdown";
 
 export default {
   title: "Components/Dropdown",
@@ -16,7 +17,7 @@ const { log } = console;
 
 const icon = <TestIcon />;
 
-const Template = (args) => (
+const Template: Story<DropdownProps> = (args) => (
   <Dropdown {...args} onClick={log} label="I am a dropdown">
     <Dropdown.Item onClick={log}>It is a very very long option</Dropdown.Item>
     <Dropdown.Item>It is a very very long option</Dropdown.Item>
@@ -26,13 +27,11 @@ const Template = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   children: undefined,
-  icon: undefined,
   label: undefined,
   className: undefined,
   id: undefined,
   kind: undefined,
   size: undefined,
-  iconPosition: undefined,
   noFill: undefined,
   disabled: undefined,
   pending: undefined,
@@ -54,17 +53,6 @@ Pending.args = {
 export const NoFill = Template.bind({});
 NoFill.args = {
   noFill: true,
-};
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  icon,
-};
-
-export const WithIconOnTheRight = Template.bind({});
-WithIconOnTheRight.args = {
-  icon,
-  iconPosition: "right",
 };
 
 const kinds = Object.values(Kind);

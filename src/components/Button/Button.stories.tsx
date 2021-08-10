@@ -1,8 +1,9 @@
 /* eslint no-console: "off" */
+import { Story } from "@storybook/react";
 import { Size, Kind } from "types";
 import TestIcon from "resources/icons/test.svg";
 import Row from "components/Flexbox/Row";
-import Button from "./Button";
+import Button, { ButtonProps } from "./Button";
 
 export default {
   title: "Components/Button",
@@ -12,7 +13,7 @@ export default {
 const { log } = console;
 const icon = <TestIcon />;
 
-const Template = (args) => (
+const Template: Story<ButtonProps> = (args) => (
   <Button {...args} onClick={log} label="I am a button" />
 );
 
@@ -62,7 +63,8 @@ WithIconOnTheRight.args = {
 };
 
 const kinds = Object.values(Kind);
-const sharedProps = (kind) => ({
+
+const sharedProps = (kind: ButtonProps["kind"]): ButtonProps => ({
   size: Size.Medium,
   style: {
     margin: "2px",
@@ -70,7 +72,6 @@ const sharedProps = (kind) => ({
   onClick: log,
   label: kind,
   kind,
-  key: kind,
 });
 
 export const Kinds = () => (
@@ -82,7 +83,7 @@ export const Kinds = () => (
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Button {...sharedProps(kind)} noFill />
+        <Button {...sharedProps(kind)} key={kind} noFill />
       ))}
     </Row>
   </>
@@ -97,7 +98,7 @@ export const KindsWithIcon = () => (
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Button {...sharedProps(kind)} noFill icon={icon} />
+        <Button {...sharedProps(kind)} key={kind} noFill icon={icon} />
       ))}
     </Row>
   </>
@@ -112,7 +113,7 @@ export const KindsPeding = () => (
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Button {...sharedProps(kind)} noFill pending />
+        <Button {...sharedProps(kind)} key={kind} noFill pending />
       ))}
     </Row>
   </>
@@ -122,17 +123,17 @@ export const Sizes = () => (
   <>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Button {...sharedProps(kind)} size="small" />
+        <Button {...sharedProps(kind)} key={kind} size="small" />
       ))}
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Button {...sharedProps(kind)} size="medium" />
+        <Button {...sharedProps(kind)} key={kind} size="medium" />
       ))}
     </Row>
     <Row align="center space-between">
       {kinds.map((kind) => (
-        <Button {...sharedProps(kind)} size="large" />
+        <Button {...sharedProps(kind)} key={kind} size="large" />
       ))}
     </Row>
   </>

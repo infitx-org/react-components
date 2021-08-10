@@ -1,6 +1,6 @@
-import React from "react";
+import { Story } from "@storybook/react";
 import { Size } from "types";
-import Icon from "./Icon";
+import Icon, { IconProps } from "./Icon";
 
 export default {
   title: "Components/Icon",
@@ -16,11 +16,12 @@ const icon = (
   </svg>
 );
 
-const Template = (args) => <Icon icon={icon} size={50} {...args} />;
+const Template: Story<IconProps> = (args) => <Icon size={50} {...args} />;
 
 export const FillColor = Template.bind({});
 FillColor.args = {
   fill: "#f00",
+  icon,
 };
 
 export const StrokeColor = Template.bind({});
@@ -28,24 +29,29 @@ StrokeColor.args = {
   stroke: "#f00",
   fill: "transparent",
   size: 50,
+  icon,
 };
 
 export const SizeLarge = Template.bind({});
 SizeLarge.args = {
   size: Size.Large,
+  icon,
 };
 
 export const SizeMedium = Template.bind({});
 SizeMedium.args = {
   size: Size.Medium,
+  icon,
 };
 
 export const SizeSmall = Template.bind({});
 SizeSmall.args = {
   size: Size.Small,
+  icon,
 };
 
 export const SizeXSmall = Template.bind({});
 SizeXSmall.args = {
   size: Size.XSmall,
+  icon,
 };

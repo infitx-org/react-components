@@ -9,7 +9,7 @@ import Calendar from "./components/Calendar";
 import CalendarIcon from "./components/CalendarIcon";
 import "./DatePicker.scss";
 
-interface BaseDatePickerProps extends BaseInput {
+export interface BaseDatePickerProps extends BaseInput {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   className?: string;
@@ -25,6 +25,7 @@ interface BaseDatePickerProps extends BaseInput {
 export type DatePickerProps = BaseDatePickerProps &
   Partial<WithValidationProps> &
   WithLabelProps;
+
 export default React.forwardRef(function DatePicker(
   {
     kind = Kind.Primary,

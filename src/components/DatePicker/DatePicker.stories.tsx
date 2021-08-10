@@ -1,4 +1,5 @@
-import DatePicker from "./DatePicker";
+import { Story } from "@storybook/react";
+import DatePicker, { DatePickerProps } from "./DatePicker";
 
 export default {
   title: "Components/DatePicker",
@@ -7,7 +8,7 @@ export default {
 
 /* eslint-disable no-console */
 
-const Template = (args) => <DatePicker {...args} />;
+const Template: Story<DatePickerProps> = (args) => <DatePicker {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -25,12 +26,12 @@ Default.args = {
 
 export const SelectedDate = Template.bind({});
 SelectedDate.args = {
-  value: new Date(),
+  value: new Date().toISOString(),
 };
 export const Format = Template.bind({});
 Format.args = {
   format: "MM/dd/yyyy",
-  value: new Date(),
+  value: new Date().toISOString(),
 };
 
 export const Disabled = Template.bind({});

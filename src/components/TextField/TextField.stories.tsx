@@ -1,12 +1,14 @@
-import TextField from "./TextField";
+import { Story } from "@storybook/react";
+import TextField, { TextFieldProps } from "./TextField";
 
 export default {
   title: "Components/TextField",
+  component: TextField,
 };
 
 /* eslint-disable no-console */
 
-const Template = (args) => <TextField {...args} />;
+const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

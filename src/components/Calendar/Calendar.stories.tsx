@@ -1,12 +1,13 @@
-import React from "react";
+import { Story } from "@storybook/react";
 import addDays from "date-fns/addDays";
-import Calendar from "./Calendar";
+import Calendar, { CalendarProps } from "./Calendar";
 
 export default {
   title: "Components/Calendar",
+  component: Calendar,
 };
 
-const Template = (args) => <Calendar {...args} />;
+const Template: Story<CalendarProps> = (args) => <Calendar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};

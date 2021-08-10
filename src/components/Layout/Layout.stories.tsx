@@ -1,5 +1,6 @@
 /* eslint no-console: "off" */
-import Layout from "./Layout";
+import { Story } from "@storybook/react";
+import Layout, { LayoutProps } from "./Layout";
 
 export default {
   title: "Components/Layout",
@@ -25,7 +26,7 @@ const userIcon = (
   </svg>
 );
 
-const Template = (args) => <Layout {...args} />;
+const Template: Story<LayoutProps> = (args) => <Layout {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -1,12 +1,14 @@
 /* eslint-disable no-console */
-
+import { Story } from "@storybook/react";
 import FormField from "./FormField";
+import { FormFieldProps } from "./shared";
 
 export default {
   title: "Components/FormField",
+  component: FormField,
 };
 
-const Template = (args) => <FormField {...args} />;
+const Template: Story<FormFieldProps> = (args) => <FormField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
