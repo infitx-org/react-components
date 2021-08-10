@@ -24,11 +24,15 @@ Default.args = {
   invalid: false,
   pending: false,
   onChange: console.log,
-  validation: [
-    { active: false, message: "Test" },
-    { active: true, message: "invalid" },
-    { active: undefined, message: "unknown" },
-  ],
+  validation: {
+    isRequired: false,
+    isValid: true,
+    messages: [
+      { active: false, message: "Test" },
+      { active: false, message: "Test" },
+      { active: false, message: "Test" },
+    ],
+  },
 };
 
 const options = Array.from([1, 2, 3], (x) => ({
