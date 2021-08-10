@@ -1,8 +1,9 @@
 /* eslint no-console: "off" */
+import { Story } from "@storybook/react";
 import { Size, Kind } from "types";
 import TestIcon from "resources/icons/test.svg";
 import Row from "components/Flexbox/Row";
-import Button from "./Button";
+import Button, { ButtonProps } from "./Button";
 
 export default {
   title: "Components/Button",
@@ -12,7 +13,7 @@ export default {
 const { log } = console;
 const icon = <TestIcon />;
 
-const Template = (args) => (
+const Template: Story<ButtonProps> = (args) => (
   <Button {...args} onClick={log} label="I am a button" />
 );
 
