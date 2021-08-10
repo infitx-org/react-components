@@ -51,7 +51,11 @@ const columns = [
   },
 ];
 
-const Template: Story<TableProps<Row>> = ({ Wrapper = undefined, ...args }) => {
+type Wrapper = { Wrapper: React.FunctionComponent };
+const Template: Story<TableProps<Row> & Wrapper> = ({
+  Wrapper = undefined,
+  ...args
+}) => {
   const table = <Table {...args} />;
   if (!Wrapper) {
     return table;
@@ -163,8 +167,7 @@ CustomFilter.args = {
     {
       key: "dog",
       label: "Custom Filter",
-      search: (_: unknown, originalValue: string, value: string) =>
-        originalValue.endsWith(value),
+      search: (_, rawValue, __, filter) => rawValue.endsWith(filter),
     },
   ],
 };
