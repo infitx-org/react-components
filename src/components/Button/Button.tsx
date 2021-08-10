@@ -100,4 +100,6 @@ export const BaseButton = forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-export default withTooltip<ButtonProps>(BaseButton);
+const Button = withTooltip<ButtonProps>(BaseButton);
+
+export default Button;
