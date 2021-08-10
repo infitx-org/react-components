@@ -1,4 +1,5 @@
-import Select from "./Select";
+import { Story } from "@storybook/react";
+import Select, { SelectProps } from "./Select";
 
 export default {
   title: "Components/Select",
@@ -11,7 +12,9 @@ const options = new Array(6).fill(0).map((_, index: number) => ({
   value: index + 1,
 }));
 
-const Template = (args) => <Select {...args} options={options} />;
+const Template: Story<SelectProps> = (args) => (
+  <Select {...args} options={options} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

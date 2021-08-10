@@ -6,7 +6,7 @@ import { BaseInput } from "../shared/types";
 import { Kind, InputSize, KeyCode } from "../../types";
 import "./NumberField.scss";
 
-interface BaseNumberFieldProps extends BaseInput {
+export interface BaseNumberFieldProps extends BaseInput {
   kind?: `${Kind}`;
   size?: `${InputSize}`;
   className?: string;

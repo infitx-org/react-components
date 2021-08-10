@@ -3,6 +3,7 @@ import ScrollBox from "./ScrollBox";
 
 export default {
   title: "Components/Scrollbox",
+  component: ScrollBox,
 };
 
 // const Template = (args) => (

@@ -8,7 +8,7 @@ export default {
   component: RadioGroup,
 };
 
-function optionMaker(item, index) {
+function optionMaker(_: unknown, index: number) {
   return {
     label: `option number ${index + 1}`,
     value: (index + 1).toString(),
@@ -68,6 +68,7 @@ export const VerticalAlignment = () => {
       label="Vertical Alignment Label"
       options={options}
       onChange={(value) => setSelected(value)}
+      selected={selected}
       vertical
     />
   );

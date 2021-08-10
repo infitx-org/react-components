@@ -1,7 +1,8 @@
+import { Story } from "@storybook/react";
 import Row from "components/Flexbox/Row";
 import { Kind } from "types";
 import TestIcon from "resources/icons/test.svg";
-import MessageBox from "./MessageBox";
+import MessageBox, { MessageBoxProps } from "./MessageBox";
 
 export default {
   title: "Components/MessageBox",
@@ -10,7 +11,7 @@ export default {
 
 const icon = <TestIcon />;
 
-const Template = (args) => <MessageBox {...args} />;
+const Template: Story<MessageBoxProps> = (args) => <MessageBox {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -60,7 +61,7 @@ WithId.args = {
   id: "test-id",
 };
 
-const VariantsTemplate = (args) => (
+const VariantsTemplate: Story<MessageBoxProps> = (args) => (
   <Row align="space-between">
     <MessageBox message="default" kind="default" {...args} />
     {Object.values(Kind).map((kind) => {

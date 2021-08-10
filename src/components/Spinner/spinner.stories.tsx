@@ -1,14 +1,13 @@
-import React from "react";
-
+import { Story } from "@storybook/react";
 import Row from "components/Flexbox/Row";
-import Spinner from "./Spinner";
+import Spinner, { SpinnerProps } from "./Spinner";
 
 export default {
   title: "Components/Spinner",
   component: Spinner,
 };
 
-const Template = (args) => <Spinner {...args} />;
+const Template: Story<SpinnerProps> = (args) => <Spinner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

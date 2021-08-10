@@ -1,12 +1,13 @@
+import { Story } from "@storybook/react";
 import React from "react";
-import Checkbox from "./Checkbox";
+import Checkbox, { CheckboxProps } from "./Checkbox";
 
 export default {
   title: "Components/Checkbox",
   component: Checkbox,
 };
 
-const Template = (args) => <Checkbox label="Default Checkbox" {...args} />;
+const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

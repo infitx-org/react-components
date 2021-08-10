@@ -6,6 +6,7 @@ import Row, { RowProps } from "./Row";
 
 export default {
   title: "Components/Flexbox/Row",
+  component: Row,
 };
 
 const Template: Story<RowProps> = (args) => (

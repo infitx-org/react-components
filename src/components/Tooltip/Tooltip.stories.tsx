@@ -1,15 +1,14 @@
+import { Story } from "@storybook/react";
 import TestIcon from "resources/icons/test.svg";
 import TextField from "components/TextField";
-import Tooltip from "./Tooltip";
+import Tooltip, { TooltipProps } from "./Tooltip";
 
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
 };
 
-const icon = <TestIcon />;
-
-const Template = (args) => (
+const Template: Story<TooltipProps> = (args) => (
   <Tooltip {...args}>
     <div style={{ margin: "100px", display: "inline-block" }}>
       Hover me to see the tooltip

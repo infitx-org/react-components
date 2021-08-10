@@ -1,12 +1,14 @@
-import NumberField from "./NumberField";
+import { Story } from "@storybook/react";
+import NumberField, { NumberFieldProps } from "./NumberField";
 
 export default {
   title: "Components/NumberField",
+  component: NumberField,
 };
 
 /* eslint-disable no-console */
 
-const Template = (args) => <NumberField {...args} />;
+const Template: Story<NumberFieldProps> = (args) => <NumberField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

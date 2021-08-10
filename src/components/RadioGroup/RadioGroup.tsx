@@ -7,7 +7,7 @@ import "./RadioGroup.scss";
 
 type Option = Pick<RadioProps, "label" | "value" | "disabled" | "id" | "kind">;
 
-interface BaseRadioGroupProps {
+export interface BaseRadioGroupProps {
   kind?: `${Kind}`;
   id?: string;
   name?: string;

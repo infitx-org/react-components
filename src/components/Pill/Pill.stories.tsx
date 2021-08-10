@@ -1,6 +1,7 @@
+import { Story } from "@storybook/react";
 import Row from "components/Flexbox/Row";
 import { Kind } from "types";
-import Pill from "./Pill";
+import Pill, { PillProps } from "./Pill";
 
 const icon = (
   <svg
@@ -22,7 +23,9 @@ export default {
   component: Pill,
 };
 
-const Template = (args) => <Pill {...args} label="I am a Pill" />;
+const Template: Story<PillProps> = (args) => (
+  <Pill {...args} label="I am a Pill" />
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -56,7 +59,7 @@ WithId.args = {
   id: "test-id",
 };
 
-const VariantsTemplate = (args) => (
+const VariantsTemplate: Story<PillProps> = (args) => (
   <Row align="space-between">
     <Pill label="default" kind="default" {...args} />
     {Object.values(Kind).map((kind) => {

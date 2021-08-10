@@ -3,6 +3,7 @@ import Field, { FieldProps } from "./Field";
 
 export default {
   title: "Components/Field",
+  component: Field,
 };
 
 const Template: Story<FieldProps> = (args) => <Field {...args} />;

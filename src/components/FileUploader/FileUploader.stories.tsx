@@ -1,13 +1,16 @@
-import FileUploader from "./FileUploader";
+import { Story } from "@storybook/react";
+import FileUploader, { FileUploaderProps } from "./FileUploader";
 
 export default {
   title: "Components/FileUploader",
+  component: FileUploader,
 };
 
 /* eslint-disable no-console */
 
 const file = new File([new Blob(["test"], { type: "text/plain" })], "test");
-const Template = (args) => <FileUploader {...args} />;
+
+const Template: Story<FileUploaderProps> = (args) => <FileUploader {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
