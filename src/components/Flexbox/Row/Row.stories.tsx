@@ -1,13 +1,14 @@
+import { Story } from "@storybook/react";
 import React from "react";
 import Column from "components/Flexbox/Column";
 import { Blocks, Title } from "components/Flexbox/Flexbox.stories";
-import Row from "./Row";
+import Row, { RowProps } from "./Row";
 
 export default {
   title: "Components/Flexbox/Row",
 };
 
-const Template = (args) => (
+const Template: Story<RowProps> = (args) => (
   <Row {...args}>
     <Blocks />
   </Row>
@@ -18,28 +19,20 @@ Default.args = {
   align: undefined,
 };
 
-const RowTemplate = (args) => (
-  <Row {...args} className="row">
-    <Blocks />
-    <Title>{args.align}</Title>
-  </Row>
-);
-
 const alignItems = ["top", "center", "bottom"];
 const justifyContent = ["left", "center", "right"];
 
-function alignments(
-  TemplateComponent: React.FunctionComponent,
-  axis1: string[],
-  axis2: string[]
-) {
+function alignments(axis1: string[], axis2: string[]) {
   return axis1.reduce(
     (p1: React.ReactNode[], ax1: string) => [
       ...p1,
       axis2.reduce(
         (p2: React.ReactNode[], ax2: string) => [
           ...p2,
-          <TemplateComponent align={`${ax1} ${ax2}`} />,
+          <Row align={`${ax1} ${ax2}` as RowProps["align"]} className="row">
+            <Blocks />
+            <Title>{`${ax1} ${ax2}`}</Title>
+          </Row>,
         ],
         [] as React.ReactNode[]
       ),
@@ -49,5 +42,5 @@ function alignments(
 }
 
 export const Alignments = () => (
-  <Column>{alignments(RowTemplate, alignItems, justifyContent)}</Column>
+  <Column>{alignments(alignItems, justifyContent)}</Column>
 );

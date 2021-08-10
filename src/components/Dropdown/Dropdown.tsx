@@ -14,7 +14,7 @@ function isDropdownItem(child: React.ReactNode): boolean {
 }
 
 export interface DropdownProps
-  extends Omit<ButtonProps, "children" | "iconPosition"> {
+  extends Omit<ButtonProps, "children" | "iconPosition" | "icon"> {
   children: React.ReactNode;
 }
 
