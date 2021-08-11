@@ -1,7 +1,8 @@
-/* eslint no-console: "off" */
 import React from "react";
+import { Story } from "@storybook/react";
+import log from "resources/log";
 import { useInterval } from "../../hooks/useTimeout";
-import Table from "./Table";
+import Table, { TableProps } from "./Table";
 
 export default {
   title: "Components/Table",
@@ -50,9 +51,11 @@ const columns = [
   },
 ];
 
-const { log } = console;
-
-const Template = ({ Wrapper = undefined, ...args }) => {
+type Wrapper = { Wrapper: React.FunctionComponent };
+const Template: Story<TableProps<Row> & Wrapper> = ({
+  Wrapper = undefined,
+  ...args
+}) => {
   const table = <Table {...args} />;
   if (!Wrapper) {
     return table;
@@ -99,7 +102,7 @@ Checkable.args = {
   rows,
   columns,
   checkable: true,
-  onCheck: console.log,
+  onCheck: log,
 };
 
 export const Flexible = Template.bind({});
@@ -164,8 +167,7 @@ CustomFilter.args = {
     {
       key: "dog",
       label: "Custom Filter",
-      search: (_: unknown, originalValue: string, value: string) =>
-        originalValue.endsWith(value),
+      search: (_, rawValue, __, filter) => rawValue.endsWith(filter),
     },
   ],
 };

@@ -17,7 +17,7 @@ export interface TableProps<RowType extends Row> {
   sortAsc?: boolean;
   checkable?: boolean;
   className?: string;
-  flexible?: string;
+  flexible?: boolean;
   bordered?: boolean;
   onCheck?: (rows: RowType[]) => void;
   onSelect?: (row: RowType) => void;

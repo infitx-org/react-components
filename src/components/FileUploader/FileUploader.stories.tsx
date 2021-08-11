@@ -1,12 +1,11 @@
 import { Story } from "@storybook/react";
+import log from "resources/log";
 import FileUploader, { FileUploaderProps } from "./FileUploader";
 
 export default {
   title: "Components/FileUploader",
   component: FileUploader,
 };
-
-/* eslint-disable no-console */
 
 const file = new File([new Blob(["test"], { type: "text/plain" })], "test");
 
@@ -23,7 +22,7 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
-  onChange: console.log,
+  onChange: log,
 };
 
 export const SelectedFile = Template.bind({});

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import classnames from "classnames";
 import { format as dateFormat } from "date-fns";
 import Field, { Loader, Placeholder, InvalidIcon } from "components/Field";
@@ -26,7 +26,7 @@ export type DatePickerProps = BaseDatePickerProps &
   Partial<WithValidationProps> &
   WithLabelProps;
 
-export default React.forwardRef(function DatePicker(
+export default forwardRef(function DatePicker(
   {
     kind = Kind.Primary,
     size = InputSize.Large,

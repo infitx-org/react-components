@@ -1,5 +1,6 @@
 import { Story } from "@storybook/react";
 import React from "react";
+import log from "resources/log";
 import Checkbox, { CheckboxProps } from "./Checkbox";
 
 export default {
@@ -12,8 +13,7 @@ const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: "Default Checkbox",
-  // eslint-disable-next-line no-console
-  onChange: console.log,
+  onChange: log,
 };
 
 export const NoLabel = Template.bind({});

@@ -26,13 +26,13 @@ export default function withValidation<Props extends BaseProps>(
     // invalid explicitely set or only when has value + validation
     const invalid =
       props.invalid || (isValid === false && props.hasEmptyValue === false);
-    const newProps = {
-      required,
-      // invalid explicitely set or only when has value + validation
-      invalid,
-    };
     const component = (
-      <Component {...(props as Props)} {...newProps} ref={ref} />
+      <Component
+        {...(props as Props)}
+        required={required}
+        invalid={invalid}
+        ref={ref}
+      />
     );
     return (
       <Tooltip

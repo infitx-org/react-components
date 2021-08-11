@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
 import { Story } from "@storybook/react";
+import log from "resources/log";
 import FormField from "./FormField";
 import { FormFieldProps } from "./shared";
 
@@ -23,20 +23,22 @@ Default.args = {
   required: true,
   invalid: false,
   pending: false,
-  onChange: console.log,
-  validation: [
-    { active: false, message: "Test" },
-    { active: true, message: "invalid" },
-    { active: undefined, message: "unknown" },
-  ],
+  onChange: log,
+  validation: {
+    isRequired: false,
+    isValid: true,
+    messages: [
+      { active: false, message: "Test" },
+      { active: false, message: "Test" },
+      { active: false, message: "Test" },
+    ],
+  },
 };
 
 const options = Array.from([1, 2, 3], (x) => ({
   label: x.toString(),
   value: x.toString(),
 }));
-
-const { log } = console;
 
 export const ColumnLayout = () => (
   <FormField.Container direction="column">

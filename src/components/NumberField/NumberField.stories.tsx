@@ -1,12 +1,11 @@
 import { Story } from "@storybook/react";
+import log from "resources/log";
 import NumberField, { NumberFieldProps } from "./NumberField";
 
 export default {
   title: "Components/NumberField",
   component: NumberField,
 };
-
-/* eslint-disable no-console */
 
 const Template: Story<NumberFieldProps> = (args) => <NumberField {...args} />;
 
@@ -22,7 +21,7 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
-  onChange: console.log,
+  onChange: log,
 };
 
 export const Step = Template.bind({});

@@ -10,7 +10,7 @@ export interface WithTooltipProps {
   tooltipPosition?: Position;
 }
 
-export default function withTooltip<Props>(Component: ComponentType<Props>) {
+function withTooltip<Props>(Component: ComponentType<Props>) {
   return function WithTooltip({
     tooltipLabel,
     tooltipKind,
@@ -33,3 +33,5 @@ export default function withTooltip<Props>(Component: ComponentType<Props>) {
     );
   };
 }
+
+export default withTooltip;

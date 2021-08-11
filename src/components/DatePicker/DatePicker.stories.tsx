@@ -1,12 +1,11 @@
 import { Story } from "@storybook/react";
+import log from "resources/log";
 import DatePicker, { DatePickerProps } from "./DatePicker";
 
 export default {
   title: "Components/DatePicker",
   component: DatePicker,
 };
-
-/* eslint-disable no-console */
 
 const Template: Story<DatePickerProps> = (args) => <DatePicker {...args} />;
 
@@ -21,7 +20,7 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
-  onChange: console.log,
+  onChange: log,
 };
 
 export const SelectedDate = Template.bind({});

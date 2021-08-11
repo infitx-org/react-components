@@ -1,12 +1,14 @@
+import { Story } from "@storybook/react";
+import log from "resources/log";
 import Column from "components/Flexbox/Column";
-import Text from "./Text";
+import Text, { TextProps } from "./Text";
 
 export default {
   title: "components/Typography/Text",
   component: Text,
 };
 
-const Template = (args) => <Text {...args} />;
+const Template: Story<TextProps> = (args) => <Text {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -62,8 +64,7 @@ Disabled.args = {
 export const OnClick = Template.bind({});
 OnClick.args = {
   ...Default.args,
-  // eslint-disable-next-line
-  onClick: console.log,
+  onClick: log,
 };
 
 export const Sizes = () => (
