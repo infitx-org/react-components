@@ -51,10 +51,11 @@ function findVisibleElements(
         const isRoot = menuItem.props.children !== undefined;
         activeNode = isRoot ? menuItem.props.children : menuElements;
       } else if (menuItem.props.children !== undefined) {
+        // we are not in the active path, let's, check the children
         activeNode = findVisibleElements(menuItem.props.children, pathname);
       }
 
-      return !!activeNode;
+      return activeNode;
     });
 
   return activeNode;
@@ -73,9 +74,8 @@ function Menu({ path, pathname, onChange, children }: MenuProps) {
   if (pathname !== path) {
     menuElements = findVisibleElements(children, pathname) || children;
   }
-  const menuComponents = React.Children.toArray(menuElements).filter(
-    (element) => isMenuItem(element) || isMenuSection(element)
-  ) as MenuElement[];
+
+  const menuComponents = React.Children.toArray(menuElements);
 
   return (
     <MenuContext.Provider value={{ pathname, onClick: onChange }}>
