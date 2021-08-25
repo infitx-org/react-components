@@ -76,7 +76,7 @@ describe("tests the Menu", () => {
     );
   });
 
-  it("renders the nested child when asRoot prop is set and route matches parent", () => {
+  it("renders the nested child menu item because parent menu item matches", () => {
     const { container } = render(
       <Menu path="/" pathname="/foo" onChange={onChangeMockEvent}>
         <Menu.Item path="/foo" label="foo">
@@ -91,22 +91,19 @@ describe("tests the Menu", () => {
     expect(container.querySelectorAll(".rc-menu-item")).toHaveLength(1);
   });
 
-  it("renders the nested child if matching if asRoot prop is not set ", () => {
+  it("renders a menu item component content", () => {
     const { container } = render(
-      <Menu path="/" pathname="/1st/2nd/3rd/4th" onChange={onChangeMockEvent}>
-        <Menu.Item path="/1st" label="1st Level">
-          <Menu.Item path="/1st/2nd" label="2st level">
-            <Menu.Item path="/1st/2nd/3rd" label="3nd level">
-              <Menu.Item path="/1st/2nd/3rd/4th" label="4th level" />
-            </Menu.Item>
-          </Menu.Item>
+      <Menu path="/" pathname="/test" onChange={onChangeMockEvent}>
+        <Menu.Item path="/test" label="Test">
+          <div>component</div>
         </Menu.Item>
       </Menu>
     );
 
     const menuItem = container.querySelector(".rc-menu-item");
-    expect(menuItem).toBeTruthy();
-    expect(menuItem?.textContent).toBe("4th level");
+    expect(menuItem).toBeFalsy();
+    const divItem = container.querySelector("div");
+    expect(divItem?.textContent).toBe("component");
   });
 
   it("renders the menu items when partial match is allowed", () => {

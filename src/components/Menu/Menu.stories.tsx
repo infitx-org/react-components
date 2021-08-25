@@ -84,3 +84,25 @@ export const ParametrizedPath = () => {
     </Menu>
   );
 };
+
+export const RenderComponents = () => {
+  const [pathname, setPathname] = React.useState("/");
+  return (
+    <Menu path="/" pathname={pathname} onChange={setPathname}>
+      <Menu.Item label="One" path="/one">
+        <div>what is this?</div>
+      </Menu.Item>
+      <Menu.Item label="Two" path="/two" />
+      <Menu.Item label="User Comments" path="/users/:id/comments" />
+    </Menu>
+  );
+};
+
+export const RenderOnlyComponents = () => {
+  const [pathname, setPathname] = React.useState("/");
+  return (
+    <Menu path="/" pathname={pathname} onChange={setPathname}>
+      <div>what is this?</div>
+    </Menu>
+  );
+};
