@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import log from "resources/log";
 import { Tab, TabPanel, Tabs } from "./Tabs";
 
@@ -71,3 +72,19 @@ export const StyledTabPanel = () => (
     <TabPanel> Tab Content 3 </TabPanel>
   </Tabs>
 );
+
+export const onExternalSelectedChange = () => {
+  const tabs = ["one", "two", "three"];
+  const [selected, setSelected] = useState(2);
+  useEffect(() => {
+    setInterval(() => setSelected(1), 2000);
+  }, []);
+
+  return (
+    <Tabs selected={selected} onSelect={(_, index) => setSelected(index)}>
+      <Tab>{tabs[0]}</Tab>
+      <Tab>{tabs[1]}</Tab>
+      <Tab>{tabs[2]}</Tab>
+    </Tabs>
+  );
+};
