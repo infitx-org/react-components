@@ -205,10 +205,12 @@ class Tabs extends PureComponent<TabsProps, TabsState> {
     const { selected, hasFocus } = this.state;
     const { id, style, className, disabled } = this.props;
     const [rawTabs, rowPanels] = this.getComponents();
+    const realSelected =
+      this.props.selected !== undefined ? this.props.selected : selected;
 
     const tabs = rawTabs.map((tab, index) => {
       const isDisabled = tab.props.disabled || disabled;
-      const isSelected = selected === index;
+      const isSelected = realSelected === index;
       const isFocused = isSelected && hasFocus;
       const onSelect =
         isDisabled || isSelected
