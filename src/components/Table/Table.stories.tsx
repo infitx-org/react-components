@@ -28,6 +28,7 @@ type Row = {
   cat: string;
   bird: string;
 };
+
 const col = (suffix: string): Row => ({
   dog: `dog-${suffix}`,
   cat: `cat-${suffix}`,
@@ -196,4 +197,12 @@ NoKey.args = {
     { label: "no-key label", fn: (_: unknown, row: Row) => row.bird },
     ...columns,
   ],
+};
+
+export const Pagination = Template.bind({});
+Pagination.args = {
+  rows,
+  columns,
+  pageSize: 5,
+  paginatorSize: 7,
 };

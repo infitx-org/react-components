@@ -121,3 +121,30 @@ export function sortItems<RowType extends Row>(
 
   return sorting.asc ? sorted : [...sorted].reverse();
 }
+
+function getAmountOfPages(itemsPerPage: number, items: Array<unknown>) {
+  return Math.ceil(items.length / itemsPerPage);
+}
+
+export function pageItems<RowType extends Row>(
+  page: number,
+  pageSize: number,
+  items: Item<RowType>[]
+): [Item<RowType>[], number, number | undefined] {
+  let pages;
+  let pagedItems = items;
+  let selectedPage = page;
+  if (pageSize > 0) {
+    pages = getAmountOfPages(pageSize, items);
+
+    if (pages > 1 && page >= 1) {
+      if (page > pages) {
+        // go to last page after filtering
+        selectedPage = pages;
+      }
+      const start = (selectedPage - 1) * pageSize;
+      pagedItems = pagedItems.slice(start, start + pageSize);
+    }
+  }
+  return [pagedItems, selectedPage, pages];
+}

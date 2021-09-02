@@ -2,6 +2,7 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { mockComponent } from "react-dom/test-utils";
+import { click } from "@testing-library/user-event/dist/click";
 import Table from "./Table";
 
 const makeRows = (count: number) =>
@@ -25,9 +26,6 @@ const testColumns = [
     label: "Birds",
   },
 ];
-
-// onCheck ?: (rows: RowType[]) => void;
-// onSelect ?: (row: RowType) => void;
 
 // Remaps the rows with col to build an original-like structure
 function getRowsData(container: HTMLElement, columns: TestColumn[]) {
@@ -75,6 +73,22 @@ function getCloseFilterButton(headerCell: Element): Element | null {
 
 function getFilterInput(headerCell: Element): HTMLInputElement | null {
   return headerCell.querySelector("input");
+}
+
+function getPaginator(container: Element): Element | null {
+  return container.querySelector(".rc-table__paginator");
+}
+
+function getPages(container: Element): Element[] {
+  return Array.from(container.querySelectorAll(".rc-table__paginator__page"));
+}
+
+function getPaginatorButtons(container: Element): Element[] {
+  return Array.from(container.querySelectorAll(".rc-table__paginator__button"));
+}
+
+function getSelectedPage(container: Element): Element | null {
+  return container.querySelector(".rc-table__paginator__page--selected");
 }
 
 describe("tests the Table", () => {
@@ -302,5 +316,106 @@ describe("Tests the filtering functionalities", () => {
     });
 
     expect(getRowsData(container, testColumns)).toHaveLength(1);
+  });
+});
+
+describe("Tests the paging functionalities", () => {
+  it("Shows the paginator when there are pages", () => {
+    const { container } = render(
+      <Table rows={makeRows(30)} columns={testColumns} pageSize={5} />
+    );
+
+    const paginator = getPaginator(container);
+    expect(paginator).toBeInTheDocument();
+  });
+
+  it("Shows the correct number of pages", () => {
+    const { container } = render(
+      <Table rows={makeRows(30)} columns={testColumns} pageSize={5} />
+    );
+
+    const pages = getPages(container);
+    expect(pages).toHaveLength(6);
+  });
+
+  it("Shows the dots on the page before the last when pages are greater than the paginator size", () => {
+    const { container } = render(
+      <Table
+        rows={makeRows(30)}
+        columns={testColumns}
+        pageSize={5}
+        paginatorSize={5}
+      />
+    );
+
+    const pages = getPages(container);
+    expect(pages[3]).toHaveTextContent("...");
+  });
+
+  it("Navigate to next page when clicking the next button", () => {
+    const { container } = render(
+      <Table rows={makeRows(30)} columns={testColumns} pageSize={5} />
+    );
+
+    const [, nextButton] = getPaginatorButtons(container);
+    userEvent.click(nextButton as Element);
+    expect(getSelectedPage(container)).toHaveTextContent("2");
+  });
+
+  it("Navigate to prev page when clicking the prev button", () => {
+    const { container } = render(
+      <Table
+        rows={makeRows(30)}
+        columns={testColumns}
+        pageSize={5}
+        paginatorSize={5}
+      />
+    );
+
+    const [, nextButton] = getPaginatorButtons(container);
+    userEvent.click(nextButton as Element);
+    const [prevButton] = getPaginatorButtons(container);
+    userEvent.click(prevButton as Element);
+    expect(getSelectedPage(container)).toHaveTextContent("1");
+  });
+
+  it("Navigate to page when clicking the page", () => {
+    const { container } = render(
+      <Table rows={makeRows(30)} columns={testColumns} pageSize={5} />
+    );
+
+    const pages = getPages(container);
+    userEvent.click(pages[2] as Element);
+    expect(getSelectedPage(container)).toHaveTextContent("3");
+  });
+
+  it("Disables the first button when page selected is first", () => {
+    const { container } = render(
+      <Table
+        rows={makeRows(30)}
+        columns={testColumns}
+        pageSize={5}
+        paginatorSize={5}
+      />
+    );
+
+    const [prevButton] = getPaginatorButtons(container);
+    expect(prevButton).toBeDisabled();
+  });
+
+  it("Disables the last button when page selected is last", () => {
+    const { container } = render(
+      <Table
+        rows={makeRows(30)}
+        columns={testColumns}
+        pageSize={5}
+        paginatorSize={5}
+      />
+    );
+
+    const pages = getPages(container);
+    userEvent.click(pages[4] as Element);
+    const [, nextButton] = getPaginatorButtons(container);
+    expect(nextButton).toBeDisabled();
   });
 });

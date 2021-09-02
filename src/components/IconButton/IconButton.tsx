@@ -41,6 +41,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         type="button"
         ref={forwardedRef}
         className={buttonClassName}
+        disabled={disabled}
         onClick={disabled ? undefined : onClick}
         style={{ height: size, width: size }}
       >
