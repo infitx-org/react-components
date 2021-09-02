@@ -43,11 +43,6 @@
   }
 }
 
-.rc-icon-button--disabled {
-  cursor: initial;
-  fill: #ccc;
-}
-
 .rc-icon-button__icon {
   z-index: 3;
 }
@@ -76,4 +71,10 @@
       background-color: rgba(map.get(themes.$shadows, $kind), 0.8);
     }
   }
+}
+
+.rc-icon-button--disabled {
+  cursor: initial;
+  fill: #ccc;
+  pointer-events: none;
 }

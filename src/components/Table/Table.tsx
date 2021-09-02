@@ -4,6 +4,7 @@ import { Row, Column, Sort } from "./types";
 import * as helpers from "./helpers";
 import TableHeader from "./components/TableHeader";
 import TableBody from "./components/TableBody";
+import Paginator from "./components/Paginator";
 import "./Table.scss";
 
 function getWidth(items: unknown[]) {
@@ -19,6 +20,8 @@ export interface TableProps<RowType extends Row> {
   className?: string;
   flexible?: boolean;
   bordered?: boolean;
+  pageSize?: number;
+  paginatorSize?: number;
   onCheck?: (rows: RowType[]) => void;
   onSelect?: (row: RowType) => void;
 }
@@ -32,6 +35,8 @@ export default function Table<RowType extends Row>({
   className,
   flexible,
   bordered,
+  pageSize = 0,
+  paginatorSize = 7,
   onCheck,
   onSelect,
 }: PropsWithChildren<TableProps<RowType>>) {
@@ -40,12 +45,20 @@ export default function Table<RowType extends Row>({
     helpers.getSorting<RowType>(columns, sortBy, sortAsc)
   );
   const [checked, setChecked] = React.useState<RowType[]>([]);
+  const [selectedPage, setSelectedPage] = React.useState(1);
+
+  // Get the items and apply necessary transformations
   const items = helpers.getItems<RowType>(rows, columns);
   const filteredItems = helpers.filterItems<RowType>(items, columns, filters);
   const sortedItems = helpers.sortItems<RowType>(
     filteredItems,
     columns,
     sorting
+  );
+  const [pagedItems, pages] = helpers.pageItems(
+    selectedPage,
+    pageSize,
+    sortedItems
   );
 
   const flexBasis = getWidth(columns);
@@ -104,6 +117,23 @@ export default function Table<RowType extends Row>({
     }
   }
 
+  function onPageClick(page: number) {
+    setSelectedPage(page);
+  }
+
+  let paginator = null;
+  if (pages) {
+    paginator = (
+      <Paginator
+        key="table-paginator"
+        count={paginatorSize}
+        pages={pages}
+        selectedPage={selectedPage}
+        onPageClick={onPageClick}
+      />
+    );
+  }
+
   return (
     <div
       className={classnames([
@@ -128,13 +158,14 @@ export default function Table<RowType extends Row>({
         onCheckboxChange={onHeaderCheckboxChange}
       />
       <TableBody
-        items={sortedItems}
+        items={pagedItems}
         flexBasis={flexBasis}
         checkable={!!checkable}
         checked={checked}
         onCheckboxChange={onBodyCheckboxChange}
         onRowClick={onSelect}
       />
+      {paginator}
     </div>
   );
 }
