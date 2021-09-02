@@ -130,16 +130,21 @@ export function pageItems<RowType extends Row>(
   page: number,
   pageSize: number,
   items: Item<RowType>[]
-): [Item<RowType>[], number | undefined] {
+): [Item<RowType>[], number, number | undefined] {
   let pages;
   let pagedItems = items;
+  let selectedPage = page;
   if (pageSize > 0) {
     pages = getAmountOfPages(pageSize, items);
 
-    if (pages > 1 && page >= 1 && page <= pages) {
-      const start = (page - 1) * pageSize;
+    if (pages > 1 && page >= 1) {
+      if (page > pages) {
+        // go to last page after filtering
+        selectedPage = pages;
+      }
+      const start = (selectedPage - 1) * pageSize;
       pagedItems = pagedItems.slice(start, start + pageSize);
     }
   }
-  return [pagedItems, pages];
+  return [pagedItems, selectedPage, pages];
 }

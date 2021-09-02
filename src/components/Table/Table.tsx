@@ -55,7 +55,7 @@ export default function Table<RowType extends Row>({
     columns,
     sorting
   );
-  const [pagedItems, pages] = helpers.pageItems(
+  const [pagedItems, newSelectedPage, pages] = helpers.pageItems(
     selectedPage,
     pageSize,
     sortedItems
@@ -128,7 +128,7 @@ export default function Table<RowType extends Row>({
         key="table-paginator"
         count={paginatorSize}
         pages={pages}
-        selectedPage={selectedPage}
+        selectedPage={newSelectedPage}
         onPageClick={onPageClick}
       />
     );
