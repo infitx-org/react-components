@@ -19,6 +19,7 @@ export interface BaseDatePickerProps extends BaseInput {
   required?: boolean;
   invalid?: boolean;
   pending?: boolean;
+  withTime: boolean;
   onChange?: (date: Date | undefined) => void;
 }
 
@@ -37,6 +38,7 @@ export default forwardRef(function DatePicker(
     required,
     invalid,
     pending,
+    withTime,
     onChange,
     // From hocs
     label,
@@ -79,10 +81,32 @@ export default forwardRef(function DatePicker(
   }
 
   function onDayClick(day: Date, selected?: boolean) {
-    const newDate = selected ? undefined : day;
-    setDate(newDate);
+    const date = selected ? undefined : day;
+
+    if (date && selectedDate) {
+      const hour = selectedDate.getHours();
+      const minute = selectedDate.getMinutes();
+      const second = selectedDate.getSeconds();
+      date.setHours(hour);
+      date.setMinutes(minute);
+      date.setSeconds(second);
+    }
+    setDate(date);
     inputRef.current?.focus();
-    onChange?.(newDate);
+    onChange?.(date);
+  }
+
+  function onTimeChange(hour: number, minute: number, second: number) {
+    if (!selectedDate) {
+      return;
+    }
+    const date = new Date(selectedDate);
+    date.setHours(hour);
+    date.setMinutes(minute);
+    date.setSeconds(second);
+    setDate(date);
+    inputRef.current?.focus();
+    onChange?.(date);
   }
 
   function onFocus(e: React.FocusEvent<HTMLInputElement>) {
@@ -173,7 +197,14 @@ export default forwardRef(function DatePicker(
       {pending && <Loader size={size} />}
       {invalid && <InvalidIcon size={size} />}
       <CalendarIcon size={size} />
-      {open && <Calendar selectedDate={selectedDate} onDayClick={onDayClick} />}
+      {open && (
+        <Calendar
+          selectedDate={selectedDate}
+          onDayClick={onDayClick}
+          onTimeChange={onTimeChange}
+          withTime={withTime}
+        />
+      )}
     </Field>
   );
 });

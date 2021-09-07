@@ -20,6 +20,7 @@ Default.args = {
   required: false,
   invalid: false,
   pending: false,
+  withTime: false,
   onChange: log,
 };
 
@@ -27,6 +28,13 @@ export const SelectedDate = Template.bind({});
 SelectedDate.args = {
   value: new Date().toISOString(),
 };
+
+export const WithTime = Template.bind({});
+WithTime.args = {
+  value: new Date().toISOString(),
+  withTime: true,
+};
+
 export const Format = Template.bind({});
 Format.args = {
   format: "MM/dd/yyyy",
