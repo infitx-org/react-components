@@ -45,7 +45,17 @@ function TimeValue({ value, count, onClick }: TimeValueProps) {
   });
   return (
     <div className="rc-clock__picker" ref={timeValueRef}>
-      <ScrollBox>{items}</ScrollBox>
+      <ScrollBox
+        handleStyle={{ borderRadius: "3px" }}
+        trackStyle={{
+          top: "2px",
+          bottom: "2px",
+          right: "0px",
+          width: "3px",
+        }}
+      >
+        {items}
+      </ScrollBox>
     </div>
   );
 }

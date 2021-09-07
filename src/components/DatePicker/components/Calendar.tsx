@@ -25,11 +25,6 @@ export default function Calendar({
       onClick={(e) => e.stopPropagation()}
     >
       <div className="rc-datepicker__calendar__container">
-        <CalendarComponent
-          initialMonth={selectedDate ? selectedDate.getMonth() : undefined}
-          selectedDate={selectedDate}
-          onDayClick={(day: Date, { selected }) => onDayClick(day, selected)}
-        />
         {withTime && (
           <div className="rc-datepicker__calendar__container__time">
             <Clock
@@ -40,6 +35,11 @@ export default function Calendar({
             />
           </div>
         )}
+        <CalendarComponent
+          initialMonth={selectedDate ? selectedDate.getMonth() : undefined}
+          selectedDate={selectedDate}
+          onDayClick={(day: Date, { selected }) => onDayClick(day, selected)}
+        />
       </div>
     </Overlay>
   );

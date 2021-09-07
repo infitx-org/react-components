@@ -4,7 +4,6 @@
   position: absolute;
   z-index: 100000;
   left: 0;
-  width: 506px;
   padding: 3px 0;
 }
 
@@ -14,9 +13,12 @@
   border-radius: 10px;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 }
 
 .rc-datepicker__calendar__container__time {
-  padding-top: 3px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
