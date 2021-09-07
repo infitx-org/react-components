@@ -8,6 +8,7 @@ export type { Size, Kind, InputSize } from "./types";
 export { default as Button, ButtonProps } from "./components/Button";
 export { default as Calendar, CalendarProps } from "./components/Calendar";
 export { default as Checkbox, CheckboxProps } from "./components/Checkbox";
+export { default as Clock, ClockProps } from "./components/Clock";
 export { default as Column, ColumnProps } from "./components/Flexbox/Column";
 export {
   default as DatePicker,

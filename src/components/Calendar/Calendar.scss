@@ -20,7 +20,6 @@ $month-cell-content-size: ($ms - 6) + px;
   @include any.rc-component;
 
   font-size: 13px;
-  padding: 5px;
   display: inline-block;
 }
 
@@ -58,7 +57,7 @@ $month-cell-content-size: ($ms - 6) + px;
 
 @mixin rc-calendar__cell {
   box-sizing: border-box;
-  width: $cell-size;
+  min-width: $cell-size;
   height: $cell-size;
   vertical-align: middle;
   text-align: center;
@@ -279,7 +278,7 @@ $month-cell-content-size: ($ms - 6) + px;
   height: $cell-size;
   text-align: center;
   vertical-align: middle;
-  width: $month-cell-size;
+  min-width: $month-cell-size;
 
   &.rc-calendar__month__cell--today {
     @include cell-selected;
