@@ -19,7 +19,7 @@ function Timer() {
 const baseSuffixes = ["man", "ish", "car", "food", "house"];
 const suffixes: string[] = [];
 
-for (let i = 2; i > 0; i -= 1) {
+for (let i = 12; i > 0; i -= 1) {
   suffixes.push(...baseSuffixes);
 }
 
@@ -133,10 +133,9 @@ Flexible.args = {
     <div
       style={{
         height: "300px",
-        padding: "20px",
-        border: "2px solid #333",
+        padding: "10px",
+        boxShadow: "0px 1px 3px #333",
         display: "flex",
-        overflow: "scroll",
       }}
     >
       {children}
