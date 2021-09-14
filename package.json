@@ -1,6 +1,6 @@
 {
   "name": "@modusbox/react-components",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "lib/index.js",
   "author": "Ivan Annovazzi <ivan@modusbox.com>",
   "module": "lib/index.esm.js",
