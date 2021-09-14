@@ -33,7 +33,7 @@ export default function Table<RowType extends Row>({
   sortBy,
   sortAsc = true,
   checkable,
-  checked: extenallyChecked = [],
+  checked: extenallyChecked,
   className,
   flexible,
   bordered,
@@ -46,11 +46,15 @@ export default function Table<RowType extends Row>({
   const [sorting, setSorting] = React.useState<Sort | undefined>(
     helpers.getSorting<RowType>(columns, sortBy, sortAsc)
   );
-  const [checked, setChecked] = React.useState<RowType[]>(extenallyChecked);
+  const [checked, setChecked] = React.useState<RowType[]>(
+    extenallyChecked || []
+  );
   const [selectedPage, setSelectedPage] = React.useState(1);
 
   React.useEffect(() => {
-    setChecked(extenallyChecked);
+    if (extenallyChecked) {
+      setChecked(extenallyChecked);
+    }
   }, [extenallyChecked]);
 
   // Get the items and apply necessary transformations

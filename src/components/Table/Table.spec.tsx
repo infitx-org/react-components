@@ -186,6 +186,53 @@ describe("tests the Table", () => {
 });
 
 describe("Tests the Table Checkbox functionalities", () => {
+  it("Shows the checked items specified by the checked prop", () => {
+    const mockOnCheck = jest.fn();
+    const rows = makeRows(3);
+    const { container } = render(
+      <Table
+        rows={rows}
+        columns={testColumns}
+        checkable
+        checked={[rows[0]]}
+        onCheck={mockOnCheck}
+      />
+    );
+
+    const [row] = getRows(container);
+    const rowCheckbox = getRowCheckbox(row);
+
+    expect(rowCheckbox).toBeChecked();
+  });
+
+  it("Changes the checked items when the checked prop changes", () => {
+    const mockOnCheck = jest.fn();
+    const rows = makeRows(3);
+    const { container, rerender } = render(
+      <Table
+        rows={rows}
+        columns={testColumns}
+        checkable
+        checked={[rows[0]]}
+        onCheck={mockOnCheck}
+      />
+    );
+    rerender(
+      <Table
+        rows={rows}
+        columns={testColumns}
+        checkable
+        checked={[rows[0]]}
+        onCheck={mockOnCheck}
+      />
+    );
+
+    const [row] = getRows(container);
+    const rowCheckbox = getRowCheckbox(row);
+
+    expect(rowCheckbox).toBeChecked();
+  });
+
   it("triggers onCheck when checking a checkbox", () => {
     const mockOnCheck = jest.fn();
     const { container } = render(
@@ -199,9 +246,8 @@ describe("Tests the Table Checkbox functionalities", () => {
 
     const [row] = getRows(container);
     const rowCheckbox = getRowCheckbox(row);
-    userEvent.click(rowCheckbox as Element);
 
-    expect(mockOnCheck).toHaveBeenCalled();
+    expect(rowCheckbox).not.toBeChecked();
   });
 
   it("triggers onCheck with all the rows when checking the header checkbox", () => {
