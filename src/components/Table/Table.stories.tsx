@@ -106,6 +106,15 @@ Checkable.args = {
   onCheck: log,
 };
 
+export const CheckedRows = Template.bind({});
+CheckedRows.args = {
+  rows,
+  columns,
+  checkable: true,
+  checked: [rows[0], rows[4]],
+  onCheck: log,
+};
+
 export const Flexible = Template.bind({});
 Flexible.args = {
   rows,
