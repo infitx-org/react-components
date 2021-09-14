@@ -186,16 +186,26 @@ describe("tests the Table", () => {
 });
 
 describe("Tests the Table Checkbox functionalities", () => {
-  it("Shows the checked items specified by the checked prop", () => {
-    const mockOnCheck = jest.fn();
+  it("Shows the checked items specified by the checked prop (array)", () => {
+    const rows = makeRows(3);
+    const { container } = render(
+      <Table rows={rows} columns={testColumns} checkable checked={[rows[0]]} />
+    );
+
+    const [row] = getRows(container);
+    const rowCheckbox = getRowCheckbox(row);
+
+    expect(rowCheckbox).toBeChecked();
+  });
+
+  it("Shows the checked items specified by the checked prop (function)", () => {
     const rows = makeRows(3);
     const { container } = render(
       <Table
         rows={rows}
         columns={testColumns}
         checkable
-        checked={[rows[0]]}
-        onCheck={mockOnCheck}
+        checked={(row) => row.dog.endsWith("0")}
       />
     );
 
@@ -205,16 +215,29 @@ describe("Tests the Table Checkbox functionalities", () => {
     expect(rowCheckbox).toBeChecked();
   });
 
-  it("Changes the checked items when the checked prop changes", () => {
-    const mockOnCheck = jest.fn();
+  it("Changes the checked items when the checked prop changes (array)", () => {
+    const rows = makeRows(3);
+    const { container, rerender } = render(
+      <Table rows={rows} columns={testColumns} checkable checked={[rows[1]]} />
+    );
+    rerender(
+      <Table rows={rows} columns={testColumns} checkable checked={[rows[0]]} />
+    );
+
+    const [row] = getRows(container);
+    const rowCheckbox = getRowCheckbox(row);
+
+    expect(rowCheckbox).toBeChecked();
+  });
+
+  it("Changes the checked items when the checked prop changes (function)", () => {
     const rows = makeRows(3);
     const { container, rerender } = render(
       <Table
         rows={rows}
         columns={testColumns}
         checkable
-        checked={[rows[0]]}
-        onCheck={mockOnCheck}
+        checked={(row) => row.dog.endsWith("1")}
       />
     );
     rerender(
@@ -222,8 +245,7 @@ describe("Tests the Table Checkbox functionalities", () => {
         rows={rows}
         columns={testColumns}
         checkable
-        checked={[rows[0]]}
-        onCheck={mockOnCheck}
+        checked={(row) => row.dog.endsWith("0")}
       />
     );
 
