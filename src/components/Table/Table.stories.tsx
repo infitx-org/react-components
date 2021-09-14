@@ -16,10 +16,10 @@ function Timer() {
   return <span>Time elapsed: {time}s</span>;
 }
 
-const baseSuffixes = ["man", "boy", "ish", "car", "boat", "food", "house"];
+const baseSuffixes = ["man", "ish", "car", "food", "house"];
 const suffixes: string[] = [];
 
-for (let i = 10; i > 0; i -= 1) {
+for (let i = 12; i > 0; i -= 1) {
   suffixes.push(...baseSuffixes);
 }
 
@@ -106,6 +106,24 @@ Checkable.args = {
   onCheck: log,
 };
 
+export const CheckedRows = Template.bind({});
+CheckedRows.args = {
+  rows,
+  columns,
+  checkable: true,
+  checked: [rows[0], rows[1], rows[2]],
+  onCheck: log,
+};
+
+export const CheckedRowsFunction = Template.bind({});
+CheckedRowsFunction.args = {
+  rows,
+  columns,
+  checkable: true,
+  checked: (row) => row.dog.endsWith("man"),
+  onCheck: log,
+};
+
 export const Flexible = Template.bind({});
 Flexible.args = {
   rows,
@@ -115,10 +133,9 @@ Flexible.args = {
     <div
       style={{
         height: "300px",
-        padding: "20px",
-        border: "2px solid #333",
+        padding: "10px",
+        boxShadow: "0px 1px 3px #333",
         display: "flex",
-        overflow: "scroll",
       }}
     >
       {children}

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import classnames from "classnames";
-import { Row, Column, Sort } from "./types";
+import { Row, Column, Sort, CheckedFunction } from "./types";
 import * as helpers from "./helpers";
 import TableHeader from "./components/TableHeader";
 import TableBody from "./components/TableBody";
@@ -17,6 +17,7 @@ export interface TableProps<RowType extends Row> {
   sortBy?: string;
   sortAsc?: boolean;
   checkable?: boolean;
+  checked?: RowType[] | CheckedFunction<RowType>;
   className?: string;
   flexible?: boolean;
   bordered?: boolean;
@@ -32,6 +33,7 @@ export default function Table<RowType extends Row>({
   sortBy,
   sortAsc = true,
   checkable,
+  checked: extenallyChecked,
   className,
   flexible,
   bordered,
@@ -44,8 +46,16 @@ export default function Table<RowType extends Row>({
   const [sorting, setSorting] = React.useState<Sort | undefined>(
     helpers.getSorting<RowType>(columns, sortBy, sortAsc)
   );
-  const [checked, setChecked] = React.useState<RowType[]>([]);
+  const [checked, setChecked] = React.useState<RowType[]>(
+    helpers.getCheckedItems<RowType>(rows, extenallyChecked)
+  );
   const [selectedPage, setSelectedPage] = React.useState(1);
+
+  React.useEffect(() => {
+    if (extenallyChecked) {
+      setChecked(helpers.getCheckedItems<RowType>(rows, extenallyChecked));
+    }
+  }, [extenallyChecked]);
 
   // Get the items and apply necessary transformations
   const items = helpers.getItems<RowType>(rows, columns);

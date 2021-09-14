@@ -2,6 +2,7 @@ import { PropsWithChildren, memo } from "react";
 import classnames from "classnames";
 import { Item, Row } from "../types";
 import Checkbox from "../../Checkbox";
+import ScrollBox from "../../ScrollBox";
 
 interface TableBodyCellProps {
   children: React.ReactNode;
@@ -43,7 +44,7 @@ export default function TableBody<RowType extends Row>({
     onCheckboxChange(row);
   };
   return (
-    <div className="rc-table__body">
+    <ScrollBox className="rc-table__body">
       {items.map((item, index) => {
         return (
           <div
@@ -76,6 +77,6 @@ export default function TableBody<RowType extends Row>({
           </div>
         );
       })}
-    </div>
+    </ScrollBox>
   );
 }

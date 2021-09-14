@@ -47,3 +47,5 @@ export interface Sort {
   index: number;
   asc: boolean;
 }
+
+export type CheckedFunction<RowType extends Row> = (row: RowType) => boolean;

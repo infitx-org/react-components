@@ -6,6 +6,7 @@ import {
   Column,
   Filter,
   Sort,
+  CheckedFunction,
 } from "./types";
 
 // typeguard on CellValue
@@ -147,4 +148,17 @@ export function pageItems<RowType extends Row>(
     }
   }
   return [pagedItems, selectedPage, pages];
+}
+
+export function getCheckedItems<RowType>(
+  items: RowType[],
+  checked?: RowType[] | CheckedFunction<RowType>
+): RowType[] {
+  if (typeof checked === "function") {
+    return items.filter(checked);
+  }
+  if (Array.isArray(checked)) {
+    return checked;
+  }
+  return [];
 }
