@@ -63,6 +63,10 @@ function getRowCheckbox(row: Element): Element | null {
   return firstRowCell.querySelector(".rc-checkbox");
 }
 
+function getSortingButton(headerCell: Element): Element | null {
+  return headerCell.querySelector(".rc-table__header__control--sort");
+}
+
 function getOpenFilterButton(headerCell: Element): Element | null {
   return headerCell.querySelector(".rc-table__header__control--open-filter");
 }
@@ -118,6 +122,39 @@ describe("tests the Table", () => {
     );
   });
 
+  it("shows the checkbox with checkable prop is true", () => {
+    const { container } = render(
+      <Table rows={makeRows(3)} columns={testColumns} checkable />
+    );
+    expect(getHeaderCheckbox(container)).toBeTruthy();
+
+    const rows = getRows(container);
+    rows.forEach((row) => {
+      const rowCheckbox = getRowCheckbox(row);
+      expect(rowCheckbox).toBeTruthy();
+    });
+  });
+
+  it("shows the borders with bordered prop is true", () => {
+    const { container } = render(
+      <Table rows={makeRows(3)} columns={testColumns} bordered />
+    );
+    expect(
+      container.querySelector(".rc-table.rc-table--bordered")
+    ).toBeInTheDocument();
+  });
+
+  it("shows the borders with flexible prop is true", () => {
+    const { container } = render(
+      <Table rows={makeRows(3)} columns={testColumns} flexible />
+    );
+    expect(
+      container.querySelector(".rc-table.rc-table--flexible")
+    ).toBeInTheDocument();
+  });
+});
+
+describe("Tests the Table Sorting functionalities", () => {
   it("sorts by sortBy prop", () => {
     const { container } = render(
       <Table
@@ -153,35 +190,44 @@ describe("tests the Table", () => {
     );
   });
 
-  it("shows the checkbox with checkable prop is true", () => {
+  it("Changes the sorting when clicking a different sortable column", () => {
     const { container } = render(
-      <Table rows={makeRows(3)} columns={testColumns} checkable />
+      <Table
+        rows={makeRows(3)}
+        columns={testColumns}
+        sortBy={testColumns[0].label}
+      />
     );
-    expect(getHeaderCheckbox(container)).toBeTruthy();
-
-    const rows = getRows(container);
-    rows.forEach((row) => {
-      const rowCheckbox = getRowCheckbox(row);
-      expect(rowCheckbox).toBeTruthy();
-    });
+    const [, col2] = getHeaderCells(container);
+    const sortingButton = getSortingButton(col2);
+    userEvent.click(sortingButton as Element);
+    expect(
+      container.querySelector(
+        ".rc-table__header__cell.rc-table__header__cell--sorting"
+      )
+    ).toHaveTextContent(testColumns[1].label);
+    expect(getRowsData(container, testColumns)).toStrictEqual(makeRows(3));
   });
 
-  it("shows the borders with bordered prop is true", () => {
+  it("Reverse the sorting when clicking the sorting button of the sorting column", () => {
     const { container } = render(
-      <Table rows={makeRows(3)} columns={testColumns} bordered />
+      <Table
+        rows={makeRows(3)}
+        columns={testColumns}
+        sortBy={testColumns[0].label}
+      />
     );
+    const [col1] = getHeaderCells(container);
+    const sortingButton = getSortingButton(col1);
+    userEvent.click(sortingButton as Element);
     expect(
-      container.querySelector(".rc-table.rc-table--bordered")
-    ).toBeInTheDocument();
-  });
-
-  it("shows the borders with flexible prop is true", () => {
-    const { container } = render(
-      <Table rows={makeRows(3)} columns={testColumns} flexible />
+      container.querySelector(
+        ".rc-table__header__cell.rc-table__header__cell--sorting"
+      )
+    ).toHaveTextContent(testColumns[0].label);
+    expect(getRowsData(container, testColumns).reverse()).toStrictEqual(
+      makeRows(3)
     );
-    expect(
-      container.querySelector(".rc-table.rc-table--flexible")
-    ).toBeInTheDocument();
   });
 });
 
