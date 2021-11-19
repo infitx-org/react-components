@@ -49,7 +49,6 @@ export default class Calendar extends PureComponent<
       selectedDate,
       selectedRange,
     } = this.props;
-
     this.state = {
       today,
       currentYear: initialYear || today.getFullYear(),

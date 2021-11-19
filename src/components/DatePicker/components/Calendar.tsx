@@ -36,6 +36,7 @@ export default function Calendar({
           </div>
         )}
         <CalendarComponent
+          initialYear={selectedDate ? selectedDate.getFullYear() : undefined}
           initialMonth={selectedDate ? selectedDate.getMonth() : undefined}
           selectedDate={selectedDate}
           onDayClick={(day: Date, { selected }) => onDayClick(day, selected)}
